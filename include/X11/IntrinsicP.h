@@ -46,7 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86$ */
+/* $XFree86: xc/lib/Xt/IntrinsicP.h,v 1.4 2003/10/24 15:47:35 tsi Exp $ */
 
 #ifndef _XtintrinsicP_h
 #define _XtintrinsicP_h

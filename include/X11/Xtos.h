@@ -48,7 +48,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86$ */
+/* $XFree86: xc/lib/Xt/Xtos.h,v 3.13 2003/10/24 15:47:35 tsi Exp $ */
 
 #ifndef _Xtos_h
 #define _Xtos_h

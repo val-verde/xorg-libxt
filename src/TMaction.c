@@ -59,7 +59,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86$ */
+/* $XFree86: xc/lib/Xt/TMaction.c,v 3.8 2003/04/21 16:34:28 herrb Exp $ */
 
 /* TMaction.c -- maintains the state table of actions for the translation 
  *              manager.

@@ -47,7 +47,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86$ */
+/* $XFree86: xc/lib/Xt/EventI.h,v 1.4 2003/04/21 16:34:27 herrb Exp $ */
 
 /* 
  * Event.h - exported types and functions for toolkit event handler
