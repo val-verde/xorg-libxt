@@ -25,17 +25,12 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/VarargsI.h,v 3.6 2001/12/14 19:56:32 dawes Exp $ */
 
 #ifndef _VarargsI_h_ 
 #define _VarargsI_h_ 
 
-#if NeedVarargsPrototypes
-# include <stdarg.h>
-# define Va_start(a,b) va_start(a,b)
-#else
-# include <varargs.h>
-# define Va_start(a,b) va_start(a)
-#endif
+#include <stdarg.h>
  
 /* private routines */
 

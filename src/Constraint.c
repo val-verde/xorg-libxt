@@ -58,12 +58,13 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Constraint.c,v 1.3 2001/12/14 19:56:09 dawes Exp $ */
 
 #define CONSTRAINT
 #include "IntrinsicI.h"
 #include "StringDefs.h"
 
-static void ConstraintPartInitialize();
+static void ConstraintPartInitialize(WidgetClass wc);
 externaldef(constraintclassrec) ConstraintClassRec constraintClassRec = {
   { /******* CorePart *******/
     /* superclass	    */	(WidgetClass) &compositeClassRec,

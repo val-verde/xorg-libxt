@@ -58,6 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Destroy.c,v 1.3 2001/12/14 19:56:11 dawes Exp $ */
 
 #include "IntrinsicI.h"
 
@@ -188,7 +189,7 @@ static Boolean IsDescendant(widget, root)
 static void XtPhase2Destroy (widget)
     register Widget widget;
 {
-    Display	    *display;
+    Display	    *display = NULL;
     Window	    window;
     Widget          parent;
     XtAppContext    app = XtWidgetToApplicationContext(widget);
@@ -244,9 +245,6 @@ static void XtPhase2Destroy (widget)
      */
     if (XtIsShell(widget) || !XtIsWidget(widget)) {
 	window = 0;
-#ifdef lint
-	display = 0;
-#endif
     }
     else {
 	display = XtDisplay(widget);

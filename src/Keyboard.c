@@ -59,13 +59,14 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Keyboard.c,v 3.4 2001/12/14 19:56:26 dawes Exp $ */
 
 #include "IntrinsicI.h"
 
 #include "PassivGraI.h"
+#include "EventI.h"
 
 #define _GetWindowedAncestor(w) (XtIsWidget(w) ? w : _XtWindowedAncestor(w))
-extern void _XtFillAncestorList();
 extern void _XtSendFocusEvent();
 
 /* InActiveSubtree cache of the current focus source and its ancestors */

@@ -25,6 +25,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Varargs.c,v 3.10 2001/12/14 19:56:32 dawes Exp $ */
 
 #include "IntrinsicI.h"
 #include "VarargsI.h"
@@ -38,10 +39,10 @@ static String XtNxtConvertVarToArgList = "xtConvertVarToArgList";
  *    attributes that are typed. The list is counted recursively.
  */
 static  void
-_XtCountNestedList(avlist, total_count, typed_count)
-    XtTypedArgList  avlist;
-    int             *total_count;
-    int             *typed_count;
+_XtCountNestedList(
+    XtTypedArgList  avlist,
+    int             *total_count,
+    int             *typed_count)
 {
     for (; avlist->name != NULL; avlist++) {
         if (strcmp(avlist->name, XtVaNestedList) == 0) {
@@ -82,17 +83,17 @@ _XtCountVaList(var, total_count, typed_count)
     for(attr = va_arg(var, String) ; attr != NULL;
                         attr = va_arg(var, String)) {
         if (strcmp(attr, XtVaTypedArg) == 0) {
-            va_arg(var, String);
-            va_arg(var, String);
-            va_arg(var, XtArgVal);
-            va_arg(var, int);
+            (void)va_arg(var, String);
+            (void)va_arg(var, String);
+            (void)va_arg(var, XtArgVal);
+            (void)va_arg(var, int);
             ++(*total_count);
             ++(*typed_count);
         } else if (strcmp(attr, XtVaNestedList) == 0) {
             _XtCountNestedList(va_arg(var, XtTypedArgList), total_count,
                 typed_count);
         } else {
-            va_arg(var, XtArgVal);
+            (void)va_arg(var, XtArgVal);
             ++(*total_count);
 	}
     }
@@ -104,16 +105,8 @@ _XtCountVaList(var, total_count, typed_count)
  *   constructs an attribute-value list of type XtTypedArgList and 
  *   returns the list.
  */
-#if NeedVarargsPrototypes
 XtVarArgsList
 XtVaCreateArgsList(XtPointer unused, ...)
-#else
-/*ARGSUSED*/
-/*VARARGS1*/
-XtVarArgsList XtVaCreateArgsList(unused, va_alist)
-    XtPointer unused;
-    va_dcl
-#endif
 {
     va_list var;
     XtTypedArgList  avlist;
@@ -125,22 +118,22 @@ XtVarArgsList XtVaCreateArgsList(unused, va_alist)
      * Note: The count is required only to allocate enough space to store
      * the list. Therefore nested lists are not counted recursively.
      */
-    Va_start(var,unused);
+    va_start(var,unused);
     for(attr = va_arg(var, String) ; attr != NULL;
                         attr = va_arg(var, String)) {
         ++count;
         if (strcmp(attr, XtVaTypedArg) == 0) {
-            va_arg(var, String);
-            va_arg(var, String);
-            va_arg(var, XtArgVal);
-            va_arg(var, int);
+            (void)va_arg(var, String);
+            (void)va_arg(var, String);
+            (void)va_arg(var, XtArgVal);
+            (void)va_arg(var, int);
         } else {
-            va_arg(var, XtArgVal);
+            (void)va_arg(var, XtArgVal);
         }
     }
     va_end(var);
 
-    Va_start(var,unused);
+    va_start(var,unused);
     avlist = _XtVaCreateTypedArgList(var, count);
     va_end(var);
     return (XtVarArgsList)avlist;
@@ -190,14 +183,13 @@ XtTypedArgList _XtVaCreateTypedArgList(var, count)
  *    1 if the conversion succeeded and 0 if the conversion failed.
  */
 static int
-TypedArgToArg(widget, typed_arg, arg_return, resources, num_resources,
-		 memory_return)
-    Widget              widget;
-    XtTypedArgList      typed_arg;
-    ArgList             arg_return;
-    XtResourceList      resources;
-    Cardinal            num_resources;
-    ArgList		memory_return;
+TypedArgToArg(
+    Widget              widget,
+    XtTypedArgList      typed_arg,
+    ArgList             arg_return,
+    XtResourceList      resources,
+    Cardinal            num_resources,
+    ArgList		memory_return)
 {     
     String              to_type = NULL;
     XrmValue            from_val, to_val;
@@ -279,14 +271,13 @@ TypedArgToArg(widget, typed_arg, arg_return, resources, num_resources,
  *    an ArgList/count.
  */
 static int
-NestedArgtoArg(widget, avlist, args, resources, num_resources,
-		  memory_return)
-    Widget              widget;
-    XtTypedArgList      avlist;
-    ArgList             args;
-    XtResourceList      resources;
-    Cardinal            num_resources;
-    ArgList		memory_return;
+NestedArgtoArg(
+    Widget              widget,
+    XtTypedArgList      avlist,
+    ArgList             args,
+    XtResourceList      resources,
+    Cardinal            num_resources,
+    ArgList		memory_return)
 {
     int         count = 0;
  
@@ -356,7 +347,8 @@ _XtFreeArgList(args, total_count, typed_count)
 }
 
 
-static void		GetResources();
+static void GetResources(Widget widget, XtResourceList *res_list,
+			 Cardinal *number);
 
  
 /* 
@@ -485,9 +477,9 @@ Cardinal * number;
     }
 }
 
-static int NestedArgtoTypedArg(args, avlist) 
-    XtTypedArgList      args;
-    XtTypedArgList      avlist;
+static int NestedArgtoTypedArg(
+    XtTypedArgList      args,
+    XtTypedArgList      avlist)
 {    
     int         count = 0;
      

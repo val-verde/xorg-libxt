@@ -1,4 +1,4 @@
-/* $Xorg: NextEvent.c,v 1.11 2001/03/19 14:27:27 coskrey Exp $ */
+/* $Xorg: NextEvent.c,v 1.8 2001/02/09 02:03:55 xorgcvs Exp $ */
 
 /***********************************************************
 Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts,
@@ -35,7 +35,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 /*
 
-Copyright 1987, 1988, 1994, 1998  The Open Group
+Copyright 1987, 1988, 1994, 1998, 2001  The Open Group
 
 Permission to use, copy, modify, distribute, and sell this software and its
 documentation for any purpose is hereby granted without fee, provided that
@@ -58,12 +58,14 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/NextEvent.c,v 3.26 2002/06/04 21:55:42 dawes Exp $ */
 
 #include "IntrinsicI.h"
 #include <stdio.h>
 #include <errno.h>
-#ifdef X_NOT_STDC_ENV
-extern int errno;
+
+#ifdef __UNIXOS2__
+#include <sys/time.h>
 #endif
 
 static TimerEventRec* freeTimerRecs;
@@ -163,7 +165,7 @@ typedef struct {
 
 static struct timeval  zero_time = { 0 , 0};
 #ifndef USE_POLL
-static fd_set zero_fd = { 0 };
+static fd_set zero_fd;
 #else
 #define X_BLOCK -1
 #define X_DONT_BLOCK 0
@@ -334,6 +336,7 @@ static void AdjustTimes (app, block, howlong, ignoreTimers, wt)
 #endif
 }
 
+
 static int IoWait (wt, wf)
     wait_times_ptr_t wt;
     wait_fds_ptr_t wf;
@@ -345,6 +348,7 @@ static int IoWait (wt, wf)
     return poll (wf->fdlist, wf->fdlistlen, wt->poll_wait);
 #endif
 }
+
 
 static void FindInputs (app, wf, nfds, ignoreEvents, ignoreInputs, dpy_no, found_input)
     XtAppContext app;
@@ -421,8 +425,16 @@ static void FindInputs (app, wf, nfds, ignoreEvents, ignoreInputs, dpy_no, found
 	if (condition) {
 	    for (ep = app->input_list[ii]; ep; ep = ep->ie_next)
 		if (condition & ep->ie_condition) {
-		    ep->ie_oq = app->outstandingQueue;
-		    app->outstandingQueue = ep;
+		    /* make sure this input isn't already marked outstanding */
+		    InputEvent	*oq;
+		    for (oq = app->outstandingQueue; oq; oq = oq->ie_oq)
+			if (oq == ep)
+			    break;
+		    if (!oq)
+		    {
+			ep->ie_oq = app->outstandingQueue;
+			app->outstandingQueue = ep;
+		    }
 		}
 	    *found_input = True;
 	}
@@ -468,8 +480,16 @@ ENDILOOP:   ;
 		*found_input = True;
 		for (ep = app->input_list[fdlp->fd]; ep; ep = ep->ie_next)
 		    if (condition & ep->ie_condition) {
-			ep->ie_oq = app->outstandingQueue;
-			app->outstandingQueue = ep;
+			InputEvent	*oq;
+			/* make sure this input isn't already marked outstanding */
+			for (oq = app->outstandingQueue; oq; oq = oq->ie_oq)
+			    if (oq == ep)
+				break;
+			if (!oq)
+			{
+			    ep->ie_oq = app->outstandingQueue;
+			    app->outstandingQueue = ep;
+			}
 		    }
 	    }
 	}
@@ -1071,45 +1091,10 @@ void XtRemoveInput( id )
 
 	if (found) {
 	    app->input_count--;
-	    if (app->input_list[source] == NULL)
-
 #ifdef USE_POLL
-
+	    if (app->input_list[source] == NULL)
 		app->fds.nfds--;
-
-#else
-
-	    {
-		int display;
-		int source;
-
-		/*
-		 * Search through list[] for largest connection number
-		 */
-
-		app->fds.nfds = 0;
-
-		for (display = 0; display < app->count; display++) {
-		    if ((ConnectionNumber(app->list[display]) + 1) > app->fds.nfds) {
- 			app->fds.nfds = ConnectionNumber(app->list[display]) + 1;
-		    }
-		}
-
-		/*
-		 * Search through input_list[] for largest input source, i.e.
-		 * file descriptor
-		 */
-
-		for (source = (app->input_max - 1); ((source >= 0) && ((source +1) > app->fds.nfds)); source--) {
-		    if (app->input_list[source] != (InputEvent *) NULL) {
-			app->fds.nfds = (source + 1);
-			break;
-		    }
-		}
-	    }
-
 #endif
-
 	    app->rebuild_fdlist = TRUE;
 	} else
 	    XtAppWarningMsg(app, "invalidProcedure","inputHandler",
@@ -1545,6 +1530,8 @@ Boolean XtPeekEvent(event)
 	return XtAppPeekEvent(_XtDefaultAppContext(), event);
 }
 
+Boolean XtAppPeekEvent_SkipTimer;
+
 Boolean XtAppPeekEvent(app, event)
 	XtAppContext app;
 	XEvent *event;
@@ -1594,7 +1581,7 @@ Boolean XtAppPeekEvent(app, event)
 			 * Check to see why a -1 was returned, if a timer expired,
 			 * call it and block some more
 			 */
-			if (app->timerQueue != NULL) {  /* timer */
+			if ((app->timerQueue != NULL) && ! XtAppPeekEvent_SkipTimer) {  /* timer */
 				struct timeval cur_time;
 				Bool did_timer = False;
 
@@ -1604,10 +1591,11 @@ Boolean XtAppPeekEvent(app, event)
 					TimerEventRec *te_ptr = app->timerQueue;
 					app->timerQueue = app->timerQueue->te_next;
 					te_ptr->te_next = NULL;
-					if (te_ptr->te_proc != NULL)
+					if (te_ptr->te_proc != NULL) {
 					    TeCallProc(te_ptr);
+					    did_timer = True;
+					}
 					LOCK_PROCESS;
-					did_timer = True;
 					te_ptr->te_next = freeTimerRecs;
 					freeTimerRecs = te_ptr;
 					UNLOCK_PROCESS;
@@ -1623,15 +1611,23 @@ Boolean XtAppPeekEvent(app, event)
 				    continue;  /* keep blocking */
 				}
 			}
+			/*
+			 * spec is vague here; we'll assume signals also return FALSE,
+			 * of course to determine whether a signal is pending requires
+			 * walking the signalQueue looking for se_notice flags which
+			 * this code doesn't do. 
+			 */
+#if 0
 			if (app->signalQueue != NULL) {  /* signal */
-			/* spec is vague here; we'll assume signals also return FALSE */
 				event->xany.type = 0;
 				event->xany.display = NULL;
 				event->xany.window = 0;
 				UNLOCK_APP(app);
 				return FALSE;
 			}
-			else {  /* input */
+			else 
+#endif
+			{  /* input */
 				event->xany.type = 0;   
 				event->xany.display = NULL;
 				event->xany.window = 0;

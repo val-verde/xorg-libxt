@@ -46,6 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/util/Shell.ht,v 3.5 2001/12/14 19:56:39 dawes Exp $ */
 
 #ifndef _XtShell_h
 #define _XtShell_h
@@ -63,11 +64,7 @@ SOFTWARE.
  */
 
 #ifndef XTSTRINGDEFINES
-#ifdef __STDC__
 #define _XtShell_h_Const const
-#else
-#define _XtShell_h_Const /**/
-#endif
 #endif
 
 <<<STRING_TABLE_GOES_HERE>>>

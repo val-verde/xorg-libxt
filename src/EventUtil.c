@@ -59,10 +59,12 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/EventUtil.c,v 1.6 2001/12/14 19:56:13 dawes Exp $ */
 
 #include "IntrinsicI.h"
 #include "PassivGraI.h"
 #include "StringDefs.h"
+#include "EventI.h"
 
 static XContext 	perWidgetInputContext = 0;
 

@@ -58,6 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/SetSens.c,v 1.3 2001/12/14 19:56:29 dawes Exp $ */
 
 #include "IntrinsicI.h"
 #include "StringDefs.h"
@@ -66,9 +67,9 @@ in this Software without prior written authorization from The Open Group.
  *	XtSetSensitive()
  */
 
-static void SetAncestorSensitive(widget, ancestor_sensitive)
-    register Widget widget;
-    Boolean	    ancestor_sensitive;
+static void SetAncestorSensitive(
+    register Widget widget,
+    Boolean	    ancestor_sensitive)
 {
     Arg			args[1];
     register Cardinal   i;

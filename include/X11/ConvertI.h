@@ -46,6 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/ConvertI.h,v 1.3 2001/12/14 19:56:09 dawes Exp $ */
 
 /* Representation types */
 
@@ -100,4 +101,6 @@ extern Boolean _XtConvert(
     XtCacheRef*			/* cache_ref_return */
 #endif			  
 );
+
+void _XtConvertInitialize(void);
 

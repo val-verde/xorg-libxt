@@ -32,6 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/TMparse.c,v 3.9 2002/05/31 18:45:46 dawes Exp $ */
 
 /*
 
@@ -62,6 +63,7 @@ in this Software without prior written authorization from The Open Group.
 #include "IntrinsicI.h"
 #include "StringDefs.h"
 #include <ctype.h>
+#include <stdlib.h>
 #ifndef NOTASCII
 #define XK_LATIN1
 #endif
@@ -367,9 +369,14 @@ static EventKey events[] = {
 
 };
 
+#ifndef __UNIXOS2__
+#define IsNewline(str) ((str) == '\n')
+#else
+#define IsNewline(str) ((str) == '\n' || (str) == '\r')
+#endif
 
 #define ScanFor(str, ch) \
-    while ((*(str) != (ch)) && (*(str) != '\0') && (*(str) != '\n')) (str)++
+    while ((*(str) != (ch)) && (*(str) != '\0') && !IsNewline(*(str))) (str)++
 
 #define ScanNumeric(str)  while ('0' <= *(str) && *(str) <= '9') (str)++
 
@@ -378,9 +385,13 @@ static EventKey events[] = {
            ('a' <= *(str) && *(str) <= 'z') || \
            ('0' <= *(str) && *(str) <= '9')) (str)++
 
+#ifndef __UNIXOS2__
 #define ScanWhitespace(str) \
     while (*(str) == ' ' || *(str) == '\t') (str)++
-
+#else
+#define ScanWhitespace(str) \
+    while (*(str) == ' ' || *(str) == '\t' || *(str) == '\r') (str)++
+#endif
 
 static Boolean initialized = FALSE;
 static XrmQuark QMeta;
@@ -951,7 +962,7 @@ static String ParseKeySym(str, closure, event,error)
 	keySymName = keySymNamebuf;
 	str++;
 	keySymName[0] = *str;
-	if (*str != '\0' && *str != '\n') str++;
+	if (*str != '\0' && !IsNewline(*str)) str++;
 	keySymName[1] = '\0';
 	event->event.eventCode = StringToKeySym(keySymName, error);
 	event->event.eventCodeMask = ~0L;
@@ -971,7 +982,7 @@ static String ParseKeySym(str, closure, event,error)
 		&& *str != ':'
 		&& *str != ' '
 		&& *str != '\t'
-                && *str != '\n'
+                && !IsNewline(*str)
                 && (*str != '(' || *(str+1) <= '0' || *(str+1) >= '9')
 		&& *str != '\0') str++;
 	keySymName = XtStackAlloc (str - start + 1, keySymNamebuf);
@@ -981,6 +992,7 @@ static String ParseKeySym(str, closure, event,error)
 	event->event.eventCodeMask = ~0L;
     }
     if (*error) {
+	/* We never get here when keySymName hasn't been allocated */
 	if (keySymName[0] == '<') {
 	    /* special case for common error */
 	    XtWarningMsg(XtNtranslationParseError, "missingComma",
@@ -1069,7 +1081,7 @@ static String ParseAtom(str, closure, event,error)
 		&& *str != ':'
 		&& *str != ' '
 		&& *str != '\t'
-                && *str != '\n'
+                && !IsNewline(*str)
 		&& *str != '\0') str++;
 	if (str-start >= 999) {
 	    Syntax( "Atom name must be less than 1000 characters long.", "" );
@@ -1157,7 +1169,7 @@ static String ParseQuotedStringEvent(str, event,error)
 	str++;
     s[0] = *str;
     s[1] = '\0';
-    if (*str != '\0' && *str != '\n') str++;
+    if (*str != '\0' && !IsNewline(*str)) str++;
     event->event.eventType = KeyPress;
     event->event.eventCode = StringToKeySym(s, error);
     if (*error) return PanicModeRecovery(str);
@@ -1229,7 +1241,7 @@ static void RepeatDownPlus(eventP, reps, actionsP)
     ActionPtr **actionsP;
 {
     EventRec upEventRec;
-    register EventPtr event, downEvent, lastDownEvent;
+    register EventPtr event, downEvent, lastDownEvent = NULL;
     EventPtr upEvent = &upEventRec;
     register int i;
 
@@ -1335,7 +1347,7 @@ static void RepeatUpPlus(eventP, reps, actionsP)
     ActionPtr **actionsP;
 {
     EventRec upEventRec;
-    register EventPtr event, downEvent, lastUpEvent;
+    register EventPtr event, downEvent, lastUpEvent = NULL;
     EventPtr upEvent = &upEventRec;
     register int i;
 
@@ -1518,7 +1530,7 @@ static String ParseEventSeq(str, eventSeqP, actionsP,error)
 
     *eventSeqP = NULL;
 
-    while ( *str != '\0' && *str != '\n') {
+    while ( *str != '\0' && !IsNewline(*str)) {
 	static Event	nullEvent =
              {0, 0,0L, 0, 0L, 0L,_XtRegularMatch,FALSE};
 	EventPtr	event;
@@ -1527,7 +1539,7 @@ static String ParseEventSeq(str, eventSeqP, actionsP,error)
 
 	if (*str == '"') {
 	    str++;
-	    while (*str != '"' && *str != '\0' && *str != '\n') {
+	    while (*str != '"' && *str != '\0' && !IsNewline(*str)) {
                 event = XtNew(EventRec);
                 event->event = nullEvent;
                 event->state = /* (StatePtr) -1 */ NULL;
@@ -1656,7 +1668,7 @@ static String ParseString(str, strP)
 		&& *str != '\t'
 		&& *str != ','
 		&& *str != ')'
-                && *str != '\n'
+                && !IsNewline(*str)
 		&& *str != '\0') str++;
 	*strP = __XtMalloc((unsigned)(str-start+1));
 	(void) memmove(*strP, start, str-start);
@@ -1682,7 +1694,7 @@ static String ParseParamSeq(str, paramSeqP, paramNumP)
     register Cardinal i;
 
     ScanWhitespace(str);
-    while (*str != ')' && *str != '\0' && *str != '\n') {
+    while (*str != ')' && *str != '\0' && !IsNewline(*str)) {
 	String newStr;
 	str = ParseString(str, &newStr);
 	if (newStr != NULL) {
@@ -1759,7 +1771,7 @@ static String ParseActionSeq(parseTree, str, actionsP, error)
     ActionPtr *nextActionP = actionsP;
 
     *actionsP = NULL;
-    while (*str != '\0' && *str != '\n') {
+    while (*str != '\0' && !IsNewline(*str)) {
 	register ActionPtr	action;
 	XrmQuark quark;
 
@@ -1776,7 +1788,7 @@ static String ParseActionSeq(parseTree, str, actionsP, error)
 	*nextActionP = action;
 	nextActionP = &action->next;
     }
-    if (*str == '\n') str++;
+    if (IsNewline(*str)) str++;
     ScanWhitespace(str);
     return str;
 }
@@ -1790,7 +1802,11 @@ static void ShowProduction(currentProduction)
     int len;
     char *eol, *production, productionbuf[500];
 
-    eol = strchr(currentProduction, '\n');
+#ifdef __UNIXOS2__
+    eol = strchr(currentProduction, '\r');
+    if (!eol) /* try '\n' as well below */
+#endif
+        eol = strchr(currentProduction, '\n');
     if (eol) len = eol - currentProduction;
     else len = strlen (currentProduction);
     production = XtStackAlloc (len + 1, productionbuf);
@@ -1864,7 +1880,7 @@ static String CheckForPoundSign(str, defaultOp, actualOpRtn)
 	else if (!strcmp(operation,"override"))
 	  opType = XtTableOverride;
 	ScanWhitespace(str);
-	if (*str == '\n') {
+	if (IsNewline(*str)) {
 	    str++;
 	    ScanWhitespace(str);
 	}

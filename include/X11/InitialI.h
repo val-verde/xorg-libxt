@@ -46,6 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/InitialI.h,v 3.10 2001/12/14 19:56:18 dawes Exp $ */
 
 #ifndef _XtinitialI_h
 #define _XtinitialI_h
@@ -80,6 +81,7 @@ SOFTWARE.
 #endif
 #endif
 
+#include <X11/Xos.h>
 #include <X11/Xpoll.h>
 
 typedef struct _TimerEventRec {
@@ -198,6 +200,9 @@ typedef struct _XtAppStruct {
     ThreadAppProc free_lock;
 #endif
 } XtAppStruct;
+
+extern void _XtHeapInit(Heap* heap);
+extern void _XtHeapFree(Heap* heap);
 
 #ifdef XTTRACEMEMORY
 
@@ -456,5 +461,11 @@ extern void _XtFreeWWTable(
     XtPerDisplay pd
 #endif
 );
+
+extern String _XtGetUserName(String dest, int len);
+extern XrmDatabase _XtPreparseCommandLine(XrmOptionDescRec *urlist,
+			Cardinal num_urs, int argc, String *argv,
+			String *applName, String *displayName,
+			String *language);
 
 #endif /* _XtinitialI_h */

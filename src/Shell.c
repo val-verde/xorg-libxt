@@ -32,6 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/Shell.c,v 3.15 2001/12/14 19:56:30 dawes Exp $ */
 
 /*
 
@@ -69,12 +70,14 @@ in this Software without prior written authorization from The Open Group.
 #include "StringDefs.h"
 #include "Shell.h"
 #include "ShellP.h"
+#include "ShellI.h"
 #include "Vendor.h"
 #include "VendorP.h"
 #include <X11/Xatom.h>
 #include <X11/Xlocale.h>
 #include <X11/ICE/ICElib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifdef EDITRES
 #include <X11/Xmu/Editres.h>
@@ -682,8 +685,10 @@ externaldef(applicationshellwidgetclass) WidgetClass applicationShellWidgetClass
 
 static XtResource sessionResources[]=
 {
+#ifndef XT_NO_SM
  {XtNconnection, XtCConnection, XtRSmcConn, sizeof(SmcConn),
        Offset(session.connection), XtRSmcConn, (XtPointer) NULL},
+#endif
  {XtNsessionID, XtCSessionID, XtRString, sizeof(String),
        Offset(session.session_id), XtRString, (XtPointer) NULL},
  {XtNrestartCommand, XtCRestartCommand, XtRCommandArgArray, sizeof(String*),
@@ -1085,8 +1090,6 @@ static void ApplicationInitialize(req, new, args, num_args)
 #define XtRestartStyleHintMask	(1L<<7)
 #define XtShutdownCommandMask	(1L<<8)
 
-extern char *getenv();
-
 static void JoinSession();
 static void SetSessionProperties();
 static void StopManagingSession();
@@ -1113,6 +1116,7 @@ static void SessionInitialize(req, new, args, num_args)
     ArgList args;		/* unused */
     Cardinal *num_args;		/* unused */
 {
+#ifndef XT_NO_SM
     SessionShellWidget w = (SessionShellWidget)new;
 
     if (w->session.session_id) w->session.session_id =
@@ -1144,6 +1148,7 @@ static void SessionInitialize(req, new, args, num_args)
 
     if (w->session.connection)
 	SetSessionProperties(w, True, 0L, 0L);
+#endif /* !XT_NO_SM */
 }
 
 static void Resize(w)
@@ -1511,6 +1516,7 @@ static void _popup_set_prop(w)
 					"WM_CLIENT_LEADER", False),
 			    XA_WINDOW, 32, PropModeReplace,
 			    (unsigned char *)(&(p->core.window)), 1);
+#ifndef XT_NO_SM
 	if (p == (Widget) w) {
 	    for ( ; p->core.parent != NULL; p = p->core.parent);
 	    if (XtIsSubclass(p, sessionShellWidgetClass)) {
@@ -1526,6 +1532,7 @@ static void _popup_set_prop(w)
 		}
 	    }
 	}
+#endif /* !XT_NO_SM */
 
 	if (wmshell->wm.window_role)
 	    XChangeProperty(XtDisplay((Widget)w), XtWindow((Widget)w),
@@ -1696,6 +1703,7 @@ static void ApplicationDestroy(wid)
 static void SessionDestroy(wid)
     Widget wid;
 {
+#ifndef XT_NO_SM
     SessionShellWidget w = (SessionShellWidget) wid;
 
     StopManagingSession(w, w->session.connection);
@@ -1708,6 +1716,7 @@ static void SessionDestroy(wid)
     FreeStringArray(w->session.environment);
     XtFree(w->session.current_dir);
     XtFree(w->session.program_path);
+#endif /* !XT_NO_SM */
 }
 
 /*
@@ -1925,7 +1934,7 @@ static Bool isMine(dpy, event, arg)
 	return FALSE;
 }
 
-static _wait_for_response(w, event, request_num)
+static Boolean _wait_for_response(w, event, request_num)
 	ShellWidget	w;
 	XEvent		*event;
         unsigned long	request_num;
@@ -1977,7 +1986,7 @@ static XtGeometryResult RootGeometryManager(gw, request, reply)
     unsigned int mask = request->request_mode;
     XEvent event;
     Boolean wm;
-    register struct _OldXSizeHints *hintp;
+    register struct _OldXSizeHints *hintp = NULL;
     int oldx, oldy, oldwidth, oldheight, oldborder_width;
     unsigned long request_num;
 
@@ -2247,13 +2256,14 @@ static Boolean SetValues(old, ref, new, args, num_args)
 
 	if (! (ow->shell.client_specified & _XtShellPositionValid)) {
 	    Cardinal n;
-	    void _XtShellGetCoordinates();
 
 	    for (n = *num_args; n; n--, args++) {
 		if (strcmp(XtNx, args->name) == 0) {
-		    _XtShellGetCoordinates(ow, &ow->core.x, &ow->core.y);
+		    _XtShellGetCoordinates((Widget)ow, &ow->core.x,
+							&ow->core.y);
 		} else if (strcmp(XtNy, args->name) == 0) {
-		    _XtShellGetCoordinates(ow, &ow->core.x, &ow->core.y);
+		    _XtShellGetCoordinates((Widget)ow, &ow->core.x,
+							&ow->core.y);
 		}
 	    }
 	}
@@ -2531,6 +2541,7 @@ static Boolean SessionSetValues(current, request, new, args, num_args)
     ArgList args;
     Cardinal *num_args;
 {
+#ifndef XT_NO_SM
     SessionShellWidget nw = (SessionShellWidget) new;
     SessionShellWidget cw = (SessionShellWidget) current;
     unsigned long set_mask = 0L;
@@ -2629,6 +2640,7 @@ static Boolean SessionSetValues(current, request, new, args, num_args)
     if ((cw->session.join_session && !nw->session.join_session) ||
 	(cw->session.connection && !nw->session.connection))
 	StopManagingSession(nw, nw->session.connection);
+#endif /* !XT_NO_SM */
 
     if (cw->wm.client_leader != nw->wm.client_leader ||
 	cw->session.session_id != nw->session.session_id) {
@@ -2683,7 +2695,6 @@ static void GetValuesHook(widget, args, num_args)
     Cardinal*	num_args;
 {
     ShellWidget w = (ShellWidget) widget;
-    extern void _XtCopyToArg();
 
     /* x and y resource values may be invalid after a shell resize */
     if (XtIsRealized(widget) &&
@@ -2733,13 +2744,6 @@ static void ApplicationShellInsertChild(widget)
 #define XtSessionCheckpoint	0
 #define XtSessionInteract	1
 
-extern String _XtGetUserName(
-#if NeedFunctionPrototypes
-    String		/* dest_dir */,
-    int			/* len */
-#endif
-);
-
 static void CallSaveCallbacks();
 static String *EditCommand();
 static Boolean ExamineToken();
@@ -2750,6 +2754,7 @@ static void XtCallDieCallbacks();
 static void XtCallSaveCallbacks();
 static void XtCallSaveCompleteCallbacks();
 
+#ifndef XT_NO_SM
 static void StopManagingSession(w, connection)
     SessionShellWidget w;
     SmcConn connection; /* connection to close, if any */
@@ -2834,6 +2839,8 @@ static void JoinSession(w)
 }
 #undef XT_MSG_LENGTH
 
+#endif /* !XT_NO_SM */
+
 static String * NewStringArray(str)
     String *str;
 {
@@ -2872,6 +2879,7 @@ static void FreeStringArray(str)
 }
 
 
+#ifndef XT_NO_SM
 static SmProp * CardPack(name, closure)
     char *name;
     XtPointer closure;
@@ -2999,7 +3007,7 @@ static void SetSessionProperties(w, initialize, set_mask, unset_mask)
 	user_name = _XtGetUserName(nam_buf, sizeof nam_buf);
 	if (user_name)
 	    props[num_props++] = ArrayPack(SmUserID, &user_name);
-	sprintf(pid, "%d", getpid());
+	sprintf(pid, "%ld", (long)getpid());
 	props[num_props++] = ArrayPack(SmProcessID, &pidp);
 
 	if (num_props) {
@@ -3414,3 +3422,4 @@ static String* EditCommand(str, src1, src2)
     return new;
 }
 
+#endif /* !XT_NO_SM */

@@ -46,6 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/IntrinsicI.h,v 3.8 2001/12/14 19:56:25 dawes Exp $ */
 
 #ifndef _XtintrinsicI_h
 #define _XtintrinsicI_h
@@ -64,14 +65,6 @@ SOFTWARE.
 
 #include "ConvertI.h"
 #include "TranslateI.h"
-#include "CallbackI.h"
-#include "EventI.h"
-#include "HookObjI.h"
-#include "PassivGraI.h"
-#include "ThreadsI.h"
-#include "InitialI.h"
-#include "ResourceI.h"
-#include "StringDefs.h"
 
 #define RectObjClassFlag	0x02
 #define WidgetClassFlag		0x04
@@ -233,16 +226,17 @@ extern void _XtAddShellToHookObj(
 #endif
 );
 
+/* GCManager.c */
+extern void _XtGClistFree(Display *dpy, XtPerDisplay pd);
+
 /** GeoTattler stuff */
 
 #ifdef XT_GEO_TATTLER
 
 extern void _XtGeoTab ();
 extern void _XtGeoTrace (
-#if NeedVarargsPrototypes
 			    Widget widget, 
 			    ...
-#endif
 );
 
 #define CALLGEOTAT(f) f

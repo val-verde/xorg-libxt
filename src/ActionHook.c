@@ -60,6 +60,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/ActionHook.c,v 1.3 2001/12/14 19:56:05 dawes Exp $ */
 
 /* 
  * Contains XtAppAddActionHook, XtRemoveActionHook
@@ -69,10 +70,10 @@ in this Software without prior written authorization from The Open Group.
 
 
 /*ARGSUSED*/
-static void FreeActionHookList( widget, closure, call_data )
-    Widget widget;		/* unused (and invalid) */
-    XtPointer closure;		/* ActionHook* */
-    XtPointer call_data;	/* unused */
+static void FreeActionHookList(
+    Widget widget,		/* unused (and invalid) */
+    XtPointer closure,		/* ActionHook* */
+    XtPointer call_data)	/* unused */
 {
     ActionHook list = *(ActionHook*)closure;
     while (list != NULL) {

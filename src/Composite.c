@@ -58,6 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Composite.c,v 1.6 2001/12/14 19:56:08 dawes Exp $ */
 
 #define COMPOSITE
 #include "IntrinsicI.h"
@@ -167,7 +168,7 @@ static void CompositeClassPartInitialize(widgetClass)
 	WidgetClass widgetClass;
 {
     register CompositePartPtr wcPtr;
-    register CompositePartPtr superPtr;
+    register CompositePartPtr superPtr = NULL;
 
     wcPtr = (CompositePartPtr)
 	&(((CompositeWidgetClass)widgetClass)->composite_class);
@@ -176,10 +177,6 @@ static void CompositeClassPartInitialize(widgetClass)
 	/* don't compute possible bogus pointer */
 	superPtr = (CompositePartPtr)&(((CompositeWidgetClass)widgetClass
 			->core_class.superclass)->composite_class);
-#ifdef lint
-    else
-	superPtr = NULL;
-#endif
 
     /* We don't need to check for null super since we'll get to composite
        eventually, and it had better define them!  */
