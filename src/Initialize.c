@@ -32,7 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/Initialize.c,v 3.22 2003/12/22 21:10:25 dickey Exp $ */
+/* $XFree86: xc/lib/Xt/Initialize.c,v 3.21 2003/04/21 16:34:27 herrb Exp $ */
 
 /*
 
