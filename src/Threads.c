@@ -53,6 +53,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Threads.c,v 3.6 2001/12/14 19:56:31 dawes Exp $ */
 
 #include "IntrinsicI.h"
 
@@ -93,7 +94,7 @@ typedef struct _LockRec {
 static LockPtr process_lock = NULL;
 
 static void
-InitProcessLock()
+InitProcessLock(void)
 {
     if(!process_lock) {
     	process_lock = XtNew(LockRec);
@@ -109,7 +110,7 @@ InitProcessLock()
 }
 
 static void 
-ProcessLock()
+ProcessLock(void)
 {
 #ifdef _XMUTEX_NESTS
     xmutex_lock(process_lock->mutex);
@@ -141,7 +142,7 @@ ProcessLock()
 }
 
 static void 
-ProcessUnlock()
+ProcessUnlock(void)
 {
 #ifdef _XMUTEX_NESTS
     process_lock->level--;
@@ -213,7 +214,9 @@ AppUnlock(app)
     app_lock->level--;
     xmutex_unlock(app_lock->mutex);
 #else
-    xthread_t self = xthread_self();
+    xthread_t self;
+
+    self = xthread_self();
     xmutex_lock(app_lock->mutex);
     assert(xthread_equal(app_lock->holder, self));
     if (app_lock->level != 0) {

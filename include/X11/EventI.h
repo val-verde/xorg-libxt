@@ -47,6 +47,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/EventI.h,v 1.3 2001/12/14 19:56:12 dawes Exp $ */
 
 /* 
  * Event.h - exported types and functions for toolkit event handler
@@ -61,6 +62,8 @@ SOFTWARE.
 #define _Event_h_
 
 typedef struct _XtGrabRec  *XtGrabList;
+
+#include "PassivGraI.h"
 
 extern void _XtEventInitialize(
 #if NeedFunctionPrototypes
@@ -123,5 +126,17 @@ extern EventMask _XtConvertTypeToMask(
     int		/* eventType */
 #endif
 );
+
+/* EventUtil.c */
+extern Widget _XtFindRemapWidget(XEvent *event, Widget widget,
+				 EventMask mask, XtPerDisplayInput pdi);
+extern void _XtUngrabBadGrabs(XEvent *event, Widget widget,
+				 EventMask mask, XtPerDisplayInput pdi);
+extern void _XtFillAncestorList(Widget **listPtr, int *maxElemsPtr,
+				int *numElemsPtr, Widget start,
+				Widget breakWidget);
+
+/* NextEvent.c */
+extern Boolean XtAppPeekEvent_SkipTimer;
 
 #endif /* _Event_h_ */

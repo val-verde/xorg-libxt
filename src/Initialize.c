@@ -1,4 +1,4 @@
-/* $Xorg: Initialize.c,v 1.9 2001/03/19 14:27:27 coskrey Exp $ */
+/* $Xorg: Initialize.c,v 1.8 2001/02/09 02:03:55 xorgcvs Exp $ */
 
 /***********************************************************
 Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts
@@ -32,6 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/Initialize.c,v 3.20 2002/04/10 16:20:07 tsi Exp $ */
 
 /*
 
@@ -76,19 +77,7 @@ in this Software without prior written authorization from The Open Group.
 #include <X11/Xos_r.h>
 #endif
 
-#ifdef __STDC__
-#define Const const
-#else
-#define Const /**/
-#endif
-
-#ifndef X_NOT_STDC_ENV
 #include <stdlib.h>
-#else
-extern char *getenv();
-#endif
-
-extern void _XtConvertInitialize();
 
 #if (defined(SUNSHLIB) || defined(AIXSHLIB)) && defined(SHAREDCODE)
 /*
@@ -126,7 +115,7 @@ extern void _XtConvertInitialize();
  policy, which the toolkit avoids but I hate differing programs at this level.
 */
 
-static XrmOptionDescRec Const opTable[] = {
+static XrmOptionDescRec const opTable[] = {
 {"+rv",		"*reverseVideo", XrmoptionNoArg,	(XtPointer) "off"},
 {"+synchronous","*synchronous",	XrmoptionNoArg,		(XtPointer) "off"},
 {"-background",	"*background",	XrmoptionSepArg,	(XtPointer) NULL},
@@ -159,13 +148,12 @@ static XrmOptionDescRec Const opTable[] = {
  * GetHostname - emulates gethostname() on non-bsd systems.
  */
 
-static void GetHostname (buf, maxlen)
-    char *buf;
-    int maxlen;
+static void GetHostname (
+    char *buf,
+    int maxlen)
 {
-    int len;
-
 #ifdef USE_UNAME
+    int len;
     struct utsname name;
 
     if (maxlen <= 0 || buf == NULL)
@@ -206,7 +194,6 @@ void _XtInherit()
 
 void XtToolkitInitialize()
 {
-    extern void _XtResourceListInitialize();
     static Boolean initialized = False;
 
     LOCK_PROCESS;
@@ -224,6 +211,12 @@ void XtToolkitInitialize()
     _XtConvertInitialize();
     _XtEventInitialize();
     _XtTranslateInitialize();
+
+    /* Some apps rely on old (broken) XtAppPeekEvent behavior */
+    if(getenv("XTAPPPEEKEVENT_SKIPTIMER"))
+	XtAppPeekEvent_SkipTimer = True;
+    else 
+	XtAppPeekEvent_SkipTimer = False;
 }
 
 
@@ -240,7 +233,9 @@ String _XtGetUserName(dest, len)
     } else
 	*dest = '\0';
 #else
+#ifdef X_NEEDS_PWPARAMS
     _Xgetpwparams pwparams;
+#endif
     struct passwd *pw;
     char* ptr;
 
@@ -259,9 +254,9 @@ String _XtGetUserName(dest, len)
 }
 
 
-static String GetRootDirName(dest, len)
-    String dest;
-    int len; 
+static String GetRootDirName(
+    String dest,
+    int len)
 {
 #ifdef WIN32
     register char *ptr1;
@@ -282,7 +277,9 @@ static String GetRootDirName(dest, len)
     else
 	*dest = '\0';
 #else
+#ifdef X_NEEDS_PWPARAMS
     _Xgetpwparams pwparams;
+#endif
     struct passwd *pw;
     static char *ptr;
 
@@ -307,9 +304,9 @@ static String GetRootDirName(dest, len)
     return dest;
 }
 
-static void CombineAppUserDefaults(dpy, pdb)
-    Display *dpy;
-    XrmDatabase *pdb;
+static void CombineAppUserDefaults(
+    Display *dpy,
+    XrmDatabase *pdb)
 {
     char* filename;
     char* path;
@@ -347,9 +344,9 @@ static void CombineAppUserDefaults(dpy, pdb)
     if (deallocate) DEALLOCATE_LOCAL(path);
 }
 
-static void CombineUserDefaults(dpy, pdb)
-    Display *dpy;
-    XrmDatabase *pdb;
+static void CombineUserDefaults(
+    Display *dpy,
+    XrmDatabase *pdb)
 {
     char *slashDotXdefaults = "/.Xdefaults";
     char *dpy_defaults = XResourceManagerString(dpy);
@@ -366,20 +363,19 @@ static void CombineUserDefaults(dpy, pdb)
 }
 
 /*ARGSUSED*/
-static Bool StoreDBEntry(db, bindings, quarks, type, value, data)
-    XrmDatabase		*db;
-    XrmBindingList      bindings;
-    XrmQuarkList	quarks;
-    XrmRepresentation   *type;
-    XrmValuePtr		value;
-    XPointer		data;
+static Bool StoreDBEntry(
+    XrmDatabase		*db,
+    XrmBindingList      bindings,
+    XrmQuarkList	quarks,
+    XrmRepresentation   *type,
+    XrmValuePtr		value,
+    XPointer		data)
 {
     XrmQPutResource((XrmDatabase *)data, bindings, quarks, *type, value);
     return False;
 }
 
-static XrmDatabase CopyDB(db)
-    XrmDatabase db;
+static XrmDatabase CopyDB(XrmDatabase db)
 {
     XrmDatabase copy = NULL;
     XrmQuark empty = NULLQUARK;
@@ -390,10 +386,10 @@ static XrmDatabase CopyDB(db)
 }
 
 /*ARGSUSED*/
-static String _XtDefaultLanguageProc(dpy, xnl, closure)
-    Display   *dpy;	/* unused */
-    String     xnl;
-    XtPointer  closure;	/* unused */
+static String _XtDefaultLanguageProc(
+    Display   *dpy,	/* unused */
+    String     xnl,
+    XtPointer  closure)	/* unused */
 {
     if (! setlocale(LC_ALL, xnl))
 	XtWarning("locale not supported by C library, locale unchanged");
@@ -566,14 +562,17 @@ XrmDatabase XtScreenDatabase(screen)
  * Caller is responsible for freeing the returned option table.
  */
 
-static void _MergeOptionTables(src1, num_src1, src2, num_src2, dst, num_dst)
-    XrmOptionDescRec *src1, *src2;
-    Cardinal num_src1, num_src2;
-    XrmOptionDescRec **dst;
-    Cardinal *num_dst;
+static void _MergeOptionTables(
+    const XrmOptionDescRec *src1,
+    Cardinal num_src1,
+    const XrmOptionDescRec *src2,
+    Cardinal num_src2,
+    XrmOptionDescRec **dst,
+    Cardinal *num_dst)
 {
     XrmOptionDescRec *table, *endP;
-    register XrmOptionDescRec *opt1, *opt2, *whereP, *dstP; 
+    register XrmOptionDescRec *opt1, *whereP, *dstP; 
+    const register XrmOptionDescRec *opt2;
     int i1, i2, dst_len, order;
     Boolean found;
     enum {Check, NotSorted, IsSorted} sort_order = Check;
@@ -636,11 +635,13 @@ static void _MergeOptionTables(src1, num_src1, src2, num_src2, dst, num_dst)
 
 
 /* NOTE: name, class, and type must be permanent strings */
-static Boolean _GetResource(dpy, list, name, class, type, value)
-    Display *dpy;
-    XrmSearchList list;
-    String name, class, type;
-    XrmValue* value;
+static Boolean _GetResource(
+    Display *dpy,
+    XrmSearchList list,
+    String name,
+    String class,
+    String type,
+    XrmValue* value)
 {
     XrmRepresentation db_type;
     XrmValue db_value;
@@ -721,9 +722,9 @@ XrmDatabase _XtPreparseCommandLine(urlist, num_urs, argc, argv, applName,
 }
 
   
-static void GetLanguage(dpy, pd)
-    Display *dpy;
-    XtPerDisplay pd;
+static void GetLanguage(
+    Display *dpy,
+    XtPerDisplay pd)
 {
     XrmRepresentation type;
     XrmValue value;
@@ -757,20 +758,20 @@ static void GetLanguage(dpy, pd)
     UNLOCK_PROCESS;
 }
 
-static void ProcessInternalConnection (client_data, fd, id)
-    XtPointer client_data;
-    int* fd;
-    XtInputId* id;
+static void ProcessInternalConnection (
+    XtPointer client_data,
+    int* fd,
+    XtInputId* id)
 {
     XProcessInternalConnection ((Display *) client_data, *fd);
 }
 
-static void ConnectionWatch (dpy, client_data, fd, opening, watch_data)
-    Display* dpy;
-    XPointer client_data;
-    int fd;
-    Bool opening;
-    XPointer* watch_data;
+static void ConnectionWatch (
+    Display* dpy,
+    XPointer client_data,
+    int fd,
+    Bool opening,
+    XPointer* watch_data)
 {
     XtInputId* iptr;
     XtAppContext app = XtDisplayToApplicationContext(dpy);

@@ -59,6 +59,8 @@ in this Software without prior written authorization from The Open Group.
 
 */
 
+/* $XFree86: xc/lib/Xt/Resources.c,v 1.9 2001/12/14 19:56:28 dawes Exp $ */
+
 /*LINTLIBRARY*/
 #include "IntrinsicI.h"
 #include "VarargsI.h"
@@ -370,12 +372,8 @@ void _XtCompileResourceList(resources, num_resources)
     	xrmres->xrm_name	 = PSToQ(resources->resource_name);
     	xrmres->xrm_class	 = PSToQ(resources->resource_class);
     	xrmres->xrm_type	 = PSToQ(resources->resource_type);
-#if defined(CRAY1) && !defined(__STDC__)
-	xrmres->xrm_offset = -(resources->resource_offset * sizeof(long) + 1);
-#else
         xrmres->xrm_offset	 = (Cardinal)
 		(-(int)resources->resource_offset - 1);
-#endif
     	xrmres->xrm_default_type = PSToQ(resources->default_type);
     }
 #undef PSToQ
@@ -395,12 +393,8 @@ static void  XrmCompileResourceListEphem(resources, num_resources)
     	xrmres->xrm_name	 = StringToName(resources->resource_name);
     	xrmres->xrm_class	 = StringToClass(resources->resource_class);
     	xrmres->xrm_type	 = StringToQuark(resources->resource_type);
-#if defined(CRAY1) && !defined(__STDC__)
-	xrmres->xrm_offset = -(resources->resource_offset * sizeof(long) + 1);
-#else
         xrmres->xrm_offset	 = (Cardinal)
 		(-(int)resources->resource_offset - 1);
-#endif
     	xrmres->xrm_default_type = StringToQuark(resources->default_type);
     }
 #undef xrmres
@@ -413,7 +407,7 @@ static void BadSize(size, name)
     String params[2];
     Cardinal num_params = 2;
 
-    params[0] = (String) size;
+    params[0] = (String)(long) size;
     params[1] = XrmQuarkToString(name);
     XtWarningMsg("invalidSizeOverride", "xtDependencies", XtCXtToolkitError,
 	"Representation size %d must match superclass's to override %s",

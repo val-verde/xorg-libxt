@@ -25,15 +25,17 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Hooks.c,v 1.3 2001/12/14 19:56:18 dawes Exp $ */
 
 /*LINTLIBRARY*/
 
 #include "IntrinsicI.h"
+#include "CreateI.h"
 
-static void FreeBlockHookList( widget, closure, call_data )
-    Widget widget;		/* unused (and invalid) */
-    XtPointer closure;		/* ActionHook* */
-    XtPointer call_data;	/* unused */
+static void FreeBlockHookList(
+    Widget widget,		/* unused (and invalid) */
+    XtPointer closure,		/* ActionHook* */
+    XtPointer call_data)	/* unused */
 {
     BlockHook list = *(BlockHook*)closure;
     while (list != NULL) {
@@ -88,9 +90,10 @@ void XtRemoveBlockHook( id )
     UNLOCK_APP(app);
 }
 
-static void DeleteShellFromHookObj(shell, closure, call_data)
-    Widget shell;
-    XtPointer closure, call_data;
+static void DeleteShellFromHookObj(
+    Widget shell,
+    XtPointer closure,
+    XtPointer call_data)
 {
     /* app_con is locked when this function is called */
     int ii, jj;
@@ -147,7 +150,6 @@ Boolean _XtIsHookObject(widget)
 Widget XtHooksOfDisplay(dpy)
     Display* dpy;
 {
-    extern Widget _XtCreateHookObj();
     Widget retval;
     XtPerDisplay pd;
     DPY_TO_APPCON(dpy);

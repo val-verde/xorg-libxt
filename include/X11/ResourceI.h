@@ -46,12 +46,16 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/ResourceI.h,v 1.5 2001/12/14 19:56:28 dawes Exp $ */
 
 /****************************************************************
  *
  * Resources
  *
  ****************************************************************/
+
+#ifndef _XtresourceI_h
+#define _XtresourceI_h
 
 #define StringToQuark(string) XrmStringToQuark(string)
 #define StringToName(string) XrmStringToName(string)
@@ -86,3 +90,12 @@ extern void _XtCopyFromParent(
     XrmValue*		/* value */
 #endif
 );
+
+extern void _XtCopyToArg(char *src, XtArgVal *dst, unsigned int size);
+extern void _XtCopyFromArg(XtArgVal src, char *dst, unsigned int size);
+extern XrmResourceList* _XtCreateIndirectionTable(XtResourceList resources,
+						  Cardinal num_resources);
+extern void _XtResourceListInitialize(void);
+
+
+#endif /* _XtresourceI_h */

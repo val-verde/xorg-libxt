@@ -32,6 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/TMstate.c,v 1.8 2001/12/14 19:56:31 dawes Exp $ */
 
 /*
 
@@ -76,7 +77,11 @@ static StatePtr NewState();
 
 static String XtNtranslationError = "translationError";
 
+#ifndef __EMX__
 TMGlobalRec _XtGlobalTM; /* initialized to zero K&R */
+#else
+TMGlobalRec _XtGlobalTM = {0};
+#endif
 
 #define MatchIncomingEvent(tmEvent, typeMatch, modMatch) \
   (typeMatch->eventType == tmEvent->event.eventType && \
@@ -238,7 +243,7 @@ TMShortCard _XtGetTypeIndex(event)
     TMShortCard		i, j = TM_TYPE_SEGMENT_SIZE;
     TMShortCard		typeIndex = 0;
     TMTypeMatch 	typeMatch;
-    TMTypeMatch		segment;
+    TMTypeMatch		segment = NULL;
 
     LOCK_PROCESS;
     for (i = 0; i < _XtGlobalTM.numTypeMatchSegments; i++) {
@@ -321,7 +326,7 @@ TMShortCard _XtGetModifierIndex(event)
     TMShortCard		i, j = TM_MOD_SEGMENT_SIZE;
     TMShortCard		modIndex = 0;
     TMModifierMatch 	modMatch;
-    TMModifierMatch	segment;
+    TMModifierMatch	segment = NULL;
 
     LOCK_PROCESS;
     for (i = 0; i < _XtGlobalTM.numModMatchSegments; i++) {
@@ -764,12 +769,12 @@ static void HandleSimpleState(w, tmRecPtr, curEventPtr)
     TMSimpleStateTree	stateTree;
     TMContext		*contextPtr = GetContextPtr(tmRecPtr);
     TMShortCard		i;
-    ActionRec		*actions;
+    ActionRec		*actions = NULL;
     Boolean		matchExact = False;
     Boolean	       	match = False; 
     StatePtr		complexMatchState = NULL;
     int			currIndex;
-    TMShortCard		typeIndex, modIndex;
+    TMShortCard		typeIndex = 0, modIndex = 0;
     int			matchTreeIndex = TM_NO_MATCH;
     
     LOCK_PROCESS;
@@ -990,7 +995,7 @@ static void HandleComplexState(w, tmRecPtr, curEventPtr)
 {
     XtTranslations 	xlations = tmRecPtr->translations;
     TMContext		*contextPtr = GetContextPtr(tmRecPtr);
-    TMShortCard		i, matchTreeIndex;
+    TMShortCard		i, matchTreeIndex = 0;
     StatePtr		matchState = NULL, candState;
     TMComplexStateTree 	*stateTreePtr = 
       (TMComplexStateTree *)&xlations->stateTreeTbl[0];
@@ -1712,7 +1717,7 @@ static XtTranslations MergeThem(dest, first, second)
 	UNLOCK_PROCESS;
 	return NULL;
     }
-    UNLOCK_PROCESS;
+    UNLOCK_PROCESS; 
 
 #ifndef REFCNT_TRANSLATIONS
 
@@ -1810,7 +1815,7 @@ static XtTranslations MergeTranslations(widget, oldXlations, newXlations,
     Widget		source;
     TMShortCard		*numNewRtn;
 {
-    XtTranslations      newTable, xlations;
+    XtTranslations      newTable = NULL, xlations;
     TMComplexBindProcs	bindings;
     TMShortCard		i, j;
     TMStateTree 	*treePtr;
@@ -1931,10 +1936,10 @@ static Boolean ComposeTranslations(dest, operation, source, newXlations)
 {
     XtTranslations 	newTable, oldXlations;
     XtTranslations	accNewXlations;
-    EventMask		oldMask;
+    EventMask		oldMask = 0;
     TMBindData		bindData;
     TMComplexBindProcs	oldBindings = NULL;
-    TMShortCard		numOldBindings, numNewBindings = 0, numBytes;
+    TMShortCard		numOldBindings = 0, numNewBindings = 0, numBytes;
     TMComplexBindProcsRec stackBindings[16], *newBindings;
 
     /*

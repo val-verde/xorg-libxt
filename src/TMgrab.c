@@ -58,6 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/TMgrab.c,v 1.3 2001/12/14 19:56:30 dawes Exp $ */
 
 /*LINTLIBRARY*/
 #include "IntrinsicI.h"
@@ -72,11 +73,11 @@ typedef struct _GrabActionRec {
 
 static GrabActionRec *grabActionList = NULL;
 
-static void GrabAllCorrectKeys(widget, typeMatch, modMatch, grabP)
-    Widget widget;
-    TMTypeMatch typeMatch;
-    TMModifierMatch modMatch;
-    GrabActionRec* grabP;
+static void GrabAllCorrectKeys(
+    Widget widget,
+    TMTypeMatch typeMatch,
+    TMModifierMatch modMatch,
+    GrabActionRec* grabP)
 {
     Display *dpy = XtDisplay(widget);
     KeyCode *keycodes, *keycodeP;
@@ -156,9 +157,9 @@ typedef struct {
     GrabActionRec *grabP;
 }DoGrabRec;
 
-static Boolean DoGrab(state, data)
-    StatePtr		state;
-    XtPointer		data;
+static Boolean DoGrab(
+    StatePtr		state,
+    XtPointer		data)
 {
     DoGrabRec		*doGrabP = (DoGrabRec *)data;
     GrabActionRec* 	grabP = doGrabP->grabP;

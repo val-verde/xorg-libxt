@@ -58,6 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Alloc.c,v 1.9 2001/12/14 19:56:07 dawes Exp $ */
 
 /*
  * X Toolkit Memory Allocation Routines
@@ -66,13 +67,10 @@ in this Software without prior written authorization from The Open Group.
  */
 
 #include "IntrinsicI.h"
+#include "InitialI.h"
 #undef _XBCOPYFUNC
 
-#ifndef X_NOT_STDC_ENV
 #include <stdlib.h>
-#else
-char *malloc(), *realloc(), *calloc();
-#endif
 
 #define Xmalloc(size) malloc((size))
 #define Xrealloc(ptr, size) realloc((ptr), (size))

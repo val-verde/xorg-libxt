@@ -58,13 +58,15 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Geometry.c,v 1.12 2001/12/14 19:56:15 dawes Exp $ */
 
 #include "IntrinsicI.h"
 #include "ShellP.h"
+#include "ShellI.h"
 
-static void ClearRectObjAreas(r, old)
-    RectObj r;
-    XWindowChanges* old;
+static void ClearRectObjAreas(
+    RectObj r,
+    XWindowChanges* old)
 {
     Widget pw = _XtWindowedAncestor((Widget)r);
     int bw2;
@@ -99,7 +101,7 @@ _XtMakeGeometryRequest (widget, request, reply, clear_rect_obj)
     Boolean * clear_rect_obj;
 {
     XtWidgetGeometry    junk;
-    XtGeometryHandler manager;
+    XtGeometryHandler manager = (XtGeometryHandler) NULL;
     XtGeometryResult returnCode;
     Widget parent = widget->core.parent;
     Boolean managed, parentRealized, rgm = False;
@@ -156,32 +158,52 @@ _XtMakeGeometryRequest (widget, request, reply, clear_rect_obj)
 			  "non-shell has no parent in XtMakeGeometryRequest",
 			  (String *)NULL, (Cardinal *)NULL);
 
-	/* 
-	 * This shouldn't ever happen, we only test for this to pass VSW5.
-	 * Normally managing the widget will catch this, but VSW5 does
-	 * some really screwy stuff to get here.
-	 */
-	if (!XtIsComposite(parent))
+	managed = XtIsManaged(widget);
+	parentRealized = XtIsRealized(parent);
+	if (XtIsComposite(parent))
+	{
+	    LOCK_PROCESS;
+	    manager = ((CompositeWidgetClass) (parent->core.widget_class))
+		      ->composite_class.geometry_manager;
+	    UNLOCK_PROCESS;
+	}
+    }
+
+#if 0
+    /*
+     * The Xt spec says that these conditions must generate
+     * error messages (not warnings), but many Xt applications
+     * and toolkits (including parts of Xaw, Motif and Netscape)
+     * depend on the previous Xt behaviour.  Thus, these tests
+     * should probably remain disabled.
+     */
+    if (parentRealized && managed) {
+	if (parent && !XtIsComposite(parent))
+	{
+	    /*
+	     * This shouldn't ever happen, we only test for this to pass
+	     * VSW5.  Normally managing the widget will catch this, but VSW5
+	     * does some really screwy stuff to get here.
+	     */
 	    XtAppErrorMsg(XtWidgetToApplicationContext(widget),
 			  "invalidParent", "xtMakeGeometryRequest",
 			  XtCXtToolkitError,
 			  "XtMakeGeometryRequest - parent not composite",
 			  (String *)NULL, (Cardinal *)NULL);
-
-	managed = XtIsManaged(widget);
-	parentRealized = XtIsRealized(parent);
-	LOCK_PROCESS;
-	manager = ((CompositeWidgetClass) (parent->core.widget_class))
-		    ->composite_class.geometry_manager;
-	UNLOCK_PROCESS;
+	}
+	else if (manager == (XtGeometryHandler) NULL)
+	{
+	    XtAppErrorMsg(XtWidgetToApplicationContext(widget),
+			  "invalidGeometryManager","xtMakeGeometryRequest",
+			  XtCXtToolkitError,
+			  "XtMakeGeometryRequest - parent has no geometry manager",
+			  (String *)NULL, (Cardinal *)NULL);
+	}
     }
-
-    if (managed && manager == (XtGeometryHandler) NULL) {
-	XtErrorMsg("invalidGeometryManager","xtMakeGeometryRequest",
-                 XtCXtToolkitError,
-                 "XtMakeGeometryRequest - parent has no geometry manager",
-                  (String *)NULL, (Cardinal *)NULL);
-    }
+#else
+    if (!manager)
+	managed = False;
+#endif
 
     if (widget->core.being_destroyed) {
 	CALLGEOTAT(_XtGeoTab(-1));
@@ -392,11 +414,12 @@ _XtMakeGeometryRequest (widget, request, reply, clear_rect_obj)
 	if (req.changeMask & CWStackMode) {
 	    req.changes.stack_mode = request->stack_mode;
 	    CALLGEOTAT(_XtGeoTrace(widget,"stack_mode changing\n"));
-	    if (req.changeMask & CWSibling)
+	    if (req.changeMask & CWSibling) {
 		if (XtIsWidget(request->sibling))
 		    req.changes.sibling = XtWindow(request->sibling);
 		else
 		    req.changeMask &= ~(CWStackMode | CWSibling);
+	    }
 	}
 
 #ifdef XT_GEO_TATTLER
@@ -514,16 +537,18 @@ XtMakeResizeRequest (widget, width, height, replyWidth, replyHeight)
     } else {
 	r = _XtMakeGeometryRequest(widget, &request, &reply, &junk);
     }
-    if (replyWidth != NULL)
+    if (replyWidth != NULL) {
 	if (r == XtGeometryAlmost && reply.request_mode & CWWidth)
 	    *replyWidth = reply.width;
 	else
 	    *replyWidth = width;
-    if (replyHeight != NULL)
+    }
+    if (replyHeight != NULL) {
 	if (r == XtGeometryAlmost && reply.request_mode & CWHeight)
 	    *replyHeight = reply.height;
 	else
 	    *replyHeight = height;
+    }
     UNLOCK_APP(app);
     return ((r == XtGeometryDone) ? XtGeometryYes : r);
 } /* XtMakeResizeRequest */
@@ -727,7 +752,6 @@ void XtTranslateCoords(w, x, y, rootx, rooty)
 		(String *)NULL, (Cardinal *)NULL);
     else {
 	Position x, y;
-	extern void _XtShellGetCoordinates();
 	_XtShellGetCoordinates( w, &x, &y );
 	*rootx += x + w->core.border_width;
 	*rooty += y + w->core.border_width;

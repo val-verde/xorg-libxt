@@ -32,6 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/Intrinsic.c,v 3.22 2003/01/12 03:55:46 tsi Exp $ */
 
 /*
 
@@ -70,11 +71,7 @@ in this Software without prior written authorization from The Open Group.
 #include <sys/stat.h>
 #endif /* VMS */
 
-#ifndef X_NOT_STDC_ENV
 #include <stdlib.h>
-#else
-extern char *getenv();
-#endif
 
 String XtCXtToolkitError = "XtToolkitError";
 
@@ -582,7 +579,7 @@ static Widget SearchChildren(root, names, bindings, matchproc,
     NameMatchProc matchproc;
     int in_depth, *out_depth, *found_depth;
 {
-    Widget w1, w2;
+    Widget w1 = 0, w2;
     int d1, d2;
 
     if (XtIsComposite(root)) {
@@ -868,7 +865,7 @@ Boolean XtIsObject(object)
     return True;
 }
 
-#if defined(WIN32) || defined(__EMX__)
+#if defined(WIN32)
 static int access_file (path, pathbuf, len_pathbuf, pathret)
     char* path;
     char* pathbuf;
@@ -906,7 +903,7 @@ static int AccessFile (path, pathbuf, len_pathbuf, pathret)
 
     /* try the places set in the environment */
     drive = getenv ("_XBASEDRIVE");
-#ifdef __EMX__
+#ifdef __UNIXOS2__
     if (!drive)
 	drive = getenv ("X11ROOT");
 #endif
@@ -921,7 +918,7 @@ static int AccessFile (path, pathbuf, len_pathbuf, pathret)
 	return 1;
     }
 
-#ifndef __EMX__ 
+#ifndef __UNIXOS2__ 
     /* one last place to look */
     drive = getenv ("HOMEDRIVE");
     if (drive) {
@@ -965,7 +962,7 @@ static Boolean TestFile(path)
 #ifndef VMS
     int ret = 0;
     struct stat status;
-#if defined(WIN32) || defined(__EMX__) /* || defined(OS2) */
+#if defined(WIN32)
     char buf[MAX_PATH];
     char* bufp;
     int len;
@@ -983,7 +980,7 @@ static Boolean TestFile(path)
 #else
 	    (status.st_mode & S_IFDIR) == 0);	/* not a directory */
 #endif /* X_NOT_POSIX else */
-#if defined(WIN32) || defined(__EMX__) /* || defined(OS2) */
+#if defined(WIN32)
     XtStackFree ((XtPointer)bufp, buf);
 #endif
     return ret;
@@ -1122,16 +1119,24 @@ String XtFindFile(path, substitutions, num_substitutions, predicate)
 		continue;
 	    }
 	    if (*colon == ':')
+#ifdef __UNIXOS2__
+	      if (colon > (path+1))
+#endif
 		break;
 	}
 	len = colon - path;
 	if (Resolve(path, len, substitutions, num_substitutions,
 		    buf, '/')) {
 	    if (firstTime || strcmp(buf1,buf2) != 0) {
+#ifdef __UNIXOS2__
+		{
+			char *bufx = (char*)__XOS2RedirRoot(buf);
+			strcpy(buf,bufx);
+		}
+#endif
 #ifdef XNL_DEBUG
 		printf("Testing file %s\n", buf);
 #endif /* XNL_DEBUG */
-
 		/* Check out the file */
 		if ((*predicate) (buf)) {
 		    /* We've found it, return it */
@@ -1171,85 +1176,97 @@ static char *ExtractLocaleName(lang)
     String	lang;
 {
 
-#if defined(hpux) || defined(CSRG_BASED) || defined(sun) || defined(SVR4) || defined(sgi) || defined(__osf__) || defined(AIXV3) || defined(ultrix) || defined(WIN32)
-#ifdef hpux
+#if defined(hpux) || defined(CSRG_BASED) || defined(sun) || defined(SVR4) || defined(sgi) || defined(__osf__) || defined(AIXV3) || defined(ultrix) || defined(WIN32) || defined(__UNIXOS2__) || defined (linux)
+# ifdef hpux
 /* 
  * We need to discriminated between HPUX 9 and HPUX 10. The equivalent 
  * code in Xlib in SetLocale.c does include locale.h via X11/Xlocale.h. 
  */ 
-#include <locale.h>
-#ifndef _LastCategory
-/* HPUX 9 and earlier */
-#define SKIPCOUNT 2
-#define STARTCHAR ':'
-#define ENDCHAR ';'
-#else
-/* HPUX 10 */
-#define ENDCHAR ' '
-#endif
-#else
-#ifdef ultrix
-#define SKIPCOUNT 2
-#define STARTCHAR '\001'
-#define ENDCHAR '\001'
-#else
-#ifdef WIN32
-#define SKIPCOUNT 1
-#define STARTCHAR '='
-#define ENDCHAR ';'
-#define WHITEFILL
-#else
-#if defined(__osf__) || (defined(AIXV3) && !defined(AIXV4))
-#define STARTCHAR ' '
-#define ENDCHAR ' '
-#else
-#if !defined(sun) || defined(SVR4)
-#define STARTCHAR '/'
-#endif
-#define ENDCHAR '/'
-#endif
-#endif
-#endif
-#endif
+#  include <locale.h>
+#  ifndef _LastCategory
+   /* HPUX 9 and earlier */
+#   define SKIPCOUNT 2
+#   define STARTCHAR ':'
+#   define ENDCHAR ';'
+#  else
+    /* HPUX 10 */
+#   define ENDCHAR ' '
+#  endif
+# else
+#  ifdef ultrix
+#   define SKIPCOUNT 2
+#   define STARTCHAR '\001'
+#   define ENDCHAR '\001'
+#  else
+#   if defined(WIN32) || defined(__UNIXOS2__)
+#    define SKIPCOUNT 1
+#    define STARTCHAR '='
+#    define ENDCHAR ';'
+#    define WHITEFILL
+#   else
+#    if defined(__osf__) || (defined(AIXV3) && !defined(AIXV4))
+#     define STARTCHAR ' '
+#     define ENDCHAR ' '
+#    else
+#     if defined(linux)
+#      define STARTSTR "LC_CTYPE="
+#      define ENDCHAR ';'
+#     else
+#      if !defined(sun) || defined(SVR4)
+#       define STARTCHAR '/'
+#       define ENDCHAR '/'
+#      endif
+#     endif
+#    endif
+#   endif
+#  endif
+# endif
 
     char           *start;
     char           *end;
     int             len;
-#ifdef SKIPCOUNT
+# ifdef SKIPCOUNT
     int		    n;
-#endif
+# endif
     static char*    buf = NULL;
 
     start = lang;
-#ifdef SKIPCOUNT
+# ifdef SKIPCOUNT
     for (n = SKIPCOUNT;
 	 --n >= 0 && start && (start = strchr (start, STARTCHAR));
 	 start++)
 	;
     if (!start)
 	start = lang;
-#endif
-#ifdef STARTCHAR
-    if (start && (start = strchr (start, STARTCHAR))) {
-        start++;
-#endif
-	if (end = strchr (start, ENDCHAR)) {
+# endif
+# ifdef STARTCHAR
+    if (start && (start = strchr (start, STARTCHAR))) 
+# elif  defined (STARTSTR)
+    if (start && (start = strstr (start,STARTSTR)))
+# endif
+    {
+# ifdef STARTCHAR
+	start++;
+# elif defined (STARTSTR)
+	start += strlen(STARTSTR);
+# endif
+
+	if ((end = strchr (start, ENDCHAR))) {
 	    len = end - start;
 	    if (buf != NULL) XtFree (buf);
 	    buf = XtMalloc (len + 1);
 	    if (buf == NULL) return NULL;
 	    strncpy(buf, start, len);
 	    *(buf + len) = '\0';
-#ifdef WHITEFILL
+# ifdef WHITEFILL
 	    for (start = buf; start = strchr(start, ' '); )
 		*start++ = '-';
-#endif
+# endif
 	    return buf;
-	}
-#ifdef STARTCHAR
+	} else  /* if no ENDCHAR is found we are at the end of the line */
+	    return start;
     }
-#endif
-#ifdef WHITEFILL
+# ifdef WHITEFILL
     if (strchr(lang, ' ')) {
 	if (buf != NULL) XtFree (buf);
 	else buf = XtMalloc (strlen (lang) + 1);
@@ -1259,10 +1276,10 @@ static char *ExtractLocaleName(lang)
 	    *start++ = '-';
 	return buf;
     }
-#endif
-#undef STARTCHAR
-#undef ENDCHAR
-#undef WHITEFILL
+# endif
+# undef STARTCHAR
+# undef ENDCHAR
+# undef WHITEFILL
 #endif
 
     return lang;
@@ -1337,7 +1354,7 @@ static char *implementation_default_path(void)
 static char *implementation_default_path()
 #endif
 {
-#ifdef WIN32
+#if defined(WIN32) || defined(__UNIXOS2__)
     /* if you know how to pass % thru the compiler let me know */
     static char xfilesearchpath[] = XFILESEARCHPATHDEFAULT;
     static Bool fixed;
@@ -1619,19 +1636,13 @@ int direction ;
 
 
 void 
-#if NeedVarargsPrototypes
 _XtGeoTrace (Widget widget, ...)
-#else
-_XtGeoTrace (widget, va_alist)
-Widget widget;
-va_dcl
-#endif
 {
     va_list args;
     char *fmt;
     int i ;
     if (IsTattled(widget)) {
-	Va_start(args, widget);
+	va_start(args, widget);
 	fmt = va_arg(args, char *);
 	for (i=0; i<n_tab; i++) printf("     ");
 	(void) vprintf(fmt, args);

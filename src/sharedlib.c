@@ -25,15 +25,17 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/sharedlib.c,v 3.7 2002/05/31 18:45:46 dawes Exp $ */
 
 #if (defined(SUNSHLIB) || defined(AIXSHLIB)) && !defined(SHAREDCODE)
 #include "IntrinsicI.h"
 #include "VarargsI.h"
 #include "ShellP.h"
 #include "VendorP.h"
+#include "CreateI.h"
 
 
-#ifdef AIXSHLIB
+#if defined(AIXSHLIB) || defined(__UNIXOS2__)
 WidgetClass vendorShellWidgetClass = (WidgetClass) &vendorShellClassRec;
 
 static void _XtVendorInitialize()
@@ -138,7 +140,6 @@ ArgList args_in;
 			     fallback_resources, args_in, num_args_in);
 }
 
-#if NeedVarargsPrototypes
 Widget
 XtVaAppInitialize(
     XtAppContext *app_context_return,
@@ -149,25 +150,12 @@ XtVaAppInitialize(
     String *argv_in_out,
     String *fallback_resources,
     ...)
-#else
-Widget XtVaAppInitialize(app_context_return, application_class, options,
-			 num_options, argc_in_out, argv_in_out,
-			 fallback_resources, va_alist)
-    XtAppContext *app_context_return;
-    String application_class;
-    XrmOptionDescList options;
-    Cardinal num_options;
-    int *argc_in_out;
-    String *argv_in_out;
-    String *fallback_resources;
-    va_dcl
-#endif
 {
     va_list	var;
     extern Widget _XtVaAppInitialize();
 
     VENDORINIT
-    Va_start(var, fallback_resources);
+    va_start(var, fallback_resources);
     return _XtVaAppInitialize(app_context_return, application_class, options,
 			      num_options, argc_in_out, argv_in_out,
 			      fallback_resources, var);
@@ -210,7 +198,6 @@ ArgList args_in;
 			       args_in, num_args_in);
 }
 
-#if NeedVarargsPrototypes
 Widget
 XtVaOpenApplication(
     XtAppContext *app_context_return,
@@ -222,26 +209,12 @@ XtVaOpenApplication(
     String *fallback_resources,
     WidgetClass widget_class,
     ...)
-#else
-Widget XtVaOpenApplication(app_context_return, application_class, options,
-			   num_options, argc_in_out, argv_in_out,
-			   fallback_resources, widget_class, va_alist)
-    XtAppContext *app_context_return;
-    String application_class;
-    XrmOptionDescList options;
-    Cardinal num_options;
-    int *argc_in_out;
-    String *argv_in_out;
-    String *fallback_resources;
-    WidgetClass widget_class;
-    va_dcl
-#endif
 {
     va_list	var;
     extern Widget _XtVaOpenApplication();
 
     VENDORINIT
-    Va_start(var, widget_class);
+    va_start(var, widget_class);
     return _XtVaOpenApplication(app_context_return, application_class, options,
 				num_options, argc_in_out, argv_in_out,
 				fallback_resources, widget_class, var);

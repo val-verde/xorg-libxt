@@ -52,9 +52,14 @@ dealings in this Software without prior written authorization from the IBM
 Corporation.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/ResConfigP.h,v 3.7 2001/12/20 19:40:59 tsi Exp $ */
 
 #ifndef _RESCONFIGP_H
 #define _RESCONFIGP_H
+
+#include <X11/Xfuncproto.h>
+
+_XFUNCPROTOBEGIN
 
 /*
  * Atom names for resource configuration management customization tool.
@@ -69,5 +74,7 @@ extern void _XtResourceConfigurationEH(
 	XEvent * 	/* event */
 #endif
 );
+
+_XFUNCPROTOEND
 
 #endif

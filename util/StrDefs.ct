@@ -46,12 +46,9 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/util/StrDefs.ct,v 3.5 2001/12/14 19:56:39 dawes Exp $ */
 
-#ifdef __STDC__
 #define Const const
-#else
-#define Const /**/
-#endif
 
 <<<STRING_TABLE_GOES_HERE>>>
 

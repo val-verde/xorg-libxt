@@ -22,7 +22,10 @@
 .\" be used in advertising or otherwise to promote the sale, use or other 
 .\" dealing in this Software without prior written authorization from The
 .\" Open Group.
-.TH MAKESTRS 1 "Release 6.4" "X Version 11"
+.\"
+.\" $XFree86: xc/config/util/makestrs.man,v 3.8 2001/12/14 19:53:22 dawes Exp $
+.\"
+.TH MAKESTRS 1 __xorgversion__
 .SH NAME
 makestrs \- makes string table C source and header(s)
 .SH SYNOPSIS
@@ -83,26 +86,26 @@ no abioptions are specified.
 .SH SYNTAX
 The syntax for string-list file is (items in square brackets are optional):
 .RS 4
-#prefix <text>
+\&#prefix <text>
 .RE
 .RS 4
-#feature <text>
+\&#feature <text>
 .RE
 .RS 4
-#externref <text>
+\&#externref <text>
 .RE
 .RS 4
-#externdef [<text>]
+\&#externdef [<text>]
 .RE
 .RS 4
 [#ctempl <text>]
 .RE
 .LP
 .RS 4
-#file <filename>
+\&#file <filename>
 .RE
 .RS 4
-#table <tablename>
+\&#table <tablename>
 .RE
 .RS 4
 [#htempl]
@@ -129,19 +132,19 @@ The syntax for string-list file is (items in square brackets are optional):
 <text>
 .RE
 .RS 4
-...
+ ...
 .RE
 .RS 4
-#table <tablename>
+\&#table <tablename>
 .RE
 .RS 4
-...]
+ ...]
 .RE
 .RS 4
 [#file <filename>
 .RE
 .RS 4
-...]
+ ...]
 .RE
 .LP
 In words you may have one or more #file directives. Each #file may have

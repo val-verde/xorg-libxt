@@ -1,4 +1,4 @@
-.\" $Xorg: XtAppNEv.man,v 1.4 2001/03/16 17:53:51 pookie Exp $
+.\" $Xorg: XtAppNEv.man,v 1.3 2000/08/17 19:41:58 cpqbld Exp $
 .\"
 .\" Copyright 1993 X Consortium
 .\"
@@ -25,6 +25,8 @@
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
+.\" $XFree86: xc/doc/man/Xt/XtAppNEv.man,v 1.5 2001/01/27 18:20:24 dawes Exp $
+.\"
 .ds tk X Toolkit
 .ds xT X Toolkit Intrinsics \- C Language Interface
 .ds xI Intrinsics
@@ -124,7 +126,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtAppNextEvent 3Xt "Release 6.6" "X Version 11" "XT FUNCTIONS"
+.TH XtAppNextEvent 3Xt __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtAppNextEvent, XtAppPending, XtAppPeekEvent, XtAppProcessEvent, XtDispatchEvent, XtAppMainLoop \- query and process events and input
 .SH SYNTAX
@@ -270,14 +272,19 @@ and then it dispatches the event to the appropriate registered procedure
 by calling
 .ZN XtDispatchEvent .
 This constitutes the main loop of \*(tk applications,
-and, as such, it does not return.
+and, as such, it does not return unless
+.ZN XtAppSetExitFlag
+is called.
 Applications are expected to exit in response to some user action.
 There is nothing special about
 .ZN XtAppMainLoop ;
-it is simply an infinite loop that calls
+it is simply an loop that calls
 .ZN XtAppNextEvent
 and then
-.ZN XtDispatchEvent .
+.ZN XtDispatchEvent ,
+until
+.ZN XtAppGetExitFlag ()
+returns true.
 .LP
 Applications can provide their own version of this loop,
 which tests some global termination flag or tests that the number

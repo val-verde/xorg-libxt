@@ -58,6 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Callback.c,v 1.8 2001/12/14 19:56:08 dawes Exp $ */
 
 #include "IntrinsicI.h"
 
@@ -70,9 +71,9 @@ static String XtNxtCallCallback = "xtCallCallback";
 /* However it doesn't contain a final NULL record */
 #define ToList(p) ((XtCallbackList) ((p)+1))
 
-static InternalCallbackList* FetchInternalList(widget, name)
-    Widget	widget;
-    String	name;
+static InternalCallbackList* FetchInternalList(
+    Widget	widget,
+    _Xconst char *name)
 {
     XrmQuark quark;
     int n;
@@ -84,7 +85,7 @@ static InternalCallbackList* FetchInternalList(widget, name)
     offsets = (CallbackTable) 
 	widget->core.widget_class->core_class.callback_private;
 
-    for (n = (int) *(offsets++); --n >= 0; offsets++)
+    for (n = (int)(long) *(offsets++); --n >= 0; offsets++)
 	if (quark == (*offsets)->xrm_name) {
 	    retval = (InternalCallbackList *) 
 		((char *) widget - (*offsets)->xrm_offset - 1);
@@ -190,10 +191,10 @@ void XtAddCallback(widget, name, callback, closure)
 } /* XtAddCallback */
 
 /* ARGSUSED */
-static void AddCallbacks(widget, callbacks, newcallbacks)
-    Widget		    widget;
-    InternalCallbackList   *callbacks;
-    XtCallbackList	    newcallbacks;
+static void AddCallbacks(
+    Widget		    widget,
+    InternalCallbackList   *callbacks,
+    XtCallbackList	    newcallbacks)
 {
     register InternalCallbackList icl;
     register int i, j;

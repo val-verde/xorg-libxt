@@ -32,6 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/Error.c,v 3.12 2001/12/14 19:56:11 dawes Exp $ */
 
 /*
 
@@ -61,6 +62,7 @@ in this Software without prior written authorization from The Open Group.
 
 #include "IntrinsicI.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /* The error handlers in the application context aren't used since we can't
    come up with a uniform way of using them.  If you can, define
@@ -281,7 +283,7 @@ in this environment. You may get a more descriptive message by running the\n\
 program as a non-root user or by removing the suid bit on the executable.");
 	    (*fn)(buffer); /* if *fn is an ErrorHandler it should exit */
 	}
-    } 
+    }
 #endif
     else {
 	/*

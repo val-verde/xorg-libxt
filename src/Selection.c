@@ -58,11 +58,13 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/Xt/Selection.c,v 3.9 2001/12/14 19:56:29 dawes Exp $ */
 
 #include "IntrinsicI.h"
 #include "StringDefs.h"
 #include "SelectionI.h"
 #include <X11/Xatom.h>
+#include <stdio.h>
 
 void _XtSetDefaultSelectionTimeout(timeout)
 	unsigned long *timeout;
@@ -614,13 +616,14 @@ Boolean *cont;
     XtRemoveTimeOut(req->timeout);
 #endif 
     if (req->allSent) { 
-	if (ctx->notify)  
+	if (ctx->notify) {
 	    if (ctx->incremental) {
 		(*(XtSelectionDoneIncrProc)ctx->notify)
 			      (ctx->widget, &ctx->selection, &req->target,
 			       (XtRequestId*)&req, ctx->owner_closure);
 	    }
 	    else (*ctx->notify)(ctx->widget, &ctx->selection, &req->target);
+	}
 	RemoveHandler(req, (EventMask)PropertyChangeMask,
 		      HandlePropertyGone, closure); 
 	XtFree((char*)req);

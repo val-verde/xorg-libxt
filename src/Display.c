@@ -32,6 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
+/* $XFree86: xc/lib/Xt/Display.c,v 3.15 2002/09/18 01:25:01 dawes Exp $ */
 
 /*
 
@@ -64,11 +65,7 @@ in this Software without prior written authorization from The Open Group.
 #include "ResConfigP.h"
 #endif
 
-#ifndef X_NOT_STDC_ENV
 #include <stdlib.h>
-#else
-extern char* getenv();
-#endif
 
 #ifdef XTHREADS
 void (*_XtProcessLock)() = NULL;
@@ -77,10 +74,6 @@ void (*_XtInitAppLock)() = NULL;
 #endif
 
 static String XtNnoPerDisplay = "noPerDisplay";
-
-extern void _XtHeapInit();
-extern void _XtHeapFree();
-extern XrmDatabase _XtPreparseCommandLine();
 
 ProcessContext _XtGetProcessContext()
 {
@@ -139,8 +132,6 @@ static void XtDeleteFromAppContext(d, app)
 {
 	register int i;
 
-	LOCK_APP(app);
-
 	for (i = 0; i < app->count; i++) if (app->list[i] == d) break;
 
 	if (i < app->count) {
@@ -149,45 +140,14 @@ static void XtDeleteFromAppContext(d, app)
 	    app->count--;
 	}
 	app->rebuild_fdlist = TRUE;
-
 #ifndef USE_POLL
-
-	{
-	    int display;
-	    int source;
-
-	    /*
-	     * Search through list[] for largest connection number
-	     */
-
-	    app->fds.nfds = 0;
-
-	    for (display = 0; display < app->count; display++) {
-		if ((ConnectionNumber(app->list[display]) + 1) > app->fds.nfds) {
-		    app->fds.nfds = ConnectionNumber(app->list[display]) + 1;
-		}
-	    }
-
-	    /*
-	     * Search through input_list[] for largest input source, i.e.
-	     * file descriptor
-	     */
-
-	    for (source = (app->input_max - 1); ((source >= 0) && ((source + 1) > app->fds.nfds)); source--) {
-		if (app->input_list[source] != (InputEvent *) NULL) {
-		    app->fds.nfds = (source + 1);
-		    break;
-		}
-	    }
-	}
-
+	if ((ConnectionNumber(d) + 1) == app->fds.nfds)
+	    app->fds.nfds--;
+	else			/* Unnecessary, just to be fool-proof */
+	    FD_CLR(ConnectionNumber(d), &app->fds.rmask);
 #else
-
 	app->fds.nfds--;
-
 #endif
-
-	UNLOCK_APP(app);
 }
 
 static XtPerDisplay NewPerDisplay(dpy)
@@ -210,7 +170,6 @@ static XtPerDisplay InitPerDisplay(dpy, app, name, classname)
     String name;
     String classname;
 {
-    extern void _XtAllocTMContext();
     XtPerDisplay pd;
 
     AddToAppContext(dpy, app);
@@ -301,10 +260,11 @@ Display *XtOpenDisplay(app, displayName, applName, className,
 	LOCK_APP(app);
 	LOCK_PROCESS;
 	/* parse the command line for name, display, and/or language */
-	db = _XtPreparseCommandLine(urlist, num_urs, *argc, argv, &applName,
-				    (displayName ? NULL : &displayName),
-				    (app->process->globalLangProcRec.proc ?
-				     &language : NULL));
+	db = _XtPreparseCommandLine(urlist, num_urs, *argc, argv,
+				(String *)&applName,
+				(String *)(displayName ? NULL : &displayName),
+				(app->process->globalLangProcRec.proc ?
+				&language : NULL));
 	UNLOCK_PROCESS;
 	d = XOpenDisplay(displayName);
 
@@ -315,6 +275,14 @@ Display *XtOpenDisplay(app, displayName, applName, className,
 #else
 		char *ptr = strrchr(argv[0], '/');
 #endif
+#ifdef __UNIXOS2__
+		char *dot_ptr,*ptr2;
+		ptr2 = strrchr(argv[0],'\\');
+		if (ptr2 > ptr) ptr = ptr2;
+		dot_ptr = strrchr(argv[0],'.');
+		if (dot_ptr && (dot_ptr > ptr)) *dot_ptr='\0';
+#endif  /* This will remove the .exe suffix under OS/2 */
+
 		if (ptr) applName = ++ptr;
 		else applName = argv[0];
 	    } else
@@ -620,11 +588,8 @@ PerDisplayTablePtr _XtperDisplayList = NULL;
 XtPerDisplay _XtSortPerDisplayList(dpy)
 	Display *dpy;
 {
-	register PerDisplayTablePtr pd, opd;
+	register PerDisplayTablePtr pd, opd = NULL;
 
-#ifdef lint
-	opd = NULL;
-#endif
 	LOCK_PROCESS;
 	for (pd = _XtperDisplayList;
 	     pd != NULL && pd->dpy != dpy;
@@ -662,13 +627,10 @@ static void CloseDisplay(dpy)
 	Display *dpy;
 {
         register XtPerDisplay xtpd;
-	register PerDisplayTablePtr pd, opd;
+	register PerDisplayTablePtr pd, opd = NULL;
 	XrmDatabase db;
 	int i;
 	
-#ifdef lint
-	opd = NULL;
-#endif
 	XtDestroyWidget(XtHooksOfDisplay(dpy));
 
 	LOCK_PROCESS;
@@ -690,7 +652,6 @@ static void CloseDisplay(dpy)
 	xtpd = &(pd->perDpy);
 
         if (xtpd != NULL) {
-	    extern void _XtGClistFree();
 	    if (xtpd->destroy_callbacks != NULL) {
 		XtCallCallbackList((Widget) NULL,
 				   (XtCallbackList)xtpd->destroy_callbacks,
@@ -861,6 +822,6 @@ void XtGetDisplays(app_context, dpy_return, num_dpy_return)
     *num_dpy_return = app_context->count;
     *dpy_return = (Display**)__XtMalloc(app_context->count * sizeof(Display*));
     for (ii = 0; ii < app_context->count; ii++)
-	*dpy_return[ii] = app_context->list[ii];
+	(*dpy_return)[ii] = app_context->list[ii];
     UNLOCK_APP(app_context);
 }
