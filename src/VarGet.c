@@ -51,7 +51,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/VarGet.c,v 1.7 2001/07/29 05:01:12 tsi Exp $ */
+/* $XFree86: xc/lib/Xt/VarGet.c,v 1.8 2001/12/14 19:56:32 dawes Exp $ */
 
 #include "IntrinsicI.h"
 #include "VarargsI.h"

@@ -46,7 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86$ */
+/* $XFree86: xc/lib/Xt/Popup.c,v 1.4 2003/10/24 15:47:35 tsi Exp $ */
 
 #include "IntrinsicI.h"
 #include "ShellP.h"

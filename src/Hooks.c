@@ -25,7 +25,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/Hooks.c,v 1.3 2001/12/14 19:56:18 dawes Exp $ */
+/* $XFree86: xc/lib/Xt/Hooks.c,v 1.4 2003/04/21 16:34:27 herrb Exp $ */
 
 /*LINTLIBRARY*/
 

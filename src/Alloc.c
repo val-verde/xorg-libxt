@@ -58,7 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/Alloc.c,v 1.9 2001/12/14 19:56:07 dawes Exp $ */
+/* $XFree86: xc/lib/Xt/Alloc.c,v 1.10 2003/12/30 01:45:07 tsi Exp $ */
 
 /*
  * X Toolkit Memory Allocation Routines
