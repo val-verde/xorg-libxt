@@ -32,7 +32,7 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/TMstate.c,v 1.9 2003/04/21 16:34:29 herrb Exp $ */
+/* $XFree86: xc/lib/Xt/TMstate.c,v 1.8 2001/12/14 19:56:31 dawes Exp $ */
 
 /*
 
