@@ -1,4 +1,5 @@
 .\" $Xorg: XtManChild.man,v 1.3 2000/08/17 19:42:01 cpqbld Exp $
+.\" $XdotOrg: $
 .\"
 .\" Copyright 1993 X Consortium
 .\"
@@ -168,7 +169,7 @@ Specifies the number of entries in the unmanage_children list.
 .IP \fIdo_change_proc\fP 1i
 Specifies the post unmanage, pre manage hook procedure to invoke.
 .IP \fIclient_data\fP 1i
-Specifies the client data to be passed to the hook precedure.
+Specifies the client data to be passed to the hook procedure.
 .SH DESCRIPTION
 The
 .ZN XtManageChildren
@@ -315,7 +316,7 @@ already unmanaged or is being destroyed it is ignored, otherwise it
 is marked as being unmanaged and if it is realized it is made nonvisible
 by being unmapped.
 .IP \- 5
-If the \fIdo_change_proc\fP procdedure is non-NULL then
+If the \fIdo_change_proc\fP procedure is non-NULL then
 it is invoked as specified.
 .IP \- 5
 For each child on the \fImanage_children\fP list; if the child is
