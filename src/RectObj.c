@@ -46,7 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/RectObj.c,v 1.3 2001/12/14 19:56:27 dawes Exp $ */
+/* $XFree86$ */
 
 #define RECTOBJ
 #include "IntrinsicI.h"

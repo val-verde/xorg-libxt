@@ -58,7 +58,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/Composite.c,v 1.6 2001/12/14 19:56:08 dawes Exp $ */
+/* $XFree86$ */
 
 #define COMPOSITE
 #include "IntrinsicI.h"

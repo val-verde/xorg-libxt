@@ -52,7 +52,7 @@ dealings in this Software without prior written authorization from the IBM
 Corporation.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/ResConfig.c,v 3.8 2001/12/14 19:56:28 dawes Exp $ */
+/* $XFree86$ */
 
 #include "Intrinsic.h"
 #include "IntrinsicI.h"
