@@ -183,10 +183,4 @@ extern void _XtClearAncestorCache(
     Widget		/* widget */
 );
 
-extern void _XtClearAncestorCache(
-#if NeedFunctionPrototypes
-    Widget		/* widget */
-#endif
-);
-
 #endif /* _PDI_h_ */
