@@ -59,7 +59,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/Keyboard.c,v 3.4 2001/12/14 19:56:26 dawes Exp $ */
+/* $XFree86: xc/lib/Xt/Keyboard.c,v 3.3 2001/08/22 22:52:19 dawes Exp $ */
 
 #include "IntrinsicI.h"
 

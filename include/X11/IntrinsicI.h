@@ -46,7 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/IntrinsicI.h,v 3.9 2003/04/21 16:34:28 herrb Exp $ */
+/* $XFree86: xc/lib/Xt/IntrinsicI.h,v 3.8 2001/12/14 19:56:25 dawes Exp $ */
 
 #ifndef _XtintrinsicI_h
 #define _XtintrinsicI_h
