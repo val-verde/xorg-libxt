@@ -46,7 +46,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/TranslateI.h,v 1.4 2003/04/21 16:34:29 herrb Exp $ */
+/* $XFree86: xc/lib/Xt/TranslateI.h,v 1.3 2001/12/14 19:56:32 dawes Exp $ */
 
 /* 
  * TranslateI.h - Header file private to translation management

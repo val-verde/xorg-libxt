@@ -117,7 +117,7 @@ char *XtMalloc(size)
 {
     char *ptr;
 
-#if defined (MALLOC_0_RETURNS_NULL) && defined(XTMALLOC_BC)
+#if defined(MALLOC_0_RETURNS_NULL) && defined(XTMALLOC_BC)
     /* preserve this (broken) behavior until everyone fixes their apps */
     if (!size) size = 1;
 #endif
@@ -132,12 +132,12 @@ char *XtRealloc(ptr, size)
     unsigned size;
 {
    if (ptr == NULL) {
-#if MALLOC_0_RETURNS_NULL
+#ifdef MALLOC_0_RETURNS_NULL
 	if (!size) size = 1;
 #endif
 	return(XtMalloc(size));
    } else if ((ptr = Xrealloc(ptr, size)) == NULL
-#if MALLOC_0_RETURNS_NULL
+#ifdef MALLOC_0_RETURNS_NULL
 		&& size
 #endif
 	)
@@ -151,7 +151,7 @@ char *XtCalloc(num, size)
 {
     char *ptr;
 
-#if defined (MALLOC_0_RETURNS_NULL) && defined(XTMALLOC_BC)
+#if defined(MALLOC_0_RETURNS_NULL) && defined(XTMALLOC_BC)
     /* preserve this (broken) behavior until everyone fixes their apps */
     if (!size) num = size = 1;
 #endif

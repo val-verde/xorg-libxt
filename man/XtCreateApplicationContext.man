@@ -134,7 +134,7 @@ XtCreateApplicationContext, XtDestroyApplicationContext, XtWidgetToApplicationCo
 .HP
 XtAppContext XtCreateApplicationContext(void); 
 .HP
-void XtDestroyApplicationContext(XtAppContext \fIapp_context\fP, 
+void XtDestroyApplicationContext(XtAppContext \fIapp_context\fP);
 .HP
 XtAppContext XtWidgetToApplicationContext(Widget \fIw\fP); 
 .HP

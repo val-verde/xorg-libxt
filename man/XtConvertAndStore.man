@@ -134,7 +134,7 @@ XtConvertAndStore, XtCallConverter \- invoke resource converters
 Boolean XtConvertAndStore(Widget \fIwidget\fP, String \fIfrom_type\fP,
 XrmValuePtr \fIfrom\fP, String \fIto_type\fP, XrmValuePtr \fIto_in_out\fP);
 .HP
-void XtCallConverter(Display* \fIdpy\fP, XtConverter \fIconverter\fP,
+Boolean XtCallConverter(Display* \fIdpy\fP, XtConverter \fIconverter\fP,
 XrmValuePtr \fIargs\fP, Cardinal \fInum_args\fP, XrmValuePtr \fIfrom\fP,
 XrmValuePtr \fIto_in_out\fP, XtCacheRef* \fIcache_ref_return\fP); 
 .SH ARGUMENTS
