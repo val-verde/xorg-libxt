@@ -60,7 +60,7 @@ in this Software without prior written authorization from The Open Group.
 */
 /* $XFree86: xc/lib/Xt/Composite.c,v 1.5 2001/08/22 22:52:17 dawes Exp $ */
 
-#define COMPOSITE
+#define XT_COMPOSITE
 #include "IntrinsicI.h"
 #include "StringDefs.h"
 
