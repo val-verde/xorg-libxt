@@ -320,7 +320,7 @@ static String GetRootDirName(
 {
 #ifdef WIN32
     register char *ptr1;
-    register char *ptr2;
+    register char *ptr2 = NULL;
     int len1 = 0, len2 = 0;
 
     if (ptr1 = getenv("HOME")) {	/* old, deprecated */
