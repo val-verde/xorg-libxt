@@ -1,4 +1,4 @@
-/* $Id */
+/* $XdotOrg: $ */
 
 /*
 
@@ -72,6 +72,13 @@ static char* ctmplstr = NULL;
 static char* fileprotstr;
 static char* externrefstr;
 static char* externdefstr;
+
+#ifndef FALSE
+# define FALSE 0
+# define TRUE  !(FALSE)
+#endif
+
+static int   solaris_abi_names = FALSE;
 
 #define X_DEFAULT_ABI	0
 #define X_ARRAYPER_ABI	1
@@ -490,6 +497,13 @@ static void DoLine(char *buf)
 	    if ((table->name = malloc (strlen (buf + strlen (table_str)) + 1)) == NULL) 
 		exit(1);
 	    (void) strcpy (table->name, buf + strlen (table_str) + 1);
+	    if (solaris_abi_names) {
+		if (strcmp(table->name, "XtStringsR6") == 0) {
+		    strcpy(table->name, "XtR6Strings");
+		} else if (strcmp(table->name, "XtShellStringsR6") == 0) {
+		    strcpy(table->name, "XtR6ShellStrings");
+		}
+	    }
 	    table->tableent = NULL;
 	    table->tableentcurrent = NULL;
 	    table->tableenttail = &table->tableent;
@@ -676,6 +690,8 @@ int main(int argc, char *argv[])
 	    if (strcmp (argv[i], "-defaultabi") == 0)
 		abi = X_DEFAULT_ABI;
 #endif
+	    if (strcmp (argv[i], "-solarisabinames") == 0)
+		solaris_abi_names = TRUE;
 	}
     }
 
