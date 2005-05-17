@@ -231,7 +231,7 @@ extern void _XtGeoTab (int);
 extern void _XtGeoTrace (
 			    Widget widget,
 			    ...
-);
+) _X_ATTRIBUTE_PRINTF(2,3);
 
 #define CALLGEOTAT(f) f
 

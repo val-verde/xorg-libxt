@@ -1178,7 +1178,7 @@ extern ArgList XtMergeArgLists(
 
 extern XtVarArgsList XtVaCreateArgsList(
     XtPointer		/*unused*/, ...
-);
+) _X_SENTINEL(0);
 
 /*************************************************************
  *
@@ -1322,7 +1322,7 @@ extern Widget XtVaCreatePopupShell(
     WidgetClass		/* widgetClass */,
     Widget		/* parent */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern void XtPopup(
     Widget 		/* popup_shell */,
@@ -1389,14 +1389,14 @@ extern Widget XtVaCreateWidget(
     WidgetClass		/* widget */,
     Widget		/* parent */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern Widget XtVaCreateManagedWidget(
     _Xconst _XtString	/* name */,
     WidgetClass		/* widget_class */,
     Widget		/* parent */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern Widget XtCreateApplicationShell( /* obsolete */
     _Xconst _XtString 	/* name */,
@@ -1420,7 +1420,7 @@ extern Widget XtVaAppCreateShell(
     WidgetClass		/* widget_class */,
     Display*		/* display */,
     ...
-);
+) _X_SENTINEL(0);
 
 /****************************************************************
  *
@@ -1472,7 +1472,7 @@ extern Widget XtVaOpenApplication(
     String*		/* fallback_resources */,
     WidgetClass		/* widget_class */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern Widget XtAppInitialize( /* obsolete */
     XtAppContext*	/* app_context_return */,
@@ -1495,7 +1495,7 @@ extern Widget XtVaAppInitialize( /* obsolete */
     String*		/* argv_in_out */,
     String*		/* fallback_resources */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern Widget XtInitialize( /* obsolete */
     _Xconst _XtString 	/* shell_name */,
@@ -1569,7 +1569,7 @@ extern void XtVaGetApplicationResources(
     XtResourceList	/* resources */,
     Cardinal		/* num_resources */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern void XtGetSubresources(
     Widget 		/* widget */,
@@ -1590,7 +1590,7 @@ extern void XtVaGetSubresources(
     XtResourceList	/* resources */,
     Cardinal		/* num_resources */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern void XtSetValues(
     Widget 		/* widget */,
@@ -1601,7 +1601,7 @@ extern void XtSetValues(
 extern void XtVaSetValues(
     Widget		/* widget */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern void XtGetValues(
     Widget 		/* widget */,
@@ -1612,7 +1612,7 @@ extern void XtGetValues(
 extern void XtVaGetValues(
     Widget		/* widget */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern void XtSetSubvalues(
     XtPointer 		/* base */,
@@ -1627,7 +1627,7 @@ extern void XtVaSetSubvalues(
     XtResourceList	/* resources */,
     Cardinal		/* num_resources */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern void XtGetSubvalues(
     XtPointer 		/* base */,
@@ -1642,7 +1642,7 @@ extern void XtVaGetSubvalues(
     XtResourceList	/* resources */,
     Cardinal		/* num_resources */,
     ...
-);
+) _X_SENTINEL(0);
 
 extern void XtGetResourceList(
     WidgetClass 	/* widget_class */,
