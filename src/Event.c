@@ -60,6 +60,9 @@ in this Software without prior written authorization from The Open Group.
 */
 /* $XFree86: xc/lib/Xt/Event.c,v 3.10 2001/12/14 19:56:11 dawes Exp $ */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include "Shell.h"
 #include "StringDefs.h"

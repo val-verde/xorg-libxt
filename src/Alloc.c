@@ -66,6 +66,9 @@ in this Software without prior written authorization from The Open Group.
  * Uses Xlib memory management, which is spec'd to be re-entrant.
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include "InitialI.h"
 #undef _XBCOPYFUNC

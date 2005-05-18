@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: Xt
+Description: X Toolkit Library
+Version: @VERSION@
+Cflags: -I${includedir} @XT_CFLAGS@
+Libs: -L${libdir} -lXt @XT_LIBS@

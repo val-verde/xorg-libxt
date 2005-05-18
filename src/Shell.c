@@ -66,6 +66,9 @@ in this Software without prior written authorization from The Open Group.
 #define DEFAULT_WM_TIMEOUT 5000
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include "StringDefs.h"
 #include "Shell.h"

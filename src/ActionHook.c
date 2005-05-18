@@ -66,6 +66,9 @@ in this Software without prior written authorization from The Open Group.
  * Contains XtAppAddActionHook, XtRemoveActionHook
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 
 

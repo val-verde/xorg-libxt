@@ -49,6 +49,9 @@ in this Software without prior written authorization from The Open Group.
 
 */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include <X11/Shell.h>
 #include <X11/Vendor.h>

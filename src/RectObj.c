@@ -49,6 +49,9 @@ SOFTWARE.
 /* $XFree86: xc/lib/Xt/RectObj.c,v 1.2 2001/08/22 22:52:19 dawes Exp $ */
 
 #define RECTOBJ
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include "StringDefs.h"
 #include "CreateI.h"

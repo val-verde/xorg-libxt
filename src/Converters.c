@@ -63,6 +63,9 @@ in this Software without prior written authorization from The Open Group.
 /*LINTLIBRARY*/
 /* Conversion.c - implementations of resource type conversion procs */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include	"IntrinsicI.h"
 #include	"StringDefs.h"
 #include	"Shell.h"

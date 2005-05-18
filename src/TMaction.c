@@ -65,6 +65,9 @@ in this Software without prior written authorization from The Open Group.
  *              manager.
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include "StringDefs.h"
 

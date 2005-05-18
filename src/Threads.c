@@ -55,6 +55,9 @@ in this Software without prior written authorization from The Open Group.
 */
 /* $XFree86: xc/lib/Xt/Threads.c,v 3.6 2001/12/14 19:56:31 dawes Exp $ */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 
 #ifdef XTHREADS

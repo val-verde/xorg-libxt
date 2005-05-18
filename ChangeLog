@@ -1,0 +1,130 @@
+2005-01-29  Daniel Stone  <daniel@freedesktop.org>
+
+	* Composite.c:
+	* Converters.c:
+	* Xtos.h:
+	* include/X11/Composite.h:
+	Resync with X.Org HEAD (all minor fixes).
+
+2005-01-19  Daniel Stone  <daniel@freedesktop.org>
+
+	* configure.ac:
+	Remove AC_CONFIG_AUX_DIR.
+
+2004-09-19  Carlos Romero  <kidcrash@freedesktop.org>
+
+	* man/Makefile.am:
+	Include man pages in EXTRA_DIST.
+
+2004-07-07  Daniel Stone  <daniel@freedesktop.org>
+
+	* util/Makefile.am:
+	Enable proper cross-compile-aware building of makestrs, and fix up
+	(hopefully) the *.ht mess.
+
+2004-07-01  Daniel Stone  <daniel@freedesktop.org>
+
+	* configure.ac:
+	* Makefile.am:
+	* man/Makefile.am:
+	Import manpages from X11R6.7 (doc/man/Xt).
+
+2004-06-04  Daniel Stone  <daniel@freedesktop.org>
+
+	* util/Makefile.am:
+	s/X_CFLAGS/XT_CFLAGS/, so this thing can actually compile OK.
+
+2004-05-10  Eric Anholt  <anholt@FreeBSD.org>
+
+	* Makefile.am:
+	* configure.ac:
+	* xt.pc.in:
+	Don't bother supporting X11 without .pc file.
+
+2004-04-13  Daniel Stone  <daniel@freedesktop.org>
+
+	* Alloc.c:
+	* Initialize.c:
+	* Vendor.c:
+	Miscellaneous cleanups and fixes from X11R6.7, including a few Cygwin
+	fixes.
+
+	* Xtos.h:
+	Merge from X11R6.7 - fix AMD64 support. Why this file even exists is
+	beyond me.
+
+	* Bump version to 0.1.5 for xlibs 1.0.1.
+
+2004-03-17  Carlos Romero  <kidcrash@bellsouth.net>
+	
+	(Commit sponsored by Daniel Stone.)
+	* Makefile.am:
+	* include/Makefile.am:
+	* util/Makefile.am:
+	Various cleanups to Makefile.ams - whitespace and syntax-related.
+
+2004-03-05  Stuart Anderson  <anderson@netsweng.com>
+	
+	* Makefile.am:
+	Bug #215 - Also shows up when building on clean system with no X installed.
+	Install Shell.h into include/X11 so it can be found
+	Adjusted BUILT_SOURCES and CLEANFILES to match
+	xtinclude_HEADERS was missing
+	* ObjectP.h:
+	Move to include/X11 so it can be found by #includes
+
+2004-02-21  Daniel Stone  <daniel@freedesktop.org>
+	
+	* Makefile.am:
+	* configure.ac:
+	* xt.pc.in:
+	Link with libSM.
+
+2004-01-17  Daniel Stone  <daniel@fooishbar.org>
+	* Tag release 0.1.4 for first freedesktop.org clientside lib release.
+
+2004-01-16  Eric Anholt  <anholt@FreeBSD.org>
+
+	* Makefile.am:
+	* include/Makefile.am:
+	* util/Makefile.am:
+	Fix so that "make dist" produces a buildable distribution.
+	Install StringDefs.h, which XFree86 installs.
+	Build makestrs with X_CFLAGS, since it references an X header.
+	Ignore a harmless error from install when srcdir == builddir.
+
+2003-12-23  Jeremy C. Reed  <reed@reedmedia.net
+
+	* xt.pc.in
+	Installed pkgconfig/xt.pc had @XT_CFLAGS@ (verbatim) because
+	it wasn't defined and so wasn't replaced with a value. The
+	Libs use of X_LIBS was correct, so changed XT_CFLAGS to X_CFLAGS
+	to fix Cflags. (I assume this was a typo.)
+
+2003-12-02  Keith Packard  <keithp@keithp.com>
+
+	* Converters.c:
+	Use WhitePixel/BlackPixel only in default colormap
+
+	* .cvsignore:
+	* COPYING:
+	* INSTALL:
+	* Makefile.am:
+	* autogen.sh:
+	* configure.ac:
+	* include/.cvsignore:
+	* include/Makefile.am:
+	* util/.cvsignore:
+	* util/Makefile.am:
+	* xt.pc.in:
+	autofoo
+	
+	* util/makestrs.c: (WriteHeaderProlog), (IntelABIWriteHeader),
+	(SPARCABIWriteHeader), (FunctionWriteHeader),
+	(ArrayperWriteHeader), (DefaultWriteHeader), (CopyTmplProlog),
+	(CopyTmplEpilog), (WriteHeader), (WriteSourceLine),
+	(IntelABIWriteSource), (IntelABIBCWriteSource),
+	(FunctionWriteSource), (ArrayperWriteSource), (DefaultWriteSource),
+	(WriteSource), (DoLine), (IntelABIIndexEntries),
+	(DefaultIndexEntries), (IndexEntries), (DoComment), (main):
+	Copy makestrs.c back to here to avoid external dependency.

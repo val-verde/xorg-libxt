@@ -54,6 +54,9 @@ Corporation.
 ******************************************************************/
 /* $XFree86: xc/lib/Xt/ResConfig.c,v 3.7 2001/08/22 22:52:19 dawes Exp $ */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "Intrinsic.h"
 #include "IntrinsicI.h"
 #include "Core.h"

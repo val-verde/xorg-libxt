@@ -60,6 +60,9 @@ in this Software without prior written authorization from The Open Group.
 */
 /* $XFree86: xc/lib/Xt/NextEvent.c,v 3.26 2002/06/04 21:55:42 dawes Exp $ */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include <stdio.h>
 #include <errno.h>

@@ -62,6 +62,9 @@ in this Software without prior written authorization from The Open Group.
 /* $XFree86: xc/lib/Xt/Resources.c,v 1.11tsi Exp $ */
 
 /*LINTLIBRARY*/
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include "VarargsI.h"
 #include "Shell.h"

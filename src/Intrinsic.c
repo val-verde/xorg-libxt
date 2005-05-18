@@ -62,6 +62,9 @@ in this Software without prior written authorization from The Open Group.
 
 #define INTRINSIC_C
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include "VarargsI.h"        /* for geoTattler */
 #ifndef NO_IDENTIFY_WINDOWS

@@ -67,6 +67,9 @@ in this Software without prior written authorization from The Open Group.
 #define XK_LATIN3
 #define XK_LATIN4
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "IntrinsicI.h"
 #include <X11/keysymdef.h>
 #ifdef XKB
