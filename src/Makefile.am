@@ -3,7 +3,7 @@ lib_LTLIBRARIES = libXt.la
 BUILT_SOURCES = $(BUILT_FILES)
 CLEANFILES = $(BUILT_SOURCES)
 
-INCLUDES = -I$(top_srcdir)/include/X11/
+INCLUDES = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11
 
 nodist_libXt_la_SOURCES = StringDefs.c
 
