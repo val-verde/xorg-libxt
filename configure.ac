@@ -28,7 +28,7 @@ AC_PREREQ([2.57])
 dnl
 dnl
 AC_INIT(libXt, 0.1.5, [keithp@keithp.com], libXt)
-AM_INIT_AUTOMAKE([1.7], [dist-bzip2])
+AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
 AM_CONFIG_HEADER(config.h)
