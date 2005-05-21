@@ -1,3 +1,10 @@
+2005-05-21  Alan Coopersmith  <alan.coopersmith@sun.com>
+
+	* Makefile.am ($(BUILT_FILES)): Use $(install_sh_DATA) instead of
+	"install" for better portability.  Remove duplicate installation lines.
+
+	* src/Makefile.am: Add AM_CFLAGS to pass through XT_CFLAGS & X11_CFLAGS
+
 2005-05-18    <ssp@aware-of-vacuity.boston.redhat.com>
 
 	* src/Makefile.am (INCLUDES): Also include include/X11
