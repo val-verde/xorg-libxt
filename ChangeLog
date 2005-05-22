@@ -1,5 +1,10 @@
 2005-05-21  Alan Coopersmith  <alan.coopersmith@sun.com>
 
+	* configure.ac: Check for <alloca.h> and define INCLUDE_ALLOCA_H
+	if found, since <Xalloca.h> requires it.
+
+2005-05-21  Alan Coopersmith  <alan.coopersmith@sun.com>
+
 	* Makefile.am ($(BUILT_FILES)): Use $(install_sh_DATA) instead of
 	"install" for better portability.  Remove duplicate installation lines.
 

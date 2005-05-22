@@ -39,6 +39,9 @@ AC_PROG_LIBTOOL
 
 PKG_CHECK_MODULES(XT, sm x11 xproto)
 
+# Needed for including Xalloca.h
+AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xalloca.h should include <alloca.h>]))
+
 # Check render configuration, strip extra digits from package version to
 # find the required protocol version
 
