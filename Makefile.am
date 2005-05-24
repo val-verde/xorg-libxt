@@ -23,7 +23,7 @@
 
 SUBDIRS = util . src include man
 
-AM_CFLAGS = $(XT_CFLAGS) -I$(top_srcdir)/include -I$(top_srcdir)/include/X11
+AM_CFLAGS = $(XT_CFLAGS) -I$(top_srcdir)/include -I$(top_srcdir)/include/X11 -I$(top_builddir)/include/X11
 
 
 pkgconfigdir = $(libdir)/pkgconfig
@@ -51,7 +51,7 @@ STRING_LIST = $(top_srcdir)/util/string.list
 all-local: $(BUILT_FILES)
 
 $(BUILT_FILES):
-	$(top_builddir)/util/makestrs $(STRINGSABIOPTIONS) < $(STRING_LIST) > StringDefs.c
+	$(top_builddir)/util/makestrs -i $(top_srcdir) $(STRINGSABIOPTIONS) < $(STRING_LIST) > StringDefs.c
 	$(install_sh_DATA) StringDefs.c $(top_builddir)/src
 	$(install_sh_DATA) $(top_builddir)/StringDefs.h $(top_builddir)/include/X11/
 	$(install_sh_DATA) $(top_builddir)/Shell.h $(top_builddir)/include/X11/
