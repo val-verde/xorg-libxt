@@ -89,6 +89,35 @@ static int   solaris_abi_names = FALSE;
 
 #define X_MAGIC_STRING "<<<STRING_TABLE_GOES_HERE>>>"
 
+/* Wrapper for fopen()
+ * Prepend filename with an includedir which can be specified on the 
+ * commandline. Needed to separate source and build directories.
+ */
+static char* includedir = NULL;
+static FILE *ifopen(const char *file, const char *mode)
+{
+    size_t len;
+    char *buffer;
+    FILE *ret;
+    
+    if (includedir == NULL)
+        return fopen(file, mode);
+
+    len = strlen(file) + strlen(includedir) + 1;
+    buffer = (char*)malloc(len + 1);
+    if (buffer == NULL)
+        return NULL;
+            
+    strcpy(buffer, includedir);
+    strcat(buffer, "/");
+    strcat(buffer, file);
+
+    ret = fopen(buffer, mode);
+
+    free(buffer);
+    return ret;
+}
+
 static void WriteHeaderProlog (FILE *f, File *phile)
 {
     Table* t;
@@ -398,7 +427,7 @@ static void WriteSource(char *tagline, int abi)
     FILE* tmpl;
 
     if (ctmplstr) {
-	tmpl = fopen (ctmplstr, "r");
+	tmpl = ifopen (ctmplstr, "r");
 
 	if (tmpl) CopyTmplProlog (tmpl, stdout);
 	else {
@@ -541,7 +570,7 @@ static void DoLine(char *buf)
 	(void) strcpy (ctmplstr, buf + strlen (ctmpl_str) + 1);
 	break;
     case X_HTMPL_TOKEN:
-	if ((filecurrent->tmpl = fopen (buf + strlen (htmpl_str) + 1, "r")) == NULL) {
+	if ((filecurrent->tmpl = ifopen (buf + strlen (htmpl_str) + 1, "r")) == NULL) {
 	    (void) fprintf (stderr, 
 			    "Expected template %s, not found\n", htmpl_str);
 	    exit (1);
@@ -673,6 +702,12 @@ int main(int argc, char *argv[])
 	    if (strcmp (argv[i], "-f") == 0) {
 		if (++i < argc)
 		    f = fopen (argv[i], "r");
+		else
+		    return 1;
+	    }
+	    if (strcmp (argv[i], "-i") == 0) {
+		if (++i < argc)
+		    includedir = argv[i];
 		else
 		    return 1;
 	    }
