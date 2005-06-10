@@ -52,6 +52,7 @@ all-local: $(BUILT_FILES)
 
 $(BUILT_FILES):
 	$(top_builddir)/util/makestrs -i $(top_srcdir) $(STRINGSABIOPTIONS) < $(STRING_LIST) > StringDefs.c
+	$(install_sh_DATA) -d $(top_builddir)/src $(top_builddir)/include/X11
 	$(install_sh_DATA) StringDefs.c $(top_builddir)/src
 	$(install_sh_DATA) $(top_builddir)/StringDefs.h $(top_builddir)/include/X11/
 	$(install_sh_DATA) $(top_builddir)/Shell.h $(top_builddir)/include/X11/
