@@ -1,5 +1,10 @@
 2005-06-10  Alexander Gottwald  <ago at freedesktop dot org>
 
+	* src/Makefile.am:
+	Add -no-undefined to linker command to build shared library on cygwin too
+ 
+2005-06-10  Alexander Gottwald  <ago at freedesktop dot org>
+
 	* Makefile.am:
 	ensure $(buildir)/src and $(builddir)/include/X11 exist before installing
 	generated files there
