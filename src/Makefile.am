@@ -83,5 +83,4 @@ libXt_la_SOURCES = \
 
 libXt_la_LIBADD = @XT_LIBS@
 
-libXt_la_LDFLAGS = -version-info 6:1:0 -no-undefined
-
+libXt_la_LDFLAGS = -version-number 6:0:0 -no-undefined
