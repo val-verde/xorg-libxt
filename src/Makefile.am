@@ -5,7 +5,8 @@ CLEANFILES = $(BUILT_SOURCES)
 
 AM_CFLAGS = $(XT_CFLAGS) $(X11_CFLAGS)
 
-INCLUDES = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11
+INCLUDES = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11 \
+	-I$(top_builddir)/include
 
 nodist_libXt_la_SOURCES = StringDefs.c
 
