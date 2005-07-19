@@ -56,4 +56,4 @@ $(BUILT_FILES):
 	$(install_sh_DATA) StringDefs.c $(top_builddir)/src
 	$(install_sh_DATA) $(top_builddir)/StringDefs.h $(top_builddir)/include/X11/
 	$(install_sh_DATA) $(top_builddir)/Shell.h $(top_builddir)/include/X11/
-
+	rm StringDefs.c StringDefs.h Shell.h

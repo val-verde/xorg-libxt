@@ -13,6 +13,7 @@ xtinclude_HEADERS = \
 	X11/ObjectP.h \
 	X11/RectObj.h \
 	X11/RectObjP.h \
+	X11/ResConfigP.h \
 	X11/ShellP.h \
 	X11/Vendor.h \
 	X11/VendorP.h	\
