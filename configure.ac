@@ -27,7 +27,7 @@ AC_PREREQ([2.57])
 
 dnl
 dnl
-AC_INIT(libXt, 0.1.5, [keithp@keithp.com], libXt)
+AC_INIT(libXt, 0.99.0, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXt)
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
@@ -44,6 +44,8 @@ AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xallo
 
 # Check render configuration, strip extra digits from package version to
 # find the required protocol version
+
+XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile
 	   src/Makefile
