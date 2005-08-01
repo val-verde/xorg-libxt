@@ -84,6 +84,7 @@ libXt_la_LDFLAGS = -version-number 6:0:0 -no-undefined
 
 BUILT_SOURCE = StringDefs.c 
 BUILT_HEADER = $(top_builddir)/include/X11/StringDefs.h $(top_builddir)/include/X11/Shell.h
+BUILT_FILES = $(BUILT_SOURCE) $(BUILT_HEADER)
 
 STRING_LIST = $(top_srcdir)/util/string.list
 
