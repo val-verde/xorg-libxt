@@ -1,3 +1,10 @@
+2005-08-01  Keith Packard  <keithp@keithp.com>
+
+	* Makefile.am:
+	* src/Makefile.am:
+	Move building of StringDefs files to src and
+	fix them so that parallel make works right.
+
 2005-07-08  Keith Packard  <keithp@keithp.com>
 
 	* .cvsignore:
