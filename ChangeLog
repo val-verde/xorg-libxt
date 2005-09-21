@@ -1,3 +1,11 @@
+2005-09-20  Alan Coopersmith  <alan.coopersmith@sun.com>
+
+	* configure.ac: 
+	Add checks for poll & snprintf & define old Imake names if found
+	Enable XKB usage in Xt unless --disable-xkb is specified
+	Set STRINGSABIOPTIONS for building StringDefs files on Solaris, SCO,
+	and SVR4 systems.
+
 2005-08-01  Keith Packard  <keithp@keithp.com>
 
 	* Makefile.am:
