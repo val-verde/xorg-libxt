@@ -73,6 +73,9 @@ case $host_os in
 esac
 AC_SUBST(STRINGSABIOPTIONS)
 
+# Man page processing requirements
+XORG_PROG_RAWCPP
+XORG_MANPAGE_SECTIONS
 
 # Check render configuration, strip extra digits from package version to
 # find the required protocol version

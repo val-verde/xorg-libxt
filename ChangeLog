@@ -1,3 +1,10 @@
+2005-10-11  Alan Coopersmith  <alan.coopersmith@sun.com>
+
+	* man/Makefile.am: 
+	* configure.ac
+	Set up cpp pre-processing of man pages
+	Add shadow man pages for man pages that document multiple functions.
+
 2005-09-20  Alan Coopersmith  <alan.coopersmith@sun.com>
 
 	* configure.ac: 
