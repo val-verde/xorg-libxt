@@ -112,7 +112,7 @@ libman_SOURCES = \
 libman_DATA = $(libman_SOURCES:man=$(LIB_MAN_SUFFIX)) \
 	      $(all_shadows:=.$(LIB_MAN_SUFFIX))
 
-BUILT_SOURCES = .shadows.DONE
+BUILT_SOURCES = shadows.DONE
 
 EXTRA_DIST = $(libman_SOURCES)
 
@@ -533,7 +533,7 @@ XtProcessLock_shadows =                     \
 XtOpenApplication_shadows =                 \
     XtVaOpenApplication
 
-.shadows.DONE:
+shadows.DONE:
 	-rm -f $(all_aliases:=.$(LIB_MAN_SUFFIX))
 	(for i in $(XtAddCallback_shadows:=.$(LIB_MAN_SUFFIX)) ; do \
 	 echo .so man$(LIB_MAN_SUFFIX)/XtAddCallback.$(LIB_MAN_SUFFIX) > $$i; \
