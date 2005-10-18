@@ -3,7 +3,9 @@ lib_LTLIBRARIES = libXt.la
 BUILT_SOURCES = $(BUILT_FILES)
 CLEANFILES = $(BUILT_SOURCES)
 
-AM_CFLAGS = $(XT_CFLAGS) $(X11_CFLAGS)
+SRCH_DEFINES = -DXFILESEARCHPATHDEFAULT=\"$(XFILESEARCHPATHDEFAULT)\"
+
+AM_CFLAGS = $(XT_CFLAGS) $(X11_CFLAGS) $(SRCH_DEFINES)
 
 INCLUDES = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11 \
 	   -I$(top_builddir)/include -I$(top_builddir)/include/X11
