@@ -1,3 +1,9 @@
+2005-10-17  Adam Jackson  <ajax@freedesktop.org>
+
+	* src/Makefile.am:
+	Split the 'install -d' over multiple lines so certain lame versions
+	of autotools don't flip out.
+
 2005-10-17  Alan Coopersmith  <alan.coopersmith@sun.com>
 
 	* src/Makefile.am:
