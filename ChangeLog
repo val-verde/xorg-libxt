@@ -1,3 +1,9 @@
+2005-10-18  Kevin E. Martin  <kem-at-freedesktop-dot-org>
+
+	* src/Makefile.am:
+	Use $(INSTALL) instead of $(install_sh_DATA) for creating
+	directories.
+
 2005-10-17  Adam Jackson  <ajax@freedesktop.org>
 
 	* src/Makefile.am:
