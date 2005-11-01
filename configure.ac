@@ -37,7 +37,7 @@ AM_CONFIG_HEADER(config.h)
 AC_PROG_CC
 AC_PROG_LIBTOOL
 
-PKG_CHECK_MODULES(XT, sm x11 xproto)
+PKG_CHECK_MODULES(XT, sm x11 xproto kbproto)
 
 # Needed for including Xalloca.h
 AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xalloca.h should include <alloca.h>]))
