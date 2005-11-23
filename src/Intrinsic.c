@@ -950,7 +950,7 @@ static Boolean TestFile(
 #ifndef X_NOT_POSIX
 	    S_ISDIR(status.st_mode) == 0);	/* not a directory */
 #else
-	    (status.st_mode & S_IFDIR) == 0);	/* not a directory */
+	    (status.st_mode & S_IFMT) != S_IFDIR);	/* not a directory */
 #endif /* X_NOT_POSIX else */
 #if defined(WIN32)
     XtStackFree ((XtPointer)bufp, buf);
