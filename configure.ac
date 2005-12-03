@@ -89,6 +89,7 @@ XORG_MANPAGE_SECTIONS
 # Check render configuration, strip extra digits from package version to
 # find the required protocol version
 
+XORG_CHECK_MALLOC_ZERO
 XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile
