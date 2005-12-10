@@ -55,6 +55,12 @@ if test "x$XKB" = "xyes" ; then
 	AC_DEFINE(XKB, 1, [Define to 1 to use XKB for keysym resolution.])
 fi
 
+AC_ARG_ENABLE(install-makestrs,
+	AC_HELP_STRING([--disable-install-makestrs], [Disable installing makestrs]),
+	INSTALL_MAKESTRS="$enableval",
+	INSTALL_MAKESTRS="yes")
+AM_CONDITIONAL([INSTALL_MAKESTRS], [test "x$INSTALL_MAKESTRS" = xyes])
+
 # Replaces XFileSearchPathDefault from Imake configs
 XFILESEARCHPATHDEFAULT='$(sysconfdir)/X11/%L/%T/%N%C%S:$(sysconfdir)/X11/%l/%T/%N%C%S:$(sysconfdir)/X11/%T/%N%C%S:$(sysconfdir)/X11/%L/%T/%N%S:$(sysconfdir)/X11/%l/%T/%N%S:$(sysconfdir)/X11/%T/%N%S:$(datadir)/X11/%L/%T/%N%C%S:$(datadir)/X11/%l/%T/%N%C%S:$(datadir)/X11/%T/%N%C%S:$(datadir)/X11/%L/%T/%N%S:$(datadir)/X11/%l/%T/%N%S:$(datadir)/X11/%T/%N%S:$(libdir)/X11/%L/%T/%N%C%S:$(libdir)/X11/%l/%T/%N%C%S:$(libdir)/X11/%T/%N%C%S:$(libdir)/X11/%L/%T/%N%S:$(libdir)/X11/%l/%T/%N%S:$(libdir)/X11/%T/%N%S'
 
