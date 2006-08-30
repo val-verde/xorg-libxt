@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtAllocateGC 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtAllocateGC __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtAllocateGC \- obtain a sharable GC with modifiable fields
 .SH SYNTAX

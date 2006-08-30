@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtSetSelectionParameters 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtSetSelectionParameters __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtSetSelectionParameters \- specify target parameters for a selection request with a single target
 .SH SYNTAX

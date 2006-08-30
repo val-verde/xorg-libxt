@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtAppSetTypeConverter 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtAppSetTypeConverter __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtAppSetTypeConverter, XtSetTypeConverter \- register resource converter
 .SH SYNTAX

@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtOwnSelection 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtOwnSelection __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtOwnSelection, XtOwnSelectionIncremental, XtDisownSelection \- set selection owner
 .SH SYNTAX

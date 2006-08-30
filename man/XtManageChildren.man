@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtManageChildren 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtManageChildren __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtManageChildren, XtManageChild, XtUnmanageChildren, XtUnmanageChild, XtChangeManagedSet, XtIsManaged \- manage and unmanage children
 .SH SYNTAX

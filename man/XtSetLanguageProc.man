@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtSetLanguageProc 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtSetLanguageProc __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtSetLanguageProc \- set the language procedure
 .SH SYNTAX

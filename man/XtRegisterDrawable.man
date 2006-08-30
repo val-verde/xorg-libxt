@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtRegisterDrawable 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtRegisterDrawable __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtRegisterDrawable \- register a drawable with the Intrinsics event dispatcher
 .SH SYNTAX

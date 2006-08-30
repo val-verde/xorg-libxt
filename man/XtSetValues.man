@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtSetValues 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtSetValues __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtSetValues, XtVaSetValues, XtSetSubvalues, XtVaSetSubvalues, XtGetValues, XtVaGetValues, XtGetSubvalues, XtVaGetSubvalues \- obtain and set widget resources 
 .SH SYNTAX

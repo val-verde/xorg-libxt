@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtAppError 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtAppError __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtAppError, XtAppSetErrorHandler, XtAppSetWarningHandler, XtAppWarning \- low-level error handlers
 .SH SYNTAX

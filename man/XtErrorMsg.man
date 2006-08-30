@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtErrorMsg 3Xt __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
+.TH XtErrorMsg __libmansuffix__ __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
 .SH NAME
 XtErrorMsg, XtSetErrorMsgHandler, XtWarningMsg, XtSetWarningMsgHandler \- high-level error handlers
 .SH SYNTAX

@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtConvert 3Xt __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
+.TH XtConvert __libmansuffix__ __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
 .SH NAME
 XtConvert, XtDirectConvert \- invoke resource converters
 .SH SYNTAX

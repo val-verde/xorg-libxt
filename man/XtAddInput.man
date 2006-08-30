@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtAddInput 3Xt __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
+.TH XtAddInput __libmansuffix__ __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
 .SH NAME
 XtAddInput, XtAddTimeOut, XtAddWorkProc \- register input, timeout, and workprocs
 .SH SYNTAX

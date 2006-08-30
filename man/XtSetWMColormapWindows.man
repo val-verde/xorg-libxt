@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtSetWMColormapWindows 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtSetWMColormapWindows __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtSetWMColormapWindows \- Set the value of the WM_COLORMAP_WINDOWS property
 .SH SYNTAX

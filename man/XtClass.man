@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtClass 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtClass __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtClass, XtSuperclass, XtIsSubclass, XtCheckSubclass, XtIsObject, XtIsRectObj, XtIsWidget, XtIsComposite, XtIsConstraint, XtIsShell, XtIsOverrideShell, XtIsWMShell, XtIsVendorShell, XtIsTransientShell, XtIsTopLevelShell, XtIsApplicationShell, XtIsSessionShell \- obtain and verify a widget's class
 .SH SYNTAX

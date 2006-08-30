@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtGetActionKeysym 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtGetActionKeysym __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtGetActionKeysym \- obtain corresponding keysym
 .SH SYNTAX

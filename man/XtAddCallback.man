@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtAddCallback 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtAddCallback __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtAddCallback, XtAddCallbacks, XtRemoveCallback, XtRemoveCallbacks, XtRemoveAllCallbacks \- add and remove callback procedures
 .SH SYNTAX

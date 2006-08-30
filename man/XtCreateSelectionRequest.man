@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtCreateSelectionRequest 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtCreateSelectionRequest __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtCreateSelectionRequest, XtSendSelectionRequest, XtCancelSelectionRequest \- bundle multiple selection conversion requests into a single request using MULTIPLE target
 .SH SYNTAX

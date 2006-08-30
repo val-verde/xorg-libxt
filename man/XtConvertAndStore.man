@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtConvertAndStore 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtConvertAndStore __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtConvertAndStore, XtCallConverter \- invoke resource converters
 .SH SYNTAX

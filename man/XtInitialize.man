@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtInitialize 3Xt __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
+.TH XtInitialize __libmansuffix__ __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
 .SH NAME
 XtInitialize \- initialize
 .SH SYNTAX

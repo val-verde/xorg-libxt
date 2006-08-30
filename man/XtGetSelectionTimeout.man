@@ -127,7 +127,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtGetSelectionTimeout 3Xt __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
+.TH XtGetSelectionTimeout __libmansuffix__ __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
 .SH NAME
 XtGetSelectionTimeout, XtSetSelectionTimeout \- set and obtain selection timeout values
 .SH SYNTAX

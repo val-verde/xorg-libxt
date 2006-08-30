@@ -128,7 +128,7 @@
 .el .sp 10p
 ..
 .ny0
-.TH XtGetSubresources 3Xt __xorgversion__ "XT FUNCTIONS"
+.TH XtGetSubresources __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtGetSubresources, XtVaGetSubresources \- obtain subresources
 .SH SYNTAX
