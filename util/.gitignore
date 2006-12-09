@@ -3,3 +3,6 @@
 Makefile
 Makefile.in
 makestrs
+makestrs.1
+makestrs.1x
+*.o
