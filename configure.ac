@@ -95,6 +95,17 @@ case $host_os in
 esac
 AC_SUBST(STRINGSABIOPTIONS)
 
+case $host_os in
+    darwin*)
+        OS_CFLAGS="-Wl,-flat_namespace"
+	;;
+    *)
+        OS_CFLAGS=
+        ;;
+esac
+
+CFLAGS="$CFLAGS $OS_CFLAGS"
+
 # Man page processing requirements
 XORG_PROG_RAWCPP
 XORG_MANPAGE_SECTIONS
