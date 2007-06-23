@@ -53,6 +53,8 @@ SOFTWARE.
 #ifndef _XtCore_h
 #define _XtCore_h
 
+_XFUNCPROTOBEGIN
+
 typedef struct _WidgetClassRec *CoreWidgetClass;
 typedef struct _WidgetRec *CoreWidget;
 externalref WidgetClass coreWidgetClass;
@@ -61,6 +63,8 @@ externalref WidgetClass coreWidgetClass;
 externalref WidgetClass widgetClass;
 
 #endif
+
+_XFUNCPROTOEND
 
 #endif /* _XtCore_h */
 /* DON'T ADD STUFF AFTER THIS #endif */
