@@ -34,6 +34,7 @@ AM_CONFIG_HEADER(config.h)
 # Check for progs
 AC_PROG_CC
 AC_PROG_LIBTOOL
+AM_PROG_CC_C_O
 
 PKG_CHECK_MODULES(XT, sm x11 xproto kbproto)
 
@@ -45,6 +46,8 @@ AC_CHECK_FUNC(poll, AC_DEFINE(USE_POLL,1,
         [Define to 1 if you have the `poll' function.]))
 AC_CHECK_FUNC(snprintf, AC_DEFINE(USE_SNPRINTF,1,
         [Define to 1 if you have the `snprintf' function.]))
+
+AC_HAVE_LIBRARY(ws2_32)
 
 # Options
 AC_ARG_ENABLE(xkb, AC_HELP_STRING([--disable-xkb], [Disable XKB support]),
