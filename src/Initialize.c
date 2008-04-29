@@ -376,7 +376,7 @@ static void CombineAppUserDefaults(
     Boolean deallocate = False;
 
     if (!(path = getenv("XUSERFILESEARCHPATH"))) {
-#if !defined(WIN32) && !defined(__MINGW32__)
+#if !defined(WIN32) || !defined(__MINGW32__)
 	char *old_path;
 	char homedir[PATH_MAX];
 	GetRootDirName(homedir, PATH_MAX);
