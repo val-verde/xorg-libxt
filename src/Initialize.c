@@ -411,7 +411,11 @@ static void CombineUserDefaults(
     Display *dpy,
     XrmDatabase *pdb)
 {
+#ifdef __MINGW32__
+    char *slashDotXdefaults = "/Xdefaults";
+#else
     char *slashDotXdefaults = "/.Xdefaults";
+#endif
     char *dpy_defaults = XResourceManagerString(dpy);
 
     if (dpy_defaults) {
@@ -549,7 +553,11 @@ XrmDatabase XtScreenDatabase(
 
 	if (!(filename = getenv("XENVIRONMENT"))) {
 	    int len;
+#ifdef __MINGW32__
+	    char *slashDotXdefaultsDash = "/Xdefaults-";
+#else
 	    char *slashDotXdefaultsDash = "/.Xdefaults-";
+#endif
 
 	    (void) GetRootDirName(filename = filenamebuf,
 			PATH_MAX - strlen (slashDotXdefaultsDash) - 1);
