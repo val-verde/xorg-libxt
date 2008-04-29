@@ -873,6 +873,11 @@ static int AccessFile (
     if (access_file (path, pathbuf, len_pathbuf, pathret))
 	return 1;
 
+#if defined(WIN32) && defined(__MINGW32__)
+    /* don't try others */
+    return 0;
+#endif
+
     /* try the places set in the environment */
     drive = getenv ("_XBASEDRIVE");
 #ifdef __UNIXOS2__
