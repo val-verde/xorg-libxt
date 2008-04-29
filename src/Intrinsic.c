@@ -952,9 +952,6 @@ static Boolean TestFile(
 #else
 	    (status.st_mode & S_IFMT) != S_IFDIR);	/* not a directory */
 #endif /* X_NOT_POSIX else */
-#if defined(WIN32)
-    XtStackFree ((XtPointer)bufp, buf);
-#endif
     return ret;
 #else /* VMS */
     return TRUE;	/* Who knows what to do here? */
@@ -1313,7 +1310,7 @@ static void FillInLangSubs(
  */
 static char *implementation_default_path(void)
 {
-#if defined(WIN32) || defined(__UNIXOS2__)
+#if defined(__UNIXOS2__)
     /* if you know how to pass % thru the compiler let me know */
     static char xfilesearchpath[] = XFILESEARCHPATHDEFAULT;
     static Bool fixed;

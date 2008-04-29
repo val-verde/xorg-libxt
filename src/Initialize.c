@@ -188,7 +188,7 @@ void _XtInherit(void)
 #endif
 
 
-#if defined(__CYGWIN__)
+#ifdef WIN32
 /*
  * The Symbol _XtInherit is used in two different manners.
  * First it could be used as a generic function and second
