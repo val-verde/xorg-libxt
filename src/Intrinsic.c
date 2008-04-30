@@ -1315,7 +1315,11 @@ static void FillInLangSubs(
  */
 static char *implementation_default_path(void)
 {
-#if defined(__UNIXOS2__)
+#if defined(WIN32)
+    static char xfilesearchpath[] = "";
+
+    return xfilesearchpath;
+#elif defined(__UNIXOS2__)
     /* if you know how to pass % thru the compiler let me know */
     static char xfilesearchpath[] = XFILESEARCHPATHDEFAULT;
     static Bool fixed;
@@ -1379,10 +1383,11 @@ String XtResolvePathname(
 		defaultPath = impl_default;
 	}
 	path = defaultPath;
-#else
-	path = "";	/* NULL would kill us later */
 #endif /* VMS */
     }
+
+    if (path == NULL)
+	path = "";	/* NULL would kill us later */
 
     if (filename == NULL) {
 	filename = XrmClassToString(pd->class);
