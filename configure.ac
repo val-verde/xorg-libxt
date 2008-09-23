@@ -37,7 +37,7 @@ AC_PROG_LIBTOOL
 AM_PROG_CC_C_O
 
 if test x"$CC_FOR_BUILD" = x; then
-	test x"$cross_compiling" = xyes; then
+	if test x"$cross_compiling" = xyes; then
 		AC_CHECK_PROGS(CC_FOR_BUILD, gcc cc)
 	else
 	        CC_FOR_BUILD="$CC"
