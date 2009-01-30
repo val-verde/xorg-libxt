@@ -559,7 +559,7 @@ static Widget SearchChildren(
     NameMatchProc matchproc,
     int in_depth, int *out_depth, int *found_depth)
 {
-    Widget w1 = 0, w2;
+    Widget w1 = NULL, w2;
     int d1, d2;
 
     if (XtIsComposite(root)) {

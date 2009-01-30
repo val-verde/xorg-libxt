@@ -115,7 +115,7 @@ _XFUNCPROTOEND
 	XtWidgetToApplicationContext(w) : NULL)
 
 #define DPY_TO_APPCON(d) \
-    XtAppContext app = (_XtProcessLock ? XtDisplayToApplicationContext(d): 0)
+    XtAppContext app = (_XtProcessLock ? XtDisplayToApplicationContext(d): NULL)
 
 #else /* defined(XTHREADS) */
 

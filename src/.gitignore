@@ -1,7 +1,0 @@
-.deps
-.libs
-libXt.la
-*.lo
-Makefile
-Makefile.in
-StringDefs.c

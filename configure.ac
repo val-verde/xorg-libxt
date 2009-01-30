@@ -29,12 +29,16 @@ AC_INIT(libXt, 1.0.5, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
+# Require xorg-macros: XORG_CWARNFLAGS, XORG_CHANGELOG
+m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.2)
 AM_CONFIG_HEADER(config.h)
 
 # Check for progs
 AC_PROG_CC
 AC_PROG_LIBTOOL
 AM_PROG_CC_C_O
+XORG_CWARNFLAGS
 
 if test x"$CC_FOR_BUILD" = x; then
 	if test x"$cross_compiling" = xyes; then
@@ -52,9 +56,9 @@ AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xallo
 
 # Map function checks to old Imake #defines
 AC_CHECK_FUNC(poll, AC_DEFINE(USE_POLL,1,
-        [Define to 1 if you have the `poll' function.]))
+        [Define to 1 if you have the "poll" function.]))
 AC_CHECK_FUNC(snprintf, AC_DEFINE(USE_SNPRINTF,1,
-        [Define to 1 if you have the `snprintf' function.]))
+        [Define to 1 if you have the "snprintf" function.]))
 
 AC_HAVE_LIBRARY(ws2_32)
 
@@ -112,7 +116,7 @@ case $host_os in
         ;;
 esac
 
-CFLAGS="$CFLAGS $OS_CFLAGS"
+XT_CFLAGS="$CWARNFLAGS $XT_CFLAGS $OS_CFLAGS"
 
 # Man page processing requirements
 XORG_PROG_RAWCPP
@@ -123,6 +127,7 @@ XORG_MANPAGE_SECTIONS
 
 XORG_CHECK_MALLOC_ZERO
 XORG_RELEASE_VERSION
+XORG_CHANGELOG
 
 AC_OUTPUT([Makefile
 	   src/Makefile

@@ -59,7 +59,7 @@ typedef struct _WidgetClassRec *CoreWidgetClass;
 typedef struct _WidgetRec *CoreWidget;
 externalref WidgetClass coreWidgetClass;
 
-#ifndef _XT_CORE_C
+#ifndef VMS
 externalref WidgetClass widgetClass;
 
 #endif

@@ -748,7 +748,7 @@ XrmDatabase _XtPreparseCommandLine(
     String *displayName,
     String *language)
 {
-    XrmDatabase db = 0;
+    XrmDatabase db = NULL;
     XrmOptionDescRec *options;
     Cardinal num_options;
     XrmName name_list[3];
