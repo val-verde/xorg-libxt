@@ -55,8 +55,15 @@ PKG_CHECK_MODULES(XT, sm x11 xproto kbproto)
 AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xalloca.h should include <alloca.h>]))
 
 # Map function checks to old Imake #defines
-AC_CHECK_FUNC(poll, AC_DEFINE(USE_POLL,1,
-        [Define to 1 if you have the "poll" function.]))
+case $host_os in
+	# darwin has poll() but can't be used to poll character devices
+	# darwin10 (SnowLeopard) should be tested as well once released
+	darwin7*) ;; darwin8*) ;; darwin9*) ;;
+	*)
+		AC_CHECK_FUNC(poll, AC_DEFINE(USE_POLL,1,
+	        	[Define to 1 if you have the "poll" function.]))
+	;;
+esac
 AC_CHECK_FUNC(snprintf, AC_DEFINE(USE_SNPRINTF,1,
         [Define to 1 if you have the "snprintf" function.]))
 
