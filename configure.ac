@@ -53,7 +53,7 @@ AC_SUBST(CFLAGS_FOR_BUILD)
 LDFLAGS_FOR_BUILD=${LDFLAGS_FOR_BUILD-${LDFLAGS}}
 AC_SUBST(LDFLAGS_FOR_BUILD)
 
-PKG_CHECK_MODULES(XT, sm x11 xproto kbproto)
+PKG_CHECK_MODULES(XT, sm ice x11 xproto kbproto)
 
 # Needed for including Xalloca.h
 AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xalloca.h should include <alloca.h>]))
