@@ -29,16 +29,16 @@ AC_INIT(libXt, 1.0.6, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
-# Require xorg-macros: XORG_CWARNFLAGS, XORG_CHANGELOG
-m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.2)
+# Require xorg-macros: XORG_DEFAULT_OPTIONS
+m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.3 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.3)
 AM_CONFIG_HEADER(config.h)
 
 # Check for progs
 AC_PROG_CC
 AC_PROG_LIBTOOL
 AM_PROG_CC_C_O
-XORG_CWARNFLAGS
+XORG_DEFAULT_OPTIONS
 
 if test x"$CC_FOR_BUILD" = x; then
 	if test x"$cross_compiling" = xyes; then
@@ -127,18 +127,12 @@ case $host_os in
         ;;
 esac
 
-XT_CFLAGS="$CWARNFLAGS $XT_CFLAGS $OS_CFLAGS"
+XT_CFLAGS="$XT_CFLAGS $OS_CFLAGS"
 
 # Man page processing requirements
 XORG_PROG_RAWCPP
-XORG_MANPAGE_SECTIONS
-
-# Check render configuration, strip extra digits from package version to
-# find the required protocol version
 
 XORG_CHECK_MALLOC_ZERO
-XORG_RELEASE_VERSION
-XORG_CHANGELOG
 
 AC_OUTPUT([Makefile
 	   src/Makefile
