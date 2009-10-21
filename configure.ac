@@ -26,7 +26,7 @@ AC_PREREQ([2.57])
 dnl
 dnl
 AC_INIT(libXt, 1.0.7, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXt)
-AM_INIT_AUTOMAKE([dist-bzip2])
+AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
 
 # Require xorg-macros: XORG_DEFAULT_OPTIONS
