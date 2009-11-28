@@ -24,6 +24,7 @@ SUBDIRS = util src include man
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xt.pc
 
+MAINTAINERCLEANFILES = ChangeLog INSTALL
 EXTRA_DIST = xt.pc.in 
 
 .PHONY: ChangeLog INSTALL
