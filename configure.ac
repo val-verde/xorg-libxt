@@ -61,9 +61,8 @@ AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xallo
 
 # Map function checks to old Imake #defines
 case $host_os in
-	# darwin has poll() but can't be used to poll character devices
-	# darwin10 (SnowLeopard) should be tested as well once released
-	darwin7*) ;; darwin8*) ;; darwin9*) ;;
+	# darwin has poll() but can't be used to poll character devices (atleast through SnowLeopard)
+	darwin*) ;;
 	*)
 		AC_CHECK_FUNC(poll, AC_DEFINE(USE_POLL,1,
 	        	[Define to 1 if you have the "poll" function.]))
