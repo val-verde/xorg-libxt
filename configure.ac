@@ -26,6 +26,7 @@ AC_PREREQ([2.60])
 dnl
 dnl
 AC_INIT(libXt, 1.0.8, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXt)
+AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
 
