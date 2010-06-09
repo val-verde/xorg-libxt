@@ -134,4 +134,5 @@ AC_OUTPUT([Makefile
 	   util/Makefile
 	   include/Makefile
 	   man/Makefile
+	   specs/Makefile
            xt.pc])
