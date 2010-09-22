@@ -782,12 +782,16 @@ void _XtDisplayInstalledAccelerators(
     PrintRec		stackPrints[STACKPRINTSIZE];
     PrintRec		*prints;
     TMShortCard		numPrints, maxPrints;
-    TMBindData	bindData = (TMBindData) eventWidget->core.tm.proc_table;
+    TMBindData	bindData ;
     TMComplexBindProcs	complexBindProcs;
 
     if ((eventWidget == NULL) ||
-	((xlations = eventWidget->core.tm.translations) == NULL) ||
-	(bindData->simple.isComplex == False))
+	(eventWidget->core.tm.translations == NULL) )
+      return;
+
+    xlations = eventWidget->core.tm.translations;
+    bindData = (TMBindData) eventWidget->core.tm.proc_table;
+    if (bindData->simple.isComplex == False)
       return;
 
     sb->current = sb->start = __XtMalloc((Cardinal)1000);
