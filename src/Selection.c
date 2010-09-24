@@ -831,9 +831,10 @@ static void HandleSelectionEvents(
 	   event->xselectionrequest.property = event->xselectionrequest.target;
 	if (ctx->widget != widget || ctx->was_disowned
 	   || ((event->xselectionrequest.time != CurrentTime)
-	        && (event->xselectionrequest.time < ctx->time)))
+	        && (event->xselectionrequest.time < ctx->time))) {
 	    ev.property = None;
-         else {
+	    StartProtectedSection(ev.display, ev.requestor);
+	} else {
 	   if (ev.target == ctx->prop_list->indirect_atom) {
 	      IndirectPair *p;
 	      int format;
