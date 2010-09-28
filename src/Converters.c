@@ -1,5 +1,3 @@
-/* $Xorg: Converters.c,v 1.5 2001/02/09 02:03:54 xorgcvs Exp $ */
-
 /***********************************************************
 Copyright (c) 1993, Oracle and/or its affiliates. All rights reserved.
 
@@ -43,7 +41,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/Converters.c,v 3.14tsi Exp $ */
 
 /*
 

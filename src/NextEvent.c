@@ -1,5 +1,3 @@
-/* $Xorg: NextEvent.c,v 1.8 2001/02/09 02:03:55 xorgcvs Exp $ */
-
 /***********************************************************
 Copyright (c) 1993, Oracle and/or its affiliates. All rights reserved.
 
@@ -69,7 +67,6 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/NextEvent.c,v 3.26 2002/06/04 21:55:42 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>

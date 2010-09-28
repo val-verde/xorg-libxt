@@ -1,5 +1,3 @@
-/* $Xorg: GCManager.c,v 1.5 2001/02/09 02:03:54 xorgcvs Exp $ */
-
 /***********************************************************
 Copyright (c) 1993, Oracle and/or its affiliates. All rights reserved.
 
@@ -69,7 +67,6 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/GCManager.c,v 1.5 2001/08/22 22:52:18 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>

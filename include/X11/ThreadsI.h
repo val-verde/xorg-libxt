@@ -1,5 +1,3 @@
-/* $Xorg: ThreadsI.h,v 1.4 2001/02/09 02:03:59 xorgcvs Exp $ */
-
 /************************************************************
 
 Copyright (c) 1993, Oracle and/or its affiliates. All rights reserved.

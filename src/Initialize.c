@@ -1,5 +1,3 @@
-/* $Xorg: Initialize.c,v 1.8 2001/02/09 02:03:55 xorgcvs Exp $ */
-
 /***********************************************************
 Copyright (c) 1993, Oracle and/or its affiliates. All rights reserved.
 
@@ -43,7 +41,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xt/Initialize.c,v 3.21 2003/04/21 16:34:27 herrb Exp $ */
 
 /*
 

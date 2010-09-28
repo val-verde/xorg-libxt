@@ -1,4 +1,3 @@
-/* $Xorg: TMaction.c,v 1.5 2001/02/09 02:03:58 xorgcvs Exp $ */
 /*LINTLIBRARY*/
 
 /***********************************************************
@@ -70,7 +69,6 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xt/TMaction.c,v 3.7 2001/12/14 19:56:30 dawes Exp $ */
 
 /* TMaction.c -- maintains the state table of actions for the translation 
  *              manager.
