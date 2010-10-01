@@ -808,9 +808,11 @@ void XtGetActionList(
 	list = *actions_return = (XtActionList)
 	    __XtMalloc(*num_actions_return * sizeof(XtActionsRec));
 	table = GetClassActions(widget_class);
-	for (i= (*num_actions_return); --i >= 0; list++, table++) {
-	    list->string = XrmQuarkToString(table->signature);
-	    list->proc = table->proc;
+	if (table != NULL) {
+	    for (i= (*num_actions_return); --i >= 0; list++, table++) {
+		list->string = XrmQuarkToString(table->signature);
+		list->proc = table->proc;
+	    }
 	}
     }
     UNLOCK_PROCESS;
