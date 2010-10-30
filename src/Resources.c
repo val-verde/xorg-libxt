@@ -967,8 +967,10 @@ static XtCacheRef *GetResources(
 		if (cache_ptr && *cache_ptr)
 		    cache_ptr++;
 	    } else {
-		*((XtTranslations *)&widget->core.tm.current_state) =
-		    *((XtTranslations *)value.addr);
+		/* value.addr can be NULL see: !already_copied */
+		if (value.addr)
+		    *((XtTranslations *)&widget->core.tm.current_state) =
+			*((XtTranslations *)value.addr);
 	    }
 	}
     }
