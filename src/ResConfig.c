@@ -746,7 +746,7 @@ _search_widget_tree (
 	/*
 	 * this case covers resources of only one level (eg. *background)
 	 */
-	if (strcmp (remainder, "") == 0) {
+	if (remainder[0] == 0) {
 		_set_resource_values (w, resource, value, last_part);
 		if (last_token == '*')
 			_apply_values_to_children (parent, remainder, resource,
