@@ -70,8 +70,6 @@ case $host_os in
 	        	[Define to 1 if you have the "poll" function.]))
 	;;
 esac
-AC_CHECK_FUNC(snprintf, AC_DEFINE(USE_SNPRINTF,1,
-        [Define to 1 if you have the "snprintf" function.]))
 
 AC_HAVE_LIBRARY(ws2_32)
 
