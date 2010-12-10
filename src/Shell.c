@@ -1780,7 +1780,8 @@ static void GetGeometry(
 	}
 	else hints.flags = 0;
 
-	sprintf( def_geom, "%dx%d+%d+%d", width, height, x, y );
+	snprintf( def_geom, sizeof(def_geom), "%dx%d+%d+%d",
+		  width, height, x, y );
 	flag = XWMGeometry( XtDisplay(W),
 			    XScreenNumberOfScreen(XtScreen(W)),
 			    w->shell.geometry, def_geom,
@@ -3013,7 +3014,7 @@ static void SetSessionProperties(
 	user_name = _XtGetUserName(nam_buf, sizeof nam_buf);
 	if (user_name)
 	    props[num_props++] = ArrayPack(SmUserID, &user_name);
-	sprintf(pid, "%ld", (long)getpid());
+	snprintf(pid, sizeof(pid), "%ld", (long)getpid());
 	props[num_props++] = ArrayPack(SmProcessID, &pidp);
 
 	if (num_props) {
