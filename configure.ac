@@ -74,7 +74,7 @@ esac
 AC_HAVE_LIBRARY(ws2_32)
 
 # Options
-AC_ARG_ENABLE(xkb, AC_HELP_STRING([--disable-xkb], [Disable XKB support]),
+AC_ARG_ENABLE(xkb, AS_HELP_STRING([--disable-xkb], [Disable XKB support]),
 	XKB="$enableval", XKB="yes")
 if test "x$XKB" = "xyes" ; then
 	AC_DEFINE(XKB, 1, [Define to 1 to use XKB for keysym resolution.])
@@ -84,13 +84,13 @@ fi
 XFILESEARCHPATHDEFAULT='$(sysconfdir)/X11/%L/%T/%N%C%S:$(sysconfdir)/X11/%l/%T/%N%C%S:$(sysconfdir)/X11/%T/%N%C%S:$(sysconfdir)/X11/%L/%T/%N%S:$(sysconfdir)/X11/%l/%T/%N%S:$(sysconfdir)/X11/%T/%N%S:$(datadir)/X11/%L/%T/%N%C%S:$(datadir)/X11/%l/%T/%N%C%S:$(datadir)/X11/%T/%N%C%S:$(datadir)/X11/%L/%T/%N%S:$(datadir)/X11/%l/%T/%N%S:$(datadir)/X11/%T/%N%S:$(libdir)/X11/%L/%T/%N%C%S:$(libdir)/X11/%l/%T/%N%C%S:$(libdir)/X11/%T/%N%C%S:$(libdir)/X11/%L/%T/%N%S:$(libdir)/X11/%l/%T/%N%S:$(libdir)/X11/%T/%N%S'
 
 AC_ARG_WITH(xfile-search-path,
-	AC_HELP_STRING([--with-xfile-search-path=<path>],
+	AS_HELP_STRING([--with-xfile-search-path=<path>],
 		       [Set path to search for app-defaults and other files]),
 	[XFILESEARCHPATHDEFAULT="$withval"], [])
 AC_SUBST([XFILESEARCHPATHDEFAULT])
 
 AC_ARG_WITH(appdefaultdir,
-	AC_HELP_STRING([--with-appdefaultdir=<path>],
+	AS_HELP_STRING([--with-appdefaultdir=<path>],
 		       [Set app-default directory (default: ${datadir}/X11/app-defaults)]),
 	[appdefaultdir="$withval"],
 	[appdefaultdir=${datadir}/X11/app-defaults])
