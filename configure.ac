@@ -1,48 +1,57 @@
-dnl 
-dnl  Copyright © 2003 Keith Packard, Noah Levitt
-dnl 
-dnl  Permission to use, copy, modify, distribute, and sell this software and its
-dnl  documentation for any purpose is hereby granted without fee, provided that
-dnl  the above copyright notice appear in all copies and that both that
-dnl  copyright notice and this permission notice appear in supporting
-dnl  documentation, and that the name of Keith Packard not be used in
-dnl  advertising or publicity pertaining to distribution of the software without
-dnl  specific, written prior permission.  Keith Packard makes no
-dnl  representations about the suitability of this software for any purpose.  It
-dnl  is provided "as is" without express or implied warranty.
-dnl 
-dnl  KEITH PACKARD DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
-dnl  INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
-dnl  EVENT SHALL KEITH PACKARD BE LIABLE FOR ANY SPECIAL, INDIRECT OR
-dnl  CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
-dnl  DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
-dnl  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-dnl  PERFORMANCE OF THIS SOFTWARE.
-dnl
-dnl Process this file with autoconf to create configure.
+#
+#  Copyright © 2003 Keith Packard, Noah Levitt
+#
+#  Permission to use, copy, modify, distribute, and sell this software and its
+#  documentation for any purpose is hereby granted without fee, provided that
+#  the above copyright notice appear in all copies and that both that
+#  copyright notice and this permission notice appear in supporting
+#  documentation, and that the name of Keith Packard not be used in
+#  advertising or publicity pertaining to distribution of the software without
+#  specific, written prior permission.  Keith Packard makes no
+#  representations about the suitability of this software for any purpose.  It
+#  is provided "as is" without express or implied warranty.
+#
+#  KEITH PACKARD DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+#  INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+#  EVENT SHALL KEITH PACKARD BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+#  CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+#  DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+#  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+#  PERFORMANCE OF THIS SOFTWARE.
+#
 
 # Initialize Autoconf
 AC_PREREQ([2.60])
 AC_INIT([libXt], [1.0.99.1],
         [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], [libXt])
-AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
 
 # Initialize Automake
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
+
+# Initialize libtool
+AC_PROG_LIBTOOL
 
 # Require X.Org macros 1.8 or later for MAN_SUBSTS set by XORG_MANPAGE_SECTIONS
 m4_ifndef([XORG_MACROS_VERSION],
           [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
 XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
+XORG_CHECK_MALLOC_ZERO
 
-# Check for progs
-AC_PROG_LIBTOOL
+# Some compilers do not support per target -c and -o flags
 AM_PROG_CC_C_O
 
+# Checks for header files.
+AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xalloca.h should include <alloca.h>]))
+
+# Obtain compiler/linker options for depedencies
+PKG_CHECK_MODULES(XT, sm ice x11 xproto kbproto)
+
+# Set-up variables to use build machine compiler when cross-compiling
 if test x"$CC_FOR_BUILD" = x; then
 	if test x"$cross_compiling" = xyes; then
 		AC_CHECK_PROGS(CC_FOR_BUILD, gcc cc)
@@ -55,11 +64,6 @@ CFLAGS_FOR_BUILD=${CFLAGS_FOR_BUILD-${CFLAGS}}
 AC_SUBST(CFLAGS_FOR_BUILD)
 LDFLAGS_FOR_BUILD=${LDFLAGS_FOR_BUILD-${LDFLAGS}}
 AC_SUBST(LDFLAGS_FOR_BUILD)
-
-PKG_CHECK_MODULES(XT, sm ice x11 xproto kbproto)
-
-# Needed for including Xalloca.h
-AC_CHECK_HEADER([alloca.h], AC_DEFINE(INCLUDE_ALLOCA_H, 1, [Define to 1 if Xalloca.h should include <alloca.h>]))
 
 # Map function checks to old Imake #defines
 case $host_os in
@@ -123,12 +127,11 @@ esac
 
 XT_CFLAGS="$XT_CFLAGS $OS_CFLAGS"
 
-XORG_CHECK_MALLOC_ZERO
-
-AC_OUTPUT([Makefile
-	   src/Makefile
-	   util/Makefile
-	   include/Makefile
-	   man/Makefile
-	   specs/Makefile
-           xt.pc])
+AC_CONFIG_FILES([Makefile
+		src/Makefile
+		util/Makefile
+		include/Makefile
+		man/Makefile
+		specs/Makefile
+		xt.pc])
+AC_OUTPUT
