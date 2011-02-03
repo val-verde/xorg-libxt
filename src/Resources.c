@@ -857,7 +857,7 @@ static XtCacheRef *GetResources(
 		    register XtTypedArg* arg = typed_args + typed[j] - 1;
 		    register int i;
 
-		    for (i = num_typed_args - typed[j]; i; i--, arg++) {
+		    for (i = num_typed_args - typed[j]; i > 0; i--, arg++) {
 			*arg = *(arg+1);
 		    }
 		    num_typed_args--;
