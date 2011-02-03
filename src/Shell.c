@@ -2482,6 +2482,10 @@ static Boolean TopLevelSetValues(
 		XFree((XPointer)icon_name.value);
 	}
     }
+    else if (new->topLevel.iconic != old->topLevel.iconic) {
+	if (new->topLevel.iconic)
+	    new->wm.wm_hints.initial_state = IconicState;
+    }
     return False;
 }
 
