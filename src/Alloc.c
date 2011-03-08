@@ -147,7 +147,7 @@ Cardinal XtAsprintf(
     if (len < sizeof(buf))
     {
 	strncpy(*new_string, buf, len);
-	new_string[len] = '\0';
+	(*new_string)[len] = '\0';
     }
     else
     {
