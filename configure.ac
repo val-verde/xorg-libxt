@@ -35,10 +35,10 @@ AM_MAINTAINER_MODE
 # Initialize libtool
 AC_PROG_LIBTOOL
 
-# Require X.Org macros 1.8 or later for MAN_SUBSTS set by XORG_MANPAGE_SECTIONS
+# Require X.Org macros 1.13 or later for XORG_ENABLE_UNIT_TESTS
 m4_ifndef([XORG_MACROS_VERSION],
-          [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.8)
+          [m4_fatal([must install xorg-macros 1.13 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.13)
 XORG_DEFAULT_OPTIONS
 XORG_CHECK_MALLOC_ZERO
 
@@ -95,6 +95,26 @@ if test "x$XKB" = "xyes" ; then
 	AC_DEFINE(XKB, 1, [Define to 1 to use XKB for keysym resolution.])
 fi
 
+# --enable-unit-tests
+XORG_ENABLE_UNIT_TESTS
+XORG_WITH_GLIB([2.16])
+
+# Memory checking support
+case $host_os in
+     solaris*)
+        AC_CHECK_LIB([umem], [umem_alloc],
+            [MALLOC_DEBUG_ENV='LD_PRELOAD=libumem.so UMEM_DEBUG=default'])
+        ;;
+     *-gnu*) # GNU libc - Value is used as a single byte bit pattern,
+        # both directly and inverted, so should not be 0 or 255.
+        MALLOC_DEBUG_ENV='MALLOC_PERTURB_=15'
+        ;;
+     *bsd*|darwin*)
+        MALLOC_DEBUG_ENV='MallocPreScribble=1 MallocScribble=1'
+        ;;
+esac
+AC_SUBST([MALLOC_DEBUG_ENV])
+
 # Replaces XFileSearchPathDefault from Imake configs
 XFILESEARCHPATHDEFAULT='$(sysconfdir)/X11/%L/%T/%N%C%S:$(sysconfdir)/X11/%l/%T/%N%C%S:$(sysconfdir)/X11/%T/%N%C%S:$(sysconfdir)/X11/%L/%T/%N%S:$(sysconfdir)/X11/%l/%T/%N%S:$(sysconfdir)/X11/%T/%N%S:$(datadir)/X11/%L/%T/%N%C%S:$(datadir)/X11/%l/%T/%N%C%S:$(datadir)/X11/%T/%N%C%S:$(datadir)/X11/%L/%T/%N%S:$(datadir)/X11/%l/%T/%N%S:$(datadir)/X11/%T/%N%S:$(libdir)/X11/%L/%T/%N%C%S:$(libdir)/X11/%l/%T/%N%C%S:$(libdir)/X11/%T/%N%C%S:$(libdir)/X11/%L/%T/%N%S:$(libdir)/X11/%l/%T/%N%S:$(libdir)/X11/%T/%N%S'
 
@@ -144,5 +164,6 @@ AC_CONFIG_FILES([Makefile
 		include/Makefile
 		man/Makefile
 		specs/Makefile
+		test/Makefile
 		xt.pc])
 AC_OUTPUT
