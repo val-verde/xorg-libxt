@@ -1,6 +1,6 @@
 if ENABLE_UNIT_TESTS
 if HAVE_GLIB
-check_PROGRAMS = Alloc Event
+check_PROGRAMS = Alloc Converters Event
 
 TESTS=$(check_PROGRAMS)
 
