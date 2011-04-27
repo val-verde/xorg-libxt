@@ -86,7 +86,14 @@ case $host_os in
 	;;
 esac
 
-AC_HAVE_LIBRARY(ws2_32)
+# Link with winsock if mingw target
+case $host_os in
+	*mingw*)
+		AC_HAVE_LIBRARY(ws2_32)
+	;;
+	*)
+	;;
+esac
 
 # Options
 AC_ARG_ENABLE(xkb, AS_HELP_STRING([--disable-xkb], [Disable XKB support]),
