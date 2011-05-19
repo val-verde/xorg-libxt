@@ -162,6 +162,9 @@ case $host_os in
 esac
 AC_SUBST(STRINGSABIOPTIONS)
 
+ERRORDBDIR=${datadir}/X11
+AC_SUBST(ERRORDBDIR)
+
 case $host_os in
     darwin*)
         OS_CFLAGS="-Wl,-flat_namespace"
