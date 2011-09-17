@@ -1,7 +1,7 @@
 .\" $Xorg: appC,v 1.3 2000/08/17 19:42:48 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -105,9 +105,9 @@ themselves.
 .sp
 .LP
 .PN XtAppInitialize
-and 
-.PN XtVaAppInitialize 
-have been replaced by 
+and
+.PN XtVaAppInitialize
+have been replaced by
 .PN XtOpenApplication
 and
 .PN XtVaOpenApplication .
@@ -288,7 +288,7 @@ This parameter is ignored; therefore, you can specify NULL.
 Specifies the class name of this application.
 .IP \fIoptions\fP 1i
 Specifies how to parse the command line for any application-specific resources.
-The \fIoptions\fP argument is passed as a parameter to 
+The \fIoptions\fP argument is passed as a parameter to
 .PN XrmParseCommand .
 .IP \fInum_options\fP 1i
 Specifies the number of entries in the options list.
@@ -342,10 +342,10 @@ void XtNextEvent(\fIevent_return\fP)
 Returns the event information to the specified event structure.
 .LP
 .eM
-If no input is on the X input queue for the default application context, 
-.PN XtNextEvent 
-flushes the X output buffer 
-and waits for an event while looking at the alternate input sources 
+If no input is on the X input queue for the default application context,
+.PN XtNextEvent
+flushes the X output buffer
+and waits for an event while looking at the alternate input sources
 and timeout values and calling any callback procedures triggered by them.
 This routine has been replaced by
 .PN XtAppNextEvent .
@@ -364,7 +364,7 @@ Specifies the type of input to process.
 .LP
 .eM
 .PN XtProcessEvent
-processes one X event, timeout, or alternate input source 
+processes one X event, timeout, or alternate input source
 (depending on the value of \fImask\fP), blocking if necessary.
 It has been replaced by
 .PN XtAppProcessEvent .
@@ -382,19 +382,19 @@ Boolean XtPeekEvent(\fIevent_return\fP)
 Returns the event information to the specified event structure.
 .LP
 .eM
-If there is an event in the queue for the default application context, 
+If there is an event in the queue for the default application context,
 .PN XtPeekEvent
 fills in the event and returns a nonzero value.
-If no X input is on the queue, 
+If no X input is on the queue,
 .PN XtPeekEvent
 flushes the output buffer and blocks until input is available, possibly
 calling some timeout callbacks in the process.
 If the input is an event,
 .PN XtPeekEvent
-fills in the event and returns a nonzero value. 
+fills in the event and returns a nonzero value.
 Otherwise, the input is for an alternate input source, and
 .PN XtPeekEvent
-returns zero. 
+returns zero.
 This routine has been replaced by
 .PN XtAppPeekEvent .
 .PN XtInitialize
@@ -408,10 +408,10 @@ Boolean XtPending()
 .LP
 .eM
 .PN XtPending
-returns a nonzero value if there are 
+returns a nonzero value if there are
 events pending from the X server or alternate input sources in the default
 application context.
-If there are no events pending, 
+If there are no events pending,
 it flushes the output buffer and returns a zero value.
 It has been replaced by
 .PN XtAppPending .
@@ -433,7 +433,7 @@ XtInputId XtAddInput(\fIsource\fP, \fIcondition\fP, \fIproc\fP, \
       XtPointer \fIclient_data\fP;
 .FN
 .IP \fIsource\fP 1i
-Specifies the source file descriptor on a POSIX-based system 
+Specifies the source file descriptor on a POSIX-based system
 or other operating-system-dependent device specification.
 .IP \fIcondition\fP 1i
 Specifies the mask that indicates either a read, write, or exception condition
@@ -444,16 +444,16 @@ Specifies the procedure called when input is available.
 Specifies the parameter to be passed to \fIproc\fP when input is available.
 .LP
 .eM
-The 
+The
 .PN XtAddInput
-function registers in the default application context a new 
-source of events, 
+function registers in the default application context a new
+source of events,
 which is usually file input but can also be file output.
-(The word \fIfile\fP should be loosely interpreted to mean any sink 
+(The word \fIfile\fP should be loosely interpreted to mean any sink
 or source of data.)
 .PN XtAddInput
 also specifies the conditions under which the source can generate events.
-When input is pending on this source in the default application context, 
+When input is pending on this source in the default application context,
 the callback procedure is called.
 This routine has been replaced by
 .PN XtAppAddInput .
@@ -479,14 +479,14 @@ Specifies the procedure to be called when time expires.
 Specifies the parameter to be passed to \fIproc\fP when it is called.
 .LP
 .eM
-The 
+The
 .PN XtAddTimeOut
 function creates a timeout in the default application context
 and returns an identifier for it.
 The timeout value is set to \fIinterval\fP.
 The callback procedure will be called after
 the time interval elapses, after which the timeout is removed.
-This routine has been replaced by 
+This routine has been replaced by
 .PN XtAppAddTimeOut .
 .PN XtInitialize
 must be called before using this routine.
@@ -530,8 +530,8 @@ Widget XtCreateApplicationShell(\fIname\fP, \fIwidget_class\fP, \fIargs\fP, \
 This parameter is ignored; therefore, you can specify NULL.
 .IP \fIwidget_class\fP 1i
 Specifies the widget class pointer for the created application shell widget.
-This will usually be 
-.PN topLevelShellWidgetClass 
+This will usually be
+.PN topLevelShellWidgetClass
 or a subclass thereof.
 .IP \fIargs\fP 1i
 Specifies the argument list to override  any other resource specifications.
@@ -593,13 +593,13 @@ and return without modifying the \fIto\fP argument.
 .LP
 Most type converters just take the data described by the specified \fIfrom\fP
 argument and return data by writing into the specified \fIto\fP argument.
-A few need other information, which is available in the specified 
+A few need other information, which is available in the specified
 argument list.
 A type converter can invoke another type converter,
 which allows differing sources that may convert into a common intermediate
 result to make maximum use of the type converter cache.
 .LP
-Note that the address returned in \fIto->addr\fP cannot be that of a local variable of 
+Note that the address returned in \fIto->addr\fP cannot be that of a local variable of
 the converter because this is not valid after the converter returns.
 It should be a pointer to a static variable.
 .LP
@@ -782,7 +782,7 @@ Returns the converted value.
 .eM
 The
 .PN XtConvert
-function looks up the type converter registered to convert \fIfrom_type\fP 
+function looks up the type converter registered to convert \fIfrom_type\fP
 to \fIto_type\fP, computes any additional arguments needed, and then calls
 .PN XtDirectConvert
 or
@@ -862,7 +862,7 @@ Specifies the action table to register.
 Specifies the number of entries in \fIactions\fP.
 .LP
 .eM
-If more than one action is registered with the same name, 
+If more than one action is registered with the same name,
 the most recently registered action is used.
 If duplicate actions exist in an action table,
 the first is used.
@@ -908,7 +908,7 @@ unsigned long XtGetSelectionTimeout()
 .FN
 .LP
 .eM
-The selection timeout is the time within which the two communicating 
+The selection timeout is the time within which the two communicating
 applications must respond to one another.
 If one of them does not respond within this interval,
 the \*(xI abort the selection request.
@@ -962,7 +962,7 @@ void XtGetErrorDatabaseText(\fIname\fP, \fItype\fP, \fIclass\fP, \
 .br
 .ns
 .IP \fItype\fP 1i
-Specify the name and type that are concatenated to form the resource name 
+Specify the name and type that are concatenated to form the resource name
 of the error message.
 .IP \fIclass\fP 1i
 Specifies the resource class of the error message.

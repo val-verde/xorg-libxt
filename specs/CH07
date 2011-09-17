@@ -1,7 +1,7 @@
 .\" $Xorg: CH07,v 1.4 2000/08/17 19:42:45 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -103,7 +103,7 @@ Adding and Deleting Additional Event Sources
 .XE
 .LP
 While most applications are driven only by X events,
-some applications need to incorporate other sources of input 
+some applications need to incorporate other sources of input
 into the \*(xI event-handling mechanism.
 The event manager provides routines to integrate notification of timer events
 and file data pending into this mechanism.
@@ -157,7 +157,7 @@ The
 .PN XtAppAddInput
 function registers with the \*(xI read routine a new source of events,
 which is usually file input but can also be file output.
-Note that \fIfile\fP should be loosely interpreted to mean any sink 
+Note that \fIfile\fP should be loosely interpreted to mean any sink
 or source of data.
 .PN XtAppAddInput
 also specifies the conditions under which the source can generate events.
@@ -271,7 +271,7 @@ Specifies an argument passed to the specified procedure when it is called.
 .LP
 .eM
 The
-.PN XtAppAddBlockHook 
+.PN XtAppAddBlockHook
 function registers the specified procedure and returns an identifier for it.
 The hook procedure \fIproc\fP is called at any time in the future when
 the \*(xI are about to block pending some input.
@@ -307,8 +307,8 @@ Specifies the identifier returned from the corresponding call to
 .PN XtAppAddBlockHook .
 .LP
 .eM
-The 
-.PN XtRemoveBlockHook 
+The
+.PN XtRemoveBlockHook
 function removes the specified procedure from the list of procedures
 that are called by the \*(xI read routine before blocking on event sources.
 
@@ -418,9 +418,9 @@ Adding and Removing Signal Callbacks
 \fB\*(SN Adding and Removing Signal Callbacks\fP
 .XE
 .LP
-The signal facility notifies the application or the widget through a 
-callback procedure that a signal or other external asynchronous event 
-has occurred.  The registered callback procedures are uniquely identified 
+The signal facility notifies the application or the widget through a
+callback procedure that a signal or other external asynchronous event
+has occurred.  The registered callback procedures are uniquely identified
 by a signal id.
 .sp
 .LP
@@ -430,7 +430,7 @@ call
 and store the resulting identifier in a place accessible to the signal
 handler.  When a signal arrives, the signal handler should call
 .PN XtNoticeSignal
-to notify the \*(xI that a signal has occured.  To register a signal 
+to notify the \*(xI that a signal has occured.  To register a signal
 callback use
 .PN XtAppAddSignal .
 .LP
@@ -469,7 +469,7 @@ typedef void (*XtSignalCallbackProc)(XtPointer, XtSignalId*);
 Passes the client data argument that was registered for this procedure in
 .PN XtAppAddSignal .
 .IP \fIid\fP 1i
-Passes the id returned from the corresponding 
+Passes the id returned from the corresponding
 .PN XtAppAddSignal
 call.
 .LP
@@ -494,7 +494,7 @@ call.
 On a POSIX-based system,
 .PN XtNoticeSignal
 is the only \*(xI function that can safely be called from a signal handler.
-If 
+If
 .PN XtNoticeSignal
 is invoked multiple times before the \*(xI are able to invoke the
 registered callback, the callback is only called once.
@@ -505,7 +505,7 @@ and is set to
 .PN True
 by
 .PN XtNoticeSignal .
-When 
+When
 .PN XtAppNextEvent
 or
 .PN XtAppProcessEvent
@@ -517,11 +517,11 @@ are invoked and the flags are reset to
 .PN False .
 .LP
 If the signal handler wants to track how many times the signal has been
-raised, it can keep its own private counter.  Typically the handler would 
-not do any other work; the callback does the actual processing for the 
-signal. The \*(xI never block signals from being raised, so if a given 
-signal can be raised multiple times before the \*(xI can invoke the 
-callback for that signal, the callback must be designed to deal with 
+raised, it can keep its own private counter.  Typically the handler would
+not do any other work; the callback does the actual processing for the
+signal. The \*(xI never block signals from being raised, so if a given
+signal can be raised multiple times before the \*(xI can invoke the
+callback for that signal, the callback must be designed to deal with
 this.  In another case, a signal might be raised just after the \*(xI
 sets the pending flag to
 .PN False
@@ -586,8 +586,8 @@ user events may be delivered to one of several modal widgets in the cascade.
 Display-related events should be delivered outside the modal cascade so that
 exposure events and the like keep the application's display up-to-date.
 Any event that occurs within the cascade is delivered as usual.
-The user events delivered to the most recent spring-loaded shell 
-in the cascade when they occur outside the cascade are called remap events 
+The user events delivered to the most recent spring-loaded shell
+in the cascade when they occur outside the cascade are called remap events
 and are
 .PN KeyPress ,
 .PN KeyRelease ,
@@ -610,11 +610,11 @@ this, typically by ignoring any unmatched
 events.
 .LP
 .PN XtPopup
-uses the 
+uses the
 .PN XtAddGrab
 and
 .PN XtRemoveGrab
-functions to constrain user events to a modal cascade 
+functions to constrain user events to a modal cascade
 and subsequently to remove a grab when the modal widget is popped down.
 
 .sp
@@ -636,7 +636,7 @@ void XtAddGrab(\fIw\fP, \fIexclusive\fP, \fIspring_loaded\fP)
 .IP \fIw\fP 1i
 Specifies the widget to add to the modal cascade. \*(cI
 .IP \fIexclusive\fP 1i
-Specifies whether user events should be dispatched exclusively to this widget 
+Specifies whether user events should be dispatched exclusively to this widget
 or also to previous widgets in the cascade.
 .IP \fIspring_loaded\fP 1i
 Specifies whether this widget was popped up because the user pressed
@@ -646,9 +646,9 @@ a pointer button.
 The
 .PN XtAddGrab
 function appends the widget to the modal cascade
-and checks that \fIexclusive\fP is 
-.PN True 
-if \fIspring_loaded\fP is 
+and checks that \fIexclusive\fP is
+.PN True
+if \fIspring_loaded\fP is
 .PN True .
 If this condition is not met,
 .PN XtAddGrab
@@ -657,7 +657,7 @@ generates a warning message.
 The modal cascade is used by
 .PN XtDispatchEvent
 when it tries to dispatch a user event.
-When at least one modal widget is in the widget cascade, 
+When at least one modal widget is in the widget cascade,
 .PN XtDispatchEvent
 first determines if the event should be delivered.
 It starts at the most recent cascade entry and follows the cascade up to and
@@ -669,10 +669,10 @@ comprise the active subset.
 User events that occur outside the widgets in this subset are ignored
 or remapped.
 Modal menus with submenus generally add a submenu widget to the cascade
-with \fIexclusive\fP 
+with \fIexclusive\fP
 .PN False .
 Modal dialog boxes that need to restrict user input to the most deeply nested
-dialog box add a subdialog widget to the cascade with \fIexclusive\fP 
+dialog box add a subdialog widget to the cascade with \fIexclusive\fP
 .PN True .
 User events that occur within the active subset are delivered to the
 appropriate widget, which is usually a child or further descendant of the modal
@@ -680,7 +680,7 @@ widget.
 .LP
 Regardless of where in the application they occur,
 remap events are always delivered to the most recent widget in the active
-subset of the cascade registered with \fIspring_loaded\fP 
+subset of the cascade registered with \fIspring_loaded\fP
 .PN True ,
 if any such widget exists.
 If the event
@@ -707,7 +707,7 @@ Specifies the widget to remove from the modal cascade.
 .eM
 The
 .PN XtRemoveGrab
-function removes widgets from the modal cascade starting 
+function removes widgets from the modal cascade starting
 at the most recent widget up to and including the specified widget.
 It issues a warning if the specified widget is not on the modal cascade.
 
@@ -1164,11 +1164,11 @@ void XtSetKeyboardFocus(\fIsubtree\fP\, \fIdescendant\fP)
      Widget \fIsubtree\fP, \fIdescendant\fP;
 .FN
 .IP \fIsubtree\fP 1i
-Specifies the subtree of the hierarchy for which the keyboard focus is 
+Specifies the subtree of the hierarchy for which the keyboard focus is
 to be set.  \*(cI
 .IP \fIdescendant\fP 1i
 Specifies either the normal (non-pop-up) descendant of \fIsubtree\fP to which
-keyboard events are logically directed, or 
+keyboard events are logically directed, or
 .PN None .
 It is not an error to specify
 .PN None
@@ -1349,7 +1349,7 @@ returns
 
 .NH 3
 Events for Drawables That Are Not a Widget's Window
-.XS 
+.XS
 \fB\*(SN Events for Drawables That Are Not a Widget's Window\fP
 .XE
 .LP
@@ -1358,7 +1358,7 @@ associated with widgets in its widget tree.  Examples include handling
 .PN GraphicsExpose
 and
 .PN NoExpose
-events on Pixmaps, and handling 
+events on Pixmaps, and handling
 .PN PropertyNotify
 events on the root window.
 .LP
@@ -1419,10 +1419,10 @@ Specifies the drawable to unregister.
 .LP
 .eM
 .PN XtUnregisterDrawable
-removes an association created with 
-.PN XtRegisterDrawable .  
+removes an association created with
+.PN XtRegisterDrawable .
 If the drawable is the window of a widget in the client's widget tree
-the results of calling 
+the results of calling
 .PN XtUnregisterDrawable
 are undefined.
 
@@ -1467,11 +1467,11 @@ value returned is a bit mask that is the OR of
 .PN XtIMXEvent ,
 .PN XtIMTimer ,
 .PN XtIMAlternateInput ,
-and 
-.PN XtIMSignal 
+and
+.PN XtIMSignal
 (see
 .PN XtAppProcessEvent ).
-If there are no events pending, 
+If there are no events pending,
 .PN XtAppPending
 flushes the output buffers of each Display in the application context
 and returns zero.
@@ -1519,9 +1519,9 @@ returns
 .FS
 The sample implementations provides XtAppPeekEvent as described.  Timeout callbacks
 are called while blocking for input.  If some input for an input source is
-available, 
+available,
 .PN XtAppPeekEvent
-will return 
+will return
 .PN True
 without returning an event.
 .FE
@@ -1615,7 +1615,7 @@ Usually, this procedure is not called by client applications; see
 .PN XtAppMainLoop .
 .PN XtAppProcessEvent
 processes timer events by calling any appropriate timer callbacks,
-input sources by calling any appropriate input callbacks, 
+input sources by calling any appropriate input callbacks,
 signal source by calling any appropriate signal callbacks,
 and X events by
 calling
@@ -1686,7 +1686,7 @@ Otherwise,
 sends the event to the event handler functions that
 have been previously registered with the dispatch routine.
 .PN XtDispatchEvent
-returns 
+returns
 .PN True
 if
 .PN XFilterEvent
@@ -1740,8 +1740,8 @@ Specifies the application context that identifies the application.
 The
 .PN XtAppMainLoop
 function first reads the next incoming X event by calling
-.PN XtAppNextEvent 
-and then dispatches the event to the appropriate registered procedure 
+.PN XtAppNextEvent
+and then dispatches the event to the appropriate registered procedure
 by calling
 .PN XtDispatchEvent .
 This constitutes the main loop of \*(tk applications.
@@ -1757,7 +1757,7 @@ application context's destroy flag is set.
 If the flag is set, the loop breaks.
 The whole loop is enclosed between a matching
 .PN XtAppLock
-and 
+and
 .PN XtAppUnlock .
 .LP
 Applications can provide their own version of this loop,
@@ -1794,7 +1794,7 @@ or
 A widget can be insensitive because its \fIsensitive\fP field is
 .PN False
 or because one of its ancestors is insensitive and thus the widget's
-\fIancestor_sensitive\fP field also is 
+\fIancestor_sensitive\fP field also is
 .PN False .
 A widget can but does not need to distinguish these two cases visually.
 .NT
@@ -1875,10 +1875,10 @@ take whatever display actions are needed
 (for example, graying out or stippling the widget).
 .LP
 .PN XtSetSensitive
-maintains the invariant that, if the parent has either \fIsensitive\fP 
-or \fIancestor_sensitive\fP 
+maintains the invariant that, if the parent has either \fIsensitive\fP
+or \fIancestor_sensitive\fP
 .PN False ,
-then all children have \fIancestor_sensitive\fP 
+then all children have \fIancestor_sensitive\fP
 .PN False .
 .sp
 .LP
@@ -1899,18 +1899,18 @@ Specifies the object.  \*(oI
 .eM
 The
 .PN XtIsSensitive
-function returns 
-.PN True 
-or 
-.PN False 
+function returns
+.PN True
+or
+.PN False
 to indicate whether user input events are being dispatched.
 If object's class is a subclass of RectObj and
-both \fIsensitive\fP and \fIancestor_sensitive\fP are 
+both \fIsensitive\fP and \fIancestor_sensitive\fP are
 .PN True ,
 .PN XtIsSensitive
-returns 
+returns
 .PN True ;
-otherwise, it returns 
+otherwise, it returns
 .PN False .
 
 .NH 2
@@ -1920,7 +1920,7 @@ Adding Background Work Procedures
 .XE
 .LP
 The \*(xI have some limited support for background processing.
-Because most applications spend most of their time waiting for input, 
+Because most applications spend most of their time waiting for input,
 you can register an idle-time work procedure
 that is called when the toolkit would otherwise block in
 .PN XtAppNextEvent
@@ -1948,7 +1948,7 @@ If the procedure returns
 .PN False ,
 it will remain registered and called again when the
 application is next idle.
-Work procedures should be very judicious about how much they do. 
+Work procedures should be very judicious about how much they do.
 If they run for more than a small part of a second,
 interactive feel is likely to suffer.
 .sp
@@ -1983,12 +1983,12 @@ by \fIapp_context\fP
 and returns an opaque unique identifier for this work procedure.
 Multiple work procedures can be registered,
 and the most recently added one is always the one that is called.
-However, if a work procedure adds another work procedure, 
+However, if a work procedure adds another work procedure,
 the newly added one has lower priority than the current one.
 .sp
 .LP
-To remove a work procedure, either return 
-.PN True 
+To remove a work procedure, either return
+.PN True
 from the procedure when it is called or use
 .PN XtRemoveWorkProc
 outside of the procedure.
@@ -2046,9 +2046,9 @@ Enter/Leave Compression
 .XE
 .LP
 To throw out pairs of enter and leave events that have no intervening events,
-as can happen when the user moves the pointer across a widget 
+as can happen when the user moves the pointer across a widget
 without stopping in it,
-the widget class field \fIcompress_enterleave\fP should be 
+the widget class field \fIcompress_enterleave\fP should be
 .PN True .
 .IN "compress_enterleave field"
 These enter and leave events are not delivered to the client
@@ -2109,7 +2109,7 @@ When the final event is received,
 the event manager replaces the rectangle in the event with the
 bounding box for the region
 and calls the widget's expose procedure,
-passing the modified exposure event and (unless 
+passing the modified exposure event and (unless
 .PN XtExposeNoRegion
 is specified) the region.
 For more information on regions, see Section 16.5 in \fI\*(xL\fP.)
@@ -2265,7 +2265,7 @@ before it calls the widget's realize procedure.
 .LP
 If the widget's \fIcompress_exposure\fP class field specifies
 .PN XtExposeNoCompress
-or 
+or
 .PN XtExposeNoRegion ,
 or if the event type is
 .PN NoExpose
@@ -2303,11 +2303,11 @@ Boolean invert;
 Boolean highlight;
 Dimension highlight_width;
 .DE
-Label would have \fIinvert\fP and \fIhighlight\fP always 
+Label would have \fIinvert\fP and \fIhighlight\fP always
 .PN False
 and \fIhighlight_width\fP zero.
-Pushbutton would dynamically set \fIhighlight\fP and \fIhighlight_width\fP, 
-but it would leave \fIinvert\fP always 
+Pushbutton would dynamically set \fIhighlight\fP and \fIhighlight_width\fP,
+but it would leave \fIinvert\fP always
 .PN False .
 Finally, Toggle would dynamically set all three.
 In this case,
@@ -2324,7 +2324,7 @@ Widget Visibility
 Some widgets may use substantial computing resources to produce the
 data they will display.
 However, this effort is wasted if the widget is not actually visible
-on the screen, that is, if the widget is obscured by another application 
+on the screen, that is, if the widget is obscured by another application
 or is iconified.
 .LP
 .IN "Visibility"
@@ -2338,18 +2338,18 @@ by the time an
 exposure
 event is processed if any part of the widget is visible,
 but is
-.PN False 
+.PN False
 if the widget is fully obscured.
 .LP
 Widgets can use or ignore the \fIvisible\fP hint.
 If they ignore it,
-they should have \fIvisible_interest\fP in their widget class record set 
+they should have \fIvisible_interest\fP in their widget class record set
 .PN False .
 In such cases,
-the \fIvisible\fP field is initialized 
-.PN True 
+the \fIvisible\fP field is initialized
+.PN True
 and never changes.
-If \fIvisible_interest\fP is 
+If \fIvisible_interest\fP is
 .PN True ,
 the event manager asks for
 .PN VisibilityNotify
@@ -2450,7 +2450,7 @@ Specifies the widget for which this event handler is being registered.  \*(cI
 .IP \fIevent_mask\fP 1i
 Specifies the event mask for which to call this procedure.
 .IP \fInonmaskable\fP 1i
-Specifies whether this procedure should be 
+Specifies whether this procedure should be
 called on the nonmaskable events
 .Pn ( GraphicsExpose ,
 .PN NoExpose ,
@@ -2510,7 +2510,7 @@ Specifies the widget for which this procedure is registered.  \*(cI
 .IP \fIevent_mask\fP 1i
 Specifies the event mask for which to unregister this procedure.
 .IP \fInonmaskable\fP 1i
-Specifies whether this procedure should be 
+Specifies whether this procedure should be
 removed on the nonmaskable events
 .Pn ( GraphicsExpose ,
 .PN NoExpose ,
@@ -2539,7 +2539,7 @@ If the widget is realized and no other event handler requires the event,
 .PN XtRemoveEventHandler
 calls
 .PN XSelectInput .
-If the specified procedure has not been registered 
+If the specified procedure has not been registered
 or if it has been registered with a different value of \fIclient_data\fP,
 .PN XtRemoveEventHandler
 returns without reporting an error.
@@ -2552,7 +2552,7 @@ from receiving all selected events, call
 .PN XtRemoveEventHandler
 with an \fIevent_mask\fP of
 .PN XtAllEvents
-and \fInonmaskable\fP 
+and \fInonmaskable\fP
 .PN True .
 The procedure will continue to receive any events
 that have been specified in calls to
@@ -2593,7 +2593,7 @@ Specifies the widget for which this event handler is being registered. \*(cI
 .IP \fIevent_mask\fP 1i
 Specifies the event mask for which to call this procedure.
 .IP \fInonmaskable\fP 1i
-Specifies whether this procedure should be 
+Specifies whether this procedure should be
 called on the nonmaskable events
 .Pn ( GraphicsExpose ,
 .PN NoExpose ,
@@ -2662,7 +2662,7 @@ Specifies the widget for which this event handler is being registered. \*(cI
 .IP \fIevent_mask\fP 1i
 Specifies the event mask for which to call this procedure.
 .IP \fInonmaskable\fP 1i
-Specifies whether this procedure should be 
+Specifies whether this procedure should be
 called on the nonmaskable events
 .Pn ( GraphicsExpose ,
 .PN NoExpose ,
@@ -2681,7 +2681,7 @@ Specifies additional data to be passed to the client's event handler.
 The
 .PN XtAddRawEventHandler
 function is similar to
-.PN XtAddEventHandler 
+.PN XtAddEventHandler
 except that it does not affect the widget's event mask and never causes an
 .PN XSelectInput
 for its events.
@@ -2717,7 +2717,7 @@ Specifies the widget for which this procedure is registered.  \*(cI
 .IP \fIevent_mask\fP 1i
 Specifies the event mask for which to unregister this procedure.
 .IP \fInonmaskable\fP 1i
-Specifies whether this procedure should be 
+Specifies whether this procedure should be
 removed on the nonmaskable events
 .Pn ( GraphicsExpose ,
 .PN NoExpose ,
@@ -2743,7 +2743,7 @@ for the specified events without changing
 the window event mask.
 The request is ignored if \fIclient_data\fP does not match the value given
 when the handler was registered.
-If the specified procedure has not been registered 
+If the specified procedure has not been registered
 or if it has been registered with a different value of \fIclient_data\fP,
 .PN XtRemoveRawEventHandler
 returns without reporting an error.
@@ -2794,7 +2794,7 @@ Specifies the widget for which this event handler is being registered. \*(cI
 .IP \fIevent_mask\fP 1i
 Specifies the event mask for which to call this procedure.
 .IP \fInonmaskable\fP 1i
-Specifies whether this procedure should be 
+Specifies whether this procedure should be
 called on the nonmaskable events
 .Pn ( GraphicsExpose ,
 .PN NoExpose ,
@@ -2855,7 +2855,7 @@ and
 .PN XtInsertEventHandler
 and all event translations, including accelerators,
 installed on the widget.
-This is the same event mask stored into the 
+This is the same event mask stored into the
 .PN XSetWindowAttributes
 structure by
 .PN XtRealizeWidget
@@ -2869,7 +2869,7 @@ Event Handlers for X11 Protocol Extensions
 .XE
 .LP
 To register an event handler procedure with the \*(xI dispatch
-mechanism according to an event type, use 
+mechanism according to an event type, use
 .PN XtInsertEventTypeHandler .
 .LP
 .IN "XtInsertEventTypeHandler" "" "@DEF"
@@ -2909,24 +2909,24 @@ previously registered handlers.
 .PN XtInsertEventTypeHandler
 registers a procedure with the
 dispatch mechanism that is to be called when an event that matches the
-specified \fIevent_type\fP is dispatched to the specified \fIwidget\fP.  
+specified \fIevent_type\fP is dispatched to the specified \fIwidget\fP.
 .LP
 If \fIevent_type\fP specifies one of the core X protocol events, then
-\fIselect_data\fP must be a pointer to a value of type 
+\fIselect_data\fP must be a pointer to a value of type
 .PN EventMask ,
 indicating
 the event mask to be used to select for the desired event.  This event
-mask is included in the value returned by 
+mask is included in the value returned by
 .PN XtBuildEventMask .
 If the widget is realized,
-.PN XtInsertEventTypeHandler 
-calls 
+.PN XtInsertEventTypeHandler
+calls
 .PN XSelectInput
 if necessary.  Specifying NULL for \fIselect_data\fP is equivalent to
 specifying a pointer to an event mask containing 0.  This is similar
-to the 
+to the
 .PN XtInsertRawEventHandler
-function.  
+function.
 .LP
 If \fIevent_type\fP specifies an extension event type, then the semantics of
 the data pointed to by \fIselect_data\fP are defined by the extension
@@ -2946,7 +2946,7 @@ registered handlers for this event type.
 .LP
 Each widget has a single registered event handler list, which will
 contain any procedure/client_data pair exactly once if it is
-registered with 
+registered with
 .PN XtInsertEventTypeHandler ,
 regardless of the manner
 in which it is registered and regardless of the value(s)
@@ -2955,7 +2955,7 @@ same \fIclient_data\fP value, the specified mask augments the existing
 mask and the procedure is repositioned in the list.
 .sp
 .LP
-To remove an event handler registered with 
+To remove an event handler registered with
 .PN XtInsertEventTypeHandler ,
 use
 .PN XtRemoveEventTypeHandler .
@@ -2981,7 +2981,7 @@ Specifies the widget for which the event handler was registered.  \*(cI
 .IP \fIevent_type\fP 1i
 Specifies the event type for which the handler was registered.
 .IP \fIselect_data\fP 1i
-Specifies data used to deselect events of the specified type 
+Specifies data used to deselect events of the specified type
 from the server, or NULL.
 .IP \fIproc\fP 1i
 Specifies the event handler to be removed.
@@ -2999,10 +2999,10 @@ The request is ignored if \fIclient_data\fP does not match the value given
 when the handler was registered.
 .LP
 If \fIevent_type\fP specifies one of the core X protocol events,
-\fIselect_data\fP must be a pointer to a value of type 
+\fIselect_data\fP must be a pointer to a value of type
 .PN EventMask, indicating the event
 mask to be used to deselect for the appropriate event.  If the widget
-is realized, 
+is realized,
 .PN XtRemoveEventTypeHandler
 calls
 .PN XSelectInput
@@ -3050,7 +3050,7 @@ Specifies additional data to be passed to the extension selector.
 .eM
 The
 .PN XtRegisterExtensionSelector
-function registers a procedure to arrange 
+function registers a procedure to arrange
 for the delivery of extension events to widgets.
 .LP
 If \fImin_event_type\fP and \fImax_event_type\fP match the parameters
@@ -3062,7 +3062,7 @@ registered values.  If the range specified by \fImin_event_type\fP
 and \fImax_event_type\fP overlaps the range of the parameters to a
 previous call for the same display in any other way, an error results.
 .LP
-When a widget is realized, 
+When a widget is realized,
 after the \fIcore.realize\fP method is called,
 the \*(xI check to see if any event
 handler specifies an event type within the range of a registered
@@ -3112,7 +3112,7 @@ Specifies the additional client data with which the procedure was registered.
 .LP
 .eM
 The \fIevent_types\fP and \fIselect_data\fP lists will always have the
-same number of elements, specified by \fIcount\fP.  
+same number of elements, specified by \fIcount\fP.
 Each event type/select data pair represents one call to
 .PN XtInsertEventTypeHandler .
 .sp
@@ -3142,7 +3142,7 @@ Specifies the event type for which the dispatcher should be invoked.
 Specifies the event dispatcher procedure.
 .LP
 .eM
-The 
+The
 .PN XtSetEventDispatcher
 function registers the event dispatcher procedure specified by \fIproc\fP
 for events with the type \fIevent_type\fP.  The previously registered
@@ -3154,7 +3154,7 @@ In the future, when
 .PN XtDispatchEvent
 is called with an event type of \fIevent_type\fP, the specified \fIproc\fP
 (or the default dispatcher) is invoked to determine a widget
-to which to dispatch the event. 
+to which to dispatch the event.
 .LP
 The default dispatcher handles the \*(xI modal cascade and keyboard
 focus mechanisms, handles the semantics of \fIcompress_enterleave\fP
@@ -3176,11 +3176,11 @@ Passes the event to be dispatched.
 .LP
 .eM
 The event dispatcher procedure should determine whether this event is of
-a type that should be dispatched to a widget.  
+a type that should be dispatched to a widget.
 .LP
 If the event should be dispatched to a widget, the event dispatcher
 procedure should determine the appropriate widget to receive the
-event, call 
+event, call
 .PN XFilterEvent
 with the window of this widget, or
 .PN None
@@ -3228,7 +3228,7 @@ Specifies the widget to get forwarding information for.
 .LP
 .eM
 The
-.PN XtGetKeyboardFocusWidget 
+.PN XtGetKeyboardFocusWidget
 function returns the widget that would be the end result of keyboard
 event forwarding for a keyboard event for the specified widget.
 .sp
@@ -3251,7 +3251,7 @@ Specifies the widget to which to dispatch the event.
 Specifies a pointer to the event to be dispatched.
 .LP
 .eM
-The 
+The
 .PN XtDispatchEventToWidget
 function scans the list of registered event handlers for the
 specified widget and calls each handler that has been registered
@@ -3285,8 +3285,8 @@ Using the \*(xI in a Multi-Threaded Environment
 .XE
 .LP
 The \*(xI may be used in environments that offer multiple threads
-of execution within the context of a single process.  A multi-threaded 
-application using the \*(xI must explicitly initialize the toolkit 
+of execution within the context of a single process.  A multi-threaded
+application using the \*(xI must explicitly initialize the toolkit
 for mutually exclusive access by calling
 .PN XtToolkitThreadInitialize .
 
@@ -3308,7 +3308,7 @@ Boolean XtToolkitThreadInitialize()
 .LP
 .eM
 .PN XtToolkitThreadInitialize
-returns \fBTrue\fP if the \*(xI support mutually exclusive thread 
+returns \fBTrue\fP if the \*(xI support mutually exclusive thread
 access, otherwise it returns \fBFalse\fP. \fBXtToolkitThreadInitialize\fP
 must be called before
 .PN XtCreateApplicationContext ,
@@ -3317,7 +3317,7 @@ must be called before
 or
 .PN XtSetLanguageProc
 is called. \fBXtToolkitThreadInitialize\fP may be called more than once;
-however, the application writer must ensure that it is not called 
+however, the application writer must ensure that it is not called
 simultaneously by two or more threads.
 
 .NH 3
@@ -3382,7 +3382,7 @@ Boolean BeingDestroyed (widget)
 }
 .De
 .KE
-A client that wishes to atomically call two or more \*(xI functions 
+A client that wishes to atomically call two or more \*(xI functions
 must lock the application context.  For example:
 .LP
 .KS
@@ -3404,7 +3404,7 @@ Locking the Application Context
 \fB\*(SN Locking the Application Context\fP
 .XE
 .LP
-To ensure mutual exclusion of application context, display, or 
+To ensure mutual exclusion of application context, display, or
 widget internal state, use
 .PN XtAppLock.
 .LP
@@ -3419,10 +3419,10 @@ void XtAppLock(\fIapp_context\fP)
 Specifies the application context to lock.
 .LP
 .eM
-\fBXtAppLock\fP blocks until it is able to acquire the lock.  Locking the 
-application context also ensures that only the thread holding the lock 
+\fBXtAppLock\fP blocks until it is able to acquire the lock.  Locking the
+application context also ensures that only the thread holding the lock
 makes Xlib calls from within Xt.  An application that makes its own
-direct Xlib calls must either lock the application context around every 
+direct Xlib calls must either lock the application context around every
 call or enable thread locking in Xlib.
 .LP
 To unlock a locked application context, use
@@ -3458,7 +3458,7 @@ void XtProcessLock()
 .LP
 .eM
 \fBXtProcessLock\fP blocks until it is able to acquire the lock.
-Widget writers may use XtProcessLock to guarantee mutually exclusive 
+Widget writers may use XtProcessLock to guarantee mutually exclusive
 access to widget static data.
 .LP
 To unlock a locked process, use
@@ -3471,7 +3471,7 @@ void XtProcessUnlock()
 .FN
 .LP
 .eM
-To lock both an application context and the process at the same 
+To lock both an application context and the process at the same
 time, call
 .PN XtAppLock
 first and then
@@ -3489,12 +3489,12 @@ Event Management in a Multi-Threaded Environment
 .XE
 .LP
 In a nonthreaded environment an application writer could reasonably
-assume that it is safe to exit the application from a quit callback. 
-This assumption may no longer hold true in a multi-threaded environment; 
+assume that it is safe to exit the application from a quit callback.
+This assumption may no longer hold true in a multi-threaded environment;
 therefore it is desirable to provide a mechanism to terminate an
 event-processing loop without necessarily terminating its thread.
 .LP
-To indicate that the event loop should terminate after the current 
+To indicate that the event loop should terminate after the current
 event dispatch has completed, use
 .PN XtAppSetExitFlag .
 .LP
@@ -3512,7 +3512,7 @@ Specifies the application context.
 .PN XtAppMainLoop
 tests the value of the flag and will return if the flag is \fBTrue\fP.
 .LP
-Application writers who implement their own main loop may test the 
+Application writers who implement their own main loop may test the
 value of the exit flag with
 .PN XtAppGetExitFlag .
 .LP
@@ -3534,21 +3534,21 @@ may continue.  When
 returns \fBTrue\fP, the loop must terminate and return to the caller,
 which might then destroy the application context.
 .LP
-Application writers should be aware that, if a thread is blocked in 
-.PN XtAppNextEvent , 
-.PN XtAppPeekEvent , 
-or 
+Application writers should be aware that, if a thread is blocked in
+.PN XtAppNextEvent ,
+.PN XtAppPeekEvent ,
+or
 .PN XtAppProcessEvent
-and another thread in the same application context opens a new display, 
-adds an alternate input, or a timeout, any new source(s) will not 
+and another thread in the same application context opens a new display,
+adds an alternate input, or a timeout, any new source(s) will not
 normally be "noticed" by the blocked thread.  Any new sources are
 "noticed" the next time one of these functions is called.
 .LP
-The \*(xI manage access to events on a last-in, first-out basis.  If 
+The \*(xI manage access to events on a last-in, first-out basis.  If
 multiple threads in the same application context block in
-.PN XtAppNextEvent , 
-.PN XtAppPeekEvent , 
-or 
+.PN XtAppNextEvent ,
+.PN XtAppPeekEvent ,
+or
 .PN XtAppProcessEvent ,
 the last thread to call one of these functions is the first
 thread to return.

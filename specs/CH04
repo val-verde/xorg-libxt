@@ -1,7 +1,7 @@
 .\" $Xorg: CH04,v 1.3 2000/08/17 19:42:44 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -121,16 +121,16 @@ Shell Widget Definitions
 \*(SN Shell Widget Definitions
 .XE
 .LP
-Widgets negotiate their size and position with their parent widget, 
+Widgets negotiate their size and position with their parent widget,
 that is, the widget that directly contains them.
-Widgets at the top of the hierarchy do not have parent widgets. 
+Widgets at the top of the hierarchy do not have parent widgets.
 Instead, they must deal with the outside world.
-To provide for this, 
+To provide for this,
 each top-level widget is encapsulated in a special widget, called a
 shell widget.
 .LP
 Shell
-widgets, whose class is a subclass of the 
+widgets, whose class is a subclass of the
 Composite class,
 encapsulate other widgets and can allow a widget to avoid the
 geometry clipping imposed by the parent-child window relationship.
@@ -211,7 +211,7 @@ OverrrideShell,
 TransientShell,
 TopLevelShell,
 ApplicationShell,
-and 
+and
 SessionShell
 are intended for public use.
 
@@ -958,10 +958,10 @@ ShellPart Default Values
 .XE
 .LP
 The default values for fields common to all classes of public shells
-(filled in by the 
+(filled in by the
 Shell
-resource lists and the 
-Shell 
+resource lists and the
+Shell
 initialize procedures) are:
 .TS
 lw(1.75i) lw(3i).
@@ -983,19 +983,19 @@ allow_shell_resize	T{
 T}
 client_specified	(internal)
 save_under	T{
-.PN True 
+.PN True
 for
-OverrideShell 
+OverrideShell
 and
 TransientShell,
-.PN False 
+.PN False
 otherwise
 T}
 override_redirect	T{
-.PN True 
+.PN True
 for
 OverrideShell,
-.PN False 
+.PN False
 otherwise
 T}
 popup_callback	NULL
@@ -1052,8 +1052,8 @@ and
 .IN "allowShellResize" "" "@DEF@"
 The \fIallow_shell_resize\fP field controls whether the widget contained
 by the shell is allowed to try to resize itself.
-If allow_shell_resize is 
-.PN False , 
+If allow_shell_resize is
+.PN False ,
 any geometry requests made by the child will always return
 .PN XtGeometryNo
 without interacting with the window manager.
@@ -1109,10 +1109,10 @@ wait_for_wm	T{
 .PN True
 T}
 transient	T{
-.PN True 
+.PN True
 for
 TransientShell,
-.PN False 
+.PN False
 otherwise
 T}
 urgency	T{
@@ -1169,11 +1169,11 @@ confirmation of a geometry request to the window manager.
 If none comes back within that time,
 the shell assumes the window manager is not functioning properly
 and sets \fIwait_for_wm\fP to
-.PN False 
+.PN False
 (later events may reset this value).
-When \fIwait_for_wm\fP is 
+When \fIwait_for_wm\fP is
 .PN False ,
-the shell does not wait for a response, but relies on asynchronous 
+the shell does not wait for a response, but relies on asynchronous
 notification.
 If \fItransient\fP is
 .PN True ,
@@ -1184,7 +1184,7 @@ will be stored on the shell window with a value as specified below.
 The interpretation of this property is specific to the window manager
 under which the application is run; see the \fI\*(xC\fP for more details.
 .LP
-The realize and set_values procedures of WMShell store the 
+The realize and set_values procedures of WMShell store the
 .PN \s-1WM_CLIENT_LEADER\s+1
 property on the shell window.
 When \fIclient_leader\fP is not NULL and the client leader widget is
@@ -1197,7 +1197,7 @@ When \fIclient_leader\fP is NULL and the shell widget has a non-NULL parent,
 a search is made for the closest shell ancestor
 with a non-NULL \fIclient_leader\fP,
 and if none is found the shell ancestor with a NULL parent is the result.
-If the resulting widget is realized, the property is created 
+If the resulting widget is realized, the property is created
 with the value of the widget's window.
 .LP
 When the value of \fIwindow_role\fP is not NULL, the
@@ -1420,7 +1420,7 @@ The \fIsession_id\fP is an identification assigned to the session
 participant by the session manager.
 The \fIsession_id\fP will be passed to the session
 manager as the client identifier of the previous session.
-When a connection is established with the session manager, 
+When a connection is established with the session manager,
 the client id assigned by the session manager is stored
 in the \fIsession_id\fP field.
 When not NULL, the \fIsession_id\fP of the Session shell widget that
@@ -1445,7 +1445,7 @@ When a session connection is established or newly managed by the shell,
 the shell initialize and set_values methods check the values of the
 \fIrestart_command\fP, \fIclone_command\fP, and \fIprogram_path\fP
 resources.  At that time, if \fIrestart_command\fP is NULL, the value
-of the \fIargv\fP resource will be copied to \fIrestart_command\fP.  
+of the \fIargv\fP resource will be copied to \fIrestart_command\fP.
 Whether or not \fIrestart_command\fP was NULL,
 if \*Q\fR-xtsessionID\fP\*U \*Q\fR<session id>\*U does not
 already appear in the \fIrestart_command\fP, it will be added by the
@@ -1455,12 +1455,12 @@ if the \*Q\fR-xtsessionID\fP\*U argument already appears with an incorrect
 will be replaced with the current \fRsession id\fP.
 .LP
 After this, the shell initialize and set_values procedures check the
-\fIclone_command\fP.  If \fIclone_command\fP is NULL, 
+\fIclone_command\fP.  If \fIclone_command\fP is NULL,
 \fIrestart_command\fP will be copied to \fIclone_command\fP,
 except the \*Q\fR-xtsessionID\fP\*U and following argument will not be copied.
 .LP
 Finally, the shell initialize and set_values procedures check the
-\fIprogram_path\fP.  If \fIprogram_path\fP is NULL, the 
+\fIprogram_path\fP.  If \fIprogram_path\fP is NULL, the
 first element of \fIrestart_command\fP is copied to \fIprogram_path\fP.
 .LP
 The possible values of \fIrestart_style\fP are
@@ -1469,7 +1469,7 @@ The possible values of \fIrestart_style\fP are
 .PN SmRestartImmediately ,
 and
 .PN SmRestartNever .
-A resource converter is registered for this resource; 
+A resource converter is registered for this resource;
 for the strings that it recognizes,
 see Section 9.6.1.
 .LP
@@ -1501,12 +1501,12 @@ Joining a Session
 \fB\*(SN Joining a Session\fP
 .XE
 .LP
-When a Session shell is created, 
+When a Session shell is created,
 if \fIconnection\fP is NULL,
 and if \fIjoin_session\fP is
 .PN True ,
 and if \fIargv\fP or \fIrestart_command\fP is not NULL,
-and if in POSIX environments the 
+and if in POSIX environments the
 .PN \s-1SESSION_MANAGER\s+1
 environment variable is defined,
 the shell will attempt to establish a new connection with the session manager.
@@ -1521,13 +1521,13 @@ The application must ensure that only one
 Session shell manages the connection.
 .LP
 In the Session shell set_values procedure,
-if \fIjoin_session\fP changes from 
-.PN False 
-to 
+if \fIjoin_session\fP changes from
+.PN False
+to
 .PN True
 and \fIconnection\fP is NULL and when in POSIX environments the
 .PN \s-1SESSION_MANAGER\s+1
-environment variable is defined, 
+environment variable is defined,
 the shell will attempt to open a connection to the session manager.
 If \fIconnection\fP changes from NULL to non-NULL, the
 Session shell
@@ -1550,7 +1550,7 @@ from the session manager.
 When the attempt to connect fails, a warning message is issued
 and \fIconnection\fP is set to NULL.
 .LP
-While the connection is being managed, if a 
+While the connection is being managed, if a
 .PN SaveYourself ,
 .PN SaveYourselfPhase2 ,
 .PN Interact ,
@@ -1561,7 +1561,7 @@ or
 message is received from the session manager, the Session shell will
 call out to application callback procedures registered
 on the respective callback list of the Session shell and will
-send 
+send
 .PN SaveYourselfPhase2Request ,
 .PN InteractRequest ,
 .PN InteractDone ,
@@ -1572,7 +1572,7 @@ messages as appropriate.
 Initially, all of the client's session properties are undefined.
 When any of the session property resource values are defined or change,
 the Session shell initialize and set_values procedures
-will update the client's session property value by a 
+will update the client's session property value by a
 .PN SetProperties
 or a
 .PN DeleteProperties
@@ -1588,7 +1588,7 @@ Saving Application State
 .LP
 The session manager instigates an application checkpoint by sending a
 .PN SaveYourself
-request.  
+request.
 Applications are responsible for saving their state in response to the
 request.
 .LP
@@ -1636,7 +1636,7 @@ message.
 The possible values of \fIsave_type\fP are
 .PN SmSaveLocal ,
 .PN SmSaveGlobal ,
-and 
+and
 .PN SmSaveBoth ;
 these indicate the type of information to be saved.
 The possible values of \fIinteract_style\fP are
@@ -1652,9 +1652,9 @@ the checkpoint is being performed in preparation for the end of the session.
 If \fIfast\fP is
 .PN True ,
 the client should perform the checkpoint as quickly as possible.
-If \fIcancel_shutdown\fP is 
+If \fIcancel_shutdown\fP is
 .PN True ,
-a 
+a
 .PN ShutdownCancelled
 message has been received for the current save operation.  (See Section 4.4.4.)
 The \fIphase\fP is used by manager clients, such as a window manager,
@@ -1665,7 +1665,7 @@ the application to communicate with the shell.
 .LP
 Upon entry to the first application save callback procedure, the return
 fields in the token have the following initial values:
-\fIinteract_dialog_type\fP is 
+\fIinteract_dialog_type\fP is
 .PN SmDialogNormal ;
 \fIrequest_cancel\fP is
 .PN False ;
@@ -1678,32 +1678,32 @@ a noninitial value, and when the field is applicable, subsequent tokens
 passed to the application during the current save operation
 will always contain the noninitial value.
 .LP
-The purpose of the token's \fIsave_success\fP field is to 
+The purpose of the token's \fIsave_success\fP field is to
 indicate the outcome of the entire operation to the
 session manager and ultimately, to the user.
-Returning 
+Returning
 .PN False
-indicates some portion of the application state 
+indicates some portion of the application state
 could not be successfully saved.  If any token is returned
-to the shell with \fIsave_success\fP 
+to the shell with \fIsave_success\fP
 .PN False ,
 tokens subsequently received
-by the application for the current save operation will show 
-\fIsave_success\fP as 
+by the application for the current save operation will show
+\fIsave_success\fP as
 .PN False .
 When the shell sends the final status of the checkpoint to the
 session manager, it will indicate failure to save application state
-if any token was returned with \fIsave_success\fP 
+if any token was returned with \fIsave_success\fP
 .PN False .
 .LP
 Session participants that manage and save the state of other clients
 should structure their save or interact callbacks to
-set \fIrequest_next_phase\fP to 
+set \fIrequest_next_phase\fP to
 .PN True
-when phase is 1, which will cause the shell to send the 
+when phase is 1, which will cause the shell to send the
 .PN SaveYourselfPhase2Request
-when the first phase is complete.  When the 
-.PN SaveYourselfPhase2 
+when the first phase is complete.  When the
+.PN SaveYourselfPhase2
 message is received, the shell will invoke the save callbacks a
 second time with \fIphase\fP equal to 2.
 Manager clients should save the state of other clients
@@ -1729,14 +1729,14 @@ XtCheckpointToken XtSessionGetToken(\fIwidget\fP)
 Specifies the Session shell widget which manages session participation.
 .LP
 .eM
-The 
+The
 .PN XtSessionGetToken
 function will return NULL if no checkpoint operation is currently under way.
 .KE
 .sp
 .LP
 .KS
-To indicate the completion of checkpoint processing including user 
+To indicate the completion of checkpoint processing including user
 interaction, the application must signal the Session shell
 by returning all tokens.
 (See Sections 4.2.2.2 and 4.2.2.4).
@@ -1760,8 +1760,8 @@ on the interact callback list or a token that was received by a call to
 .LP
 Tokens passed as \fIcall_data\fP to save callbacks are implicitly
 returned when the save callback procedure returns.
-A save callback procedure should not call 
-.PN XtSessionReturnToken 
+A save callback procedure should not call
+.PN XtSessionReturnToken
 on the token passed in its \fIcall_data\fP.
 
 .NH 4
@@ -1777,7 +1777,7 @@ to interact.
 Applications request permission to interact with the user during the
 checkpointing operation by registering a procedure on the Session
 shell's interact callback list.  When all save callback procedures have
-returned, and each time a token that was granted by a call to 
+returned, and each time a token that was granted by a call to
 .PN XtSessionGetToken
 is returned, the Session shell examines the interact callback list.
 If interaction is permitted and the interact callback list is not empty,
@@ -1796,7 +1796,7 @@ If a token is returned with \fIinteract_dialog_type\fP containing
 .PN SmDialogError ,
 the interact request and any subsequent interact requests will be for
 an error dialog; otherwise, the request will be for a normal dialog with
-the user.  
+the user.
 .LP
 When a token is returned with \fIsave_success\fP
 .PN False
@@ -1810,7 +1810,7 @@ an error condition has occurred during the checkpoint.
 The \fIrequest_cancel\fP field is a return value for interact callbacks only.
 Upon return from a procedure on the save callback list, the value
 of the token's \fIrequest_cancel\fP field is not examined by the shell.
-This is also true of tokens received through a call to 
+This is also true of tokens received through a call to
 .PN XtSessionGetToken .
 
 .NH 4
@@ -1839,11 +1839,11 @@ in the sequence.
 .LP
 During interaction the client may request cancellation of a shutdown.
 When a token passed as \fIcall_data\fP to an interact procedure is returned,
-if \fIshutdown\fP is 
+if \fIshutdown\fP is
 .PN True
 and \fIcancel_shutdown\fP is
 .PN False ,
-\fIrequest_cancel\fP indicates whether the 
+\fIrequest_cancel\fP indicates whether the
 application requests that the pending shutdown be cancelled.
 If \fIrequest_cancel\fP is
 .PN True ,
@@ -1879,20 +1879,20 @@ message.
 The \fIcall_data\fP for these callbacks is NULL.
 .LP
 When the shell notices that a pending shutdown has been cancelled,
-the token \fIcancel_shutdown\fP field will be 
+the token \fIcancel_shutdown\fP field will be
 .PN True
 in tokens subsequently given to the application.
 .LP
-Receiving notice of a shutdown cancellation does not cancel the 
+Receiving notice of a shutdown cancellation does not cancel the
 pending execution of save callbacks or interact callbacks.
 After the cancel callbacks execute, if \fIinteract_style\fP is not
 .PN SmInteractStyleNone
 and the interact list is not empty,
 the procedures on the interact callback list will be executed
-and passed a token with \fIinteract_style\fP 
+and passed a token with \fIinteract_style\fP
 .PN SmInteractStyleNone .
 The application should not interact with the user, and the Session shell
-will not send an 
+will not send an
 .PN InteractDone
 message.
 
@@ -1957,7 +1957,7 @@ Resigning from a Session
 .LP
 When the Session shell widget is destroyed, the destroy method will
 close the connection to the session manager by sending a
-.PN ConnectionClosed 
+.PN ConnectionClosed
 protocol message and will remove the input callback
 that was watching for session protocol messages.
 .LP
@@ -1967,7 +1967,7 @@ is used to set \fIjoin_session\fP to
 .PN False ,
 the set_values method of the Session shell will close the
 connection to the session manager if one exists by sending a
-.PN ConnectionClosed 
+.PN ConnectionClosed
 message, and \fIconnection\fP will be set to NULL.
 .LP
 Applications that exit in response to user actions and that do not
@@ -1977,22 +1977,22 @@ the Session shell should set \fIjoin_session\fP to
 before exiting.
 .LP
 When
-.PN XtSetValues 
+.PN XtSetValues
 is used to set \fIconnection\fP to NULL,
 the Session shell will stop managing the connection, if one exists.
 However, that session connection will not be closed.
 .LP
 Applications that wish to ensure continuation of a session connection
-beyond the destruction of the shell should first retrieve the 
+beyond the destruction of the shell should first retrieve the
 \fIconnection\fP resource value,
-then set the \fIconnection\fP resource to NULL, 
+then set the \fIconnection\fP resource to NULL,
 and then they may safely destroy the widget without losing control
 of the session connection.
 .LP
 The error callback list will be called if an unrecoverable
 communications error occurs while the shell is managing the connection.
 The shell will close the connection, set \fIconnection\fP to NULL,
-remove the input callback, and 
+remove the input callback, and
 call the procedures registered on the error callback list.
 The \fIcall_data\fP for these callbacks is NULL.
 .bp

@@ -1,7 +1,7 @@
 .\" $Xorg: CH10,v 1.3 2000/08/17 19:42:46 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -44,7 +44,7 @@
 .ce 3
 \s+1\fBChapter 10\fP\s-1
 
-\s+1\fBTranslation Management\s-1 
+\s+1\fBTranslation Management\s-1
 .sp 2
 .nr H1 10
 .nr H2 0
@@ -53,7 +53,7 @@
 .nr H5 0
 .LP
 .XS
-Chapter 10 \(em Translation Management 
+Chapter 10 \(em Translation Management
 .XE
 Except under unusual circumstances,
 widgets do not hardwire the mapping of user events into widget behavior
@@ -63,7 +63,7 @@ that you can override.
 .LP
 The translation manager provides an interface to specify and manage the
 mapping of X event sequences into widget-supplied functionality,
-for example, calling procedure \fIAbc\fP when the \fIy\fP key 
+for example, calling procedure \fIAbc\fP when the \fIy\fP key
 is pressed.
 .LP
 The translation manager uses two kinds of tables to perform translations:
@@ -75,7 +75,7 @@ to the corresponding procedure implemented by the widget class.
 A translation table, which is in the widget class structure,
 specifies the mapping of event sequences to procedure name strings.
 .LP
-You can override the translation table in the class structure 
+You can override the translation table in the class structure
 for a specific widget instance by supplying a different translation table
 for the widget instance.  The resources
 XtNtranslations and XtNbaseTranslations are used to modify the class
@@ -231,7 +231,7 @@ Specifies the action table to register.
 Specifies the number of entries in this action table.
 .LP
 .eM
-If more than one action is registered with the same name, 
+If more than one action is registered with the same name,
 the most recently registered action is used.
 If duplicate actions exist in an action table,
 the first is used.
@@ -452,10 +452,10 @@ Event Sequences
 \fB\*(SN Event Sequences\fP
 .XE
 .LP
-An event sequence is a comma-separated list of X event descriptions 
-that describes a specific sequence of X events to map to a set of 
-program actions. 
-Each X event description consists of three parts: 
+An event sequence is a comma-separated list of X event descriptions
+that describes a specific sequence of X events to map to a set of
+program actions.
+Each X event description consists of three parts:
 The X event type, a prefix consisting of the X modifier bits, and
 an event-specific suffix.
 .LP
@@ -523,7 +523,7 @@ entry, the interval between the timestamps in each pair of repeated
 events (e.g., between two
 .PN ButtonPress
 events) must be less than the
-multi-click time in order for the translation actions to be taken. 
+multi-click time in order for the translation actions to be taken.
 .sp
 .LP
 To read the multi-click time, use
@@ -706,13 +706,13 @@ as the value.
 .sp
 .LP
 To make it possible for users to easily modify translation tables in their
-resource files, 
+resource files,
 the string-to-translation-table resource type converter
 allows the string to specify whether the table should replace,
 augment, or override any
-existing translation table in the widget. 
+existing translation table in the widget.
 To specify this,
-a pound sign (#) is given as the first character of the table 
+a pound sign (#) is given as the first character of the table
 followed by one of the keywords ``replace'', ``augment'', or
 ``override'' to indicate
 whether to replace, augment, or override the existing table.
@@ -767,7 +767,7 @@ It is often desirable to be able to bind events in one widget to actions in
 another.
 In particular,
 it is often useful to be able to invoke menu actions from the keyboard.
-The \*(xI provide a facility, called accelerators, that lets you 
+The \*(xI provide a facility, called accelerators, that lets you
 accomplish this.
 .IN "Accelerator" "" "@DEF@"
 An accelerator table is a translation table that is bound with its
@@ -809,7 +809,7 @@ Specifies the source widget that supplied the accelerators.
 Specifies the string representation of the accelerators for this widget.
 .LP
 .eM
-Accelerators can be specified in resource files, 
+Accelerators can be specified in resource files,
 and the string representation is the same as for a translation table.
 However,
 the interpretation of the
@@ -875,11 +875,11 @@ The
 function installs the \fIaccelerators\fP resource value from
 \fIsource\fP onto \fIdestination\fP
 by merging the source accelerators into the destination translations.
-If the source \fIdisplay_accelerator\fP field is non-NULL, 
+If the source \fIdisplay_accelerator\fP field is non-NULL,
 .PN XtInstallAccelerators
-calls it with the source widget and a string representation 
+calls it with the source widget and a string representation
 of the accelerator table,
-which indicates that its accelerators have been installed 
+which indicates that its accelerators have been installed
 and that it should display them appropriately.
 The string representation of the accelerator table is its
 canonical translation table representation.
@@ -907,7 +907,7 @@ from which the accelerators are to come.  \*(cI
 .eM
 The
 .PN XtInstallAllAccelerators
-function recursively descends the widget tree rooted at \fIsource\fP 
+function recursively descends the widget tree rooted at \fIsource\fP
 and installs the accelerators resource value
 of each widget encountered onto \fIdestination\fP.
 A common use is to call
@@ -1040,14 +1040,14 @@ Specifies the procedure to perform key translations.
 The
 .PN XtSetKeyTranslator
 function sets the specified procedure as the current key translator.
-The default translator is 
+The default translator is
 .PN XtTranslateKey ,
 an
 .PN XtKeyProc
 that uses the Shift, Lock, numlock, and group modifiers
 with the interpretations defined in \fI\*(xP\fP, Section 5.
-It is provided so that new translators can call it to get default 
-KeyCode-to-KeySym translations and so that the default translator 
+It is provided so that new translators can call it to get default
+KeyCode-to-KeySym translations and so that the default translator
 can be reinstalled.
 .sp
 .LP
@@ -1078,7 +1078,7 @@ Specifies the KeyCode to translate.
 .IP \fImodifiers\fP 1.1i
 Specifies the modifiers to the KeyCode.
 .IP \fImodifiers_return\fP 1.1i
-Returns a mask that indicates the modifiers actually used 
+Returns a mask that indicates the modifiers actually used
 to generate the KeySym.
 .IP \fIkeysym_return\fP 1.1i
 Returns the resulting KeySym.
@@ -1086,7 +1086,7 @@ Returns the resulting KeySym.
 .eM
 The
 .PN XtTranslateKeycode
-function passes the specified arguments 
+function passes the specified arguments
 directly to the currently registered KeyCode-to-KeySym translator.
 .sp
 .LP
@@ -1120,7 +1120,7 @@ Specifies a location into which to store the uppercase equivalent for
 the KeySym.
 .LP
 .eM
-If there is no case distinction, 
+If there is no case distinction,
 this procedure should store the KeySym into both return values.
 .sp
 .LP
@@ -1143,8 +1143,8 @@ void XtRegisterCaseConverter(\fIdisplay\fP, \fIproc\fP, \fIstart\fP, \fIstop\fP)
 .IP \fIdisplay\fP 1i
 Specifies the display from which the key events are to come.
 .IP \fIproc\fP 1i
-Specifies the 
-.PN XtCaseProc 
+Specifies the
+.PN XtCaseProc
 to do the conversions.
 .IP \fIstart\fP 1i
 Specifies the first KeySym for which this converter is valid.
@@ -1155,10 +1155,10 @@ Specifies the last KeySym for which this converter is valid.
 The
 .PN XtRegisterCaseConverter
 registers the specified case converter.
-The \fIstart\fP and \fIstop\fP arguments provide the inclusive range of KeySyms 
+The \fIstart\fP and \fIstop\fP arguments provide the inclusive range of KeySyms
 for which this converter is to be called.
 The new converter overrides any previous converters for KeySyms in that range.
-No interface exists to remove converters; 
+No interface exists to remove converters;
 you need to register an identity converter.
 When a new converter is registered,
 the \*(xI  refresh the keyboard state if necessary.
@@ -1197,7 +1197,7 @@ The
 .PN XtConvertCase
 function calls the appropriate converter and returns the results.
 A user-supplied
-.PN XtKeyProc 
+.PN XtKeyProc
 may need to use this function.
 
 .NH 2
@@ -1359,7 +1359,7 @@ Specifies the action procedure to search for in translation tables.
 .IP \fIkeyboard_mode\fP 1i
 Specify arguments to
 .PN XtGrabButton
-or 
+or
 .PN XtGrabKey .
 .LP
 .eM

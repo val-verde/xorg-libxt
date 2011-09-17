@@ -1,7 +1,7 @@
 .\" $Xorg: CH09,v 1.3 2000/08/17 19:42:46 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -70,7 +70,7 @@ Not all fields in a widget record are resources.
 Some are for bookkeeping use by the
 generic routines (like \fImanaged\fP and \fIbeing_destroyed\fP).
 Others can be for local bookkeeping,
-and still others are derived from resources 
+and still others are derived from resources
 (many graphics contexts and pixmaps).
 .LP
 Widgets typically need to obtain a large set of resources at widget
@@ -133,7 +133,7 @@ The \fIresource_name\fP field contains the name used by clients to access the fi
 in the widget.
 By convention, it starts with a lowercase letter
 and is spelled exactly like the field name,
-except all underscores (_) are deleted and the next letter is replaced by its 
+except all underscores (_) are deleted and the next letter is replaced by its
 uppercase counterpart.
 For example, the resource name for background_pixel becomes backgroundPixel.
 Resource names beginning with the two-character
@@ -153,7 +153,7 @@ The \fIresource_class\fP field contains the class string used in resource
 specification files to identify the field.
 A resource class provides two functions:
 .IP \(bu 5
-It isolates an application from different representations that widgets 
+It isolates an application from different representations that widgets
 can use for a similar resource.
 .IP \(bu 5
 It lets you specify values for several actual resources with a single name.
@@ -185,7 +185,7 @@ change all pixels to ivory or darkblue:
 .LP
 Similarly, a widget may have several font resources (such as normal and bold),
 but all fonts should have the class Font.
-Thus, changing all fonts simply requires only a single line in the 
+Thus, changing all fonts simply requires only a single line in the
 default resource file:
 .LP
 .Ds 5
@@ -384,7 +384,7 @@ you should specify it as
 .PN sizeof (\fItype\fP)
 so that the
 compiler fills in the value.
-The \fIresource_offset\fP field is the offset in bytes of the field 
+The \fIresource_offset\fP field is the offset in bytes of the field
 within the widget.
 You should use the
 .PN XtOffsetOf
@@ -398,10 +398,10 @@ to \fIresource_type\fP.
 Whenever possible,
 the default type should be identical to the resource type in order
 to minimize widget creation time.
-However, there are sometimes no values of the type that the program 
+However, there are sometimes no values of the type that the program
 can easily specify.
 In this case,
-it should be a value for which the converter is guaranteed to work (for example, 
+it should be a value for which the converter is guaranteed to work (for example,
 .PN XtDefaultForeground
 for a pixel resource).
 The \fIdefault_addr\fP field specifies the address of the default resource value.
@@ -415,14 +415,14 @@ type stored in the resource database fails,
 which can happen for various reasons (for example, a misspelled entry in a
 resource file).
 .LP
-Two special representation types 
+Two special representation types
 (XtRImmediate
 and
 XtRCallProc)
 are usable only as default resource types.
 XtRImmediate
 indicates that the value in the \fIdefault_addr\fP field is the actual value of
-the resource rather than the address of the value. 
+the resource rather than the address of the value.
 The value must be in the correct representation type for the resource,
 coerced to an
 .PN XtPointer .
@@ -458,7 +458,7 @@ Specifies the resource value descriptor to return.
 .eM
 The
 .PN XtResourceDefaultProc
-procedure should fill in the \fIvalue->addr\fP field with a pointer 
+procedure should fill in the \fIvalue->addr\fP field with a pointer
 to the resource value in its correct representation type.
 .sp
 .LP
@@ -492,7 +492,7 @@ is called before the class is initialized,
 it returns the resource list as specified in the class record.
 If it is called after the class has been initialized,
 .PN XtGetResourceList
-returns a merged resource list that includes the resources 
+returns a merged resource list that includes the resources
 for all superclasses.
 The list returned by
 .PN XtGetResourceList
@@ -574,9 +574,9 @@ static XtResource resources[] = {
 .De
 .LP
 The complete resource name for a field of a widget instance is the
-concatenation of the application shell name (from 
+concatenation of the application shell name (from
 .PN XtAppCreateShell ),
-the instance names of all the widget's parents up to the 
+the instance names of all the widget's parents up to the
 top of the widget tree,
 the instance name of the widget itself,
 and the resource name of the specified field of the widget.
@@ -584,7 +584,7 @@ Similarly,
 the full resource class of a field of a widget instance is the
 concatenation of the application class (from
 .PN XtAppCreateShell ),
-the widget class names of all the widget's parents up to the 
+the widget class names of all the widget's parents up to the
 top of the widget tree,
 the widget class name of the widget itself,
 and the resource class of the specified field of the widget.
@@ -660,7 +660,7 @@ Superclass-to-Subclass Chaining of Resource Lists
 .IN "Inheritance"
 .IN "Superclass Chaining"
 .IN "Chaining"
-The 
+The
 .PN XtCreateWidget
 function gets resources as a superclass-to-subclass chained operation.
 That is, the resources specified in the
@@ -676,7 +676,7 @@ In general, if a widget resource field is declared in a superclass,
 that field is included in the superclass's resource list and need not be
 included in the subclass's resource list.
 For example, the
-Core 
+Core
 class contains a resource entry for \fIbackground_pixel\fP.
 Consequently,
 the implementation of Label need not also have a resource entry
@@ -686,8 +686,8 @@ by specifying a resource entry for that field in its own resource list,
 can override the resource entry for any field declared in a superclass.
 This is most often done to override the defaults provided in the
 superclass with new ones.
-At class initialization time, 
-resource lists for that class are scanned from the superclass down 
+At class initialization time,
+resource lists for that class are scanned from the superclass down
 to the class to look for resources with the same offset.
 A matching resource in a subclass will be reordered to override
 the superclass entry.
@@ -899,7 +899,7 @@ If \fIargs\fP is NULL,
 However, if \fInum_args\fP is zero,
 the argument list is not referenced.
 The portable way to specify application resources is to declare them
-as members of a structure and pass the address of the structure 
+as members of a structure and pass the address of the structure
 as the \fIbase\fP argument.
 .LP
 .PN XtGetApplicationResources
@@ -981,14 +981,14 @@ Predefined Resource Converters
 \*(SN Predefined Resource Converters
 .XE
 .LP
-The \*(xI define all the representations used in the 
+The \*(xI define all the representations used in the
 Object,
 RectObj,
-Core, 
-Composite, 
-Constraint, 
-and 
-Shell 
+Core,
+Composite,
+Constraint,
+and
+Shell
 widget classes.
 The \*(xI register the following resource converters that accept
 input values of representation type
@@ -1136,7 +1136,7 @@ and
 .PN XtDefaultBackground .
 .IN "XtDefaultBackground" "" "@DEF@"
 .IN "XtDefaultForeground" "" "@DEF@"
-They evaluate to the black and white pixel values of the widget's screen, 
+They evaluate to the black and white pixel values of the widget's screen,
 respectively.
 .IN "Resources" "reverseVideo"
 If the application resource reverseVideo is
@@ -1225,8 +1225,8 @@ as defined in \fI\*(xL\fP:
 .PN CenterGravity ,
 .PN EastGravity ,
 .PN SouthWestGravity ,
-.PN SouthGravity , 
-.PN SouthEastGravity , 
+.PN SouthGravity ,
+.PN SouthEastGravity ,
 and
 .PN StaticGravity .
 Alphabetic case is not significant in the conversion.
@@ -1243,7 +1243,7 @@ The String-to-DirectoryString conversion recognizes the
 string ``XtCurrentDirectory'' and returns the result of a call
 to the operating system to get the current directory.
 .LP
-The String-to-RestartStyle conversion accepts the values 
+The String-to-RestartStyle conversion accepts the values
 .PN RestartIfRunning ,
 .PN RestartAnyway ,
 .PN RestartImmediately ,
@@ -1422,7 +1422,7 @@ field gives the total number of significant bytes in the data.
 For values of type
 .PN String ,
 \fIaddr\fP is the address of the first character and \fIsize\fP
-includes the NULL-terminating byte. 
+includes the NULL-terminating byte.
 .LP
 A resource converter procedure pointer is of type
 .PN XtTypeConverter .
@@ -1592,7 +1592,7 @@ static Boolean CvtStringToPixel(dpy, args, num_args, fromVal, toVal, converter_d
 	}
 
 
-	status = XAllocNamedColor(DisplayOfScreen(screen), colormap, (char*)fromVal->addr, 
+	status = XAllocNamedColor(DisplayOfScreen(screen), colormap, (char*)fromVal->addr,
 				               &screenColor, &exactColor);
 
 	if (status == 0) {
@@ -1779,7 +1779,7 @@ upon the same source value and conversion arguments.
 .LP
 .PN XtCacheByDisplay
 .IN "XtCacheByDisplay" "" "@DEF@"
-.IP  
+.IP
 Specifies that the results of a previous conversion
 should be used as for
 .PN XtCacheAll
@@ -1807,7 +1807,7 @@ converted value will be removed from the conversion cache.
 
 .LP
 To register a type converter for all application contexts in a
-process, use 
+process, use
 .PN XtSetTypeConverter ,
 and to register a type converter in a single application context, use
 .PN XtAppSetTypeConverter .
@@ -2021,7 +2021,7 @@ which the conversion argument is associated.  The \*(xI do not
 guarantee to copy this storage but do guarantee not to reference it if
 the resource is removed from the conversion cache.
 .LP
-The following example illustrates how to register the CvtStringToPixel 
+The following example illustrates how to register the CvtStringToPixel
 routine given earlier:
 .LP
 .Ds
@@ -2181,7 +2181,7 @@ or no value was found in the conversion cache,
 .PN XtCallConverter
 calls the converter, and if it was not registered with cache type
 .PN XtCacheNone ,
-enters the result in the cache.  
+enters the result in the cache.
 .PN XtCallConverter
 then returns what the converter returned.
 .LP
@@ -2495,11 +2495,11 @@ It starts with the constraint resources specified for
 .PN constraintWidgetClass
 and proceeds down the subclass chain to the parent's constraint resources.
 If the argument list contains a resource name that is not found in any of the
-resource lists searched, 
+resource lists searched,
 the value at the corresponding address is not modified.
 .IN "get_values_hook procedure"
 If any get_values_hook procedures in the
-object's class or superclass records are non-NULL, 
+object's class or superclass records are non-NULL,
 they are called in superclass-to-subclass order after
 all the resource values have been fetched by
 .PN XtGetValues .
@@ -2730,13 +2730,13 @@ Specifies the number of entries in the argument list.
 .eM
 The
 .PN XtSetValues
-function starts with the resources specified for the 
+function starts with the resources specified for the
 Object
 class fields and proceeds down the subclass chain to the object.
 At each stage, it replaces the \fIobject\fP resource fields with any values
 specified in the argument list.
 .PN XtSetValues
-then calls the set_values procedures for the object in superclass-to-subclass 
+then calls the set_values procedures for the object in superclass-to-subclass
 order.
 .IN "set_values_hook procedure"
 If the object has any non-NULL \fIset_values_hook\fP fields,
@@ -2793,7 +2793,7 @@ which determines what should be done.
 then repeats this process,
 deciding once more whether the geometry manager should be called.
 .LP
-Finally, if any of the set_values procedures returned 
+Finally, if any of the set_values procedures returned
 .PN True ,
 and the widget is realized,
 .PN XtSetValues
@@ -2937,7 +2937,7 @@ never necessary to examine the contents of \fIargs\fP.
 Finally, the set_values procedure must return a Boolean that indicates whether
 the widget needs to be redisplayed.
 Note that a change in the geometry fields alone does not require
-the set_values procedure to return 
+the set_values procedure to return
 .PN True ;
 the X server will eventually generate an
 .PN Expose
@@ -2946,7 +2946,7 @@ After calling all the set_values procedures,
 .PN XtSetValues
 forces a redisplay by calling
 .PN XClearArea
-if any of the set_values procedures returned 
+if any of the set_values procedures returned
 .PN True .
 Therefore, a set_values procedure should not try to do its own redisplaying.
 .LP
@@ -3007,8 +3007,8 @@ manager with
 .LP
 .eM
 Most classes inherit the set_values_almost procedure from their superclass by
-specifying 
-.PN XtInheritSetValuesAlmost 
+specifying
+.PN XtInheritSetValuesAlmost
 in the class initialization.
 The
 set_values_almost procedure in
@@ -3035,7 +3035,7 @@ was made to the parent.  The \fIreply\fP parameter contains
 \fIreply->request_mode\fP equal to zero if the parent returned
 .PN XtGeometryNo
 and contains the parent's compromise geometry otherwise.  The
-set_values_almost procedure takes the original geometry and the 
+set_values_almost procedure takes the original geometry and the
 compromise geometry and determines if the compromise is
 acceptable or whether
 to try a different compromise.
@@ -3128,7 +3128,7 @@ a widget instance using varargs lists, use
 .LP
 .IN "XtVaSetSubvalues" "" "@DEF@"
 .sM
-.FD 0 
+.FD 0
 void XtVaSetSubvalues(\fIbase\fP, \fIresources\fP, \fInum_resources\fP, ...)
 .br
       XtPointer \fIbase\fP;

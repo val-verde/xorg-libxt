@@ -502,7 +502,7 @@ _XtVaToTypedArgList(
 	    args[count].size = va_arg(var, int);
 	    ++count;
 	} else if (strcmp(attr, XtVaNestedList) == 0) {
-   	    count += NestedArgtoTypedArg(&args[count], 
+	    count += NestedArgtoTypedArg(&args[count],
 			va_arg(var, XtTypedArgList));
 	} else {
 	    args[count].name = attr;

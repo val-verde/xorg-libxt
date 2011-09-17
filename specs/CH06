@@ -1,7 +1,7 @@
 .\" $Xorg: CH06,v 1.3 2000/08/17 19:42:45 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -53,7 +53,7 @@
 .nr H5 0
 .LP
 .XS
-Chapter 6 \(em Geometry Management 
+Chapter 6 \(em Geometry Management
 .XE
 .LP
 .IN "geometry_manager procedure"
@@ -67,7 +67,7 @@ and, possibly, preferred locations.
 .LP
 To resolve physical layout conflicts between sibling widgets and between
 a widget and its parent, the \*(xI provide the geometry management mechanism.
-Almost all 
+Almost all
 composite
 widgets have a geometry manager specified in the \fIgeometry_manager\fP field
 in the widget class record that is responsible for the size, position, and
@@ -97,11 +97,11 @@ An application or other client code initiates a geometry change by calling
 .PN XtSetValues
 on the appropriate geometry fields,
 thereby giving the widget the opportunity to modify or reject the client
-request before it gets propagated to the parent and the opportunity 
+request before it gets propagated to the parent and the opportunity
 to respond appropriately to the parent's reply.
 .LP
-When a widget that needs to change its size, position, border width, 
-or stacking depth asks its parent's geometry manager to make the desired 
+When a widget that needs to change its size, position, border width,
+or stacking depth asks its parent's geometry manager to make the desired
 changes,
 the geometry manager can allow the request, disallow the request, or
 suggest a compromise.
@@ -121,8 +121,8 @@ It can simultaneously move and resize a child with a single call to
 .LP
 Often, geometry managers find that they can satisfy a request only if
 they can reconfigure a widget that they are not in control of; in particular,
-the 
-composite 
+the
+composite
 widget may want to change its own size.
 In this case,
 the geometry manager makes a request to its parent's geometry manager.
@@ -213,11 +213,11 @@ it makes the changes and returns
 .PN XtGeometryYes .
 .IP \(bu 5
 If the parent's class is not a subclass of
-.PN compositeWidgetClass 
+.PN compositeWidgetClass
 or the parent's \fIgeometry_manager\fP field is NULL,
 it issues an error.
 .IP \(bu 5
-If the widget's \fIbeing_destroyed\fP field is 
+If the widget's \fIbeing_destroyed\fP field is
 .PN True ,
 it returns
 .PN XtGeometryNo .
@@ -227,7 +227,7 @@ If the widget \fIx\fP, \fIy\fP, \fIwidth\fP, \fIheight\fP, and
 all equal to the requested values,
 it returns
 .PN XtGeometryYes ;
-otherwise, it calls the parent's geometry_manager procedure 
+otherwise, it calls the parent's geometry_manager procedure
 with the given parameters.
 .IP \(bu 5
 If the parent's geometry manager returns
@@ -237,9 +237,9 @@ and if
 is not set in \fIrequest->request_mode\fP
 and if the widget is realized,
 .PN XtMakeGeometryRequest
-calls the 
+calls the
 .PN XConfigureWindow
-Xlib function to reconfigure the widget's window (set its size, location, 
+Xlib function to reconfigure the widget's window (set its size, location,
 and stacking order as appropriate).
 .IP \(bu 5
 If the geometry manager returns
@@ -247,7 +247,7 @@ If the geometry manager returns
 the change has been approved and actually has been done.
 In this case,
 .PN XtMakeGeometryRequest
-does no configuring and returns 
+does no configuring and returns
 .PN XtGeometryYes .
 .PN XtMakeGeometryRequest
 never returns
@@ -360,8 +360,8 @@ as to what would happen if this geometry request were made
 and that no widgets should actually be changed.
 .LP
 .PN XtMakeGeometryRequest ,
-like the 
-.PN XConfigureWindow 
+like the
+.PN XConfigureWindow
 Xlib function, uses \fIrequest_mode\fP to determine which fields in the
 .PN XtWidgetGeometry
 structure the caller wants to specify.
@@ -443,7 +443,7 @@ Resize Requests
 .XE
 .LP
 To make a simple resize request from a widget, you can use
-.PN XtMakeResizeRequest 
+.PN XtMakeResizeRequest
 as an alternative to
 .PN XtMakeGeometryRequest .
 .LP
@@ -495,7 +495,7 @@ the widget should immediately call
 again and request that the compromise width and height be applied.
 If the widget is not interested in
 .PN XtGeometryAlmost
-replies, 
+replies,
 it can pass NULL for \fIwidth_return\fP and \fIheight_return\fP.
 
 .NH 2
@@ -508,17 +508,17 @@ Sometimes a geometry manager cannot respond to
 a geometry request from a child without first making a geometry request
 to the widget's own parent (the original requestor's grandparent).
 If the request to the grandparent would allow the parent to satisfy the
-original request, 
-the geometry manager can make the intermediate geometry request 
+original request,
+the geometry manager can make the intermediate geometry request
 as if it were the originator.
 On the other hand,
 if the geometry manager already has determined that the original request
 cannot be completely satisfied (for example, if it always denies
 position changes),
-it needs to tell the grandparent to respond to the intermediate request 
+it needs to tell the grandparent to respond to the intermediate request
 without actually changing the geometry
 because it does not know if the child will accept the compromise.
-To accomplish this, the geometry manager uses 
+To accomplish this, the geometry manager uses
 .PN XtCWQueryOnly
 in the intermediate request.
 .LP
@@ -538,17 +538,17 @@ the grandparent when
 .PN XtCWQueryOnly
 is not used.
 If the geometry manager is still able to satisfy the original request,
-it may immediately accept the grandparent's compromise 
+it may immediately accept the grandparent's compromise
 and then act on the child's request.
-If the grandparent's compromise geometry is insufficient to allow 
+If the grandparent's compromise geometry is insufficient to allow
 the child's request and if the geometry manager is willing to offer
-a different compromise to the child, 
-the grandparent's compromise should not be accepted until the child 
+a different compromise to the child,
+the grandparent's compromise should not be accepted until the child
 has accepted the new compromise.
 .LP
 Note that a compromise geometry returned with
 .PN XtGeometryAlmost
-is guaranteed only for the next call to the same widget; 
+is guaranteed only for the next call to the same widget;
 therefore, a cache of size 1 is sufficient.
 
 .NH 2
@@ -591,9 +591,9 @@ so the geometry manager can change this field as it wishes.
 A bit set to 1 means that the child wants that geometry element set
 to the value in the corresponding field.
 .LP
-If the geometry manager can satisfy all changes requested 
-and if 
-.PN XtCWQueryOnly 
+If the geometry manager can satisfy all changes requested
+and if
+.PN XtCWQueryOnly
 is not specified,
 it updates the widget's \fIx\fP, \fIy\fP, \fIwidth\fP, \fIheight\fP,
 and \fIborder_width\fP fields
@@ -610,7 +610,7 @@ it using
 .PN XtConfigureWidget
 or
 .PN XtResizeWidget
-as part of its layout process, unless 
+as part of its layout process, unless
 .PN XtCWQueryOnly
 is specified.
 If it does this,
@@ -699,7 +699,7 @@ the user's window manager may affect the final outcome.
 .LP
 To return
 .PN XtGeometryYes ,
-the geometry manager frequently rearranges the position of other managed 
+the geometry manager frequently rearranges the position of other managed
 children by calling
 .PN XtMoveWidget .
 However, a few geometry managers may sometimes change the
@@ -794,7 +794,7 @@ Specify the new widget size.
 The
 .PN XtResizeWidget
 function returns immediately if the specified geometry fields
-are the same as the old values. 
+are the same as the old values.
 Otherwise,
 .PN XtResizeWidget
 writes the new \fIwidth\fP, \fIheight\fP, and \fIborder_width\fP values into
@@ -853,7 +853,7 @@ are all equal to the current values.
 Otherwise,
 .PN XtConfigureWidget
 writes the new \fIx\fP, \fIy\fP, \fIwidth\fP, \fIheight\fP,
-and \fIborder_width\fP values 
+and \fIborder_width\fP values
 into the object and, if the object is a widget and is realized, makes an Xlib
 .PN XConfigureWindow
 call on the widget's window.
@@ -881,10 +881,10 @@ Specifies the widget.  \*(cI
 .eM
 The
 .PN XtResizeWindow
-function calls the 
+function calls the
 .PN XConfigureWindow
 Xlib function to make the window of the specified widget match its width,
-height, and border width. 
+height, and border width.
 This request is done unconditionally because there is no
 inexpensive way to tell if these
 values match the current values.
@@ -905,7 +905,7 @@ Some parents may be willing to adjust their layouts to accommodate the
 preferred geometries of their children.
 They can use
 .PN XtQueryGeometry
-to obtain the preferred geometry 
+to obtain the preferred geometry
 and, as they see fit, can use or ignore any portion of the response.
 .sp
 .LP
@@ -1050,7 +1050,7 @@ not needing to modify its layout plans.
 A return of
 .PN XtGeometryAlmost
 means either that both the parent and the child expressed interest
-in at least one common field and the child's preference does not match 
+in at least one common field and the child's preference does not match
 the parent's intentions or that the child expressed interest in a field that
 the parent might need to consider.
 A return value of

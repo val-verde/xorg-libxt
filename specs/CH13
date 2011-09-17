@@ -1,7 +1,7 @@
 .\" $Xorg: CH13,v 1.3 2000/08/17 19:42:47 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -108,7 +108,7 @@ Release 3 to Release 4 Compatibility
 At the data structure level, Release 4 retains binary compatibility
 with Release 3 (the first X Consortium standard release) for all data
 structures except
-.PN WMShellPart, 
+.PN WMShellPart,
 .PN TopLevelShellPart ,
 and
 .PN TransientShellPart .
@@ -217,7 +217,7 @@ and one field to
 In deference to some
 widget libraries that had developed their own additional conventions
 to provide binary compatibility, these five new fields were added at
-the end of the respective data structures. 
+the end of the respective data structures.
 .LP
 To provide more convenience for TransientShells, a field was added
 to the previously empty
@@ -517,9 +517,9 @@ Release 5 to Release 6 Compatibility
 .XE
 .LP
 At the data structure level, Release 6 retains binary compatibility
-with Release 5 for all data structures except 
+with Release 5 for all data structures except
 .PN WMShellPart .
-Three resources were added to the specification.  
+Three resources were added to the specification.
 The known implementations had unused space in the data structure,
 therefore on some architectures and implementations,
 the size of the part structure will not have changed as a result of this.
@@ -531,19 +531,19 @@ Widget Internals
 .XE
 .LP
 Two new widget methods for instance allocation and deallocation were added
-to the Object class.  These new methods 
+to the Object class.  These new methods
 allow widgets to be treated as C++ objects in the C++ environment
-when an appropriate allocation method is specified or inherited 
+when an appropriate allocation method is specified or inherited
 by the widget class.
 .LP
 The textual descriptions of the processes of widget creation and
 widget destruction have been edited to provide clarification to widget
-writers.  Widgets writers may have reason to rely on the specific order of 
+writers.  Widgets writers may have reason to rely on the specific order of
 the stages of widget creation and destruction; with that motivation,
 the specification now more exactly describes the process.
 .LP
 As a convenience, an interface to locate a widget class extension
-record on a linked list, 
+record on a linked list,
 .PN XtGetClassExtension ,
 has been added.
 .LP
@@ -578,7 +578,7 @@ General Application Development
 is a new convenience procedure to initialize the toolkit, create an
 application context, open an X display connection, and create the
 root of the widget instance tree.  It is identical to the interface
-it replaces, 
+it replaces,
 .PN XtAppInitialize ,
 in all respects except that it takes an additional argument specifying
 the widget class of the root shell to create.
@@ -607,16 +607,16 @@ in the addition of three fields to the specification of
 These are \fIurgency\fP, \fIclient_leader\fP, and \fIwindow_role\fP.
 .LP
 The adoption of the \fIX Session Management Protocol\fP as an X Consortium
-standard has resulted in the addition of a new shell widget, 
+standard has resulted in the addition of a new shell widget,
 .PN SessionShell ,
 and an accompanying subclass verification interface,
 .PN XtIsSessionShell .
 This widget provides support for communication between an application
 and a session manager, as well as a window manager.
-In order to preserve compatibility with existing subclasses of 
+In order to preserve compatibility with existing subclasses of
 .PN ApplicationShell ,
-the 
-.PN ApplicationShell 
+the
+.PN ApplicationShell
 was subclassed to create the new widget class.
 The session protocol requires a modal response to certain checkpointing
 operations by participating applications.  The
@@ -625,25 +625,25 @@ structures
 the application's notification of and responses to messages from the session
 manager by use of various callback lists and by use of the new interfaces
 .PN XtSessionGetToken
-and 
+and
 .PN XtSessionReturnToken .
 There is also a new command line argument, -xtsessionID, which facilitates
 the session manager in restarting applications based on the \*(xI.
 .LP
 The resource name and class strings defined by the \*(xI shell
-widgets in 
-.Pn < X11/Shell.h > 
+widgets in
+.Pn < X11/Shell.h >
 are now listed in Appendix E.  The addition of a new symbol
-for the 
+for the
 .PN WMShell
 \fIwait_for_wm\fP resource was made to bring the external symbol
 and the string it represents into agreement.  The actual resource name
-string in 
+string in
 .PN WMShell
 has not changed.
-The resource representation type of the XtNwinGravity resource of the 
+The resource representation type of the XtNwinGravity resource of the
 .PN WMShell
-was changed to XtRGravity in order to register a type 
+was changed to XtRGravity in order to register a type
 converter so that window gravity resource values could be specified by name.
 
 .NH 3
@@ -669,7 +669,7 @@ The new event handler registration interfaces are
 and
 .PN XtRemoveEventTypeHandler .
 Since the mechanism to indicate selection of extension events is specific
-to the extension being used, the \*(xI introduces 
+to the extension being used, the \*(xI introduces
 .PN XtRegisterExtensionSelector ,
 which allows the application to select for the events of interest.
 In order to change the dispatching algorithm to accommodate extension events
@@ -677,7 +677,7 @@ as well as core X protocol events,
 the \*(xI event dispatcher may now be replaced or enveloped
 by the application with
 .PN XtSetEventDispatcher .
-The dispatcher may wish to call 
+The dispatcher may wish to call
 .PN XtGetKeyboardFocusWidget
 to determine the widget with the current \*(xI keyboard focus.
 A dispatcher, after determining the destination widget, may use
@@ -687,9 +687,9 @@ by a specific widget.
 .LP
 To permit the dispatching of events
 for nonwidget drawables, such as pixmaps that are not associated
-with a widget's window, 
+with a widget's window,
 .PN XtRegisterDrawable
-and 
+and
 .PN XtUnregisterDrawable
 have been added to the library.  A related update was made to
 the description of
@@ -697,21 +697,21 @@ the description of
 .LP
 The library is now thread-safe, allowing one thread at a time to
 enter the library and protecting global data as necessary from concurrent use.
-Threaded toolkit applications are supported by the 
+Threaded toolkit applications are supported by the
 new interfaces
 .PN XtToolkitThreadInitialize ,
 .PN XtAppLock ,
 .PN XtAppUnlock ,
 .PN XtAppSetExitFlag ,
-and 
+and
 .PN XtAppGetExitFlag .
-Widget writers may also use 
+Widget writers may also use
 .PN XtProcessLock
-and 
+and
 .PN XtProcessUnlock .
 .LP
 Safe handling of POSIX signals and other asynchronous notifications
-is now provided by use of 
+is now provided by use of
 .PN XtAppAddSignal ,
 .PN XtNoticeSignal ,
 and
@@ -720,7 +720,7 @@ and
 The application can receive notification of an impending block
 in the \*(xI event manager by registering interest through
 .PN XtAppAddBlockHook
-and 
+and
 .PN XtRemoveBlockHook .
 .LP
 .PN XtLastEventProcessed
@@ -753,7 +753,7 @@ If NumLock is on and the second keysym is a keypad keysym
 (a standard keysym named with a ``KP'' prefix or a
 vendor-specific keysym in the hexadecimal range 0x11000000 to 0x1100FFFF),
 then the default key translator will
-use the first keysym if Shift and/or ShiftLock is on and will 
+use the first keysym if Shift and/or ShiftLock is on and will
 use the second keysym if neither is on.  Otherwise, it will
 ignore NumLock and apply the normal protocol semantics.
 
@@ -771,17 +771,17 @@ is used by the requestor to specify the target parameters and
 .PN XtGetSelectionParameters
 is used by the selection owner to retrieve the parameters.
 When a parameterized target is specified in the context of a bundled
-request for multiple targets, 
+request for multiple targets,
 .PN XtCreateSelectionRequest ,
 .PN XtCancelSelectionRequest ,
-and 
-.PN XtSendSelectionRequest 
+and
+.PN XtSendSelectionRequest
 are used to envelop the assembly of the request.
-When the parameters themselves are the names of properties, 
+When the parameters themselves are the names of properties,
 the \*(xI provides support for the economical use of property atom names;
-see 
+see
 .PN XtReservePropertyAtom
-and 
+and
 .PN XtReleasePropertyAtom .
 
 .NH 3
@@ -799,7 +799,7 @@ in groups or classes of toolkit activity and to be notified of the
 type and details of the activity as it occurs.  The new interfaces
 related to this effort are
 .PN XtHooksOfDisplay ,
-which returns the hook registration widget, and 
+which returns the hook registration widget, and
 .PN XtGetDisplays ,
 which returns a list of the X displays associated with an application context.
 .bp

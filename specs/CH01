@@ -1,7 +1,7 @@
 .\" $Xorg: CH01,v 1.3 2000/08/17 19:42:42 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -67,7 +67,7 @@ Intrinsics
 \fB\*(SN Intrinsics\fP
 .XE
 .LP
-The \*(xI provide the base mechanism necessary to build 
+The \*(xI provide the base mechanism necessary to build
 a wide variety of interoperating widget sets and application environments.
 The Intrinsics are a layer on top of Xlib, the
 C Library X Interface.  They extend the
@@ -145,7 +145,7 @@ each widget class that they are to use (for example,
 .Pn < X11/Xaw/Label.h >
 or
 .Pn < X11/Xaw/Scrollbar.h >).
-On a POSIX-based system, 
+On a POSIX-based system,
 the \*(xI object library file is named
 .PN libXt.a
 and is usually referenced as \-lXt when linking the application.
@@ -222,7 +222,7 @@ A data structure which contains instance-specific values.
 A class structure which contains information that is applicable to
 all widgets of that class.
 .LP
-Much of the input/output of a widget (for example, fonts, colors, sizes, 
+Much of the input/output of a widget (for example, fonts, colors, sizes,
 or border widths) is customizable by users.
 .LP
 This chapter discusses the base widget classes,
@@ -236,15 +236,15 @@ Core Widgets
 .XE
 .LP
 .IN "Core" "" "@DEF@"
-The 
-Core 
+The
+Core
 widget class contains the definitions of fields common to all widgets.
 All widgets classes are subclasses of the
 Core class,
-which is defined by the 
+which is defined by the
 .PN CoreClassPart
-and 
-.PN CorePart 
+and
+.PN CorePart
 structures.
 
 .NH 4
@@ -545,7 +545,7 @@ logical AND of parent's \fIsensitive\fP and
 T}
 accelerators	NULL
 T{
-border_pixel	
+border_pixel
 T}	T{
 .PN XtDefaultForeground
 T}
@@ -608,14 +608,14 @@ Composite Widgets
 .XE
 .LP
 .IN "Composite" "" "@DEF@"
-The Composite 
-widget class is a subclass of the 
-Core 
+The Composite
+widget class is a subclass of the
+Core
 widget class (see Chapter 3).
 Composite widgets are intended to be containers for other widgets.
 The additional data used by composite widgets are defined by the
 .PN CompositeClassPart
-and 
+and
 .PN CompositePart
 structures.
 
@@ -625,8 +625,8 @@ CompositeClassPart Structure
 \*(SN CompositeClassPart Structure
 .XE
 .LP
-In addition to the 
-Core 
+In addition to the
+Core
 class fields,
 widgets of the Composite class have the following class fields.
 .LP
@@ -670,7 +670,7 @@ typedef struct {
 .De
 .LP
 .eM
-Composite 
+Composite
 classes have the Composite class fields immediately following the
 Core class fields.
 .LP
@@ -765,7 +765,7 @@ typedef struct {
 .De
 .LP
 .eM
-Composite 
+Composite
 widgets have the Composite instance fields immediately following the Core
 instance fields.
 .LP
@@ -828,8 +828,8 @@ CompositePart Default Values
 .XE
 .LP
 The default values for the Composite fields,
-which are filled in from the 
-Composite 
+which are filled in from the
+Composite
 resource list and by the
 Composite
 initialize procedure, are
@@ -871,8 +871,8 @@ Constraint Widgets
 .XE
 .LP
 .IN "Constraint" "" "@DEF@"
-The Constraint 
-widget class is a subclass of the 
+The Constraint
+widget class is a subclass of the
 Composite
 widget class (see Section 3.6).  Constraint
 widgets maintain additional state
@@ -893,7 +893,7 @@ ConstraintClassPart Structure
 In addition to the
 Core
 and
-Composite 
+Composite
 class fields,
 widgets of the Constraint class
 have the following class fields.
@@ -938,7 +938,7 @@ typedef struct {
 .De
 .LP
 .eM
-Constraint 
+Constraint
 classes have the Constraint class fields immediately following the
 Composite class fields.
 .LP
@@ -1033,7 +1033,7 @@ typedef struct {
 .De
 .LP
 .eM
-Constraint 
+Constraint
 widgets have the Constraint instance fields immediately following the
 Composite instance fields.
 .LP
@@ -1184,17 +1184,17 @@ Widget Classing
 .IN "widget_class" "" "@DEF@"
 The \fIwidget_class\fP field of a widget points to its widget class structure,
 which contains information that is constant across all widgets of that class.
-As a consequence, 
+As a consequence,
 widgets usually do not implement directly callable procedures;
 rather, they implement procedures, called methods, that are available through
 their widget class structure.
-These methods are invoked by generic procedures that envelop common actions 
+These methods are invoked by generic procedures that envelop common actions
 around the methods implemented by the widget class.
 Such procedures are applicable to all widgets
 of that class and also to widgets whose classes are subclasses of that class.
 .LP
-All widget classes are a subclass of 
-Core 
+All widget classes are a subclass of
+Core
 and can be subclassed further.
 Subclassing reduces the amount of code and declarations
 necessary to make a
@@ -1212,7 +1212,7 @@ superclass,
 you should consider whether you have chosen the most
 appropriate superclass.
 .LP
-To make good use of subclassing, 
+To make good use of subclassing,
 widget declarations and naming conventions are highly stylized.
 A widget consists of three files:
 .IP \(bu 5
@@ -1253,12 +1253,12 @@ For example,
 the \fIbackground_pixmap\fP field has the corresponding identifier
 XtNbackgroundPixmap,
 which is defined as the string ``backgroundPixmap''.
-Many predefined names are listed in 
+Many predefined names are listed in
 .Pn < X11/StringDefs.h >.
 Before you invent a new name,
 you should make sure there is not already a name that you can use.
 .IP \(bu 5
-A resource class string starts with a capital letter 
+A resource class string starts with a capital letter
 and uses capitalization for compound names (for example,``BorderWidth'').
 Each resource class string should have a symbolic identifier prefixed with
 ``XtC''
@@ -1385,9 +1385,9 @@ To accommodate operating systems with file name length restrictions,
 the name of the public .h file is the first ten characters of the
 widget class.
 For example,
-the public .h file for the 
-Constraint 
-widget class is 
+the public .h file for the
+Constraint
+widget class is
 .PN Constraint.h .
 
 .NH 3
@@ -1521,9 +1521,9 @@ To accommodate operating systems with file name length restrictions,
 the name of the private .h file is the first nine characters of the
 widget class followed by a capital P.
 For example,
-the private .h file for the 
-Constraint 
-widget class is 
+the private .h file for the
+Constraint
+widget class is
 .PN ConstrainP.h .
 
 .NH 3
@@ -1540,9 +1540,9 @@ Class information (for example, \fIsuperclass\fP, \fIclass_name\fP,
 \fIwidget_size\fP,
 \fIclass_initialize\fP, and \fIclass_inited\fP).
 .IP \(bu 5
-Data constants (for example, \fIresources\fP and \fInum_resources\fP, 
+Data constants (for example, \fIresources\fP and \fInum_resources\fP,
 \fIactions\fP and \fInum_actions\fP, \fIvisible_interest\fP,
-\fIcompress_motion\fP, 
+\fIcompress_motion\fP,
 \fIcompress_exposure\fP, and \fIversion\fP).
 .IP \(bu 5
 Widget operations (for example, \fIinitialize\fP, \fIrealize\fP, \fIdestroy\fP,
@@ -1586,7 +1586,7 @@ Widget writers must set it to the
 implementation-defined symbolic value
 .PN XtVersion
 in the widget class structure initialization.
-Those widget writers who believe that their widget binaries are compatible 
+Those widget writers who believe that their widget binaries are compatible
 with other implementations of the \*(xI can put the special value
 .PN XtVersionDontCheck
 in the \fIversion\fP field to disable version checking for those widgets.
@@ -1600,11 +1600,11 @@ allows the \*(xI implementation to recognize widget binaries
 that were compiled with older implementations.
 .LP
 The \fIextension\fP field is for future upward compatibility.
-If the widget programmer adds fields to class parts, 
+If the widget programmer adds fields to class parts,
 all subclass structure layouts change,
-requiring complete recompilation. 
-To allow clients to avoid recompilation, 
-an extension field at the end of each class part can point to a record 
+requiring complete recompilation.
+To allow clients to avoid recompilation,
+an extension field at the end of each class part can point to a record
 that contains any additional class information required.
 .LP
 All other fields are described in their respective sections.
@@ -1780,8 +1780,8 @@ Specifies the widget class for which to test. \*(oC
 .eM
 The
 .PN XtIsSubclass
-function returns 
-.PN True 
+function returns
+.PN True
 if the class of the specified widget is equal to
 or is a subclass of the specified class.
 The widget's class can be any number of subclasses down the chain
@@ -1879,12 +1879,12 @@ constructs an error message from the supplied message,
 the widget's actual class, and the expected class and calls
 .PN XtErrorMsg .
 .PN XtCheckSubclass
-should be used at the entry point of exported routines to ensure 
+should be used at the entry point of exported routines to ensure
 that the client has passed in a valid widget class for the exported operation.
 .LP
 .PN XtCheckSubclass
 is only executed when the module has been compiled with the compiler symbol
-DEBUG defined; otherwise, it is defined as the empty string 
+DEBUG defined; otherwise, it is defined as the empty string
 and generates no code.
 
 .NH 3
@@ -1903,7 +1903,7 @@ some fields are linked to their corresponding fields in their superclass
 structures.
 With a linked field,
 the \*(xI access the field's value only after accessing its corresponding
-superclass value (called downward superclass chaining) or 
+superclass value (called downward superclass chaining) or
 before accessing its corresponding superclass value (called upward superclass
 chaining).  The self-contained fields are
 .sp
@@ -1962,7 +1962,7 @@ the invocation of an operation first accesses the field from the
 Object,
 RectObj,
 and
-Core 
+Core
 class structures, then from the subclass structure, and so on down the class chain to
 that widget's class structure.  These superclass-to-subclass fields are
 .sp
@@ -2004,9 +2004,9 @@ class down to the subclass:
 .sp
 .LP
 With upward superclass chaining,
-the invocation of an operation first accesses the field from the widget 
+the invocation of an operation first accesses the field from the widget
 class structure, then from the superclass structure,
-and so on up the class chain to the 
+and so on up the class chain to the
 Core,
 RectObj,
 and
@@ -2092,16 +2092,16 @@ necessary to their class's part of the record.
 The most common is the resolution of any inherited methods defined in the
 class.
 For example,
-if a widget class C has superclasses 
-Core, 
-Composite, 
-A, and B, the class record for C first is passed to 
-Core 's 
+if a widget class C has superclasses
+Core,
+Composite,
+A, and B, the class record for C first is passed to
+Core 's
 class_part_initialize procedure.
 This resolves any inherited Core methods and compiles the textual
 representations of the resource list and action table that are defined in the
 class record.
-Next, Composite's 
+Next, Composite's
 class_part_initialize procedure is called to initialize the
 composite part of C's class record.
 Finally, the class_part_initialize procedures for A, B, and C, in that order,
@@ -2113,16 +2113,16 @@ or that need no extra processing for them can specify NULL
 in the \fIclass_part_initialize\fP field.
 .LP
 All widget classes, whether they have a class initialization procedure or not,
-must start with their \fIclass_inited\fP field 
+must start with their \fIclass_inited\fP field
 .PN False .
 .LP
 The first time a widget of a class is created,
 .PN XtCreateWidget
 ensures that the widget class and all superclasses are initialized, in
 superclass-to-subclass order, by checking each \fIclass_inited\fP field and,
-if it is 
-.PN False , 
-by calling the class_initialize and the class_part_initialize procedures 
+if it is
+.PN False ,
+by calling the class_initialize and the class_part_initialize procedures
 for the class and all its superclasses.
 The \*(xI then set the \fIclass_inited\fP field to a nonzero value.
 After the one-time initialization,
@@ -2170,7 +2170,7 @@ If the specified widget class is already initialized,
 .PN XtInitializeWidgetClass
 returns immediately.
 .LP
-If the class initialization procedure registers type converters, 
+If the class initialization procedure registers type converters,
 these type converters are not available until the first object
 of the class or subclass is created or
 .PN XtInitializeWidgetClass
@@ -2314,7 +2314,7 @@ that is not chained.
 For example,
 a widget's expose procedure might call its superclass's \fIexpose\fP
 and then perform a little more work on its own.
-For example, a Composite 
+For example, a Composite
 class with predefined managed children can implement insert_child
 by first calling its superclass's \fIinsert_child\fP
 .IN "insert_child procedure"

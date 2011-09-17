@@ -105,8 +105,8 @@ Acknowledgments
 .sp 2
 .na
 .LP
-The design of the X11 Intrinsics was done primarily 
-by Joel McCormack of Digital WSL. 
+The design of the X11 Intrinsics was done primarily
+by Joel McCormack of Digital WSL.
 Major contributions to the design and implementation also
 were done by Charles Haynes, Mike Chow, and Paul Asente of Digital WSL.
 Additional contributors to the design and/or implementation were:
@@ -122,8 +122,8 @@ Ron Newman (Project Athena)	Bob Scheifler (MIT LCS)
 .De
 .LP
 The contributors to the X10 toolkit also deserve mention.
-Although the X11 Intrinsics present an entirely different programming style, 
-they borrow heavily from the implicit and explicit concepts in the X10 
+Although the X11 Intrinsics present an entirely different programming style,
+they borrow heavily from the implicit and explicit concepts in the X10
 toolkit.
 .LP
 The design and implementation of the X10 Intrinsics were done by:
@@ -136,7 +136,7 @@ Charles Haynes (Digital WSL)
 Frank Hall (HP)
 .De
 .LP
-The design and implementation of the X10 toolkit's sample widgets were 
+The design and implementation of the X10 toolkit's sample widgets were
 by the above, as well as by:
 .LP
 .Ds
@@ -148,9 +148,9 @@ Kathleen Langone  (Digital UEG)
 These widgets provided a checklist of requirements that we
 had to address in the X11 Intrinsics.
 .LP
-Thanks go to Al Mento of Digital's UEG Documentation Group for 
+Thanks go to Al Mento of Digital's UEG Documentation Group for
 formatting and generally improving this document
-and to John Ousterhout of Berkeley for extensively reviewing 
+and to John Ousterhout of Berkeley for extensively reviewing
 early drafts of it.
 .LP
 Finally, a special thanks to Mike Chow,
@@ -234,7 +234,7 @@ July 1991
 .LP
 The Release 6 Intrinsics is a result of the collaborative
 efforts of participants in the X Consortium's \fBintrinsics\fP
-working group.  
+working group.
 A few individuals contributed substantial design proposals,
 participated in lengthy discussions, reviewed final specifications,
 and in most cases, were also responsible for sections of the implementation.
@@ -280,20 +280,20 @@ About This Manual
 .na
 .LP
 \fI\*(xT\fP is intended to be read by both application programmers who will
-use one or more of the many widget sets built with the \*(xI 
-and by widget programmers who will use the \*(xI to build widgets 
+use one or more of the many widget sets built with the \*(xI
+and by widget programmers who will use the \*(xI to build widgets
 for one of the widget sets.
 Not all the information in this manual, however, applies to both audiences.
 That is, because the application programmer is likely to use only a number of
 the \*(xI functions in writing an application and because the widget programmer
-is likely to use many more, if not all, of the \*(xI functions in building 
+is likely to use many more, if not all, of the \*(xI functions in building
 a widget,
 an attempt has been made to highlight those areas of information that are
 deemed to be of special interest for the application programmer.
-(It is assumed the widget programmer will have to be familiar with all 
+(It is assumed the widget programmer will have to be familiar with all
 the information.)
-Therefore, all entries in the table of contents that are printed in \fBbold\fP 
-indicate the information that should be of special interest to an 
+Therefore, all entries in the table of contents that are printed in \fBbold\fP
+indicate the information that should be of special interest to an
 application programmer.
 .LP
 It is also assumed that, as application programmers become

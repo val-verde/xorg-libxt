@@ -39,12 +39,12 @@ static void test_XtCvtIntToPixmap(void)
     XtPointer       *closure_ret = NULL;
     int             num[2];
 
-    
+
     XtToolkitInitialize();
 
     num[0] = 7;
     num[1] = -1;
-    
+
     num_args = 0;
     fromVal.addr = (XtPointer) num;
     fromVal.size = sizeof(int);
@@ -59,7 +59,7 @@ static void test_XtCvtIntToPixmap(void)
 
     num[0] = -1;
     num[1] = 7;
-    
+
     num_args = 0;
     fromVal.addr = (XtPointer) (&num[1]);
     fromVal.size = sizeof(int);

@@ -1,7 +1,7 @@
 .\" $Xorg: CH05,v 1.3 2000/08/17 19:42:44 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -59,11 +59,11 @@ Pop-up widgets are used to create windows outside of the
 window hierarchy defined by the widget tree.
 Each pop-up child has a window that is a descendant of the root window,
 so that the pop-up window is not clipped by the pop-up widget's parent window.
-.\"One thing that all pop-ups in common is that they break 
+.\"One thing that all pop-ups in common is that they break
 .\"the widget/window hierarchy.
 .\"Pop-ups windows are not geometry constrained by their parent widget.
 .\"Instead, they are window children of the root.
-Therefore, pop-ups are created and attached differently to their widget parent 
+Therefore, pop-ups are created and attached differently to their widget parent
 than normal widget children.
 .LP
 A parent of a pop-up widget does not actively manage its pop-up children;
@@ -76,8 +76,8 @@ hierarchy for the pop-up to get resources and to provide a place for
 .PN XtDestroyWidget
 to look for all extant children.
 .LP
-A 
-composite 
+A
+composite
 widget can have both normal and pop-up children.
 A pop-up can be popped up from almost anywhere, not just by its parent.
 The term \fIchild\fP always refers to a normal, geometry-managed widget
@@ -223,7 +223,7 @@ all remaining resources for the widget not specified in
 A spring-loaded pop-up invoked from a translation table via
 .PN XtMenuPopup
 must already exist
-at the time that the translation is invoked, 
+at the time that the translation is invoked,
 so the translation manager can find the shell by name.
 Pop-ups invoked in other ways can be created when
 the pop-up actually is needed.
@@ -277,7 +277,7 @@ either statically or dynamically.
 At startup,
 an application can create the child of the pop-up shell,
 which is appropriate for pop-up children composed of a fixed set
-of widgets. 
+of widgets.
 The application can change the state of the subparts of
 the pop-up child as the application state changes.
 For example, if an application creates a static menu,
@@ -390,16 +390,16 @@ Calls
 to ensure \fIpopup_shell\fP's class is a subclass of
 .PN shellWidgetClass .
 .IP \(bu 5
-Raises the window and returns if the shell's \fIpopped_up\fP field is already 
+Raises the window and returns if the shell's \fIpopped_up\fP field is already
 .PN True .
 .IP \(bu 5
 Calls the callback procedures on the shell's \fIpopup_callback\fP list,
 specifying a pointer to the value of \fIgrab_kind\fP as the \fIcall_data\fP
 argument.
 .IP \(bu 5
-Sets the shell \fIpopped_up\fP field to 
+Sets the shell \fIpopped_up\fP field to
 .PN True ,
-the shell \fIspring_loaded\fP field to 
+the shell \fIspring_loaded\fP field to
 .PN False ,
 and the shell \fIgrab_kind\fP field from \fIgrab_kind\fP.
 .IP \(bu 5
@@ -418,7 +418,7 @@ XtAddGrab(\fIpopup_shell\fP, (\fIgrab_kind\fP == XtGrabExclusive), False)
 .De
 .IP \(bu 5
 Calls
-.PN XtRealizeWidget 
+.PN XtRealizeWidget
 with \fIpopup_shell\fP specified.
 .IP \(bu 5
 Calls
@@ -540,7 +540,7 @@ specify
 and
 .PN XtGrabExclusive ,
 respectively.
-Each function then sets the widget that executed the callback list 
+Each function then sets the widget that executed the callback list
 to be insensitive by calling
 .PN XtSetSensitive .
 Using these functions in callbacks is not required.
@@ -627,13 +627,13 @@ Unmapping a Pop-Up Widget
 Pop-ups can be popped down through several mechanisms:
 .IP \(bu 5
 A call to
-.PN XtPopdown 
+.PN XtPopdown
 .IP \(bu 5
 The supplied callback procedure
-.PN XtCallbackPopdown 
+.PN XtCallbackPopdown
 .IP \(bu 5
 The standard translation action
-.PN XtMenuPopdown 
+.PN XtMenuPopdown
 .sp
 .LP
 To unmap a pop-up from within an application, use
@@ -678,7 +678,7 @@ it calls
 .PN XtRemoveGrab .
 .\".PN XtRemoveGrab(popup_shell)
 .IP \(bu 5
-Sets \fIpopup_shell\fP's \fIpopped_up\fP field to 
+Sets \fIpopup_shell\fP's \fIpopped_up\fP field to
 .PN False .
 .IP \(bu 5
 Calls the callback procedures on the shell's \fIpopdown_callback\fP list,
@@ -686,7 +686,7 @@ specifying a pointer to the value of the shell's \fIgrab_kind\fP field
 as the \fIcall_data\fP argument.
 .sp
 .LP
-To pop down a pop-up from a callback list, you may use the callback 
+To pop down a pop-up from a callback list, you may use the callback
 .PN XtCallbackPopdown .
 .LP
 .IN "XtCallbackPopdown" "" "@DEF@"
@@ -734,7 +734,7 @@ in one of the pop-up callback convenience procedures.
 .PN XtCallbackPopdown
 calls
 .PN XtPopdown
-with the specified \fIshell_widget\fP 
+with the specified \fIshell_widget\fP
 and then calls
 .PN XtSetSensitive
 to resensitize \fIenable_widget\fP.
@@ -771,13 +771,13 @@ If \fIshell_name\fP is specified in the translation table,
 .PN XtMenuPopdown
 tries to find the shell by looking up the widget tree starting at the
 widget in which it is invoked.
-If it finds a shell with the specified name in the pop-up children 
+If it finds a shell with the specified name in the pop-up children
 of that widget, it pops down the shell;
 otherwise, it moves up the parent chain to find a pop-up child with the
 specified name.
-If 
-.PN XtMenuPopdown 
-gets to the application top-level shell widget 
-and cannot find a matching shell, 
+If
+.PN XtMenuPopdown
+gets to the application top-level shell widget
+and cannot find a matching shell,
 it generates a warning and returns immediately.
 .bp

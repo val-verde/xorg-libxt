@@ -1,7 +1,7 @@
 .\" $Xorg: CH03,v 1.3 2000/08/17 19:42:44 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -56,7 +56,7 @@
 Chapter 3 \(em Composite Widgets and Their Children
 .XE
 .IN "Composite widgets"
-Composite widgets (widgets whose class is a subclass of 
+Composite widgets (widgets whose class is a subclass of
 .PN compositeWidgetClass )
 can have an arbitrary number of children.
 Consequently, they are responsible for much more than primitive widgets.
@@ -104,7 +104,7 @@ and
 .PN XtChangeManagedSet ,
 which notify the parent to recalculate the physical layout of its children
 by calling the parent's change_managed procedure.
-The 
+The
 .PN XtCreateManagedWidget
 convenience function calls
 .PN XtCreateWidget
@@ -116,10 +116,10 @@ Most managed children are mapped,
 but some widgets can be in a state where they take up physical space
 but do not show anything.
 Managed widgets are not mapped automatically
-if their \fImap_when_managed\fP field is 
+if their \fImap_when_managed\fP field is
 .PN False .
-The default is 
-.PN True 
+The default is
+.PN True
 and is changed by using
 .PN XtSetMappedWhenManaged .
 .LP
@@ -337,7 +337,7 @@ The
 function performs the following:
 .IP \(bu 5
 Issues an error if the children do not all have the same parent or
-if the parent's class is not a subclass of 
+if the parent's class is not a subclass of
 .PN compositeWidgetClass .
 .IP \(bu 5
 Returns immediately if the common parent is being destroyed;
@@ -356,7 +356,7 @@ Calls
 .PN XtRealizeWidget
 on each previously unmanaged child that is unrealized.
 .IP \- 5
-Maps each previously unmanaged child that has \fImap_when_managed\fP 
+Maps each previously unmanaged child that has \fImap_when_managed\fP
 .PN True .
 .RE
 .LP
@@ -364,7 +364,7 @@ Managing children is independent of the ordering of children and
 independent of creating and deleting children.
 The layout routine of the parent
 should consider children whose \fImanaged\fP field is
-.PN True 
+.PN True
 and should ignore all other children.
 Note that some composite widgets, especially fixed boxes, call
 .PN XtManageChild
@@ -374,13 +374,13 @@ If the parent widget is realized,
 its change_managed procedure is called to notify it
 that its set of managed children has changed.
 The parent can reposition and resize any of its children.
-It moves each child as needed by calling 
+It moves each child as needed by calling
 .PN XtMoveWidget ,
 which first updates the \fIx\fP and \fIy\fP fields and which then calls
 .PN XMoveWindow .
 .LP
 If the composite widget wishes to change the size or border width of any of
-its children, it calls 
+its children, it calls
 .PN XtResizeWidget ,
 which first updates the
 \fIwidth\fP, \fIheight\fP, and \fIborder_width\fP
@@ -516,10 +516,10 @@ function performs the following:
 Returns immediately if the common parent is being destroyed.
 .IP \(bu 5
 Issues an error if the children do not all have the same parent
-or if the parent is not a subclass of 
+or if the parent is not a subclass of
 .PN compositeWidgetClass .
 .IP \(bu 5
-For each unique child on the list, 
+For each unique child on the list,
 .PN XtUnmanageChildren
 ignores the child if it is unmanaged; otherwise it performs the following:
 .RS
@@ -648,7 +648,7 @@ Specifies the list of widget children to finally add to the managed set.
 Specifies the number of entries in the \fImanage_children\fP list.
 .LP
 .eM
-The 
+The
 .PN XtChangeManagedSet
 function performs the following:
 .IP \(bu 5
@@ -695,11 +695,11 @@ it is unmapped.
 If \fIdo_change_proc\fP is non-NULL, the procedure is invoked.
 .IP \- 5
 For each child on the \fImanage_children\fP list; if the child is already
-managed or is being destroyed, it is ignored; otherwise it is 
+managed or is being destroyed, it is ignored; otherwise it is
 marked as managed.
 .IP \- 5
 If the parent is realized and after all children have been marked,
-the change_managed method of the parent is invoked, and subsequently 
+the change_managed method of the parent is invoked, and subsequently
 some of the newly managed children are made viewable by calling
 .PN XtRealizeWidget
 on each previously unmanaged child that is unrealized and
@@ -815,7 +815,7 @@ A widget is normally mapped if it is managed.
 However,
 this behavior can be overridden by setting the XtNmappedWhenManaged resource
 for the widget when it is created
-or by setting the \fImap_when_managed\fP field to 
+or by setting the \fImap_when_managed\fP field to
 .PN False .
 .sp
 .LP
@@ -835,17 +835,17 @@ void XtSetMappedWhenManaged(\fIw\fP, \fImap_when_managed\fP)
 Specifies the widget.  \*(cI
 .IP \fImap_when_managed\fP 1i
 Specifies a Boolean value that indicates the new value
-that is stored into the widget's \fImap_when_managed\fP 
+that is stored into the widget's \fImap_when_managed\fP
 field.
 .LP
 .eM
 If the widget is realized and managed,
-and if \fImap_when_managed\fP is 
+and if \fImap_when_managed\fP is
 .PN True ,
 .PN XtSetMappedWhenManaged
 maps the window.
 If the widget is realized and managed,
-and if \fImap_when_managed\fP is 
+and if \fImap_when_managed\fP is
 .PN False ,
 it unmaps the window.
 .PN XtSetMappedWhenManaged
@@ -901,13 +901,13 @@ Constrained Composite Widgets
 \*(SN Constrained Composite Widgets
 .XE
 .LP
-The Constraint 
+The Constraint
 widget class is a subclass of
 .PN compositeWidgetClass .
 The name is derived from the fact that constraint widgets
-may manage the geometry 
+may manage the geometry
 of their children based on constraints associated with each child.
-These constraints can be as simple as the maximum width and height 
+These constraints can be as simple as the maximum width and height
 the parent will allow the child to occupy or can be as complicated as
 how other children should change if this child is moved or resized.
 Constraint
@@ -921,13 +921,13 @@ Accordingly,
 constraint resources may be included in the argument list or resource file just
 like any other resource for the child.
 .LP
-Constraint 
+Constraint
 widgets have all the responsibilities of normal composite widgets
 and, in addition, must process and act upon the constraint information
 associated with each of their children.
 .LP
 To make it easy for widgets and the \*(xI to keep track of the
-constraints associated with a child, 
+constraints associated with a child,
 every widget has a \fIconstraints\fP field,
 which is the address of a parent-specific structure that contains
 constraint information about the child.
@@ -936,7 +936,7 @@ If a child's parent does not belong to a subclass of
 then the child's \fIconstraints\fP field is NULL.
 .LP
 Subclasses of
-Constraint 
+Constraint
 can add constraint data to the constraint record defined by their superclass.
 To allow this, widget writers should define the constraint
 records in their private .h file by using the same conventions as used for

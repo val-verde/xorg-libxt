@@ -1,7 +1,7 @@
 .\" $Xorg: CH02,v 1.3 2000/08/17 19:42:42 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -72,48 +72,48 @@ other clients.
 .LP
 Composite widgets, that is, members of the class
 .PN compositeWidgetClass ,
-are containers for an arbitrary, 
+are containers for an arbitrary,
 but widget implementation-defined, collection of children,
-which may be instantiated by the composite widget itself, 
+which may be instantiated by the composite widget itself,
 by other clients, or by a combination of the two.
-Composite widgets also contain methods for managing the geometry (layout) 
+Composite widgets also contain methods for managing the geometry (layout)
 of any child widget.
 Under unusual circumstances,
-a composite widget may have zero children, 
+a composite widget may have zero children,
 but it usually has at least one.
-By contrast, 
-primitive widgets that contain children typically instantiate 
-specific children of known classes themselves and do not expect external 
+By contrast,
+primitive widgets that contain children typically instantiate
+specific children of known classes themselves and do not expect external
 clients to do so.
 Primitive widgets also do not have general geometry management methods.
 .LP
 In addition,
-the \*(xI recursively perform many operations 
+the \*(xI recursively perform many operations
 (for example, realization and destruction)
 on composite widgets and all their children.
-Primitive widgets that have children must be prepared 
-to perform the recursive operations themselves on behalf of their children. 
+Primitive widgets that have children must be prepared
+to perform the recursive operations themselves on behalf of their children.
 .LP
 A widget tree is manipulated by several \*(xI functions.
 For example,
 .PN XtRealizeWidget
-traverses the tree downward and recursively realizes all 
+traverses the tree downward and recursively realizes all
 pop-up widgets and children of composite widgets.
 .PN XtDestroyWidget
-traverses the tree downward and destroys all pop-up widgets 
+traverses the tree downward and destroys all pop-up widgets
 and children of composite widgets.
 The functions that fetch and modify resources traverse the tree upward
 and determine the inheritance of resources from a widget's ancestors.
 .PN XtMakeGeometryRequest
-traverses the tree up one level and calls the geometry manager 
+traverses the tree up one level and calls the geometry manager
 that is responsible for a widget child's geometry.
 .LP
 To facilitate upward traversal of the widget tree,
 each widget has a pointer to its parent widget.
 The
-Shell 
+Shell
 widget that
-.PN XtAppCreateShell 
+.PN XtAppCreateShell
 returns has a \fIparent\fP pointer of NULL.
 .LP
 To facilitate downward traversal of the widget tree,
@@ -136,8 +136,8 @@ Initializing the \*(tk
 .LP
 Before an application can call any \*(xI function
 other than
-.PN XtSetLanguageProc 
-and 
+.PN XtSetLanguageProc
+and
 .PN XtToolkitThreadInitialize ,
 it must initialize the \*(xI by using
 .IP \(bu 5
@@ -164,20 +164,20 @@ prior to calling
 .PN XtDisplayInitialize ,
 .PN XtOpenDisplay ,
 .PN XtOpenApplication ,
-or 
+or
 .PN XtAppInitialize .
 .LP
-Multiple instances of \*(tk applications may be implemented 
+Multiple instances of \*(tk applications may be implemented
 in a single address space.
 Each instance needs to be able to read
 input and dispatch events independently of any other instance.
-Further, an application instance may need multiple display connections 
+Further, an application instance may need multiple display connections
 to have widgets on multiple displays.
 From the application's point of view, multiple display connections
 usually are treated together as a single unit
 for purposes of event dispatching.
 .IN "application context" "" "@DEF@"
-To accommodate both requirements, 
+To accommodate both requirements,
 the \*(xI define application contexts,
 each of which provides the information needed to distinguish one application
 instance from another.
@@ -330,10 +330,10 @@ used for the specified display (see Section 11.11),
 calls the language procedure (if set) with that language string,
 builds the resource database for the default screen, calls the Xlib
 .PN XrmParseCommand
-function to parse the command line, 
+function to parse the command line,
 and performs other per-display initialization.
-After 
-.PN XrmParseCommand 
+After
+.PN XrmParseCommand
 has been called,
 \fIargc\fP and \fIargv\fP contain only those parameters that
 were not in the standard option table or in the table specified by the
@@ -362,14 +362,14 @@ display before returning.
 .KS
 .LP
 To open a display, initialize it, and then
-add it to an application context, use 
+add it to an application context, use
 .PN XtOpenDisplay .
 .LP
 .IN "XtOpenDisplay" "" "@DEF@"
 .sM
 .FD 0
 Display *XtOpenDisplay(\fIapp_context\fP, \fIdisplay_string\fP, \
-\fIapplication_name\fP, \fIapplication_class\fP, 
+\fIapplication_name\fP, \fIapplication_class\fP,
 .br
                        \fIoptions\fP, \fInum_options\fP, \fIargc\fP, \fIargv\fP)
 .br
@@ -414,14 +414,14 @@ Specifies the list of command line parameters.
 The
 .PN XtOpenDisplay
 function calls
-.PN XOpenDisplay 
+.PN XOpenDisplay
 with the specified \fIdisplay_string\fP.
 If \fIdisplay_string\fP is NULL,
 .PN XtOpenDisplay
 uses the current value of the \-display option specified in \fIargv\fP.
 If no display is specified in \fIargv\fP,
 the user's default display is retrieved from the environment.
-On POSIX-based systems, 
+On POSIX-based systems,
 this is the value of the
 .PN \s-1DISPLAY\s+1
 environment variable.
@@ -478,11 +478,11 @@ If called from within an event dispatch (for example, a callback procedure),
 does not close the display until the dispatch is complete.
 Note that applications need only call
 .PN XtCloseDisplay
-if they are to continue executing after closing the display; 
+if they are to continue executing after closing the display;
 otherwise, they should call
 .PN XtDestroyApplicationContext .
 .LP
-See Section 7.12 for information regarding the use of 
+See Section 7.12 for information regarding the use of
 .PN XtCloseDisplay
 in multiple threads.
 
@@ -947,7 +947,7 @@ function first parses the command line for the following options:
 Specifies the display name for
 .PN XOpenDisplay .
 .IP \-name 1i
-Sets the resource name prefix, 
+Sets the resource name prefix,
 which overrides the application name passed to
 .PN XtOpenDisplay .
 .IP \-xnllanguage 1i
@@ -957,7 +957,7 @@ and for finding application class resource files.
 .PN XtDisplayInitialize
 has a table of standard command line options that are passed to
 .PN XrmParseCommand
-for adding resources to the resource database, 
+for adding resources to the resource database,
 and it takes as a parameter additional
 application-specific resource abbreviations.
 .IN "XrmOptionDescRec" "" "@DEF@"
@@ -1103,13 +1103,13 @@ The widgets create X windows, which then are mapped.
 .EQ
 delim $$
 .EN
-To start the first phase, 
+To start the first phase,
 the application calls
 .PN XtCreateWidget
 for all its widgets and adds some (usually, most or all) of its widgets
 to their respective parents' managed set by calling
 .PN XtManageChild .
-To avoid an $O( n sup 2 )$ creation process where each composite widget 
+To avoid an $O( n sup 2 )$ creation process where each composite widget
 lays itself out each time a widget is created and managed,
 parent widgets are not notified of changes in their managed set
 during this phase.
@@ -1130,7 +1130,7 @@ Notifying a parent about its managed set involves geometry layout and
 possibly geometry negotiation.
 A parent deals with constraints on its size imposed from above
 (for example, when a user specifies the application window size)
-and suggestions made from below (for example, 
+and suggestions made from below (for example,
 when a primitive child computes its preferred size).
 One difference between the two can cause geometry changes to ripple
 in both directions through the widget tree.
@@ -1147,8 +1147,8 @@ This avoids unnecessary requests to the X server.
 .LP
 Finally,
 .PN XtRealizeWidget
-starts the third phase by making a preorder (top-down) traversal 
-of the widget tree, allocates an X window to each widget by means of 
+starts the third phase by making a preorder (top-down) traversal
+of the widget tree, allocates an X window to each widget by means of
 its realize procedure, and finally maps the widgets that are managed.
 
 .NH 3
@@ -1498,7 +1498,7 @@ and initializes the \fIconstraints\fP field.
 Initializes the Core nonresource data fields
 \fIself\fP, \fIparent\fP, \fIwidget_class\fP, \fIbeing_destroyed\fP,
 \fIname\fP, \fImanaged\fP, \fIwindow\fP, \fIvisible\fP,
-\fIpopup_list\fP, and \fInum_popups\fP. 
+\fIpopup_list\fP, and \fInum_popups\fP.
 .IP \(bu 5
 Initializes the resource fields (for example, \fIbackground_pixel\fP)
 by using the
@@ -1514,7 +1514,7 @@ resource lists specified for the parent's class
 and all superclasses up to
 .PN constraintWidgetClass .
 .IP \(bu 5
-Calls the initialize procedures for the widget starting at the 
+Calls the initialize procedures for the widget starting at the
 Object
 initialize procedure on down to the widget's initialize procedure.
 .IP \(bu 5
@@ -1579,7 +1579,7 @@ Creating an Application Shell Instance
 An application can have multiple top-level widgets, each of which
 specifies a unique widget tree
 that can potentially be on different screens or displays.
-An application uses 
+An application uses
 .PN XtAppCreateShell
 to create independent widget trees.
 .LP
@@ -1666,17 +1666,17 @@ XtNargc resources.
 
 .LP
 To create multiple top-level shells within a single (logical)
-application, 
+application,
 you can use one of two methods:
 .IP \(bu 5
 Designate one shell as the real top-level shell and
-create the others as pop-up children of it by using 
+create the others as pop-up children of it by using
 .PN XtCreatePopupShell .
 .IP \(bu 5
-Have all shells as pop-up children of an unrealized top-level shell. 
+Have all shells as pop-up children of an unrealized top-level shell.
 .LP
-The first method, 
-which is best used when there is a clear choice for what is the main window, 
+The first method,
+which is best used when there is a clear choice for what is the main window,
 leads to resource specifications like the following:
 .LP
 .Ds
@@ -1687,7 +1687,7 @@ xmail.read.geometry:...	(the read window)
 xmail.compose.geometry:...	(the compose window)
 .De
 .LP
-The second method, 
+The second method,
 which is best if there is no main window,
 leads to resource specifications like the following:
 .LP
@@ -1830,10 +1830,10 @@ with \fIdisplay_string\fP NULL and
 with \fIname\fP NULL, the specified \fIwidget_class\fP,
 an argument list and count,
 and returns the created shell.
-The recommended \fIwidget_class\fP is 
+The recommended \fIwidget_class\fP is
 .PN sessionShellWidgetClass .
 The argument list and count are created by merging
-the specified \fIargs\fP and \fInum_args\fP with a list 
+the specified \fIargs\fP and \fInum_args\fP with a list
 containing the specified \fIargc\fP and \fIargv\fP.
 The modified \fIargc\fP and \fIargv\fP returned by
 .PN XtDisplayInitialize
@@ -1989,24 +1989,24 @@ if requested and an error occurred; otherwise, unchanged.
 .LP
 .eM
 At widget allocation time, if an extension record with \fIrecord_type\fP
-equal to 
+equal to
 .PN \s-1NULLQUARK\s+1
 is located through the object class part \fIextension\fP field
-and the \fIallocate\fP field is not NULL, the 
+and the \fIallocate\fP field is not NULL, the
 .PN XtAllocateProc
 will be invoked to allocate memory for the widget.  If no ObjectClassPart
 extension record is declared with \fIrecord_type equal\fP to
 .PN \s-1NULLQUARK\s+1 ,
 then
 .PN XtInheritAllocate
-and 
+and
 .PN XtInheritDeallocate
 are assumed.
 If no
 .PN XtAllocateProc
 is found, the \*(xI will allocate memory for the widget.
 .LP
-An 
+An
 .PN XtAllocateProc
 must perform the following:
 .IP \(bu 5
@@ -2086,10 +2086,10 @@ Allocates space for and copies any resources referenced by address
 that the client is allowed to free or modify
 after the widget has been created.
 For example,
-if a widget has a field that is a 
+if a widget has a field that is a
 .PN String ,
 it may choose not to
-depend on the characters at that address remaining constant 
+depend on the characters at that address remaining constant
 but dynamically allocate space for the string and copy it to the new space.
 Widgets that do not copy one or more resources referenced
 by address should clearly so state in their user documentation.
@@ -2099,7 +2099,7 @@ It is not necessary to allocate space for or to copy callback lists.
 .IP \(bu 5
 Computes values for unspecified resource fields.
 For example, if \fIwidth\fP and \fIheight\fP are zero,
-the widget should compute an appropriate width and height 
+the widget should compute an appropriate width and height
 based on its other resources.
 .NT
 A widget may directly assign only
@@ -2200,7 +2200,7 @@ The constraint initialization procedure should compute any constraint fields
 derived from constraint resources.
 It can make further changes to the \fInew\fP widget to make the widget
 and any other constraint fields
-conform to the specified constraints, for example, 
+conform to the specified constraints, for example,
 changing the widget's size or position.
 .LP
 If a constraint class does not need a constraint initialization procedure,
@@ -2281,7 +2281,7 @@ Specifies the widget.  \*(cI
 .LP
 If the widget is already realized,
 .PN XtRealizeWidget
-simply returns. 
+simply returns.
 Otherwise it performs the following:
 .IP \(bu 5
 Binds all action names in the widget's
@@ -2293,13 +2293,13 @@ of all composite widgets that have one or more managed children.
 .IP \(bu 5
 Constructs an
 .PN XSetWindowAttributes
-structure filled in with information derived from the 
-Core 
+structure filled in with information derived from the
+Core
 widget fields and calls the realize procedure for the widget,
 which adds any widget-specific attributes and creates the X window.
 .IP \(bu 5
 If the widget is
-not a subclass of 
+not a subclass of
 .PN compositeWidgetClass ,
 .PN XtRealizeWidget
 returns; otherwise it continues and performs the following:
@@ -2310,16 +2310,16 @@ managed children and calls the realize procedures.
 Primitive widgets that instantiate children are responsible for realizing
 those children themselves.
 .IP \- 5
-Maps all of the managed children windows that have \fImapped_when_managed\fP 
+Maps all of the managed children windows that have \fImapped_when_managed\fP
 .PN True .
-If a widget is managed but \fImapped_when_managed\fP is 
-.PN False , 
+If a widget is managed but \fImapped_when_managed\fP is
+.PN False ,
 the widget is allocated visual space but is not displayed.
 .RE
 .LP
 If the widget is a top-level shell widget (that is, it has no parent), and
-\fImapped_when_managed\fP is 
-.PN True , 
+\fImapped_when_managed\fP is
+.PN True ,
 .PN XtRealizeWidget
 maps the widget window.
 .LP
@@ -2373,8 +2373,8 @@ Specifies the widget.  \*(oI
 .eM
 The
 .PN XtIsRealized
-function returns 
-.PN True 
+function returns
+.PN True
 if the widget has been realized,
 that is, if the widget has a nonzero window ID.
 If the specified object is not a widget, the state of the nearest
@@ -2439,7 +2439,7 @@ The \fIcolormap\fP is filled in from the corresponding field.
 .IP \(bu 5
 The \fIevent_mask\fP is filled in based on the event handlers registered,
 the event translations specified, whether the \fIexpose\fP field is non-NULL,
-and whether \fIvisible_interest\fP is 
+and whether \fIvisible_interest\fP is
 .PN True .
 .IP \(bu 5
 The \fIbit_gravity\fP is set to
@@ -2452,7 +2452,7 @@ These or any other fields in attributes and the corresponding bits in
 Note that because realize is not a chained operation,
 the widget class realize procedure must update the
 .PN XSetWindowAttributes
-structure with all the appropriate fields from 
+structure with all the appropriate fields from
 non-Core
 superclasses.
 .LP
@@ -2460,7 +2460,7 @@ superclasses.
 A widget class can inherit its realize procedure from its superclass
 during class initialization.
 The realize procedure defined for
-.PN coreWidgetClass 
+.PN coreWidgetClass
 calls
 .PN XtCreateWindow
 with the passed \fIvalue_mask\fP and \fIattributes\fP
@@ -2569,14 +2569,14 @@ Obtaining Window Information from a Widget
 \fB\*(SN Obtaining Window Information from a Widget\fP
 .XE
 .LP
-The 
+The
 Core
 widget class definition contains the screen and window ids.
 The \fIwindow\fP field may be NULL for a while
 (see Sections 2.5 and 2.6).
 .LP
 The display pointer, the parent widget, screen pointer,
-and window of a widget are available to the widget writer by means of macros 
+and window of a widget are available to the widget writer by means of macros
 and to the application writer by means of functions.
 .LP
 .IN "XtDisplay" "" "@DEF@"
@@ -2730,7 +2730,7 @@ name is not qualified by the names of any of the object's ancestors.
 .LP
 Several window attributes are locally cached in the widget instance.
 Thus, they can be set by the resource manager and
-.PN XtSetValues 
+.PN XtSetValues
 as well as used by routines that derive structures from these values
 (for example, \fIdepth\fP for deriving pixmaps,
 \fIbackground_pixel\fP for deriving GCs, and so on) or in the
@@ -2818,7 +2818,7 @@ and destroy all children of composite widgets.
 .IP \(bu 5
 To remove (and unmap) the widget from its parent.
 .IP \(bu 5
-To call the callback procedures that have been registered to trigger 
+To call the callback procedures that have been registered to trigger
 when the widget is destroyed.
 .IP \(bu 5
 To minimize the number of things a widget has to deallocate when destroyed.
@@ -2855,13 +2855,13 @@ In phase 1,
 .PN XtDestroyWidget
 performs the following:
 .IP \(bu 5
-If the \fIbeing_destroyed\fP field of the widget is 
+If the \fIbeing_destroyed\fP field of the widget is
 .PN True ,
 it returns immediately.
 .IP \(bu 5
 Recursively descends the widget tree and
-sets the \fIbeing_destroyed\fP field to 
-.PN True 
+sets the \fIbeing_destroyed\fP field to
+.PN True
 for the widget and all normal and pop-up children.
 .IP \(bu 5
 Adds the widget to a list of widgets (the destroy list) that should be
@@ -2884,19 +2884,19 @@ In phase 2,
 performs the following on each entry in the destroy list in the order
 specified:
 .IP \(bu 5
-If the widget is not a pop-up child and the widget's parent is a subclass of 
+If the widget is not a pop-up child and the widget's parent is a subclass of
 .PN composite\%WidgetClass ,
-and if the parent is not being destroyed, 
-it calls 
-.PN XtUnmanageChild 
+and if the parent is not being destroyed,
+it calls
+.PN XtUnmanageChild
 on the widget and then calls the widget's parent's delete_child procedure
 (see Section 3.3).
 .IP \(bu 5
-Calls the destroy callback procedures registered on the widget 
+Calls the destroy callback procedures registered on the widget
 and all normal and pop-up descendants in postorder (it calls child
 callbacks before parent callbacks).
 .LP
-The 
+The
 .PN XtDestroyWidget
 function then makes second traversal of the widget and all normal
 and pop-up descendants to perform the following three items on each
@@ -2920,7 +2920,7 @@ then the destroy procedure declared in its superclass,
 until finally it calls the destroy procedure declared in the Object
 class record.  Callback lists are deallocated.
 .IP \(bu 5
-If the widget class object class part contains an 
+If the widget class object class part contains an
 .PN ObjectClassExtension
 record with the record_type
 .PN \s-1NULLQUARK\s+1
@@ -2950,7 +2950,7 @@ The destroy callback procedures use the mechanism described in Chapter 8.
 The destroy callback list is identified by the resource name
 XtNdestroyCallback.
 .LP
-For example, the following adds an application-supplied destroy callback 
+For example, the following adds an application-supplied destroy callback
 procedure \fIClientDestroy\fP with client data to a widget by calling
 .PN XtAddCallback .
 .IN "XtAddCallback"
@@ -3002,7 +3002,7 @@ that is specific to the subclass and should ignore the storage
 allocated by any of its superclasses.
 The destroy procedure should deallocate only resources that have been
 explicitly created by the subclass.
-Any resource that was obtained from the resource database 
+Any resource that was obtained from the resource database
 or passed in an argument list was not created by the widget
 and therefore should not be destroyed by it.
 If a widget does not need to deallocate any storage,
@@ -3043,7 +3043,7 @@ on timers created with
 Calling
 .PN XtDestroyWidget
 for each child if the widget has children
-and is not a subclass of 
+and is not a subclass of
 .PN compositeWidgetClass .
 .LP
 During destroy phase 2 for each widget, the \*(xI remove the widget
@@ -3111,11 +3111,11 @@ and the \fIdeallocate\fP field is not NULL, the
 .PN XtDeallocateProc
 will be called.
 If no ObjectClassPart extension record is declared with \fIrecord_type\fP
-equal to 
+equal to
 .PN \s-1NULLQUARK\s+1 ,
-then 
+then
 .PN XtInheritAllocate
-and 
+and
 .PN XtInheritDeallocate
 are assumed.
 The responsibilities of the deallocate procedure are to deallocate the

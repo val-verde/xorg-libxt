@@ -1,7 +1,7 @@
 .\" $Xorg: CH08,v 1.3 2000/08/17 19:42:46 cpqbld Exp $
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" X Consortium
-.\" 
+.\"
 .\" Permission is hereby granted, free of charge, to any person obtaining
 .\" a copy of this software and associated documentation files (the
 .\" "Software"), to deal in the Software without restriction, including
@@ -9,10 +9,10 @@
 .\" distribute, sublicense, and/or sell copies of the Software, and to
 .\" permit persons to whom the Software is furnished to do so, subject to
 .\" the following conditions:
-.\" 
+.\"
 .\" The above copyright notice and this permission notice shall be included
 .\" in all copies or substantial portions of the Software.
-.\" 
+.\"
 .\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 .\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 .\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -20,15 +20,15 @@
 .\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 .\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 .\" OTHER DEALINGS IN THE SOFTWARE.
-.\" 
+.\"
 .\" Except as contained in this notice, the name of the X Consortium shall
 .\" not be used in advertising or otherwise to promote the sale, use or
 .\" other dealings in this Software without prior written authorization
 .\" from the X Consortium.
-.\" 
+.\"
 .\" Copyright \(co 1985, 1986, 1987, 1988, 1991, 1994
 .\" Digital Equipment Corporation, Maynard, Massachusetts.
-.\" 
+.\"
 .\" Permission to use, copy, modify and distribute this documentation for any
 .\" purpose and without fee is hereby granted, provided that the above copyright
 .\" notice appears in all copies and that both that copyright notice and this
@@ -107,7 +107,7 @@ it passes the new position of the thumb.
 .eM
 The \fIclient_data\fP argument provides a way for the
 client registering the callback procedure also to register client-specific data,
-for example, a pointer to additional information about the widget, 
+for example, a pointer to additional information about the widget,
 a reason for invoking the callback, and so on.
 The \fIclient_data\fP value may be NULL
 if all necessary information is in the widget.
@@ -115,7 +115,7 @@ The \fIcall_data\fP argument is a convenience to avoid having simple
 cases where the client could otherwise always call
 .PN XtGetValues
 or a widget-specific function to retrieve data from the widget.
-Widgets should generally avoid putting complex state information 
+Widgets should generally avoid putting complex state information
 in \fIcall_data\fP.
 The client can use the more general data retrieval methods, if necessary.
 .LP
@@ -173,15 +173,15 @@ Identifying Callback Lists
 \fB\*(SN Identifying Callback Lists\fP
 .XE
 .LP
-Whenever a widget contains a callback list for use by clients, 
+Whenever a widget contains a callback list for use by clients,
 it also exports in its public .h file the resource name of the callback list.
 Applications and client widgets never access callback list fields directly.
 Instead, they always identify the desired callback list by using the exported
 resource name.
-All the callback manipulation functions described in this chapter 
+All the callback manipulation functions described in this chapter
 except
 .PN XtCallCallbackList
-check 
+check
 to see that the requested callback list is indeed implemented by the widget.
 .LP
 For the \*(xI to find and correctly handle callback lists,
@@ -437,7 +437,7 @@ Specifies the callback list to be checked.
 .eM
 The
 .PN XtHasCallbacks
-function first checks to see if the widget has a callback list identified 
+function first checks to see if the widget has a callback list identified
 by \fIcallback_name\fP.
 If the callback list does not exist,
 .PN XtHasCallbacks
