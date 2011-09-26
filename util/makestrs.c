@@ -226,7 +226,7 @@ static void DefaultWriteHeader (FILE *f, File *phile)
 static void CopyTmplProlog (FILE *tmpl, FILE *f)
 {
     char buf[1024];
-    static char* magic_string = X_MAGIC_STRING;
+    static const char* magic_string = X_MAGIC_STRING;
     int magic_string_len = strlen (magic_string);
 
     while (fgets (buf, sizeof buf, tmpl)) {
@@ -245,7 +245,7 @@ static void CopyTmplEpilog (FILE *tmpl, FILE *f)
 	(void) fputs (buf, f);
 }
 
-static char* abistring[] = {
+static const char* abistring[] = {
     "Default", "Array per string", "Intel", "Intel BC", "SPARC", "Function" };
 
 static void WriteHeader (char *tagline, File *phile, int abi)
@@ -301,7 +301,7 @@ static void WriteSourceLine (TableEnt *te, int abi, int fudge)
     (void) printf ("%s", "\n");
 }
 
-static char* const_string = "%s %sConst char %s[] = {\n";
+static const char* const_string = "%s %sConst char %s[] = {\n";
 
 static void IntelABIWriteSource (int abi)
 {
@@ -460,15 +460,15 @@ static void DoLine(char *buf)
 
     int token;
     char lbuf[1024];
-    static char* file_str = "#file";
-    static char* table_str = "#table";
-    static char* prefix_str = "#prefix";
-    static char* feature_str = "#feature";
-    static char* externref_str = "#externref";
-    static char* externdef_str = "#externdef";
-    static char* ctmpl_str = "#ctmpl";
-    static char* htmpl_str = "#htmpl";
-    static char* const_str = "#const";
+    static const char* file_str = "#file";
+    static const char* table_str = "#table";
+    static const char* prefix_str = "#prefix";
+    static const char* feature_str = "#feature";
+    static const char* externref_str = "#externref";
+    static const char* externdef_str = "#externdef";
+    static const char* ctmpl_str = "#ctmpl";
+    static const char* htmpl_str = "#htmpl";
+    static const char* const_str = "#const";
 
     if (strncmp (buf, file_str, strlen (file_str)) == 0)
 	token = X_FILE_TOKEN;
