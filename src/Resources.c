@@ -849,22 +849,20 @@ static XtCacheRef *GetResources(
 		UNLOCK_PROCESS;
 	    } 
 	}
-	{
-	    for (res = table, j = 0; j < num_resources; j++, res++) {
-		if (!found[j] && typed[j]) {
-		    /*
-		     * This resource value was specified as a typed arg.
-		     * However, the default value is being used here since
-		     * type type conversion failed, so we compress the list.
-		     */
-		    register XtTypedArg* arg = typed_args + typed[j] - 1;
-		    register int i;
+	for (res = table, j = 0; j < num_resources; j++, res++) {
+	    if (!found[j] && typed[j]) {
+		/*
+		 * This resource value was specified as a typed arg.
+		 * However, the default value is being used here since
+		 * type type conversion failed, so we compress the list.
+		 */
+		register XtTypedArg* arg = typed_args + typed[j] - 1;
+		register int i;
 
-		    for (i = num_typed_args - typed[j]; i > 0; i--, arg++) {
-			*arg = *(arg+1);
-		    }
-		    num_typed_args--;
+		for (i = num_typed_args - typed[j]; i > 0; i--, arg++) {
+		    *arg = *(arg+1);
 		}
+		num_typed_args--;
 	    }
 	}
 	if (tm_hack)
