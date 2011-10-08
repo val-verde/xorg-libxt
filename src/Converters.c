@@ -1735,7 +1735,7 @@ Boolean XtCvtStringToGravity (
 {
     static struct _namepair {
 	XrmQuark quark;
-	char *name;
+	const char *name;
 	int gravity;
     } names[] = {
 	{ NULLQUARK, "forget",		ForgetGravity },
