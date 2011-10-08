@@ -847,8 +847,11 @@ static XtCacheRef *GetResources(
 		    }
 		}
 		UNLOCK_PROCESS;
-
-		if (typed[j]) {
+	    } 
+	}
+	{
+	    for (res = table, j = 0; j < num_resources; j++, res++) {
+		if (!found[j] && typed[j]) {
 		    /*
 		     * This resource value was specified as a typed arg.
 		     * However, the default value is being used here since
