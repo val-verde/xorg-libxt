@@ -701,7 +701,7 @@ class, and representation type symbolic constants.
   <colspec colwidth='1.0*' colname='c1'/>
   <colspec colwidth='1.0*' colname='c2'/>
   <thead>
-    <row rowsep='0'>
+    <row rowsep='1'>
       <entry>Symbol</entry>
       <entry>Definition</entry>
     </row>

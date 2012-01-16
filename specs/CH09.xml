@@ -1323,7 +1323,7 @@ input values of representation type
 <informaltable frame='topbot'>
   <?dbfo keep-together="auto" ?>
   <tgroup cols='3' align='left' rowsep='0' colsep='0'>
-  <colspec colwidth='0.8*' colname='c1'/>
+  <colspec colwidth='0.7*' colname='c1'/>
   <colspec colwidth='1.0*' colname='c2'/>
   <colspec colwidth='0.6*' colname='c3'/>
   <thead>

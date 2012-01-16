@@ -816,16 +816,16 @@ initialize procedure, are
     </row>
   </thead>
   <tbody>
-    <row rowsep='0'>
+    <row>
       <entry>children</entry><entry>NULL</entry>
     </row>
-    <row rowsep='0'>
+    <row>
       <entry>num_children</entry><entry>0</entry>
     </row>
-    <row rowsep='0'>
+    <row>
       <entry>num_slots</entry><entry>0</entry>
     </row>
-    <row rowsep='0'>
+    <row>
       <entry>insert_position</entry><entry>Internal function to insert at end</entry>
     </row>
   </tbody>
