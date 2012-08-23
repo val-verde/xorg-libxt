@@ -158,14 +158,12 @@ function is usually used in a highly stylized manner to
 minimize the probability of making a mistake; for example:
 .LP
 .Ds
-.TA .5i 3i
-.ta .5i 3i
 Arg args[20];
 int n;
 
 n = 0;
-XtSetArg(args[n], XtNheight, 100);	n++;
-XtSetArg(args[n], XtNwidth, 200);	n++;
+XtSetArg(args[n], XtNheight, 100);      n++;
+XtSetArg(args[n], XtNwidth, 200);       n++;
 XtSetValues(widget, args, n);
 .De
 .LP
@@ -174,11 +172,9 @@ and use
 .ZN XtNumber :
 .LP
 .Ds
-.TA .5i 3i
-.ta .5i 3i
 static Args args[] = {
-	{XtNheight, (XtArgVal) 100},
-	{XtNwidth, (XtArgVal) 200},
+        {XtNheight, (XtArgVal) 100},
+        {XtNwidth, (XtArgVal) 200},
 };
 XtSetValues(Widget, args, XtNumber(args));
 .De
