@@ -9,8 +9,8 @@ ERRORDB_DEFINES = -DERRORDB=\"$(ERRORDBDIR)/XtErrorDB\"
 AM_CFLAGS = $(CWARNFLAGS) $(XT_CFLAGS) $(SRCH_DEFINES) $(ERRORDB_DEFINES) \
 	$(XTMALLOC_ZERO_CFLAGS)
 
-INCLUDES = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11 \
-	   -I$(top_builddir)/include -I$(top_builddir)/include/X11
+AM_CPPFLAGS = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11 \
+	      -I$(top_builddir)/include -I$(top_builddir)/include/X11
 
 nodist_libXt_la_SOURCES = StringDefs.c
 
