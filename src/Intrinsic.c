@@ -88,7 +88,7 @@ String XtCXtToolkitError = "XtToolkitError";
 
 Boolean XtIsSubclass(
     Widget    widget,
-    WidgetClass widgetClass)
+    WidgetClass xwidgetClass)
 {
     register WidgetClass w;
     Boolean retval = FALSE;
@@ -97,7 +97,7 @@ Boolean XtIsSubclass(
     LOCK_APP(app);
     LOCK_PROCESS;
     for (w = widget->core.widget_class; w != NULL; w = w->core_class.superclass)
-	if (w == widgetClass) {
+	if (w == xwidgetClass) {
 	    retval = TRUE;
 	    break;
 	}
@@ -125,7 +125,7 @@ Boolean _XtCheckSubclassFlag(
 
 Boolean _XtIsSubclassOf(
     Widget object,
-    WidgetClass widgetClass,
+    WidgetClass xwidgetClass,
     WidgetClass superClass,
     _XtXtEnum flag)
 {

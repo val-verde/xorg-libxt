@@ -1041,14 +1041,14 @@ void XtCallActionProc(
     }
 
     {
-	String params[2];
-	Cardinal num_params = 2;
-	params[0] = (String)action;
-	params[1] = XtName(widget);
+	String sparams[2];
+	Cardinal num_sparams = 2;
+	sparams[0] = (String)action;
+	sparams[1] = XtName(widget);
 	XtAppWarningMsg(app,
 			"noActionProc", "xtCallActionProc", XtCXtToolkitError,
 			"No action proc named \"%s\" is registered for widget \"%s\"",
-			params, &num_params
+			sparams, &num_sparams
 			);
     }
     UNLOCK_APP(app);
