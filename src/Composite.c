@@ -175,17 +175,17 @@ static void InheritAllowsChangeManagedSet(
 }
 
 static void CompositeClassPartInitialize(
-	WidgetClass cwidgetClass)
+	WidgetClass widgetClass)
 {
     register CompositePartPtr wcPtr;
     register CompositePartPtr superPtr = NULL;
 
     wcPtr = (CompositePartPtr)
-	&(((CompositeWidgetClass)cwidgetClass)->composite_class);
+	&(((CompositeWidgetClass)widgetClass)->composite_class);
 
-    if (cwidgetClass != compositeWidgetClass)
+    if (widgetClass != compositeWidgetClass)
 	/* don't compute possible bogus pointer */
-	superPtr = (CompositePartPtr)&(((CompositeWidgetClass)cwidgetClass
+	superPtr = (CompositePartPtr)&(((CompositeWidgetClass)widgetClass
 			->core_class.superclass)->composite_class);
 
     /* We don't need to check for null super since we'll get to composite
@@ -200,7 +200,7 @@ static void CompositeClassPartInitialize(
     if (wcPtr->change_managed == XtInheritChangeManaged) {
 	wcPtr->change_managed =
 		superPtr->change_managed;
-	InheritAllowsChangeManagedSet(cwidgetClass);
+	InheritAllowsChangeManagedSet(widgetClass);
     }
 
     if (wcPtr->insert_child == XtInheritInsertChild) {

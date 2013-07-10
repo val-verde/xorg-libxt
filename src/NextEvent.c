@@ -272,6 +272,7 @@ static void InitFds (
 	wf->fdlistlen = wf->num_dpys = 0;
 
     if (!ignoreInputs && app->input_list != NULL) {
+	int ii;
 	for (ii = 0; ii < (int) app->input_max; ii++)
 	    if (app->input_list[ii] != NULL)
 		wf->fdlistlen++;

@@ -812,7 +812,7 @@ CallConverter(
 	unsigned int supplied_size = to->size;
 	Boolean do_ref = cP->do_ref_count && cache_ref_return;
 	Boolean do_free = False;
-	retval =
+	Boolean retval =
 	    (*(XtTypeConverter)converter)(dpy, args, &num_args, from, to, &closure);
 
 	if (retval == False && supplied_size < to->size) {

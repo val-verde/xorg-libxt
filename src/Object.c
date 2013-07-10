@@ -130,7 +130,7 @@ externaldef(objectClass) WidgetClass objectClass
 
 
 static void ConstructCallbackOffsets(
-    WidgetClass cwidgetClass)
+    WidgetClass widgetClass)
 {
     static XrmQuark QCallback = NULLQUARK;
     register int i;
@@ -138,7 +138,7 @@ static void ConstructCallbackOffsets(
     register CallbackTable newTable;
     register CallbackTable superTable;
     register XrmResourceList resourceList;
-    ObjectClass cobjectClass = (ObjectClass)cwidgetClass;
+    ObjectClass objectClass = (ObjectClass)widgetClass;
 
     /*
       This function builds an array of pointers to the resource
@@ -150,9 +150,9 @@ static void ConstructCallbackOffsets(
     if (QCallback == NULLQUARK)
 	QCallback = XrmPermStringToQuark(XtRCallback);
 
-    if (cobjectClass->object_class.superclass != NULL) {
+    if (objectClass->object_class.superclass != NULL) {
 	superTable = (CallbackTable)
-	    ((ObjectClass) cobjectClass->object_class.superclass)->
+	    ((ObjectClass) objectClass->object_class.superclass)->
 		object_class.callback_private;
 	tableSize = (int)(long) superTable[0];
     } else {
@@ -161,8 +161,8 @@ static void ConstructCallbackOffsets(
     }
 
     /* Count the number of callbacks */
-    resourceList = (XrmResourceList) cobjectClass->object_class.resources;
-    for (i = cobjectClass->object_class.num_resources; --i >= 0; resourceList++)
+    resourceList = (XrmResourceList) objectClass->object_class.resources;
+    for (i = objectClass->object_class.num_resources; --i >= 0; resourceList++)
 	if (resourceList->xrm_type == QCallback)
 	    tableSize++;
 
@@ -178,7 +178,7 @@ static void ConstructCallbackOffsets(
 
     if (superTable)
 	tableSize -= (int)(long) superTable[0];
-    resourceList = (XrmResourceList) cobjectClass->object_class.resources;
+    resourceList = (XrmResourceList) objectClass->object_class.resources;
     for (i=1; tableSize > 0; resourceList++)
 	if (resourceList->xrm_type == QCallback) {
 	    newTable[i++] = resourceList;
@@ -190,7 +190,7 @@ static void ConstructCallbackOffsets(
 	    --tableSize >= 0; superTable++)
 	    newTable[i++] = *superTable;
 
-    cobjectClass->object_class.callback_private = (XtPointer) newTable;
+    objectClass->object_class.callback_private = (XtPointer) newTable;
 }
 
 static void InheritObjectExtensionMethods(

@@ -2079,6 +2079,7 @@ void XtSendSelectionRequest(
 	Boolean ins[PREALLOCED];
 	Atom *props;
 	Atom p[PREALLOCED];
+	int i = 0;
 	int j = 0;
 
 	/* Allocate */
