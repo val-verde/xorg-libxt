@@ -90,19 +90,26 @@ static int   solaris_abi_names = FALSE;
 static char* includedir = NULL;
 static FILE *ifopen(const char *file, const char *mode)
 {
+#ifndef HAVE_ASPRINTF
     size_t len;
+#endif
     char *buffer;
     FILE *ret;
 
     if (includedir == NULL)
         return fopen(file, mode);
 
+#ifdef HAVE_ASPRINTF
+    if (asprintf(&buffer, "%s/%s", includedir, file) == -1)
+        return NULL;
+#else
     len = strlen(file) + strlen(includedir) + 1;
     buffer = (char*)malloc(len + 1);
     if (buffer == NULL)
         return NULL;
 
     snprintf(buffer, len + 1, "%s/%s", includedir, file);
+#endif
 
     ret = fopen(buffer, mode);
 
@@ -269,13 +276,23 @@ static void WriteHeader (char *tagline, File *phile, int abi)
 
     /* do the right thing for Motif, i.e. avoid _XmXmStrDefs_h_ */
     if (strcmp (prefixstr, "Xm") == 0) {
+#ifdef HAVE_ASPRINTF
+	if (asprintf (&fileprotstr, "_%s_", phile->name) == -1)
+	    exit (1);
+#else
 	if ((fileprotstr = malloc (strlen (phile->name) + 3)) == NULL)
 	   exit (1);
 	(void) sprintf (fileprotstr, "_%s_", phile->name);
+#endif
     } else {
+#ifdef HAVE_ASPRINTF
+	if (asprintf (&fileprotstr, "_%s%s_", prefixstr, phile->name) == -1)
+	    exit (1);
+#else
 	if ((fileprotstr = malloc (strlen (phile->name) + strlen (prefixstr) +  3)) == NULL)
 	   exit (1);
 	(void) sprintf (fileprotstr, "_%s%s_", prefixstr, phile->name);
+#endif
     }
 
     for (tmp = fileprotstr; *tmp; tmp++) if (*tmp == '.') *tmp = '_';
