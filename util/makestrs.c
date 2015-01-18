@@ -102,9 +102,7 @@ static FILE *ifopen(const char *file, const char *mode)
     if (buffer == NULL)
         return NULL;
 
-    strcpy(buffer, includedir);
-    strcat(buffer, "/");
-    strcat(buffer, file);
+    snprintf(buffer, len + 1, "%s/%s", includedir, file);
 
     ret = fopen(buffer, mode);
 
@@ -580,8 +578,7 @@ static void DoLine(char *buf)
 	    else
 		right = buf + 1;
 	    if (buf[0] == 'H') {
-		strcpy (lbuf, prefixstr);
-		strcat (lbuf, right);
+		snprintf (lbuf, sizeof(lbuf), "%s%s", prefixstr, right);
 		right = lbuf;
 	    }
 
