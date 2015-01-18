@@ -498,9 +498,8 @@ static void DoLine(char *buf)
 
 	    if ((phile = (File*) malloc (sizeof(File))) == NULL)
 		exit(1);
-	    if ((phile->name = malloc (strlen (buf + strlen (file_str)) + 1)) == NULL)
+	    if ((phile->name = strdup (buf + strlen (file_str) + 1)) == NULL)
 		exit(1);
-	    (void) strcpy (phile->name, buf + strlen (file_str) + 1);
 	    phile->table = NULL;
 	    phile->tablecurrent = NULL;
 	    phile->tabletail = &phile->table;
@@ -517,9 +516,8 @@ static void DoLine(char *buf)
 	    Table* table;
 	    if ((table = (Table*) malloc (sizeof(Table))) == NULL)
 		exit(1);
-	    if ((table->name = malloc (strlen (buf + strlen (table_str)) + 1)) == NULL)
+	    if ((table->name = strdup (buf + strlen (table_str) + 1)) == NULL)
 		exit(1);
-	    (void) strcpy (table->name, buf + strlen (table_str) + 1);
 	    if (solaris_abi_names) {
 		if (strcmp(table->name, "XtStringsR6") == 0) {
 		    strcpy(table->name, "XtR6Strings");
@@ -539,29 +537,24 @@ static void DoLine(char *buf)
 	}
 	break;
     case X_PREFIX_TOKEN:
-	if ((prefixstr = malloc (strlen (buf + strlen (prefix_str)) + 1)) == NULL)
+	if ((prefixstr = strdup (buf + strlen (prefix_str) + 1)) == NULL)
 	    exit(1);
-	(void) strcpy (prefixstr, buf + strlen (prefix_str) + 1);
 	break;
     case X_FEATURE_TOKEN:
-	if ((featurestr = malloc (strlen (buf + strlen (feature_str)) + 1)) == NULL)
+	if ((featurestr = strdup (buf + strlen (feature_str) + 1)) == NULL)
 	    exit(1);
-	(void) strcpy (featurestr, buf + strlen (feature_str) + 1);
 	break;
     case X_EXTERNREF_TOKEN:
-	if ((externrefstr = malloc (strlen (buf + strlen (externref_str)) + 1)) == NULL)
+	if ((externrefstr = strdup (buf + strlen (externref_str) + 1)) == NULL)
 	    exit(1);
-	(void) strcpy (externrefstr, buf + strlen (externref_str) + 1);
 	break;
     case X_EXTERNDEF_TOKEN:
-	if ((externdefstr = malloc (strlen (buf + strlen (externdef_str)) + 1)) == NULL)
+	if ((externdefstr = strdup (buf + strlen (externdef_str) + 1)) == NULL)
 	    exit(1);
-	(void) strcpy (externdefstr, buf + strlen (externdef_str) + 1);
 	break;
     case X_CTMPL_TOKEN:
-	if ((ctmplstr = malloc (strlen (buf + strlen (ctmpl_str)) + 1)) == NULL)
+	if ((ctmplstr = strdup (buf + strlen (ctmpl_str) + 1)) == NULL)
 	    exit(1);
-	(void) strcpy (ctmplstr, buf + strlen (ctmpl_str) + 1);
 	break;
     case X_HTMPL_TOKEN:
 	if ((filecurrent->tmpl = ifopen (buf + strlen (htmpl_str) + 1, "r")) == NULL) {
@@ -571,9 +564,8 @@ static void DoLine(char *buf)
 	}
 	break;
     case X_CONST_TOKEN:
-	if ((conststr = malloc (strlen (buf + strlen (const_str)) + 1)) == NULL)
+	if ((conststr = strdup (buf + strlen (const_str) + 1)) == NULL)
 	    exit(1);
-	(void) strcpy (conststr, buf + strlen (const_str) + 1);
 	break;
     default:
 	{
