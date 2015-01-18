@@ -583,7 +583,7 @@ static void DoLine(char *buf)
 	    int rlen;
 	    int len;
 
-	    if ((right = index(buf, ' ')))
+	    if ((right = strchr(buf, ' ')))
 		*right++ = 0;
 	    else
 		right = buf + 1;
@@ -666,8 +666,8 @@ static char* DoComment (char *line)
     int len;
 
     /* assume that the first line with two '$' in it is the RCS tag line */
-    if ((tag = index (line, '$')) == NULL) return NULL;
-    if ((eol = index (tag + 1, '$')) == NULL) return NULL;
+    if ((tag = strchr (line, '$')) == NULL) return NULL;
+    if ((eol = strchr (tag + 1, '$')) == NULL) return NULL;
     len = eol - tag;
     if ((ret = malloc (len)) == NULL)
 	exit (1);
