@@ -382,7 +382,7 @@ TMShortCard _XtGetModifierIndex(
 	j = 0;
     }
     modMatch = &segment[j];
-    modMatch->modifiers = event->modifiers;;
+    modMatch->modifiers = event->modifiers;
     modMatch->modifierMask = event->modifierMask;
     modMatch->standard = event->standard;
     /*

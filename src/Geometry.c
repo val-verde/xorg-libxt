@@ -456,7 +456,7 @@ _XtMakeGeometryRequest (
 
 	ClearRectObjAreas((RectObj)widget, &req.changes);
     }
-    hookobj = XtHooksOfDisplay(XtDisplayOfObject(widget));;
+    hookobj = XtHooksOfDisplay(XtDisplayOfObject(widget));
     if (XtHasCallbacks(hookobj, XtNconfigureHook) == XtCallbackHasSome) {
 	req.type = XtHconfigure;
 	req.widget = widget;
@@ -573,7 +573,7 @@ void XtResizeWindow(
 	req.changeMask = CWWidth | CWHeight | CWBorderWidth;
 	XConfigureWindow(XtDisplay(w), XtWindow(w),
 	    (unsigned) req.changeMask, &req.changes);
-	hookobj = XtHooksOfDisplay(XtDisplayOfObject(w));;
+	hookobj = XtHooksOfDisplay(XtDisplayOfObject(w));
 	if (XtHasCallbacks(hookobj, XtNconfigureHook) == XtCallbackHasSome) {
 	    req.type = XtHconfigure;
 	    req.widget = w;
@@ -661,7 +661,7 @@ void XtConfigureWidget(
 		ClearRectObjAreas((RectObj)w, &old);
 	    }
 	}
-	hookobj = XtHooksOfDisplay(XtDisplayOfObject(w));;
+	hookobj = XtHooksOfDisplay(XtDisplayOfObject(w));
 	if (XtHasCallbacks(hookobj, XtNconfigureHook) == XtCallbackHasSome) {
 	    req.type = XtHconfigure;
 	    req.widget = w;
