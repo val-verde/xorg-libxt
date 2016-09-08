@@ -170,17 +170,6 @@ AC_SUBST(STRINGSABIOPTIONS)
 ERRORDBDIR=${datadir}/X11
 AC_SUBST(ERRORDBDIR)
 
-case $host_os in
-    darwin*)
-        OS_CFLAGS="-Wl,-flat_namespace"
-	;;
-    *)
-        OS_CFLAGS=
-        ;;
-esac
-
-XT_CFLAGS="$XT_CFLAGS $OS_CFLAGS"
-
 AC_CONFIG_FILES([Makefile
 		src/Makefile
 		util/Makefile
