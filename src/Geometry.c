@@ -726,10 +726,10 @@ void XtTranslateCoords(
                 "Widget has no shell ancestor",
 		(String *)NULL, (Cardinal *)NULL);
     else {
-	Position x, y;
-	_XtShellGetCoordinates( w, &x, &y );
-	*rootx += x + w->core.border_width;
-	*rooty += y + w->core.border_width;
+	Position x2, y2;
+	_XtShellGetCoordinates( w, &x2, &y2 );
+	*rootx += x2 + w->core.border_width;
+	*rooty += y2 + w->core.border_width;
     }
     UNLOCK_APP(app);
 }
