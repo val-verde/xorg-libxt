@@ -214,7 +214,7 @@ char *XtCalloc(
 void XtFree(
     char *ptr)
 {
-    if (ptr != NULL) Xfree(ptr);
+    free(ptr);
 }
 
 char* __XtMalloc(
