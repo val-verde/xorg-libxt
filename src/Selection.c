@@ -2043,6 +2043,7 @@ void XtSendSelectionRequest(
   QueuedRequestInfo queueInfo;
   Window window = XtWindow(widget);
   Display *dpy = XtDisplay(widget);
+  int i;
 
   LOCK_PROCESS;
   if (multipleContext == 0) multipleContext = XUniqueContext();
@@ -2051,7 +2052,6 @@ void XtSendSelectionRequest(
   (void) XFindContext(dpy, window, multipleContext, (XPointer*) &queueInfo);
   if (queueInfo != NULL) {
     int count = 0;
-    int i;
     QueuedRequest *req = queueInfo->requests;
 
     /* Construct the requests and send it using
@@ -2079,7 +2079,6 @@ void XtSendSelectionRequest(
 	Boolean ins[PREALLOCED];
 	Atom *props;
 	Atom p[PREALLOCED];
-	int i = 0;
 	int j = 0;
 
 	/* Allocate */
