@@ -99,7 +99,7 @@ in this Software without prior written authorization from The Open Group.
 #define MIN(a,b) (((a) < (b)) ? (a) : (b))
 #endif
 
-static String XtNtranslationParseError = "translationParseError";
+static _Xconst char *XtNtranslationParseError = "translationParseError";
 
 typedef int		EventType;
 
@@ -479,13 +479,14 @@ static String PanicModeRecovery(
 
 
 static void Syntax(
-    String str0,String str1)
+    _Xconst char *str0, _Xconst char *str1)
+//  String str0, String str1)
 {
     Cardinal num_params = 2;
     String params[2];
 
-    params[0] = str0;
-    params[1] = str1;
+    params[0] = (String) str0;
+    params[1] = (String) str1;
     XtWarningMsg(XtNtranslationParseError,"parseError",XtCXtToolkitError,
 		 "translation table syntax error: %s %s",params,&num_params);
 }
