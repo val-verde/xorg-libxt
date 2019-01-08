@@ -742,8 +742,7 @@ static void FreeContext(
       context->numMatches = 0;
     else if (*contextPtr)
     {
-      if ((*contextPtr)->matches)
-        XtFree ((char *) ((*contextPtr)->matches));
+      XtFree ((char *) ((*contextPtr)->matches));
       XtFree((char *)*contextPtr);
     }
 
@@ -2062,7 +2061,7 @@ static Boolean ComposeTranslations(
     dest->core.tm.proc_table =
       (XtActionProc *) MakeBindData(newBindings, numNewBindings, bindData);
 
-    if (bindData) XtFree((char *)bindData);
+    XtFree((char *)bindData);
 
     dest->core.tm.translations = newTable;
 

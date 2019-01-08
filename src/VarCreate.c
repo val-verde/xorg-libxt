@@ -79,9 +79,8 @@ _XtVaCreateWidget(
     widget = _XtCreateWidget(name, widget_class, parent, (ArgList)NULL,
 		    (Cardinal)0, typed_args, num_args);
 
-    if (typed_args != NULL) {
-        XtFree((XtPointer)typed_args);
-    }
+
+    XtFree((XtPointer)typed_args);
 
     return widget;
 }
@@ -165,9 +164,8 @@ XtVaAppCreateShell(
     _XtVaToTypedArgList(var, total_count, &typed_args, &num_args);
     widget = _XtAppCreateShell((String)name, (String)class, widget_class,
 		display, (ArgList)NULL, (Cardinal)0, typed_args, num_args);
-    if (typed_args != NULL) {
-	XtFree((XtPointer)typed_args);
-    }
+
+    XtFree((XtPointer)typed_args);
 
     va_end(var);
     UNLOCK_APP(app);
@@ -199,9 +197,8 @@ XtVaCreatePopupShell(
     _XtVaToTypedArgList(var, total_count, &typed_args, &num_args);
     widget = _XtCreatePopupShell((String)name, widget_class, parent,
 		(ArgList)NULL, (Cardinal)0, typed_args, num_args);
-    if (typed_args != NULL) {
-	XtFree((XtPointer)typed_args);
-    }
+
+    XtFree((XtPointer)typed_args);
 
     va_end(var);
     UNLOCK_APP(app);
@@ -254,9 +251,7 @@ XtVaSetSubvalues(XtPointer base, XtResourceList resources, Cardinal num_resource
 
     XtSetSubvalues(base, resources, num_resources, args, num_args);
 
-    if (num_args != 0) {
-        XtFree((XtPointer)args);
-    }
+    XtFree((XtPointer)args);
 
     va_end(var);
 }

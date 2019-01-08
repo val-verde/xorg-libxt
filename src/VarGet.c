@@ -86,9 +86,7 @@ XtVaGetSubresources(
     _XtGetSubresources(widget, base, name, class, resources, num_resources,
 	NULL, 0, args, num_args);
 
-    if (num_args != 0) {
-	XtFree((XtPointer)args);
-    }
+    XtFree((XtPointer)args);
 
     va_end(var);
     UNLOCK_APP(app);
@@ -116,9 +114,7 @@ XtVaGetApplicationResources(Widget widget, XtPointer base, XtResourceList resour
     _XtGetApplicationResources(widget, base, resources, num_resources,
 	NULL, 0, args, num_args);
 
-    if (num_args != 0) {
-	XtFree((XtPointer)args);
-    }
+    XtFree((XtPointer)args);
 
     va_end(var);
     UNLOCK_APP(app);
@@ -273,9 +269,7 @@ XtVaGetValues(Widget widget, ...)
     }
     va_end(var);
 
-    if (resources != (XtResourceList)NULL) {
-	XtFree((XtPointer)resources);
-    }
+    XtFree((XtPointer)resources);
 
     if (total_count != typed_count) {
 	XtGetValues(widget, args, count);
@@ -307,7 +301,5 @@ XtVaGetSubvalues(XtPointer base,XtResourceList  resources, Cardinal num_resource
 
     XtGetSubvalues(base, resources, num_resources, args, num_args);
 
-    if (num_args != 0) {
-        XtFree((XtPointer)args);
-    }
+    XtFree((XtPointer)args);
 }
