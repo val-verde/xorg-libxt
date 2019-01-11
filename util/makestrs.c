@@ -88,7 +88,7 @@ static int   solaris_abi_names = FALSE;
  * commandline. Needed to separate source and build directories.
  */
 static char* includedir = NULL;
-static FILE *ifopen(const char *file, const char *mode)
+static FILE *ifopen(const char *myfile, const char *mode)
 {
 #ifndef HAVE_ASPRINTF
     size_t len;
@@ -97,13 +97,13 @@ static FILE *ifopen(const char *file, const char *mode)
     FILE *ret;
 
     if (includedir == NULL)
-        return fopen(file, mode);
+        return fopen(myfile, mode);
 
 #ifdef HAVE_ASPRINTF
-    if (asprintf(&buffer, "%s/%s", includedir, file) == -1)
+    if (asprintf(&buffer, "%s/%s", includedir, myfile) == -1)
         return NULL;
 #else
-    len = strlen(file) + strlen(includedir) + 1;
+    len = strlen(myfile) + strlen(includedir) + 1;
     buffer = (char*)malloc(len + 1);
     if (buffer == NULL)
         return NULL;
@@ -622,7 +622,7 @@ static void DoLine(char *buf)
     }
 }
 
-static void IntelABIIndexEntries (File *file)
+static void IntelABIIndexEntries (File *myfile)
 {
     Table* t;
     TableEnt* te;
@@ -635,7 +635,7 @@ static void IntelABIIndexEntries (File *file)
     }
 }
 
-static void DefaultIndexEntries (File *file)
+static void DefaultIndexEntries (File *myfile)
 {
     Table* t;
     TableEnt* te;
@@ -649,7 +649,7 @@ static void DefaultIndexEntries (File *file)
     }
 }
 
-static void IndexEntries (File *file, int abi)
+static void IndexEntries (File *myfile, int abi)
 {
     switch (abi) {
     case X_SPARC_ABI:
