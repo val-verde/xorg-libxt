@@ -973,9 +973,7 @@ XtCacheRef *_XtGetResources(
 	    (XrmResourceList *) cwc->constraint_class.resources,
 	    cwc->constraint_class.num_resources,
 	    quark_args, args, num_args, typed_args, num_typed_args, False);
-	if (cache_refs_core) {
-	    XtFree((char *)cache_refs_core);
-	}
+	 XtFree((char *)cache_refs_core);
     }
     FreeCache(quark_cache, quark_args);
     UNLOCK_PROCESS;
