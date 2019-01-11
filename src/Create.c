@@ -80,8 +80,8 @@ in this Software without prior written authorization from The Open Group.
 #endif
 #include <stdio.h>
 
-static String XtNxtCreateWidget = "xtCreateWidget";
-static String XtNxtCreatePopupShell = "xtCreatePopupShell";
+static _Xconst _XtString XtNxtCreateWidget = "xtCreateWidget";
+static _Xconst _XtString XtNxtCreatePopupShell = "xtCreatePopupShell";
 
 static void
 CallClassPartInit(WidgetClass ancestor, WidgetClass wc)
@@ -146,8 +146,8 @@ XtInitializeWidgetClass(WidgetClass wc)
     if (wc->core_class.version != XtVersion &&
 	wc->core_class.version != XtVersionDontCheck) {
 	String param[3];
-	String mismatch = "Widget class %s version mismatch (recompilation needed):\n  widget %d vs. intrinsics %d.";
-	String recompile = "Widget class %s must be re-compiled.";
+	_Xconst _XtString mismatch = "Widget class %s version mismatch (recompilation needed):\n  widget %d vs. intrinsics %d.";
+	_Xconst _XtString recompile = "Widget class %s must be re-compiled.";
 	Cardinal num_params;
 
 	param[0] = wc->core_class.class_name;
@@ -260,7 +260,7 @@ xtWidgetAlloc(
     WidgetClass widget_class,
     ConstraintWidgetClass parent_constraint_class,
     Widget parent,
-    String name,
+    _Xconst _XtString name,
     ArgList     args,		/* must be NULL if typed_args is non-NULL */
     Cardinal    num_args,
     XtTypedArgList typed_args,	/* must be NULL if args is non-NULL */
@@ -300,8 +300,7 @@ xtWidgetAlloc(
 		    wsize = (wsize + sizeof(double) - 1) & ~(sizeof(double)-1);
 	    }
 	}
-	widget = (Widget) __XtMalloc((unsigned)(wsize + csize));
-	bzero(widget, wsize + csize);
+	widget = (Widget) __XtCalloc(1,(unsigned)(wsize + csize));
 	widget->core.constraints =
 	    (csize ? (XtPointer)((char *)widget + wsize) : NULL);
     }
