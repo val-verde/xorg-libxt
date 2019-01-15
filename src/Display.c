@@ -84,7 +84,7 @@ void (*_XtProcessUnlock)(void) = NULL;
 void (*_XtInitAppLock)(XtAppContext) = NULL;
 #endif
 
-static String XtNnoPerDisplay = "noPerDisplay";
+static _Xconst _XtString XtNnoPerDisplay = "noPerDisplay";
 
 ProcessContext _XtGetProcessContext(void)
 {

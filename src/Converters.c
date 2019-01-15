@@ -86,9 +86,9 @@ in this Software without prior written authorization from The Open Group.
 #define IsNewline(str) ((str) == '\n')
 #define IsWhitespace(str) ((str)== ' ' || (str) == '\t')
 
-static const String XtNwrongParameters = "wrongParameters";
-static const String XtNconversionError = "conversionError";
-static const String XtNmissingCharsetList = "missingCharsetList";
+static _Xconst _XtString XtNwrongParameters = "wrongParameters";
+static _Xconst _XtString XtNconversionError = "conversionError";
+static _Xconst _XtString XtNmissingCharsetList = "missingCharsetList";
 
 /* Representation types */
 
@@ -495,7 +495,9 @@ Boolean XtCvtStringToPixel(
     status = XAllocNamedColor(DisplayOfScreen(screen), colormap,
 			      (char*)str, &screenColor, &exactColor);
     if (status == 0) {
-	String msg, type;
+	_Xconst _XtString msg;
+	_Xconst _XtString type;
+
 	params[0] = str;
 	/* Server returns a specific error code but Xlib discards it.  Ugh */
 	if (XLookupColor(DisplayOfScreen(screen), colormap, (char*)str,

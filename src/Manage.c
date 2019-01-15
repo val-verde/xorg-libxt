@@ -73,10 +73,10 @@ in this Software without prior written authorization from The Open Group.
 #endif
 #include "IntrinsicI.h"
 
-static String XtNinvalidChild = "invalidChild";
-static String XtNxtUnmanageChildren = "xtUnmanageChildren";
-static String XtNxtManageChildren = "xtManageChildren";
-static String XtNxtChangeManagedSet = "xtChangeManagedSet";
+static _Xconst _XtString XtNinvalidChild = "invalidChild";
+static _Xconst _XtString XtNxtUnmanageChildren = "xtUnmanageChildren";
+static _Xconst _XtString XtNxtManageChildren = "xtManageChildren";
+static _Xconst _XtString XtNxtChangeManagedSet = "xtChangeManagedSet";
 
 static void UnmanageChildren(
     WidgetList children,
@@ -84,7 +84,7 @@ static void UnmanageChildren(
     Widget parent,
     Cardinal* num_unique_children,
     Boolean call_change_managed,
-    String caller_func)
+    _Xconst _XtString caller_func)
 {
     Widget		child;
     Cardinal		i;
@@ -210,7 +210,7 @@ static void ManageChildren(
     Cardinal    num_children,
     Widget	parent,
     Boolean	call_change_managed,
-    String	caller_func)
+    _Xconst _XtString	caller_func)
 {
 #define MAXCHILDREN 100
     Widget		child;

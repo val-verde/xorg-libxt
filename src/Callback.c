@@ -73,11 +73,11 @@ in this Software without prior written authorization from The Open Group.
 #endif
 #include "IntrinsicI.h"
 
-static String XtNinvalidCallbackList = "invalidCallbackList";
-static String XtNxtAddCallback = "xtAddCallback";
-static String XtNxtRemoveCallback = "xtRemoveCallback";
-static String XtNxtRemoveAllCallback = "xtRemoveAllCallback";
-static String XtNxtCallCallback = "xtCallCallback";
+static _Xconst _XtString XtNinvalidCallbackList = "invalidCallbackList";
+static _Xconst _XtString XtNxtAddCallback = "xtAddCallback";
+static _Xconst _XtString XtNxtRemoveCallback = "xtRemoveCallback";
+static _Xconst _XtString XtNxtRemoveAllCallback = "xtRemoveAllCallback";
+static _Xconst _XtString XtNxtCallCallback = "xtCallCallback";
 
 /* However it doesn't contain a final NULL record */
 #define ToList(p) ((XtCallbackList) ((p)+1))

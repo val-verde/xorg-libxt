@@ -86,7 +86,7 @@ in this Software without prior written authorization from The Open Group.
 #define RConst /**/
 #endif
 
-static String XtNtranslationError = "translationError";
+static _Xconst _XtString XtNtranslationError = "translationError";
 
 typedef struct _CompiledAction{
     XrmQuark		signature;
