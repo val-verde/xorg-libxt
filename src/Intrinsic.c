@@ -85,13 +85,14 @@ in this Software without prior written authorization from The Open Group.
 #include <direct.h>            /* for _getdrives() */
 #endif
 
+#include <stdio.h>
 #include <stdlib.h>
 
 String XtCXtToolkitError = "XtToolkitError";
 
 Boolean XtIsSubclass(
     Widget    widget,
-    WidgetClass widgetClass)
+    WidgetClass myWidgetClass)
 {
     register WidgetClass w;
     Boolean retval = FALSE;
@@ -100,7 +101,7 @@ Boolean XtIsSubclass(
     LOCK_APP(app);
     LOCK_PROCESS;
     for (w = widget->core.widget_class; w != NULL; w = w->core_class.superclass)
-	if (w == widgetClass) {
+	if (w == myWidgetClass) {
 	    retval = TRUE;
 	    break;
 	}
@@ -128,7 +129,7 @@ Boolean _XtCheckSubclassFlag(
 
 Boolean _XtIsSubclassOf(
     Widget object,
-    WidgetClass widgetClass,
+    WidgetClass myWidgetClass,
     WidgetClass superClass,
     _XtXtEnum flag)
 {
@@ -139,7 +140,7 @@ Boolean _XtIsSubclassOf(
     } else {
 	register WidgetClass c = object->core.widget_class;
 	while (c != superClass) {
-	    if (c == widgetClass) {
+	    if (c == myWidgetClass) {
 		UNLOCK_PROCESS;
 		return True;
 	    }
@@ -1566,14 +1567,13 @@ _XtGeoTab (int direction)  /* +1 or -1 */
 
 
 void
-_XtGeoTrace (Widget widget, ...)
+_XtGeoTrace (Widget widget, const char *fmt, ...)
 {
     va_list args;
-    char *fmt;
     int i ;
+
     if (IsTattled(widget)) {
-	va_start(args, widget);
-	fmt = va_arg(args, char *);
+	va_start(args, fmt);
 	for (i=0; i<n_tab; i++) printf("     ");
 	(void) vprintf(fmt, args);
 	va_end(args);

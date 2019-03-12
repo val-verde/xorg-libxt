@@ -196,6 +196,7 @@ extern void _XtGClistFree(Display *dpy, XtPerDisplay pd);
 extern void _XtGeoTab (int);
 extern void _XtGeoTrace (
 			    Widget widget,
+			    const char *,
 			    ...
 ) _X_ATTRIBUTE_PRINTF(2,3);
 
