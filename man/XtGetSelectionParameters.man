@@ -60,7 +60,9 @@
 .ie t \fB\^\\$1\^\fR\\$2
 .el \fI\^\\$1\^\fP\\$2
 ..
-.ny0
+.de ny
+..
+.ny 0
 .TH XtGetSelectionParameters __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtGetSelectionParameters \- retrieve target parameters for a selection request with a single target

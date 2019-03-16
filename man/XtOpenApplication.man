@@ -60,7 +60,9 @@
 .ie t \fB\^\\$1\^\fR\\$2
 .el \fI\^\\$1\^\fP\\$2
 ..
-.ny0
+.de ny
+..
+.ny 0
 .TH XtOpenApplication __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtOpenApplication, XtVaOpenApplication \- initialize, open, or close a display
