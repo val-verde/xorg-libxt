@@ -44,14 +44,8 @@
 ..
 .de De
 .ce 0
-.if \\n(BD .DF
-.nr BD 0
-.in \\n(OIu
-.if \\n(TM .ls 2
-.sp \\n(DDu
 .fi
 ..
-.de IN		\" send an index entry to the stderr
 ..
 .de Pn
 .ie t \\$1\fB\^\\$2\^\fR\\$3
