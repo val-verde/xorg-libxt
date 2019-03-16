@@ -35,7 +35,7 @@
 .na
 .de Ds
 .nf
-.\\$1D \\$2 \\$1
+.\\$1 \\$2 \\$1
 .ft CW
 .ps \\n(PS
 .\".if \\n(VS>=40 .vs \\n(VSu
