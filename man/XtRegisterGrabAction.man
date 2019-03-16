@@ -35,11 +35,8 @@
 .na
 .de Ds
 .nf
-.\\$1 \\$2 \\$1
+.in +0.4i
 .ft CW
-.ps \\n(PS
-.\".if \\n(VS>=40 .vs \\n(VSu
-.\".if \\n(VS<=39 .vs \\n(VSp
 ..
 .de De
 .ce 0
