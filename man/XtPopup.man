@@ -32,7 +32,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtPopup-Spring-Loaded XtCallback-None XtCallback-Nonexclusive XtCallback-Exclusive wid-get
+.hw XtPopup-Spring-Loaded XtCallback-None XtCallback-Nonexclusive
+.hw XtCallback-Exclusive wid-get
 .na
 .de Ds
 .nf

@@ -32,7 +32,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtCheck-Subclass XtIs-Object XtIs-RectObj XtIs-Widget XtIs-Composite XtIs-Constraint XtIs-Shell XtIs-Override-Shell XtIs-WM-Shell XtIs-Vendor-Shell XtIs-Transient-Shell XtIs-Top-Level-Shell XtIs-Application-Shell wid-get
+.hw XtCheck-Subclass XtIs-Object XtIs-RectObj XtIs-Widget XtIs-Composite
+.hw XtIs-Constraint XtIs-Shell XtIs-Override-Shell XtIs-WM-Shell
+.hw XtIs-Vendor-Shell XtIs-Transient-Shell XtIs-Top-Level-Shell
+.hw XtIs-Application-Shell wid-get
 .na
 .de Ds
 .nf

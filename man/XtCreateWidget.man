@@ -32,7 +32,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtCreate-Widget XtCreate-Managed-Widget XtDestroy-Widget XtVa-Create-Widget XtVa-Create-Managed-Widget wid-get
+.hw XtCreate-Widget XtCreate-Managed-Widget XtDestroy-Widget
+.hw XtVa-Create-Widget XtVa-Create-Managed-Widget wid-get
 .na
 .de Ds
 .nf

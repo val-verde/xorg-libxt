@@ -31,7 +31,9 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtSet-Values XtVa-Set-Values XtSet-Subvalues XtVa-Set-Subvalues XtGet-Values XtVa-Get-Values XtGet-Subvalues XtVa-Get-Subvalues constraint-Widget-Class wid-get
+.hw XtSet-Values XtVa-Set-Values XtSet-Subvalues XtVa-Set-Subvalues
+.hw XtGet-Values XtVa-Get-Values XtGet-Subvalues XtVa-Get-Subvalues
+.hw constraint-Widget-Class wid-get
 .na
 .de Ds
 .nf

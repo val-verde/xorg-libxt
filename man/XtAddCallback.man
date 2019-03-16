@@ -32,7 +32,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtAdd-Callback XtAdd-Callbacks XtRemove-Callback XtRemove-Callbacks XtRemove-All-Callbacks wid-get
+.hw XtAdd-Callback XtAdd-Callbacks XtRemove-Callback
+.hw XtRemove-Callbacks XtRemove-All-Callbacks wid-get
 .na
 .de Ds
 .nf

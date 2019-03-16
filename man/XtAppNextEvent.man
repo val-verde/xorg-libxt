@@ -32,7 +32,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtApp-Next-Event XtApp-Pending XtApp-Peek-Event XtApp-Process-Event Xt-Dispatch-Event XtApp-Main-Loop wid-get
+.hw XtApp-Next-Event XtApp-Pending XtApp-Peek-Event XtApp-Process-Event
+.hw Xt-Dispatch-Event XtApp-Main-Loop wid-get
 .na
 .de Ds
 .nf

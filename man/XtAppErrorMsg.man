@@ -32,7 +32,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtApp-Error-Msg XtApp-Set-Error-Msg-Handler XtApp-Set-Warning-Msg-Handler XtApp-Warning-Msg wid-get
+.hw XtApp-Error-Msg XtApp-Set-Error-Msg-Handler
+.hw XtApp-Set-Warning-Msg-Handler XtApp-Warning-Msg wid-get
 .na
 .de Ds
 .nf

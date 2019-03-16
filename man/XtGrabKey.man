@@ -31,7 +31,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtGrab-Key XtUngrab-Key XtGrab-Keyboard XtUngrab-Keyboard XtGrab-Button XtUngrab-Button XtGrab-Pointer XtUngrab-Pointer wid-get
+.hw XtGrab-Key XtUngrab-Key XtGrab-Keyboard XtUngrab-Keyboard
+.hw XtGrab-Button XtUngrab-Button XtGrab-Pointer XtUngrab-Pointer wid-get
 .na
 .de Ds
 .nf

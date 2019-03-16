@@ -31,7 +31,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtInsert-Event-Type-Handler XtRemove-Event-Type-Handler XtSet-Event-Dispatcher XtDispatch-Event-To-Widget wid-get
+.hw XtInsert-Event-Type-Handler XtRemove-Event-Type-Handler
+.hw XtSet-Event-Dispatcher XtDispatch-Event-To-Widget wid-get
 .na
 .de Ds
 .nf

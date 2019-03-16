@@ -31,7 +31,8 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
-.hw XtDisplay-Initialize XtOpen-Display XtClose-Display XtDatabase XtScreen-Database wid-get
+.hw XtDisplay-Initialize XtOpen-Display XtClose-Display XtDatabase
+.hw XtScreen-Database wid-get
 .na
 .de Ds
 .nf
