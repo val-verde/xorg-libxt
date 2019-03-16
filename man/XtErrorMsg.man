@@ -83,7 +83,7 @@ String \fIdefault\fP, String *\fIparams\fP, Cardinal *\fInum_params\fP);
 .IP \fIclass\fP 1i
 Specifies the resource class\*(Cl.
 .IP \fIdefault\fP 1i
-Specifies the default message to use\*(Dm.
+Specifies the default message to use.
 .IP \fIname\fP 1i
 Specifies the general kind of error.
 .IP \fItype\fP 1i

@@ -93,7 +93,7 @@ Specifies the pop-up shell.
 .IP \fIgrab_kind\fP 1i
 Specifies the way in which user events should be constrained.
 .IP \fIpopup_shell\fP 1i
-Specifies the widget shell\*(Ps.
+Specifies the widget shell.
 .IP \fIw\fP 1i
 Specifies the widget.
 .SH DESCRIPTION

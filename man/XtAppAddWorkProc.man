@@ -82,7 +82,7 @@ Specifies the application context \*(Co.
 Specifies the argument that is to be passed to the specified procedure
 when \*(Cd.
 .IP \fIproc\fP 1i
-Specifies the procedure that is\*(Pr.
+Specifies the procedure that is to be called.
 .IP \fIid\fP 1i
 Specifies which work procedure to remove.
 .SH DESCRIPTION

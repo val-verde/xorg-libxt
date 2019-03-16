@@ -85,7 +85,7 @@ XtCallbackList \fIcallbacks\fP);
 void XtRemoveAllCallbacks(Widget \fIw\fP, String \fIcallback_name\fP,
 .SH ARGUMENTS
 .IP \fIcallback\fP 1i
-Specifies the callback procedure\*(Cb.
+Specifies the callback procedure.
 .IP \fIcallbacks\fP 1i
 Specifies the null-terminated list of callback procedures and corresponding
 client data.

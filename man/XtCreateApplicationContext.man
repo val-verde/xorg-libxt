@@ -82,7 +82,7 @@ void XtToolkitInitialize(void);
 Specifies the application context.
 .ds wi that you want the application context for
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget.
 .SH DESCRIPTION
 The
 .ZN XtCreateApplicationContext

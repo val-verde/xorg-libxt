@@ -85,7 +85,7 @@ The caller must free this storage using
 when done with it.
 .ds Cl \ for which you want the list
 .IP \fIwidget_class\fP 1i
-Specifies the widget class\*(Wc.
+Specifies the widget class.
 .SH DESCRIPTION
 If
 .ZN XtGetResourceList

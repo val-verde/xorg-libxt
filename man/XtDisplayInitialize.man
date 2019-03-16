@@ -97,7 +97,7 @@ Specifies the class name of this application\*(Ac.
 .IP \fIapplication_name\fP 1i
 Specifies the name of the application instance.
 .IP \fIdisplay\fP 1i
-Specifies the display\*(Di.
+Specifies the display.
 Note that a display can be in at most one application context.
 .IP \fInum_options\fP 1i
 Specifies the number of entries in the options list.

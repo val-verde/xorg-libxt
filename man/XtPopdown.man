@@ -126,7 +126,7 @@ function casts the client data parameter to an
 .ZN XtPopdownID
 pointer:
 .LP
-.Ds 0
+.Ds
 typedef struct {
         Widget shell_widget;
         Widget enable_widget;

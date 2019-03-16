@@ -79,7 +79,7 @@ void XtRemoveTimeOut(XtIntervalId \fItimer\fP);
 Specifies the application context \*(Co.
 .IP \fIclient_data\fP 1i
 Specifies the argument that is to be passed to the specified procedure
-when \*(Cd.
+when handling the callback.
 .IP \fIinterval\fP 1i
 Specifies the time interval in milliseconds.
 .ds Pr \ to be called when time expires

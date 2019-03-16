@@ -86,7 +86,7 @@ Specifies the resource class\*(Cl.
 Specifies the name of the alternative database that is to be used
 or NULL if the application's database is to be used.
 .IP \fIdefault\fP 1i
-Specifies the default message to use\*(Dm.
+Specifies the default message to use.
 .IP \fIname\fP 1i
 .br
 .ns

@@ -152,7 +152,6 @@ is a convenience macro that calls
 with the following arguments specified:
 .LP
 .Ds
-.TA .5i
 .ta .5i
 ((type *) XtMalloc((unsigned) sizeof(type))
 .De
@@ -169,7 +168,6 @@ is a convenience macro that calls
 with the following arguments specified:
 .LP
 .Ds
-.TA .5i
 .ta .5i
 (strcpy(XtMalloc((unsigned) strlen(str) + 1), str))
 .De
