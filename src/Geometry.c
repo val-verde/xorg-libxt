@@ -85,7 +85,7 @@ static void ClearRectObjAreas(
     bw2 = old->border_width << 1;
     XClearArea( XtDisplay(pw), XtWindow(pw),
 		old->x, old->y,
-		old->width + bw2, old->height + bw2,
+		(unsigned)(old->width + bw2), (unsigned)(old->height + bw2),
 		TRUE );
 
     bw2 = r->rectangle.border_width << 1;
@@ -430,7 +430,7 @@ _XtMakeGeometryRequest (
 		if (XtIsWidget(request->sibling))
 		    req.changes.sibling = XtWindow(request->sibling);
 		else
-		    req.changeMask &= ~(CWStackMode | CWSibling);
+		    req.changeMask = (XtGeometryMask) (req.changeMask & (unsigned long) (~(CWStackMode | CWSibling)));
 	    }
 	}
 
@@ -716,8 +716,8 @@ void XtTranslateCoords(
     *rooty = y;
 
     for (; w != NULL && ! XtIsShell(w); w = w->core.parent) {
-	*rootx += w->core.x + w->core.border_width;
-	*rooty += w->core.y + w->core.border_width;
+	*rootx = (Position) (*rootx + w->core.x + w->core.border_width);
+	*rooty = (Position) (*rooty + w->core.y + w->core.border_width);
     }
 
     if (w == NULL)
@@ -728,8 +728,8 @@ void XtTranslateCoords(
     else {
 	Position x2, y2;
 	_XtShellGetCoordinates( w, &x2, &y2 );
-	*rootx += x2 + w->core.border_width;
-	*rooty += y2 + w->core.border_width;
+	*rootx = (Position) (*rootx + x2 + w->core.border_width);
+	*rooty = (Position) (*rooty + y2 + w->core.border_width);
     }
     UNLOCK_APP(app);
 }

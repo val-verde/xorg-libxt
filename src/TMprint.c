@@ -92,10 +92,10 @@ if (sb->current - sb->start > (int)sb->max - STR_THRESHOLD) 	\
 }
 
 #define ExpandForChars(sb, nchars ) \
-    if ((unsigned)(sb->current - sb->start) > sb->max - STR_THRESHOLD - nchars) { \
+    if ((unsigned)(sb->current - sb->start) > (sb->max - STR_THRESHOLD - nchars)) { \
 	String old = sb->start;					\
 	sb->start = XtRealloc(old,				\
-	    (Cardinal)(sb->max += STR_INCAMOUNT + nchars));	\
+	    (Cardinal)(sb->max = (Cardinal)(sb->max + STR_INCAMOUNT + (Cardinal) nchars)));	\
 	sb->current = sb->current - old + sb->start;		\
     }
 
@@ -338,7 +338,7 @@ static void PrintActions(
 	if (accelWidget) {
 	    /* accelerator */
 	    String name = XtName(accelWidget);
-	    int nameLen = strlen(name);
+	    int nameLen = (int) strlen(name);
 	    ExpandForChars(sb,  nameLen );
 	    XtMemmove(sb->current, name, nameLen );
 	    sb->current += nameLen;
@@ -396,8 +396,8 @@ static Boolean LookAheadForCycleOrMulticlick(
 	else if (typeMatch->eventType == _XtEventTimerEventType)
 	  continue;
 	else /* not same event as starting event and not timer */ {
-	    unsigned int type = sTypeMatch->eventType;
-	    unsigned int t = typeMatch->eventType;
+	    unsigned int type = (unsigned) sTypeMatch->eventType;
+	    unsigned int t = (unsigned) typeMatch->eventType;
 	    if (   (type == ButtonPress	  && t != ButtonRelease)
 		|| (type == ButtonRelease && t != ButtonPress)
 		|| (type == KeyPress	  && t != KeyRelease)
@@ -569,8 +569,8 @@ static void ProcessLaterMatches(
 				   branchHead,
 				   (state ? state->nextLevel : NULL),
 				   0) == TM_NO_MATCH)) {
-		    printData[*numPrintsRtn].tIndex = i;
-		    printData[*numPrintsRtn].bIndex = j;
+		    printData[*numPrintsRtn].tIndex = (TMShortCard) i;
+		    printData[*numPrintsRtn].bIndex = (TMShortCard) j;
 		    (*numPrintsRtn)++;
 		}
 	    }
@@ -603,7 +603,7 @@ static void ProcessStateTree(
 	    == TM_NO_MATCH) {
 	    if (!branchHead->isSimple || branchHead->hasActions) {
 		printData[*numPrintsRtn].tIndex = tIndex;
-		printData[*numPrintsRtn].bIndex = i;
+		printData[*numPrintsRtn].bIndex = (TMShortCard) i;
 		(*numPrintsRtn)++;
 	    }
 	    LOCK_PROCESS;
@@ -690,14 +690,14 @@ String _XtPrintXlations(
     sb->max = 1000;
     maxPrints = 0;
     for (i = 0; i < xlations->numStateTrees; i++)
-	maxPrints +=
-	  ((TMSimpleStateTree)(xlations->stateTreeTbl[i]))->numBranchHeads;
+	maxPrints = (TMShortCard) (maxPrints +
+	  ((TMSimpleStateTree)(xlations->stateTreeTbl[i]))->numBranchHeads);
     prints = (PrintRec *)
       XtStackAlloc(maxPrints * sizeof(PrintRec), stackPrints);
 
     numPrints = 0;
     for (i = 0; i < xlations->numStateTrees; i++)
-      ProcessStateTree(prints, xlations, i, &numPrints);
+      ProcessStateTree(prints, xlations, (TMShortCard) i, &numPrints);
 
     for (i = 0; i < numPrints; i++) {
 	TMSimpleStateTree stateTree = (TMSimpleStateTree)
@@ -796,8 +796,8 @@ void _XtDisplayInstalledAccelerators(
     sb->max = 1000;
     maxPrints = 0;
     for (i = 0; i < xlations->numStateTrees; i++)
-	maxPrints +=
-	  ((TMSimpleStateTree)xlations->stateTreeTbl[i])->numBranchHeads;
+	maxPrints = (TMShortCard) (maxPrints +
+	  ((TMSimpleStateTree)xlations->stateTreeTbl[i])->numBranchHeads);
     prints = (PrintRec *)
       XtStackAlloc(maxPrints * sizeof(PrintRec), stackPrints);
 
@@ -809,7 +809,7 @@ void _XtDisplayInstalledAccelerators(
 	 i++, complexBindProcs++) {
 	if (complexBindProcs->widget)
 	  {
-	      ProcessStateTree(prints, xlations, i, &numPrints);
+	      ProcessStateTree(prints, xlations, (TMShortCard) i, &numPrints);
 	  }
     }
     for (i = 0; i < numPrints; i++) {

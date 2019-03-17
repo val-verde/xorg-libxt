@@ -181,7 +181,7 @@ static void ComputeWindowAttributes(
     XtExposeProc expose;
 
     *value_mask = CWEventMask | CWColormap;
-    (*values).event_mask = XtBuildEventMask(widget);
+    (*values).event_mask = (long) XtBuildEventMask(widget);
     (*values).colormap = widget->core.colormap;
     if (widget->core.background_pixmap != XtUnspecifiedPixmap) {
 	*value_mask |= CWBackPixmap;
@@ -333,8 +333,8 @@ static void RealizeWidget(
 	int len_nm, len_cl;
 	char *s;
 
-	len_nm = widget->core.name ? strlen(widget->core.name) : 0;
-	len_cl = strlen(class_name);
+	len_nm = widget->core.name ? (int) strlen(widget->core.name) : 0;
+	len_cl = (int) strlen(class_name);
 	s = __XtMalloc((unsigned) (len_nm + len_cl + 2));
 	s[0] = '\0';
 	if (len_nm)
@@ -634,7 +634,7 @@ Widget XtNameToWidget(
     Widget result;
     WIDGET_TO_APPCON(root);
 
-    len = strlen(name);
+    len = (int) strlen(name);
     if (len == 0) return NULL;
 
     LOCK_APP(app);
@@ -963,7 +963,7 @@ static Boolean TestFile(
 #else
 	    (status.st_mode & S_IFMT) != S_IFDIR);	/* not a directory */
 #endif /* X_NOT_POSIX else */
-    return ret;
+    return (Boolean) ret;
 #else /* VMS */
     return TRUE;	/* Who knows what to do here? */
 #endif /* VMS */
@@ -1092,7 +1092,7 @@ String XtFindFile(
 	    if (*colon == ':')
 		break;
 	}
-	len = colon - path;
+	len = (int) (colon - path);
 	if (Resolve(path, len, substitutions, num_substitutions,
 		    buf, '/')) {
 	    if (firstTime || strcmp(buf1,buf2) != 0) {
@@ -1214,11 +1214,11 @@ static char *ExtractLocaleName(
 # endif
 
 	if ((end = strchr (start, ENDCHAR))) {
-	    len = end - start;
+	    len = (int) (end - start);
 	    if (buf != NULL) XtFree (buf);
-	    buf = XtMalloc (len + 1);
+	    buf = XtMalloc ((Cardinal)(len + 1));
 	    if (buf == NULL) return NULL;
-	    strncpy(buf, start, len);
+	    strncpy(buf, start, (size_t) len);
 	    *(buf + len) = '\0';
 # ifdef WHITEFILL
 	    for (start = buf; start = strchr(start, ' '); )
@@ -1272,9 +1272,9 @@ static void FillInLangSubs(
 	return;
     }
 
-    len = strlen(string) + 1;
+    len = (int) strlen(string) + 1;
     subs[0].substitution = string;
-    p1 = subs[1].substitution = __XtMalloc((Cardinal) 3*len);
+    p1 = subs[1].substitution = __XtMalloc((Cardinal) (3*len));
     p2 = subs[2].substitution = subs[1].substitution + len;
     p3 = subs[3].substitution = subs[2].substitution + len;
 
@@ -1286,8 +1286,8 @@ static void FillInLangSubs(
 
     ch = strchr(string, '_');
     if (ch != NULL) {
-	len = ch - string;
-	(void) strncpy(p1, string, len);
+	len = (int) (ch - string);
+	(void) strncpy(p1, string, (size_t) len);
 	p1[len] = '\0';
 	string = ch + 1;
 	rest = &p2;
@@ -1297,8 +1297,8 @@ static void FillInLangSubs(
 
     ch = strchr(string, '.');
     if (ch != NULL) {
-	len = ch - string;
-	strncpy(*rest, string, len);
+	len = (int) (ch - string);
+	strncpy(*rest, string, (size_t) len);
 	(*rest)[len] = '\0';
 	(void) strcpy(p3, ch+1);
     } else (void) strcpy(*rest, string);
@@ -1347,7 +1347,7 @@ String XtResolvePathname(
     XtPerDisplay pd;
     static const char *defaultPath = NULL;
     const char *impl_default = implementation_default_path();
-    int idef_len = strlen(impl_default);
+    int idef_len = (int) strlen(impl_default);
     char *massagedPath;
     int bytesAllocd, bytesLeft;
     char *ch, *result;
@@ -1399,7 +1399,7 @@ String XtResolvePathname(
 	    char *new;
 	    bytesAllocd +=1000;
 	    new = __XtMalloc((Cardinal) bytesAllocd);
-	    strncpy( new, massagedPath, bytesUsed );
+	    strncpy( new, massagedPath, (size_t) bytesUsed );
 	    ch = new + bytesUsed;
 	    if (pathMallocd)
 		XtFree(massagedPath);
@@ -1444,10 +1444,10 @@ String XtResolvePathname(
 	int i = XtNumber(defaultSubs);
 	Substitution sub, def;
 	merged_substitutions = sub = (Substitution)
-	    ALLOCATE_LOCAL((unsigned)(num_substitutions+i)*sizeof(SubstitutionRec));
+	    ALLOCATE_LOCAL((unsigned)(num_substitutions+(Cardinal)i)*sizeof(SubstitutionRec));
 	if (sub == NULL) _XtAllocError(NULL);
 	for (def = defaultSubs; i--; sub++, def++) sub->match = def->match;
-	for (i = num_substitutions; i--; ) *sub++ = *substitutions++;
+	for (i = (int) num_substitutions; i--; ) *sub++ = *substitutions++;
     }
     merged_substitutions[0].substitution = (String)filename;
     merged_substitutions[1].substitution = (String)type;

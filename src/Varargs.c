@@ -138,7 +138,7 @@ XtTypedArgList _XtVaCreateTypedArgList(va_list var, register int count)
     XtTypedArgList  avlist;
 
     avlist = (XtTypedArgList)
-		__XtCalloc((int)count + 1, (unsigned)sizeof(XtTypedArg));
+		__XtCalloc((Cardinal)count + 1, (unsigned)sizeof(XtTypedArg));
 
     for(attr = va_arg(var, String), count = 0; attr != NULL;
 		attr = va_arg(var, String)) {
@@ -206,7 +206,7 @@ TypedArgToArg(
     }
 
     to_val.addr = NULL;
-    from_val.size = typed_arg->size;
+    from_val.size = (Cardinal) typed_arg->size;
     if ((strcmp(typed_arg->type, XtRString) == 0) ||
             ((unsigned) typed_arg->size > sizeof(XtArgVal))) {
         from_val.addr = (XPointer)typed_arg->value;
@@ -243,7 +243,7 @@ TypedArgToArg(
 	else if (to_val.size == sizeof(XtArgVal))
 	    arg_return->value = *(XtArgVal *)to_val.addr;
 	else if (to_val.size > sizeof(XtArgVal)) {
-	    arg_return->value = (XtArgVal) __XtMalloc(to_val.size);
+	    arg_return->value = (XtArgVal) (void *) __XtMalloc(to_val.size);
 	    memory_return->value = (XtArgVal)
 		memcpy((void *)arg_return->value, to_val.addr, to_val.size);
 	}
@@ -359,7 +359,7 @@ _XtVaToArgList(
 	return;
     }
 
-    args = (ArgList)__XtMalloc((unsigned)(max_count * 2 * sizeof(Arg)));
+    args = (ArgList)__XtMalloc((Cardinal)((size_t)(max_count * 2) * sizeof(Arg)));
     for (count = max_count * 2; --count >= 0; )
 	args[count].value = (XtArgVal) NULL;
     count = 0;
@@ -435,7 +435,7 @@ GetResources(
 
 	cons_top = constraint;
 	*res_list = (XtResourceList) XtRealloc((char*)*res_list,
-					       ((*number + num_constraint) *
+					       (Cardinal)((*number + num_constraint) *
 						sizeof(XtResource)));
 
 	for (temp= num_constraint, res= *res_list + *number; temp != 0; temp--)
@@ -491,7 +491,7 @@ _XtVaToTypedArgList(
     int			count;
 
     args = (XtTypedArgList)
-	__XtMalloc((unsigned)(max_count * sizeof(XtTypedArg)));
+	__XtMalloc((Cardinal)((size_t) max_count * sizeof(XtTypedArg)));
 
     for(attr = va_arg(var, String), count = 0 ; attr != NULL;
 		    attr = va_arg(var, String)) {
@@ -513,5 +513,5 @@ _XtVaToTypedArgList(
     }
 
     *args_return = args;
-    *num_args_return = count;
+    *num_args_return = (Cardinal) count;
 }

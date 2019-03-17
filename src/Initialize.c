@@ -180,7 +180,7 @@ static void GetHostname (
 	return;
 
     buf[0] = '\0';
-    (void) gethostname (buf, maxlen);
+    (void) gethostname (buf, (size_t) maxlen);
     buf [maxlen - 1] = '\0';
 #endif
 }
@@ -320,11 +320,11 @@ String _XtGetUserName(
     char* ptr;
 
     if ((ptr = getenv("USER"))) {
-	(void) strncpy (dest, ptr, len-1);
+	(void) strncpy (dest, ptr, (size_t) (len-1));
 	dest[len-1] = '\0';
     } else {
 	if ((pw = _XGetpwuid(getuid(),pwparams)) != NULL) {
-	    (void) strncpy (dest, pw->pw_name, len-1);
+	    (void) strncpy (dest, pw->pw_name, (size_t)(len-1));
 	    dest[len-1] = '\0';
 	} else
 	    *dest = '\0';
@@ -367,7 +367,7 @@ static String GetRootDirName(
 	return NULL;
 
     if ((ptr = getenv("HOME"))) {
-	(void) strncpy (dest, ptr, len-1);
+	(void) strncpy (dest, ptr, (size_t)(len-1));
 	dest[len-1] = '\0';
     } else {
 	if ((ptr = getenv("USER")))
@@ -375,7 +375,7 @@ static String GetRootDirName(
 	else
  	    pw = _XGetpwuid(getuid(),pwparams);
 	if (pw != NULL) {
-	    (void) strncpy (dest, pw->pw_dir, len-1);
+	    (void) strncpy (dest, pw->pw_dir, (size_t)(len-1));
 	    dest[len-1] = '\0';
 	} else
 	    *dest = '\0';
@@ -437,7 +437,7 @@ static void CombineUserDefaults(
     } else {
 	char filename[PATH_MAX];
 	(void) GetRootDirName(filename,
-			PATH_MAX - strlen (slashDotXdefaults) - 1);
+			PATH_MAX - (int)strlen (slashDotXdefaults) - 1);
 	(void) strcat(filename, slashDotXdefaults);
 	(void)XrmCombineFileDatabase(filename, pdb, False);
     }
@@ -574,9 +574,9 @@ XrmDatabase XtScreenDatabase(
 #endif
 
 	    (void) GetRootDirName(filename = filenamebuf,
-			PATH_MAX - strlen (slashDotXdefaultsDash) - 1);
+			PATH_MAX - (int)strlen (slashDotXdefaultsDash) - 1);
 	    (void) strcat(filename, slashDotXdefaultsDash);
-	    len = strlen(filename);
+	    len = (int)strlen(filename);
 	    GetHostname (filename+len, PATH_MAX-len);
 	}
 	(void)XrmCombineFileDatabase(filename, &db, False);
@@ -657,14 +657,14 @@ static void _MergeOptionTables(
     enum {Check, NotSorted, IsSorted} sort_order = Check;
 
     *dst = table = (XrmOptionDescRec*)
-	__XtMalloc( sizeof(XrmOptionDescRec) * (num_src1 + num_src2) );
+	__XtMalloc( (Cardinal)(sizeof(XrmOptionDescRec) * (num_src1 + num_src2) ));
 
     (void) memmove(table, src1, sizeof(XrmOptionDescRec) * num_src1 );
     if (num_src2 == 0) {
 	*num_dst = num_src1;
 	return;
     }
-    endP = &table[dst_len = num_src1];
+    endP = &table[dst_len = (int)num_src1];
     for (opt2 = src2, i2= 0; i2 < num_src2; opt2++, i2++) {
 	found = False;
 	whereP = endP-1;	/* assume new option goes at the end */
@@ -709,7 +709,7 @@ static void _MergeOptionTables(
 	    dst_len++;
 	}
     }
-    *num_dst = dst_len;
+    *num_dst = (Cardinal)dst_len;
 }
 
 
@@ -770,13 +770,13 @@ XrmDatabase _XtPreparseCommandLine(
     String *targv;
     int targc = argc;
 
-    targv = (String *) __XtMalloc(sizeof(char *) * argc);
-    (void) memmove(targv, argv, sizeof(char *) * argc);
+    targv = (String *) __XtMalloc((Cardinal)(sizeof(char *) * (size_t)argc));
+    (void) memmove(targv, argv, sizeof(char *) * (size_t) argc);
     _MergeOptionTables(opTable, XtNumber(opTable), urlist, num_urs,
 		       &options, &num_options);
     name_list[0] = class_list[0] = XrmPermStringToQuark(".");
     name_list[2] = class_list[2] = NULLQUARK;
-    XrmParseCommand(&db, options, num_options, ".", &targc, targv);
+    XrmParseCommand(&db, options, (int) num_options, ".", &targc, targv);
     if (applName) {
 	name_list[1] = XrmPermStringToQuark("name");
 	if (XrmQGetResource(db, name_list, name_list, &type, &val) &&
@@ -893,7 +893,7 @@ void _XtDisplayInitialize(
 	/* Parse the command line and remove Xt arguments from argv */
 	_MergeOptionTables( opTable, XtNumber(opTable), urlist, num_urs,
 			    &options, &num_options );
-	XrmParseCommand(&pd->cmd_db, options, num_options, name, argc, argv);
+	XrmParseCommand(&pd->cmd_db, options, (int) num_options, name, argc, argv);
 
 	db = XtScreenDatabase(DefaultScreenOfDisplay(dpy));
 
@@ -908,7 +908,7 @@ void _XtDisplayInitialize(
 	while (!XrmQGetSearchList(db, name_list, class_list,
 				  search_list, search_list_size)) {
 	    XrmHashTable* old = search_list;
-	    Cardinal size = (search_list_size*=2)*sizeof(XrmHashTable);
+	    Cardinal size = (Cardinal) ((size_t)(search_list_size *= 2)*sizeof(XrmHashTable));
 	    if (!(search_list = (XrmHashTable*)ALLOCATE_LOCAL(size)))
 		_XtAllocError(NULL);
 	    (void) memmove((char*)search_list, (char*)old, (size>>1) );

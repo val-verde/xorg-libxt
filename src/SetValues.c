@@ -432,8 +432,8 @@ void XtSetValues(
 				 XtName(w),XtName(pw)));
 		  XClearArea (XtDisplay (pw), XtWindow (pw),
 			      r->rectangle.x, r->rectangle.y,
-			      r->rectangle.width + bw2,
-			      r->rectangle.height + bw2,TRUE);
+			      (unsigned) (r->rectangle.width + bw2),
+			      (unsigned) (r->rectangle.height + bw2), TRUE);
 	      }
 	  }
         }

@@ -154,7 +154,7 @@ static void AdjustHowLong (
 	if(*howlong <= (unsigned long)(time_spent.tv_sec*1000+time_spent.tv_usec/1000))
 	    *howlong = (unsigned long)0;  /* Timed out */
 	else
-	    *howlong -= (time_spent.tv_sec*1000+time_spent.tv_usec/1000);
+	    *howlong = (*howlong - (unsigned long)(time_spent.tv_sec*1000+time_spent.tv_usec/1000));
 }
 
 typedef struct {
@@ -195,12 +195,12 @@ static void InitTimes (
 	    wt->poll_wait = X_BLOCK;
 #endif
 	} else { /* block until at most */
-	    wt->max_wait_time.tv_sec = *howlong/1000;
-	    wt->max_wait_time.tv_usec = (*howlong %1000)*1000;
+	    wt->max_wait_time.tv_sec = (time_t) (*howlong/1000);
+	    wt->max_wait_time.tv_usec = (suseconds_t) ((*howlong %1000)*1000);
 #ifndef USE_POLL
 	    wt->wait_time_ptr = &wt->max_wait_time;
 #else
-	    wt->poll_wait = *howlong;
+	    wt->poll_wait = (int) *howlong;
 #endif
 	}
     } else {  /* don't block */
@@ -279,11 +279,11 @@ static void InitFds (
 
     if (!wf->fdlist || wf->fdlist == wf->stack) {
 	wf->fdlist = (struct pollfd*)
-	    XtStackAlloc (sizeof (struct pollfd) * wf->fdlistlen, wf->stack);
+	    XtStackAlloc (sizeof (struct pollfd) * (size_t)wf->fdlistlen, wf->stack);
     } else {
 	wf->fdlist = (struct pollfd*)
 	    XtRealloc ((char*) wf->fdlist,
-		       sizeof (struct pollfd) * wf->fdlistlen);
+		       (Cardinal) (sizeof (struct pollfd) * (size_t)wf->fdlistlen));
     }
 
     if (wf->fdlistlen) {
@@ -334,9 +334,9 @@ static void AdjustTimes (
 	    wt->wait_time_ptr = &zero_time;
     }
 #else
-		wt->poll_wait = wt->wait_time.tv_sec * 1000 + wt->wait_time.tv_usec / 1000;
+		wt->poll_wait = (int) (wt->wait_time.tv_sec * 1000 + wt->wait_time.tv_usec / 1000);
 	    else
-		wt->poll_wait = wt->max_wait_time.tv_sec * 1000 + wt->max_wait_time.tv_usec / 1000;
+		wt->poll_wait = (int) (wt->max_wait_time.tv_sec * 1000 + wt->max_wait_time.tv_usec / 1000);
 	} else
 	    wt->poll_wait = X_DONT_BLOCK;
     }
@@ -352,7 +352,7 @@ static int IoWait (
     return Select (wf->nfds, &wf->rmask, &wf->wmask, &wf->emask,
 		   wt->wait_time_ptr);
 #else
-    return poll (wf->fdlist, wf->fdlistlen, wt->poll_wait);
+    return poll (wf->fdlist, (nfds_t) wf->fdlistlen, wt->poll_wait);
 #endif
 }
 
@@ -797,8 +797,8 @@ XtIntervalId XtAppAddTimeOut(
 	tptr->te_closure = closure;
 	tptr->te_proc = proc;
 	tptr->app = app;
-	tptr->te_timer_value.tv_sec = interval/1000;
-	tptr->te_timer_value.tv_usec = (interval%1000)*1000;
+	tptr->te_timer_value.tv_sec = (time_t) (interval/1000);
+	tptr->te_timer_value.tv_usec = (suseconds_t) ((interval%1000)*1000);
         X_GETTIMEOFDAY (&current_time);
 	FIXUP_TIMEVAL(current_time);
         ADD_TIME(tptr->te_timer_value,tptr->te_timer_value,current_time);
@@ -992,19 +992,19 @@ XtInputId XtAppAddInput(
 
 	LOCK_APP(app);
 	if (!condition ||
-	    condition & ~(XtInputReadMask|XtInputWriteMask|XtInputExceptMask))
+	    condition & (unsigned long)(~(XtInputReadMask|XtInputWriteMask|XtInputExceptMask)))
 	    XtAppErrorMsg(app,"invalidParameter","xtAddInput",XtCXtToolkitError,
 			  "invalid condition passed to XtAppAddInput",
 			  (String *)NULL, (Cardinal *)NULL);
 
 	if (app->input_max <= source) {
-	    Cardinal n = source + 1;
+	    Cardinal n = (Cardinal) (source + 1);
 	    int ii;
 	    app->input_list = (InputEvent**)XtRealloc((char*) app->input_list,
-						      n * sizeof(InputEvent*));
+						      (Cardinal)((size_t)n * sizeof(InputEvent*)));
 	    for (ii = app->input_max; ii < (int) n; ii++)
 		app->input_list[ii] = (InputEvent*) NULL;
-	    app->input_max = n;
+	    app->input_max = (short) n;
 	}
 	sptr = XtNew(InputEvent);
 	sptr->ie_proc = proc;
@@ -1271,7 +1271,7 @@ void XtAppNextEvent(
 #ifdef XTHREADS
 	    /* assert(app->list[d] == event->xany.display); */
 #endif
-	    app->last = d;
+	    app->last = (short) d;
 	    if (event->xany.type == MappingNotify)
 		_XtRefreshMapping(event, False);
 	    UNLOCK_APP(app);
@@ -1389,7 +1389,7 @@ void XtAppProcessEvent(
 #ifdef XTHREADS
 		/* assert(app->list[d] == event.xany.display); */
 #endif
-		app->last = d;
+		app->last = (short) d;
 		if (event.xany.type == MappingNotify) {
 		    _XtRefreshMapping(&event, False);
 		}
@@ -1561,7 +1561,7 @@ Boolean XtAppPeekEvent(
 		if (d != -1) {  /* event */
 			GotEvent:
 			XPeekEvent(app->list[d], event);
-			app->last = (d == 0 ? app->count : d) - 1;
+			app->last = (short) ((d == 0 ? app->count : d) - 1);
 			UNLOCK_APP(app);
 			return TRUE;
 		}

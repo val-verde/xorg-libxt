@@ -139,7 +139,7 @@ static void RemoveParamInfo(Widget, Atom);
 static Atom GetParamInfo(Widget, Atom);
 
 static int StorageSize[3] = {1, sizeof(short), sizeof(long)};
-#define BYTELENGTH(length, format) ((length) * StorageSize[(format)>>4])
+#define BYTELENGTH(length, format) ((length) * (size_t)StorageSize[(format)>>4])
 #define NUMELEM(bytelength, format) ((bytelength) / StorageSize[(format)>>4])
 
 /* Xlib and Xt are permitted to have different memory allocators, and in the
@@ -225,7 +225,7 @@ static Atom GetSelectionProperty(
  }
  propCount = sarray->propCount++;
  sarray->list = (SelectionProp) XtRealloc((XtPointer)sarray->list,
-  		(unsigned)(sarray->propCount*sizeof(SelectionPropRec)));
+  		(Cardinal)((size_t)sarray->propCount * sizeof(SelectionPropRec)));
  (void) snprintf(propname, sizeof(propname), "_XT_SELECTION_%d", propCount);
  sarray->list[propCount].prop = XInternAtom(dpy, propname, FALSE);
  sarray->list[propCount].avail = FALSE;
@@ -281,13 +281,13 @@ static CallBackInfo MakeInfo(
 
 	info->ctx = ctx;
 	info->callbacks = (XtSelectionCallbackProc *)
-	    __XtMalloc((unsigned) (count * sizeof(XtSelectionCallbackProc)));
+	    __XtMalloc((unsigned) ((size_t)count * sizeof(XtSelectionCallbackProc)));
 	(void) memmove((char*)info->callbacks, (char*)callbacks,
-		       count * sizeof(XtSelectionCallbackProc));
+		       (size_t)count * sizeof(XtSelectionCallbackProc));
 	info->req_closure =
-	    (XtPointer*)__XtMalloc((unsigned) (count * sizeof(XtPointer)));
+	    (XtPointer*)__XtMalloc((unsigned) ((size_t)count * sizeof(XtPointer)));
 	(void) memmove((char*)info->req_closure, (char*)closures,
-		       count * sizeof(XtPointer));
+		       (size_t)count * sizeof(XtPointer));
 	if (count == 1 && properties != NULL && properties[0] != None)
 	    info->property = properties[0];
 	else {
@@ -298,9 +298,9 @@ static CallBackInfo MakeInfo(
 	info->proc = HandleSelectionReplies;
 	info->widget = widget;
 	info->time = time;
-	info->incremental = (Boolean*) __XtMalloc(count * sizeof(Boolean));
+	info->incremental = (Boolean*) __XtMalloc((Cardinal)((size_t)count * sizeof(Boolean)));
 	(void) memmove((char*)info->incremental, (char*) incremental,
-		       count * sizeof(Boolean));
+		       (size_t)count * sizeof(Boolean));
 	info->current = 0;
 	info->value = NULL;
 	return (info);
@@ -499,7 +499,7 @@ static void AddHandler(
 	UNLOCK_PROCESS;
 	if (requestWindowRec->active_transfer_count++ == 0) {
 	    XtRegisterDrawable(dpy, window, widget);
-	    XSelectInput(dpy, window, mask);
+	    XSelectInput(dpy, window, (long)mask);
 	}
 	XtAddRawEventHandler(widget, mask, FALSE, proc, closure);
     }
@@ -579,7 +579,7 @@ static void SendIncrement(
 {
     Display *dpy = incr->ctx->dpy;
 
-    unsigned long incrSize = MAX_SELECTION_INCR(dpy);
+    unsigned long incrSize = (unsigned long) MAX_SELECTION_INCR(dpy);
     if (incrSize > incr->bytelength - incr->offset)
         incrSize = incr->bytelength - incr->offset;
     StartProtectedSection(dpy, incr->requestor);
@@ -643,7 +643,7 @@ static void HandlePropertyGone(
 	     if (req->bytelength == 0)
 		AllSent(req);
 	     else {
-		unsigned long size = MAX_SELECTION_INCR(ctx->dpy);
+		unsigned long size = (unsigned long) MAX_SELECTION_INCR(ctx->dpy);
     		SendIncrement(req);
 		(*(XtConvertSelectionIncrProc)ctx->convert)
 			   (ctx->widget, &ctx->selection, &req->target,
@@ -725,7 +725,7 @@ static Boolean GetConversion(
 
     if (timestamp_target) {
 	value = __XtMalloc(sizeof(long));
-	*(long*)value = ctx->time;
+	*(long*)value = (long) ctx->time;
 	targetType = XA_INTEGER;
 	length = 1;
 	format = 32;
@@ -733,7 +733,7 @@ static Boolean GetConversion(
     else {
 	ctx->ref_count++;
 	if (ctx->incremental == TRUE) {
-	     unsigned long size = MAX_SELECTION_INCR(ctx->dpy);
+	     unsigned long size = (unsigned long) MAX_SELECTION_INCR(ctx->dpy);
 	     if ((*(XtConvertSelectionIncrProc)ctx->convert)
 			       (ctx->widget, &event->selection, &target,
 				&targetType, &value, &length, &format,
@@ -846,7 +846,7 @@ static void HandleSelectionEvents(
 			event->xselectionrequest.property, 0L, 1000000,
 			False,(Atom)AnyPropertyType, &target, &format, &length,
 			&bytesafter, &value) == Success)
-		  count = BYTELENGTH(length, format) / sizeof(IndirectPair);
+		  count = (int) (BYTELENGTH(length, format) / sizeof(IndirectPair));
 	      else
 		  count = 0;
 	      for (p = (IndirectPair *)value; count; p++, count--) {
@@ -1206,7 +1206,7 @@ static void HandleGetIncrement(
     } else { /* add increment to collection */
       if (info->incremental[n]) {
 #ifdef XT_COPY_SELECTION
-	  int size = BYTELENGTH(length, info->format) + 1;
+	  int size = (int) BYTELENGTH(length, info->format) + 1;
 	  char *tmp = __XtMalloc((Cardinal) size);
 	  (void) memmove(tmp, value, size);
 	  XFree(value);
@@ -1215,14 +1215,14 @@ static void HandleGetIncrement(
         (*info->callbacks[n])(widget, *info->req_closure, &ctx->selection,
 			      &info->type, value, &length, &info->format);
       } else {
-	  int size = BYTELENGTH(length, info->format);
+	  int size = (int) BYTELENGTH(length, info->format);
 	  if (info->offset + size > info->bytelength) {
 	      /* allocate enough for this and the next increment */
 	      info->bytelength = info->offset + size * 2;
 	      info->value = XtRealloc(info->value,
 				      (Cardinal) info->bytelength);
 	  }
-	  (void) memmove(&info->value[info->offset], value, size);
+	  (void) memmove(&info->value[info->offset], value, (size_t)size);
 	  info->offset += size;
 	  XFree(value);
       }
@@ -1253,7 +1253,7 @@ static void HandleNone(
 }
 
 
-static long IncrPropSize(
+static unsigned long IncrPropSize(
      Widget widget,
      unsigned char* value,
      int format,
@@ -1261,7 +1261,7 @@ static long IncrPropSize(
 {
     unsigned long size;
     if (format == 32) {
-	size = ((long*)value)[length-1]; /* %%% what order for longs? */
+	size = ((unsigned long*)value)[length-1]; /* %%% what order for longs? */
 	return size;
     }
     else {
@@ -1315,7 +1315,7 @@ Boolean HandleNormal(
     XDeleteProperty(dpy, XtWindow(widget), property);
 #ifdef XT_COPY_SELECTION
     if (value) {   /* it could have been deleted after the SelectionNotify */
-	int size = BYTELENGTH(length, info->format) + 1;
+	int size = (int) BYTELENGTH(length, info->format) + 1;
 	char *tmp = __XtMalloc((Cardinal) size);
 	(void) memmove(tmp, value, size);
 	XFree(value);
@@ -1349,7 +1349,7 @@ static void HandleIncremental(
     XDeleteProperty(dpy, XtWindow(widget), property);
     XFlush(dpy);
 
-    info->bytelength = size;
+    info->bytelength = (int) size;
     if (info->incremental[info->current]) /* requestor wants incremental too */
 	info->value = NULL;	/* so no need for buffer to assemble value */
     else
@@ -1453,7 +1453,7 @@ static void DoLocalTransfer(
         req->event.requestor = req->requestor = XtWindow(widget);
 
 	if (ctx->incremental) {
-	   unsigned long size = MAX_SELECTION_INCR(ctx->dpy);
+	   unsigned long size = (unsigned long) MAX_SELECTION_INCR(ctx->dpy);
 	   if (!(*(XtConvertSelectionIncrProc)ctx->convert)
 			   (ctx->widget, &selection, &target,
 			    &resulttype, &value, &length, &format,
@@ -1465,10 +1465,10 @@ static void DoLocalTransfer(
 		  Boolean allSent = FALSE;
 	          while (!allSent) {
 	    	      if (ctx->notify && (value != NULL)) {
-              	        int bytelength = BYTELENGTH(length,format);
+              	        int bytelength = (int) BYTELENGTH(length,format);
 	                /* both sides think they own this storage */
 	                temp = __XtMalloc((unsigned)bytelength);
-	                (void) memmove(temp, value, bytelength);
+	                (void) memmove(temp, value, (size_t) bytelength);
 	                value = temp;
 	              }
 		      /* use care; older clients were never warned that
@@ -1491,12 +1491,12 @@ static void DoLocalTransfer(
 		  }
 	        } else {
 	          while (length) {
-		    int bytelength = BYTELENGTH(length, format);
+		    int bytelength = (int) BYTELENGTH(length, format);
 		    total = XtRealloc(total,
-			    (unsigned) (totallength += bytelength));
+			    (Cardinal) (totallength = totallength + (unsigned long)bytelength));
 		    (void) memmove((char*)total + totallength - bytelength,
 			    value,
-			    bytelength);
+			    (size_t) bytelength);
 		    (*(XtConvertSelectionIncrProc)ctx->convert)
 			   (ctx->widget, &selection, &target,
 			    &resulttype, &value, &length, &format,
@@ -1519,10 +1519,10 @@ static void DoLocalTransfer(
 	    HandleNone(widget, callback, closure, selection);
 	  } else {
 	      if (ctx->notify && (value != NULL)) {
-                int bytelength = BYTELENGTH(length,format);
+                int bytelength = (int) BYTELENGTH(length,format);
 	        /* both sides think they own this storage; better copy */
 	        temp = __XtMalloc((unsigned)bytelength);
-	        (void) memmove(temp, value, bytelength);
+	        (void) memmove(temp, value, (size_t) bytelength);
 	        value = temp;
 	      }
 	      if (value == NULL) value = __XtMalloc((unsigned)1);
@@ -1673,7 +1673,7 @@ static void GetSelectionValues(
         int i = 0, j = 0;
 
 	passed_callbacks = (XtSelectionCallbackProc *)
-	  XtStackAlloc(sizeof(XtSelectionCallbackProc) * count, stack_cbs);
+	  XtStackAlloc(sizeof(XtSelectionCallbackProc) * (size_t)count, stack_cbs);
 
 	/* To deal with the old calls from XtGetSelectionValues* we
 	   will repeat however many callbacks have been passed into
@@ -1687,11 +1687,11 @@ static void GetSelectionValues(
 			time, incremental, properties);
 	XtStackFree((XtPointer) passed_callbacks, stack_cbs);
 
-	info->target = (Atom *)__XtMalloc((unsigned) ((count+1) * sizeof(Atom)));
+	info->target = (Atom *)__XtMalloc((unsigned) ((size_t)(count+1) * sizeof(Atom)));
         (*info->target) = ctx->prop_list->indirect_atom;
 	(void) memmove((char *) info->target+sizeof(Atom), (char *) targets,
-		       count * sizeof(Atom));
-	pairs = (IndirectPair*)__XtMalloc((unsigned)(count*sizeof(IndirectPair)));
+		       (size_t) count * sizeof(Atom));
+	pairs = (IndirectPair*)__XtMalloc((unsigned)((size_t)count*sizeof(IndirectPair)));
 	for (p = &pairs[count-1], t = &targets[count-1], i = count - 1;
 	     p >= pairs;  p--, t--, i--) {
 	   p->target = *t;
@@ -1728,7 +1728,7 @@ void XtGetSelectionValues(
     WIDGET_TO_APPCON(widget);
 
     LOCK_APP(app);
-    incremental = XtStackAlloc(count * sizeof(Boolean), incremental_values);
+    incremental = XtStackAlloc((size_t)count * sizeof(Boolean), incremental_values);
     for(i = 0; i < count; i++) incremental[i] = FALSE;
     if (IsGatheringRequest(widget, selection)) {
       AddSelectionRequests(widget, selection, count, targets, &callback,
@@ -1757,7 +1757,7 @@ void XtGetSelectionValuesIncremental(
     WIDGET_TO_APPCON(widget);
 
     LOCK_APP(app);
-    incremental = XtStackAlloc(count * sizeof(Boolean), incremental_values);
+    incremental = XtStackAlloc((size_t)count * sizeof(Boolean), incremental_values);
     for(i = 0; i < count; i++) incremental[i] = TRUE;
     if (IsGatheringRequest(widget, selection)) {
       AddSelectionRequests(widget, selection, count, targets, &callback,
@@ -1890,8 +1890,8 @@ static void AddSelectionRequests(
 
     qi->count += count;
     req = (QueuedRequest*) XtRealloc((char*) req,
-				     (start + count) *
-				     sizeof(QueuedRequest));
+				     (Cardinal)((size_t)(start + count) *
+				     sizeof(QueuedRequest)));
     while(i < count) {
       QueuedRequest newreq = (QueuedRequest)
 	__XtMalloc(sizeof(QueuedRequestRec));
@@ -2027,7 +2027,7 @@ void XtCreateSelectionRequest(
   while(queueInfo->selections[n] != None) n++;
   queueInfo->selections =
     (Atom*) XtRealloc((char*) queueInfo->selections,
-		      (n + 2) * sizeof(Atom));
+		      (Cardinal)((size_t)(n + 2) * sizeof(Atom)));
   queueInfo->selections[n] = selection;
   queueInfo->selections[n + 1] = None;
 
@@ -2082,12 +2082,12 @@ void XtSendSelectionRequest(
 	int j = 0;
 
 	/* Allocate */
-	targets = (Atom *) XtStackAlloc(count * sizeof(Atom), t);
+	targets = (Atom *) XtStackAlloc((size_t)count * sizeof(Atom), t);
 	cbs = (XtSelectionCallbackProc *)
-	  XtStackAlloc(count * sizeof(XtSelectionCallbackProc), c);
-	closures = (XtPointer *) XtStackAlloc(count * sizeof(XtPointer), cs);
-	incrs = (Boolean *) XtStackAlloc(count * sizeof(Boolean), ins);
-	props = (Atom *) XtStackAlloc(count * sizeof(Atom), p);
+	  XtStackAlloc((size_t)count * sizeof(XtSelectionCallbackProc), c);
+	closures = (XtPointer *) XtStackAlloc((size_t)count * sizeof(XtPointer), cs);
+	incrs = (Boolean *) XtStackAlloc((size_t)count * sizeof(Boolean), ins);
+	props = (Atom *) XtStackAlloc((size_t)count * sizeof(Atom), p);
 
 	/* Copy */
 	for(i = 0; i < queueInfo->count; i++) {
@@ -2163,7 +2163,7 @@ void XtSetSelectionParameters(
 
   XChangeProperty(dpy, window, property,
 		  type, format, PropModeReplace,
-		  (unsigned char *) value, length);
+		  (unsigned char *) value, (int) length);
 }
 
 /* Retrieves data passed in a parameter. Data for this is stored
@@ -2182,7 +2182,7 @@ void XtGetSelectionParameters(
     WIDGET_TO_APPCON(owner);
 
     *value_return = NULL;
-    *length_return = *format_return = 0;
+    *length_return = (unsigned long) (*format_return = 0);
     *type_return = None;
 
     LOCK_APP(app);
@@ -2199,7 +2199,7 @@ void XtGetSelectionParameters(
 	EndProtectedSection(dpy);
 #ifdef XT_COPY_SELECTION
 	if (*value_return) {
-	    int size = BYTELENGTH(*length_return, *format_return) + 1;
+	    int size = (int) BYTELENGTH(*length_return, *format_return) + 1;
 	    char *tmp = __XtMalloc((Cardinal) size);
 	    (void) memmove(tmp, *value_return, size);
 	    XFree(*value_return);
@@ -2239,7 +2239,7 @@ static void AddParamInfo(
 			    (char *)pinfo);
     }
     else {
-	for (n = pinfo->count, p = pinfo->paramlist; n; n--, p++) {
+	for (n = (int) pinfo->count, p = pinfo->paramlist; n; n--, p++) {
 	    if (p->selection == None || p->selection == selection)
 		break;
 	}
@@ -2247,7 +2247,7 @@ static void AddParamInfo(
 	    pinfo->count++;
 	    pinfo->paramlist = (Param)
 		XtRealloc((char*) pinfo->paramlist,
-			  pinfo->count * sizeof(ParamRec));
+			  (Cardinal)(pinfo->count * sizeof(ParamRec)));
 	    p = &pinfo->paramlist[pinfo->count - 1];
 	    (void) XSaveContext(XtDisplay(w), XtWindow(w),
 				paramPropertyContext, (char *)pinfo);
@@ -2273,7 +2273,7 @@ static void RemoveParamInfo(
 			 (XPointer *) &pinfo) == 0)) {
 
 	/* Find and invalidate the parameter data. */
-	for (n = pinfo->count, p = pinfo->paramlist; n; n--, p++) {
+	for (n = (int) pinfo->count, p = pinfo->paramlist; n; n--, p++) {
 	    if (p->selection != None) {
 		if (p->selection == selection)
 		    p->selection = None;
@@ -2305,7 +2305,7 @@ static Atom GetParamInfo(
 	&& (XFindContext(XtDisplay(w), XtWindow(w), paramPropertyContext,
 			 (XPointer *) &pinfo) == 0)) {
 
-	for (n = pinfo->count, p = pinfo->paramlist; n; n--, p++)
+	for (n = (int) pinfo->count, p = pinfo->paramlist; n; n--, p++)
 	    if (p->selection == selection) {
 		atom = p->param;
 		break;

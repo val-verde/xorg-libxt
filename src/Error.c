@@ -194,12 +194,12 @@ void XtAppGetErrorDatabaseText(
 #endif /* GLOBALERRORS */
     } else (void) XrmGetResource(db, str_name, str_class, &type_str, &result);
     if (result.addr) {
-        (void) strncpy (buffer, result.addr, nbytes);
+        (void) strncpy (buffer, result.addr, (size_t) nbytes);
         if (result.size > (unsigned) nbytes) buffer[nbytes-1] = 0;
     } else {
-	int len = strlen(defaultp);
+	int len = (int) strlen(defaultp);
 	if (len >= nbytes) len = nbytes-1;
-	(void) memmove(buffer, defaultp, len);
+	(void) memmove(buffer, defaultp, (size_t) len);
 	buffer[len] = '\0';
     }
     if (str_name)

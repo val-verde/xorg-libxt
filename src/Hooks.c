@@ -123,7 +123,7 @@ void _XtAddShellToHookObj(
 	ho->hooks.max_shells += SHELL_INCR;
 	ho->hooks.shells =
 	    (WidgetList)XtRealloc((char*)ho->hooks.shells,
-		ho->hooks.max_shells * sizeof (Widget));
+		(Cardinal) (ho->hooks.max_shells * sizeof (Widget)));
     }
     ho->hooks.shells[ho->hooks.num_shells++] = shell;
 

@@ -445,7 +445,7 @@ static void Compile_XtEventTable(
     register int i;
     register EventKeys entry = table;
 
-    for (i=count; --i >= 0; entry++)
+    for (i= (int)count; --i >= 0; entry++)
 	entry->signature = XrmPermStringToQuark(entry->event);
     qsort(table, count, sizeof(EventKey), OrderEvents);
 }
@@ -463,7 +463,7 @@ static void Compile_XtModifierTable(
     register int i;
     register ModifierKeys entry = table;
 
-    for (i=count; --i >= 0; entry++)
+    for (i= (int)count; --i >= 0; entry++)
 	entry->signature = XrmPermStringToQuark(entry->name);
     qsort(table, count, sizeof(ModifierRec), OrderModifiers);
 }
@@ -666,7 +666,7 @@ static String FetchModifierToken(
 
 	modStr = XtStackAlloc ((size_t)(str - start + 1), modStrbuf);
 	if (modStr == NULL) _XtAllocError (NULL);
-	(void) memmove(modStr, start, str-start);
+	(void) memmove(modStr, start, (size_t) (str - start));
 	modStr[str-start] = '\0';
 	*token_return = XrmStringToQuark(modStr);
 	XtStackFree (modStr, modStrbuf);
@@ -691,7 +691,7 @@ static String ParseModifiers(
     exclusive = FALSE;
     if (start != str) {
 	if (Qmod == QNone) {
-	    event->event.modifierMask = ~0;
+	    event->event.modifierMask = (unsigned long) (~0);
 	    event->event.modifiers = 0;
 	    ScanWhitespace(str);
 	    return str;
@@ -749,11 +749,11 @@ static String ParseModifiers(
                  return PanicModeRecovery(str);
              }
         event->event.modifierMask |= maskBit;
-	if (notFlag) event->event.modifiers &= ~maskBit;
+	if (notFlag) event->event.modifiers = (event->event.modifiers & (TMLongCard) (~maskBit));
 	else event->event.modifiers |= maskBit;
         ScanWhitespace(str);
     }
-    if (exclusive) event->event.modifierMask = ~0;
+    if (exclusive) event->event.modifierMask = (unsigned long) (~0);
     return str;
 }
 
@@ -770,13 +770,13 @@ static String ParseXtEventType(
     ScanAlphanumeric(str);
     eventTypeStr = XtStackAlloc ((size_t)(str - start + 1), eventTypeStrbuf);
     if (eventTypeStr == NULL) _XtAllocError (NULL);
-    (void) memmove(eventTypeStr, start, str-start);
+    (void) memmove(eventTypeStr, start, (size_t)(str-start));
     eventTypeStr[str-start] = '\0';
     *tmEventP = LookupTMEventType(eventTypeStr,error);
     XtStackFree (eventTypeStr, eventTypeStrbuf);
     if (*error)
         return PanicModeRecovery(str);
-    event->event.eventType = events[*tmEventP].eventType;
+    event->event.eventType = (TMLongCard) events[*tmEventP].eventType;
     return str;
 }
 
@@ -787,9 +787,9 @@ static unsigned long StrToHex(
     register unsigned long    val = 0;
 
     while ((c = *str)) {
-	if ('0' <= c && c <= '9') val = val*16+c-'0';
-	else if ('a' <= c && c <= 'z') val = val*16+c-'a'+10;
-	else if ('A' <= c && c <= 'Z') val = val*16+c-'A'+10;
+	if ('0' <= c && c <= '9') val = (unsigned long) (val * 16 + (unsigned long)c - '0');
+	else if ('a' <= c && c <= 'z') val = (unsigned long) (val*16+(unsigned long)c-'a'+10);
+	else if ('A' <= c && c <= 'Z') val = (unsigned long) (val*16+(unsigned long)c-'A'+10);
 	else return 0;
 	str++;
     }
@@ -804,7 +804,7 @@ static unsigned long StrToOct(
     register unsigned long  val = 0;
 
     while ((c = *str)) {
-        if ('0' <= c && c <= '7') val = val*8+c-'0'; else return 0;
+        if ('0' <= c && c <= '7') val = val*8+(unsigned long)c-'0'; else return 0;
 	str++;
     }
 
@@ -824,7 +824,7 @@ static unsigned long StrToNum(
     }
 
     while ((c = *str)) {
-	if ('0' <= c && c <= '9') val = val*10+c-'0';
+	if ('0' <= c && c <= '9') val = val*10+(unsigned long)c-'0';
 	else return 0;
 	str++;
     }
@@ -843,7 +843,7 @@ static KeySym StringToKeySym(
 #ifndef NOTASCII
     /* special case single character ASCII, for speed */
     if (*(str+1) == '\0') {
-	if (' ' <= *str && *str <= '~') return XK_space + (*str - ' ');
+	if (' ' <= *str && *str <= '~') return (KeySym) (XK_space + (*str - ' '));
     }
 #endif
 
@@ -907,7 +907,7 @@ static String ParseImmed(
     Boolean* error)
 {
     event->event.eventCode = (unsigned long)closure;
-    event->event.eventCodeMask = ~0UL;
+    event->event.eventCodeMask = (unsigned long) (~0UL);
 
     return BROKEN_OPTIMIZER_HACK(str);
 }
@@ -966,7 +966,7 @@ static String ParseKeySym(
 	if (*str != '\0' && !IsNewline(*str)) str++;
 	keySymName[1] = '\0';
 	event->event.eventCode = StringToKeySym(keySymName, error);
-	event->event.eventCodeMask = ~0L;
+	event->event.eventCodeMask = (unsigned long) (~0L);
     } else if (*str == ',' || *str == ':' ||
              /* allow leftparen to be single char symbol,
               * for backwards compatibility
@@ -987,10 +987,10 @@ static String ParseKeySym(
                 && (*str != '(' || *(str+1) <= '0' || *(str+1) >= '9')
 		&& *str != '\0') str++;
 	keySymName = XtStackAlloc ((size_t)(str - start + 1), keySymNamebuf);
-	(void) memmove(keySymName, start, str-start);
+	(void) memmove(keySymName, start, (size_t) (str-start));
 	keySymName[str-start] = '\0';
 	event->event.eventCode = StringToKeySym(keySymName, error);
-	event->event.eventCodeMask = ~0L;
+	event->event.eventCodeMask = (unsigned long) (~0L);
     }
     if (*error) {
 	/* We never get here when keySymName hasn't been allocated */
@@ -1033,13 +1033,13 @@ static String ParseTable(
 	*error = TRUE;
 	return str;
     }
-    (void) memmove(tableSymName, start, str-start);
+    (void) memmove(tableSymName, start, (size_t) (str-start));
     tableSymName[str-start] = '\0';
     signature = StringToQuark(tableSymName);
     for (; table->signature != NULLQUARK; table++)
 	if (table->signature == signature) {
 	    event->event.eventCode = table->value;
-	    event->event.eventCodeMask = ~0L;
+	    event->event.eventCodeMask = (unsigned long) (~0L);
 	    return str;
 	}
 
@@ -1089,9 +1089,9 @@ static String ParseAtom(
 	    *error = TRUE;
 	    return str;
 	}
-	(void) memmove(atomName, start, str-start);
+	(void) memmove(atomName, start, (size_t) (str-start));
 	atomName[str-start] = '\0';
-	event->event.eventCode = XrmStringToQuark(atomName);
+	event->event.eventCode = (TMLongCard) XrmStringToQuark(atomName);
 	event->event.matchEvent = _XtMatchAtom;
     }
     return str;
@@ -1142,8 +1142,8 @@ static String ParseEvent(
 	&& (event->event.modifiers | event->event.modifierMask) /* any */
         && (event->event.modifiers != AnyModifier))
     {
-	event->event.modifiers
-	    |= buttonModifierMasks[event->event.eventCode];
+	event->event.modifiers = (event->event.modifiers 
+	    | (TMLongCard) buttonModifierMasks[event->event.eventCode]);
 	/* the button that is going up will always be in the modifiers... */
     }
 
@@ -1174,7 +1174,7 @@ static String ParseQuotedStringEvent(
     event->event.eventType = KeyPress;
     event->event.eventCode = StringToKeySym(s, error);
     if (*error) return PanicModeRecovery(str);
-    event->event.eventCodeMask = ~0L;
+    event->event.eventCodeMask = (unsigned long) (~0L);
     event->event.matchEvent = _XtMatchUsingStandardMods;
     event->event.standard = TRUE;
 
@@ -1206,11 +1206,11 @@ static void RepeatDown(
     if ((upEvent->event.eventType == ButtonRelease)
 	&& (upEvent->event.modifiers != AnyModifier)
         && (upEvent->event.modifiers | upEvent->event.modifierMask))
-	upEvent->event.modifiers
-	    |= buttonModifierMasks[event->event.eventCode];
+	upEvent->event.modifiers = (upEvent->event.modifiers 
+	    | (TMLongCard) buttonModifierMasks[event->event.eventCode]);
 
     if (event->event.lateModifiers)
-	event->event.lateModifiers->ref_count += (reps - 1) * 2;
+	event->event.lateModifiers->ref_count = (unsigned short) (event->event.lateModifiers->ref_count + (reps - 1) * 2);
 
     for (i=1; i<reps; i++) {
 
@@ -1253,11 +1253,11 @@ static void RepeatDownPlus(
     if ((upEvent->event.eventType == ButtonRelease)
 	&& (upEvent->event.modifiers != AnyModifier)
         && (upEvent->event.modifiers | upEvent->event.modifierMask))
-	upEvent->event.modifiers
-	    |= buttonModifierMasks[event->event.eventCode];
+	upEvent->event.modifiers = (upEvent->event.modifiers 
+	    | (TMLongCard) buttonModifierMasks[event->event.eventCode]);
 
     if (event->event.lateModifiers)
-	event->event.lateModifiers->ref_count += reps * 2 - 1;
+	event->event.lateModifiers->ref_count = (unsigned short) (event->event.lateModifiers->ref_count + reps * 2 - 1);
 
     for (i=0; i<reps; i++) {
 
@@ -1307,11 +1307,11 @@ static void RepeatUp(
     if ((downEvent->event.eventType == ButtonPress)
 	&& (downEvent->event.modifiers != AnyModifier)
         && (downEvent->event.modifiers | downEvent->event.modifierMask))
-	downEvent->event.modifiers
-	    &= ~buttonModifierMasks[event->event.eventCode];
+	downEvent->event.modifiers = (downEvent->event.modifiers 
+	    & (TMLongCard) (~buttonModifierMasks[event->event.eventCode]));
 
     if (event->event.lateModifiers)
-	event->event.lateModifiers->ref_count += reps * 2 - 1;
+	event->event.lateModifiers->ref_count = (unsigned short) (event->event.lateModifiers->ref_count + reps * 2 - 1);
 
     /* up */
     event->next = XtNew(EventSeqRec);
@@ -1363,11 +1363,11 @@ static void RepeatUpPlus(
     if ((downEvent->event.eventType == ButtonPress)
 	&& (downEvent->event.modifiers != AnyModifier)
         && (downEvent->event.modifiers | downEvent->event.modifierMask))
-	downEvent->event.modifiers
-	    &= ~buttonModifierMasks[event->event.eventCode];
+	downEvent->event.modifiers = (downEvent->event.modifiers 
+	    & (TMLongCard) (~buttonModifierMasks[event->event.eventCode]));
 
     if (event->event.lateModifiers)
-	event->event.lateModifiers->ref_count += reps * 2;
+	event->event.lateModifiers->ref_count = (unsigned short) (event->event.lateModifiers->ref_count + reps * 2);
 
     for (i=0; i<reps; i++) {
 
@@ -1404,7 +1404,7 @@ static void RepeatOther(
     tempEvent = event = *eventP;
 
     if (event->event.lateModifiers)
-	event->event.lateModifiers->ref_count += reps - 1;
+	event->event.lateModifiers->ref_count = (unsigned short) (event->event.lateModifiers->ref_count + reps - 1);
 
     for (i=1; i<reps; i++) {
 	event->next = XtNew(EventSeqRec);
@@ -1427,7 +1427,7 @@ static void RepeatOtherPlus(
     tempEvent = event = *eventP;
 
     if (event->event.lateModifiers)
-	event->event.lateModifiers->ref_count += reps - 1;
+	event->event.lateModifiers->ref_count = (unsigned short) (event->event.lateModifiers->ref_count + reps - 1);
 
     for (i=1; i<reps; i++) {
 	event->next = XtNew(EventSeqRec);
@@ -1482,11 +1482,11 @@ static String ParseRepeat(
 	size_t len;
 
 	ScanNumeric(str);
-	len = (str - start);
+	len = (size_t) (str - start);
 	if (len < sizeof repStr) {
 	    (void) memmove(repStr, start, len);
 	    repStr[len] = '\0';
-	    *reps = StrToNum(repStr);
+	    *reps = (int) StrToNum(repStr);
 	} else {
 	    Syntax("Repeat count too large.", "");
 	    *error = TRUE;
@@ -1617,7 +1617,7 @@ static String ParseActionProc(
 	*error = TRUE;
 	return str;
     }
-    (void) memmove(procName, start, str-start);
+    (void) memmove(procName, start, (size_t) (str-start));
     procName[str-start] = '\0';
     *actionProcNameP = XrmStringToQuark( procName );
     return str;
@@ -1643,9 +1643,9 @@ static String ParseString(
 	     */
 	    if (*str == '\\' &&
 		(*(str+1) == '"' || (*(str+1) == '\\' && *(str+2) == '"'))) {
-		len = prev_len + (str-start+2);
+		len = (unsigned) (prev_len + (str-start+2));
 		*strP = XtRealloc(*strP, len);
-		(void) memmove(*strP + prev_len, start, str-start);
+		(void) memmove(*strP + prev_len, start, (size_t) (str-start));
 		prev_len = len-1;
 		str++;
 		(*strP)[prev_len-1] = *str;
@@ -1654,9 +1654,9 @@ static String ParseString(
 	    }
 	    str++;
 	}
-	len = prev_len + (str-start+1);
+	len = (unsigned) (prev_len + (str-start+1));
 	*strP = XtRealloc(*strP, len);
-	(void) memmove( *strP + prev_len, start, str-start);
+	(void) memmove( *strP + prev_len, start, (size_t) (str-start));
 	(*strP)[len-1] = '\0';
 	if (*str == '"') str++; else
             XtWarningMsg(XtNtranslationParseError,"parseString",
@@ -1672,7 +1672,7 @@ static String ParseString(
                 && !IsNewline(*str)
 		&& *str != '\0') str++;
 	*strP = __XtMalloc((unsigned)(str-start+1));
-	(void) memmove(*strP, start, str-start);
+	(void) memmove(*strP, start, (size_t) (str-start));
 	(*strP)[str-start] = '\0';
     }
     return str;
@@ -1717,7 +1717,7 @@ static String ParseParamSeq(
 
     if (num_params != 0) {
 	String *paramP = (String *)
-		__XtMalloc( (unsigned)(num_params+1) * sizeof(String) );
+		__XtMalloc( (Cardinal)((num_params+1) * sizeof(String)) );
 	*paramSeqP = paramP;
 	*paramNumP = num_params;
 	paramP += num_params; /* list is LIFO right now */
@@ -1804,7 +1804,7 @@ static void ShowProduction(
     char *eol, *production, productionbuf[500];
 
     eol = strchr(currentProduction, '\n');
-    if (eol) len = eol - currentProduction;
+    if (eol) len = (size_t) (eol - currentProduction);
     else len = strlen (currentProduction);
     production = XtStackAlloc (len + 1, productionbuf);
     if (production == NULL) _XtAllocError (NULL);
@@ -1869,7 +1869,7 @@ static String CheckForPoundSign(
 	start = str;
 	str = ScanIdent(str);
 	len = MIN(19, str-start);
-	(void) memmove(operation, start, len);
+	(void) memmove(operation, start, (size_t) len);
 	operation[len] = '\0';
 	if (!strcmp(operation,"replace"))
 	  opType = XtTableReplace;
@@ -1941,7 +1941,7 @@ static XtTranslations ParseTranslationTable(
       XtFree((char *)parseTree->complexBranchHeadTbl);
 
     xlations = _XtCreateXlations(stateTrees, 1, NULL, NULL);
-    xlations->operation = actualOp;
+    xlations->operation = (unsigned char) actualOp;
 
 #ifdef notdef
     XtFree(stateTrees);

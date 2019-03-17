@@ -138,8 +138,8 @@ static void UnmanageChildren(
 		if ((pw!=NULL) && XtIsRealized (pw))
 		    XClearArea (XtDisplay (pw), XtWindow (pw),
 			r->rectangle.x, r->rectangle.y,
-			r->rectangle.width + (r->rectangle.border_width << 1),
-			r->rectangle.height + (r->rectangle.border_width << 1),
+			(unsigned) (r->rectangle.width + (r->rectangle.border_width << 1)),
+			(unsigned) (r->rectangle.height + (r->rectangle.border_width << 1)),
 			TRUE);
 	    }
 
@@ -237,7 +237,7 @@ static void ManageChildren(
     if (num_children <= MAXCHILDREN) {
 	unique_children = cache;
     } else {
-	unique_children = (WidgetList) __XtMalloc(num_children * sizeof(Widget));
+	unique_children = (WidgetList) __XtMalloc((Cardinal) ((size_t)num_children * sizeof(Widget)));
     }
     num_unique_children = 0;
     for (i = 0; i < num_children; i++) {
@@ -302,8 +302,8 @@ static void ManageChildren(
 		if (pw != NULL)
 		    XClearArea (XtDisplay (pw), XtWindow (pw),
 		    r->rectangle.x, r->rectangle.y,
-		    r->rectangle.width + (r->rectangle.border_width << 1),
-		    r->rectangle.height + (r->rectangle.border_width << 1),
+		    (unsigned) (r->rectangle.width + (r->rectangle.border_width << 1)),
+		    (unsigned) (r->rectangle.height + (r->rectangle.border_width << 1)),
 		    TRUE);
             }
         }
@@ -432,10 +432,10 @@ void XtChangeManagedSet(
 
     parent = XtParent(*childp);
     childp = unmanage_children;
-    for (i = num_unmanage; --i >= 0 && XtParent(*childp) == parent; childp++);
+    for (i = (int) num_unmanage; --i >= 0 && XtParent(*childp) == parent; childp++);
     call_out = (i >= 0);
     childp = manage_children;
-    for (i = num_manage;   --i >= 0 && XtParent(*childp) == parent; childp++);
+    for (i = (int) num_manage;   --i >= 0 && XtParent(*childp) == parent; childp++);
     if (call_out || i >= 0) {
 	XtAppWarningMsg(app, "ambiguousParent", XtNxtChangeManagedSet,
 			XtCXtToolkitError, "Not all children have same parent",

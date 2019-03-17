@@ -298,7 +298,7 @@ _XtVaOpenApplication(
 	count++;
 	typed_args = (XtTypedArgList)
 	    XtRealloc((char *) typed_args,
-		       (unsigned) (count + 1) * sizeof(XtTypedArg));
+		       (Cardinal) ((size_t)(count + 1) * sizeof(XtTypedArg)));
     }
     typed_args[count].name = NULL;
 

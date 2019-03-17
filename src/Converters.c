@@ -144,11 +144,11 @@ void _XtConvertInitialize(void)
 			(char*) fromVal->addr, tstr);		\
 		    return False;				\
 		}						\
-		*(type*)(toVal->addr) = (value);		\
+		*(type*)(toVal->addr) = (type) (value);		\
 	    }							\
 	    else {						\
 		static type static_val;				\
-		static_val = (value);				\
+		static_val = (type) (value);			\
 		toVal->addr = (XPointer)&static_val;		\
 	    }							\
 	    toVal->size = sizeof(type);				\
@@ -162,11 +162,11 @@ void _XtConvertInitialize(void)
 		    toVal->size = sizeof(type);			\
 		    return False;				\
 		}						\
-		*(type*)(toVal->addr) = (value);		\
+		*(type*)(toVal->addr) = (type) (value);		\
 	    }							\
 	    else {						\
 		static type static_val;				\
-		static_val = (value);				\
+		static_val = (type) (value);			\
 		toVal->addr = (XPointer)&static_val;		\
 	    }							\
 	    toVal->size = sizeof(type);				\
@@ -445,7 +445,7 @@ Boolean XtCvtIntToColor(
     }
     screen = *((Screen **) args[0].addr);
     colormap = *((Colormap *) args[1].addr);
-    c.pixel = *(int *)fromVal->addr;
+    c.pixel = (unsigned long) (*(int *)fromVal->addr);
 
     XQueryColor(DisplayOfScreen(screen), colormap, &c);
     done(XColor, c);
@@ -1381,18 +1381,18 @@ static int CompareISOLatin1 (const char *first, const char *second)
 	    /* try lowercasing and try again */
 
 	    if ((a >= XK_A) && (a <= XK_Z))
-	      a += (XK_a - XK_A);
+	      a = (unsigned char) (a + (XK_a - XK_A));
 	    else if ((a >= XK_Agrave) && (a <= XK_Odiaeresis))
-	      a += (XK_agrave - XK_Agrave);
+	      a = (unsigned char) (a + (XK_agrave - XK_Agrave));
 	    else if ((a >= XK_Ooblique) && (a <= XK_Thorn))
-	      a += (XK_oslash - XK_Ooblique);
+	      a = (unsigned char) (a + (XK_oslash - XK_Ooblique));
 
 	    if ((b >= XK_A) && (b <= XK_Z))
-	      b += (XK_a - XK_A);
+	      b = (unsigned char) (b + (XK_a - XK_A));
 	    else if ((b >= XK_Agrave) && (b <= XK_Odiaeresis))
-	      b += (XK_agrave - XK_Agrave);
+	      b = (unsigned char) (b + (XK_agrave - XK_Agrave));
 	    else if ((b >= XK_Ooblique) && (b <= XK_Thorn))
-	      b += (XK_oslash - XK_Ooblique);
+	      b = (unsigned char) (b + (XK_oslash - XK_Ooblique));
 
 	    if (a != b) break;
 	}
@@ -1407,11 +1407,11 @@ static void CopyISOLatin1Lowered(char *dst, const char *src)
 
     for ( ; *source; source++, dest++) {
 	if (*source >= XK_A  && *source <= XK_Z)
-	    *dest = *source + (XK_a - XK_A);
+	    *dest = (unsigned char) (*source + (XK_a - XK_A));
 	else if (*source >= XK_Agrave && *source <= XK_Odiaeresis)
-	    *dest = *source + (XK_agrave - XK_Agrave);
+	    *dest = (unsigned char) (*source + (XK_agrave - XK_Agrave));
 	else if (*source >= XK_Ooblique && *source <= XK_Thorn)
-	    *dest = *source + (XK_oslash - XK_Ooblique);
+	    *dest = (unsigned char) (*source + (XK_oslash - XK_Ooblique));
 	else
 	    *dest = *source;
     }
@@ -1656,10 +1656,10 @@ Boolean XtCvtStringToCommandArgArray(
 	while (*src != '\0' && !IsWhitespace(*src) && !IsNewline(*src)) {
 	    if (*src == '\\' &&
 		(IsWhitespace(*(src+1)) || IsNewline(*(src+1)))) {
-		len = src - start;
+		len = (int) (src - start);
 		if (len) {
 		    /* copy preceeding part of token */
-		    memcpy(dst, start, len);
+		    memcpy(dst, start, (size_t) len);
 		    dst += len;
 		}
 		/* skip backslash */
@@ -1669,10 +1669,10 @@ Boolean XtCvtStringToCommandArgArray(
 	    }
 	    src++;
 	}
-	len = src - start;
+	len = (int) (src - start);
 	if (len) {
 	    /* copy last part of token */
-	    memcpy(dst, start, len);
+	    memcpy(dst, start, (size_t) len);
 	    dst += len;
 	}
 	*dst = '\0';
@@ -1680,13 +1680,13 @@ Boolean XtCvtStringToCommandArgArray(
 	    dst++;
     }
 
-    ptr = strarray = (String*) __XtMalloc((Cardinal)(tokens+1) * sizeof(String));
+    ptr = strarray = (String*) __XtMalloc((Cardinal)((size_t)(tokens+1) * sizeof(String)));
     src = dst_str;
     while (--tokens >= 0) {
 	*ptr = src;
 	ptr++;
 	if (tokens) {
-	    len = strlen(src);
+	    len = (int) strlen(src);
 	    src = src + len + 1;
 	}
     }

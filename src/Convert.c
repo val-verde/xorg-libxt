@@ -207,15 +207,15 @@ void _XtTableAddConverter(
 	XtFree((char *)p);
     }
 
-    p = (ConverterPtr) __XtMalloc(sizeof(ConverterRec) +
-				sizeof(XtConvertArgRec) * num_args);
+    p = (ConverterPtr) __XtMalloc((Cardinal)(sizeof(ConverterRec) +
+				sizeof(XtConvertArgRec) * num_args));
     p->next	    = *pp;
     *pp = p;
     p->from	    = from_type;
     p->to	    = to_type;
     p->converter    = converter;
     p->destructor   = destructor;
-    p->num_args     = num_args;
+    p->num_args     = (unsigned short) num_args;
     p->global       = global;
     args = ConvertArgs(p);
     while (num_args--)
@@ -223,7 +223,7 @@ void _XtTableAddConverter(
     p->new_style    = new_style;
     p->do_ref_count = False;
     if (destructor || (cache_type & 0xff)) {
-	p->cache_type = cache_type & 0xff;
+	p->cache_type = (char) (cache_type & 0xff);
 	if (cache_type & XtCacheRefCount)
 	    p->do_ref_count = True;
     } else {
@@ -367,7 +367,7 @@ CacheEnter(
     pHashEntry = &cacheHashTable[hash & CACHEHASHMASK];
 
     if ((succeeded && destructor) || do_ref) {
-	p = (CachePtr) _XtHeapAlloc(heap, (sizeof(CacheRec) +
+	p = (CachePtr) _XtHeapAlloc(heap, (Cardinal) (sizeof(CacheRec) +
 					   sizeof(CacheRecExt) +
 					   num_args * sizeof(XrmValue)));
 	CEXT(p)->prev = pHashEntry;
@@ -377,7 +377,7 @@ CacheEnter(
 	p->has_ext = True;
     }
     else {
-	p = (CachePtr)_XtHeapAlloc(heap, (sizeof(CacheRec) +
+	p = (CachePtr)_XtHeapAlloc(heap, (Cardinal) (sizeof(CacheRec) +
 					  num_args * sizeof(XrmValue)));
 	p->has_ext = False;
     }
@@ -403,7 +403,7 @@ CacheEnter(
 	p->from.addr = (XPointer)_XtHeapAlloc(heap, from->size);
 	(void) memmove((char *)p->from.addr, (char *)from->addr, from->size);
     }
-    p->num_args = num_args;
+    p->num_args = (unsigned short) num_args;
     if (num_args) {
 	XrmValue *pargs = CARGS(p);
 	for (i = 0; i < num_args; i++) {
@@ -540,7 +540,7 @@ static Boolean ResourceQuarkToOffset(
 	for (i = 0; i < wc->core_class.num_resources; i++, resources++) {
 	    res = *resources;
 	    if (res->xrm_name == name) {
-		*offset = -res->xrm_offset - 1;
+		*offset = (Cardinal) (-res->xrm_offset - 1);
 		return True;
 	    }
 	} /* for i in resources */

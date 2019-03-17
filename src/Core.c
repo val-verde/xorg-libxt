@@ -349,7 +349,7 @@ static Boolean CoreSetValues(
 	   }
 	   else {
 	       attributes.background_pixmap = new->core.background_pixmap;
-	       window_mask &= ~CWBackPixel;
+	       window_mask &= (unsigned long) (~CWBackPixel);
 	       window_mask |= CWBackPixmap;
 	   }
 	   redisplay = TRUE;
@@ -366,7 +366,7 @@ static Boolean CoreSetValues(
 	   }
 	   else {
 	       attributes.border_pixmap = new->core.border_pixmap;
-	       window_mask &= ~CWBorderPixel;
+	       window_mask &= (unsigned long) (~CWBorderPixel);
 	       window_mask |= CWBorderPixmap;
 	   }
        }

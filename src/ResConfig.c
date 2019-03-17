@@ -702,8 +702,8 @@ _search_widget_tree (
 	if ((loose == NULL) && (tight == NULL))
 		return;
 
-	loose_len = (loose) ? strlen (loose) : 0;
-	tight_len = (tight) ? strlen (tight) : 0;
+	loose_len = (loose) ? (int) strlen (loose) : 0;
+	tight_len = (tight) ? (int) strlen (tight) : 0;
 
 	if ((loose == NULL) || (tight_len > loose_len))
 		remainder = XtNewString (tight);
@@ -774,16 +774,16 @@ _locate_children (
 	 * count the number of children
 	 */
 	if (XtIsWidget (parent))
-		num_children += parent->core.num_popups;
+		num_children = (int) ((Cardinal) num_children + parent->core.num_popups);
 	if (XtIsComposite (parent))
-		num_children += comp->composite.num_children;
+		num_children = (int) ((Cardinal) num_children + comp->composite.num_children);
 	if (num_children == 0) {
 		*children = NULL;
 		return (0);
 	}
 
 	*children = (Widget *)
-		XtMalloc ((Cardinal) sizeof(Widget) * num_children);
+		XtMalloc ((Cardinal) (sizeof(Widget) * (size_t) num_children));
 
 	if (XtIsComposite (parent)) {
 		for (i=0; i<comp->composite.num_children; i++) {

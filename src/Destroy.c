@@ -351,7 +351,7 @@ void XtDestroyWidget (Widget widget)
 	app->destroy_list_size += 10;
 	app->destroy_list = (DestroyRec*)
 	    XtRealloc( (char*)app->destroy_list,
-		       (unsigned)sizeof(DestroyRec)*app->destroy_list_size
+		       (Cardinal)(sizeof(DestroyRec) * (size_t)app->destroy_list_size)
 		      );
     }
     dr = app->destroy_list + app->destroy_count++;

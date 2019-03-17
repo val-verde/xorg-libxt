@@ -235,8 +235,8 @@ GC XtAllocateGC(
 
     /* No matches, have to create a new one */
     cur = XtNew(GCrec);
-    cur->screen = XScreenNumberOfScreen(screen);
-    cur->depth = depth;
+    cur->screen = (unsigned char) XScreenNumberOfScreen(screen);
+    cur->depth = (unsigned char) depth;
     cur->ref_count = 1;
     cur->dynamic_mask = dynamicMask;
     cur->unused_mask = (unusedMask & ~dynamicMask);
@@ -250,8 +250,8 @@ GC XtAllocateGC(
     if (!drawable) {
 	if (!pd->pixmap_tab) {
 	    int n;
-	    pd->pixmap_tab = (Drawable **)__XtMalloc((unsigned)ScreenCount(dpy) *
-						   sizeof(Drawable *));
+	    pd->pixmap_tab = (Drawable **)__XtMalloc((Cardinal)((unsigned)ScreenCount(dpy) *
+						   sizeof(Drawable *)));
 	    for (n = 0; n < ScreenCount(dpy); n++)
 		pd->pixmap_tab[n] = NULL;
 	}

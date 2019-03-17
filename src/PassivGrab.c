@@ -111,7 +111,7 @@ static void DeleteDetailFromMask(
 	int i;
 	pDetailMask = (Mask *)__XtMalloc(sizeof(Mask) * MasksPerDetailMask);
 	for (i = MasksPerDetailMask; --i >= 0; )
-	    pDetailMask[i] = ~0;
+	    pDetailMask[i] = (unsigned long) (~0);
 	*ppDetailMask = pDetailMask;
     }
     BITCLEAR((pDetailMask), detail);
@@ -172,7 +172,7 @@ static XtServerGrabPtr CreateGrab(
     grab->eventMask = event_mask;
     grab->hasExt = need_ext;
     grab->confineToIsWidgetWin = (XtWindow (widget) == confine_to);
-    grab->modifiers = modifiers;
+    grab->modifiers = (unsigned short) modifiers;
     grab->keybut = keybut;
     if (need_ext) {
 	XtServerGrabExtPtr ext = GRABEXT(grab);
@@ -578,7 +578,7 @@ XtServerGrabPtr _XtCheckServerGrabsOnWidget (
      * Extension may be representing keyboard group state in two upper bits.
      */
     tempGrab.widget = widget;
-    tempGrab.keybut = event->xkey.keycode; /* also xbutton.button */
+    tempGrab.keybut = (KeyCode) event->xkey.keycode; /* also xbutton.button */
     tempGrab.modifiers = event->xkey.state & 0x1FFF; /*also xbutton.state*/
     tempGrab.hasExt = False;
 
@@ -782,8 +782,8 @@ void   UngrabKeyOrButton (
 
     /* Build a temporary grab list entry */
     tempGrab.widget = widget;
-    tempGrab.modifiers = modifiers;
-    tempGrab.keybut = keyOrButton;
+    tempGrab.modifiers = (unsigned short) modifiers;
+    tempGrab.keybut = (KeyCode) keyOrButton;
     tempGrab.hasExt = False;
 
     LOCK_PROCESS;
@@ -809,7 +809,7 @@ void   UngrabKeyOrButton (
 		       widget->core.window);
 	  else
 	    XUngrabButton(widget->core.screen->display,
-			  keyOrButton, (unsigned int)modifiers,
+			  (unsigned) keyOrButton, (unsigned int)modifiers,
 			  widget->core.window);
       }
 
@@ -912,7 +912,7 @@ static int GrabDevice (
     UNLOCK_PROCESS;
     if (!isKeyboard)
       returnVal = XGrabPointer(XtDisplay(widget), XtWindow(widget),
-			       owner_events, event_mask,
+			       owner_events, (unsigned) event_mask,
 			       pointer_mode, keyboard_mode,
 			       confine_to, cursor, time);
     else
