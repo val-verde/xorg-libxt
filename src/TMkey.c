@@ -86,7 +86,7 @@ in this Software without prior written authorization from The Open Group.
 #endif
 
 #define FLUSHKEYCACHE(ctx) \
-	bzero((char *)&ctx->keycache, sizeof(TMKeyCache))
+	memset((char *)&ctx->keycache, 0, sizeof(TMKeyCache))
 
 /*
  * The following array reorders the modifier bits so that the most common ones

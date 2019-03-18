@@ -114,7 +114,7 @@ SOFTWARE.
     }
 
 #define XtBZero(dst, size) 	\
-	bzero((char *) (dst), (size_t) (size))
+	memset((char *) (dst), 0, (size_t) (size))
 
 #define XtMemcmp(b1, b2, size) 		\
 	memcmp((char *) (b1), (char *) (b2), (size_t) (size))

@@ -737,7 +737,7 @@ static Boolean _GetResource(
 	    return True;
 	} else {
 	    WidgetRec widget; /* hack, hack */
-	    bzero( &widget, sizeof(widget) );
+	    memset( &widget, 0, sizeof(widget) );
 	    widget.core.self = &widget;
 	    widget.core.widget_class = coreWidgetClass;
 	    widget.core.screen = (Screen*)DefaultScreenOfDisplay(dpy);
