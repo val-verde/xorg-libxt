@@ -224,7 +224,7 @@ void XtSetValues(
     UNLOCK_PROCESS;
     oldw = (Widget) XtStackAlloc(widgetSize, oldwCache);
     reqw = (Widget) XtStackAlloc (widgetSize, reqwCache);
-    (void) memmove((char *) oldw, (char *) w, (int) widgetSize);
+    (void) memmove((char *) oldw, (char *) w, (size_t) widgetSize);
 
     /* Set resource values */
 
@@ -233,7 +233,7 @@ void XtSetValues(
 	wc->core_class.num_resources, args, num_args);
     UNLOCK_PROCESS;
 
-    (void) memmove ((char *) reqw, (char *) w, (int) widgetSize);
+    (void) memmove ((char *) reqw, (char *) w, (size_t) widgetSize);
 
     hasConstraints = (XtParent(w) != NULL && !XtIsShell(w) && XtIsConstraint(XtParent(w)));
 
@@ -253,7 +253,7 @@ void XtSetValues(
 	oldw->core.constraints = XtStackAlloc(constraintSize, oldcCache);
 	reqw->core.constraints = XtStackAlloc(constraintSize, reqcCache);
 	(void) memmove((char *) oldw->core.constraints,
-		       (char *) w->core.constraints, (int) constraintSize);
+		       (char *) w->core.constraints, (size_t) constraintSize);
 
 	/* Set constraint values */
 	LOCK_PROCESS;
@@ -262,7 +262,7 @@ void XtSetValues(
 	    cwc->constraint_class.num_resources, args, num_args);
 	UNLOCK_PROCESS;
 	(void) memmove((char *) reqw->core.constraints,
-		       (char *) w->core.constraints, (int) constraintSize);
+		       (char *) w->core.constraints, (size_t) constraintSize);
     }
 
     /* Inform widget of changes, then inform parent of changes */

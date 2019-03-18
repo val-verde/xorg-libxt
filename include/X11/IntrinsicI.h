@@ -110,14 +110,14 @@ SOFTWARE.
 
 #define XtMemmove(dst, src, size)	\
     if ((char *)(dst) != (char *)(src)) {		    \
-	(void) memcpy((char *) (dst), (char *) (src), (int) (size)); \
+	(void) memcpy((char *) (dst), (char *) (src), (size_t) (size)); \
     }
 
 #define XtBZero(dst, size) 	\
-	bzero((char *) (dst), (int) (size))
+	bzero((char *) (dst), (size_t) (size))
 
 #define XtMemcmp(b1, b2, size) 		\
-	memcmp((char *) (b1), (char *) (b2), (int) (size))
+	memcmp((char *) (b1), (char *) (b2), (size_t) (size))
 
 
 /****************************************************************

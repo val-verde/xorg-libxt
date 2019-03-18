@@ -110,7 +110,7 @@ void _XtCopyFromArg(
     register unsigned int size)
 {
     if (size > sizeof(XtArgVal))
-	(void) memmove((char *) dst, (char *)  src, (int) size);
+	(void) memmove((char *) dst, (char *)  src, (size_t) size);
     else {
 	union {
 	    long	longval;
@@ -133,7 +133,7 @@ void _XtCopyFromArg(
 	else if (size == sizeof(char*))	    u.charptr = (char*)src;
 	else				    p = (char*)&src;
 
-	(void) memmove(dst, p, (int) size);
+	(void) memmove(dst, p, (size_t) size);
     }
 } /* _XtCopyFromArg */
 
@@ -158,7 +158,7 @@ void _XtCopyToArg(
 	    XtPointer	ptr;
 	} u;
 	if (size <= sizeof(XtArgVal)) {
-	    (void) memmove((char*)&u, (char*)src, (int)size );
+	    (void) memmove((char*)&u, (char*)src, (size_t)size );
 	    if	    (size == sizeof(long)) 	*dst = (XtArgVal)u.longval;
 #ifdef LONG64
 	    else if (size == sizeof(int))	*dst = (XtArgVal)u.intval;
@@ -167,10 +167,10 @@ void _XtCopyToArg(
 	    else if (size == sizeof(char))	*dst = (XtArgVal)u.charval;
 	    else if (size == sizeof(char*))	*dst = (XtArgVal)u.charptr;
 	    else if (size == sizeof(XtPointer))	*dst = (XtArgVal)u.ptr;
-	    else (void) memmove((char*)dst, (char*)src, (int)size );
+	    else (void) memmove((char*)dst, (char*)src, (size_t)size );
 	}
 	else
-	    (void) memmove((char*)dst, (char*)src, (int)size );
+	    (void) memmove((char*)dst, (char*)src, (size_t)size );
 #else
 	XtErrorMsg("invalidGetValues", "xtGetValues", XtCXtToolkitError,
 	    "NULL ArgVal in XtGetValues", (String*) NULL, (Cardinal*) NULL);
@@ -178,7 +178,7 @@ void _XtCopyToArg(
     }
     else {
 	/* proper GetValues semantics: argval is pointer to destination */
-	(void) memmove((char*)*dst, (char*)src, (int)size );
+	(void) memmove((char*)*dst, (char*)src, (size_t)size );
     }
 } /* _XtCopyToArg */
 
@@ -202,7 +202,7 @@ static void CopyToArg(
 	    XtPointer	ptr;
 	} u;
 	if (size <= sizeof(XtArgVal)) {
-	    (void) memmove((char*)&u, (char*)src, (int)size );
+	    (void) memmove((char*)&u, (char*)src, (size_t)size );
 	    if	    (size == sizeof(long)) 	*dst = (XtArgVal)u.longval;
 #ifdef LONG64
 	    else if (size == sizeof(int))	*dst = (XtArgVal)u.intval;
@@ -211,14 +211,14 @@ static void CopyToArg(
 	    else if (size == sizeof(char))	*dst = (XtArgVal)u.charval;
 	    else if (size == sizeof(char*))	*dst = (XtArgVal)u.charptr;
 	    else if (size == sizeof(XtPointer))	*dst = (XtArgVal)u.ptr;
-	    else (void) memmove((char*)dst, (char*)src, (int)size );
+	    else (void) memmove((char*)dst, (char*)src, (size_t)size );
 	}
 	else
-	    (void) memmove((char*)dst, (char*)src, (int)size );
+	    (void) memmove((char*)dst, (char*)src, (size_t)size );
     }
     else {
 	/* proper GetValues semantics: argval is pointer to destination */
-	(void) memmove((char*)*dst, (char*)src, (int)size );
+	(void) memmove((char*)*dst, (char*)src, (size_t)size );
     }
 } /* CopyToArg */
 
@@ -519,8 +519,8 @@ static XtCacheRef *GetResources(
     }
 
     /* Mark each resource as not found on arg list */
-    bzero((char *) found, (int) (num_resources * sizeof(Boolean)));
-    bzero((char *) typed, (int) (num_resources * sizeof(int)));
+    bzero((char *) found, (size_t) (num_resources * sizeof(Boolean)));
+    bzero((char *) typed, (size_t) (num_resources * sizeof(int)));
 
     /* Copy the args into the resources, mark each as found */
     {
