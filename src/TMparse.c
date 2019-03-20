@@ -1626,7 +1626,7 @@ static String ParseActionProc(
 
 static String ParseString(
     register String str,
-    String *strP)
+    _XtString *strP)
 {
     register String start;
 

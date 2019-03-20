@@ -76,8 +76,8 @@ in this Software without prior written authorization from The Open Group.
 #include <stdio.h>
 
 typedef struct _TMStringBufRec{
-    String	start;
-    String	current;
+    _XtString	start;
+    _XtString	current;
     Cardinal	max;
 }TMStringBufRec, *TMStringBuf;
 
@@ -237,7 +237,7 @@ static void PrintAtom(
     Display *dpy,
     Atom atom)
 {
-    String atomName;
+    _XtString atomName;
 
     if (atom == 0) return;
 

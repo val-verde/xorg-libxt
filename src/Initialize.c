@@ -301,7 +301,7 @@ void XtToolkitInitialize(void)
 
 
 String _XtGetUserName(
-    String dest,
+    _XtString dest,
     int len)
 {
 #ifdef WIN32
@@ -335,7 +335,7 @@ String _XtGetUserName(
 
 
 static String GetRootDirName(
-    String dest,
+    _XtString dest,
     int len)
 {
 #ifdef WIN32
@@ -985,7 +985,7 @@ XtAppSetFallbackResources(
 Widget XtOpenApplication(XtAppContext *app_context_return,
 			 _Xconst char *application_class,
 			 XrmOptionDescRec *options, Cardinal num_options,
-			 int *argc_in_out, String *argv_in_out,
+			 int *argc_in_out, _XtString *argv_in_out,
 			 String *fallback_resources, WidgetClass widget_class,
 			 ArgList args_in, Cardinal num_args_in)
 {
@@ -1029,7 +1029,7 @@ XtAppInitialize(
     XrmOptionDescRec *options,
     Cardinal num_options,
     int *argc_in_out,
-    String *argv_in_out,
+    _XtString *argv_in_out,
     String *fallback_resources,
     ArgList args_in,
     Cardinal num_args_in)
@@ -1045,8 +1045,8 @@ XtAppInitialize(
 /*ARGSUSED*/
 Widget
 XtInitialize(
-    _Xconst char* name,
-    _Xconst char* classname,
+    _Xconst _XtString name,
+    _Xconst _XtString classname,
     XrmOptionDescRec *options,
     Cardinal num_options,
     int *argc,

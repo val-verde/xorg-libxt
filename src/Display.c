@@ -243,9 +243,9 @@ static XtPerDisplay InitPerDisplay(
 
 Display *XtOpenDisplay(
 	XtAppContext app,
-	_Xconst char* displayName,
-	_Xconst char* applName,
-	_Xconst char* className,
+	_Xconst _XtString displayName,
+	_Xconst _XtString applName,
+	_Xconst _XtString className,
 	XrmOptionDescRec *urlist,
 	Cardinal num_urs,
 	int *argc,
@@ -305,7 +305,7 @@ _XtAppInit(
 	XrmOptionDescRec *options,
 	Cardinal num_options,
 	int *argc_in_out,
-	String **argv_in_out,
+	_XtString **argv_in_out,
 	String * fallback_resources)
 {
     String *saved_argv;
@@ -349,8 +349,8 @@ void
 XtDisplayInitialize(
 	XtAppContext app,
 	Display *dpy,
-	_Xconst char* name,
-	_Xconst char* classname,
+	_Xconst _XtString name,
+	_Xconst _XtString classname,
 	XrmOptionDescRec *urlist,
 	Cardinal num_urs,
 	int *argc,
