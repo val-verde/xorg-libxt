@@ -797,7 +797,7 @@ void   UngrabKeyOrButton (
 	  XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 		       "invalidGrab", "ungrabKeyOrButton", XtCXtToolkitError,
 		       "Attempt to remove nonexistent passive grab",
-		       (String *)NULL, (Cardinal *)NULL);
+		       NULL, NULL);
 	  return;
       }
 

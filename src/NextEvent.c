@@ -995,7 +995,7 @@ XtInputId XtAppAddInput(
 	    condition & (unsigned long)(~(XtInputReadMask|XtInputWriteMask|XtInputExceptMask)))
 	    XtAppErrorMsg(app,"invalidParameter","xtAddInput",XtCXtToolkitError,
 			  "invalid condition passed to XtAppAddInput",
-			  (String *)NULL, (Cardinal *)NULL);
+			  NULL, NULL);
 
 	if (app->input_max <= source) {
 	    Cardinal n = (Cardinal) (source + 1);
@@ -1095,7 +1095,7 @@ void XtRemoveInput(
 	    XtAppWarningMsg(app, "invalidProcedure","inputHandler",
 			    XtCXtToolkitError,
 			    "XtRemoveInput: Input handler not found",
-			    (String *)NULL, (Cardinal *)NULL);
+			    NULL, NULL);
 	UNLOCK_APP(app);
 }
 

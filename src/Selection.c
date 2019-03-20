@@ -246,7 +246,7 @@ static void FreeSelectionProperty(
     XtAppErrorMsg(XtDisplayToApplicationContext(dpy),
 	    "noSelectionProperties", "freeSelectionProperty", XtCXtToolkitError,
 		"internal error: no selection property context for display",
-		 (String *)NULL,  (Cardinal *)NULL );
+		 NULL,  NULL );
  UNLOCK_PROCESS;
  for (p = sarray->list, propCount=sarray->propCount;
 	propCount;
@@ -1268,7 +1268,7 @@ static unsigned long IncrPropSize(
 	XtAppWarningMsg( XtWidgetToApplicationContext(widget),
 			"badFormat","xtGetSelectionValue",XtCXtToolkitError,
 	"Selection owner returned type INCR property with format != 32",
-			(String*)NULL, (Cardinal*)NULL );
+			NULL, NULL );
 	return 0;
     }
 }

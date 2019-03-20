@@ -553,7 +553,7 @@ static void RemoveAccelerators(
         XtAppWarningMsg(XtWidgetToApplicationContext(widget),
             XtNtranslationError,"nullTable",XtCXtToolkitError,
             "Can't remove accelerators from NULL table",
-            (String *)NULL, (Cardinal *)NULL);
+            NULL, NULL);
         return;
     }
 
@@ -581,7 +581,7 @@ static void RemoveAccelerators(
       XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 		      XtNtranslationError,"nullTable",XtCXtToolkitError,
 		      "Tried to remove nonexistent accelerators",
-		      (String *)NULL, (Cardinal *)NULL);
+		      NULL, NULL);
     else {
 	if (!destination->core.being_destroyed)
 	  for (i = 0; i < numXlations; i++)
@@ -855,7 +855,7 @@ void XtMenuPopupAction(
 	XtAppWarningMsg(app,
 		      "invalidParameters","xtMenuPopupAction",XtCXtToolkitError,
 			"MenuPopup wants exactly one argument",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -868,7 +868,7 @@ void XtMenuPopupAction(
 	XtAppWarningMsg(app,
 		"invalidPopup","unsupportedOperation",XtCXtToolkitError,
 "Pop-up menu creation is only supported on ButtonPress, KeyPress or EnterNotify events.",
-                  (String *)NULL, (Cardinal *)NULL);
+                  NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -914,7 +914,7 @@ static void _XtMenuPopdownAction(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 			"invalidParameters","xtMenuPopdown",XtCXtToolkitError,
 			"XtMenuPopdown called with num_params != 0 or 1",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
     }
 }
 

@@ -172,7 +172,7 @@ void XtAddCallback(
 	XtAppWarningMsg(app,
 	       XtNinvalidCallbackList,XtNxtAddCallback,XtCXtToolkitError,
               "Cannot find callback list in XtAddCallback",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -241,7 +241,7 @@ void XtAddCallbacks(
 	XtAppWarningMsg(app,
 	       XtNinvalidCallbackList,XtNxtAddCallback,XtCXtToolkitError,
               "Cannot find callback list in XtAddCallbacks",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -332,7 +332,7 @@ void XtRemoveCallback (
 	XtAppWarningMsg(app,
 	       XtNinvalidCallbackList,XtNxtRemoveCallback,XtCXtToolkitError,
               "Cannot find callback list in XtRemoveCallback",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -370,7 +370,7 @@ void XtRemoveCallbacks (
 	XtAppWarningMsg(app,
 	       XtNinvalidCallbackList,XtNxtRemoveCallback,XtCXtToolkitError,
               "Cannot find callback list in XtRemoveCallbacks",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -455,7 +455,7 @@ void XtRemoveAllCallbacks(
 	XtAppWarningMsg(app,
 	       XtNinvalidCallbackList,XtNxtRemoveAllCallback,XtCXtToolkitError,
               "Cannot find callback list in XtRemoveAllCallbacks",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -553,7 +553,7 @@ void XtCallCallbacks(
 	XtAppWarningMsg(app,
 	       XtNinvalidCallbackList,XtNxtCallCallback,XtCXtToolkitError,
               "Cannot find callback list in XtCallCallbacks",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }

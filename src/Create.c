@@ -640,12 +640,12 @@ _XtCreatePopupShell(
     if (parent == NULL) {
 	XtErrorMsg("invalidParent",XtNxtCreatePopupShell,XtCXtToolkitError,
 		"XtCreatePopupShell requires non-NULL parent",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
     } else if (widget_class == NULL) {
 	XtAppErrorMsg(XtWidgetToApplicationContext(parent),
 		"invalidClass",XtNxtCreatePopupShell,XtCXtToolkitError,
 		"XtCreatePopupShell requires non-NULL widget class",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
     }
     XtCheckSubclass(parent, coreWidgetClass, "in XtCreatePopupShell");
     default_screen = parent->core.screen;
@@ -697,7 +697,7 @@ _XtAppCreateShell(
 	XtAppErrorMsg(XtDisplayToApplicationContext(display),
 		"invalidClass","xtAppCreateShell",XtCXtToolkitError,
 		"XtAppCreateShell requires non-NULL widget class",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
     }
     if (name == NULL)
 	name = XrmNameToString(_XtGetPerDisplay(display)->name);

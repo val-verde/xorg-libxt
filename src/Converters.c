@@ -312,7 +312,7 @@ Boolean XtCvtIntToBoolean(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtIntToBoolean",XtCXtToolkitError,
                   "Integer to Boolean conversion needs no extra arguments",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(Boolean, (*(int *)fromVal->addr != 0));
 }
 
@@ -330,7 +330,7 @@ Boolean XtCvtIntToShort(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtIntToShort",XtCXtToolkitError,
                   "Integer to Short conversion needs no extra arguments",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(short, (*(int *)fromVal->addr));
 }
 
@@ -349,7 +349,7 @@ Boolean XtCvtStringToBoolean(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtStringToBoolean",XtCXtToolkitError,
                   "String to Boolean conversion needs no extra arguments",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
 
     if (   (CompareISOLatin1(str, "true") == 0)
 	|| (CompareISOLatin1(str, "yes") == 0)
@@ -379,7 +379,7 @@ Boolean XtCvtIntToBool(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtIntToBool",XtCXtToolkitError,
                   "Integer to Bool conversion needs no extra arguments",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(Bool, (*(int *)fromVal->addr != 0));
 }
 
@@ -399,7 +399,7 @@ Boolean XtCvtStringToBool(
 		XtNwrongParameters,"cvtStringToBool",
 		XtCXtToolkitError,
                  "String to Bool conversion needs no extra arguments",
-                  (String *)NULL, (Cardinal *)NULL);
+                  NULL, NULL);
 
     if (   (CompareISOLatin1(str, "true") == 0)
 	|| (CompareISOLatin1(str, "yes") == 0)
@@ -440,7 +440,7 @@ Boolean XtCvtIntToColor(
       XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	 XtNwrongParameters,"cvtIntOrPixelToXColor",XtCXtToolkitError,
          "Pixel to color conversion needs screen and colormap arguments",
-          (String *)NULL, (Cardinal *)NULL);
+          NULL, NULL);
       return False;
     }
     screen = *((Screen **) args[0].addr);
@@ -474,7 +474,7 @@ Boolean XtCvtStringToPixel(
      XtAppWarningMsg(pd->appContext, XtNwrongParameters, "cvtStringToPixel",
 		     XtCXtToolkitError,
 	"String to pixel conversion needs screen and colormap arguments",
-        (String *)NULL, (Cardinal *)NULL);
+        NULL, NULL);
      return False;
     }
 
@@ -534,7 +534,7 @@ static void FreePixel(
     if (*num_args != 2) {
      XtAppWarningMsg(app, XtNwrongParameters,"freePixel",XtCXtToolkitError,
 	"Freeing a pixel requires screen and colormap arguments",
-        (String *)NULL, (Cardinal *)NULL);
+        NULL, NULL);
      return;
     }
 
@@ -564,7 +564,7 @@ static void FetchDisplayArg(
     if (widget == NULL)
 	XtErrorMsg("missingWidget", "fetchDisplayArg", XtCXtToolkitError,
 		   "FetchDisplayArg called without a widget to reference",
-		   (String*)NULL, (Cardinal*)NULL);
+		   NULL, NULL);
         /* can't return any useful Display and caller will de-ref NULL,
 	   so aborting is the only useful option */
 
@@ -675,7 +675,7 @@ Boolean XtCvtStringToCursor(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	     XtNwrongParameters,"cvtStringToCursor",XtCXtToolkitError,
              "String to cursor conversion needs display argument",
-              (String *)NULL, (Cardinal *)NULL);
+              NULL, NULL);
 	return False;
     }
 
@@ -704,7 +704,7 @@ static void FreeCursor(
      XtAppWarningMsg(app,
 	     XtNwrongParameters,"freeCursor",XtCXtToolkitError,
              "Free Cursor requires display argument",
-              (String *)NULL, (Cardinal *)NULL);
+              NULL, NULL);
      return;
     }
 
@@ -727,7 +727,7 @@ Boolean XtCvtStringToDisplay(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtStringToDisplay",XtCXtToolkitError,
                   "String to Display conversion needs no extra arguments",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
 
     d = XOpenDisplay((char *)fromVal->addr);
     if (d != NULL)
@@ -753,7 +753,7 @@ Boolean XtCvtStringToFile(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		 XtNwrongParameters,"cvtStringToFile",XtCXtToolkitError,
                  "String to File conversion needs no extra arguments",
-                 (String *) NULL, (Cardinal *)NULL);
+                 NULL, NULL);
 
     f = fopen((char *)fromVal->addr, "r");
     if (f != NULL)
@@ -775,7 +775,7 @@ static void FreeFile(
 	XtAppWarningMsg(app,
 		 XtNwrongParameters,"freeFile",XtCXtToolkitError,
                  "Free File requires no extra arguments",
-                 (String *) NULL, (Cardinal *)NULL);
+                 NULL, NULL);
 
     fclose( *(FILE**)toVal->addr );
 }
@@ -793,7 +793,7 @@ Boolean XtCvtIntToFloat(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtIntToFloat",XtCXtToolkitError,
                   "Integer to Float conversion needs no extra arguments",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(float, (*(int *)fromVal->addr));
 }
 
@@ -819,7 +819,7 @@ Boolean XtCvtStringToFloat(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		 XtNwrongParameters,"cvtStringToFloat",XtCXtToolkitError,
                  "String to Float conversion needs no extra arguments",
-                 (String *) NULL, (Cardinal *)NULL);
+                 NULL, NULL);
 
     ret = sscanf (fromVal->addr, "%g", &f);
     if (ret == 0) {
@@ -847,7 +847,7 @@ Boolean XtCvtStringToFont(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	     XtNwrongParameters,"cvtStringToFont",XtCXtToolkitError,
              "String to font conversion needs display argument",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
 	return False;
     }
 
@@ -898,7 +898,7 @@ Boolean XtCvtStringToFont(
     XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		    "noFont","cvtStringToFont",XtCXtToolkitError,
 		    "Unable to load any usable ISO8859 font",
-		    (String *) NULL, (Cardinal *)NULL);
+		    NULL, NULL);
 
     return False;
 }
@@ -916,7 +916,7 @@ static void FreeFont(
 	XtAppWarningMsg(app,
 	     XtNwrongParameters,"freeFont",XtCXtToolkitError,
              "Free Font needs display argument",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
 	return;
     }
 
@@ -937,7 +937,7 @@ Boolean XtCvtIntToFont(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	   XtNwrongParameters,"cvtIntToFont",XtCXtToolkitError,
            "Integer to Font conversion needs no extra arguments",
-            (String *) NULL, (Cardinal *)NULL);
+            NULL, NULL);
     done(Font, *(int*)fromVal->addr);
 }
 
@@ -960,7 +960,7 @@ Boolean XtCvtStringToFontSet(
       XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
            XtNwrongParameters,"cvtStringToFontSet",XtCXtToolkitError,
              "String to FontSet conversion needs display and locale arguments",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
       return False;
     }
 
@@ -974,7 +974,7 @@ Boolean XtCvtStringToFontSet(
           XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
                  XtNmissingCharsetList,"cvtStringToFontSet",XtCXtToolkitError,
                  "Missing charsets in String to FontSet conversion",
-                 (String *) NULL, (Cardinal *)NULL);
+                 NULL, NULL);
             XFreeStringList(missing_charset_list);
       }
       if (f != NULL) {
@@ -1007,7 +1007,7 @@ Boolean XtCvtStringToFontSet(
 			 XtNmissingCharsetList,"cvtStringToFontSet",
 			 XtCXtToolkitError,
 			 "Missing charsets in String to FontSet conversion",
-                         (String *) NULL, (Cardinal *)NULL);
+                         NULL, NULL);
 		  XFreeStringList(missing_charset_list);
               }
               if (f != NULL)
@@ -1031,7 +1031,7 @@ Boolean XtCvtStringToFontSet(
       XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
              XtNmissingCharsetList,"cvtStringToFontSet",XtCXtToolkitError,
              "Missing charsets in String to FontSet conversion",
-             (String *) NULL, (Cardinal *)NULL);
+             NULL, NULL);
         XFreeStringList(missing_charset_list);
     }
     if (f != NULL)
@@ -1040,7 +1040,7 @@ Boolean XtCvtStringToFontSet(
     XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
            "noFont","cvtStringToFontSet",XtCXtToolkitError,
              "Unable to load any usable fontset",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
 
     return False;
 }
@@ -1058,7 +1058,7 @@ static void FreeFontSet(
       XtAppWarningMsg(app,
            XtNwrongParameters,"freeFontSet",XtCXtToolkitError,
              "FreeFontSet needs display and locale arguments",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
       return;
     }
 
@@ -1103,7 +1103,7 @@ XtCvtStringToFontStruct(
      XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	     XtNwrongParameters,"cvtStringToFontStruct",XtCXtToolkitError,
              "String to font conversion needs display argument",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
      return False;
     }
 
@@ -1157,7 +1157,7 @@ XtCvtStringToFontStruct(
     XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	     "noFont","cvtStringToFontStruct",XtCXtToolkitError,
              "Unable to load any usable ISO8859 font",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
 
     return False;
 }
@@ -1175,7 +1175,7 @@ static void FreeFontStruct(
      XtAppWarningMsg(app,
 	     XtNwrongParameters,"freeFontStruct",XtCXtToolkitError,
              "Free FontStruct requires display argument",
-              (String *) NULL, (Cardinal *)NULL);
+              NULL, NULL);
      return;
     }
 
@@ -1198,7 +1198,7 @@ Boolean XtCvtStringToInt(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtStringToInt",XtCXtToolkitError,
                   "String to Integer conversion needs no extra arguments",
-                  (String *) NULL, (Cardinal *)NULL);
+                  NULL, NULL);
     if (IsInteger((String)fromVal->addr, &i))
 	donestr(int, i, XtRInt);
 
@@ -1221,7 +1221,7 @@ Boolean XtCvtStringToShort(
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	  XtNwrongParameters,"cvtStringToShort",XtCXtToolkitError,
           "String to Integer conversion needs no extra arguments",
-           (String *) NULL, (Cardinal *)NULL);
+           NULL, NULL);
     if (IsInteger((String)fromVal->addr, &i))
         donestr(short, (short)i, XtRShort);
 
@@ -1244,7 +1244,7 @@ Boolean XtCvtStringToDimension(
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	  XtNwrongParameters,"cvtStringToDimension",XtCXtToolkitError,
           "String to Dimension conversion needs no extra arguments",
-           (String *) NULL, (Cardinal *)NULL);
+           NULL, NULL);
     if (IsInteger((String)fromVal->addr, &i)) {
         if ( i < 0 )
             XtDisplayStringConversionWarning(dpy, (char*)fromVal->addr,
@@ -1268,7 +1268,7 @@ Boolean XtCvtIntToUnsignedChar(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtIntToUnsignedChar",XtCXtToolkitError,
                   "Integer to UnsignedChar conversion needs no extra arguments",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(unsigned char, (*(int *)fromVal->addr));
 }
 
@@ -1288,7 +1288,7 @@ Boolean XtCvtStringToUnsignedChar(
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtStringToUnsignedChar",XtCXtToolkitError,
                   "String to Integer conversion needs no extra arguments",
-                   (String *) NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     if (IsInteger((String)fromVal->addr, &i)) {
         if ( i < 0 || i > 255 )
             XtDisplayStringConversionWarning(dpy, (char*)fromVal->addr,
@@ -1314,7 +1314,7 @@ Boolean XtCvtColorToPixel(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtXColorToPixel",XtCXtToolkitError,
                   "Color to Pixel conversion needs no extra arguments",
-                   (String *) NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(Pixel, ((XColor *)fromVal->addr)->pixel);
 }
 
@@ -1331,7 +1331,7 @@ Boolean XtCvtIntToPixel(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtIntToPixel",XtCXtToolkitError,
                   "Integer to Pixel conversion needs no extra arguments",
-                   (String *) NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(Pixel, *(int*)fromVal->addr);
 }
 
@@ -1348,7 +1348,7 @@ Boolean XtCvtIntToPixmap(
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtIntToPixmap",XtCXtToolkitError,
                   "Integer to Pixmap conversion needs no extra arguments",
-                   (String *) NULL, (Cardinal *)NULL);
+                   NULL, NULL);
     done(Pixmap, *(int*)fromVal->addr);
 }
 
@@ -1433,7 +1433,7 @@ XtCvtStringToInitialState(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtStringToInitialState",XtCXtToolkitError,
                   "String to InitialState conversion needs no extra arguments",
-                   (String *) NULL, (Cardinal *)NULL);
+                   NULL, NULL);
 
     if (CompareISOLatin1(str, "NormalState") == 0) donestr(int, NormalState, XtRInitialState);
     if (CompareISOLatin1(str, "IconicState") == 0) donestr(int, IconicState, XtRInitialState);
@@ -1468,7 +1468,7 @@ Boolean XtCvtStringToVisual(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtStringToVisual",XtCXtToolkitError,
                   "String to Visual conversion needs screen and depth arguments",
-                   (String *) NULL, (Cardinal *)NULL);
+                   NULL, NULL);
 	return False;
     }
 
@@ -1519,7 +1519,7 @@ Boolean XtCvtStringToAtom(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		  XtNwrongParameters,"cvtStringToAtom",XtCXtToolkitError,
                   "String to Atom conversion needs Display argument",
-                   (String *) NULL, (Cardinal *)NULL);
+                   NULL, NULL);
 	return False;
     }
 
@@ -1543,7 +1543,7 @@ Boolean XtCvtStringToDirectoryString(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
            XtNwrongParameters,"cvtStringToDirectoryString",XtCXtToolkitError,
            "String to DirectoryString conversion needs no extra arguments",
-           (String *)NULL, (Cardinal *)NULL);
+           NULL, NULL);
 
     str = (String)fromVal->addr;
     if (CompareISOLatin1(str, "XtCurrentDirectory") == 0) {
@@ -1584,7 +1584,7 @@ static void FreeDirectoryString(
 	XtAppWarningMsg(app,
 		 XtNwrongParameters,"freeDirectoryString",XtCXtToolkitError,
 		 "Free Directory String requires no extra arguments",
-                 (String *) NULL, (Cardinal *) NULL);
+                 NULL, NULL);
 
     XtFree((char *) toVal->addr);
 }
@@ -1603,7 +1603,7 @@ Boolean XtCvtStringToRestartStyle(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 	      XtNwrongParameters,"cvtStringToRestartStyle",XtCXtToolkitError,
               "String to RestartStyle conversion needs no extra arguments",
-              (String *)NULL, (Cardinal *)NULL);
+              NULL, NULL);
 
     if (CompareISOLatin1(str, "RestartIfRunning") == 0)
 	donestr(unsigned char, SmRestartIfRunning, XtRRestartStyle);
@@ -1636,7 +1636,7 @@ Boolean XtCvtStringToCommandArgArray(
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
             XtNwrongParameters,"cvtStringToCommandArgArray",XtCXtToolkitError,
             "String to CommandArgArray conversion needs no extra arguments",
-            (String *)NULL, (Cardinal *)NULL);
+            NULL, NULL);
 
     src = fromVal->addr;
     dst = dst_str = __XtMalloc((unsigned) strlen(src) + 1);
@@ -1762,7 +1762,7 @@ Boolean XtCvtStringToGravity (
         XtAppWarningMsg(XtDisplayToApplicationContext (dpy),
 			"wrongParameters","cvtStringToGravity","XtToolkitError",
 			"String to Gravity conversion needs no extra arguments",
-			(String *) NULL, (Cardinal *)NULL);
+			NULL, NULL);
 	return False;
     }
     if (!haveQuarks) {

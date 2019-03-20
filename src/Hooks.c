@@ -80,7 +80,7 @@ void XtRemoveBlockHook(
 #ifdef DEBUG
 	XtAppWarningMsg(app, "badId", "xtRemoveBlockHook", XtCXtToolkitError,
 			"XtRemoveBlockHook called with bad or old hook id",
-			(String*)NULL, (Cardinal*)NULL);
+			NULL, NULL);
 #endif /*DEBUG*/
 	UNLOCK_APP(app);
 	return;

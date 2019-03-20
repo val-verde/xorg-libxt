@@ -149,7 +149,7 @@ GetTypedArg(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
             "unknownType", XtNxtGetTypedArg, XtCXtToolkitError,
             "Unable to find type of resource for conversion",
-            (String *)NULL, (Cardinal *)NULL);
+            NULL, NULL);
  	return;
     }
 

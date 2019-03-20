@@ -185,7 +185,7 @@ Boolean _XtComputeLateBindings(
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
 		"displayError","invalidDisplay",XtCXtToolkitError,
             "Can't find display structure",
-            (String *)NULL, (Cardinal *)NULL);
+            NULL, NULL);
          return FALSE;
     }
     _InitializeKeysymTables(dpy, perDisplay);

@@ -96,7 +96,7 @@ void _XtCopyFromParent(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 		"invalidParent","xtCopyFromParent",XtCXtToolkitError,
                   "CopyFromParent must have non-NULL parent",
-		  (String *)NULL, (Cardinal *)NULL);
+		  NULL, NULL);
         value->addr = NULL;
         return;
     }
@@ -173,7 +173,7 @@ void _XtCopyToArg(
 	    (void) memmove((char*)dst, (char*)src, (size_t)size );
 #else
 	XtErrorMsg("invalidGetValues", "xtGetValues", XtCXtToolkitError,
-	    "NULL ArgVal in XtGetValues", (String*) NULL, (Cardinal*) NULL);
+	    "NULL ArgVal in XtGetValues", NULL, NULL);
 #endif
     }
     else {
@@ -499,7 +499,7 @@ static XtCacheRef *GetResources(
     	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 		"invalidArgCount","getResources",XtCXtToolkitError,
                  "argument count > 0 on NULL argument list",
-                   (String *)NULL, (Cardinal *)NULL);
+                   NULL, NULL);
 	num_args = 0;
     }
     if (num_resources == 0) {
@@ -508,13 +508,13 @@ static XtCacheRef *GetResources(
     	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 		"invalidResourceCount","getResources",XtCXtToolkitError,
               "too many resources",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	return NULL;
     } else if (table == NULL) {
     	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 		"invalidResourceCount","getResources",XtCXtToolkitError,
               "resource count > 0 on NULL resource list",
-	      (String *)NULL, (Cardinal *)NULL);
+	      NULL, NULL);
 	return NULL;
     }
 
@@ -1145,7 +1145,7 @@ void _XtResourceListInitialize(void)
     if (initialized) {
 	XtWarningMsg("initializationError","xtInitialize",XtCXtToolkitError,
                   "Initializing Resource Lists twice",
-		  (String *)NULL, (Cardinal *)NULL);
+		  NULL, NULL);
 	UNLOCK_PROCESS;
     	return;
     }

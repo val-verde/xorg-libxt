@@ -373,7 +373,7 @@ static Boolean CoreSetValues(
 	if (old->core.depth != new->core.depth) {
 	   XtAppWarningMsg(XtWidgetToApplicationContext(old),
 		    "invalidDepth","setValues",XtCXtToolkitError,
-               "Can't change widget depth", (String *)NULL, (Cardinal *)NULL);
+               "Can't change widget depth", NULL, NULL);
 	   new->core.depth = old->core.depth;
 	}
 	if (old->core.colormap != new->core.colormap) {

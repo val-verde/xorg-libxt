@@ -185,7 +185,7 @@ TypedArgToArg(
         XtAppWarningMsg(XtWidgetToApplicationContext(widget),
             "nullWidget", XtNxtConvertVarToArgList, XtCXtToolkitError,
 	    "XtVaTypedArg conversion needs non-NULL widget handle",
-            (String *)NULL, (Cardinal *)NULL);
+            NULL, NULL);
         return(0);
     }
 
@@ -201,7 +201,7 @@ TypedArgToArg(
         XtAppWarningMsg(XtWidgetToApplicationContext(widget),
             "unknownType", XtNxtConvertVarToArgList, XtCXtToolkitError,
             "Unable to find type of resource for conversion",
-            (String *)NULL, (Cardinal *)NULL);
+            NULL, NULL);
         return(0);
     }
 
@@ -221,7 +221,7 @@ TypedArgToArg(
 	UNLOCK_PROCESS;
         XtAppWarningMsg(XtWidgetToApplicationContext(widget),
             "conversionFailed", XtNxtConvertVarToArgList, XtCXtToolkitError,
-            "Type conversion failed", (String *)NULL, (Cardinal *)NULL);
+            "Type conversion failed", NULL, NULL);
         return(0);
     }
 

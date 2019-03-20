@@ -1487,7 +1487,7 @@ void XtAddGrab(
 	XtAppWarningMsg(app,
 		"grabError", "xtAddGrab", XtCXtToolkitError,
 		"XtAddGrab requires exclusive grab if spring_loaded is TRUE",
-		(String *) NULL, (Cardinal *) NULL);
+		NULL, NULL);
 	exclusive = TRUE;
     }
 
@@ -1522,7 +1522,7 @@ void XtRemoveGrab(
 	    XtAppWarningMsg(app,
 		       "grabError","xtRemoveGrab",XtCXtToolkitError,
 		       "XtRemoveGrab asked to remove a widget not on the list",
-		       (String *)NULL, (Cardinal *)NULL);
+		       NULL, NULL);
 	    UNLOCK_PROCESS;
     	    UNLOCK_APP(app);
 	    return;
@@ -1672,7 +1672,7 @@ void XtRegisterExtensionSelector(
     if (dpy == NULL) XtErrorMsg("nullDisplay",
 		"xtRegisterExtensionSelector", XtCXtToolkitError,
 		"XtRegisterExtensionSelector requires a non-NULL display",
-		(String *) NULL, (Cardinal *) NULL);
+		NULL, NULL);
 
     LOCK_APP(app);
     LOCK_PROCESS;
@@ -1690,7 +1690,7 @@ void XtRegisterExtensionSelector(
 	    XtErrorMsg("rangeError", "xtRegisterExtensionSelector",
 		       XtCXtToolkitError,
 	"Attempt to register multiple selectors for one extension event type",
-		       (String *) NULL, (Cardinal *) NULL);
+		       NULL, NULL);
 	    UNLOCK_PROCESS;
 	    UNLOCK_APP(app);
 	    return;

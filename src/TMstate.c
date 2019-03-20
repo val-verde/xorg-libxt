@@ -1093,7 +1093,7 @@ void _XtTranslateEvent (
         XtAppWarningMsg(XtWidgetToApplicationContext(w),
 			XtNtranslationError,"nullTable",XtCXtToolkitError,
 			"Can't translate event through NULL table",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
 	return ;
     }
     if (current_state == NULL)
@@ -1535,7 +1535,7 @@ static void AmbigActions(
     XtWarningMsg (XtNtranslationError,"ambiguousActions",
 		  XtCXtToolkitError,
 		  "Overriding earlier translation manager actions.",
-		  (String *)NULL, (Cardinal *)NULL);
+		  NULL, NULL);
 
     FreeActions((*state)->actions);
     (*state)->actions = NULL;
@@ -1659,7 +1659,7 @@ Boolean _XtCvtMergeTranslations(
     if (*num_args != 0)
 	XtWarningMsg("invalidParameters","mergeTranslations",XtCXtToolkitError,
              "MergeTM to TranslationTable needs no extra arguments",
-               (String *)NULL, (Cardinal *)NULL);
+               NULL, NULL);
 
     if (to->addr != NULL && to->size < sizeof(XtTranslations)) {
 	to->size = sizeof(XtTranslations);
@@ -1961,7 +1961,7 @@ static Boolean ComposeTranslations(
 	  XtAppWarningMsg(XtWidgetToApplicationContext(dest),
 			  XtNtranslationError,"nullTable",XtCXtToolkitError,
 			  "table to (un)merge must not be null",
-			  (String *)NULL, (Cardinal *)NULL);
+			  NULL, NULL);
 	  return False;
       }
 
@@ -2193,7 +2193,7 @@ void _XtFreeTranslations(
 	XtAppWarningMsg(app,
 	  "invalidParameters","freeTranslations",XtCXtToolkitError,
           "Freeing XtTranslations requires no extra arguments",
-	  (String *)NULL, (Cardinal *)NULL);
+	  NULL, NULL);
 
     xlations = *(XtTranslations*)toVal->addr;
     for (i = 0; i < (int)xlations->numStateTrees; i++)

@@ -268,7 +268,7 @@ void _XtInherit(void)
 {
     XtErrorMsg("invalidProcedure","inheritanceProc",XtCXtToolkitError,
             "Unresolved inheritance operation",
-              (String *)NULL, (Cardinal *)NULL);
+              NULL, NULL);
 }
 
 

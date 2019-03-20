@@ -329,7 +329,7 @@ _XtAppInit(
     if (fallback_resources) /* save a procedure call */
 	XtAppSetFallbackResources(*app_context_return, fallback_resources);
 
-    dpy = XtOpenDisplay(*app_context_return, (String) NULL, NULL,
+    dpy = XtOpenDisplay(*app_context_return, NULL, NULL,
 			application_class,
 			options, num_options, argc_in_out, *argv_in_out);
 
@@ -566,7 +566,7 @@ XtPerDisplay _XtSortPerDisplayList(Display *dpy)
 	if (pd == NULL) {
 	    XtErrorMsg(XtNnoPerDisplay, "getPerDisplay", XtCXtToolkitError,
 		    "Couldn't find per display information",
-		    (String *) NULL, (Cardinal *)NULL);
+		    NULL, NULL);
 	}
 
 	if (pd != _XtperDisplayList) {	/* move it to the front */
@@ -607,7 +607,7 @@ static void CloseDisplay(Display *dpy)
 	if (pd == NULL) {
 	    XtErrorMsg(XtNnoPerDisplay, "closeDisplay", XtCXtToolkitError,
 		    "Couldn't find per display information",
-		    (String *) NULL, (Cardinal *)NULL);
+		    NULL, NULL);
 	}
 
 	if (pd == _XtperDisplayList) _XtperDisplayList = pd->next;

@@ -231,7 +231,7 @@ static Boolean DoGrab(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 			"invalidPopup","unsupportedOperation",XtCXtToolkitError,
 			"Pop-up menu creation is only supported on Button, Key or EnterNotify events.",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
 	break;
     }
     UNLOCK_PROCESS;

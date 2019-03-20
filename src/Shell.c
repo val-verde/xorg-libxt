@@ -1555,7 +1555,7 @@ static void EventHandler(
 		XtAppErrorMsg(XtWidgetToApplicationContext(wid),
 			"invalidWindow","eventHandler",XtCXtToolkitError,
                         "Event with wrong window",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
 		return;
 	}
 
@@ -2209,7 +2209,7 @@ static XtGeometryResult RootGeometryManager(
 	} else XtAppWarningMsg(XtWidgetToApplicationContext((Widget)w),
 			       "internalError", "shell", XtCXtToolkitError,
 			       "Shell's window manager interaction is broken",
-			       (String *)NULL, (Cardinal *)NULL);
+			       NULL, NULL);
     } else if (wm) { /* no event */
 	((WMShellWidget)w)->wm.wait_for_wm = FALSE; /* timed out; must be broken */
     }
@@ -2722,7 +2722,7 @@ static void ApplicationShellInsertChild(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 	       "invalidClass", "applicationShellInsertChild", XtCXtToolkitError,
 	       "ApplicationShell does not accept RectObj children; ignored",
-	       (String*)NULL, (Cardinal*)NULL);
+	       NULL, NULL);
     }
     else {
 	XtWidgetProc insert_child;
@@ -3386,7 +3386,7 @@ static String* EditCommand(
 	*s = str;		s++;
 	for (; --count > 0; s++, sarray++)
 	    *s = *sarray;
-	*s = (String) NULL;
+	*s = NULL;
     } else {
 	if (count < 3)
 	    return NewStringArray(sarray);
@@ -3400,7 +3400,7 @@ static String* EditCommand(
 		s++;
 	    }
 	}
-	*s = (String) NULL;
+	*s = NULL;
     }
     s = new;
     new = NewStringArray(new);

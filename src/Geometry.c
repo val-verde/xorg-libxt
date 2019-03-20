@@ -168,7 +168,7 @@ _XtMakeGeometryRequest (
 			  "invalidParent","xtMakeGeometryRequest",
 			  XtCXtToolkitError,
 			  "non-shell has no parent in XtMakeGeometryRequest",
-			  (String *)NULL, (Cardinal *)NULL);
+			  NULL, NULL);
 
 	managed = XtIsManaged(widget);
 	parentRealized = XtIsRealized(parent);
@@ -201,7 +201,7 @@ _XtMakeGeometryRequest (
 			  "invalidParent", "xtMakeGeometryRequest",
 			  XtCXtToolkitError,
 			  "XtMakeGeometryRequest - parent not composite",
-			  (String *)NULL, (Cardinal *)NULL);
+			  NULL, NULL);
 	}
 	else if (manager == (XtGeometryHandler) NULL)
 	{
@@ -209,7 +209,7 @@ _XtMakeGeometryRequest (
 			  "invalidGeometryManager","xtMakeGeometryRequest",
 			  XtCXtToolkitError,
 			  "XtMakeGeometryRequest - parent has no geometry manager",
-			  (String *)NULL, (Cardinal *)NULL);
+			  NULL, NULL);
 	}
     }
 #else
@@ -724,7 +724,7 @@ void XtTranslateCoords(
         XtAppWarningMsg(app,
 		"invalidShell","xtTranslateCoords",XtCXtToolkitError,
                 "Widget has no shell ancestor",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
     else {
 	Position x2, y2;
 	_XtShellGetCoordinates( w, &x2, &y2 );

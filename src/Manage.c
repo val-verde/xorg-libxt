@@ -103,7 +103,7 @@ static void UnmanageChildren(
         XtAppErrorMsg(XtWidgetToApplicationContext((Widget)parent),
 		      "invalidParent",caller_func, XtCXtToolkitError,
 		   "Attempt to unmanage a child when parent is not Composite",
-		      (String *) NULL, (Cardinal *) NULL);
+		      NULL, NULL);
     }
 
     for (i = 0; i < num_children; i++) {
@@ -112,14 +112,14 @@ static void UnmanageChildren(
 	    XtAppWarningMsg(XtWidgetToApplicationContext(parent),
 		  XtNinvalidChild,caller_func,XtCXtToolkitError,
                   "Null child passed to XtUnmanageChildren",
-		  (String *)NULL, (Cardinal *)NULL);
+		  NULL, NULL);
 	    return;
 	}
         if (child->core.parent != parent) {
 	   XtAppWarningMsg(XtWidgetToApplicationContext(parent),
 		   "ambiguousParent",caller_func,XtCXtToolkitError,
            "Not all children have same parent in UnmanageChildren",
-             (String *)NULL, (Cardinal *)NULL);
+             NULL, NULL);
 	} else
         if (child->core.managed) {
             (*num_unique_children)++;
@@ -169,7 +169,7 @@ void XtUnmanageChildren (
     if (children[0] == NULL) {
 	XtWarningMsg(XtNinvalidChild,XtNxtUnmanageChildren,XtCXtToolkitError,
 		     "Null child found in argument list to unmanage",
-		     (String *)NULL, (Cardinal *)NULL);
+		     NULL, NULL);
 	return;
     }
 #ifdef XTHREADS
@@ -230,7 +230,7 @@ static void ManageChildren(
 	XtAppErrorMsg(XtWidgetToApplicationContext((Widget)parent),
 		"invalidParent",caller_func, XtCXtToolkitError,
 	    "Attempt to manage a child when parent is not Composite",
-	    (String *) NULL, (Cardinal *) NULL);
+	    NULL, NULL);
     }
 
     /* Construct new list of children that really need to be operated upon. */
@@ -246,7 +246,7 @@ static void ManageChildren(
 	    XtAppWarningMsg(XtWidgetToApplicationContext((Widget)parent),
 		XtNinvalidChild,caller_func,XtCXtToolkitError,
 		"null child passed to ManageChildren",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
 	    if (unique_children != cache) XtFree((char *) unique_children);
 	    return;
 	}
@@ -267,7 +267,7 @@ static void ManageChildren(
 	    XtAppWarningMsg(XtWidgetToApplicationContext((Widget)parent),
 		    "ambiguousParent",caller_func,XtCXtToolkitError,
 		"Not all children have same parent in XtManageChildren",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
 	} else if (! child->core.managed && !child->core.being_destroyed) {
 	    unique_children[num_unique_children++] = child;
 	    CALLGEOTAT(_XtGeoTrace(child,
@@ -325,7 +325,7 @@ void XtManageChildren(
     if (children[0] == NULL) {
 	XtWarningMsg(XtNinvalidChild, XtNxtManageChildren, XtCXtToolkitError,
 		     "null child passed to XtManageChildren",
-		     (String*)NULL, (Cardinal*)NULL);
+		     NULL, NULL);
 	return;
     }
 #ifdef XTHREADS
@@ -439,14 +439,14 @@ void XtChangeManagedSet(
     if (call_out || i >= 0) {
 	XtAppWarningMsg(app, "ambiguousParent", XtNxtChangeManagedSet,
 			XtCXtToolkitError, "Not all children have same parent",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
     }
     if (! XtIsComposite(parent)) {
 	UNLOCK_APP(app);
 	XtAppErrorMsg(app, "invalidParent", XtNxtChangeManagedSet,
 		      XtCXtToolkitError,
 		      "Attempt to manage a child when parent is not Composite",
-		      (String *) NULL, (Cardinal *) NULL);
+		      NULL, NULL);
     }
     if (parent->core.being_destroyed) {
 	UNLOCK_APP(app);

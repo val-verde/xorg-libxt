@@ -310,7 +310,7 @@ static void RealizeWidget(
 	XtAppErrorMsg(XtWidgetToApplicationContext(widget),
 		      "invalidProcedure","realizeProc",XtCXtToolkitError,
 		      "No realize class procedure defined",
-		      (String *)NULL, (Cardinal *)NULL);
+		      NULL, NULL);
     else {
 	CALLGEOTAT(_XtGeoTrace(widget,"Call \"%s\"[%d,%d]'s realize proc\n",
 		       XtName(widget),
