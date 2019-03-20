@@ -1704,10 +1704,10 @@ static void ArgArrayDestructor(
     XrmValuePtr	args,
     Cardinal	*num_args)
 {
-    String *strarray;
+    _XtString *strarray;
 
     if (closure) {
-	strarray = (String*) closure;
+	strarray = (_XtString*) closure;
 	XtFree(*strarray);
 	XtFree((char *) strarray);
     }

@@ -754,7 +754,7 @@ XrmDatabase _XtPreparseCommandLine(
     XrmOptionDescRec *urlist,
     Cardinal num_urs,
     int argc,
-    String *argv,
+    _XtString *argv,
     /* return */
     String *applName,
     String *displayName,
@@ -767,10 +767,10 @@ XrmDatabase _XtPreparseCommandLine(
     XrmName class_list[3];
     XrmRepresentation type;
     XrmValue val;
-    String *targv;
+    _XtString *targv;
     int targc = argc;
 
-    targv = (String *) __XtMalloc((Cardinal)(sizeof(char *) * (size_t)argc));
+    targv = (_XtString *) __XtMalloc((Cardinal)(sizeof(_XtString*) * (size_t)argc));
     (void) memmove(targv, argv, sizeof(char *) * (size_t) argc);
     _MergeOptionTables(opTable, XtNumber(opTable), urlist, num_urs,
 		       &options, &num_options);
@@ -1050,7 +1050,7 @@ XtInitialize(
     XrmOptionDescRec *options,
     Cardinal num_options,
     int *argc,
-    String *argv)
+    _XtString *argv)
 {
     Widget root;
     XtAppContext app_con;

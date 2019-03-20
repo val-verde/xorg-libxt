@@ -249,7 +249,7 @@ Display *XtOpenDisplay(
 	XrmOptionDescRec *urlist,
 	Cardinal num_urs,
 	int *argc,
-	String *argv)
+	_XtString *argv)
 {
 	Display *d;
 	XrmDatabase db = NULL;
@@ -289,7 +289,7 @@ Display *XtOpenDisplay(
 	    int len;
 	    displayName = XDisplayName(displayName);
 	    len = (int) strlen (displayName);
-	    app->display_name_tried = (String) __XtMalloc ((Cardinal)(len + 1));
+	    app->display_name_tried = (_XtString) __XtMalloc ((Cardinal)(len + 1));
 	    strncpy ((char*) app->display_name_tried, displayName, (size_t) (len + 1));
 	    app->display_name_tried[len] = '\0';
 	}
@@ -308,7 +308,7 @@ _XtAppInit(
 	_XtString **argv_in_out,
 	String * fallback_resources)
 {
-    String *saved_argv;
+    _XtString *saved_argv;
     int i;
     Display *dpy;
 
@@ -316,8 +316,8 @@ _XtAppInit(
  * Save away argv and argc so we can set the properties later
  */
 
-    saved_argv = (String *)
-	__XtMalloc( (Cardinal)((size_t)(*argc_in_out + 1) * sizeof(String)) );
+    saved_argv = (_XtString *)
+	__XtMalloc( (Cardinal)((size_t)(*argc_in_out + 1) * sizeof(_XtString)) );
 
     for (i = 0 ; i < *argc_in_out ; i++) saved_argv[i] = (*argv_in_out)[i];
     saved_argv[i] = NULL;	/* NULL terminate that sucker. */
@@ -354,7 +354,7 @@ XtDisplayInitialize(
 	XrmOptionDescRec *urlist,
 	Cardinal num_urs,
 	int *argc,
-	String *argv
+	_XtString *argv
 	)
 {
     XtPerDisplay pd;

@@ -1061,7 +1061,7 @@ static Boolean Resolve(
 
 
 String XtFindFile(
-    _Xconst char* path,
+    _Xconst _XtString path,
     Substitution substitutions,
     Cardinal num_substitutions,
     XtFilePredicate predicate)
@@ -1334,7 +1334,7 @@ static SubstitutionRec defaultSubs[] = {
 };
 
 
-String XtResolvePathname(
+_XtString XtResolvePathname(
     Display *dpy,
     _Xconst char* type,
     _Xconst char* filename,

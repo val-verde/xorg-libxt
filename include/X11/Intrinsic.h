@@ -405,7 +405,7 @@ typedef Boolean (*XtWorkProc)(
 
 typedef struct {
     char match;
-    String substitution;
+    _XtString substitution;
 } SubstitutionRec, *Substitution;
 
 typedef Boolean (*XtFilePredicate)(
@@ -1446,7 +1446,7 @@ extern void XtDisplayInitialize(
     XrmOptionDescRec* 	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc */,
-    String*		/* argv */
+    _XtString*		/* argv */
 );
 
 extern Widget XtOpenApplication(
@@ -1468,7 +1468,7 @@ extern Widget XtVaOpenApplication(
     XrmOptionDescList	/* options */,
     Cardinal		/* num_options */,
     int*		/* argc_in_out */,
-    String*		/* argv_in_out */,
+    _XtString*		/* argv_in_out */,
     String*		/* fallback_resources */,
     WidgetClass		/* widget_class */,
     ...
@@ -1492,7 +1492,7 @@ extern Widget XtVaAppInitialize( /* obsolete */
     XrmOptionDescList	/* options */,
     Cardinal		/* num_options */,
     int*		/* argc_in_out */,
-    String*		/* argv_in_out */,
+    _XtString*		/* argv_in_out */,
     String*		/* fallback_resources */,
     ...
 ) _X_SENTINEL(0);
@@ -1503,7 +1503,7 @@ extern Widget XtInitialize( /* obsolete */
     XrmOptionDescRec* 	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc */,
-    String*		/* argv */
+    _XtString*		/* argv */
 );
 
 extern Display *XtOpenDisplay(
@@ -1514,7 +1514,7 @@ extern Display *XtOpenDisplay(
     XrmOptionDescRec*	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc */,
-    String*		/* argv */
+    _XtString*		/* argv */
 );
 
 extern XtAppContext XtCreateApplicationContext(
@@ -1990,7 +1990,7 @@ extern String XtFindFile(
     XtFilePredicate	/* predicate */
 );
 
-extern String XtResolvePathname(
+extern _XtString XtResolvePathname(
     Display*		/* dpy */,
     _Xconst _XtString	/* type */,
     _Xconst _XtString	/* filename */,

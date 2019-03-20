@@ -154,7 +154,7 @@ void XtAppGetErrorDatabaseText(
     XrmDatabase db)
 {
     String str_class;
-    String type_str;
+    _XtString type_str;
     XrmValue result;
     char *str_name = NULL;
     char *temp = NULL;

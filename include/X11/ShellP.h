@@ -332,7 +332,7 @@ typedef struct {
 #endif
     XrmClass xrm_class;
     int argc;
-    char **argv;
+    _XtString *argv;
 } ApplicationShellPart;
 
 typedef  struct {

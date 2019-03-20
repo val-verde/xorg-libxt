@@ -336,8 +336,8 @@ CompileCallbacks(
 
 static Widget
 xtCreate(
-    char        *name,
-    char        *class,
+    String      name,
+    String      class,
     WidgetClass widget_class,
     Widget      parent,
     Screen*     default_screen, /* undefined when creating a nonwidget */

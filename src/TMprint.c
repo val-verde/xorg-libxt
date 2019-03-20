@@ -86,14 +86,14 @@ typedef struct _TMStringBufRec{
 #define STR_INCAMOUNT 100
 #define CHECK_STR_OVERFLOW(sb) \
 if (sb->current - sb->start > (int)sb->max - STR_THRESHOLD) 	\
-{ String old = sb->start; \
+{ _XtString old = sb->start; \
   sb->start = XtRealloc(old, (Cardinal)(sb->max += STR_INCAMOUNT)); \
   sb->current = sb->current - old + sb->start; \
 }
 
 #define ExpandForChars(sb, nchars ) \
     if ((unsigned)(sb->current - sb->start) > (sb->max - STR_THRESHOLD - nchars)) { \
-	String old = sb->start;					\
+	_XtString old = sb->start;					\
 	sb->start = XtRealloc(old,				\
 	    (Cardinal)(sb->max = (Cardinal)(sb->max + STR_INCAMOUNT + (Cardinal) nchars)));	\
 	sb->current = sb->current - old + sb->start;		\

@@ -328,7 +328,7 @@ _XtVaAppInitialize(
     XrmOptionDescList options,
     Cardinal num_options,
     int *argc_in_out,
-    String *argv_in_out,
+    _XtString *argv_in_out,
     String *fallback_resources,
     va_list var_args)
 {
@@ -352,7 +352,7 @@ XtVaOpenApplication(
     XrmOptionDescList options,
     Cardinal num_options,
     int *argc_in_out,
-    String *argv_in_out,
+    _XtString *argv_in_out,
     String *fallback_resources,
     WidgetClass widget_class,
     ...)
@@ -372,7 +372,7 @@ XtVaAppInitialize(
     XrmOptionDescList options,
     Cardinal num_options,
     int *argc_in_out,
-    String *argv_in_out,
+    _XtString *argv_in_out,
     String *fallback_resources,
     ...)
 {

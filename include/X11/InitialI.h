@@ -384,7 +384,7 @@ extern void _XtDisplayInitialize(
     XrmOptionDescRec*	/* urlist */,
     Cardinal 		/* num_urs */,
     int*		/* argc */,
-    char** 		/* argv */
+    _XtString* 		/* argv */
 );
 
 extern void _XtCacheFlushTag(
@@ -421,7 +421,7 @@ extern void _XtFreeWWTable(
 
 extern String _XtGetUserName(_XtString dest, int len);
 extern XrmDatabase _XtPreparseCommandLine(XrmOptionDescRec *urlist,
-			Cardinal num_urs, int argc, String *argv,
+			Cardinal num_urs, int argc, _XtString *argv,
 			String *applName, String *displayName,
 			String *language);
 
