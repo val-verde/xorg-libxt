@@ -1502,7 +1502,7 @@ static void FreeActions(
     for (action = actions; action;) {
 	ActionPtr nextAction = action->next;
 	for (i = (TMShortCard) action->num_params; i;) {
-	    XtFree( action->params[--i] );
+	    XtFree( (_XtString)action->params[--i] );
 	}
 	XtFree( (char*)action->params );
 	XtFree((char*) action);
@@ -2209,7 +2209,7 @@ void XtInstallAccelerators(
 {
     XtTranslations	aXlations;
     _XtTranslateOp	op;
-    String		buf;
+    _XtString		buf;
     WIDGET_TO_APPCON(destination);
 
     /*
