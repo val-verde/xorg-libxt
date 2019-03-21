@@ -1983,7 +1983,7 @@ extern void XtSetWMColormapWindows(
     Cardinal		/* count */
 );
 
-extern String XtFindFile(
+extern _XtString XtFindFile(
     _Xconst _XtString	/* path */,
     Substitution	/* substitutions */,
     Cardinal 		/* num_substitutions */,
