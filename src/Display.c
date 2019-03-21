@@ -122,7 +122,7 @@ static void AddToAppContext(
 	if (app->count >= app->max) {
 	    app->max = (short) (app->max + DISPLAYS_TO_ADD);
 	    app->list = (Display **) XtRealloc((char *)app->list,
-		    (Cardinal) ((unsigned) app->max * sizeof(Display *)));
+		    (Cardinal) (((size_t) app->max) * sizeof(Display *)));
 	}
 
 	app->list[app->count++] = d;
@@ -653,7 +653,7 @@ static void CloseDisplay(Display *dpy)
 		XrmDestroyDatabase(xtpd->cmd_db);
 	    if (xtpd->server_db)
 		XrmDestroyDatabase(xtpd->server_db);
-	    XtFree(xtpd->language);
+	    XtFree((_XtString)xtpd->language);
 	    if (xtpd->dispatcher_list != NULL)
 		XtFree((char *) xtpd->dispatcher_list);
 	    if (xtpd->ext_select_list != NULL)
