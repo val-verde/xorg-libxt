@@ -668,7 +668,7 @@ static void PrintState(
     UNLOCK_PROCESS;
 }
 
-String _XtPrintXlations(
+_XtString _XtPrintXlations(
     Widget		w,
     XtTranslations 	xlations,
     Widget		accelWidget,
@@ -731,7 +731,7 @@ void _XtDisplayTranslations(
     String *params,
     Cardinal *num_params)
 {
-    String 	xString;
+    _XtString 	xString;
 
     xString =  _XtPrintXlations(widget,
 				widget->core.tm.translations,
@@ -750,7 +750,7 @@ void _XtDisplayAccelerators(
     String *params,
     Cardinal *num_params)
 {
-    String 	xString;
+    _XtString 	xString;
 
 
     xString =  _XtPrintXlations(widget,
