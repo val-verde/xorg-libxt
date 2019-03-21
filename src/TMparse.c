@@ -103,6 +103,8 @@ static _Xconst char *XtNtranslationParseError = "translationParseError";
 
 typedef int		EventType;
 
+#define PARSE_PROC_DECL String, Opaque, EventPtr, Boolean*
+
 typedef String (*ParseProc)(
     String /* str; */,
     Opaque /* closure; */,
@@ -228,13 +230,13 @@ static NameValueRec mappingNotify[] = {
     {NULL, NULLQUARK, 0},
 };
 
-static String ParseKeySym(String, Opaque, EventPtr, Boolean*);
-static String ParseKeyAndModifiers(String, Opaque, EventPtr, Boolean*);
-static String ParseTable(String, Opaque, EventPtr, Boolean*);
-static String ParseImmed(String, Opaque, EventPtr, Boolean*);
-static String ParseAddModifier(String, Opaque, EventPtr, Boolean*);
-static String ParseNone(String, Opaque, EventPtr, Boolean*);
-static String ParseAtom(String, Opaque, EventPtr, Boolean*);
+static String ParseKeySym(PARSE_PROC_DECL);
+static String ParseKeyAndModifiers(PARSE_PROC_DECL);
+static String ParseTable(PARSE_PROC_DECL);
+static String ParseImmed(PARSE_PROC_DECL);
+static String ParseAddModifier(PARSE_PROC_DECL);
+static String ParseNone(PARSE_PROC_DECL);
+static String ParseAtom(PARSE_PROC_DECL);
 
 static EventKey events[] = {
 
@@ -953,7 +955,7 @@ static String ParseKeySym(
     EventPtr event,
     Boolean* error)
 {
-    char *start;
+    String start;
     char keySymNamebuf[100];
     char* keySymName;
 
@@ -1075,7 +1077,8 @@ static String ParseAtom(
 	event->event.eventCode = 0L;
         event->event.eventCodeMask = 0L;
     } else {
-	char *start, atomName[1000];
+	String start;
+	char atomName[1000];
 	start = str;
 	while (
 		*str != ','
@@ -1696,7 +1699,7 @@ static String ParseParamSeq(
 
     ScanWhitespace(str);
     while (*str != ')' && *str != '\0' && !IsNewline(*str)) {
-	String newStr;
+	_XtString newStr;
 	str = ParseString(str, &newStr);
 	if (newStr != NULL) {
 	    ParamPtr temp = (ParamRec*)
