@@ -40,14 +40,14 @@
 XtAppErrorMsg, XtAppSetErrorMsgHandler, XtAppSetWarningMsgHandler, XtAppWarningMsg \- high-level error handlers
 .SH SYNTAX
 .HP
-XtErrorMsgHandler XtAppErrorMsg(XtAppContext \fIapp_context\fP, const char *\fIname\fP,
+void XtAppErrorMsg(XtAppContext \fIapp_context\fP, const char *\fIname\fP,
 const char *\fItype\fP, const char *\fIclass\fP, const char *\fIdefaultMsg\fP,
 String *\fIparams\fP, Cardinal *\fInum_params\fP);
 .HP
 XtErrorMsgHandler XtAppSetErrorMsgHandler(XtAppContext \fIapp_context\fP, XtErrorMsgHandler
 \fImsg_handler\fP);
 .HP
-void XtAppSetWarningMsgHandler(XtAppContext \fIapp_context\fP,
+XtErrorMsgHandler XtAppSetWarningMsgHandler(XtAppContext \fIapp_context\fP,
 XtErrorMsgHandler \fImsg_handler\fP);
 .HP
 void XtAppWarningMsg(XtAppContext \fIapp_context\fP, const char *\fIname\fP,

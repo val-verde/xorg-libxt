@@ -56,7 +56,7 @@ void XtGrabButton(Widget \fIwidget\fP, int \fIbutton\fP, Modifiers
 int \fIpointer_mode\fP, int \fIkeyboard_mode\fP, Window \fIconfine_to\fP,
 Cursor \fIcursor\fP);
 .HP
-void XtUngrabButton(Widget \fIwidget\fP, KeyCode \fIbutton\fP, Modifiers
+void XtUngrabButton(Widget \fIwidget\fP, unsigned \fIbutton\fP, Modifiers
 \fImodifiers\fP);
 .HP
 int XtGrabPointer(Widget \fIwidget\fP, Boolean \fIowner_events\fP, unsigned

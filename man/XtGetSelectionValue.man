@@ -43,7 +43,7 @@ void XtGetSelectionValue(Widget \fIw\fP,
 Atom \fIselection\fP,
 Atom \fItarget\fP,
 XtSelectionCallbackProc \fIcallback\fP,
-XtPointer *\fIclient_data\fP, Time \fItime\fP);
+XtPointer \fIclient_data\fP, Time \fItime\fP);
 .HP
 void XtGetSelectionValues(Widget \fIw\fP,
 Atom \fIselection\fP,
