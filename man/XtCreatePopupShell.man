@@ -39,10 +39,10 @@
 XtCreatePopupShell, XtVaCreatePopupShell \- create a popup shell
 .SH SYNTAX
 .HP
-Widget XtCreatePopupShell(String \fIname\fP, WidgetClass \fIwidget_class\fP,
+Widget XtCreatePopupShell(const char *\fIname\fP, WidgetClass \fIwidget_class\fP,
 Widget \fIparent\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
 .HP
-Widget XtVaCreatePopupShell(String \fIname\fP, WidgetClass \fIwidget_class\fP,
+Widget XtVaCreatePopupShell(const char *\fIname\fP, WidgetClass \fIwidget_class\fP,
 Widget \fIparent\fP, ...\^);
 .SH ARGUMENTS
 .IP \fIargs\fP 1i

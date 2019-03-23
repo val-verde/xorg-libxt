@@ -41,9 +41,10 @@ XtAppGetErrorDatabase, XtAppGetErrorDatabaseText \- obtain error database
 .HP
 XrmDatabase *XtAppGetErrorDatabase(\^XtAppContext \fIapp_context\fP);
 .HP
-void XtAppGetErrorDatabaseText(XtAppContext \fIapp_context\fP, char
-*\fIname\fP, char *\fItype\fP, char *\fIclass\fP, char *\fIdefault\fP, char
-*\fIbuffer_return\fP, int \fInbytes\fP, XrmDatabase \fIdatabase\fP);
+void XtAppGetErrorDatabaseText(XtAppContext \fIapp_context\fP,
+const char *\fIname\fP, const char *\fItype\fP, const char *\fIclass\fP,
+const char *\fIdefault\fP, char *\fIbuffer_return\fP, int \fInbytes\fP,
+XrmDatabase \fIdatabase\fP);
 .SH ARGUMENTS
 .IP \fIapp_context\fP 1i
 Specifies the application context.

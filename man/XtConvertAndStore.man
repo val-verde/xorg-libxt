@@ -38,10 +38,11 @@
 XtConvertAndStore, XtCallConverter \- invoke resource converters
 .SH SYNTAX
 .HP
-Boolean XtConvertAndStore(Widget \fIwidget\fP, String \fIfrom_type\fP,
-XrmValuePtr \fIfrom\fP, String \fIto_type\fP, XrmValuePtr \fIto_in_out\fP);
+Boolean XtConvertAndStore(Widget \fIwidget\fP,
+const char *\fIfrom_type\fP, XrmValuePtr \fIfrom\fP,
+const char *\fIto_type\fP, XrmValuePtr \fIto_in_out\fP);
 .HP
-Boolean XtCallConverter(Display* \fIdpy\fP, XtConverter \fIconverter\fP,
+Boolean XtCallConverter(Display* \fIdpy\fP, XtTypeConverter \fIconverter\fP,
 XrmValuePtr \fIargs\fP, Cardinal \fInum_args\fP, XrmValuePtr \fIfrom\fP,
 XrmValuePtr \fIto_in_out\fP, XtCacheRef* \fIcache_ref_return\fP);
 .SH ARGUMENTS

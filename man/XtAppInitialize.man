@@ -38,15 +38,15 @@
 XtAppInitialize, XtVaAppInitialize \- initialize, open, or close a display
 .SH SYNTAX
 .HP
-Widget XtAppInitialize(XtAppContext* \fIapp_context_return\fP, String
-\fIapplication_class\fP, XrmOptionDescRec* \fIoptions\fP, Cardinal
-\fInum_options\fP, int* \fIargc_in_out\fP, String* \fIargv_in_out\fP, String*
-\fIfallback_resources\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
+Widget XtAppInitialize(XtAppContext* \fIapp_context_return\fP,
+const char *\fIapplication_class\fP, XrmOptionDescRec* \fIoptions\fP,
+Cardinal \fInum_options\fP, int *\fIargc_in_out\fP, char **\fIargv_in_out\fP,
+String *\fIfallback_resources\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
 .HP
-Widget XtVaAppInitialize(XtAppContext* \fIapp_context_return\fP, String
-\fIapplication_class\fP, XrmOptionDescRec* \fIoptions\fP, Cardinal
-\fInum_options\fP, int* \fIargc_in_out\fP, String* \fIargv_in_out\fP, String*
-\fIfallback_resources\fP, ...\^);
+Widget XtVaAppInitialize(XtAppContext* \fIapp_context_return\fP,
+const char *\fIapplication_class\fP, XrmOptionDescRec* \fIoptions\fP,
+Cardinal \fInum_options\fP, int *\fIargc_in_out\fP, char **\fIargv_in_out\fP,
+String *\fIfallback_resources\fP, ...\^);
 .SH ARGUMENTS
 .IP \fIapp_context_return\fP 1i
 Specifies the application context.

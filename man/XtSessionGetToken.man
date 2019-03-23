@@ -39,14 +39,12 @@
 XtSessionGetToken, XtSessionReturnToken \- token management for checkpointing
 .SH SYNTAX
 .HP
-XtCheckpointToken XtSessionGetToken(Widget \fIw\fP, int \fItype\fP);
+XtCheckpointToken XtSessionGetToken(Widget \fIw\fP);
 .HP
 void XtSessionReturnToken(XtCheckpointToken \fItoken\fP);
 .SH ARGUMENTS
 .IP \fIw\fP 1i
 Specifies the session widget.
-.IP \fItype\fP 1i
-Specifies the value in the type field of the token.
 .IP \fItoken\fP 1i
 Specifies the token to be returned.
 .SH DESCRIPTION

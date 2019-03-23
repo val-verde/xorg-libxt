@@ -38,14 +38,16 @@
 XtAppSetTypeConverter, XtSetTypeConverter \- register resource converter
 .SH SYNTAX
 .HP
-void XtAppSetTypeConverter(XtAppContext \fIapp_context\fP, String
-\fIfrom_type\fP, String \fIto_type\fP, XtConverter \fIconverter\fP,
-XtConvertArgList \fIconvert_args\fP, Cardinal \fInum_args\fP, XtCacheType
-\fIcache_type\fP, XtDestructor \fIdestructor\fP);
+void XtAppSetTypeConverter(XtAppContext \fIapp_context\fP,
+const char *\fIfrom_type\fP, const char * \fIto_type\fP,
+XtTypeConverter \fIconverter\fP, XtConvertArgList \fIconvert_args\fP,
+Cardinal \fInum_args\fP, XtCacheType \fIcache_type\fP,
+XtDestructor \fIdestructor\fP);
 .HP
-void XtSetTypeConverter(String \fIfrom_type\fP, String \fIto_type\fP,
-XtConverter \fIconverter\fP, XtConvertArgList \fIconvert_args\fP, Cardinal
-\fInum_args\fP, XtCacheType \fIcache_type\fP, XtDestructor \fIdestructor\fP);
+void XtSetTypeConverter(const char *\fIfrom_type\fP, const char *\fIto_type\fP,
+XtTypeConverter \fIconverter\fP, XtConvertArgList \fIconvert_args\fP,
+Cardinal \fInum_args\fP, XtCacheType \fIcache_type\fP,
+XtDestructor \fIdestructor\fP);
 .SH ARGUMENTS
 .IP \fIapp_context\fP 1i
 Specifies the application context.

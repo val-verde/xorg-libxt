@@ -39,8 +39,11 @@
 XtTranslateCoords \- translate widget coordinates
 .SH SYNTAX
 .HP
-void XtTranslateCoords(Widget \fIw\fP, Position \fIx\fP, \fIy\fP, Position
-*\fIrootx_return\fP, *\fIrooty_return\fP);
+void XtTranslateCoords(Widget \fIw\fP,
+Position \fIx\fP,
+Position \fIy\fP,
+Position *\fIrootx_return\fP,
+Position *\fIrooty_return\fP);
 .SH ARGUMENTS
 .IP \fIrootx_return\fP 1i
 .br

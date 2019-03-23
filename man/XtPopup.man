@@ -45,7 +45,7 @@ void XtPopup(Widget \fIpopup_shell\fP, XtGrabKind \fIgrab_kind\fP);
 void XtPopupSpringLoaded(Widget \fIpopup_shell\fP);
 .HP
 void XtCallbackNone(Widget \fIw\fP, XtPointer \fIclient_data\fP, XtPointer
-\fIcall_data\fP):
+\fIcall_data\fP);
 .HP
 void XtCallbackNonexclusive(Widget \fIw\fP, XtPointer \fIclient_data\fP,
 XtPointer \fIcall_data\fP);

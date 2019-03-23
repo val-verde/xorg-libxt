@@ -38,8 +38,8 @@
 XtCallCallbacks, XtCallCallbackList, XtHasCallbacks \- process callbacks
 .SH SYNTAX
 .HP
-void XtCallCallbacks(Widget \fIw\fP, String \fIcallback_name\fP, XtPointer
-\fIcall_data\fP);
+void XtCallCallbacks(Widget \fIw\fP, const char *\fIcallback_name\fP,
+XtPointer \fIcall_data\fP);
 .HP
 void XtCallCallbackList(Widget \fIw\fP, XtCallbackList \fIcallbacks\fP,
 XtPointer \fIcall_data\fP);
@@ -47,7 +47,7 @@ XtPointer \fIcall_data\fP);
 typedef enum {XtCallbackNoList, XtCallbackHasNone, XtCallbackHasSome}
 XtCallbackStatus;
 .HP
-XtCallbackStatus XtHasCallbacks(Widget \fIw\fP, String \fIcallback_name\fP);
+XtCallbackStatus XtHasCallbacks(Widget \fIw\fP, const char *\fIcallback_name\fP);
 .SH ARGUMENTS
 .IP \fIcallback_name\fP 1i
 Specifies the callback list to be executed or checked.

@@ -42,8 +42,11 @@ XtMakeGeometryRequest, XtMakeResizeRequest \- make geometry manager request
 XtGeometryResult XtMakeGeometryRequest(Widget \fIw\fP, XtWidgetGeometry
 *\fIrequest\fP, XtWidgetGeometry *\fIreply_return\fP);
 .HP
-XtGeometryResult XtMakeResizeRequest(Widget \fIw\fP, Dimension \fIwidth\fP,
-\fIheight\fP, Dimension *\fIwidth_return\fP, Dimension *\fIheight_return\fP);
+XtGeometryResult XtMakeResizeRequest(Widget \fIw\fP,
+Dimension \fIwidth\fP,
+Dimension \fIheight\fP,
+Dimension *\fIwidth_return\fP,
+Dimension *\fIheight_return\fP);
 .SH ARGUMENTS
 .IP \fIreply_return\fP 1i
 Returns the allowed widget size or may be NULL

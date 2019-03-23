@@ -41,9 +41,11 @@ XtGetErrorDatabase, XtGetErrorDatabaseText \- obtain error database
 .HP
 XrmDatabase *XtGetErrorDatabase(void);
 .HP
-void XtGetErrorDatabaseText(char *\fIname\fP, char *\fItype\fP, char
-*\fIclass\fP, char *\fIdefault\fP, char *\fIbuffer_return\fP, int
-\fInbytes\fP);
+void XtGetErrorDatabaseText(const char *\fIname\fP,
+const char *\fItype\fP,
+const char *\fIclass\fP,
+const char *\fIdefaultMsg\fP,
+char *\fIbuffer_return\fP, int \fInbytes\fP);
 .SH ARGUMENTS
 .IP \fIbuffer_return\fP 1i
 Specifies the buffer into which the error message is to be returned.

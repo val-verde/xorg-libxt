@@ -40,7 +40,7 @@
 XtParseAcceleratorTable, XtInstallAccelerators, XtInstallAllAccelerators \- managing accelerator tables
 .SH SYNTAX
 .HP
-XtAccelerators XtParseAcceleratorTable(String \fIsource\fP);
+XtAccelerators XtParseAcceleratorTable(const char * \fIsource\fP);
 .HP
 void XtInstallAccelerators(Widget \fIdestination\fP, Widget \fIsource\fP);
 .HP

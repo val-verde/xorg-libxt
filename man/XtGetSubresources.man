@@ -39,13 +39,19 @@
 XtGetSubresources, XtVaGetSubresources \- obtain subresources
 .SH SYNTAX
 .HP
-void XtGetSubresources(Widget \fIw\fP, XtPointer \fIbase\fP, String
-\fIname\fP, String \fIclass\fP, XtResourceList \fIresources\fP, Cardinal
-\fInum_resources\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
+void XtGetSubresources(Widget \fIw\fP,
+XtPointer \fIbase\fP,
+const char *\fIname\fP,
+const char * \fIclass\fP,
+XtResourceList \fIresources\fP, Cardinal \fInum_resources\fP,
+ArgList \fIargs\fP, Cardinal \fInum_args\fP);
 .HP
-void XtVaGetSubresources(Widget \fIw\fP, XtPointer \fIbase\fP, String
-\fIname\fP, String \fIclass\fP, XtResourceList \fIresources\fP, Cardinal
-\fInum_resources\fP);
+void XtVaGetSubresources(Widget \fIw\fP,
+XtPointer \fIbase\fP,
+const char *\fIname\fP,
+const char *\fIclass\fP,
+XtResourceList \fIresources\fP, Cardinal
+\fInum_resources\fP, ...);
 .SH ARGUMENTS
 .IP \fIargs\fP 1i
 Specifies the argument list to override resources obtained from the resource database.

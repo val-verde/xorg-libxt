@@ -39,8 +39,9 @@
 XtDisplayStringConversionWarning \- issue a conversion warning message
 .SH SYNTAX
 .HP
-void XtDisplayStringConversionWarning(Display* \fIdisplay\fP, String
-\fIfrom_value\fP, \fIto_type\fP);
+void XtDisplayStringConversionWarning(Display* \fIdisplay\fP,
+const char *\fIfrom_value\fP,
+const char *\fIto_type\fP);
 .SH ARGUMENTS
 .IP \fIdisplay\fP 1i
 Specifies the display connection with which the conversion is associated.

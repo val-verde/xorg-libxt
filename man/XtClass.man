@@ -59,7 +59,7 @@ Boolean XtIsWidget(Widget \fIw\fP);
 .HP
 Boolean XtIsComposite(Widget \fIw\fP);
 .HP
-Boolean XtIsConstraint(Widget \fIw\fP,
+Boolean XtIsConstraint(Widget \fIw\fP);
 .HP
 Boolean XtIsShell(Widget \fIw\fP);
 .HP

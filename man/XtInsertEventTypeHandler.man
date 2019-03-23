@@ -53,7 +53,7 @@ void XtRegisterExtensionSelector(Display* \fIdisplay\fP, int
 \fImin_event_type\fP, int \fImax_event_type\fP, XtExtensionSelectProc
 \fIproc\fP, XtPointer \fIclient_data\fP);
 .HP
-XtEventDispatchProc XtSetEventDispatcher(Widget \fIwidget\fP, int
+XtEventDispatchProc XtSetEventDispatcher(Display* \fIdisplay\fP, int
 \fIevent_type\fP, XtEventDispatchProc \fIproc\fP);
 .HP
 Boolean XtDispatchEventToWidget(Widget \fIwidget\fP, XEvent* \fIevent\fP);

@@ -40,7 +40,7 @@
 XtParseTranslationTable, XtAugmentTranslations, XtOverrideTranslations, XtUninstallTranslations \- manage translation tables
 .SH SYNTAX
 .HP
-XtTranslations XtParseTranslationTable(String \fItable\fP);
+XtTranslations XtParseTranslationTable(const char *\fItable\fP);
 .HP
 void XtAugmentTranslations(Widget \fIw\fP, XtTranslations \fItranslations\fP);
 .HP

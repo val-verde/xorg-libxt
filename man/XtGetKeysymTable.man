@@ -39,7 +39,7 @@
 XtGetKeysymTable, XtKeysymToKeycodeList \- query keysyms and keycodes
 .SH SYNTAX
 .HP
-Keysym* XtGetKeysymTable(Display* \fIdisplay\fP, KeyCode*
+KeySym* XtGetKeysymTable(Display* \fIdisplay\fP, KeyCode*
 \fImin_keycode_return\fP, int *\fIkeysyms_per_keycode_return\fP);
 .HP
 void XtKeysymToKeycodeList(Display* \fIdisplay\fP, KeySym \fIkeysym\fP,

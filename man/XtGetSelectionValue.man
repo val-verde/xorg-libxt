@@ -39,13 +39,17 @@
 XtGetSelectionValue, XtGetSelectionValues \- obtain selection values
 .SH SYNTAX
 .HP
-void XtGetSelectionValue(Widget \fIw\fP, Atom \fIselection\fP, Atom
-\fItarget\fP, XtSelectionCallbackProc \fIcallback\fP, XtPointer
-\fIclient_data\fP, Time \fItime\fP);
+void XtGetSelectionValue(Widget \fIw\fP,
+Atom \fIselection\fP,
+Atom \fItarget\fP,
+XtSelectionCallbackProc \fIcallback\fP,
+XtPointer *\fIclient_data\fP, Time \fItime\fP);
 .HP
-void XtGetSelectionValues(Widget \fIw\fP, Atom \fIselection\fP, Atom
-*\fItargets\fP, int \fIcount\fP, XtSelectionCallbackProc \fIcallback\fP,
-XtPointer \fIclient_data\fP, Time \fItime\fP);
+void XtGetSelectionValues(Widget \fIw\fP,
+Atom \fIselection\fP,
+Atom *\fItargets\fP, int \fIcount\fP,
+XtSelectionCallbackProc \fIcallback\fP,
+XtPointer *\fIclient_data\fP, Time \fItime\fP);
 .SH ARGUMENTS
 .IP \fIcallback\fP 1i
 Specifies the callback procedure that is to be called when the selection value has been obtained.

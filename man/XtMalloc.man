@@ -51,7 +51,7 @@ void XtFree(char *\fIptr\fP);
 .HP
 String XtNewString(String \fIstring\fP);
 .HP
-Cardinal XtAsprintf(String *\fInew_string\fP, const char *\fIformat\fP, ...);
+Cardinal XtAsprintf(char **\fInew_string\fP, const char *\fIformat\fP, ...);
 .SH ARGUMENTS
 .IP \fInum\fP 1i
 Specifies the number of bytes or array elements.

@@ -39,7 +39,7 @@
 XtNameToWidget, XtWindowToWidget \- translating strings to widgets or widgets to windows
 .SH SYNTAX
 .HP
-Widget XtNameToWidget(Widget \fIreference\fP, String \fInames\fP);
+Widget XtNameToWidget(Widget \fIreference\fP, const char *\fInames\fP);
 .HP
 Widget XtWindowToWidget(Display *\fIdisplay\fP, Window \fIwindow\fP);
 .SH ARGUMENTS

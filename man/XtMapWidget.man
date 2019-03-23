@@ -39,11 +39,11 @@
 XtMapWidget, XtSetMappedWhenManaged, XtUnmapWidget \- map and unmap widgets
 .SH SYNTAX
 .HP
-int XtMapWidget(Widget \fIw\fP\^);
+void XtMapWidget(Widget \fIw\fP\^);
 .HP
 void XtSetMappedWhenManaged(Widget \fIw\fP, Boolean \fImap_when_managed\fP);
 .HP
-int XtUnmapWidget(Widget \fIw\fP\^);
+void XtUnmapWidget(Widget \fIw\fP\^);
 .SH ARGUMENTS
 .IP \fImap_when_managed\fP 1i
 Specifies a Boolean value that indicates the new value of the map_when_managed
