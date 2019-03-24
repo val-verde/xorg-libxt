@@ -482,7 +482,6 @@ static String PanicModeRecovery(
 
 static void Syntax(
     _Xconst char *str0, _Xconst char *str1)
-//  String str0, String str1)
 {
     Cardinal num_params = 2;
     String params[2];
