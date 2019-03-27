@@ -1309,97 +1309,97 @@ typedef struct {
   </thead>
   <tbody>
     <row>
-      <entry>−background</entry>
+      <entry>-background</entry>
       <entry>*background</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−bd</entry>
+      <entry>-bd</entry>
       <entry>*borderColor</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−bg</entry>
+      <entry>-bg</entry>
       <entry>*background</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−borderwidth</entry>
+      <entry>-borderwidth</entry>
       <entry>.borderWidth</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−bordercolor</entry>
+      <entry>-bordercolor</entry>
       <entry>*borderColor</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−bw</entry>
+      <entry>-bw</entry>
       <entry>.borderWidth</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−display</entry>
+      <entry>-display</entry>
       <entry>.display</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−fg</entry>
+      <entry>-fg</entry>
       <entry>*foreground</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−fn</entry>
+      <entry>-fn</entry>
       <entry>*font</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−font</entry>
+      <entry>-font</entry>
       <entry>*font</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−foreground</entry>
+      <entry>-foreground</entry>
       <entry>*foreground</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−geometry</entry>
+      <entry>-geometry</entry>
       <entry>.geometry</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−iconic</entry>
+      <entry>-iconic</entry>
       <entry>.iconic</entry>
       <entry>NoArg</entry>
       <entry>"true"</entry>
     </row>
     <row>
-      <entry>−name</entry>
+      <entry>-name</entry>
       <entry>.name</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−reverse</entry>
+      <entry>-reverse</entry>
       <entry>.reverseVideo</entry>
       <entry>NoArg</entry>
       <entry>"on"</entry>
     </row>
     <row>
-      <entry>−rv</entry>
+      <entry>-rv</entry>
       <entry>.reverseVideo</entry>
       <entry>NoArg</entry>
       <entry>"on"</entry>
@@ -1411,13 +1411,13 @@ typedef struct {
       <entry>"off"</entry>
     </row>
     <row>
-      <entry>−selectionTimeout</entry>
+      <entry>-selectionTimeout</entry>
       <entry>.selectionTimeout</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−synchronous</entry>
+      <entry>-synchronous</entry>
       <entry>.synchronous</entry>
       <entry>NoArg</entry>
       <entry>"on"</entry>
@@ -1429,25 +1429,25 @@ typedef struct {
       <entry>"off"</entry>
     </row>
     <row>
-      <entry>−title</entry>
+      <entry>-title</entry>
       <entry>.title</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−xnllanguage</entry>
+      <entry>-xnllanguage</entry>
       <entry>.xnlLanguage</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−xrm</entry>
+      <entry>-xrm</entry>
       <entry>next argument</entry>
       <entry>ResArg</entry>
       <entry>next argument</entry>
     </row>
     <row>
-      <entry>−xtsessionID</entry>
+      <entry>-xtsessionID</entry>
       <entry>.sessionID</entry>
       <entry>SepArg</entry>
       <entry>next argument</entry>

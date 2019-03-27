@@ -875,7 +875,7 @@ The canonical representation of a translation table is (see also
     </row>
     <row>
       <entry>modifier</entry>
-      <entry>= ["˜"] modifier_name
+      <entry>= ["~"] modifier_name
       </entry>
     </row>
     <row>
