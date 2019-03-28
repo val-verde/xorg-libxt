@@ -347,10 +347,10 @@ and
 <funcdef>Widget <function>XtInitialize</function></funcdef>
    <paramdef>const char * <parameter>shell_name</parameter></paramdef>
    <paramdef>const char * <parameter>application_class</parameter></paramdef>
-   <paramdef>XrmOptionDescRec <parameter>options</parameter></paramdef>
+   <paramdef>XrmOptionDescRec * <parameter>options</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
    <paramdef>int * <parameter>argc</parameter></paramdef>
-   <paramdef>char * <parameter>argv</parameter></paramdef>
+   <paramdef>char ** <parameter>argv</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
