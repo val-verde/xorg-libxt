@@ -3617,11 +3617,11 @@ error or a warning by calling
 <funcprototype>
 <funcdef>void <function>XtAppGetErrorDatabaseText</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>type</parameter></paramdef>
-   <paramdef>String <parameter>class</parameter></paramdef>
-   <paramdef>String <parameter>default</parameter></paramdef>
-   <paramdef>String <parameter>buffer_return</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>type</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>default</parameter></paramdef>
+   <paramdef>char * <parameter>buffer_return</parameter></paramdef>
    <paramdef>int <parameter>nbytes</parameter></paramdef>
    <paramdef>XrmDatabase <parameter>database</parameter></paramdef>
 </funcprototype>
@@ -4532,12 +4532,12 @@ To search for a file using standard substitutions in a path list, use
 
 <funcsynopsis id='XtResolvePathname'>
 <funcprototype>
-<funcdef>String <function>XtResolvePathname</function></funcdef>
+<funcdef>char * <function>XtResolvePathname</function></funcdef>
    <paramdef>Display *<parameter>display</parameter></paramdef>
-   <paramdef>String <parameter>type</parameter></paramdef>
-   <paramdef>String <parameter>filename</parameter></paramdef>
-   <paramdef>String <parameter>suffix</parameter></paramdef>
-   <paramdef>String <parameter>path</parameter></paramdef>
+   <paramdef>const char * <parameter>type</parameter></paramdef>
+   <paramdef>const char * <parameter>filename</parameter></paramdef>
+   <paramdef>const char * <parameter>suffix</parameter></paramdef>
+   <paramdef>const char * <parameter>path</parameter></paramdef>
    <paramdef>Substitution <parameter>substitutions</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_substitutions</parameter></paramdef>
    <paramdef>XtFilePredicate <parameter>predicate</parameter></paramdef>

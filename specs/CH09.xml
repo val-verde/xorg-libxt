@@ -2116,8 +2116,8 @@ that convert from string values.
 <funcprototype>
 <funcdef>void <function>XtDisplayStringConversionWarning</function></funcdef>
    <paramdef>Display *<parameter>display</parameter></paramdef>
-   <paramdef>String <parameter>from_value</parameter></paramdef>
-   <paramdef>String <parameter>to_type</parameter></paramdef>
+   <paramdef>const char * <parameter>from_value</parameter></paramdef>
+   <paramdef>const char * <parameter>to_type</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 

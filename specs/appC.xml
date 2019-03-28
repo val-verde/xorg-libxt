@@ -933,8 +933,8 @@ that convert from strings.
 <funcsynopsis id='XtStringConversionWarning'>
 <funcprototype>
 <funcdef>void <function>XtStringConversionWarning</function></funcdef>
-   <paramdef>String <parameter>src</parameter></paramdef>
-   <paramdef>String <parameter>dst_type</parameter></paramdef>
+   <paramdef>const char * <parameter>src</parameter></paramdef>
+   <paramdef>const char * <parameter>dst_type</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1506,9 +1506,11 @@ error or a warning by calling
 <funcsynopsis id='XtGetErrorDatabaseText'>
 <funcprototype>
 <funcdef>void <function>XtGetErrorDatabaseText</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>default</parameter></paramdef>
-   <paramdef>String <parameter>buffer_return</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>type</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>default</parameter></paramdef>
+   <paramdef>char * <parameter>buffer_return</parameter></paramdef>
    <paramdef>int <parameter>nbytes</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
