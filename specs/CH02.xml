@@ -3719,7 +3719,7 @@ and to the application writer by means of functions.
 
 <funcsynopsis>
 <funcprototype>
-  <funcdef>Display <function>XtDisplay</function></funcdef>
+  <funcdef>Display * <function>XtDisplay</function></funcdef>
   <paramdef>Widget <parameter>w</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
