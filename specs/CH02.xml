@@ -1165,7 +1165,7 @@ use
 <funcsynopsis id='XtAppSetFallbackResources'>
 <funcprototype>
   <funcdef>void <function>XtAppSetFallbackResources</function></funcdef>
-      <paramdef>XtAppContext * <parameter>app_context</parameter></paramdef>
+      <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
       <paramdef>String * <parameter>specification_list</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
