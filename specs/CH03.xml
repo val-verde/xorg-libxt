@@ -1221,7 +1221,7 @@ To map a widget explicitly, use
 
 <funcsynopsis id='XtMapWidget'>
 <funcprototype>
-<funcdef> <function>XtMapWidget</function></funcdef>
+<funcdef>void <function>XtMapWidget</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -1246,7 +1246,7 @@ To unmap a widget explicitly, use
 
 <funcsynopsis id='XtUnmapWidget'>
 <funcprototype>
-<funcdef> <function>XtUnmapWidget</function></funcdef>
+<funcdef>void <function>XtUnmapWidget</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>

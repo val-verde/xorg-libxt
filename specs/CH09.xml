@@ -2382,7 +2382,7 @@ required to deallocate resources produced by the converter.
 
 <funcsynopsis id='XtAppSetTypeConverter'>
 <funcprototype>
-<funcdef> <function>XtAppSetTypeConverter</function></funcdef>
+<funcdef>void <function>XtAppSetTypeConverter</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
    <paramdef>String <parameter>from_type</parameter></paramdef>
    <paramdef>String <parameter>to_type</parameter></paramdef>

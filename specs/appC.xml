@@ -560,7 +560,7 @@ must be called before using this routine.
 <funcsynopsis id='XtPending'>
 <funcprototype>
 <funcdef>Boolean <function>XtPending</function></funcdef>
-  <paramdef><parameter></parameter></paramdef>
+  <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1453,7 +1453,7 @@ context, use
 <funcsynopsis id='XtGetSelectionTimeout'>
 <funcprototype>
 <funcdef>unsigned long <function>XtGetSelectionTimeout</function></funcdef>
-      <paramdef><parameter></parameter></paramdef>
+      <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1480,7 +1480,7 @@ an application- or widget-specific database), use
 <funcsynopsis id='XtGetErrorDatabase'>
 <funcprototype>
 <funcdef>XrmDatabase <function>*XtGetErrorDatabase</function></funcdef>
-      <paramdef><parameter></parameter></paramdef>
+      <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
   

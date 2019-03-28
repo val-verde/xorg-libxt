@@ -4686,7 +4686,7 @@ access, call
 <funcsynopsis id='XtToolkitThreadInitialize'>
 <funcprototype>
 <funcdef>Boolean <function>XtToolkitThreadInitialize</function></funcdef>
-   <paramdef><parameter></parameter></paramdef>
+   <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -4849,7 +4849,7 @@ widget writer must use
 <funcsynopsis id='XtProcessLock'>
 <funcprototype>
 <funcdef>void <function>XtProcessLock</function></funcdef>
-   <paramdef><parameter></parameter></paramdef>
+   <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -4867,7 +4867,7 @@ To unlock a locked process, use
 <funcsynopsis id='XtProcessUnlock'>
 <funcprototype>
 <funcdef>void <function>XtProcessUnlock</function></funcdef>
-   <paramdef><parameter></parameter></paramdef>
+   <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 

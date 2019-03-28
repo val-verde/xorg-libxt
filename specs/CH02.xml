@@ -171,7 +171,7 @@ To initialize the Intrinsics internals, use
 <funcsynopsis id='XtToolkitInitialize'>
 <funcprototype>
   <funcdef>void <function>XtToolkitInitialize</function></funcdef>
-  <paramdef> <parameter></parameter></paramdef>
+  <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -195,7 +195,7 @@ To create an application context, use
 <funcsynopsis id='XtCreateApplicationContext'>
 <funcprototype>
   <funcdef>XtAppContext <function>XtCreateApplicationContext</function></funcdef>
-  <paramdef> <parameter></parameter></paramdef>
+  <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
