@@ -1046,6 +1046,7 @@ To passively grab a single key of the keyboard, use
    <paramdef>Modifiers <parameter>modifiers</parameter></paramdef>
    <paramdef>Boolean <parameter>owner_events</parameter></paramdef>
    <paramdef>int <parameter>pointer_mode</parameter></paramdef>
+   <paramdef>int <parameter>keyboard_mode</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1201,6 +1202,7 @@ To actively grab the keyboard, use
    <paramdef>Widget <parameter>widget</parameter></paramdef>
    <paramdef>Boolean <parameter>owner_events</parameter></paramdef>
    <paramdef>int <parameter>pointer_mode</parameter></paramdef>
+   <paramdef>int <parameter>keyboard_mode</parameter></paramdef>
    <paramdef>Time <parameter>time</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -1317,6 +1319,7 @@ To passively grab a single pointer button, use
    <paramdef>Boolean <parameter>owner_events</parameter></paramdef>
    <paramdef>unsigned int <parameter>event_mask</parameter></paramdef>
    <paramdef>int <parameter>pointer_mode</parameter></paramdef>
+   <paramdef>int <parameter>keyboard_mode</parameter></paramdef>
    <paramdef>Window <parameter>confine_to</parameter></paramdef>
    <paramdef>Cursor <parameter>cursor</parameter></paramdef>
 </funcprototype>
@@ -1483,6 +1486,7 @@ To actively grab the pointer, use
    <paramdef>Boolean <parameter>owner_events</parameter></paramdef>
    <paramdef>unsigned int <parameter>event_mask</parameter></paramdef>
    <paramdef>int <parameter>pointer_mode</parameter></paramdef>
+   <paramdef>int <parameter>keyboard_mode</parameter></paramdef>
    <paramdef>Window <parameter>confine_to</parameter></paramdef>
    <paramdef>Cursor <parameter>cursor</parameter></paramdef>
    <paramdef>Time <parameter>time</parameter></paramdef>
@@ -1611,6 +1615,7 @@ use
 <funcprototype>
 <funcdef>void <function>XtSetKeyboardFocus</function></funcdef>
    <paramdef>Widget <parameter>subtree</parameter></paramdef>
+   <paramdef>Widget <parameter>descendent</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 

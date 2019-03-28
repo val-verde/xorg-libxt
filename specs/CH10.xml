@@ -1931,6 +1931,7 @@ event bindings in the widget's translation table, use
    <paramdef>Boolean <parameter>owner_events</parameter></paramdef>
    <paramdef>unsigned int <parameter>event_mask</parameter></paramdef>
    <paramdef>int <parameter>pointer_mode</parameter></paramdef>
+   <paramdef>int <parameter>keyboard_mode</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 

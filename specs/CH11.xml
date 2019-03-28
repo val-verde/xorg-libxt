@@ -3314,7 +3314,9 @@ window absolute coordinates, use
 <funcdef>void <function>XtTranslateCoords</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
    <paramdef>Position <parameter>x</parameter></paramdef>
+   <paramdef>Position <parameter>y</parameter></paramdef>
    <paramdef>Position *<parameter>rootx_return</parameter></paramdef>
+   <paramdef>Position *<parameter>rooty_return</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -3616,6 +3618,8 @@ error or a warning by calling
 <funcdef>void <function>XtAppGetErrorDatabaseText</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
    <paramdef>String <parameter>name</parameter></paramdef>
+   <paramdef>String <parameter>type</parameter></paramdef>
+   <paramdef>String <parameter>class</parameter></paramdef>
    <paramdef>String <parameter>default</parameter></paramdef>
    <paramdef>String <parameter>buffer_return</parameter></paramdef>
    <paramdef>int <parameter>nbytes</parameter></paramdef>
@@ -4531,6 +4535,9 @@ To search for a file using standard substitutions in a path list, use
 <funcdef>String <function>XtResolvePathname</function></funcdef>
    <paramdef>Display *<parameter>display</parameter></paramdef>
    <paramdef>String <parameter>type</parameter></paramdef>
+   <paramdef>String <parameter>filename</parameter></paramdef>
+   <paramdef>String <parameter>suffix</parameter></paramdef>
+   <paramdef>String <parameter>path</parameter></paramdef>
    <paramdef>Substitution <parameter>substitutions</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_substitutions</parameter></paramdef>
    <paramdef>XtFilePredicate <parameter>predicate</parameter></paramdef>

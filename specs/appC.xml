@@ -934,6 +934,7 @@ that convert from strings.
 <funcprototype>
 <funcdef>void <function>XtStringConversionWarning</function></funcdef>
    <paramdef>String <parameter>src</parameter></paramdef>
+   <paramdef>String <parameter>dst_type</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
