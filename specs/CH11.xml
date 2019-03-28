@@ -4421,7 +4421,7 @@ To search for a file using substitutions in a path list, use
 
 <funcsynopsis id='XtFindFile'>
 <funcprototype>
-<funcdef>String <function>XtFindFile</function></funcdef>
+<funcdef>char * <function>XtFindFile</function></funcdef>
    <paramdef>const char * <parameter>path</parameter></paramdef>
    <paramdef>Substitution <parameter>substitutions</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_substitutions</parameter></paramdef>
