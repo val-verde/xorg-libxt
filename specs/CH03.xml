@@ -506,7 +506,7 @@ or
 <funcsynopsis id='XtCreateManagedWidget'>
 <funcprototype>
 <funcdef>Widget <function>XtCreateManagedWidget</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
    <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
    <paramdef>Widget <parameter>parent</parameter></paramdef>
    <paramdef>ArgList <parameter>args</parameter></paramdef>
@@ -580,9 +580,10 @@ and
 <funcsynopsis id='XtVaCreateManagedWidget'>
 <funcprototype>
 <funcdef>Widget <function>XtVaCreateManagedWidget</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
    <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
    <paramdef>Widget <parameter>parent</parameter></paramdef>
+   <paramdef>...</paramdef>
 </funcprototype>
 </funcsynopsis>
 

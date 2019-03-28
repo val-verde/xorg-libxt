@@ -80,12 +80,12 @@ or
 <funcprototype>
 <funcdef>Widget <function>XtAppInitialize</function></funcdef>
    <paramdef>XtAppContext *<parameter>app_context_return</parameter></paramdef>
-   <paramdef>String <parameter>application_class</parameter></paramdef>
+   <paramdef>const char * <parameter>application_class</parameter></paramdef>
    <paramdef>XrmOptionDescList <parameter>options</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
    <paramdef>int *<parameter>argc_in_out</parameter></paramdef>
-   <paramdef>String *<parameter>argv_in_out</parameter></paramdef>
-   <paramdef>String *<parameter>fallback_resources</parameter></paramdef>
+   <paramdef>char ** <parameter>argv_in_out</parameter></paramdef>
+   <paramdef>String * <parameter>fallback_resources</parameter></paramdef>
    <paramdef>ArgList <parameter>args</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_args</parameter></paramdef>
 </funcprototype>
@@ -218,12 +218,13 @@ is called with the value prior to calling
 <funcprototype>
 <funcdef>Widget <function>XtVaAppInitialize</function></funcdef>
    <paramdef>XtAppContext *<parameter>app_context_return</parameter></paramdef>
-   <paramdef>String <parameter>application_class</parameter></paramdef>
+   <paramdef>const char * <parameter>application_class</parameter></paramdef>
    <paramdef>XrmOptionDescList <parameter>options</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
    <paramdef>int *<parameter>argc_in_out</parameter></paramdef>
-   <paramdef>String *<parameter>argv_in_out</parameter></paramdef>
-   <paramdef>String *<parameter>fallback_resources</parameter></paramdef>
+   <paramdef>char ** <parameter>argv_in_out</parameter></paramdef>
+   <paramdef>String * <parameter>fallback_resources</parameter></paramdef>
+   <paramdef>...</paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -344,12 +345,12 @@ and
 <funcsynopsis id='XtInitialize'>
 <funcprototype>
 <funcdef>Widget <function>XtInitialize</function></funcdef>
-   <paramdef>String <parameter>shell_name</parameter></paramdef>
-   <paramdef>String <parameter>application_class</parameter></paramdef>
+   <paramdef>const char * <parameter>shell_name</parameter></paramdef>
+   <paramdef>const char * <parameter>application_class</parameter></paramdef>
    <paramdef>XrmOptionDescRec <parameter>options</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
-   <paramdef>int *<parameter>argc</parameter></paramdef>
-   <paramdef>String <parameter>argv</parameter></paramdef>
+   <paramdef>int * <parameter>argc</parameter></paramdef>
+   <paramdef>char * <parameter>argv</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -748,7 +749,7 @@ must be called before using this routine.
 <funcsynopsis id='XtCreateApplicationShell'>
 <funcprototype>
 <funcdef>Widget <function>XtCreateApplicationShell</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
    <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
    <paramdef>ArgList <parameter>args</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_args</parameter></paramdef>
@@ -979,8 +980,8 @@ or
 <funcsynopsis id='XtAddConverter'>
 <funcprototype>
 <funcdef>void <function>XtAddConverter</function></funcdef>
-   <paramdef>String <parameter>from_type</parameter></paramdef>
-   <paramdef>String <parameter>to_type</parameter></paramdef>
+   <paramdef>const char * <parameter>from_type</parameter></paramdef>
+   <paramdef>const char * <parameter>to_type</parameter></paramdef>
    <paramdef>XtConverter <parameter>converter</parameter></paramdef>
    <paramdef>XtConvertArgList <parameter>convert_args</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_args</parameter></paramdef>
@@ -1054,8 +1055,8 @@ for old-format type converters.  It has been superseded by
 <funcprototype>
 <funcdef>void <function>XtAppAddConverter</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-   <paramdef>String <parameter>from_type</parameter></paramdef>
-   <paramdef>String <parameter>to_type</parameter></paramdef>
+   <paramdef>const char * <parameter>from_type</parameter></paramdef>
+   <paramdef>const char * <parameter>to_type</parameter></paramdef>
    <paramdef>XtConverter <parameter>converter</parameter></paramdef>
    <paramdef>XtConvertArgList <parameter>convert_args</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_args</parameter></paramdef>
@@ -1146,9 +1147,9 @@ or, for old-format converters only,
 <funcprototype>
 <funcdef>void <function>XtConvert</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>from_type</parameter></paramdef>
+   <paramdef>const char * <parameter>from_type</parameter></paramdef>
    <paramdef>XrmValuePtr <parameter>from</parameter></paramdef>
-   <paramdef>String <parameter>to_type</parameter></paramdef>
+   <paramdef>const char * <parameter>to_type</parameter></paramdef>
    <paramdef>XrmValuePtr <parameter>to_return</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -1632,10 +1633,10 @@ To call the high-level error handler, use
 <funcsynopsis id='XtErrorMsg'>
 <funcprototype>
 <funcdef>void <function>XtErrorMsg</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>type</parameter></paramdef>
-   <paramdef>String <parameter>class</parameter></paramdef>
-   <paramdef>String <parameter>default</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>type</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>default</parameter></paramdef>
    <paramdef>String *<parameter>params</parameter></paramdef>
    <paramdef>Cardinal *<parameter>num_params</parameter></paramdef>
 </funcprototype>
@@ -1750,10 +1751,10 @@ To call the installed high-level warning handler, use
 <funcsynopsis id='XtWarningMsg'>
 <funcprototype>
 <funcdef>void <function>XtWarningMsg</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>type</parameter></paramdef>
-   <paramdef>String <parameter>class</parameter></paramdef>
-   <paramdef>String <parameter>default</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>type</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>default</parameter></paramdef>
    <paramdef>String *<parameter>params</parameter></paramdef>
    <paramdef>Cardinal *<parameter>num_params</parameter></paramdef>
 </funcprototype>
@@ -1872,7 +1873,7 @@ To call the installed fatal error procedure, use
 <funcsynopsis id='XtError'>
 <funcprototype>
 <funcdef>void <function>XtError</function></funcdef>
-   <paramdef>String <parameter>message</parameter></paramdef>
+   <paramdef>const char * <parameter>message</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1941,7 +1942,7 @@ To call the installed nonfatal error procedure, use
 <funcsynopsis id='XtWarning'>
 <funcprototype>
 <funcdef>void <function>XtWarning</function></funcdef>
-   <paramdef>String <parameter>message</parameter></paramdef>
+   <paramdef>const char * <parameter>message</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 

@@ -131,7 +131,7 @@ To create a pop-up shell, use
 <funcsynopsis id='XtCreatePopupShell'>
 <funcprototype>
 <funcdef>Widget <function>XtCreatePopupShell</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
    <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
    <paramdef>Widget <parameter>parent</parameter></paramdef>
    <paramdef>ArgList <parameter>args</parameter></paramdef>
@@ -240,7 +240,7 @@ To create a pop-up shell using varargs lists, use
 <funcsynopsis id='XtVaCreatePopupShell'>
 <funcprototype>
 <funcdef>Widget <function>XtVaCreatePopupShell</function></funcdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
    <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
    <paramdef>Widget <parameter>parent</parameter></paramdef>
    <paramdef><parameter>...</parameter></paramdef>

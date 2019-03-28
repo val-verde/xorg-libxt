@@ -784,7 +784,7 @@ To compile a translation table, use
 <funcsynopsis id='XtParseTranslationTable'>
 <funcprototype>
 <funcdef>XtTranslations <function>XtParseTranslationTable</function></funcdef>
-   <paramdef>String <parameter>table</parameter></paramdef>
+   <paramdef>const char * <parameter>table</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1101,7 +1101,7 @@ To parse an accelerator table, use
 <funcsynopsis id='XtParseAcceleratorTable'>
 <funcprototype>
 <funcdef>XtAccelerators <function>XtParseAcceleratorTable</function></funcdef>
-   <paramdef>String <parameter>source</parameter></paramdef>
+   <paramdef>const char * <parameter>source</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -2061,9 +2061,9 @@ invoke an action procedure directly, without generating
 <funcprototype>
 <funcdef>void <function>XtCallActionProc</function></funcdef>
    <paramdef>Widget <parameter>widget</parameter></paramdef>
-   <paramdef>String <parameter>action</parameter></paramdef>
-   <paramdef>XEvent *<parameter>event</parameter></paramdef>
-   <paramdef>String *<parameter>params</parameter></paramdef>
+   <paramdef>const char * <parameter>action</parameter></paramdef>
+   <paramdef>XEvent * <parameter>event</parameter></paramdef>
+   <paramdef>String * <parameter>params</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_params</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>

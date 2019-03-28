@@ -284,12 +284,12 @@ To initialize a display and add it to an application context, use
   <funcdef>void  <function>XtDisplayInitialize</function></funcdef>
       <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
       <paramdef>Display * <parameter>display</parameter></paramdef>
-      <paramdef>String <parameter>application_name</parameter></paramdef>
-      <paramdef>String <parameter>application_class</parameter></paramdef>
+      <paramdef>const char * <parameter>application_name</parameter></paramdef>
+      <paramdef>const char * <parameter>application_class</parameter></paramdef>
       <paramdef>XrmOptionDescRec * <parameter>options</parameter></paramdef>
       <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
       <paramdef>int * <parameter>argc</parameter></paramdef>
-      <paramdef>String * <parameter>argv</parameter></paramdef>
+      <paramdef>char ** <parameter>argv</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -434,13 +434,13 @@ add it to an application context, use
 <funcprototype>
   <funcdef>Display <function>*XtOpenDisplay</function></funcdef>
        <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-       <paramdef>String <parameter>display_string</parameter></paramdef>
-       <paramdef>String <parameter>application_name</parameter></paramdef>
-       <paramdef>String <parameter>application_class</parameter></paramdef>
+       <paramdef>const char * <parameter>display_string</parameter></paramdef>
+       <paramdef>const char * <parameter>application_name</parameter></paramdef>
+       <paramdef>const char * <parameter>application_class</parameter></paramdef>
        <paramdef>XrmOptionDescRec * <parameter>options</parameter></paramdef>
        <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
        <paramdef>int * <parameter>argc</parameter></paramdef>
-       <paramdef>String * <parameter>argv</parameter></paramdef>
+       <paramdef>char ** <parameter>argv</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1943,7 +1943,7 @@ To create an instance of a widget, use
 <funcsynopsis id='XtCreateWidget'>
 <funcprototype>
   <funcdef>Widget <function>XtCreateWidget</function></funcdef>
-      <paramdef>String <parameter>name</parameter></paramdef>
+      <paramdef>const char * <parameter>name</parameter></paramdef>
       <paramdef>WidgetClass <parameter>object_class</parameter></paramdef>
       <paramdef>Widget <parameter>parent</parameter></paramdef>
       <paramdef>ArgList <parameter>args</parameter></paramdef>
@@ -2124,7 +2124,7 @@ To create an instance of a widget using varargs lists, use
 <funcsynopsis id='XtVaCreateWidget'>
 <funcprototype>
   <funcdef>Widget <function>XtVaCreateWidget</function></funcdef>
-      <paramdef>String <parameter>name</parameter></paramdef>
+      <paramdef>const char * <parameter>name</parameter></paramdef>
       <paramdef>WidgetClass <parameter>object_class</parameter></paramdef>
       <paramdef>Widget <parameter>parent</parameter></paramdef>
       <paramdef> <parameter>...</parameter></paramdef>
@@ -2201,8 +2201,8 @@ to create independent widget trees.
 <funcsynopsis id='XtAppCreateShell'>
 <funcprototype>
   <funcdef>Widget <function>XtAppCreateShell</function></funcdef>
-      <paramdef>String <parameter>name</parameter></paramdef>
-      <paramdef>String <parameter>application_class</parameter></paramdef>
+      <paramdef>const char * <parameter>name</parameter></paramdef>
+      <paramdef>const char * <parameter>application_class</parameter></paramdef>
       <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
       <paramdef>Display * <parameter>display</parameter></paramdef>
       <paramdef>ArgList <parameter>args</parameter></paramdef>
@@ -2373,10 +2373,11 @@ varargs lists, use
 <funcsynopsis id='XtVaAppCreateShell'>
 <funcprototype>
   <funcdef>Widget <function>XtVaAppCreateShell</function></funcdef>
-      <paramdef>String <parameter>name</parameter></paramdef>
-      <paramdef>String <parameter>application_class</parameter></paramdef>
+      <paramdef>const char * <parameter>name</parameter></paramdef>
+      <paramdef>const char * <parameter>application_class</parameter></paramdef>
       <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
       <paramdef>Display * <parameter>display</parameter></paramdef>
+      <paramdef>...</paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -2469,11 +2470,11 @@ or
 <funcprototype>
   <funcdef>Widget <function>XtOpenApplication</function></funcdef>
       <paramdef>XtAppContext * <parameter>app_context_return</parameter></paramdef>
-      <paramdef>String <parameter>application_class</parameter></paramdef>
+      <paramdef>const char * <parameter>application_class</parameter></paramdef>
       <paramdef>XrmOptionDescList <parameter>options</parameter></paramdef>
       <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
       <paramdef>int * <parameter>argc_in_out</parameter></paramdef>
-      <paramdef>String * <parameter>argv_in_out</parameter></paramdef>
+      <paramdef>char ** <parameter>argv_in_out</parameter></paramdef>
       <paramdef>String * <parameter>fallback_resources</parameter></paramdef>
       <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
       <paramdef>ArgList <parameter>args</parameter></paramdef>
@@ -2624,13 +2625,14 @@ is called with the value prior to calling
 <funcprototype>
   <funcdef>Widget <function>XtVaOpenApplication</function></funcdef>
       <paramdef>XtAppContext * <parameter>app_context_return</parameter></paramdef>
-      <paramdef>String <parameter>application_class</parameter></paramdef>
+      <paramdef>const char * <parameter>application_class</parameter></paramdef>
       <paramdef>XrmOptionDescList <parameter>options</parameter></paramdef>
       <paramdef>Cardinal <parameter>num_options</parameter></paramdef>
       <paramdef>int * <parameter>argc_in_out</parameter></paramdef>
-      <paramdef>String * <parameter>argv_in_out</parameter></paramdef>
+      <paramdef>char ** <parameter>argv_in_out</parameter></paramdef>
       <paramdef>String * <parameter>fallback_resources</parameter></paramdef>
       <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
+      <paramdef>...</paramdef>
 </funcprototype>
 </funcsynopsis>
 

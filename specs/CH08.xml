@@ -171,7 +171,7 @@ To add a callback procedure to a widget's callback list, use
 <funcprototype>
 <funcdef>void <function>XtAddCallback</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>callback_name</parameter></paramdef>
+   <paramdef>const char * <parameter>callback_name</parameter></paramdef>
    <paramdef>XtCallbackProc <parameter>callback</parameter></paramdef>
    <paramdef>XtPointer <parameter>client_data</parameter></paramdef>
 </funcprototype>
@@ -235,7 +235,7 @@ To add a list of callback procedures to a given widget's callback list, use
 <funcprototype>
 <funcdef>void <function>XtAddCallbacks</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>callback_name</parameter></paramdef>
+   <paramdef>const char * <parameter>callback_name</parameter></paramdef>
    <paramdef>XtCallbackList <parameter>callbacks</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -288,7 +288,7 @@ To delete a callback procedure from a widget's callback list, use
 <funcprototype>
 <funcdef>void <function>XtRemoveCallback</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>callback_name</parameter></paramdef>
+   <paramdef>const char * <parameter>callback_name</parameter></paramdef>
    <paramdef>XtCallbackProc <parameter>callback</parameter></paramdef>
    <paramdef>XtPointer <parameter>client_data</parameter></paramdef>
 </funcprototype>
@@ -353,7 +353,7 @@ To delete a list of callback procedures from a given widget's callback list, use
 <funcprototype>
 <funcdef>void <function>XtRemoveCallbacks</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>callback_name</parameter></paramdef>
+   <paramdef>const char * <parameter>callback_name</parameter></paramdef>
    <paramdef>XtCallbackList <parameter>callbacks</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -402,7 +402,7 @@ and free all storage associated with the callback list, use
 <funcprototype>
 <funcdef>void <function>XtRemoveAllCallbacks</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>callback_name</parameter></paramdef>
+   <paramdef>const char * <parameter>callback_name</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -444,7 +444,7 @@ specifying the callback list by resource name, use
 <funcprototype>
 <funcdef>void <function>XtCallCallbacks</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>callback_name</parameter></paramdef>
+   <paramdef>const char * <parameter>callback_name</parameter></paramdef>
    <paramdef>XtPointer <parameter>call_data</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -566,7 +566,7 @@ typedef enum {XtCallbackNoList, XtCallbackHasNone, XtCallbackHasSome} XtCallback
 <funcprototype>
 <funcdef>XtCallbackStatus <function>XtHasCallbacks</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
-   <paramdef>String <parameter>callback_name</parameter></paramdef>
+   <paramdef>const char * <parameter>callback_name</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 

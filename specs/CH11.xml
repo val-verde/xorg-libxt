@@ -116,7 +116,7 @@ To translate a widget name to a widget instance, use
 <funcprototype>
 <funcdef>Widget <function>XtNameToWidget</function></funcdef>
    <paramdef>Widget <parameter>reference</parameter></paramdef>
-   <paramdef>String <parameter>names</parameter></paramdef>
+   <paramdef>const char * <parameter>names</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -3831,12 +3831,12 @@ To call the high-level error handler, use
 <funcprototype>
 <funcdef>void <function>XtAppErrorMsg</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>type</parameter></paramdef>
-   <paramdef>String <parameter>class</parameter></paramdef>
-   <paramdef>String <parameter>default</parameter></paramdef>
-   <paramdef>String *<parameter>params</parameter></paramdef>
-   <paramdef>Cardinal *<parameter>num_params</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>type</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>default</parameter></paramdef>
+   <paramdef>String * <parameter>params</parameter></paramdef>
+   <paramdef>Cardinal * <parameter>num_params</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -3974,12 +3974,12 @@ To call the installed high-level warning handler, use
 <funcprototype>
 <funcdef>void <function>XtAppWarningMsg</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>type</parameter></paramdef>
-   <paramdef>String <parameter>class</parameter></paramdef>
-   <paramdef>String <parameter>default</parameter></paramdef>
-   <paramdef>String *<parameter>params</parameter></paramdef>
-   <paramdef>Cardinal *<parameter>num_params</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>type</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>default</parameter></paramdef>
+   <paramdef>String * <parameter>params</parameter></paramdef>
+   <paramdef>Cardinal * <parameter>num_params</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -4148,7 +4148,7 @@ To call the installed fatal error procedure, use
 <funcprototype>
 <funcdef>void <function>XtAppError</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-   <paramdef>String <parameter>message</parameter></paramdef>
+   <paramdef>const char * <parameter>message</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -4238,7 +4238,7 @@ To call the installed nonfatal error procedure, use
 <funcprototype>
 <funcdef>void <function>XtAppWarning</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-   <paramdef>String <parameter>message</parameter></paramdef>
+   <paramdef>const char * <parameter>message</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -4422,7 +4422,7 @@ To search for a file using substitutions in a path list, use
 <funcsynopsis id='XtFindFile'>
 <funcprototype>
 <funcdef>String <function>XtFindFile</function></funcdef>
-   <paramdef>String <parameter>path</parameter></paramdef>
+   <paramdef>const char * <parameter>path</parameter></paramdef>
    <paramdef>Substitution <parameter>substitutions</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_substitutions</parameter></paramdef>
    <paramdef>XtFilePredicate <parameter>predicate</parameter></paramdef>

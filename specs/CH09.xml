@@ -844,8 +844,8 @@ to accomplish this.
 <funcdef>void <function>XtGetSubresources</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
    <paramdef>XtPointer <parameter>base</parameter></paramdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
    <paramdef>XtResourceList <parameter>resources</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_resources</parameter></paramdef>
    <paramdef>ArgList <parameter>args</parameter></paramdef>
@@ -978,10 +978,11 @@ To fetch resources for widget subparts using varargs lists, use
 <funcdef>void <function>XtVaGetSubresources</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
    <paramdef>XtPointer <parameter>base</parameter></paramdef>
-   <paramdef>String <parameter>name</parameter></paramdef>
-   <paramdef>String <parameter>class</parameter></paramdef>
+   <paramdef>const char * <parameter>name</parameter></paramdef>
+   <paramdef>const char * <parameter>class</parameter></paramdef>
    <paramdef>XtResourceList <parameter>resources</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_resources</parameter></paramdef>
+   <paramdef>...</paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -1203,6 +1204,7 @@ To retrieve resources for the overall application using varargs lists, use
    <paramdef>XtPointer <parameter>base</parameter></paramdef>
    <paramdef>XtResourceList <parameter>resources</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_resources</parameter></paramdef>
+   <paramdef>...</paramdef>
 </funcprototype>
 </funcsynopsis>
 
@@ -2292,8 +2294,8 @@ and to register a type converter in a single application context, use
 <funcsynopsis id='XtSetTypeConverter'>
 <funcprototype>
 <funcdef>void <function>XtSetTypeConverter</function></funcdef>
-   <paramdef>String <parameter>from_type</parameter></paramdef>
-   <paramdef>String <parameter>to_type</parameter></paramdef>
+   <paramdef>const char * <parameter>from_type</parameter></paramdef>
+   <paramdef>const char * <parameter>to_type</parameter></paramdef>
    <paramdef>XtTypeConverter <parameter>converter</parameter></paramdef>
    <paramdef>XtConvertArgList <parameter>convert_args</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_args</parameter></paramdef>
@@ -2384,8 +2386,8 @@ required to deallocate resources produced by the converter.
 <funcprototype>
 <funcdef>void <function>XtAppSetTypeConverter</function></funcdef>
    <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
-   <paramdef>String <parameter>from_type</parameter></paramdef>
-   <paramdef>String <parameter>to_type</parameter></paramdef>
+   <paramdef>const char * <parameter>from_type</parameter></paramdef>
+   <paramdef>const char * <parameter>to_type</parameter></paramdef>
    <paramdef>XtTypeConverter <parameter>converter</parameter></paramdef>
    <paramdef>XtConvertArgList <parameter>convert_args</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_args</parameter></paramdef>
@@ -2971,9 +2973,9 @@ and free a cached resource when a widget is destroyed, use
 <funcprototype>
 <funcdef>Boolean <function>XtConvertAndStore</function></funcdef>
    <paramdef>Widget <parameter>object</parameter></paramdef>
-   <paramdef>String <parameter>from_type</parameter></paramdef>
+   <paramdef>const char * <parameter>from_type</parameter></paramdef>
    <paramdef>XrmValuePtr <parameter>from</parameter></paramdef>
-   <paramdef>String <parameter>to_type</parameter></paramdef>
+   <paramdef>const char * <parameter>to_type</parameter></paramdef>
    <paramdef>XrmValuePtr <parameter>to_in_out</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -4188,6 +4190,7 @@ a widget instance using varargs lists, use
    <paramdef>XtPointer <parameter>base</parameter></paramdef>
    <paramdef>XtResourceList <parameter>resources</parameter></paramdef>
    <paramdef>Cardinal <parameter>num_resources</parameter></paramdef>
+   <paramdef>...</paramdef>
 </funcprototype>
 </funcsynopsis>
 
