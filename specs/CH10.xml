@@ -113,8 +113,8 @@ Specifies the number of entries in <emphasis remap='I'>params</emphasis>.
 
 <literallayout >
 typedef struct _XtActionsRec {
-	String string;
-	XtActionProc proc;
+        String          string;
+        XtActionProc    proc;
 } XtActionsRec, *XtActionList;
 </literallayout>
 <para>
@@ -180,11 +180,11 @@ is the name of the C procedure that implements that function:
 </para>
 <literallayout >
 XtActionsRec actionTable[] = {
-	{"Set",	Set},
-	{"Unset",	Unset},
-	{"Highlight",	Highlight},
-	{"Unhighlight",	Unhighlight}
-	{"Notify",	Notify},
+        {"Set",         Set},
+        {"Unset",       Unset},
+        {"Highlight",   Highlight},
+        {"Unhighlight", Unhighlight}
+        {"Notify",      Notify},
 };
 </literallayout>
 <para>
@@ -549,10 +549,10 @@ The following illustrates Pushbutton's default translation table:
 </para>
 <literallayout >
 static String defaultTranslations =
-	"&lt;EnterWindow&gt;:	Highlight()\\n\\
-	&lt;LeaveWindow&gt;:	Unhighlight()\\n\\
-	&lt;Btn1Down&gt;:	Set()\\n\\
-	&lt;Btn1Up&gt;:	Notify() Unset()";
+        "&lt;EnterWindow&gt;:   Highlight()\\n\\
+        &lt;LeaveWindow&gt;:    Unhighlight()\\n\\
+        &lt;Btn1Down&gt;:       Set()\\n\\
+        &lt;Btn1Up&gt;: Notify() Unset()";
 </literallayout>
 <para>
 The <emphasis remap='I'>tm_table</emphasis> field of the

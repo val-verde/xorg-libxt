@@ -67,38 +67,38 @@ obj<emphasis remap='I'>n</emphasis> fields with NULL or zero as appropriate to t
 </para>
 <literallayout >
 typedef struct _ObjectClassPart {
-	WidgetClass superclass;
-	String class_name;
-	Cardinal widget_size;
-	XtProc class_initialize;
-	XtWidgetClassProc class_part_initialize;
-	XtEnum class_inited;
-	XtInitProc initialize;
-	XtArgsProc initialize_hook;
-	XtProc obj1;
-	XtPointer obj2;
-	Cardinal obj3;
-	XtResourceList resources;
-	Cardinal num_resources;
-	XrmClass xrm_class;
-	Boolean obj4;
-	XtEnum obj5;
-	Boolean obj6;
-	Boolean obj7;
-	XtWidgetProc destroy;
-	XtProc obj8;
-	XtProc obj9;
-	XtSetValuesFunc set_values;
-	XtArgsFunc set_values_hook;
-	XtProc obj10;
-	XtArgsProc get_values_hook;
-	XtProc obj11;
-	XtVersionType version;
-	XtPointer callback_private;
-	String obj12;
-	XtProc obj13;
-	XtProc obj14;
-	XtPointer extension;
+        WidgetClass     superclass;
+        String          class_name;
+        Cardinal        widget_size;
+        XtProc          class_initialize;
+        XtWidgetClassProc class_part_initialize;
+        XtEnum          class_inited;
+        XtInitProc      initialize;
+        XtArgsProc      initialize_hook;
+        XtProc          obj1;
+        XtPointer       obj2;
+        Cardinal        obj3;
+        XtResourceList  resources;
+        Cardinal        num_resources;
+        XrmClass        xrm_class;
+        Boolean         obj4;
+        XtEnum          obj5;
+        Boolean         obj6;
+        Boolean         obj7;
+        XtWidgetProc    destroy;
+        XtProc          obj8;
+        XtProc          obj9;
+        XtSetValuesFunc set_values;
+        XtArgsFunc      set_values_hook;
+        XtProc          obj10;
+        XtArgsProc      get_values_hook;
+        XtProc          obj11;
+        XtVersionType   version;
+        XtPointer       callback_private;
+        String          obj12;
+        XtProc          obj13;
+        XtProc          obj14;
+        XtPointer       extension;
 } ObjectClassPart;
 </literallayout>
 <para>
@@ -111,12 +111,12 @@ is
 </para>
 <literallayout >
 typedef struct {
-	XtPointer next_extension;    See <xref linkend='Class_Extension_Records' />
-	XrmQuark record_type;        See <xref linkend='Class_Extension_Records' />
-	long version;                See <xref linkend='Class_Extension_Records' />
-	Cardinal record_size;        See <xref linkend='Class_Extension_Records' />
-	XtAllocateProc allocate;     See <xref linkend='Widget_Instance_Allocation_The_allocate_Procedure' />.
-	XtDeallocateProc deallocate; See <xref linkend='Widget_Instance_Deallocation_The_deallocate_Procedure' />.
+        XtPointer next_extension;    See <xref linkend='Class_Extension_Records' />
+        XrmQuark record_type;        See <xref linkend='Class_Extension_Records' />
+        long version;                See <xref linkend='Class_Extension_Records' />
+        Cardinal record_size;        See <xref linkend='Class_Extension_Records' />
+        XtAllocateProc allocate;     See <xref linkend='Widget_Instance_Allocation_The_allocate_Procedure' />.
+        XtDeallocateProc deallocate; See <xref linkend='Widget_Instance_Deallocation_The_deallocate_Procedure' />.
 } ObjectClassExtensionRec, *ObjectClassExtension;
 </literallayout>
 <para>
@@ -127,7 +127,7 @@ consists of just the
 </para>
 <literallayout >
 typedef struct _ObjectClassRec {
-	ObjectClassPart object_class;
+        ObjectClassPart object_class;
 } ObjectClassRec, *ObjectClass;
 </literallayout>
 <para>
@@ -184,12 +184,12 @@ corresponding fields in
 </para>
 <literallayout >
 typedef struct _ObjectPart {
-	Widget self;
-	WidgetClass widget_class;
-	Widget parent;
-	Boolean being_destroyed;
-	XtCallbackList destroy_callbacks;
-	XtPointer constraints;
+        Widget          self;
+        WidgetClass     widget_class;
+        Widget          parent;
+        Boolean         being_destroyed;
+        XtCallbackList  destroy_callbacks;
+        XtPointer       constraints;
 } ObjectPart;
 </literallayout>
 <para>
@@ -208,7 +208,7 @@ In
 </para>
 <literallayout >
 typedef struct _ObjectRec {
-	ObjectPart object;
+        ObjectPart object;
 } ObjectRec, *Object;
 </literallayout>
 <para>
@@ -515,38 +515,38 @@ rect<emphasis remap='I'>n</emphasis> fields with NULL or zero as appropriate to 
 </para>
 <literallayout >
 typedef struct _RectObjClassPart {
-	WidgetClass superclass;
-	String class_name;
-	Cardinal widget_size;
-	XtProc class_initialize;
-	XtWidgetClassProc class_part_initialize;
-	XtEnum class_inited;
-	XtInitProc initialize;
-	XtArgsProc initialize_hook;
-	XtProc rect1;
-	XtPointer rect2;
-	Cardinal rect3;
-	XtResourceList resources;
-	Cardinal num_resources;
-	XrmClass xrm_class;
-	Boolean rect4;
-	XtEnum rect5;
-	Boolean rect6;
-	Boolean rect7;
-	XtWidgetProc destroy;
-	XtWidgetProc resize;
-	XtExposeProc expose;
-	XtSetValuesFunc set_values;
-	XtArgsFunc set_values_hook;
-	XtAlmostProc set_values_almost;
-	XtArgsProc get_values_hook;
-	XtProc rect9;
-	XtVersionType version;
-	XtPointer callback_private;
-	String rect10;
-	XtGeometryHandler query_geometry;
-	XtProc rect11;
-	XtPointer extension ;
+        WidgetClass     superclass;
+        String          class_name;
+        Cardinal        widget_size;
+        XtProc          class_initialize;
+        XtWidgetClassProc class_part_initialize;
+        XtEnum          class_inited;
+        XtInitProc      initialize;
+        XtArgsProc      initialize_hook;
+        XtProc          rect1;
+        XtPointer       rect2;
+        Cardinal        rect3;
+        XtResourceList  resources;
+        Cardinal        num_resources;
+        XrmClass        xrm_class;
+        Boolean         rect4;
+        XtEnum          rect5;
+        Boolean         rect6;
+        Boolean         rect7;
+        XtWidgetProc    destroy;
+        XtWidgetProc    resize;
+        XtExposeProc    expose;
+        XtSetValuesFunc set_values;
+        XtArgsFunc      set_values_hook;
+        XtAlmostProc    set_values_almost;
+        XtArgsProc      get_values_hook;
+        XtProc          rect9;
+        XtVersionType   version;
+        XtPointer       callback_private;
+        String          rect10;
+        XtGeometryHandler query_geometry;
+        XtProc          rect11;
+        XtPointer       extension;
 } RectObjClassPart;
 </literallayout>
 <para>
@@ -557,7 +557,7 @@ class record consists of just the
 </para>
 <literallayout >
 typedef struct _RectObjClassRec {
-	RectObjClassPart rect_class;
+        RectObjClassPart rect_class;
 } RectObjClassRec, *RectObjClass;
 </literallayout>
 <para>
@@ -614,12 +614,12 @@ structure.  All fields have the same meaning as the corresponding field in
 </para>
 <literallayout >
 typedef struct _RectObjPart {
-	Position x, y;
-	Dimension width, height;
-	Dimension border_width;
-	Boolean managed;
-	Boolean sensitive;
-	Boolean ancestor_sensitive;
+        Position        x, y;
+        Dimension       width, height;
+        Dimension       border_width;
+        Boolean         managed;
+        Boolean         sensitive;
+        Boolean         ancestor_sensitive;
 } RectObjPart;
 </literallayout>
 <para>
@@ -628,8 +628,8 @@ objects have the RectObj fields immediately following the Object fields.
 </para>
 <literallayout >
 typedef struct _RectObjRec {
-	ObjectPart object;
-	RectObjPart rectangle;
+        ObjectPart object;
+        RectObjPart rectangle;
 } RectObjRec, *RectObj;
 </literallayout>
 <para>

@@ -1420,23 +1420,25 @@ implementation of a Label widget:
 <literallayout>
 #ifndef LABEL_H
 #define LABEL_H
+
 /* New resources */
-#define XtNjustify "justify"
-#define XtNforeground "foreground"
-#define XtNlabel "label"
-#define XtNfont "font"
-#define XtNinternalWidth "internalWidth"
-#define XtNinternalHeight "internalHeight"
+#define XtNjustify              "justify"
+#define XtNforeground           "foreground"
+#define XtNlabel                "label"
+#define XtNfont                 "font"
+#define XtNinternalWidth        "internalWidth"
+#define XtNinternalHeight       "internalHeight"
+
 /* Class record pointer */
 extern WidgetClass labelWidgetClass;
+
 /* C Widget type definition */
-typedef struct _LabelRec      *LabelWidget;
+typedef struct _LabelRec        *LabelWidget;
+
 /* New class method entry points */
-extern void LabelSetText();
-     /* Widget w */
-     /* String text */
-extern String LabelGetText();
-     /* Widget w */
+extern void LabelSetText(Widget w, String text);
+extern String LabelGetText(Widget w);
+
 #endif LABEL_H
 </literallayout>
 <para>
@@ -1557,57 +1559,62 @@ For example, the following is the private .h file for a possible Label widget:
 <literallayout>
 #ifndef LABELP_H
 #define LABELP_H
+
 #include &lt;X11/Label.h&gt;
+
 /* New representation types used by the Label widget */
 #define XtRJustify "Justify"
+
 /* New fields for the Label widget record */
 typedef struct {
 /* Settable resources */
-     Pixel foreground;
+     Pixel      foreground;
      XFontStruct *font;
-     String label;     /* text to display */
-     XtJustify justify;
-     Dimension internal_width;     /* # pixels horizontal border */
-     Dimension internal_height;     /* # pixels vertical border */
+     String     label; /* text to display */
+     XtJustify  justify;
+     Dimension  internal_width;         /* # pixels horizontal border */
+     Dimension  internal_height;        /* # pixels vertical border */
 /* Data derived from resources */
-     GC normal_GC;
-     GC gray_GC;
-     Pixmap gray_pixmap;
-     Position label_x;
-     Position label_y;
-     Dimension label_width;
-     Dimension label_height;
-     Cardinal label_len;
-     Boolean display_sensitive;
+     GC         normal_GC;
+     GC         gray_GC;
+     Pixmap     gray_pixmap;
+     Position   label_x;
+     Position   label_y;
+     Dimension  label_width;
+     Dimension  label_height;
+     Cardinal   label_len;
+     Boolean    display_sensitive;
 } LabelPart;
-</literallayout>
-<literallayout>
+
 /* Full instance record declaration */
 typedef struct _LabelRec {
-     CorePart core;
-     LabelPart label;
+     CorePart   core;
+     LabelPart  label;
 } LabelRec;
+
 /* Types for Label class methods */
-typedef void (*LabelSetTextProc)();
-     /* Widget w */
-     /* String text */
-typedef String (*LabelGetTextProc)();
-     /* Widget w */
+typedef void (*LabelSetTextProc)(Widget w, String text);
+typedef String (*LabelGetTextProc)(Widget w);
+
 /* New fields for the Label widget class record */
 typedef struct {
      LabelSetTextProc set_text;
      LabelGetTextProc get_text;
      XtPointer extension;
 } LabelClassPart;
+
 /* Full class record declaration */
 typedef struct _LabelClassRec {
      CoreClassPart core_class;
      LabelClassPart label_class;
 } LabelClassRec;
+
 /* Class record variable */
 extern LabelClassRec labelClassRec;
+
 #define LabelInheritSetText((LabelSetTextProc)_XtInherit)
 #define LabelInheritGetText((LabelGetTextProc)_XtInherit)
+
 #endif LABELP_H
 </literallayout>
 <para>
@@ -1744,6 +1751,7 @@ static XtResource resources[] = {
           .
           .
 }
+
 /* Forward declarations of procedures */
 static void ClassInitialize();
 static void Initialize();
@@ -1759,57 +1767,58 @@ static void GetText();
 LabelClassRec labelClassRec = {
   {
     /* core_class fields */
-     /* superclass     */     (WidgetClass)&amp;coreClassRec,
-     /* class_name     */     "Label",
-     /* widget_size     */     sizeof(LabelRec),
-     /* class_initialize     */     ClassInitialize,
-     /* class_part_initialize     */     NULL,
-     /* class_inited     */     False,
-     /* initialize     */     Initialize,
-     /* initialize_hook     */     NULL,
-     /* realize     */     Realize,
-     /* actions     */     NULL,
-     /* num_actions     */     0,
-     /* resources     */     resources,
-     /* num_resources     */     XtNumber(resources),
-     /* xrm_class     */     NULLQUARK,
-     /* compress_motion     */     True,
-     /* compress_exposure     */     True,
-     /* compress_enterleave     */     True,
-     /* visible_interest     */     False,
-     /* destroy     */     NULL,
-     /* resize     */     Resize,
-     /* expose     */     Redisplay,
-     /* set_values     */     SetValues,
-     /* set_values_hook     */     NULL,
-     /* set_values_almost     */     XtInheritSetValuesAlmost,
-     /* get_values_hook     */     NULL,
-     /* accept_focus     */     NULL,
-     /* version     */     XtVersion,
-     /* callback_offsets     */     NULL,
-     /* tm_table     */     NULL,
-     /* query_geometry     */     XtInheritQueryGeometry,
-     /* display_accelerator     */     NULL,
-     /* extension     */     NULL
+     /* superclass                */    (WidgetClass)&amp;coreClassRec,
+     /* class_name                */    "Label",
+     /* widget_size               */    sizeof(LabelRec),
+     /* class_initialize          */    ClassInitialize,
+     /* class_part_initialize     */    NULL,
+     /* class_inited              */    False,
+     /* initialize                */    Initialize,
+     /* initialize_hook           */    NULL,
+     /* realize                   */    Realize,
+     /* actions                   */    NULL,
+     /* num_actions               */    0,
+     /* resources                 */    resources,
+     /* num_resources             */    XtNumber(resources),
+     /* xrm_class                 */    NULLQUARK,
+     /* compress_motion           */    True,
+     /* compress_exposure         */    True,
+     /* compress_enterleave       */    True,
+     /* visible_interest          */    False,
+     /* destroy                   */    NULL,
+     /* resize                    */    Resize,
+     /* expose                    */    Redisplay,
+     /* set_values                */    SetValues,
+     /* set_values_hook           */    NULL,
+     /* set_values_almost         */    XtInheritSetValuesAlmost,
+     /* get_values_hook           */    NULL,
+     /* accept_focus              */    NULL,
+     /* version                   */    XtVersion,
+     /* callback_offsets          */    NULL,
+     /* tm_table                  */    NULL,
+     /* query_geometry            */    XtInheritQueryGeometry,
+     /* display_accelerator       */    NULL,
+     /* extension                 */    NULL
   },
   {
-    /* Label_class fields     */
-     /* get_text     */     GetText,
-     /* set_text     */     SetText,
-     /* extension     */     NULL
+    /* Label_class fields         */
+     /* get_text                  */    GetText,
+     /* set_text                  */    SetText,
+     /* extension                 */    NULL
   }
 };
+
 /* Class record pointer */
 WidgetClass labelWidgetClass = (WidgetClass) &amp;labelClassRec;
+
 /* New method access routines */
-void LabelSetText(w, text)
-     Widget w;
-     String text;
+void LabelSetText(Widget w, String text)
 {
      LabelWidgetClass lwc = (Label WidgetClass)XtClass(w);
      XtCheckSubclass(w, labelWidgetClass, NULL);
      *(lwc-&gt;label_class.set_text)(w, text)
 }
+
 /* Private procedures */
      .
      .
@@ -2420,16 +2429,15 @@ contains these definitions:
 </para>
 <literallayout>
 #define XtInheritGeometryManager ((XtGeometryHandler) _XtInherit)
-#define XtInheritChangeManaged ((XtWidgetProc) _XtInherit)
-#define XtInheritInsertChild ((XtArgsProc) _XtInherit)
-#define XtInheritDeleteChild ((XtWidgetProc) _XtInherit)
+#define XtInheritChangeManaged   ((XtWidgetProc)      _XtInherit)
+#define XtInheritInsertChild     ((XtArgsProc)        _XtInherit)
+#define XtInheritDeleteChild     ((XtWidgetProc)      _XtInherit)
 </literallayout>
 <para>
 Composite's class_part_initialize procedure begins as follows:
 </para>
 <literallayout>
-static void CompositeClassPartInitialize(widgetClass)
-     WidgetClass widgetClass;
+static void CompositeClassPartInitialize(WidgetClass widgetClass)
 {
      CompositeWidgetClass wc = (CompositeWidgetClass)widgetClass;
      CompositeWidgetClass super = (CompositeWidgetClass)wc-&gt;core_class.superclass;
@@ -2616,9 +2624,9 @@ declaration:
 <literallayout>
 struct {
      XtPointer next_extension;
-     XrmQuark record_type;
-     long version;
-     Cardinal record_size;
+     XrmQuark  record_type;
+     long      version;
+     Cardinal  record_size;
 };
 </literallayout>
 

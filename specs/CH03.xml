@@ -1323,10 +1323,10 @@ follows:
 </para>
 <literallayout >
 typedef struct {
-	Dimension max_width, max_height;
+        Dimension max_width, max_height;
 } MaxConstraintPart;
 typedef struct {
-	MaxConstraintPart max;
+        MaxConstraintPart max;
 } MaxConstraintRecord, *MaxConstraint;
 </literallayout>
 <para>
@@ -1335,11 +1335,11 @@ define its constraint record as follows:
 </para>
 <literallayout >
 typedef struct {
-	Dimension min_width, min_height;
+        Dimension min_width, min_height;
 } MinConstraintPart;
 typedef struct {
-	MaxConstraintPart max;
-	MinConstraintPart min;
+        MaxConstraintPart max;
+        MinConstraintPart min;
 } MaxMinConstraintRecord, *MaxMinConstraint;
 </literallayout>
 <para>

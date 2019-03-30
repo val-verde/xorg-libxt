@@ -124,12 +124,12 @@ structure.
 <literallayout >
 typedef unsigned long XtGeometryMask;
 typedef struct {
-	XtGeometryMask request_mode;
-	Position x, y;
-	Dimension width, height;
-	Dimension border_width;
-	Widget sibling;
-	int stack_mode;
+        XtGeometryMask  request_mode;
+        Position        x, y;
+        Dimension       width, height;
+        Dimension       border_width;
+        Widget          sibling;
+        int             stack_mode;
 } XtWidgetGeometry;
 </literallayout>
 
@@ -277,10 +277,10 @@ The return codes from geometry managers are
 
 <literallayout >
 typedef enum {
-	XtGeometryYes,
-	XtGeometryNo,
-	XtGeometryAlmost,
-	XtGeometryDone
+        XtGeometryYes,
+        XtGeometryNo,
+        XtGeometryAlmost,
+        XtGeometryDone
 } XtGeometryResult;
 </literallayout>
 

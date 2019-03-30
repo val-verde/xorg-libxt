@@ -238,10 +238,10 @@ Briefly:
 </para>
 
 <literallayout >
-No modifiers:	                None &lt;event&gt; detail
-Any modifiers:	                &lt;event&gt; detail
-Only these modifiers:	        ! mod1 mod2 &lt;event&gt; detail
-These modifiers and any others:	mod1 mod2 &lt;event&gt; detail
+No modifiers:                   None &lt;event&gt; detail
+Any modifiers:                  &lt;event&gt; detail
+Only these modifiers:           ! mod1 mod2 &lt;event&gt; detail
+These modifiers and any others: mod1 mod2 &lt;event&gt; detail
 </literallayout>
 
 <para>

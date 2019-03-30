@@ -2852,10 +2852,10 @@ initialized to one of the following values:
 </para>
 
 <literallayout >
-#define XtExposeNoCompress	((XtEnum)False)
-#define XtExposeCompressSeries	((XtEnum)True)
-#define XtExposeCompressMultiple	&lt;implementation-defined&gt;
-#define XtExposeCompressMaximal	&lt;implementation-defined&gt;
+#define XtExposeNoCompress              ((XtEnum)False)
+#define XtExposeCompressSeries          ((XtEnum)True)
+#define XtExposeCompressMultiple        &lt;implementation-defined&gt;
+#define XtExposeCompressMaximal         &lt;implementation-defined&gt;
 </literallayout>
 
 <para>
@@ -3142,9 +3142,9 @@ you could write a single display routine in Label that uses display state
 fields like
 </para>
 <literallayout >
-Boolean invert;
-Boolean highlight;
-Dimension highlight_width;
+Boolean 	invert;
+Boolean         highlight;
+Dimension       highlight_width;
 </literallayout>
 <para>
 Label would have <emphasis remap='I'>invert</emphasis> and <emphasis remap='I'>highlight</emphasis> always
@@ -4736,11 +4736,11 @@ They require the application context or process to be locked
 before the application can safely call them directly, for example:
 </para>
 <literallayout >
-	...
-	XtAppLock(app_context);
-	XtCvtStringToPixel(dpy, args, num_args, fromVal, toVal, closure_ret);
-	XtAppUnlock(app_context);
-	...
+        ...
+        XtAppLock(app_context);
+        XtCvtStringToPixel(dpy, args, num_args, fromVal, toVal, closure_ret);
+        XtAppUnlock(app_context);
+        ...
 </literallayout>
 <para>
 When the application relies upon
@@ -4758,14 +4758,13 @@ widget internal data.  For example:
 </para>
 <literallayout >
 #include &lt;X11/CoreP.h&gt;
-Boolean BeingDestroyed (widget)
-	Widget widget;
+Boolean BeingDestroyed (Widget widget)
 {
-	Boolean ret;
-	XtAppLock(XtWidgetToApplicationContext(widget));
-	ret = widget-&gt;core.being_destroyed;
-	XtAppUnlock(XtWidgetToApplicationContext(widget));
-	return ret;
+        Boolean ret;
+        XtAppLock(XtWidgetToApplicationContext(widget));
+        ret = widget-&gt;core.being_destroyed;
+        XtAppUnlock(XtWidgetToApplicationContext(widget));
+        return ret;
 }
 </literallayout>
 <para>
@@ -4773,12 +4772,12 @@ A client that wishes to atomically call two or more Intrinsics functions
 must lock the application context.  For example:
 </para>
 <literallayout >
-	...
-	XtAppLock(XtWidgetToApplicationContext(widget));
-	XtUnmanageChild (widget1);
-	XtManageChild (widget2);
-	XtAppUnlock(XtWidgetToApplicationContext(widget));
-	...
+        ...
+        XtAppLock(XtWidgetToApplicationContext(widget));
+        XtUnmanageChild (widget1);
+        XtManageChild (widget2);
+        XtAppUnlock(XtWidgetToApplicationContext(widget));
+        ...
 </literallayout>
 <sect3 id="Locking_the_Application_Context">
 <title>Locking the Application Context</title>

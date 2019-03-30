@@ -987,8 +987,8 @@ function casts the <emphasis remap='I'>client_data</emphasis> parameter to a poi
 </para>
 <literallayout >
 typedef struct {
-	Widget shell_widget;
-	Widget enable_widget;
+        Widget shell_widget;
+        Widget enable_widget;
 } XtPopdownIDRec, *XtPopdownID;
 </literallayout>
 <para>
