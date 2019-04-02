@@ -70,8 +70,8 @@ or
 .ZN GraphicsExpose
 event.
 .IP \fIregion\fP 1i
-Specifies the region object (as defined in
-.Pn < X11/Xutil.h >).
+Specifies the region object (as defined in < 
+.ZN X11/Xutil.h >).
 .SH DESCRIPTION
 The
 .ZN XtAddExposureToRegion

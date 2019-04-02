@@ -93,8 +93,8 @@ Specifies the event mask for which \*(Em.
 .ds Nm called or removed
 .IP \fInonmaskable\fP 1i
 Specifies a Boolean value that indicates whether this procedure should be
-\*(Nm on the nonmaskable events
-.Pn ( GraphicsExpose ,
+\*(Nm on the nonmaskable events ( 
+.ZN GraphicsExpose ,
 .ZN NoExpose ,
 .ZN SelectionClear ,
 .ZN SelectionRequest ,
