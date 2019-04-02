@@ -77,51 +77,51 @@ Specifies the particular selection desired.
 Specifies the timestamp to be used in making the request.
 .SH DESCRIPTION
 When
-.ZN XtCreateSelectionRequest
+.BR XtCreateSelectionRequest
 is called, subsequent calls to
-.ZN XtGetSelectionValue
+.BR XtGetSelectionValue
 and
-.ZN XtGetSelectionValueIncremental
+.BR XtGetSelectionValueIncremental
 with the requestor and selection as specified to
-.ZN XtCreateSelectionRequest
+.BR XtCreateSelectionRequest
 will be bundled into a single selection conversion request with
 multiple targets. The request is actually initiated by calling
-.ZN XtSendSelectionRequest .
+.BR XtSendSelectionRequest .
 .LP
 When
-.ZN XtSendSelectionRequest
+.BR XtSendSelectionRequest
 is called with a value of \fIrequestor\fP and \fIselection\fP matching
 a previous call to
-.ZN XtCreateSelectionRequest ,
+.BR XtCreateSelectionRequest ,
 a selection conversion request is actually sent to the selection owner.
 If a single target request is queued, that request is made. If multiple
 targets are queued they are bundled into a single request with the
 target MULTIPLE using the specified timestamp. As the conversions are
 made, the callbacks associated with each
-.ZN XtGetSelectionValue
+.BR XtGetSelectionValue
 and
-.ZN XtGetSelectionValueIncremental
+.BR XtGetSelectionValueIncremental
 are invoked in turn.
 .LP
 Multi-threaded applications should lock the application context before
 calling
-.ZN XtCreateSelectionRequest
+.BR XtCreateSelectionRequest
 and release the lock after calling
-.ZN XtSendSelectionRequest
+.BR XtSendSelectionRequest
 to ensure that the thread assembling the request is safe from interference
 by another thread assembling a different request naming the same widget
 and selection.
 .LP
 When
-.ZN XtCancelSelectionRequest
+.BR XtCancelSelectionRequest
 is called, any requests queued since the last call to
-.ZN XtCreateSelectionRequest
+.BR XtCreateSelectionRequest
 are cleaned up. Subsequent calls to
-.ZN XtGetSelectionValue ,
-.ZN XtGetSelectionValues ,
-.ZN XtGetSelectionValueIncremental ,
+.BR XtGetSelectionValue ,
+.BR XtGetSelectionValues ,
+.BR XtGetSelectionValueIncremental ,
 and
-.ZN XtGetSelectionValuesIncremental
+.BR XtGetSelectionValuesIncremental
 will not be deferred.
 .SH "SEE ALSO"
 .br

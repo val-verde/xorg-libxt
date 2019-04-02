@@ -93,26 +93,26 @@ when \*(Cd.
 Specifies the widget.
 .SH DESCRIPTION
 The
-.ZN XtAddCallback
+.BR XtAddCallback
 function adds the specified callback procedure to the specified widget's
 callback list.
 .LP
 The
-.ZN XtAddCallbacks
+.BR XtAddCallbacks
 add the specified list of callbacks to the specified widget's callback list.
 .LP
 The
-.ZN XtRemoveCallback
+.BR XtRemoveCallback
 function removes a callback only if both the procedure and the client
 data match.
 .LP
 The
-.ZN XtRemoveCallbacks
+.BR XtRemoveCallbacks
 function removes the specified callback procedures from the specified
 widget's callback list.
 .LP
 The
-.ZN XtRemoveAllCallbacks
+.BR XtRemoveAllCallbacks
 function removes all the callback procedures from the specified
 widget's callback list.
 .SH "SEE ALSO"

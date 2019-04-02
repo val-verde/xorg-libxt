@@ -84,14 +84,14 @@ of the error message.
 Specifies the size of the buffer in bytes.
 .SH DESCRIPTION
 The
-.ZN XtGetErrorDatabase
+.BR XtGetErrorDatabase
 function has been superceded by
-.ZN XtAppGetErrorDatabase .
+.BR XtAppGetErrorDatabase .
 .LP
 The
-.ZN XtGetErrorDatabaseText
+.BR XtGetErrorDatabaseText
 function has been superceded by
-.ZN XtAppGetErrorDatabaseText .
+.BR XtAppGetErrorDatabaseText .
 .SH "SEE ALSO"
 .BR XtAppGetErrorDatabase (__libmansuffix__)
 .BR XtAppGetErrorDatabaseText (__libmansuffix__)

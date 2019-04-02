@@ -78,7 +78,7 @@ Specifies the class name of this application\*(Ac.
 .IP \fIoptions\fP 1i
 Specifies how to parse the command line for any application-specific resources.
 The options argument is passed as a parameter to
-.ZN XrmParseCommand .
+.BR XrmParseCommand .
 For further information,
 see \fI\*(xL\fP.
 .IP \fInum_options\fP 1i
@@ -100,35 +100,35 @@ Specifies the variable argument list to override any other resource
 specification for the created shell widget.
 .SH DESCRIPTION
 The
-.ZN XtAppInitialize
+.BR XtAppInitialize
 function calls
-.ZN XtToolkitInitialize
+.BR XtToolkitInitialize
 followed by
-.ZN XtCreateApplicationContext ,
+.BR XtCreateApplicationContext ,
 then calls
-.ZN XtOpenDisplay
+.BR XtOpenDisplay
 with \fIdisplay_string\fP NULL and \fIapplication_name\fP NULL, and
 finally calls
-.ZN XtAppCreateShell
+.BR XtAppCreateShell
 with \fIapplication_name\fP NULL, \fIwidget_class\fP
-.ZN applicationShellWidgetClass ,
+.BR applicationShellWidgetClass ,
 and the specified \fIargs\fP and \fInum_args\fP and returns the
 created shell. The modified \fIargc\fP and \fIargv\fP returned by
-.ZN XtDisplayInitialize
+.BR XtDisplayInitialize
 are returned in \fIargc_in_out\fP and \fIargv_in_out\fP. If
 \fIapp_context_return\fP is not NULL, the created application context
 is also returned. If the display specified by the command line cannot
 be opened, an error message is issued and
-.ZN XtAppInitialize
+.BR XtAppInitialize
 terminates the application. If \fIfallback_resources\fP is non-NULL,
-.ZN XtAppSetFallbackResources
+.BR XtAppSetFallbackResources
 is called with the value prior to calling
-.ZN XtOpenDisplay .
+.BR XtOpenDisplay .
 .LP
 XtAppInitialize and XtVaAppInitialize have been superceded by
-.ZN XtOpenApplication
+.BR XtOpenApplication
 and
-.ZN XtVaOpenApplication
+.BR XtVaOpenApplication
 respectively.
 .SH "SEE ALSO"
 XtOpenApplication(__libmansuffix__), XtVaOpenApplication(__libmansuffix__)

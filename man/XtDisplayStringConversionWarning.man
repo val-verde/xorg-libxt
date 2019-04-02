@@ -72,18 +72,18 @@ Specifies the string that could not be converted.
 Specifies the target representation type requested.
 .SH DESCRIPTION
 The
-.ZN XtDisplayStringConversionWarning
+.BR XtDisplayStringConversionWarning
 function issues a warning message using
-.ZN XtAppWarningMsg
+.BR XtAppWarningMsg
 with name ``conversionError'', type ``string'', class ``XtToolkitError,
 and the default message string ``Cannot convert "\fIfrom_value\fP" to
 type \fIto_type\fP''.
 .LP
 To issue other types of warning or error messages, the type converter
 should use
-.ZN XtAppWarningMsg
+.BR XtAppWarningMsg
 or
-.ZN XtAppErrorMsg .
+.BR XtAppErrorMsg .
 .SH "SEE ALSO"
 XtAppWarningMsg(3t)
 .br

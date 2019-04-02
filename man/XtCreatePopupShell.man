@@ -84,9 +84,9 @@ Specifies the widget class\*(Wc.
 Specifies the variable argument list \*(Al.
 .SH DESCRIPTION
 The
-.ZN XtCreatePopupShell
+.BR XtCreatePopupShell
 function ensures that the specified class is a subclass of
-.ZN Shell
+.BR Shell
 and, rather than using insert_child to attach the widget to the parent's
 .IN "insert_child procedure"
 children list, attaches the shell to the parent's pop-ups list directly.

@@ -94,7 +94,7 @@ Specifies the widget \*(Wi.
 Specifies the variable arguments \*(Al.
 .SH DESCRIPTION
 The
-.ZN XtGetSubresources
+.BR XtGetSubresources
 function constructs a name/class list from the application name/class,
 the name/classes of all its ancestors, and the widget itself.
 Then, it appends to this list the name/class pair passed in.

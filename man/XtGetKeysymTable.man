@@ -86,17 +86,17 @@ or NULL if \fIkeycount_return\fP is 0.
 .IP \fIkeycount_return\fP 1i
 Returns the number of KeyCodes in the keycode list.
 .SH DESCRIPTION
-.ZN XtGetKeysymTable
+.BR XtGetKeysymTable
 returns a pointer to the Intrinsics' copy of the server's KeyCode-to-KeySym
 table. This table must not be modified.
 .LP
 The
-.ZN XtKeysymToKeycodeList
+.BR XtKeysymToKeycodeList
 procedure returns all the KeyCodes that have \fIkeysym\fP in their
 entry for the keyboard mapping table associated with \fIdisplay\fP.
 The caller should free the storage pointed to by \fIkeycodes_return\fP
 using
-.ZN XtFree
+.BR XtFree
 when it is no longer useful.
 .SH "SEE ALSO"
 .br

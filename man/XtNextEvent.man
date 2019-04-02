@@ -79,34 +79,34 @@ Returns the event information to the specified event structure.
 .IP \fImask\fP 1i
 Specifies what types of events to process.
 The mask is the bitwise inclusive OR of any combination of
-.ZN XtIMXEvent ,
-.ZN XtIMTimer ,
-.ZN XtIMAlternateInput ,
+.BR XtIMXEvent ,
+.BR XtIMTimer ,
+.BR XtIMAlternateInput ,
 and
-.ZN XtIMSignal .
+.BR XtIMSignal .
 As a convenience, the \*(tk defines the symbolic name
-.ZN XtIMAll
+.BR XtIMAll
 to be the bitwise inclusive OR of all event types.
 .SH DESCRIPTION
-.ZN XtNextEvent
+.BR XtNextEvent
 has been replaced by
-.ZN XtAppNextEvent .
+.BR XtAppNextEvent .
 .LP
-.ZN XtPeekEvent
+.BR XtPeekEvent
 has been replaced by
-.ZN XtAppPeekEvent .
+.BR XtAppPeekEvent .
 .LP
-.ZN XtPending
+.BR XtPending
 has been replaced by
-.ZN XtAppPending .
+.BR XtAppPending .
 .LP
-.ZN XtProcessEvent
+.BR XtProcessEvent
 has been replaced by
-.ZN XtAppProcessEvent .
+.BR XtAppProcessEvent .
 .LP
-.ZN XtMainLoop
+.BR XtMainLoop
 has been replaced by
-.ZN XtAppMainLoop .
+.BR XtAppMainLoop .
 .SH "SEE ALSO"
 XtAppNextEvent(3xt), XtAppPending(__libmansuffix__), XtAppPeekEvent(__libmansuffix__),
 XtAppProcessEvent(__libmansuffix__), XtAppMainLoop(__libmansuffix__)

@@ -68,10 +68,10 @@ Boolean XtAppGetExitFlag(XtAppContext \fIapp_context\fP);
 Specifies the application context.
 .SH DESCRIPTION
 To indicate that an application context should exit, use
-.ZN XtAppSetExitFlag .
+.BR XtAppSetExitFlag .
 .LP
 To test the exit status of an application context, use
-.ZN XtAppGetExitFlag .
+.BR XtAppGetExitFlag .
 .SH "SEE ALSO"
 .br
 \fI\*(xT\fP

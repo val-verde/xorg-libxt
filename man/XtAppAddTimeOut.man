@@ -81,14 +81,14 @@ Specifies the procedure that is\*(Pr.
 Specifies the ID for the timeout request to be destroyed.
 .SH DESCRIPTION
 The
-.ZN XtAppAddTimeOut
+.BR XtAppAddTimeOut
 function creates a timeout and returns an identifier for it.
 The timeout value is set to interval.
 The callback procedure is called when the time interval elapses,
 and then the timeout is removed.
 .LP
 The
-.ZN XtRemoveTimeOut
+.BR XtRemoveTimeOut
 function removes the timeout.
 Note that timeouts are automatically removed once they trigger.
 .SH "SEE ALSO"

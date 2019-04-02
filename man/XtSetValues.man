@@ -103,14 +103,14 @@ Specifies the widget.
 Specifies the variable argument list \*(Al.
 .SH DESCRIPTION
 The
-.ZN XtSetValues
+.BR XtSetValues
 function starts with the resources specified for the
-.ZN Core
+.BR Core
 widget fields and proceeds down the subclass chain to the widget.
 At each stage,
 it writes the new value (if specified by one of the arguments) or the existing
 value (if no new value is specified) to a new widget data record.
-.ZN XtSetValues
+.BR XtSetValues
 then calls the set_values procedures for the widget in superclass-to-subclass
 order.
 .IN "hook"
@@ -118,65 +118,65 @@ If the widget has any non-NULL set_values_hook fields,
 these are called immediately after the
 corresponding set_values procedure.
 This procedure permits subclasses to set nonwidget data for
-.ZN XtSetValues .
+.BR XtSetValues .
 .LP
 If the widget's parent is a subclass of
-.ZN constraintWidgetClass ,
-.ZN XtSetValues
+.BR constraintWidgetClass ,
+.BR XtSetValues
 also updates the widget's constraints.
 It starts with the constraint resources specified for
-.ZN constraintWidgetClass
+.BR constraintWidgetClass
 and proceeds down the subclass chain to the parent's class.
 At each stage,
 it writes the new value or the existing value to a new constraint record.
 It then calls the constraint set_values procedures from
-.ZN constraintWidgetClass
+.BR constraintWidgetClass
 down to the parent's class.
 The constraint set_values procedures are called with widget arguments,
 as for all set_values procedures, not just the constraint record arguments,
 so that they can make adjustments to the desired values based
 on full information about the widget.
 .LP
-.ZN XtSetValues
+.BR XtSetValues
 determines if a geometry request is needed by comparing the current widget to
 the new widget.
 If any geometry changes are required,
 it makes the request, and the geometry manager returns
-.ZN XtGeometryYes ,
-.ZN XtGeometryAlmost ,
+.BR XtGeometryYes ,
+.BR XtGeometryAlmost ,
 or
-.ZN XtGeometryNo .
+.BR XtGeometryNo .
 If
-.ZN XtGeometryYes ,
-.ZN XtSetValues
+.BR XtGeometryYes ,
+.BR XtSetValues
 calls the widget's resize procedure.
 If
-.ZN XtGeometryNo ,
-.ZN XtSetValues
+.BR XtGeometryNo ,
+.BR XtSetValues
 resets the geometry fields to their original values.
 If
-.ZN XtGeometryAlmost ,
-.ZN XtSetValues
+.BR XtGeometryAlmost ,
+.BR XtSetValues
 calls the set_values_almost procedure,
 which determines what should be done and writes new values for the
 geometry fields into the new widget.
-.ZN XtSetValues
+.BR XtSetValues
 then repeats this process,
 deciding once more whether the geometry manager should be called.
 .LP
 Finally, if any of the set_values procedures returned
-.ZN True ,
-.ZN XtSetValues
+.BR True ,
+.BR XtSetValues
 causes the widget's expose procedure to be invoked by calling the Xlib
-.ZN XClearArea
+.BR XClearArea
 function on the widget's window.
 .LP
 The
-.ZN XtSetSubvalues
+.BR XtSetSubvalues
 function stores resources into the structure identified by base.
 .LP
 The
-.ZN XtGetValues
+.BR XtGetValues
 function starts with the resources specified for the core widget fields
 and proceeds down the subclass chain to the widget.
 The value field of a passed argument list should contain the
@@ -186,11 +186,11 @@ to allocate and deallocate this storage according to the size of the
 resource representation type used within the widget.
 .LP
 If the widget's parent is a subclass of
-.ZN constraintWidgetClass ,
-.ZN XtGetValues
+.BR constraintWidgetClass ,
+.BR XtGetValues
 then fetches the values for any constraint resources requested.
 It starts with the constraint resources specified for
-.ZN constraintWidgetClass
+.BR constraintWidgetClass
 and proceeds down to the subclass chain to the parent's constraint resources.
 If the argument list contains a resource name that is not found in any of the
 resource lists searched,
@@ -199,12 +199,12 @@ the value at the corresponding address is not modified.
 Finally, if the get_values_hook procedures are non-NULL,
 they are called in superclass-to-subclass order after
 all the resource values have been fetched by
-.ZN XtGetValues .
+.BR XtGetValues .
 This permits a subclass to provide nonwidget resource data to
-.ZN XtGetValues .
+.BR XtGetValues .
 .LP
 The
-.ZN XtGetSubvalues
+.BR XtGetSubvalues
 function obtains resource values from the structure identified by base.
 .SH "SEE ALSO"
 .br

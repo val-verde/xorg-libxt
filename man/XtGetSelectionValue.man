@@ -95,30 +95,30 @@ Specifies the timestamp that indicates when the selection \*(Ti.
 Specifies the widget \*(Wi.
 .SH DESCRIPTION
 The
-.ZN XtGetSelectionValue
+.BR XtGetSelectionValue
 function requests the value of the selection that has been converted to
 the target type.
 The specified callback will be called some time after
-.ZN XtGetSelectionValue
+.BR XtGetSelectionValue
 is called;
 in fact, it may be called before or after
-.ZN XtGetSelectionValue
+.BR XtGetSelectionValue
 returns.
 .LP
 The
-.ZN XtGetSelectionValues
+.BR XtGetSelectionValues
 function is similar to
-.ZN XtGetSelectionValue
+.BR XtGetSelectionValue
 except that it takes a list of target types and a list of client data
 and obtains the current value of the selection converted to each of the targets.
 The effect is as if each target were specified in a separate call to
-.ZN XtGetSelectionValue .
+.BR XtGetSelectionValue .
 The callback is called once with the corresponding client data for each target.
-.ZN XtGetSelectionValues
+.BR XtGetSelectionValues
 does guarantee that all the conversions will use the same selection value
 because the ownership of the selection cannot change in the middle of the list,
 as would be when calling
-.ZN XtGetSelectionValue
+.BR XtGetSelectionValue
 repeatedly.
 .SH "SEE ALSO"
 XtAppGetSelectionTimeout(__libmansuffix__),

@@ -68,9 +68,9 @@ Specifies the action table to register.
 .IP \fInum_args\fP 1i
 Specifies the number of entries in this action table.
 .SH DESCRIPTION
-.ZN XtAddActions
+.BR XtAddActions
 has been replaced by
-.ZN XtAppAddActions .
+.BR XtAppAddActions .
 .SH "SEE ALSO"
 XtAppAddActions(__libmansuffix__)
 .br

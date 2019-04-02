@@ -76,15 +76,15 @@ Specifies the widget from which the search is to start.
 Specify the window for which you want the widget.
 .SH DESCRIPTION
 The
-.ZN XtNameToWidget
+.BR XtNameToWidget
 function looks for a widget whose name is the first component in the specified
 names and that is a pop-up child of reference (or a normal child if reference
 is a subclass of
-.ZN compositeWidgetClass ).
+.BR compositeWidgetClass ).
 It then uses that widget as the new reference and repeats the search
 after deleting the first component from the specified names.
 If it cannot find the specified widget,
-.ZN XtNameToWidget
+.BR XtNameToWidget
 returns NULL.
 .LP
 Note that the names argument contains the name of a widget with respect to the
@@ -93,20 +93,20 @@ specified reference widget and can contain more than one widget name
 of the specified reference widget.
 .LP
 If more than one child of the reference widget matches the name,
-.ZN XtNameToWidget
+.BR XtNameToWidget
 can return any of the children.
 The \*(xI do not require that all children of a widget have unique names.
 If the specified names contain more than one component
 and if more than one child matches the first component,
-.ZN XtNameToWidget
+.BR XtNameToWidget
 can return NULL if the single branch that it follows does not
 contain the named widget.
 That is,
-.ZN XtNameToWidget
+.BR XtNameToWidget
 does not back up and follow other matching branches of the widget tree.
 .LP
 The
-.ZN XtWindowToWidget
+.BR XtWindowToWidget
 function translates the specified window and display pointer into the
 appropriate widget instance.
 .SH "SEE ALSO"

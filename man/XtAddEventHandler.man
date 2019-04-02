@@ -94,14 +94,14 @@ Specifies the event mask for which \*(Em.
 .IP \fInonmaskable\fP 1i
 Specifies a Boolean value that indicates whether this procedure should be
 \*(Nm on the nonmaskable events ( 
-.ZN GraphicsExpose ,
-.ZN NoExpose ,
-.ZN SelectionClear ,
-.ZN SelectionRequest ,
-.ZN SelectionNotify ,
-.ZN ClientMessage ,
+.BR GraphicsExpose ,
+.BR NoExpose ,
+.BR SelectionClear ,
+.BR SelectionRequest ,
+.BR SelectionNotify ,
+.BR ClientMessage ,
 and
-.ZN MappingNotify ).
+.BR MappingNotify ).
 .ds Pr \ to be added or removed
 .IP \fIproc\fP 1i
 Specifies the procedure that is\*(Pr.
@@ -113,54 +113,54 @@ Specifies when the event handler is to be called relative to other
 previously registered handlers.
 .SH DESCRIPTION
 The
-.ZN XtAddEventHandler
+.BR XtAddEventHandler
 function registers a procedure with the dispatch mechanism that is
 to be called when an event that matches the mask occurs on the specified
 widget.
 If the procedure is already registered with the same client_data,
 the specified mask is ORed into the existing mask.
 If the widget is realized,
-.ZN XtAddEventHandler
+.BR XtAddEventHandler
 calls
-.ZN XSelectInput ,
+.BR XSelectInput ,
 if necessary.
 .LP
 The
-.ZN XtAddRawEventHandler
+.BR XtAddRawEventHandler
 function is similar to
-.ZN XtAddEventHandler
+.BR XtAddEventHandler
 except that it does not affect the widget's mask and never causes an
-.ZN XSelectInput
+.BR XSelectInput
 for its events.
 Note that the widget might already have those mask bits set
 because of other nonraw event handlers registered on it.
 .LP
 The
-.ZN XtRemoveRawEventHandler
+.BR XtRemoveRawEventHandler
 function stops the specified procedure from receiving the specified events.
 Because the procedure is a raw event handler,
 this does not affect the widget's mask and never causes a call on
-.ZN XSelectInput .
+.BR XSelectInput .
 .LP
-.ZN XtInsertEventHandler
+.BR XtInsertEventHandler
 is identical to
-.ZN XtAddEventHandler
+.BR XtAddEventHandler
 with the additional \fIposition\fP argument. if \fIposition\fP is
-.ZN XtListHead ,
+.BR XtListHead ,
 the event handler is registered to that it will be called before
 any event handlers that were previously registered for the same widget.
 If \fIposition\fP is
-.ZN XtListTail ,
+.BR XtListTail ,
 the event handler is registered to be called after any previously
 registered event handlers. If the procedure is already registered with
 the same \fIclient_data\fP value, the specified mask augments the
 existing mask and the procedure is repositioned in the list.
 .LP
-.ZN XtInsertRawEventHandler
+.BR XtInsertRawEventHandler
 is similar to
-.ZN XtInsertEventHandler
+.BR XtInsertEventHandler
 except that it does not modify the widget's event mask and never causes an
-.ZN XSelectInput
+.BR XSelectInput
 for the specified events. If the procedure is already registered with the
 same \fIclient_data\fP value, the specified mask augments the existing
 mask and the procedure is repositioned in the list.

@@ -72,7 +72,7 @@ context.
 Returns the count of open X display connections in \fIdpy_return\fP.
 .SH DESCRIPTION
 To free the list of displays, use
-.ZN XtFree .
+.BR XtFree .
 .SH "SEE ALSO"
 .br
 \fI\*(xT\fP

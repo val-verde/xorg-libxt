@@ -77,28 +77,28 @@ Specifies the application context.
 Specifies the widget.
 .SH DESCRIPTION
 The
-.ZN XtCreateApplicationContext
+.BR XtCreateApplicationContext
 function returns an application context,
 which is an opaque type.
 Every application must have at least one application context.
 .LP
 The
-.ZN XtDestroyApplicationContext
+.BR XtDestroyApplicationContext
 function destroys the specified application context as soon as it is safe
 to do so.
 If called from with an event dispatch (for example, a callback procedure),
-.ZN XtDestroyApplicationContext
+.BR XtDestroyApplicationContext
 does not destroy the application context until the dispatch is complete.
 .LP
 The
-.ZN XtWidgetToApplicationContext
+.BR XtWidgetToApplicationContext
 function returns the application context for the specified widget.
 .LP
 The
-.ZN XtToolkitInitialize
+.BR XtToolkitInitialize
 function initializes the Intrinsics internals.
 If
-.ZN XtToolkitInitialize
+.BR XtToolkitInitialize
 was previously called it returns immediately.
 .LP
 .SH "SEE ALSO"

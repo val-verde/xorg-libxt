@@ -67,16 +67,16 @@ EventMask XtBuildEventMask(Widget \fIw\fP);
 Specifies the widget.
 .SH DESCRIPTION
 The
-.ZN XtBuildEventMask
+.BR XtBuildEventMask
 function returns the event mask representing the logical OR
 of all event masks for event handlers registered on the widget with
-.ZN XtAddEventHandler
+.BR XtAddEventHandler
 and all event translations, including accelerators,
 installed on the widget.
 This is the same event mask stored into the
-.ZN XSetWindowAttributes
+.BR XSetWindowAttributes
 structure by
-.ZN XtRealizeWidget
+.BR XtRealizeWidget
 and sent to the server when event handlers and translations are installed or
 removed on the realized widget.
 .SH "SEE ALSO"

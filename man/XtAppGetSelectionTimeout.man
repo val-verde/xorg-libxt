@@ -72,19 +72,19 @@ Specifies the application context.
 Specifies the selection timeout in milliseconds.
 .SH DESCRIPTION
 The
-.ZN XtAppGetSelectionTimeout
+.BR XtAppGetSelectionTimeout
 function returns the current selection timeout value, in milliseconds.
 The selection timeout is the time within which the two communicating
 applications must respond to one another.
 The initial timeout value is set by the
-.ZN selectionTimeout
+.BR selectionTimeout
 application resource, or, if
-.ZN selectionTimeout
+.BR selectionTimeout
 is not specified,
 it defaults to five seconds.
 .LP
 The
-.ZN XtAppSetSelectionTimeout
+.BR XtAppSetSelectionTimeout
 function sets the \*(xI's selection timeout mechanism.
 Note that most applications should not set the selection timeout.
 .SH "SEE ALSO"

@@ -72,7 +72,7 @@ Specifies the action table to register.
 Specifies the number of entries in this action table.
 .SH DESCRIPTION
 The
-.ZN XtAppAddActions
+.BR XtAppAddActions
 function adds the specified action table and registers it with the
 translation manager.
 .SH "SEE ALSO"

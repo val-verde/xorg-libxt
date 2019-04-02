@@ -89,58 +89,58 @@ and the destroy callback list.
 Specifies the display with which the conversion is to be associated.
 .SH DESCRIPTION
 The
-.ZN XtConvertAndStore
+.BR XtConvertAndStore
 function looks up the type converter registered to convert from_type
 to to_type, computes any additional arguments needed, and then calls
-.ZN XtCallConverter .
+.BR XtCallConverter .
 (or
-.ZN XtDirectConvert
+.BR XtDirectConvert
 if an old-style converter was registered with
-.ZN XtAddConverter
+.BR XtAddConverter
 or
-.ZN XtAppAddConverter .
+.BR XtAppAddConverter .
 ) with the from and to_in_out arguments.
 .LP
 The
-.ZN XtCallConverter
+.BR XtCallConverter
 function looks up the specified type converter in the application
 context associated with the display and, if the converter was not
 registered or was registered with cache type
-.ZN XtCacheAll
+.BR XtCacheAll
 or
-.ZN XtCacheByDisplay
+.BR XtCacheByDisplay
 looks in the conversion cache to see if this conversion procedure
 has been called with the specified conversion arguments. If so, it
 checks the success status of the prior call, and if the conversion
 failed,
-.ZN XtCallConverter
+.BR XtCallConverter
 returns
-.ZN False
+.BR False
 immediately; otherwise it checks the size specified in the \fIto\fP
 argument and, if it is greater than or equal to the size stored in the
 cache, copies the information stored in the cache into the location
 specified by \fIto->addr\fP, stores the cache size into \fIto->size\fP,
 and returns
-.ZN True .
+.BR True .
 If the size specified in the \fIto\fP argument is smaller than the size
 stored in the cache,
-.ZN XtCallConverter
+.BR XtCallConverter
 copies the cache size into the \fIto->size\fP and returns
-.ZN False .
+.BR False .
 If the converter was registered with cache type
-.ZN XtCacheNone
+.BR XtCacheNone
 or no value was found in the conversion cache,
-.ZN XtCallConverter
+.BR XtCallConverter
 calls the converter and, if it was not registered with cache type
-.ZN XtCacheNone ,
+.BR XtCacheNone ,
 enters the result into the cache.
-.ZN XtCallConverter
+.BR XtCallConverter
 then returns what the converter returned.
 .LP
 The \fIcache_ref_return\fP field specifies storage allocated by the
 caller in which an opaque value will be stored. If the type converter
 has been registered with the
-.ZN XtCacheRefCount
+.BR XtCacheRefCount
 modifier and if the value returned in in \fIcache_ref_return\fP is
 non-NULL, then the call should store the \fIcache_ref_return\fP value
 in order to decrement the reference count when the converted value

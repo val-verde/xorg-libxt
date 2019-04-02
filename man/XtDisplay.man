@@ -78,22 +78,22 @@ Specifies the widget.
 .IP \fIobject\fP 1i
 Specifies the widget.
 .SH DESCRIPTION
-.ZN XtDisplay
+.BR XtDisplay
 returns the display pointer for the specified widget.
 .LP
-.ZN XtDisplayOfObject
+.BR XtDisplayOfObject
 returns the display pointer for the specified object.
 .LP
-.ZN XtScreen
+.BR XtScreen
 returns the screen pointer for the specified widget.
 .LP
-.ZN XtScreenOfObject
+.BR XtScreenOfObject
 returns the screen pointer for the specified object.
 .LP
-.ZN XtWindow
+.BR XtWindow
 returns the window of the specified widget.
 .LP
-.ZN XtWindowOfObject
+.BR XtWindowOfObject
 returns the window of the specified object.
 .SH "SEE ALSO"
 .br

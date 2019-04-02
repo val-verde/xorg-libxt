@@ -82,17 +82,17 @@ Specifies the procedure that is to be called when input is available.
 Specifies the source file descriptor on a UNIX-based system
 or other operating system dependent device specification.
 .SH DESCRIPTION
-.ZN XtAddInput
+.BR XtAddInput
 has been replaced by
-.ZN XtAppAddInput.
+.BR XtAppAddInput.
 .LP
-.ZN XtAddTimeOut
+.BR XtAddTimeOut
 has been replaced by
-.ZN XtAppAddTimeOut.
+.BR XtAppAddTimeOut.
 .LP
-.ZN XtAddWorkProc
+.BR XtAddWorkProc
 has been replaced by
-.ZN XtAppAddWorkProc .
+.BR XtAppAddWorkProc .
 .SH "SEE ALSO"
 XtAppAddInput(__libmansuffix__), XtAppAddTimeOut(__libmansuffix__), XtAppAddWorkProc(__libmansuffix__)
 .br

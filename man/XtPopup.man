@@ -90,34 +90,34 @@ Specifies the widget shell.
 Specifies the widget.
 .SH DESCRIPTION
 The
-.ZN XtPopup
+.BR XtPopup
 function performs the following:
 .IP \(bu 5
 Calls
-.ZN XtCheckSubclass
+.BR XtCheckSubclass
 .\".ZN XtCheckSubclass(popup_shell, popupShellWidgetClass)
 to ensure popup_shell is a subclass of
-.ZN Shell .
+.BR Shell .
 .IP \(bu 5
 Generates an error if the shell's popped_up field is already
-.ZN True .
+.BR True .
 .IP \(bu 5
 Calls the callback procedures on the shell's popup_callback list.
 .IP \(bu 5
 Sets the shell popped_up field to
-.ZN True ,
+.BR True ,
 the shell spring_loaded field to
-.ZN False ,
+.BR False ,
 and the shell grab_kind field from grab_kind.
 .IP \(bu 5
 If the shell's create_popup_child field is non-NULL,
-.ZN XtPopup
+.BR XtPopup
 calls it with popup_shell as the parameter.
 .IP \(bu 5
 If grab_kind is either
-.ZN XtGrabNonexclusive
+.BR XtGrabNonexclusive
 or
-.ZN XtGrabExclusive ,
+.BR XtGrabExclusive ,
 it calls:
 .LP
 .Ds
@@ -125,99 +125,99 @@ XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), False)
 .De
 .IP \(bu 5
 Calls
-.ZN XtRealizeWidget
+.BR XtRealizeWidget
 with popup_shell specified.
 .IP \(bu 5
 Calls
-.ZN XMapWindow
+.BR XMapWindow
 with popup_shell specified.
 .LP
 The
-.ZN XtPopupSpringLoaded
+.BR XtPopupSpringLoaded
 function performs exactly as
-.ZN XtPopup
+.BR XtPopup
 except that it sets the shell \fIspring_loaded\fP field to
-.ZN True
+.BR True
 and always calls
-.ZN XtAddGrab
+.BR XtAddGrab
 with \fIexclusive\fP
-.ZN True
+.BR True
 and \fIspring_loaded\fP
-.ZN True .
+.BR True .
 .LP
 The
-.ZN XtCallbackNone ,
-.ZN XtCallbackNonexclusive ,
+.BR XtCallbackNone ,
+.BR XtCallbackNonexclusive ,
 and
-.ZN XtCallbackExclusive
+.BR XtCallbackExclusive
 functions call
-.ZN XtPopup
+.BR XtPopup
 with the shell specified by the client data argument
 and grab_kind set as the name specifies.
-.ZN XtCallbackNone ,
-.ZN XtCallbackNonexclusive ,
+.BR XtCallbackNone ,
+.BR XtCallbackNonexclusive ,
 and
-.ZN XtCallbackExclusive
+.BR XtCallbackExclusive
 specify
-.ZN XtGrabNone ,
-.ZN XtGrabNonexclusive ,
+.BR XtGrabNone ,
+.BR XtGrabNonexclusive ,
 and
-.ZN XtGrabExclusive ,
+.BR XtGrabExclusive ,
 respectively.
 Each function then sets the widget that executed the callback list
 to be insensitive by using
-.ZN XtSetSensitive .
+.BR XtSetSensitive .
 Using these functions in callbacks is not required.
 In particular,
 an application must provide customized code for
 callbacks that create pop-up shells dynamically or that must do more than
 desensitizing the button.
 .LP
-.ZN MenuPopup
+.BR MenuPopup
 is known to the translation manager,
 which must perform special actions for spring-loaded pop-ups.
 Calls to
-.ZN MenuPopup
+.BR MenuPopup
 in a translation specification are mapped into calls to a
 nonexported action procedure,
 and the translation manager fills in parameters
 based on the event specified on the left-hand side of a translation.
 .LP
 If
-.ZN MenuPopup
+.BR MenuPopup
 is invoked on
-.ZN ButtonPress
+.BR ButtonPress
 (possibly with modifiers),
 the translation manager pops up the shell with grab_kind set to
-.ZN XtGrabExclusive
+.BR XtGrabExclusive
 and spring_loaded set to
-.ZN True .
+.BR True .
 If
-.ZN MenuPopup
+.BR MenuPopup
 is invoked on
-.ZN EnterWindow
+.BR EnterWindow
 (possibly with modifiers),
 the translation manager pops up the shell with grab_kind set to
-.ZN XtGrabNonexclusive
+.BR XtGrabNonexclusive
 and spring_loaded set to
-.ZN False .
+.BR False .
 Otherwise, the translation manager generates an error.
 When the widget is popped up,
 the following actions occur:
 .IP \(bu 5
 Calls
-.ZN XtCheckSubclass
+.BR XtCheckSubclass
 .\".ZN XtCheckSubclass(popup_shell, popupShellWidgetClass)
 to ensure popup_shell is a subclass of
-.ZN Shell .
+.BR Shell .
 .IP \(bu 5
 Generates an error if the shell's popped_up field is already
-.ZN True .
+.BR True .
 .IP \(bu 5
 Calls the callback procedures on the shell's popup_callback list.
 .IP \(bu 5
 Sets the shell popped_up field to
-.ZN True
+.BR True
 and the shell grab_kind and spring_loaded fields appropriately.
 .IP \(bu 5
 If the shell's create_popup_child field is non-NULL,
@@ -230,23 +230,23 @@ XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), spring_loaded)
 .De
 .IP \(bu 5
 Calls
-.ZN XtRealizeWidget
+.BR XtRealizeWidget
 with popup_shell specified.
 .IP \(bu 5
 Calls
-.ZN XMapWindow
+.BR XMapWindow
 with popup_shell specified.
 .LP
 (Note that these actions are the same as those for
-.ZN XtPopup .)
-.ZN MenuPopup
+.BR XtPopup .)
+.BR MenuPopup
 tries to find the shell by searching the widget tree starting at
 the parent of the widget in which it is invoked.
 If it finds a shell with the specified name in the pop-up children of
 that parent, it pops up the shell with the appropriate parameters.
 Otherwise, it moves up the parent chain as needed.
 If
-.ZN MenuPopup
+.BR MenuPopup
 gets to the application widget and cannot find a matching shell,
 it generates an error.
 .SH "SEE ALSO"

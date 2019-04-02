@@ -108,63 +108,63 @@ Specifies the widget class.
 Specifies the message that is to be \*(Me.
 .SH DESCRIPTION
 The
-.ZN XtClass
+.BR XtClass
 function returns a pointer to the widget's class structure.
 .LP
 The
-.ZN XtSuperclass
+.BR XtSuperclass
 function returns a pointer to the widget's superclass class structure.
 .LP
 The
-.ZN XtIsSubclass
+.BR XtIsSubclass
 function returns
-.ZN True
+.BR True
 if the class of the specified widget is equal to or is a subclass of
 the specified class. The widget's class can be any number of subclasses
 down the chain and need not be an immediate subclass of the specified
 class. Composite widgets that need to restrict the class of the items
 they contain can use
-.ZN XtIsSubclass
+.BR XtIsSubclass
 to find out if a widget belongs to the desired class of objects.
 .LP
 The
-.ZN XtCheckSubclass
+.BR XtCheckSubclass
 macro determines if the class of the specified widget is equal to
 or is a subclass of the specified widget class.
 The widget can be any number of subclasses down the chain
 and need not be an immediate subclass of the specified widget class.
 If the specified widget is not a subclass,
-.ZN XtCheckSubclass
+.BR XtCheckSubclass
 constructs an error message from the supplied message,
 the widget's actual class, and the expected class and calls
-.ZN XtErrorMsg .
-.ZN XtCheckSubclass
+.BR XtErrorMsg .
+.BR XtCheckSubclass
 should be used at the entry point of exported routines to ensure
 that the client has passed in a valid widget class for the exported operation.
 .LP
-.ZN XtCheckSubclass
+.BR XtCheckSubclass
 is only executed when the widget has been compiled with the compiler symbol
 DEBUG defined; otherwise, it is defined as the empty string
 and generates no code.
 .LP
 To test if a given widget belongs to a subclass of an Intrinsics-defined
 class, the Intrinsics defines macros or functions equivalent to
-.ZN XtIsSubclass
+.BR XtIsSubclass
 for each of the built-in classes. These procedures are
-.ZN XtIsObject ,
-.ZN XtIsRectObj ,
-.ZN XtIsWidget ,
-.ZN XtIsComposite ,
-.ZN XtIsConstraint ,
-.ZN XtIsShell ,
-.ZN XtIsOverrideShell ,
-.ZN XtIsWMShell ,
-.ZN XtIsVendorShell ,
-.ZN XtIsTransientShell ,
-.ZN XtIsTopLevelShell ,
-.ZN XtIsApplicationShell ,
+.BR XtIsObject ,
+.BR XtIsRectObj ,
+.BR XtIsWidget ,
+.BR XtIsComposite ,
+.BR XtIsConstraint ,
+.BR XtIsShell ,
+.BR XtIsOverrideShell ,
+.BR XtIsWMShell ,
+.BR XtIsVendorShell ,
+.BR XtIsTransientShell ,
+.BR XtIsTopLevelShell ,
+.BR XtIsApplicationShell ,
 and
-.ZN XtIsSessionShell .
+.BR XtIsSessionShell .
 .LP
 The
 .SH "SEE ALSO"

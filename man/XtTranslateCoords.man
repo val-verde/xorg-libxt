@@ -79,9 +79,9 @@ Specify the \*(Nu x and y coordinates.
 Specifies the widget.
 .SH DESCRIPTION
 While
-.ZN XtTranslateCoords
+.BR XtTranslateCoords
 is similar to the Xlib
-.ZN XTranslateCoordinates
+.BR XTranslateCoordinates
 function, it does not generate a server request because all the required
 information already is in the widget's data structures.
 .SH "SEE ALSO"

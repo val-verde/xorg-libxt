@@ -64,10 +64,10 @@ void XtProcessLock(void);
 .HP
 void XtProcessUnlock(void);
 .SH DESCRIPTION
-.ZN XtProcessLock
+.BR XtProcessLock
 is used to lock all process global data.
 .LP
-.ZN XtProcessUnlock
+.BR XtProcessUnlock
 unlocks the process.
 .SH "SEE ALSO"
 .br

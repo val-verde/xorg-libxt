@@ -86,10 +86,10 @@ lost selection ownership or NULL if the owner is not interested in being
 called back.
 .IP \fIselection\fP 1i
 Specifies an atom that describes the type of the selection (for example,
-.ZN XA_PRIMARY ,
-.ZN XA_SECONDARY ,
+.BR XA_PRIMARY ,
+.BR XA_SECONDARY ,
 or
-.ZN XA_CLIPBOARD ).
+.BR XA_CLIPBOARD ).
 .ds Ti ownership should commence or is to be relinquished
 .IP \fItime\fP 1i
 Specifies the timestamp that indicates when the selection \*(Ti.
@@ -98,13 +98,13 @@ Specifies the timestamp that indicates when the selection \*(Ti.
 Specifies the widget \*(Wi.
 .SH DESCRIPTION
 The
-.ZN XtOwnSelection
+.BR XtOwnSelection
 function informs the \*(xI selection mechanism that a
 widget believes it owns a selection.
 It returns
-.ZN True
+.BR True
 if the widget has successfully become the owner and
-.ZN False
+.BR False
 otherwise.
 The widget may fail to become the owner if some other widget
 has asserted ownership at a time later than this widget.
@@ -115,41 +115,41 @@ Also note that the lose_selection procedure is not called
 if the widget fails to obtain selection ownership in the first place.
 .LP
 The
-.ZN XtOwnSelectionIncremental
+.BR XtOwnSelectionIncremental
 procedure informs the Intrinsics incremental selection mechanism that
 the specified widget wishes to own the selection. It returns
-.ZN True
+.BR True
 if the specified widget successfully becomes the selection owner or
-.ZN False
+.BR False
 otherwise. For more information about \fIselection\fP, \fItarget\fP,
 and \fItime\fP, see Section 2.6 of the \fIInter-Client Communication
 Conventions Manual\fP.
 .LP
 A widget that becomes the selection owner using
-.ZN XtOwnSelectionIncremental
+.BR XtOwnSelectionIncremental
 may use
-.ZN XtDisownSelection
+.BR XtDisownSelection
 to relinquish selection ownership.
 .LP
 The
-.ZN XtDisownSelection
+.BR XtDisownSelection
 function informs the \*(xI selection mechanism that
 the specified widget is to lose ownership of the selection.
 If the widget does not currently own the selection either
 because it lost the selection
 or because it never had the selection to begin with,
-.ZN XtDisownSelection
+.BR XtDisownSelection
 does nothing.
 .LP
 After a widget has called
-.ZN XtDisownSelection ,
+.BR XtDisownSelection ,
 its convert procedure is not called even if a request arrives later
 with a timestamp during the period that this widget owned the selection.
 However, its done procedure will be called if a conversion that started
 before the call to
-.ZN XtDisownSelection
+.BR XtDisownSelection
 finishes after the call to
-.ZN XtDisownSelection .
+.BR XtDisownSelection .
 .SH "SEE ALSO"
 XtAppGetSelectionTimeout(__libmansuffix__),
 XtGetSelectionValue(__libmansuffix__)

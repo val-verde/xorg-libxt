@@ -76,22 +76,22 @@ Specifies a type that is declared as a pointer to the structure.
 Specifies a type that is declared as a structure.
 .SH DESCRIPTION
 The
-.ZN XtOffset
+.BR XtOffset
 macro is usually used to determine the offset of various resource fields
 from the beginning of a widget and can be used at compile time in static
 initializations.
 .LP
 The
-.ZN XtOffsetOf
+.BR XtOffsetOf
 macro expands to a constant expression that gives the offset in bytes
 to the specified structure member from the beginning of the structure.
 It is normally used to statically initialize resource lists and is more
 portable than
-.ZN XtOffset ,
+.BR XtOffset ,
 which serves the same function.
 .LP
 The
-.ZN XtNumber
+.BR XtNumber
 macro returns the number of elements in the specified argument lists,
 resources lists, and other counted arrays.
 .SH "SEE ALSO"

@@ -88,29 +88,29 @@ Returns the converted value.
 Specifies the widget \*(Wi.
 .SH DESCRIPTION
 The
-.ZN XtConvert
+.BR XtConvert
 function looks up the type converter registered to convert from_type
 to to_type, computes any additional arguments needed, and then calls
-.ZN XtDirectConvert .
-.ZN XtConvert
+.BR XtDirectConvert .
+.BR XtConvert
 has been replaced by
-.ZN XtConvertAndStore .
+.BR XtConvertAndStore .
 .LP
 The
-.ZN XtDirectConvert
+.BR XtDirectConvert
 function looks in the converter cache to see if this conversion procedure
 has been called with the specified arguments.
 If so, it returns a descriptor for information stored in the cache;
 otherwise, it calls the converter and enters the result in the cache.
 .LP
 Before calling the specified converter,
-.ZN XtDirectConvert
+.BR XtDirectConvert
 sets the return value size to zero and the return value address to NULL.
 To determine if the conversion was successful,
 the client should check to_return.address for non-NULL.
-.ZN XtDirectConvert
+.BR XtDirectConvert
 has been replaced by
-.ZN XtCallConverter .
+.BR XtCallConverter .
 .SH "SEE ALSO"
 XtAppAddConverter(__libmansuffix__),
 XtStringConversionWarning(__libmansuffix__),

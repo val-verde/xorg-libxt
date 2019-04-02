@@ -72,15 +72,15 @@ Specifies the argument list to override any other resource specifications.
 Specifies the number of arguments in the argument list.
 .SH DESCRIPTION
 The procedure
-.ZN XtCreateApplicationShell
+.BR XtCreateApplicationShell
 calls
-.ZN XtAppCreateShell
+.BR XtAppCreateShell
 with the \fIapplication\fP NULL, the application class passed to
-.ZN XtInitialize ,
+.BR XtInitialize ,
 and the default application context created by
-.ZN XtInitialize .
+.BR XtInitialize .
 This routine has been replaced by
-.ZN XtAppCreateShell .
+.BR XtAppCreateShell .
 .SH "SEE ALSO"
 XtAppCreateShell(__libmansuffix__)
 .br

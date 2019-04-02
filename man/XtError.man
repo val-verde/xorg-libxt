@@ -79,24 +79,24 @@ Specifies the new \*(Ha.
 Specifies the message that is to be \*(Me.
 .SH DESCRIPTION
 The
-.ZN XtError
+.BR XtError
 function has been superceded by
-.ZN XtAppError .
+.BR XtAppError .
 .LP
 The
-.ZN XtSetErrorHandler
+.BR XtSetErrorHandler
 function has been superceded by
-.ZN XtAppSetErrorHandler .
+.BR XtAppSetErrorHandler .
 .LP
 The
-.ZN XtSetWarningHandler
+.BR XtSetWarningHandler
 function has been superceded by
-.ZN XtAppSetWarningHandler .
+.BR XtAppSetWarningHandler .
 .LP
 The
-.ZN XtWarning
+.BR XtWarning
 function has been superceded by
-.ZN XtAppWarning .
+.BR XtAppWarning .
 .SH "SEE ALSO"
 .BR XtAppError (__libmansuffix__)
 .br

@@ -72,7 +72,7 @@ Specifies the class name of this application\*(Ac.
 .IP \fIoptions\fP 1i
 Specifies how to parse the command line for any application-specific resources.
 The options argument is passed as a parameter to
-.ZN XrmParseCommand .
+.BR XrmParseCommand .
 For further information,
 see \fI\*(xL\fP.
 .IP \fInum_options\fP 1i
@@ -82,21 +82,21 @@ Specifies a pointer to the number of command line parameters.
 .IP \fIargv\fP 1i
 Specifies the command line parameters.
 .SH DESCRIPTION
-.ZN XtInitialize
+.BR XtInitialize
 calls
-.ZN XtToolkitInitialize
+.BR XtToolkitInitialize
 followed by
-.ZN XtOpenDisplay
+.BR XtOpenDisplay
 with \fIdisplay_string\fP NULL and \fIapplication_name\fP NULL, and
 finally calls
-.ZN XtAppCreateShell
+.BR XtAppCreateShell
 with \fIapplication_name\fP NULL, \fIwidget_class\fP
-.ZN applicationShellWidgetClass ,
+.BR applicationShellWidgetClass ,
 and the specified \fIargs\fP and \fInum_args\fP and returns the
 created shell. The semantics of calling
-.ZN XtInitialize
+.BR XtInitialize
 more than once are undefined. This routine has been replaced by
-.ZN XtAppInitialize .
+.BR XtAppInitialize .
 .SH "SEE ALSO"
 .BR XtAppInitialize (__libmansuffix__)
 .br

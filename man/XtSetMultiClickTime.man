@@ -69,11 +69,11 @@ Specifies the display connection.
 .IP \fItime\fP 1i
 Specifies the multi-click time in milliseconds.
 .SH DESCRIPTION
-.ZN XtSetMultiClickTime
+.BR XtSetMultiClickTime
 sets the time interval used by the translation manager to determine
 when multiple events are interpreted as a repeated event.
 .LP
-.ZN XtGetMultiClickTime
+.BR XtGetMultiClickTime
 returns the time in milliseconds that the translation manager uses to
 determine if multiple events are to be interpreted as a repeated event
 for purposes of matching a translation entry containing a repeat count.

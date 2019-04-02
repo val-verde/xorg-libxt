@@ -77,19 +77,19 @@ the child's parent sets any changes
 that it intends to make to the child's geometry in the corresponding fields of
 the intended structure, sets the corresponding bits in intended.request_mode,
 and calls
-.ZN XtQueryGeometry .
+.BR XtQueryGeometry .
 .LP
-.ZN XtQueryGeometry
+.BR XtQueryGeometry
 clears all bits in the preferred_return->request_mode and checks the
 query_geometry field of the specified widget's class record.
 If query_geometry is not NULL,
-.ZN XtQueryGeometry
+.BR XtQueryGeometry
 calls the query_geometry procedure and passes as arguments the
 specified widget, intended, and preferred_return structures.
 If the intended argument is NULL,
-.ZN XtQueryGeometry
+.BR XtQueryGeometry
 replaces it with a pointer to an
-.ZN XtWidgetGeometry
+.BR XtWidgetGeometry
 structure with request_mode=0 before calling query_geometry.
 .SH "SEE ALSO"
 XtConfigureWidget(__libmansuffix__),

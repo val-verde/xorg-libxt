@@ -67,10 +67,10 @@ void XtAppUnlock(XtAppContext \fIapp_context\fP);
 .IP \fIapp_context\fP 1i
 Specifies the application context.
 .SH DESCRIPTION
-.ZN XtAppLock
+.BR XtAppLock
 locks the application context including all its related displays and widgets.
 .LP
-.ZN XtAppUnlock
+.BR XtAppUnlock
 unlocks the application context.
 .SH "SEE ALSO"
 .br

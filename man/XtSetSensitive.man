@@ -72,47 +72,47 @@ keyboard and pointer events.
 Specifies the widget.
 .SH DESCRIPTION
 The
-.ZN XtSetSensitive
+.BR XtSetSensitive
 function first calls
-.ZN XtSetValues
+.BR XtSetValues
 on the current widget with an argument list specifying that the
 sensitive field should change to the new value.
 It then recursively propagates the new value
 down the managed children tree by calling
-.ZN XtSetValues
+.BR XtSetValues
 on each child to set the ancestor_sensitive to the new value if the new
 values for sensitive and the child's ancestor_sensitive are not the same.
 .LP
-.ZN XtSetSensitive
+.BR XtSetSensitive
 calls
-.ZN XtSetValues
+.BR XtSetValues
 to change sensitive and ancestor_sensitive.
 Therefore, when one of these changes,
 the widget's set_values procedure should
 take whatever display actions are needed
 (for example, greying out or stippling the widget).
 .LP
-.ZN XtSetSensitive
+.BR XtSetSensitive
 maintains the invariant that if parent has either sensitive
 or ancestor_sensitive
-.ZN False ,
+.BR False ,
 then all children have ancestor_sensitive
-.ZN False .
+.BR False .
 .LP
 The
-.ZN XtIsSensitive
+.BR XtIsSensitive
 function returns
-.ZN True
+.BR True
 or
-.ZN False
+.BR False
 to indicate whether or not user input events are being dispatched.
 If both core.sensitive and core.ancestor_sensitive are
-.ZN True ,
-.ZN XtIsSensitive
+.BR True ,
+.BR XtIsSensitive
 returns
-.ZN True ;
+.BR True ;
 otherwise, it returns
-.ZN False .
+.BR False .
 .SH "SEE ALSO"
 .br
 \fI\*(xT\fP

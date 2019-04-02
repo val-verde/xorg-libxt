@@ -85,21 +85,21 @@ Specifies the new \*(Ha.
 Specifies the message that is to be \*(Me.
 .SH DESCRIPTION
 The
-.ZN XtAppError
+.BR XtAppError
 function calls the installed error procedure and passes the specified message.
 .LP
 The
-.ZN XtAppSetErrorHandler
+.BR XtAppSetErrorHandler
 function registers the specified procedure,
 which is called when a fatal error condition occurs.
 .LP
 The
-.ZN XtAppSetWarningHandler
+.BR XtAppSetWarningHandler
 registers the specified procedure,
 which is called when a nonfatal error condition occurs.
 .LP
 The
-.ZN XtAppWarning
+.BR XtAppWarning
 function calls the installed nonfatal error procedure and passes the
 specified message.
 .SH "SEE ALSO"

@@ -75,7 +75,7 @@ Specifies the contents of the \fIparams\fP passed to the action routine.
 .IP \fInum_params\fP 1i
 Specifies the num of entries in \fIparams\fP.
 .SH DESCRIPTION
-.ZN XtCallActionProc
+.BR XtCallActionProc
 searches for the named action routine in the same manner and order as
 translation tables are bound. If found, the action routine is invoked
 with the specified widget, event pointer, and parameters. It is the
@@ -83,7 +83,7 @@ responsibility of the caller to ensure that the contents of \fIevent\fP,
 \fIparams\fP, and \fInum_params\fP arguments are appropriate for the
 specified routine, and if necessary, that the specified widget is
 realized or sensitive. If the named action routine cannot be found,
-.ZN XtCallActionProc
+.BR XtCallActionProc
 generates a warning message and returns.
 .SH "SEE ALSO"
 .br

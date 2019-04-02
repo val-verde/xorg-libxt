@@ -89,51 +89,51 @@ Specifies the widget.
 Specify the \*(Nu x and y coordinates.
 .SH DESCRIPTION
 The
-.ZN XtConfigureWidget
+.BR XtConfigureWidget
 function returns immediately if the specified geometry fields
 are the same as the old values.
 Otherwise,
-.ZN XtConfigureWidget
+.BR XtConfigureWidget
 writes the new x, y, width, height, and border_width values
 into the widget and, if the widget is realized, makes an Xlib
-.ZN XConfigureWindow
+.BR XConfigureWindow
 call on the widget's window.
 .LP
 If either the new width or height is different from its old value,
-.ZN XtConfigureWidget
+.BR XtConfigureWidget
 calls the widget's resize procedure to notify it of the size change;
 otherwise, it simply returns.
 .LP
 The
-.ZN XtMoveWidget
+.BR XtMoveWidget
 function returns immediately if the specified geometry fields
 are the same as the old values.
 Otherwise,
-.ZN XtMoveWidget
+.BR XtMoveWidget
 writes the new x and y values into the widget
 and, if the widget is realized, issues an Xlib
-.ZN XMoveWindow
+.BR XMoveWindow
 call on the widget's window.
 .LP
 The
-.ZN XtResizeWidget
+.BR XtResizeWidget
 function returns immediately if the specified geometry fields
 are the same as the old values.
 Otherwise,
-.ZN XtResizeWidget
+.BR XtResizeWidget
 writes the new width, height, and border_width values into
 the widget and, if the widget is realized, issues an
-.ZN XConfigureWindow
+.BR XConfigureWindow
 call on the widget's window.
 .LP
 If the new width or height are different from the old values,
-.ZN XtResizeWidget
+.BR XtResizeWidget
 calls the widget's resize procedure to notify it of the size change.
 .LP
 The
-.ZN XtResizeWindow
+.BR XtResizeWindow
 function calls the
-.ZN XConfigureWindow
+.BR XConfigureWindow
 Xlib function to make the window of the specified widget match its width,
 height, and border width.
 This request is done unconditionally because there is no way to tell if these
@@ -141,9 +141,9 @@ values match the current values.
 Note that the widget's resize procedure is not called.
 .LP
 There are very few times to use
-.ZN XtResizeWindow ;
+.BR XtResizeWindow ;
 instead, you should use
-.ZN XtResizeWidget .
+.BR XtResizeWidget .
 .SH "SEE ALSO"
 XtMakeGeometryRequest(__libmansuffix__),
 XtQueryGeometry(__libmansuffix__)

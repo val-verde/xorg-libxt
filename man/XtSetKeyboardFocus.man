@@ -66,22 +66,22 @@ XtSetKeyboardFocus(Widget \fIsubtree\fP, Widget \fIdescendant\fP);
 .IP \fIsubtree\fP 1i
 Specifies either the widget in the subtree structure which is to receive the
 keyboard event, or
-.ZN None .
+.BR None .
 Note that it is not an error to specify
-.ZN None
+.BR None
 when no input focus was previously set.
 .ds Wi for which the keyboard focus is to be set
 .IP \fIdescendant\fP 1i
 Specifies the widget \*(Wi.
 .SH DESCRIPTION
 If a future
-.ZN KeyPress
+.BR KeyPress
 or
-.ZN KeyRelease
+.BR KeyRelease
 event occurs within the specified subtree,
-.ZN XtSetKeyboardFocus
+.BR XtSetKeyboardFocus
 causes
-.ZN XtDispatchEvent
+.BR XtDispatchEvent
 to remap and send the event to the specified descendant widget.
 .LP
 When there is no modal cascade,
@@ -98,20 +98,20 @@ and the pointer is within W.
 When there is a modal cascade,
 a widget W receives keyboard events if an ancestor of W is in the active
 subset of the modal cascade and one or more of the previous conditions is
-.ZN True .
+.BR True .
 .LP
 When subtree or one of its descendants acquires the X input focus
 or the pointer moves into the subtree such that keyboard events would
 now be delivered to subtree, a
-.ZN FocusIn
+.BR FocusIn
 event is generated for the descendant if
-.ZN FocusNotify
+.BR FocusNotify
 events have been selected by the descendant.
 Similarly, when W loses the X input focus
 or the keyboard focus for one of its ancestors, a
-.ZN FocusOut
+.BR FocusOut
 event is generated for descendant if
-.ZN FocusNotify
+.BR FocusNotify
 events have been selected by the descendant.
 .SH "SEE ALSO"
 XtCallAcceptFocus(__libmansuffix__)

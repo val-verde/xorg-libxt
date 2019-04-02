@@ -70,20 +70,20 @@ Specifies a NULL-terminated list of resource specifications to pre-load
 the database, or NULL.
 .SH DESCRIPTION
 Each entry in \fIspecification_list\fP points to a string in the format
-.ZN XrmPutLineResource .
+.BR XrmPutLineResource .
 following a call to
-.ZN XtAppSetFallbackResources ,
+.BR XtAppSetFallbackResources ,
 when a resource database is being created for a particular screen and
 the Intrinsics are not able to find or read an application-specific
 class resource file and if \fIspecification_list\fP is not NULL the
 resource specification in \fIspecification_list\fP will be merged
 into the screen resource database in place of the application-specific
 class resource file.
-.ZN XtAppSetFallbackResources
+.BR XtAppSetFallbackResources
 is not required to copy \fIspecification_list\fP; the caller must
 ensure that the contents of the list and the strings addressed by the
 list remain valid until all displays are initialized or until
-.ZN XtAppSetFallbackResources
+.BR XtAppSetFallbackResources
 is called again. The value NULL for \fIspecification_list\fP removes
 any previous fallback resource specification for the application context.
 The intended use for fallback resources is to provide a minimal number

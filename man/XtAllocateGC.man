@@ -79,7 +79,7 @@ Specifies the fields of the GC that will be modified by the caller.
 Specifies the fields of the GC that will not be needed by the caller.
 .SH DESCRIPTION
 The
-.ZN XtAllocateGC
+.BR XtAllocateGC
 function returns a sharable GC that may be modified by the client.
 The \fIscreen\fP field of the specified widget or of the nearest
 widget ancestor of the specified object and the specified \fIdepth\fP
@@ -105,15 +105,15 @@ then immediately set to the value in \fIvalues\fP. If a field is set
 in \fIunused_mask\fP and also in either \fIvalue_mask\fP or
 \fIdynamic_mask\fP, the specification in \fIunused_mask\fP is ignored.
 .LP
-.ZN XtAllocateGC
+.BR XtAllocateGC
 tries to minimize the number of unique GCs created by comparing the
 arguments with those of previous calls and returning an existing GC
 when there are no conflicts.
-.ZN XtAllocateGC
+.BR XtAllocateGC
 may modify and return an existing GC if it was allocated with a nonzero
 \fIunused_mask\fP.
 .SH "SEE ALSO"
-.ZN XtGetGC
+.BR XtGetGC
 .br
 \fI\*(xT\fP
 .br

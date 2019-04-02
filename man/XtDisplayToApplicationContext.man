@@ -67,7 +67,7 @@ XtAppContext XtDisplayToApplicationContext(Display* \fIdpy\fP);
 Specifies the display \*(Wi.
 .SH DESCRIPTION
 The
-.ZN XtDisplayToApplicationContext
+.BR XtDisplayToApplicationContext
 function returns the application context for the specified display.
 .SH "SEE ALSO"
 \fI\*(xT\fP

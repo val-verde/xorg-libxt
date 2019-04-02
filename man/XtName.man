@@ -65,7 +65,7 @@ String XtName(Widget \fIw\fP);
 .IP \fIw\fP 1i
 Specifies the widget.
 .SH DESCRIPTION
-.ZN XtName
+.BR XtName
 returns the widget's name.
 .SH "SEE ALSO"
 .br

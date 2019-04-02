@@ -90,24 +90,24 @@ Specifies the number of values in the parameter list.
 Specifies a pointer to a list of values to be stored in the message.
 .SH DESCRIPTION
 The
-.ZN XtErrorMsg
+.BR XtErrorMsg
 function has been superceded by
-.ZN XtAppErrorMsg .
+.BR XtAppErrorMsg .
 .LP
 The
-.ZN XtSetErrorMsgHandler
+.BR XtSetErrorMsgHandler
 function has been superceded by
-.ZN XtAppSetErrorMsgHandler .
+.BR XtAppSetErrorMsgHandler .
 .LP
 The
-.ZN XtSetWarningMsgHandler
+.BR XtSetWarningMsgHandler
 function has been superceded by
-.ZN XtAppSetWarningMsgHandler .
+.BR XtAppSetWarningMsgHandler .
 .LP
 The
-.ZN XtWarningMsg
+.BR XtWarningMsg
 function has been superceded by
-.ZN XtAppWarningMsg
+.BR XtAppWarningMsg
 .SH "SEE ALSO"
 .BR XtAppErrorMsg (__libmansuffix__)
 .br

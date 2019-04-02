@@ -73,13 +73,13 @@ Specifies the value in the type field of the token.
 Specifies the token to be returned.
 .SH DESCRIPTION
 The
-.ZN XtSessionGetToken
+.BR XtSessionGetToken
 function will return NULL if the checkpoint operation instigated by
 the session manager is not currently under way.
 .LP
 To indicate the completion of a deferred save operation and to return
 the checkpoint token use
-.ZN XtSessionReturnToken .
+.BR XtSessionReturnToken .
 .SH "SEE ALSO"
 .br
 \fI\*(xT\fP

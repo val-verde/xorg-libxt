@@ -82,21 +82,21 @@ Specifies the number of additional arguments to the converter or zero.
 .IP \fIto_type\fP 1i
 Specifies the destination type.
 .SH DESCRIPTION
-.ZN XtAppAddConverter
+.BR XtAppAddConverter
 is equivalent in function to
-.ZN XtAppSetTypeConverter
+.BR XtAppSetTypeConverter
 with \fIcache_type\fP equal to
-.ZN XtCacheAll
+.BR XtCacheAll
 for old-format type converters. It has been superseded by
-.ZN XtAppSetTypeConverter .
+.BR XtAppSetTypeConverter .
 .LP
-.ZN XtAddConverter
+.BR XtAddConverter
 is equivalent in function to
-.ZN XtSetTypeConverter
+.BR XtSetTypeConverter
 with \fIcache_type\fP equal to
-.ZN XtCacheAll
+.BR XtCacheAll
 for old-format type converters. It has been superseded by
-.ZN XtSetTypeConverter .
+.BR XtSetTypeConverter .
 .SH "SEE ALSO"
 XtConvert(__libmansuffix__),
 XtStringConversionWarning(__libmansuffix__)

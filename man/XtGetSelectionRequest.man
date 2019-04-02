@@ -71,19 +71,19 @@ Specifies the selection being processed.
 Specifies the requestor id in the case of incremental selections, or
 NULL in the case of atomic transfers.
 .SH DESCRIPTION
-.ZN XtGetSelectionRequest
+.BR XtGetSelectionRequest
 may only be called from within an
-.ZN XtConvertSelectionProc
+.BR XtConvertSelectionProc
 procedure and returns a pointer to the
-.ZN SelectionRequest
+.BR SelectionRequest
 event that caused the conversion procedure to be invoked. \fIRequest_id\fP
 specifies a unique id for the individual request in the case that
 multiple incremental transfers are outstanding. For atomic transfers,
 \fIrequest_id\fP must be specified as NULL. If no
-.ZN SelectionRequest
+.BR SelectionRequest
 event is being processed for the specified \fIwidget\fP, \fIselection\fP,
 and \fIrequest_id\fP,
-.ZN XtGetSelectionRequest
+.BR XtGetSelectionRequest
 returns NULL.
 .SH "SEE ALSO"
 .br
