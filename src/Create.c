@@ -411,14 +411,14 @@ xtCreate(
     wsize = widget_class->core_class.widget_size;
     csize = 0;
     req_widget = (Widget) XtStackAlloc(wsize, widget_cache);
-    (void) memmove ((char *) req_widget, (char *) widget, (int) wsize);
+    (void) memmove ((char *) req_widget, (char *) widget, (size_t) wsize);
     CallInitialize (XtClass(widget), req_widget, widget, args, num_args);
     if (parent_constraint_class != NULL) {
         csize = parent_constraint_class->constraint_class.constraint_size;
 	if (csize) {
 	    req_constraints = XtStackAlloc(csize, constraint_cache);
 	    (void) memmove((char*)req_constraints, widget->core.constraints,
-			(int)csize);
+			(size_t)csize);
 	    req_widget->core.constraints = req_constraints;
 	} else req_widget->core.constraints = NULL;
 	CallConstraintInitialize(parent_constraint_class, req_widget, widget,
@@ -777,7 +777,7 @@ _XtCreateHookObj(Screen* screen)
     CompileCallbacks(hookobj);
     wsize = hookObjectClass->core_class.widget_size;
     req_widget = (Widget) XtStackAlloc(wsize, widget_cache);
-    (void) memmove ((char *) req_widget, (char *) hookobj, (int) wsize);
+    (void) memmove ((char *) req_widget, (char *) hookobj, (size_t) wsize);
     CallInitialize (hookObjectClass, req_widget, hookobj,
 		(ArgList)NULL, (Cardinal) 0);
     XtStackFree((XtPointer)req_widget, widget_cache);

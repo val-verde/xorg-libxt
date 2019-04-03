@@ -251,7 +251,7 @@ static void DefaultMsg (
 	    String par[10];
 	    if (i > 10) i = 10;
 	    (void) memmove((char*)par, (char*)params, i * sizeof(String) );
-	    bzero( &par[i], (10-i) * sizeof(String) );
+	    memset( &par[i], 0, (10-i) * sizeof(String) );
 	    (void) fprintf (stderr, "%s%s",
 			    error ? XTERROR_PREFIX : XTWARNING_PREFIX,
 			    error ? "Error: " : "Warning: ");
@@ -286,7 +286,7 @@ program as a non-root user or by removing the suid bit on the executable.");
 	String par[10];
 	if (i > 10) i = 10;
 	(void) memmove((char*)par, (char*)params, i * sizeof(String) );
-	bzero( &par[i], (10-i) * sizeof(String) );
+	memset( &par[i], 0, (10-i) * sizeof(String) );
 	if (i != *num_params)
 	    XtWarning( "Some arguments in following message were lost" );
 	/*
