@@ -120,9 +120,9 @@ or
 .BR XtGrabExclusive ,
 it calls:
 .LP
-.Ds
+.RS
 XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), False)
-.De
+.RE
 .IP \(bu 5
 Calls
 .BR XtRealizeWidget
@@ -225,9 +225,9 @@ it is called with popup_shell as the parameter.
 .IP \(bu 5
 Calls:
 .LP
-.Ds
+.RS
 XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), spring_loaded)
-.De
+.RE
 .IP \(bu 5
 Calls
 .BR XtRealizeWidget

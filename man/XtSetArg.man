@@ -90,7 +90,8 @@ The
 function is usually used in a highly stylized manner to
 minimize the probability of making a mistake; for example:
 .LP
-.Ds
+.RS
+.nf
 Arg args[20];
 int n;
 
@@ -98,19 +99,20 @@ n = 0;
 XtSetArg(args[n], XtNheight, 100);      n++;
 XtSetArg(args[n], XtNwidth, 200);       n++;
 XtSetValues(widget, args, n);
-.De
+.RE
 .LP
 Alternatively, an application can statically declare the argument list
 and use
 .BR XtNumber :
 .LP
-.Ds
+.RS
+.nf
 static Args args[] = {
         {XtNheight, (XtArgVal) 100},
         {XtNwidth, (XtArgVal) 200},
 };
 XtSetValues(Widget, args, XtNumber(args));
-.De
+.RE
 .LP
 Note that you should not use auto-increment or auto-decrement
 within the first argument to

@@ -143,10 +143,9 @@ is a convenience macro that calls
 .BR XtMalloc
 with the following arguments specified:
 .LP
-.Ds
-.ta .5i
+.RS .5i
 ((type *) XtMalloc((unsigned) sizeof(type))
-.De
+.RE
 .LP
 .BR XtNewString
 returns a pointer to the allocated storage.
@@ -159,10 +158,9 @@ is a convenience macro that calls
 .BR XtMalloc
 with the following arguments specified:
 .LP
-.Ds
-.ta .5i
+.RS .5i
 (strcpy(XtMalloc((unsigned) strlen(str) + 1), str))
-.De
+.RE
 .LP
 The
 .BR XtAsprintf

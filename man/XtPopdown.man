@@ -118,12 +118,13 @@ function casts the client data parameter to an
 .BR XtPopdownID
 pointer:
 .LP
-.Ds
+.RS
+.nf
 typedef struct {
         Widget shell_widget;
         Widget enable_widget;
 } XtPopdownIDRec, *XtPopdownID;
-.De
+.RE
 .LP
 The shell_widget is the pop-up shell to pop down,
 and the enable_widget is the widget that was used to pop it up.
