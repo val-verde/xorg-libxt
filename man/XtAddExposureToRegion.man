@@ -70,8 +70,8 @@ or
 .BR GraphicsExpose
 event.
 .IP \fIregion\fP 1i
-Specifies the region object (as defined in < 
-.BR X11/Xutil.h >).
+Specifies the region object (as defined in 
+.BR <X11/Xutil.h> ).
 .SH DESCRIPTION
 The
 .BR XtAddExposureToRegion
