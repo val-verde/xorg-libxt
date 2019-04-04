@@ -124,6 +124,7 @@ typedef struct {
         Widget shell_widget;
         Widget enable_widget;
 } XtPopdownIDRec, *XtPopdownID;
+.fi
 .RE
 .LP
 The shell_widget is the pop-up shell to pop down,
