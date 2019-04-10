@@ -77,22 +77,22 @@ a pointer button.
 Specifies the widget \*(Wi.
 .SH DESCRIPTION
 The
-.BR XtAddGrab
+.B XtAddGrab
 function appends the widget (and associated parameters) to the modal cascade
 and checks that exclusive is
-.BR True
+.B True
 if spring_loaded is
 .BR True .
 If these are not
 .BR True ,
-.BR XtAddGrab
+.B XtAddGrab
 generates an error.
 .LP
 The modal cascade is used by
-.BR XtDispatchEvent
+.B XtDispatchEvent
 when it tries to dispatch a user event.
 When at least one modal widget is in the widget cascade,
-.BR XtDispatchEvent
+.B XtDispatchEvent
 first determines if the event should be delivered.
 It starts at the most recent cascade entry and follows the cascade up to and
 including the most recent cascade entry added with the exclusive parameter
@@ -119,7 +119,7 @@ subset of the cascade that has spring_loaded
 if any such widget exists.
 .LP
 The
-.BR XtRemoveGrab
+.B XtRemoveGrab
 function removes widgets from the modal cascade starting
 at the most recent widget up to and including the specified widget.
 It issues an error if the specified widget is not on the modal cascade.

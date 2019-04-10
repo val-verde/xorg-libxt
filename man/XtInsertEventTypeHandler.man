@@ -102,7 +102,7 @@ Specifies the range of event types for this extension.
 Specifies a pointer to the event to be dispatched.
 .SH DESCRIPTION
 The
-.BR XtInsertEventTypeHandler
+.B XtInsertEventTypeHandler
 function registers a procedure with the dispatch mechanism that is to
 be called when an event that matches the specified \fIevent_type\fP is
 dispatched to the specified \fIwidget\fP.
@@ -114,12 +114,12 @@ indicating the event mask to be used to select for the desired event.
 This event mask will be included in the value returned by
 .BR XtBuildEventMask .
 If the widget is realized
-.BR XtInsertEventTypeHandler
+.B XtInsertEventTypeHandler
 calls
-.BR XSelectInput
+.B XSelectInput
 if necessary. Specifying NULL for \fIselect_data\fP is equivalent to
 specifying a pointer to an event mask containing 0. This is similar to the
-.BR XtInsertRawEventHandler
+.B XtInsertRawEventHandler
 function.
 .LP
 If \fIevent_type\fP specifies an extension event type then the semantics
@@ -139,9 +139,9 @@ which registers this event handler after any previously registered
 handlers for this event type.
 .LP
 The
-.BR XtRemoveEventTypeHandler
+.B XtRemoveEventTypeHandler
 function unregisters an even handler registered with
-.BR XtInsertEventTypeHandler
+.B XtInsertEventTypeHandler
 for the specified event type. The request is ignored if \fIclient_data\fP
 does not match the value given with the handler was registered.
 .LP
@@ -150,12 +150,12 @@ If \fIevent_type\fP specifies on of the core X protocol events,
 .BR EventMask ,
 indicating the mask to be used to deselect for the appropriate event.
 If the widget is realized,
-.BR XtRemoveEventTypeHandler
+.B XtRemoveEventTypeHandler
 calls
-.BR XSelectInput
+.B XSelectInput
 if necessary. Specifying NULL for \fIselect_data\fP is equivalent to
 specifying a pointer to an event mask containing 0. This is similar to the
-.BR XtRemoveRawEventHandler
+.B XtRemoveRawEventHandler
 function.
 .LP
 If \fIevent_type\fP specifies an extension event type then the semantics
@@ -163,20 +163,20 @@ of the data pointed to by \fIselect_data\fP are defined by the extension
 selector registered for the specified event type.
 .LP
 The
-.BR XtRegisterExtensionSelector
+.B XtRegisterExtensionSelector
 function registers a procedure to arrange for the delivery of extension
 events to widgets.
 .LP
 If \fImin_event_type\fP and \fImax_event_type\fP match the parameters to
 a previous call to
-.BR XtRegisterExtensionSelector
+.B XtRegisterExtensionSelector
 for the same display, the \fIproc\fP and \fIclient_data\fP replace the
 previously registered values. If the range specified by \fImin_event_type\fP
 and \fImax_event_type\fP overlaps the range of the parameters to a
 previous call for the same display in any other way, an error results.
 .LP
 The
-.BR XtSetEventDispatcher
+.B XtSetEventDispatcher
 function registers the event dispatcher procedure specified by \fIproc\fP
 for events with the type \fIevent_type\fP. The previously registered
 dispatcher (or the default dispatcher if there was no previously registered
@@ -184,13 +184,13 @@ dispatcher) is returned. If \fIproc\fP is NULL, the default procedure is
 restored for the specified type.
 .LP
 In the future, when
-.BR XtDispatchEvent
+.B XtDispatchEvent
 is called with an event of \fIevent_type\fP, the specified \fIproc\fP (or
 the default dispatcher) will be invoked to determine a widget ot which
 to dispatch the event.
 .LP
 The
-.BR XtDispatchEventToWidget
+.B XtDispatchEventToWidget
 function scans the list of registered event handlers for the specified
 widget and calls each handler that has been registered for the specified
 event type, subject to the \fIcontinue_to_dispatch\fP value returned by
@@ -200,7 +200,7 @@ at the head of the list for
 .BR NoExpose ,
 .BR GraphicsExpose ,
 and
-.BR VisibilityNotify
+.B VisibilityNotify
 events to invoke the widget's expose procedure according to the exposure
 compression rules and to update the widget's \fIvisible\fP field if
 \fIvisible_interest\fP is
@@ -208,11 +208,11 @@ compression rules and to update the widget's \fIvisible\fP field if
 These internal event handlers never set \fIcontinue_to_dispatch\fP to
 .BR False .
 .LP
-.BR XtDispatchEventToWidget
+.B XtDispatchEventToWidget
 returns
-.BR True
+.B True
 if any event handler was called and
-.BR False
+.B False
 otherwise.
 .LP
 .SH "SEE ALSO"

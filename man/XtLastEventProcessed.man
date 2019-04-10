@@ -67,13 +67,13 @@ Time XtLastTimestampProcessed(Display* \fIdisplay\fP);
 .IP \fIdisplay\fP 1i
 Specifies the open display connection.
 .SH DESCRIPTION
-.BR XtLastEventProcessed
+.B XtLastEventProcessed
 returns the last event passed to
-.BR XtDispatchEvent
+.B XtDispatchEvent
 for the specified display and NULL if there has been no event. The
 client must not modify the contents of the returned event.
 .LP
-.BR XtLastTimestampProcessed
+.B XtLastTimestampProcessed
 returns the timestamp of the last
 .BR KeyPress ,
 .BR KeyRelease ,
@@ -84,9 +84,9 @@ returns the timestamp of the last
 .BR LeaveNotify ,
 .BR PropertyNotify ,
 or
-.BR SelectionClear
+.B SelectionClear
 event that has been passed to
-.BR XtDispatchEvent
+.B XtDispatchEvent
 for the specified display and zero if there has been no such event.
 .SH "SEE ALSO"
 .br

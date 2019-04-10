@@ -80,17 +80,17 @@ Specifies the compiled translation table to merge in (must not be NULL).
 Specifies the widget \*(Wi.
 .SH DESCRIPTION
 The
-.BR XtParseTranslationTable
+.B XtParseTranslationTable
 function compiles the translation table into the opaque internal representation
 of type
 .BR XtTranslations .
 Note that if an empty translation table is required for any purpose,
 one can be obtained by calling
-.BR XtParseTranslationTable
+.B XtParseTranslationTable
 and passing an empty string.
 .LP
 The
-.BR XtAugmentTranslations
+.B XtAugmentTranslations
 function nondestructively merges the new translations into the existing widget
 translations.
 If the new translations contain an event or event sequence that
@@ -98,7 +98,7 @@ already exists in the widget's translations,
 the new translation is ignored.
 .LP
 The
-.BR XtOverrideTranslations
+.B XtOverrideTranslations
 function destructively merges the new translations into the existing widget
 translations.
 If the new translations contain an event or event sequence that
@@ -106,12 +106,12 @@ already exists in the widget's translations,
 the new translation is merged in and override the widget's translation.
 .LP
 To replace a widget's translations completely, use
-.BR XtSetValues
+.B XtSetValues
 on the XtNtranslations resource and specify a compiled translation table
 as the value.
 .LP
 The
-.BR XtUninstallTranslations
+.B XtUninstallTranslations
 function causes the entire translation table for widget to be removed.
 .SH "SEE ALSO"
 XtAppAddActions(__libmansuffix__),

@@ -82,19 +82,19 @@ Specifies a pointer to the number of command line parameters.
 .IP \fIargv\fP 1i
 Specifies the command line parameters.
 .SH DESCRIPTION
-.BR XtInitialize
+.B XtInitialize
 calls
-.BR XtToolkitInitialize
+.B XtToolkitInitialize
 followed by
-.BR XtOpenDisplay
+.B XtOpenDisplay
 with \fIdisplay_string\fP NULL and \fIapplication_name\fP NULL, and
 finally calls
-.BR XtAppCreateShell
+.B XtAppCreateShell
 with \fIapplication_name\fP NULL, \fIwidget_class\fP
 .BR applicationShellWidgetClass ,
 and the specified \fIargs\fP and \fInum_args\fP and returns the
 created shell. The semantics of calling
-.BR XtInitialize
+.B XtInitialize
 more than once are undefined. This routine has been replaced by
 .BR XtAppInitialize .
 .SH "SEE ALSO"

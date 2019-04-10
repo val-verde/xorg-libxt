@@ -72,17 +72,17 @@ Specifies the block hook procedure.
 .IP \fInum_args\fP 1i
 Specifies the application-specific data to be passed to the block hook.
 .SH DESCRIPTION
-.BR XtAppAddBlockHook
+.B XtAppAddBlockHook
 registers the specified procedure and returns an identifier for it.
 The hook is called at any time in the future when the Intrinsics are
 about to block pending some input.
 .LP
 Block hook procedures are removed automatically and the
-.BR XtBlockHookId
+.B XtBlockHookId
 is destroyed when the application context in which they were added is
 destroyed.
 .LP
-.BR XtRemoveBlockHook
+.B XtRemoveBlockHook
 removes the specified block hook procedure from the list in which it
 was registered.
 .SH "SEE ALSO"

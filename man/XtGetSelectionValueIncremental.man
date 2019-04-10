@@ -94,9 +94,9 @@ Specifies the timestamp that indicates when the selection \*(Ti.
 Specifies the widget \*(Wi.
 .SH DESCRIPTION
 The
-.BR XtGetSelectionValueIncremental
+.B XtGetSelectionValueIncremental
 function is similar to
-.BR XtGetSelectionValue
+.B XtGetSelectionValue
 except that the \fIselection_callback\fP procedure will be called
 repeatedly upon delivery of multiple segments of the selection value.
 The end of the selection value is indicated when \fIselection_callback\fP
@@ -105,7 +105,7 @@ freed by the client. If the transfer of the selection is aborted in the
 middle of a transfer (for example, because to timeout), the
 \fIselection_callback\fP procedure is called with a type value equal
 to the symbolic constant
-.BR XT_CONVERT_FAIL
+.B XT_CONVERT_FAIL
 so that the requestor can dispose of the partial selection value it has
 collected up until that point. Upon receiving
 .BR XT_CONVERT_FAIL ,
@@ -113,19 +113,19 @@ the requesting client must determine for itself whether or not a
 partially completed transfer is meaningful.
 .LP
 The
-.BR XtGetSelectionValuesIncremental
+.B XtGetSelectionValuesIncremental
 function is similar to
-.BR XtGetSelectionValueIncremental
+.B XtGetSelectionValueIncremental
 except that it takes a list of target types and a list of client data
 and obtains the current value of the selection converted to each of the targets.
 The effect is as if each target were specified in a separate call to
 .BR XtGetSelectionValueIncremental .
 The callback is called once with the corresponding client data for each target.
-.BR XtGetSelectionValuesIncremental
+.B XtGetSelectionValuesIncremental
 does guarantee that all the conversions will use the same selection value
 because the ownership of the selection cannot change in the middle of the list,
 as would be when calling
-.BR XtGetSelectionValueIncremental
+.B XtGetSelectionValueIncremental
 repeatedly.
 .SH "SEE ALSO"
 .br

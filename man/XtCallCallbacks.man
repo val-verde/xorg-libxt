@@ -83,12 +83,12 @@ Specifies the callback list to be executed.
 Specifies the widget.
 .SH DESCRIPTION
 The
-.BR XtCallCallbacks
+.B XtCallCallbacks
 function calls each procedure that is registered in the specified widget's
 callback list.
 .LP
 If \fIcallbacks\fP is not NULL,
-.BR XtCallCallbackList
+.B XtCallCallbackList
 calls each of the callback procedures in the list, passing client data
 and \fIcall_data\fP. The \fIcallbacks\fP parameter must specify the
 contents of a widget or object resource declared with representation
@@ -96,11 +96,11 @@ type
 .BR XtRCallback .
 .LP
 The
-.BR XtHasCallbacks
+.B XtHasCallbacks
 function first checks to see if the widget has a callback list identified
 by callback_name.
 If the callback list does not exist,
-.BR XtHasCallbacks
+.B XtHasCallbacks
 returns
 .BR XtCallbackNoList .
 If the callback list exists but is empty,

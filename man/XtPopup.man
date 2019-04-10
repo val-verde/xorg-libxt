@@ -90,11 +90,11 @@ Specifies the widget shell.
 Specifies the widget.
 .SH DESCRIPTION
 The
-.BR XtPopup
+.B XtPopup
 function performs the following:
 .IP \(bu 5
 Calls
-.BR XtCheckSubclass
+.B XtCheckSubclass
 .\".ZN XtCheckSubclass(popup_shell, popupShellWidgetClass)
 to ensure popup_shell is a subclass of
 .BR Shell .
@@ -111,11 +111,11 @@ the shell spring_loaded field to
 and the shell grab_kind field from grab_kind.
 .IP \(bu 5
 If the shell's create_popup_child field is non-NULL,
-.BR XtPopup
+.B XtPopup
 calls it with popup_shell as the parameter.
 .IP \(bu 5
 If grab_kind is either
-.BR XtGrabNonexclusive
+.B XtGrabNonexclusive
 or
 .BR XtGrabExclusive ,
 it calls:
@@ -125,23 +125,23 @@ XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), False)
 .RE
 .IP \(bu 5
 Calls
-.BR XtRealizeWidget
+.B XtRealizeWidget
 with popup_shell specified.
 .IP \(bu 5
 Calls
-.BR XMapWindow
+.B XMapWindow
 with popup_shell specified.
 .LP
 The
-.BR XtPopupSpringLoaded
+.B XtPopupSpringLoaded
 function performs exactly as
-.BR XtPopup
+.B XtPopup
 except that it sets the shell \fIspring_loaded\fP field to
-.BR True
+.B True
 and always calls
-.BR XtAddGrab
+.B XtAddGrab
 with \fIexclusive\fP
-.BR True
+.B True
 and \fIspring_loaded\fP
 .BR True .
 .LP
@@ -149,15 +149,15 @@ The
 .BR XtCallbackNone ,
 .BR XtCallbackNonexclusive ,
 and
-.BR XtCallbackExclusive
+.B XtCallbackExclusive
 functions call
-.BR XtPopup
+.B XtPopup
 with the shell specified by the client data argument
 and grab_kind set as the name specifies.
 .BR XtCallbackNone ,
 .BR XtCallbackNonexclusive ,
 and
-.BR XtCallbackExclusive
+.B XtCallbackExclusive
 specify
 .BR XtGrabNone ,
 .BR XtGrabNonexclusive ,
@@ -173,32 +173,32 @@ an application must provide customized code for
 callbacks that create pop-up shells dynamically or that must do more than
 desensitizing the button.
 .LP
-.BR MenuPopup
+.B MenuPopup
 is known to the translation manager,
 which must perform special actions for spring-loaded pop-ups.
 Calls to
-.BR MenuPopup
+.B MenuPopup
 in a translation specification are mapped into calls to a
 nonexported action procedure,
 and the translation manager fills in parameters
 based on the event specified on the left-hand side of a translation.
 .LP
 If
-.BR MenuPopup
+.B MenuPopup
 is invoked on
-.BR ButtonPress
+.B ButtonPress
 (possibly with modifiers),
 the translation manager pops up the shell with grab_kind set to
-.BR XtGrabExclusive
+.B XtGrabExclusive
 and spring_loaded set to
 .BR True .
 If
-.BR MenuPopup
+.B MenuPopup
 is invoked on
-.BR EnterWindow
+.B EnterWindow
 (possibly with modifiers),
 the translation manager pops up the shell with grab_kind set to
-.BR XtGrabNonexclusive
+.B XtGrabNonexclusive
 and spring_loaded set to
 .BR False .
 Otherwise, the translation manager generates an error.
@@ -206,7 +206,7 @@ When the widget is popped up,
 the following actions occur:
 .IP \(bu 5
 Calls
-.BR XtCheckSubclass
+.B XtCheckSubclass
 .\".ZN XtCheckSubclass(popup_shell, popupShellWidgetClass)
 to ensure popup_shell is a subclass of
 .BR Shell .
@@ -217,7 +217,7 @@ Generates an error if the shell's popped_up field is already
 Calls the callback procedures on the shell's popup_callback list.
 .IP \(bu 5
 Sets the shell popped_up field to
-.BR True
+.B True
 and the shell grab_kind and spring_loaded fields appropriately.
 .IP \(bu 5
 If the shell's create_popup_child field is non-NULL,
@@ -230,23 +230,23 @@ XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), spring_loaded)
 .RE
 .IP \(bu 5
 Calls
-.BR XtRealizeWidget
+.B XtRealizeWidget
 with popup_shell specified.
 .IP \(bu 5
 Calls
-.BR XMapWindow
+.B XMapWindow
 with popup_shell specified.
 .LP
 (Note that these actions are the same as those for
 .BR XtPopup .)
-.BR MenuPopup
+.B MenuPopup
 tries to find the shell by searching the widget tree starting at
 the parent of the widget in which it is invoked.
 If it finds a shell with the specified name in the pop-up children of
 that parent, it pops up the shell with the appropriate parameters.
 Otherwise, it moves up the parent chain as needed.
 If
-.BR MenuPopup
+.B MenuPopup
 gets to the application widget and cannot find a matching shell,
 it generates an error.
 .SH "SEE ALSO"

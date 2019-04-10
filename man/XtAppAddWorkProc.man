@@ -79,12 +79,12 @@ Specifies the procedure that is to be called.
 Specifies which work procedure to remove.
 .SH DESCRIPTION
 The
-.BR XtAppAddWorkProc
+.B XtAppAddWorkProc
 function adds the specified work procedure for the application identified
 by app_context.
 .LP
 The
-.BR XtRemoveWorkProc
+.B XtRemoveWorkProc
 function explicitly removes the specified background work procedure.
 .SH "SEE ALSO"
 XtAppNextEvent(__libmansuffix__)

@@ -78,15 +78,15 @@ Specifies the widget on which the accelerators are to be installed.
 Specifies the \*(Sr from which the accelerators are to come.
 .SH DESCRIPTION
 The
-.BR XtParseAcceleratorTable
+.B XtParseAcceleratorTable
 function compiles the accelerator table into the opaque internal representation.
 .LP
 The
-.BR XtInstallAccelerators
+.B XtInstallAccelerators
 function installs the accelerators from source onto destination
 by augmenting the destination translations with the source accelerators.
 If the source display_accelerator method is non-NULL,
-.BR XtInstallAccelerators
+.B XtInstallAccelerators
 calls it with the source widget and a string representation
 of the accelerator table,
 which indicates that its accelerators have been installed
@@ -95,11 +95,11 @@ The string representation of the accelerator table is its
 canonical translation table representation.
 .LP
 The
-.BR XtInstallAllAccelerators
+.B XtInstallAllAccelerators
 function recursively descends the widget tree rooted at source
 and installs the accelerators of each widget encountered onto destination.
 A common use os to call
-.BR XtInstallAllAccelerators
+.B XtInstallAllAccelerators
 and pass the application main window as the source.
 .SH "SEE ALSO"
 XtParseTranslationTable(1)

@@ -73,7 +73,7 @@ Specifies the value in the type field of the token.
 Specifies the token to be returned.
 .SH DESCRIPTION
 The
-.BR XtSessionGetToken
+.B XtSessionGetToken
 function will return NULL if the checkpoint operation instigated by
 the session manager is not currently under way.
 .LP

@@ -113,38 +113,38 @@ Specifies when the event handler is to be called relative to other
 previously registered handlers.
 .SH DESCRIPTION
 The
-.BR XtAddEventHandler
+.B XtAddEventHandler
 function registers a procedure with the dispatch mechanism that is
 to be called when an event that matches the mask occurs on the specified
 widget.
 If the procedure is already registered with the same client_data,
 the specified mask is ORed into the existing mask.
 If the widget is realized,
-.BR XtAddEventHandler
+.B XtAddEventHandler
 calls
 .BR XSelectInput ,
 if necessary.
 .LP
 The
-.BR XtAddRawEventHandler
+.B XtAddRawEventHandler
 function is similar to
-.BR XtAddEventHandler
+.B XtAddEventHandler
 except that it does not affect the widget's mask and never causes an
-.BR XSelectInput
+.B XSelectInput
 for its events.
 Note that the widget might already have those mask bits set
 because of other nonraw event handlers registered on it.
 .LP
 The
-.BR XtRemoveRawEventHandler
+.B XtRemoveRawEventHandler
 function stops the specified procedure from receiving the specified events.
 Because the procedure is a raw event handler,
 this does not affect the widget's mask and never causes a call on
 .BR XSelectInput .
 .LP
-.BR XtInsertEventHandler
+.B XtInsertEventHandler
 is identical to
-.BR XtAddEventHandler
+.B XtAddEventHandler
 with the additional \fIposition\fP argument. if \fIposition\fP is
 .BR XtListHead ,
 the event handler is registered to that it will be called before
@@ -156,11 +156,11 @@ registered event handlers. If the procedure is already registered with
 the same \fIclient_data\fP value, the specified mask augments the
 existing mask and the procedure is repositioned in the list.
 .LP
-.BR XtInsertRawEventHandler
+.B XtInsertRawEventHandler
 is similar to
-.BR XtInsertEventHandler
+.B XtInsertEventHandler
 except that it does not modify the widget's event mask and never causes an
-.BR XSelectInput
+.B XSelectInput
 for the specified events. If the procedure is already registered with the
 same \fIclient_data\fP value, the specified mask augments the existing
 mask and the procedure is repositioned in the list.

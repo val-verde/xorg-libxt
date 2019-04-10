@@ -89,11 +89,11 @@ Specifies a destroy procedure for resources produced by this conversion,
 or NULL if no additional action is required to deallocate resources
 produced by the converter.
 .SH DESCRIPTION
-.BR XtSetTypeConverter
+.B XtSetTypeConverter
 registers the specified type converter and destructor in all application
 contexts created by the calling process, including any future application
 contexts that may be created.
-.BR XtAppSetTypeConverter
+.B XtAppSetTypeConverter
 registers the specified type converter in the single application context
 specified. If the same \fIfrom_type\fP and \fIto_type\fP are specified
 in multiple calls to either function, the most recent overrides the

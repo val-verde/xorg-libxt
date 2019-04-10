@@ -79,17 +79,17 @@ the intended structure, sets the corresponding bits in intended.request_mode,
 and calls
 .BR XtQueryGeometry .
 .LP
-.BR XtQueryGeometry
+.B XtQueryGeometry
 clears all bits in the preferred_return->request_mode and checks the
 query_geometry field of the specified widget's class record.
 If query_geometry is not NULL,
-.BR XtQueryGeometry
+.B XtQueryGeometry
 calls the query_geometry procedure and passes as arguments the
 specified widget, intended, and preferred_return structures.
 If the intended argument is NULL,
-.BR XtQueryGeometry
+.B XtQueryGeometry
 replaces it with a pointer to an
-.BR XtWidgetGeometry
+.B XtWidgetGeometry
 structure with request_mode=0 before calling query_geometry.
 .SH "SEE ALSO"
 XtConfigureWidget(__libmansuffix__),

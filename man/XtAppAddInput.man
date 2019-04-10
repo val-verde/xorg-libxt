@@ -79,7 +79,7 @@ Specifies the mask that indicates a read, write, or exception condition
 or some operating system dependent condition.
 .IP \fIid\fP 1i
 Specifies the ID returned from the corresponding
-.BR XtAppAddInput
+.B XtAppAddInput
 call.
 .ds Pr \ to be called when input is available
 .IP \fIproc\fP 1i
@@ -89,12 +89,12 @@ Specifies the source file descriptor on a UNIX-based system
 or other operating system dependent device specification.
 .SH DESCRIPTION
 The
-.BR XtAppAddInput
+.B XtAppAddInput
 function registers with the \*(xI read routine a new source of events,
 which is usually file input but can also be file output.
 Note that file should be loosely interpreted to mean any sink
 or source of data.
-.BR XtAppAddInput
+.B XtAppAddInput
 also specifies the conditions under which the source can generate events.
 When input is pending on this source,
 the callback procedure is called.
@@ -107,7 +107,7 @@ the condition is some union of
 and
 .BR XtInputExceptMask .
 The
-.BR XtRemoveInput
+.B XtRemoveInput
 function causes the \*(xI read routine to stop watching for input
 from the input source.
 .SH "SEE ALSO"

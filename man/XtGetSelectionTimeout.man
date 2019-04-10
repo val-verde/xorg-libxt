@@ -68,12 +68,12 @@ void XtSetSelectionTimeout(unsigned long \fItimeout\fP);
 Specifies the selection timeout in milliseconds.
 .SH DESCRIPTION
 The
-.BR XtGetSelectionTimeout
+.B XtGetSelectionTimeout
 function has been superceded by
 .BR XtAppGetSelectionTimeout .
 .LP
 The
-.BR XtSetSelectionTimeout
+.B XtSetSelectionTimeout
 function has been superceded by
 .BR XtAppSetSelectionTimeout .
 .SH "SEE ALSO"

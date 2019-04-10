@@ -63,14 +63,14 @@ XtToolkitThreadInitialize \- initialize the toolkit for multiple threads
 Boolean XtToolkitThreadInitialize(void);
 .SH DESCRIPTION
 If
-.BR XtToolkitThreadInitialize
+.B XtToolkitThreadInitialize
 was previously called, it returns. The application programmer must ensure
 that two or more threads do not simultaneously attempt to call
 .BR XtToolkitThreadInitialize ;
 the effect of this is undefined.
-.BR XtToolkitThreadInitialize
+.B XtToolkitThreadInitialize
 returns
-.BR True
+.B True
 if the host operating system has threads and the Intrinsics are thread
 safe.
 .SH "SEE ALSO"

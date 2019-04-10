@@ -79,22 +79,22 @@ Specifies the new \*(Ha.
 Specifies the message that is to be \*(Me.
 .SH DESCRIPTION
 The
-.BR XtError
+.B XtError
 function has been superceded by
 .BR XtAppError .
 .LP
 The
-.BR XtSetErrorHandler
+.B XtSetErrorHandler
 function has been superceded by
 .BR XtAppSetErrorHandler .
 .LP
 The
-.BR XtSetWarningHandler
+.B XtSetWarningHandler
 function has been superceded by
 .BR XtAppSetWarningHandler .
 .LP
 The
-.BR XtWarning
+.B XtWarning
 function has been superceded by
 .BR XtAppWarning .
 .SH "SEE ALSO"

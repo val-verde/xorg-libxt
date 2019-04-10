@@ -82,15 +82,15 @@ Specifies the procedure that is to be called when input is available.
 Specifies the source file descriptor on a UNIX-based system
 or other operating system dependent device specification.
 .SH DESCRIPTION
-.BR XtAddInput
+.B XtAddInput
 has been replaced by
-.BR XtAppAddInput.
+.B XtAppAddInput.
 .LP
-.BR XtAddTimeOut
+.B XtAddTimeOut
 has been replaced by
-.BR XtAppAddTimeOut.
+.B XtAppAddTimeOut.
 .LP
-.BR XtAddWorkProc
+.B XtAddWorkProc
 has been replaced by
 .BR XtAppAddWorkProc .
 .SH "SEE ALSO"
