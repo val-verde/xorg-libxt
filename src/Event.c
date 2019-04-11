@@ -725,8 +725,6 @@ static Boolean CallEventHandlers(
     register XtEventRec *p;
     XtEventHandler *proc;
     XtPointer *closure;
-    XtEventHandler procs[EHMAXSIZE];
-    XtPointer closures[EHMAXSIZE];
     Boolean cont_to_disp = True;
     int i, numprocs;
 
@@ -739,14 +737,10 @@ static Boolean CallEventHandlers(
 	    (p->has_type_specifier && event->type == EXT_TYPE(p)))
 	    numprocs++;
     }
-    if (numprocs > EHMAXSIZE) {
-	proc = (XtEventHandler *)__XtMalloc((Cardinal)((size_t)numprocs * (sizeof(XtEventHandler) +
-						      sizeof(XtPointer))));
-	closure = (XtPointer *)(proc + numprocs);
-    } else {
-	proc = procs;
-	closure = closures;
-    }
+    proc = (XtEventHandler *)__XtMalloc((Cardinal)((size_t)numprocs * (sizeof(XtEventHandler) +
+						   sizeof(XtPointer))));
+    closure = (XtPointer *)(proc + numprocs);
+
     numprocs = 0;
     for (p=widget->core.event_table; p; p = p->next) {
 	if ((!p->has_type_specifier && (mask & p->mask)) ||
@@ -771,8 +765,7 @@ static Boolean CallEventHandlers(
 		*/
     for (i = 0; i < numprocs && cont_to_disp; i++)
 	(*(proc[i]))(widget, closure[i], event, &cont_to_disp);
-    if (numprocs > EHMAXSIZE)
-	XtFree((char *)proc);
+    XtFree((char *)proc);
     return cont_to_disp;
 }
 
