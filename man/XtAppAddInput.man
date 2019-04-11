@@ -120,16 +120,16 @@ XtAppAddTimeOut(__libmansuffix__),XtAppAddSignal(__libmansuffix__)
 .SH "BUGS"
 In ANSI C it is necessary to cast the condition to an XtPointer, e.g.:
 .RS 4
-.br
+.ft CW
 XtAppAddInput(app_context,
 .RS 4
 .br
 source,
 .br
-.B (XtPointer)
-(XtInputReadMask | XtInputWriteMask),
+\fB(XtPointer)\fP (XtInputReadMask | XtInputWriteMask),
 .br
 proc,
 .br
 client_data);
+.ft R
 .RE

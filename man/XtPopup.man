@@ -121,7 +121,11 @@ or
 it calls:
 .LP
 .RS
+.ft CW
+.nf
 XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), False)
+.fi
+.ft R
 .RE
 .IP \(bu 5
 Calls
@@ -226,7 +230,11 @@ it is called with popup_shell as the parameter.
 Calls:
 .LP
 .RS
+.ft CW
+.nf
 XtAddGrab(popup_shell, (grab_kind == XtGrabExclusive), spring_loaded)
+.fi
+.ft R
 .RE
 .IP \(bu 5
 Calls

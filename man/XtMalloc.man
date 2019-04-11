@@ -144,7 +144,9 @@ is a convenience macro that calls
 with the following arguments specified:
 .LP
 .RS .5i
+.ft CW
 ((type *) XtMalloc((unsigned) sizeof(type))
+.ft R
 .RE
 .LP
 .B XtNewString
@@ -159,7 +161,9 @@ is a convenience macro that calls
 with the following arguments specified:
 .LP
 .RS .5i
+.ft CW
 (strcpy(XtMalloc((unsigned) strlen(str) + 1), str))
+.ft R
 .RE
 .LP
 The

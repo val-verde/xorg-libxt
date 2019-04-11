@@ -120,10 +120,12 @@ pointer:
 .LP
 .RS
 .nf
+.ft CW
 typedef struct {
         Widget shell_widget;
         Widget enable_widget;
 } XtPopdownIDRec, *XtPopdownID;
+.ft R
 .fi
 .RE
 .LP
