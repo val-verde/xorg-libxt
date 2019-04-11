@@ -237,11 +237,11 @@ a dollar sign ($), and another backslash (\).
 Briefly:
 </para>
 
-<literallayout >
-No modifiers:                   None &lt;event&gt; detail
-Any modifiers:                  &lt;event&gt; detail
-Only these modifiers:           ! mod1 mod2 &lt;event&gt; detail
-These modifiers and any others: mod1 mod2 &lt;event&gt; detail
+<literallayout>
+<code>No modifiers:                   None &lt;event&gt; detail</code>
+<code>Any modifiers:                  &lt;event&gt; detail</code>
+<code>Only these modifiers:           ! mod1 mod2 &lt;event&gt; detail</code>
+<code>These modifiers and any others: mod1 mod2 &lt;event&gt; detail</code>
 </literallayout>
 
 <para>
@@ -939,12 +939,12 @@ The canonical representation of a translation table is (see also
 
 <para>The canonical modifier names are</para>
 
-<literallayout >
-     Ctrl     Mod1         Button1
-     Shift    Mod2         Button2
-     Lock     Mod3         Button3
-     Mod4     Button4
-     Mod5     Button5
+<literallayout>
+<code>     Ctrl     Mod1         Button1</code>
+<code>     Shift    Mod2         Button2</code>
+<code>     Lock     Mod3         Button3</code>
+<code>     Mod4     Button4</code>
+<code>     Mod5     Button5</code>
 </literallayout>
 
 <para>The canonical event types are</para>
@@ -1030,17 +1030,17 @@ The canonical representation of a translation table is (see also
     <para>
 Always put more specific events in the table before more general ones:
     </para>
-<literallayout >
-    Shift &lt;Btn1Down&gt; : twas()\n\
-    &lt;Btn1Down&gt; : brillig()
+<literallayout>
+<code>    Shift &lt;Btn1Down&gt; : twas()\n\</code>
+<code>    &lt;Btn1Down&gt; : brillig()</code>
 </literallayout>
   </listitem>
   <listitem>
     <para>
 For double-click on Button1 Up with Shift, use this specification:
     </para>
-    <literallayout >
-Shift&lt;Btn1Up&gt;(2) : and()
+<literallayout>
+<code>Shift&lt;Btn1Up&gt;(2) : and()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1048,16 +1048,16 @@ Shift&lt;Btn1Up&gt;(2) : and()
 This is equivalent to the following line with appropriate timers set
 between events:
     </para>
-    <literallayout >
-Shift&lt;Btn1Down&gt;,Shift&lt;Btn1Up&gt;,Shift&lt;Btn1Down&gt;,Shift&lt;Btn1Up&gt; : and()
+<literallayout>
+<code>Shift&lt;Btn1Down&gt;,Shift&lt;Btn1Up&gt;,Shift&lt;Btn1Down&gt;,Shift&lt;Btn1Up&gt; : and()</code>
 </literallayout>
   </listitem>
   <listitem>
     <para>
 For double-click on Button1 Down with Shift, use this specification:
     </para>
-    <literallayout >
-Shift&lt;Btn1Down&gt;(2) : the()
+<literallayout>
+<code>Shift&lt;Btn1Down&gt;(2) : the()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1065,8 +1065,8 @@ Shift&lt;Btn1Down&gt;(2) : the()
 This is equivalent to the following line with appropriate timers set
 between events:
     </para>
-    <literallayout >
-Shift&lt;Btn1Down&gt;,Shift&lt;Btn1Up&gt;,Shift&lt;Btn1Down&gt; : the()
+<literallayout>
+<code>Shift&lt;Btn1Down&gt;,Shift&lt;Btn1Up&gt;,Shift&lt;Btn1Down&gt; : the()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1074,8 +1074,8 @@ Shift&lt;Btn1Down&gt;,Shift&lt;Btn1Up&gt;,Shift&lt;Btn1Down&gt; : the()
 Mouse motion is always discarded when it occurs between events in a table
 where no motion event is specified:
     </para>
-    <literallayout >
-&lt;Btn1Down&gt;,&lt;Btn1Up&gt; : slithy()
+<literallayout>
+<code>&lt;Btn1Down&gt;,&lt;Btn1Up&gt; : slithy()</code>
 </literallayout>
     <para>
 This is taken, even if the pointer moves a bit between the down and
@@ -1093,9 +1093,9 @@ noninitial subsequence of another translation,
 it is not taken if it occurs in the context of the longer sequence.
 This occurs mostly in sequences like the following:
     </para>
-    <literallayout >
-&lt;Btn1Down&gt;,&lt;Btn1Up&gt; : toves()\n\
-&lt;Btn1Up&gt; :  did()
+<literallayout>
+<code>&lt;Btn1Down&gt;,&lt;Btn1Up&gt; : toves()\n\</code>
+<code>&lt;Btn1Up&gt; :  did()</code>
 </literallayout>
     <para>
 The second translation is taken only if the button release is not
@@ -1117,8 +1117,8 @@ For single click on Button1 Up with Shift and Meta, use this specification:
     </para>
   </listitem>
   <listitem>
-    <literallayout >
-Shift Meta &lt;Btn1Down&gt;, Shift Meta&lt;Btn1Up&gt;: gyre()
+<literallayout>
+<code>Shift Meta &lt;Btn1Down&gt;, Shift Meta&lt;Btn1Up&gt;: gyre()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1129,8 +1129,8 @@ count in an event sequence.  The actions will be invoked
 on the <emphasis remap='I'>count</emphasis>-th click and each subsequent one arriving
 within the multi-click time interval.  For example:
     </para>
-    <literallayout >
-Shift &lt;Btn1Up&gt;(2+) : and()
+<literallayout>
+<code>Shift &lt;Btn1Up&gt;(2+) : and()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1139,8 +1139,8 @@ To indicate
 <function>EnterNotify</function>
 with any modifiers, use this specification:
     </para>
-    <literallayout >
-&lt;Enter&gt; : gimble()
+<literallayout>
+<code>&lt;Enter&gt; : gimble()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1149,8 +1149,8 @@ To indicate
 <function>EnterNotify</function>
 with no modifiers, use this specification:
     </para>
-    <literallayout >
-None &lt;Enter&gt; : in()
+<literallayout>
+<code>None &lt;Enter&gt; : in()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1160,8 +1160,8 @@ To indicate
 with Button1 Down and Button2 Up and "don't care" about
 the other modifiers, use this specification:
     </para>
-    <literallayout >
-Button1 ~Button2 &lt;Enter&gt; : the()
+<literallayout>
+<code>Button1 ~Button2 &lt;Enter&gt; : the()</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -1170,8 +1170,8 @@ To indicate
 <function>EnterNotify</function>
 with Button1 down and Button2 down exclusively, use this specification:
     </para>
-    <literallayout >
-! Button1 Button2 &lt;Enter&gt; : wabe()
+<literallayout>
+<code>! Button1 Button2 &lt;Enter&gt; : wabe()</code>
 </literallayout>
     <para>
 You do not need to use a tilde (~) with an exclamation point (!).

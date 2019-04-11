@@ -391,8 +391,8 @@ Some of these routines take an argument of type
 <function>XtGrabKind</function>,
 which is defined as
 </para>
-<literallayout >
-typedef enum {XtGrabNone, XtGrabNonexclusive, XtGrabExclusive} XtGrabKind;
+<literallayout>
+<code>typedef enum {XtGrabNone, XtGrabNonexclusive, XtGrabExclusive} XtGrabKind;</code>
 </literallayout>
 
 <para>
@@ -509,8 +509,8 @@ or
 <function>XtGrabExclusive</function>,
 it calls
     </para>
-<literallayout >
-XtAddGrab(<emphasis remap='I'>popup_shell</emphasis>, (<emphasis remap='I'>grab_kind</emphasis> == XtGrabExclusive), False)
+<literallayout>
+<code>XtAddGrab(</code><emphasis remap='I'>popup_shell</emphasis><code>, (</code><emphasis remap='I'>grab_kind</emphasis><code> == XtGrabExclusive), False)</code>
 </literallayout>
   </listitem>
   <listitem>
@@ -985,11 +985,11 @@ The
 function casts the <emphasis remap='I'>client_data</emphasis> parameter to a pointer of type
 <function>XtPopdownID</function>.
 </para>
-<literallayout >
-typedef struct {
-        Widget shell_widget;
-        Widget enable_widget;
-} XtPopdownIDRec, *XtPopdownID;
+<literallayout>
+<code>typedef struct {</code>
+<code>        Widget shell_widget;</code>
+<code>        Widget enable_widget;</code>
+<code>} XtPopdownIDRec, *XtPopdownID;</code>
 </literallayout>
 <para>
 The <emphasis remap='I'>shell_widget</emphasis> is the pop-up shell to pop down,

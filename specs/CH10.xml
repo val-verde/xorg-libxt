@@ -111,11 +111,11 @@ Specifies the number of entries in <emphasis remap='I'>params</emphasis>.
   </varlistentry>
 </variablelist>
 
-<literallayout >
-typedef struct _XtActionsRec {
-        String          string;
-        XtActionProc    proc;
-} XtActionsRec, *XtActionList;
+<literallayout>
+<code>typedef struct _XtActionsRec {</code>
+<code>        String          string;</code>
+<code>        XtActionProc    proc;</code>
+<code>} XtActionsRec, *XtActionList;</code>
 </literallayout>
 <para>
 The <emphasis remap='I'>string</emphasis> field is the name used in translation tables to access
@@ -178,14 +178,14 @@ The string entry is the name used in translation tables.
 The procedure entry (usually spelled identically to the string)
 is the name of the C procedure that implements that function:
 </para>
-<literallayout >
-XtActionsRec actionTable[] = {
-        {"Set",         Set},
-        {"Unset",       Unset},
-        {"Highlight",   Highlight},
-        {"Unhighlight", Unhighlight}
-        {"Notify",      Notify},
-};
+<literallayout>
+<code>XtActionsRec actionTable[] = {</code>
+<code>        {"Set",         Set},</code>
+<code>        {"Unset",       Unset},</code>
+<code>        {"Highlight",   Highlight},</code>
+<code>        {"Unhighlight", Unhighlight}</code>
+<code>        {"Notify",      Notify},</code>
+<code>};</code>
 </literallayout>
 <para>
 The Intrinsics reserve all action names and parameters starting with
@@ -547,12 +547,12 @@ Call callbacks and reinvert on left button up.
 <para>
 The following illustrates Pushbutton's default translation table:
 </para>
-<literallayout >
-static String defaultTranslations =
-        "&lt;EnterWindow&gt;:   Highlight()\\n\\
-        &lt;LeaveWindow&gt;:    Unhighlight()\\n\\
-        &lt;Btn1Down&gt;:       Set()\\n\\
-        &lt;Btn1Up&gt;: Notify() Unset()";
+<literallayout>
+<code>static String defaultTranslations =</code>
+<code>        "&lt;EnterWindow&gt;:   Highlight()\\n\\</code>
+<code>        &lt;LeaveWindow&gt;:    Unhighlight()\\n\\</code>
+<code>        &lt;Btn1Down&gt;:       Set()\\n\\</code>
+<code>        &lt;Btn1Up&gt;: Notify() Unset()";</code>
 </literallayout>
 <para>
 The <emphasis remap='I'>tm_table</emphasis> field of the
@@ -1386,7 +1386,7 @@ There are <emphasis remap='I'>keysyms_per_keycode_return</emphasis> KeySyms asso
 KeyCode, located in the table with indices starting at index
 </para>
 <literallayout>
-    (test_keycode - min_keycode_return) * keysyms_per_keycode_return
+<code>    (test_keycode - min_keycode_return) * keysyms_per_keycode_return</code>
 </literallayout>
 <para>
 for KeyCode <emphasis remap='I'>test_keycode</emphasis>.  Any entries that have no KeySyms associated
@@ -1952,7 +1952,7 @@ Specifies the action procedure to search for in translation tables.
     </term>
     <listitem>
       <para></para>
-      
+
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -1961,7 +1961,7 @@ Specifies the action procedure to search for in translation tables.
     </term>
     <listitem>
       <para></para>
-      
+
     </listitem>
   </varlistentry>
   <varlistentry>

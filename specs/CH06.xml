@@ -121,16 +121,16 @@ When making a geometry request, the child specifies an
 structure.
 </para>
 
-<literallayout >
-typedef unsigned long XtGeometryMask;
-typedef struct {
-        XtGeometryMask  request_mode;
-        Position        x, y;
-        Dimension       width, height;
-        Dimension       border_width;
-        Widget          sibling;
-        int             stack_mode;
-} XtWidgetGeometry;
+<literallayout>
+<code>typedef unsigned long XtGeometryMask;</code>
+<code>typedef struct {</code>
+<code>        XtGeometryMask  request_mode;</code>
+<code>        Position        x, y;</code>
+<code>        Dimension       width, height;</code>
+<code>        Dimension       border_width;</code>
+<code>        Widget          sibling;</code>
+<code>        int             stack_mode;</code>
+<code>} XtWidgetGeometry;</code>
 </literallayout>
 
 <para>
@@ -275,13 +275,13 @@ when called by a child of a primitive widget.
 The return codes from geometry managers are
 </para>
 
-<literallayout >
-typedef enum {
-        XtGeometryYes,
-        XtGeometryNo,
-        XtGeometryAlmost,
-        XtGeometryDone
-} XtGeometryResult;
+<literallayout>
+<code>typedef enum {</code>
+<code>        XtGeometryYes,</code>
+<code>        XtGeometryNo,</code>
+<code>        XtGeometryAlmost,</code>
+<code>        XtGeometryDone</code>
+<code>} XtGeometryResult;</code>
 </literallayout>
 
 <para>

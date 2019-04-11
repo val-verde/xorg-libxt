@@ -43,16 +43,16 @@ The declaration for the
 <function>XtResource</function>
 structure is
 </para>
-<literallayout >
-typedef struct {
-        String          resource_name;
-        String          resource_class;
-        String          resource_type;
-        Cardinal        resource_size;
-        Cardinal        resource_offset;
-        String          default_type;
-        XtPointer       default_addr;
-} XtResource, *XtResourceList;
+<literallayout>
+<code>typedef struct {</code>
+<code>        String          resource_name;</code>
+<code>        String          resource_class;</code>
+<code>        String          resource_type;</code>
+<code>        Cardinal        resource_size;</code>
+<code>        Cardinal        resource_offset;</code>
+<code>        String          default_type;</code>
+<code>        XtPointer       default_addr;</code>
+<code>} XtResource, *XtResourceList;</code>
 </literallayout>
 <para>
 When the resource list is specified as the
@@ -127,9 +127,9 @@ and all the other pixel entries a resource class of
 Then, the resource file needs only two lines to
 change all pixels to ivory or darkblue:
 </para>
-<literallayout >
-*Background:    ivory
-*Foreground:    darkblue
+<literallayout>
+<code>*Background:    ivory</code>
+<code>*Foreground:    darkblue</code>
 </literallayout>
 <para>
 Similarly, a widget may have several font resources (such as normal and bold),
@@ -137,7 +137,7 @@ but all fonts should have the class Font.
 Thus, changing all fonts simply requires only a single line in the
 default resource file:
 </para>
-<literallayout >
+<literallayout>
 *Font:  6x13
 </literallayout>
 <para>
@@ -638,19 +638,19 @@ see <xref linkend='Obtaining_Widget_State' /> and
 <para>
 Here is an abbreviated version of a possible resource list for a Label widget:
 </para>
-<literallayout >
-/* Resources specific to Label */
-static XtResource resources[] = {
-{XtNforeground, XtCForeground, XtRPixel, sizeof(Pixel),
-   XtOffsetOf(LabelRec, label.foreground), XtRString, XtDefaultForeground},
-{XtNfont, XtCFont, XtRFontStruct, sizeof(XFontStruct*),
-   XtOffsetOf(LabelRec, label.font), XtRString, XtDefaultFont},
-{XtNlabel, XtCLabel, XtRString, sizeof(String),
-   XtOffsetOf(LabelRec, label.label), XtRString, NULL},
-        .
-        .
-        .
-}
+<literallayout>
+<code>/* Resources specific to Label */</code>
+<code>static XtResource resources[] = {</code>
+<code>{XtNforeground, XtCForeground, XtRPixel, sizeof(Pixel),</code>
+<code>   XtOffsetOf(LabelRec, label.foreground), XtRString, XtDefaultForeground},</code>
+<code>{XtNfont, XtCFont, XtRFontStruct, sizeof(XFontStruct*),</code>
+<code>   XtOffsetOf(LabelRec, label.font), XtRString, XtDefaultFont},</code>
+<code>{XtNlabel, XtCLabel, XtRString, sizeof(String),</code>
+<code>   XtOffsetOf(LabelRec, label.label), XtRString, NULL},</code>
+<code>        .</code>
+<code>        .</code>
+<code>        .</code>
+<code>}</code>
 </literallayout>
 <para>
 The complete resource name for a field of a widget instance is the
@@ -1756,11 +1756,11 @@ see <olink targetdoc='libX11' targetptr='Creating_and_Storing_Databases'>Section
 <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface.</olink>)
 for input and output values.
 </para>
-<literallayout >
-typedef struct {
-       unsigned int size;
-       XPointer addr;
-} XrmValue, *XrmValuePtr;
+<literallayout>
+<code>typedef struct {</code>
+<code>       unsigned int size;</code>
+<code>       XPointer addr;</code>
+<code>} XrmValue, *XrmValuePtr;</code>
 </literallayout>
 <para>
 The <emphasis remap='I'>addr</emphasis> field specifies the address of the data, and the <emphasis remap='I'>size</emphasis>
@@ -1939,71 +1939,71 @@ still required to inform the Intrinsics that the converted value is
 a function of the particular display (and colormap).
 </para>
 
-<literallayout >
-#define done(type, value) \\
-        {                                                       \\
-                if (toVal-&gt;addr != NULL) {                   \\
-                        if (toVal-&gt;size &lt; sizeof(type)) { \\
-                                toVal-&gt;size = sizeof(type);  \\
-                                return False;                   \\
-                        }                                       \\
-                        *(type*)(toVal-&gt;addr) = (value);     \\
-                }                                               \\
-                else {                                          \\
-                        static type static_val;                 \\
-                        static_val = (value);                   \\
-                        toVal-&gt;addr = (XPointer)&amp;static_val; \\
-                }                                               \\
-                toVal-&gt;size = sizeof(type);                  \\
-                return True;                                    \\
-        }
+<literallayout>
+<code>#define done(type, value) \\</code>
+<code>        {                                                       \\</code>
+<code>                if (toVal-&gt;addr != NULL) {                   \\</code>
+<code>                        if (toVal-&gt;size &lt; sizeof(type)) { \\</code>
+<code>                                toVal-&gt;size = sizeof(type);  \\</code>
+<code>                                return False;                   \\</code>
+<code>                        }                                       \\</code>
+<code>                        *(type*)(toVal-&gt;addr) = (value);     \\</code>
+<code>                }                                               \\</code>
+<code>                else {                                          \\</code>
+<code>                        static type static_val;                 \\</code>
+<code>                        static_val = (value);                   \\</code>
+<code>                        toVal-&gt;addr = (XPointer)&amp;static_val; \\</code>
+<code>                }                                               \\</code>
+<code>                toVal-&gt;size = sizeof(type);                  \\</code>
+<code>                return True;                                    \\</code>
+<code>        }</code>
 
-static Boolean CvtStringToPixel(
-        Display         *dpy,
-        XrmValue        *args,
-        Cardinal        *num_args,
-        XrmValue        *fromVal,
-        XrmValue        *toVal,
-        XtPointer       *converter_data)
-{
-        static XColor   screenColor;
-        XColor          exactColor;
-        Screen          *screen;
-        Colormap        colormap;
-        Status          status;
+<code>static Boolean CvtStringToPixel(</code>
+<code>        Display         *dpy,</code>
+<code>        XrmValue        *args,</code>
+<code>        Cardinal        *num_args,</code>
+<code>        XrmValue        *fromVal,</code>
+<code>        XrmValue        *toVal,</code>
+<code>        XtPointer       *converter_data)</code>
+<code>{</code>
+<code>        static XColor   screenColor;</code>
+<code>        XColor          exactColor;</code>
+<code>        Screen          *screen;</code>
+<code>        Colormap        colormap;</code>
+<code>        Status          status;</code>
 
-        if (*num_args != 2)
-                XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
-                        "wrongParameters", "cvtStringToPixel", "XtToolkitError",
-                        "String to pixel conversion needs screen and colormap arguments",
-                        (String *)NULL, (Cardinal *)NULL);
-        screen = *((Screen**) args[0].addr);
-        colormap = *((Colormap *) args[1].addr);
-        if (CompareISOLatin1(str, XtDefaultBackground) == 0) {
-                *closure_ret = False;
-                done(Pixel, WhitePixelOfScreen(screen));
-        }
-        if (CompareISOLatin1(str, XtDefaultForeground) == 0) {
-                *closure_ret = False;
-                done(Pixel, BlackPixelOfScreen(screen));
-        }
-        status = XAllocNamedColor(DisplayOfScreen(screen), colormap, (char*)fromVal-&gt;addr,
-                                               &amp;screenColor, &amp;exactColor);
-        if (status == 0) {
-                String params[1];
-                Cardinal num_params = 1;
-                params[0] = (String)fromVal-&gt;addr;
-                XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
-                        "noColormap", "cvtStringToPixel", "XtToolkitError",
-                        "Cannot allocate colormap entry for \\"%s\\"",
-                        params, &amp;num_params);
-                *converter_data = (char *) False;
-                return False;
-        } else {
-                *converter_data = (char *) True;
-                done(Pixel, &amp;screenColor.pixel);
-        }
-}
+<code>        if (*num_args != 2)</code>
+<code>                XtAppWarningMsg(XtDisplayToApplicationContext(dpy),</code>
+<code>                        "wrongParameters", "cvtStringToPixel", "XtToolkitError",</code>
+<code>                        "String to pixel conversion needs screen and colormap arguments",</code>
+<code>                        (String *)NULL, (Cardinal *)NULL);</code>
+<code>        screen = *((Screen**) args[0].addr);</code>
+<code>        colormap = *((Colormap *) args[1].addr);</code>
+<code>        if (CompareISOLatin1(str, XtDefaultBackground) == 0) {</code>
+<code>                *closure_ret = False;</code>
+<code>                done(Pixel, WhitePixelOfScreen(screen));</code>
+<code>        }</code>
+<code>        if (CompareISOLatin1(str, XtDefaultForeground) == 0) {</code>
+<code>                *closure_ret = False;</code>
+<code>                done(Pixel, BlackPixelOfScreen(screen));</code>
+<code>        }</code>
+<code>        status = XAllocNamedColor(DisplayOfScreen(screen), colormap, (char*)fromVal-&gt;addr,</code>
+<code>                                               &amp;screenColor, &amp;exactColor);</code>
+<code>        if (status == 0) {</code>
+<code>                String params[1];</code>
+<code>                Cardinal num_params = 1;</code>
+<code>                params[0] = (String)fromVal-&gt;addr;</code>
+<code>                XtAppWarningMsg(XtDisplayToApplicationContext(dpy),</code>
+<code>                        "noColormap", "cvtStringToPixel", "XtToolkitError",</code>
+<code>                        "Cannot allocate colormap entry for \\"%s\\"",</code>
+<code>                        params, &amp;num_params);</code>
+<code>                *converter_data = (char *) False;</code>
+<code>                return False;</code>
+<code>        } else {</code>
+<code>                *converter_data = (char *) True;</code>
+<code>                done(Pixel, &amp;screenColor.pixel);</code>
+<code>        }</code>
+<code>}</code>
 </literallayout>
 
 <para>
@@ -2218,8 +2218,8 @@ calls to the converter.  Conversion cache control is specified
 via an <function>XtCacheType</function>
 argument.  </para>
 
-<literallayout >
-typedef int XtCacheType;
+<literallayout>
+<code>typedef int XtCacheType;</code>
 </literallayout>
 
 <para>
@@ -2510,23 +2510,23 @@ specify how each argument is derived.
 These are defined in
 <function>&lt;X11/Intrinsic.h&gt;</function>.
 </para>
-<literallayout >
-typedef enum {
-        /* address mode parameter representation */
-           XtAddress,           /* address */
-           XtBaseOffset,        /* offset */
-           XtImmediate,         /* constant */
-           XtResourceString,    /* resource name string */
-           XtResourceQuark,     /* resource name quark */
-           XtWidgetBaseOffset,  /* offset */
-           XtProcedureArg       /* procedure to call */
-} XtAddressMode;
+<literallayout>
+<code>typedef enum {</code>
+<code>        /* address mode parameter representation */</code>
+<code>           XtAddress,           /* address */</code>
+<code>           XtBaseOffset,        /* offset */</code>
+<code>           XtImmediate,         /* constant */</code>
+<code>           XtResourceString,    /* resource name string */</code>
+<code>           XtResourceQuark,     /* resource name quark */</code>
+<code>           XtWidgetBaseOffset,  /* offset */</code>
+<code>           XtProcedureArg       /* procedure to call */</code>
+<code>} XtAddressMode;</code>
 
-typedef struct {
-        XtAddressMode   address_mode;
-        XtPointer       address_id;
-        Cardinal        size;
-} XtConvertArgRec, *XtConvertArgList;
+<code>typedef struct {</code>
+<code>        XtAddressMode   address_mode;</code>
+<code>        XtPointer       address_id;</code>
+<code>        Cardinal        size;</code>
+<code>} XtConvertArgRec, *XtConvertArgList;</code>
 </literallayout>
 <para>
 The <emphasis remap='I'>size</emphasis> field specifies the length of the data in bytes.
@@ -2656,8 +2656,8 @@ To invoke explicit resource conversions, use
 or
 <xref linkend='XtCallConverter' xrefstyle='select: title'/>.
 </para>
-<literallayout >
-typedef XtPointer XtCacheRef;
+<literallayout>
+<code>typedef XtPointer XtCacheRef;</code>
 </literallayout>
 
 <funcsynopsis id='XtCallConverter'>

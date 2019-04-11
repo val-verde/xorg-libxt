@@ -44,8 +44,8 @@ as:
 </para>
 
 <literallayout>
-#define XtLabelCreate(name, parent, args, num_args) \
-   ((LabelWidget) XtCreateWidget(name, labelWidgetClass, parent, args, num_args))
+<code>#define XtLabelCreate(name, parent, args, num_args) \</code>
+<code>   ((LabelWidget) XtCreateWidget(name, labelWidgetClass, parent, args, num_args))</code>
 </literallayout>
 
 <para>
@@ -1485,7 +1485,7 @@ an application- or widget-specific database), use
       <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
-  
+
 <para>
 The
 <xref linkend='XtGetErrorDatabase' xrefstyle='select: title'/>

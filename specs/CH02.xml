@@ -821,10 +821,10 @@ prior to
 as in the following example.
 </para>
 <literallayout>
-        Widget top;
-        XtSetLanguageProc(NULL, NULL, NULL);
-        top = XtOpenApplication(...);
-        ...
+<code>        Widget top;</code>
+<code>        XtSetLanguageProc(NULL, NULL, NULL);</code>
+<code>        top = XtOpenApplication(</code>...<code>);</code>
+<code>        </code>...
 </literallayout>
 </sect1>
 
@@ -1012,12 +1012,12 @@ must contain at least six entries.  These entries must contain
 $HOME as the directory prefix, plus the following substitutions:
         </para>
 <literallayout>
-      1.        %C, %N, %L      or      %C, %N, %l, %t, %c
-      2.        %C, %N, %l
-      3.        %C, %N
-      4.        %N, %L  or      %N, %l, %t, %c
-      5.        %N, %l
-      6.        %N
+<code>      1.        %C, %N, %L      or      %C, %N, %l, %t, %c</code>
+<code>      2.        %C, %N, %l</code>
+<code>      3.        %C, %N</code>
+<code>      4.        %N, %L  or      %N, %l, %t, %c</code>
+<code>      5.        %N, %l</code>
+<code>      6.        %N</code>
 </literallayout>
         <para>
 The order of these six entries within the path must be as given above.
@@ -1034,13 +1034,13 @@ must contain at least seven entries.  These entries must contain the
 following directory prefixes and substitutions:
         </para>
 <literallayout>
-      1.        $XAPPLRESDIR    with    %C, %N, %L      or      %C, %N, %l, %t, %c
-      2.        $XAPPLRESDIR    with    %C, %N, %l
-      3.        $XAPPLRESDIR    with    %C, %N
-      4.        $XAPPLRESDIR    with    %N, %L  or      %N, %l, %t, %c
-      5.        $XAPPLRESDIR    with    %N, %l
-      6.        $XAPPLRESDIR    with    %N
-      7.        $HOME   with    %N
+<code>      1.        $XAPPLRESDIR    with    %C, %N, %L      or      %C, %N, %l, %t, %c</code>
+<code>      2.        $XAPPLRESDIR    with    %C, %N, %l</code>
+<code>      3.        $XAPPLRESDIR    with    %C, %N</code>
+<code>      4.        $XAPPLRESDIR    with    %N, %L  or      %N, %l, %t, %c</code>
+<code>      5.        $XAPPLRESDIR    with    %N, %l</code>
+<code>      6.        $XAPPLRESDIR    with    %N</code>
+<code>      7.        $HOME   with    %N</code>
 </literallayout>
         <para>
 The order of these seven entries within the path must be as given above.
@@ -1272,24 +1272,24 @@ application-specific resource abbreviations.
 The format of this table is described in Section 15.9 in <emphasis remap='I'>Xlib — C Language X Interface</emphasis>.
 </para>
 <literallayout>
-typedef enum {
-        XrmoptionNoArg,         /* Value is specified in OptionDescRec.value */
-        XrmoptionIsArg,         /* Value is the option string itself */
-        XrmoptionStickyArg,     /* Value is characters immediately following option */
-        XrmoptionSepArg,        /* Value is next argument in argv */
-        XrmoptionResArg,        /* Use the next argument as input to XrmPutLineResource*/
-        XrmoptionSkipArg,       /* Ignore this option and the next argument in argv */
-        XrmoptionSkipNArgs,     /* Ignore this option and the next */
-                                /* OptionDescRec.value arguments in argv */
-        XrmoptionSkipLine       /* Ignore this option and the rest of argv */
-} XrmOptionKind;
+<code>typedef enum {</code>
+<code>        XrmoptionNoArg,         /* Value is specified in OptionDescRec.value */</code>
+<code>        XrmoptionIsArg,         /* Value is the option string itself */</code>
+<code>        XrmoptionStickyArg,     /* Value is characters immediately following option */</code>
+<code>        XrmoptionSepArg,        /* Value is next argument in argv */</code>
+<code>        XrmoptionResArg,        /* Use the next argument as input to XrmPutLineResource*/</code>
+<code>        XrmoptionSkipArg,       /* Ignore this option and the next argument in argv */</code>
+<code>        XrmoptionSkipNArgs,     /* Ignore this option and the next */</code>
+<code>                                /* OptionDescRec.value arguments in argv */</code>
+<code>        XrmoptionSkipLine       /* Ignore this option and the rest of argv */</code>
+<code>} XrmOptionKind;</code>
 
-typedef struct {
-        char *option;           /* Option name in argv */
-        char *specifier;        /* Resource name (without application name) */
-        XrmOptionKind argKind;  /* Location of the resource value */
-        XPointer value;         /* Value to provide if XrmoptionNoArg */
-} XrmOptionDescRec, *XrmOptionDescList;
+<code>typedef struct {</code>
+<code>        char *option;           /* Option name in argv */</code>
+<code>        char *specifier;        /* Resource name (without application name) */</code>
+<code>        XrmOptionKind argKind;  /* Location of the resource value */</code>
+<code>        XPointer value;         /* Value to provide if XrmoptionNoArg */</code>
+<code>} XrmOptionDescRec, *XrmOptionDescList;</code>
 </literallayout>
 <para>The standard table contains the following entries:</para>
 
@@ -1503,7 +1503,7 @@ to give a red background to all command buttons in an application named
 you can start it up as
 </para>
 <literallayout>
-xmh -xrm 'xmh*Command.background: red'
+<code>xmh -xrm 'xmh*Command.background: red'</code>
 </literallayout>
 <para>
 When it parses the command line,
@@ -1611,10 +1611,10 @@ These are passed as an arglist, a pointer to an array of
 structures, which contains
 </para>
 <literallayout>
-typedef struct {
-        String name;
-        XtArgVal value;
-} Arg, *ArgList;
+<code>typedef struct {</code>
+<code>        String name;</code>
+<code>        XtArgVal value;</code>
+<code>} Arg, *ArgList;</code>
 </literallayout>
 <para>
 where
@@ -1688,12 +1688,12 @@ function is usually used in a highly stylized manner to
 minimize the probability of making a mistake; for example:
 </para>
 <literallayout>
-Arg args[20];
-int n;
-n = 0;
-XtSetArg(args[n], XtNheight, 100);      n++;
-XtSetArg(args[n], XtNwidth, 200);       n++;
-XtSetValues(widget, args, n);
+<code>Arg args[20];</code>
+<code>int n;</code>
+<code>n = 0;</code>
+<code>XtSetArg(args[n], XtNheight, 100);      n++;</code>
+<code>XtSetArg(args[n], XtNwidth, 200);       n++;</code>
+<code>XtSetValues(widget, args, n);</code>
 </literallayout>
 <para>
 Alternatively, an application can statically declare the argument list
@@ -1701,11 +1701,11 @@ and use
 <xref linkend='XtNumber' xrefstyle='select: title'/>:
 </para>
 <literallayout>
-static Args args[] = {
-        {XtNheight, (XtArgVal) 100},
-        {XtNwidth, (XtArgVal) 200},
-};
-XtSetValues(Widget, args, XtNumber(args));
+<code>static Args args[] = {</code>
+<code>        {XtNheight, (XtArgVal) 100},</code>
+<code>        {XtNwidth, (XtArgVal) 200},</code>
+<code>};</code>
+<code>XtSetValues(Widget, args, XtNumber(args));</code>
 </literallayout>
 <para>
 Note that you should not use expressions with side effects such as
@@ -1823,7 +1823,7 @@ and
 <function>XtVaNestedList</function>.
 </para>
 <literallayout>
-#define XtVaTypedArg "XtVaTypedArg"
+<code>#define XtVaTypedArg "XtVaTypedArg"</code>
 </literallayout>
 <para>
 If the name
@@ -1852,7 +1852,7 @@ conversion fails for any reason, a warning message is issued and the
 list entry is skipped.
 </para>
 <literallayout>
-#define XtVaNestedList  "XtVaNestedList"
+<code>#define XtVaNestedList  "XtVaNestedList"</code>
 </literallayout>
 <para>
 If the name
@@ -1873,7 +1873,7 @@ in multiple calls, use
 <xref linkend='XtVaCreateArgsList' xrefstyle='select: title'/>.
 </para>
 <literallayout>
-typedef XtPointer XtVarArgsList;
+<code>typedef XtPointer XtVarArgsList;</code>
 </literallayout>
 
 <funcsynopsis id='XtVaCreateArgsList'>
@@ -2351,9 +2351,9 @@ which is best used when there is a clear choice for what is the main window,
 leads to resource specifications like the following:
 </para>
 <literallayout>
-xmail.geometry:...              (the main window)
-xmail.read.geometry:...         (the read window)
-xmail.compose.geometry:...      (the compose window)
+<code>xmail.geometry:</code>...<code>              (the main window)</code>
+<code>xmail.read.geometry:</code>...<code>         (the read window)</code>
+<code>xmail.compose.geometry:</code>...<code>      (the compose window)</code>
 </literallayout>
 <para>
 The second method,
@@ -2361,9 +2361,9 @@ which is best if there is no main window,
 leads to resource specifications like the following:
 </para>
 <literallayout>
-xmail.headers.geometry:...      (the headers window)
-xmail.read.geometry:...         (the read window)
-xmail.compose.geometry:...      (the compose window)
+<code>xmail.headers.geometry:</code>...<code>      (the headers window)</code>
+<code>xmail.read.geometry:</code>...<code>         (the read window)</code>
+<code>xmail.compose.geometry:</code>...<code>      (the compose window)</code>
 </literallayout>
 <para>
 To create a top-level widget that is the root of a widget tree using
@@ -2760,12 +2760,12 @@ these arguments will be passed to the allocation procedure in an
 <function>XtTypedArgList</function>.
 </para>
 <literallayout>
-typedef struct {
-        String name;
-        String type;
-        XtArgVal value;
-        int size;
-} XtTypedArg, *XtTypedArgList;
+<code>typedef struct {</code>
+<code>        String name;</code>
+<code>        String type;</code>
+<code>        XtArgVal value;</code>
+<code>        int size;</code>
+<code>} XtTypedArg, *XtTypedArgList;</code>
 </literallayout>
 <para>
 The allocate procedure pointer in the
@@ -4272,7 +4272,7 @@ procedure <emphasis remap='I'>ClientDestroy</emphasis> with client data to a wid
 </para>
 
 <literallayout>
-XtAddCallback(<emphasis remap='I'>w</emphasis>, XtNdestroyCallback, <emphasis remap='I'>ClientDestroy</emphasis>, <emphasis remap='I'>client_data</emphasis>)
+<code>XtAddCallback(</code><emphasis remap='I'>w</emphasis><code>, XtNdestroyCallback, </code><emphasis remap='I'>ClientDestroy</emphasis><code>, </code><emphasis remap='I'>client_data</emphasis><code>)</code>
 </literallayout>
 
 <para>
@@ -4282,7 +4282,7 @@ procedure <emphasis remap='I'>ClientDestroy</emphasis> by calling
 </para>
 
 <literallayout>
-XtRemoveCallback(<emphasis remap='I'>w</emphasis>, XtNdestroyCallback, <emphasis remap='I'>ClientDestroy</emphasis>, <emphasis remap='I'>client_data</emphasis>)
+<code>XtRemoveCallback(</code><emphasis remap='I'>w</emphasis><code>, XtNdestroyCallback, </code><emphasis remap='I'>ClientDestroy</emphasis><code>, </code><emphasis remap='I'>client_data</emphasis><code>)</code>
 </literallayout>
 <para>
 The <emphasis remap='I'>ClientDestroy</emphasis> argument is of type
