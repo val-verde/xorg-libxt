@@ -1554,6 +1554,7 @@ static String ParseEventSeq(
 			XtCXtToolkitError,
 			"... probably due to non-Latin1 character in quoted string",
 			(String*)NULL, (Cardinal*)NULL);
+		    XtFree((char *)event);
 		    return PanicModeRecovery(str);
 		}
 		*nextEvent = event;
@@ -1784,7 +1785,10 @@ static String ParseActionSeq(
         action->next = NULL;
 
 	str = ParseAction(str, action, &quark, error);
-	if (*error) return PanicModeRecovery(str);
+	if (*error) {
+	    XtFree((char *)action);
+	    return PanicModeRecovery(str);
+	}
 
 	action->idx = _XtGetQuarkIndex(parseTree, quark);
 	ScanWhitespace(str);
