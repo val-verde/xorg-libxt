@@ -1071,8 +1071,9 @@ _XtString XtFindFile(
     int len;
     Boolean firstTime = TRUE;
 
-    buf = buf1 = __XtMalloc((unsigned)PATH_MAX);
+    buf1 = __XtMalloc((unsigned)PATH_MAX);
     buf2 = __XtMalloc((unsigned)PATH_MAX);
+    buf = buf1;
 
     if (predicate == NULL) predicate = TestFile;
 
@@ -1106,9 +1107,12 @@ _XtString XtFindFile(
 #ifdef XNL_DEBUG
 		    printf("File found.\n");
 #endif /* XNL_DEBUG */
-		    if (buf == buf1) XtFree(buf2);
-		    else XtFree(buf1);
-		    return buf;
+		    if (buf == buf1) {
+			XtFree(buf2);
+			return buf1;
+		    }
+		    XtFree(buf1);
+		    return buf2;
 		}
 		if (buf == buf1)
 		    buf = buf2;
