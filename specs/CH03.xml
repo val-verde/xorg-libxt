@@ -405,8 +405,6 @@ and marks it if not.
 If the parent is realized and after all children have been marked,
 it makes some of the newly managed children viewable:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -707,8 +705,6 @@ For each unique child on the list,
 <xref linkend='XtUnmanageChildren' xrefstyle='select: title'/>
 ignores the child if it is unmanaged; otherwise it performs the following:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -913,8 +909,6 @@ then
 <xref linkend='XtChangeManagedSet' xrefstyle='select: title'/>
 performs the following:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -941,8 +935,6 @@ Calls
     <para>
 Otherwise, the following is performed:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>

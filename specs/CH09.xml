@@ -3210,8 +3210,6 @@ Intrinsics-defined resources, the following lifetimes apply:
     <para>
 Not valid following any operation that modifies the resource:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -3229,8 +3227,6 @@ All resources of representation type XtRCallback.
     <para>
 Remain valid at least until the widget is destroyed:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -3243,8 +3239,6 @@ XtNaccelerators, XtNtranslations.
     <para>
 Remain valid until the Display is closed:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>

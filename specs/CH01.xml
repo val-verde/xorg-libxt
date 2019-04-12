@@ -1300,8 +1300,6 @@ New widget classes start with a capital and use uppercase for compound
 words.
 Given a new class name AbcXyz, you should derive several names:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>

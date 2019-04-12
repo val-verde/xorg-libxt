@@ -1715,8 +1715,6 @@ is called.
         <para>
 If E is an ancestor of F, and the event is a key press, and either
         </para>
-      </listitem>
-      <listitem>
         <itemizedlist spacing='compact'>
           <listitem>
             <para>
@@ -1744,8 +1742,6 @@ then the event is dispatched to E.
         <para>
 Otherwise, define A as the closest common ancestor of E and F:
         </para>
-      </listitem>
-      <listitem>
         <itemizedlist spacing='compact'>
           <listitem>
             <para>

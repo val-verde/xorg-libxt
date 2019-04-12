@@ -1002,8 +1002,6 @@ if this is defined.  If
 is not defined, an implementation-dependent default value is used.
 This default value is constrained in the following manner:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -3317,8 +3315,6 @@ not a subclass of
 <xref linkend='XtRealizeWidget' xrefstyle='select: title'/>
 returns; otherwise it continues and performs the following:
     </para>
-  </listitem>
-  <listitem>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
