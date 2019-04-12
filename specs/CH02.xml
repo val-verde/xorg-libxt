@@ -349,7 +349,7 @@ Specifies how to parse the command line for any application-specific resources.
 The <emphasis remap='I'>options</emphasis> argument is passed as a parameter to
 <function>XrmParseCommand</function>.
 For further information,
-see <olink targetdoc='libX11' targetptr='Parsing_Command_Line_Options'>Parsing Command Line Options</olink> in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink> and <xref linkend='Parsing_the_Command_Line' /> of this specification.
+see <olink targetdoc='libX11' targetptr='Parsing_Command_Line_Options'>Parsing Command Line Options</olink> in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink> and <xref linkend='Parsing_the_Command_Line' /> of this specification.
       </para>
     </listitem>
   </varlistentry>
@@ -1272,7 +1272,7 @@ has a table of standard command line options that are passed to
 for adding resources to the resource database,
 and it takes as a parameter additional
 application-specific resource abbreviations.
-The format of this table is described in Section 15.9 in <emphasis remap='I'>Xlib — C Language X Interface</emphasis>.
+The format of this table is described in Section 15.9 in <emphasis remap='I'>Xlib &mdash; C Language X Interface</emphasis>.
 </para>
 <literallayout>
 <code>typedef enum {</code>

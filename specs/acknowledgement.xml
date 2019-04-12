@@ -89,7 +89,7 @@ The design and implementation of the X10 Intrinsics were done by:
 <!-- </sidebar> -->
 
 <para>
-The design and implementation of the X10 toolkit’s sample widgets were by
+The design and implementation of the X10 toolkit&rsquo;s sample widgets were by
 the above, as well as by:
 </para>
 
@@ -122,7 +122,7 @@ the above, as well as by:
 These widgets provided a checklist of requirements that we had to address in the X11 Intrinsics.
 </para>
 <para>
-Thanks go to Al Mento of Digital’s UEG Documentation Group for formatting and generally
+Thanks go to Al Mento of Digital&rsquo;s UEG Documentation Group for formatting and generally
 improving this document and to John Ousterhout of Berkeley for extensively reviewing early
 drafts of it.
 </para>
@@ -249,7 +249,7 @@ code contributed by each of the following:
 <para>
 In Release 5, the effort to define the internationalization additions was headed by Bill McMahon
 of Hewlett Packard and Frank Rojas of IBM. This has been an educational process for many of
-us, and Bill and Frank’s tutelage has carried us through. Vania Joloboff of the OSF also contributed
+us, and Bill and Frank&rsquo;s tutelage has carried us through. Vania Joloboff of the OSF also contributed
 to the internationalization additions. The implementation efforts of Bill, Gabe Beged-Dov,
 and especially Donna Converse for this release are also gratefully acknowledged.
 </para>
@@ -262,7 +262,7 @@ July 1991
 </literallayout>
 
 <para>
-The Release 6 Intrinsics is a result of the collaborative efforts of participants in the X Consortium’s
+The Release 6 Intrinsics is a result of the collaborative efforts of participants in the X Consortium&rsquo;s
 intrinsics working group. A few individuals contributed substantial design proposals, participated
 in lengthy discussions, reviewed final specifications, and in most cases, were also
 responsible for sections of the implementation. They deserve recognition and thanks for their

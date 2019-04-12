@@ -1085,7 +1085,7 @@ Specifies the widget in whose window the key is to be grabbed.  Must be of class
 Specify arguments to
 <function>XGrabKey</function>;
 see <olink targetdoc='libX11' targetptr='Keyboard_Grabbing'>Section 12.2</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
 
     </para>
   </listitem>
@@ -1172,7 +1172,7 @@ Specifies the widget in whose window the key was grabbed.
 Specify arguments to
 <function>XUngrabKey</function>;
 see <olink targetdoc='libX11' targetptr='Keyboard_Grabbing'>Section 12.2</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
     </para>
   </listitem>
   </varlistentry>
@@ -1240,7 +1240,7 @@ Must be of class Core or any subclass thereof.
 Specify arguments to
 <function>XGrabKeyboard</function>;
 see <olink targetdoc='libX11' targetptr='Keyboard_Grabbing'>Section 12.2</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
     </para>
   </listitem>
   </varlistentry>
@@ -1295,7 +1295,7 @@ Specifies the widget that has the active keyboard grab.
 Specifies the additional argument to
 <function>XUngrabKeyboard</function>;
 see <olink targetdoc='libX11' targetptr='Keyboard_Grabbing'>Section 12.2</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
     </para>
   </listitem>
   </varlistentry>
@@ -1369,7 +1369,7 @@ Specifies the widget in whose window the button is to be grabbed.  Must be of cl
 Specify arguments to
 <function>XGrabButton</function>;
 see <olink targetdoc='libX11' targetptr='Pointer_Grabbing'>Section 12.1</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
     </para>
   </listitem>
   </varlistentry>
@@ -1455,7 +1455,7 @@ Specifies the widget in whose window the button was grabbed.
 Specify arguments to
 <function>XUngrabButton</function>;
 see <olink targetdoc='libX11' targetptr='Pointer_Grabbing'>Section 12.1</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
     </para>
   </listitem>
   </varlistentry>
@@ -1534,7 +1534,7 @@ Specifies the widget for whose window the pointer is to be grabbed.  Must be of 
 Specify arguments to
 <function>XGrabPointer</function>;
 see <olink targetdoc='libX11' targetptr='Pointer_Grabbing'>Section 12.1</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
     </para>
   </listitem>
   </varlistentry>
@@ -1589,7 +1589,7 @@ Specifies the widget that has the active pointer grab.
 Specifies the time argument to
 <function>XUngrabPointer</function>;
 see <olink targetdoc='libX11' targetptr='Pointer_Grabbing'>Section 12.1</olink>
-in <olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface</olink>.
+in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
     </para>
   </listitem>
   </varlistentry>
@@ -2891,7 +2891,7 @@ passing the modified exposure event and (unless
 is specified) the region.
 For more information on regions, see
 <olink targetdoc='libX11' targetptr='Manipulating_Regions'>Section 16.5</olink> in
-<olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface.</olink>.)
+<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface.</olink>.)
 </para>
 
 <para>

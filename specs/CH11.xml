@@ -3235,7 +3235,7 @@ rather than processing individual rectangles.
 For further information about regions,
 see <olink targetdoc='libX11' targetptr='Manipulating_Regions' />
 in <olink targetdoc='libX11' targetptr='libX11'>
-Xlib — C Language X Interface.</olink>.
+Xlib &mdash; C Language X Interface.</olink>.
 </para>
 
 <para>

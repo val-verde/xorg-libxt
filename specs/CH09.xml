@@ -1552,7 +1552,7 @@ is required in a different locale.
 <para>
 The String-to-Gravity conversion accepts string values that are the
 names of window and bit gravities and their numerical equivalents,
-as defined in <emphasis remap='I'>Xlib — C Language X Interface.</emphasis>:
+as defined in <emphasis remap='I'>Xlib &mdash; C Language X Interface.</emphasis>:
 <function>ForgetGravity</function>,
 <function>UnmapGravity</function>,
 <function>NorthWestGravity</function>,
@@ -1756,7 +1756,7 @@ Type converters use pointers to
 structures (defined in
 <function>&lt;X11/Xresource.h&gt;;</function>
 see <olink targetdoc='libX11' targetptr='Creating_and_Storing_Databases'>Section 15.4</olink> in
-<olink targetdoc='libX11' targetptr='libX11'>Xlib — C Language X Interface.</olink>)
+<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface.</olink>)
 for input and output values.
 </para>
 <literallayout>

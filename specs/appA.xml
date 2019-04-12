@@ -10,7 +10,7 @@ application or set of applications.
 
 <para>
 The format of resource files is defined by
-<emphasis remap='I'>Xlib — C Language X Interface.</emphasis> and is reproduced here
+<emphasis remap='I'>Xlib &mdash; C Language X Interface.</emphasis> and is reproduced here
 for convenience only.
 </para>
 
