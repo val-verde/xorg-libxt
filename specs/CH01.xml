@@ -48,7 +48,7 @@ for each Intrinsics procedure and <xref linkend='Nonwidget_Objects' />
 describe which operations
 are defined for the nonwidget superclasses of Core.  The reader may
 determine by context whether a specific reference to <emphasis remap='I'>widget</emphasis>
-actually means ``widget'' or ``object.''
+actually means &ldquo;widget&rdquo; or &ldquo;object.&rdquo;
 </para>
 </sect1>
 
@@ -109,7 +109,7 @@ and is usually referenced as \-lXt when linking the application.
 <para>
 All functions defined in this specification except those specified below
 may be implemented as C macros with arguments.  C applications may use
-``#undef'' to remove a macro definition and ensure that the actual function
+&ldquo;#undef&rdquo; to remove a macro definition and ensure that the actual function
 is referenced.  Any such macro will expand to a single expression that
 has the same precedence as a function call and that evaluates each
 of its arguments exactly once, fully protected by parentheses, so that
@@ -155,7 +155,7 @@ subclasses.
 Physically, a widget class is a pointer to a structure.
 The contents of this structure are constant for all widgets of the widget
 class but will vary from class to class.
-(Here, ``constant'' means the class structure is initialized at compile time
+(Here, &ldquo;constant&rdquo; means the class structure is initialized at compile time
 and never changed, except for a one-time class initialization
 and in-place compilation of resource lists,
 which takes place when the first widget of the class or subclass is created.)
@@ -1261,11 +1261,11 @@ A resource name is spelled identically to the field name
 except that compound names use capitalization rather than underscore.
 To let the compiler catch spelling errors,
 each resource name should have a symbolic identifier prefixed with
-``XtN''.
+&ldquo;XtN&rdquo;.
 For example,
 the <emphasis remap='I'>background_pixmap</emphasis> field has the corresponding identifier
 XtNbackgroundPixmap,
-which is defined as the string ``backgroundPixmap''.
+which is defined as the string &ldquo;backgroundPixmap&rdquo;.
 Many predefined names are listed in
 <function>&lt;X11/StringDefs.h&gt;</function>.
 Before you invent a new name,
@@ -1275,9 +1275,9 @@ you should make sure there is not already a name that you can use.
   <listitem>
     <para>
 A resource class string starts with a capital letter
-and uses capitalization for compound names (for example,``BorderWidth'').
+and uses capitalization for compound names (for example,&ldquo;BorderWidth&rdquo;).
 Each resource class string should have a symbolic identifier prefixed with
-``XtC''
+&ldquo;XtC&rdquo;
 (for example, XtCBorderWidth).
 Many predefined classes are listed in
 <function>&lt;X11/StringDefs.h&gt;</function>.
@@ -1286,9 +1286,9 @@ Many predefined classes are listed in
   <listitem>
     <para>
 A resource representation string is spelled identically to the type name
-(for example, ``TranslationTable'').
+(for example, &ldquo;TranslationTable&rdquo;).
 Each representation string should have a symbolic identifier prefixed with
-``XtR''
+&ldquo;XtR&rdquo;
 (for example, XtRTranslationTable).
 Many predefined representation types are listed in
 <function>&lt;X11/StringDefs.h&gt;</function>.
@@ -1349,7 +1349,7 @@ Action procedures available to translation specifications should follow the
 same naming conventions as procedures.
 That is,
 they start with a capital letter, and compound names use uppercase
-(for example, ``Highlight'' and ``NotifyClient'').
+(for example, &ldquo;Highlight&rdquo; and &ldquo;NotifyClient&rdquo;).
     </para>
   </listitem>
 </itemizedlist>
@@ -1681,7 +1681,7 @@ inheriting or enveloping a superclass's operations
 The <emphasis remap='I'>class_name</emphasis> field contains the text name for this class,
 which is used by
 the resource manager.
-For example, the Label widget has the string ``Label''.
+For example, the Label widget has the string &ldquo;Label&rdquo;.
 More than one widget class can share the same text class name.
 This string must be permanently allocated prior to or during the
 execution of the class initialization procedure and must not be
@@ -2686,7 +2686,7 @@ result of
 <function>XrmStringToQuark</function>
 for a registered string constant.  The
 Intrinsics reserve all record type strings beginning with the two
-characters ``XT'' for future standard uses.  The value
+characters &ldquo;XT&rdquo; for future standard uses.  The value
 <emphasis role='strong'>NULLQUARK</emphasis>
 may also be used
 by the class part owner in extension records attached to its own class

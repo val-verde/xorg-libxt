@@ -79,14 +79,14 @@ except all underscores (_) are deleted and the next letter is replaced by its
 uppercase counterpart.
 For example, the resource name for background_pixel becomes backgroundPixel.
 Resource names beginning with the two-character
-sequence ``xt'', and resource classes beginning with the two-character
-sequence ``Xt'' are reserved to the Intrinsics for future standard and
+sequence &ldquo;xt&rdquo;, and resource classes beginning with the two-character
+sequence &ldquo;Xt&rdquo; are reserved to the Intrinsics for future standard and
 implementation-dependent uses.
 Widget header files typically contain a symbolic name for each resource name.
 All resource names, classes, and types used by the Intrinsics are named in
 <function>&lt;X11/StringDefs.h&gt;</function>.
 The Intrinsics's symbolic resource names begin with
-``XtN''
+&ldquo;XtN&rdquo;
 and are followed by the string name (for example, XtNbackgroundPixel
 for backgroundPixel).
 </para>
@@ -124,9 +124,9 @@ and everything else darkblue.
 
 <para>
 In this case, the background pixel should have a resource class of
-``Background''
+&ldquo;Background&rdquo;
 and all the other pixel entries a resource class of
-``Foreground''.
+&ldquo;Foreground&rdquo;.
 Then, the resource file needs only two lines to
 change all pixels to ivory or darkblue:
 </para>
@@ -148,7 +148,7 @@ By convention,
 resource classes are always spelled starting with a capital letter
 to distinguish them from resource names.
 Their symbolic names are preceded with
-``XtC''
+&ldquo;XtC&rdquo;
 (for example, XtCBackground).
 </para>
 
@@ -1467,7 +1467,7 @@ and evaluate this in the following manner:
   <listitem>
     <para>
 Query the resource database for the resource whose full name
-is ``xtDefaultFont'', class ``XtDefaultFont'' (that is, no widget
+is &ldquo;xtDefaultFont&rdquo;, class &ldquo;XtDefaultFont&rdquo; (that is, no widget
 name/class prefixes), and use a type
 <function>XtRString</function>
 value returned as the font name or a type
@@ -1508,7 +1508,7 @@ and evaluate this in the following manner:
   <listitem>
     <para>
 Query the resource database for the resource whose full name
-is ``xtDefaultFontSet'', class ``XtDefaultFontSet'' (that is, no widget
+is &ldquo;xtDefaultFontSet&rdquo;, class &ldquo;XtDefaultFontSet&rdquo; (that is, no widget
 name/class prefixes), and use a type
 <function>XtRString</function>
 value returned as the base font name list or a type
@@ -1573,14 +1573,14 @@ Alphabetic case is not significant in the conversion.
 The String-to-CommandArgArray conversion parses a String into an
 array of strings.
 White space characters separate elements of the command line.
-The converter recognizes the backslash character ``\\'' as an escape
+The converter recognizes the backslash character &ldquo;\\&rdquo; as an escape
 character to allow the following white space character to be part of the
 array element.
 </para>
 
 <para>
 The String-to-DirectoryString conversion recognizes the
-string ``XtCurrentDirectory'' and returns the result of a call
+string &ldquo;XtCurrentDirectory&rdquo; and returns the result of a call
 to the operating system to get the current directory.
 </para>
 
@@ -2164,9 +2164,9 @@ The
 <xref linkend='XtDisplayStringConversionWarning' xrefstyle='select: title'/>
 procedure issues a warning message using
 <xref linkend='XtAppWarningMsg' xrefstyle='select: title'/>
-with <emphasis remap='I'>name</emphasis> ``conversionError'',
-<emphasis remap='I'>type</emphasis> ``string'', <emphasis remap='I'>class</emphasis> ``XtToolkitError'', and the default message
-``Cannot convert "<emphasis remap='I'>from_value</emphasis>" to type <emphasis remap='I'>to_type</emphasis>''.
+with <emphasis remap='I'>name</emphasis> &ldquo;conversionError&rdquo;,
+<emphasis remap='I'>type</emphasis> &ldquo;string&rdquo;, <emphasis remap='I'>class</emphasis> &ldquo;XtToolkitError&rdquo;, and the default message
+&ldquo;Cannot convert "<emphasis remap='I'>from_value</emphasis>" to type <emphasis remap='I'>to_type</emphasis>&rdquo;.
 </para>
 
 <para>

@@ -747,7 +747,7 @@ If
 <xref linkend='XtNoticeSignal' xrefstyle='select: title'/>
 is invoked multiple times before the Intrinsics are able to invoke the
 registered callback, the callback is only called once.
-Logically, the Intrinsics maintain ``pending'' flag for each registered callback.
+Logically, the Intrinsics maintain &ldquo;pending&rdquo; flag for each registered callback.
 This flag is initially
 <function>False</function>
 and is set to
@@ -760,7 +760,7 @@ or
 <xref linkend='XtAppProcessEvent' xrefstyle='select: title'/>
 (with a mask including
 <function>XtIMSignal</function>)
-is called, all registered callbacks with ``pending''
+is called, all registered callbacks with &ldquo;pending&rdquo;
 <function>True</function>
 are invoked and the flags are reset to
 <function>False</function>.
@@ -2504,7 +2504,7 @@ was created.  Since
 on the parent will not
 modify the resource of the pop-up child, clients are advised to include
 a resource specification of the form
-``*TransientShell.ancestorSensitive: True''
+&ldquo;*TransientShell.ancestorSensitive: True&rdquo;
 in the application defaults resource file or to
 otherwise ensure that the parent is
 sensitive when creating pop-up shells.

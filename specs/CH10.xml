@@ -192,7 +192,7 @@ is the name of the C procedure that implements that function:
 </literallayout>
 <para>
 The Intrinsics reserve all action names and parameters starting with
-the characters ``Xt'' for future standard enhancements.  Users,
+the characters &ldquo;Xt&rdquo; for future standard enhancements.  Users,
 applications, and widgets should not declare action names or pass
 parameters starting with these characters except to invoke specified
 built-in Intrinsics functions.
@@ -628,8 +628,8 @@ action sequence.
 Translation table entries may specify actions that are taken when two
 or more identical events occur consecutively within a short time
 interval, called the multi-click time.  The multi-click time value may
-be specified as an application resource with name ``multiClickTime'' and
-class ``MultiClickTime'' and may also be modified dynamically by the
+be specified as an application resource with name &ldquo;multiClickTime&rdquo; and
+class &ldquo;MultiClickTime&rdquo; and may also be modified dynamically by the
 application.  The multi-click time is unique for each Display value and
 is retrieved from the resource database by
 <xref linkend='XtDisplayInitialize' xrefstyle='select: title'/>.
@@ -949,8 +949,8 @@ augment, or override any
 existing translation table in the widget.
 To specify this,
 a pound sign (#) is given as the first character of the table
-followed by one of the keywords ``replace'', ``augment'', or
-``override'' to indicate
+followed by one of the keywords &ldquo;replace&rdquo;, &ldquo;augment&rdquo;, or
+&ldquo;override&rdquo; to indicate
 whether to replace, augment, or override the existing table.
 The replace or merge
 operation is performed during the
@@ -959,20 +959,20 @@ instance initialization.
 Each merge operation produces a new
 translation resource value; if the original tables were shared by
 other widgets, they are unaffected.  If no directive is
-specified, ``#replace'' is assumed.
+specified, &ldquo;#replace&rdquo; is assumed.
 </para>
 
 <para>
 At instance initialization
 the XtNtranslations resource is first fetched.  Then, if it was
-not specified or did not contain ``#replace'', the
+not specified or did not contain &ldquo;#replace&rdquo;, the
 resource database is searched for the resource XtNbaseTranslations.
 If XtNbaseTranslations is found, it is merged into the widget class
 translation table.  Then the widget <emphasis remap='I'>translations</emphasis> field is
 merged into the result or into the class translation table if
 XtNbaseTranslations was not found.  This final table is then
 stored into the widget <emphasis remap='I'>translations</emphasis> field.  If the XtNtranslations
-resource specified ``#replace'', no merge is done.
+resource specified &ldquo;#replace&rdquo;, no merge is done.
 If neither XtNbaseTranslations or XtNtranslations are specified,
 the class translation table is copied into the widget instance.
 </para>
@@ -2030,7 +2030,7 @@ translation table entry only.  For both
 and
 <function>KeyPress</function>
 events, don't-care modifiers are ignored unless the translation entry
-explicitly specifies ``Any'' in the <emphasis remap='I'>modifiers</emphasis> field.
+explicitly specifies &ldquo;Any&rdquo; in the <emphasis remap='I'>modifiers</emphasis> field.
 </para>
 
 <para>

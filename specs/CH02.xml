@@ -573,7 +573,7 @@ name is the name used to invoke the program.  On implementations that
 conform to ANSI C Hosted Environment support, the application name will
 be <emphasis remap='I'>argv</emphasis>[0] less any directory and file type components, that is, the
 final component of <emphasis remap='I'>argv</emphasis>[0], if specified.  If <emphasis remap='I'>argv</emphasis>[0] does not exist or
-is the empty string, the application name is ``main''.
+is the empty string, the application name is &ldquo;main&rdquo;.
 <xref linkend='XtOpenDisplay' xrefstyle='select: title'/>
 returns the newly opened display or NULL if it failed.
 </para>
@@ -795,7 +795,7 @@ Calls
 to verify that the current locale is supported.
 If the locale is not supported, a warning message is issued with
 <xref linkend='XtWarning' xrefstyle='select: title'/>
-and the locale is set to ``C''.
+and the locale is set to &ldquo;C&rdquo;.
     </para>
   </listitem>
   <listitem>
@@ -886,7 +886,7 @@ above in the same order:
 <itemizedlist spacing='compact'>
   <listitem>
     <para>
-A temporary database, the ``server resource database'', is
+A temporary database, the &ldquo;server resource database&rdquo;, is
 created from the string returned by
 <function>XResourceManagerString</function>
 or, if
@@ -900,7 +900,7 @@ preference resource file is $HOME/<function>.Xdefaults</function>.
     <para>
 If a language procedure has been set,
 <xref linkend='XtDisplayInitialize' xrefstyle='select: title'/>
-first searches the command line for the option ``-xnlLanguage'', or
+first searches the command line for the option &ldquo;-xnlLanguage&rdquo;, or
 for a -xrm option that specifies the xnlLanguage/XnlLanguage resource,
 as specified by Section 2.4.
 If such a resource is found, the value is assumed to be
@@ -1061,7 +1061,7 @@ It may contain sitewide customizations specified by the system manager.
 The name of the application class resource file is found by calling
 <xref linkend='XtResolvePathname' xrefstyle='select: title'/>
 with the parameters
-(<emphasis remap='I'>display</emphasis>, ``app-defaults'', NULL, NULL, NULL, NULL, 0, NULL).
+(<emphasis remap='I'>display</emphasis>, &ldquo;app-defaults&rdquo;, NULL, NULL, NULL, NULL, 0, NULL).
 This file is expected to be provided by the developer of the application
 and may be required for the application to function properly.
 A simple application that wants to be assured of having a minimal
@@ -1518,7 +1518,7 @@ in the standard table overrides the standard table entry.
 If an option name is a prefix of another option name,
 both names are kept in the merged table.
 The Intrinsics reserve all option names
-beginning with the characters ``-xt'' for future standard uses.
+beginning with the characters &ldquo;-xt&rdquo; for future standard uses.
 </para>
 </sect1>
 
@@ -1795,9 +1795,9 @@ All Intrinsics interfaces that require
 <function>ArgList</function>
 arguments have analogs
 conforming to the ANSI C variable argument list
-(traditionally called ``varargs'')
+(traditionally called &ldquo;varargs&rdquo;)
 calling convention.  The name of the analog is formed by prefixing
-``Va'' to the name of the corresponding
+&ldquo;Va&rdquo; to the name of the corresponding
 <function>ArgList</function>
 procedure; e.g.,
 <xref linkend='XtVaCreateWidget' xrefstyle='select: title'/>.
@@ -4031,7 +4031,7 @@ Unmanages the widget if the widget is managed.
     <para>
 Makes a postorder (child-to-parent) traversal of the widget tree
 rooted at the specified widget and, for each widget that has
-declared a callback list resource named ``unrealizeCallback'', executes the
+declared a callback list resource named &ldquo;unrealizeCallback&rdquo;, executes the
 procedures on the
 XtNunrealizeCallback
 list.

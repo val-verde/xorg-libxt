@@ -129,8 +129,8 @@ specification change is small.
 A composite widget layout routine that calls
 <xref linkend='XtQueryGeometry' xrefstyle='select: title'/>
 is now expected to store the complete new geometry in the intended structure;
-previously the specification said ``store the changes it intends to
-make''.  Only by storing the complete geometry does the child have
+previously the specification said &ldquo;store the changes it intends to
+make&rdquo;.  Only by storing the complete geometry does the child have
 any way to know what other parts of the geometry may still be
 flexible.  Existing widgets should not be affected by this, except
 to take advantage of the new information.
@@ -144,7 +144,7 @@ In order to provide a mechanism for widgets to be notified when they
 become unrealized through a call to
 <xref linkend='XtUnrealizeWidget' xrefstyle='select: title'/>,
 the callback
-list name ``unrealizeCallback'' has been defined by the Intrinsics.  A
+list name &ldquo;unrealizeCallback&rdquo; has been defined by the Intrinsics.  A
 widget class that requires notification on unrealize may declare a
 callback list resource by this name.  No class is required to declare
 this resource, but any class that did so in a prior revision may find
@@ -293,7 +293,7 @@ defaults files while still giving end users the ability to augment
 or override individual event sequences.  This change will affect
 only those applications that wish to take advantage of the new
 functionality or those widgets that may have previously defined
-a resource named ``baseTranslations''.
+a resource named &ldquo;baseTranslations&rdquo;.
 </para>
 
 <para>
@@ -307,8 +307,8 @@ to
 If it is important to the application to preserve complete
 compatibility of the defaults file between different versions
 of the application running under Release 4 and Release 5,
-the full translations can be replicated in both the ``translations''
-and the ``baseTranslations'' resource.
+the full translations can be replicated in both the &ldquo;translations&rdquo;
+and the &ldquo;baseTranslations&rdquo; resource.
 </para>
 </sect2>
 
@@ -342,8 +342,8 @@ application class resource files according to arbitrary user-specified
 categories.  The primary motivation for this addition was separate
 monochrome and color application class defaults files.  The
 substitution value is obtained by querying the current resource
-database for the application resource name ``customization'', class
-``Customization''.  Any application that previously used this
+database for the application resource name &ldquo;customization&rdquo;, class
+&ldquo;Customization&rdquo;.  Any application that previously used this
 resource name and class will need to be aware of the possibly
 conflicting semantics.
 </para>
@@ -717,7 +717,7 @@ database construction, by using the new substitution string, %D.
 <para>
 The default key translator now recognizes the NumLock modifier.
 If NumLock is on and the second keysym is a keypad keysym
-(a standard keysym named with a ``KP'' prefix or a
+(a standard keysym named with a &ldquo;KP&rdquo; prefix or a
 vendor-specific keysym in the hexadecimal range 0x11000000 to 0x1100FFFF),
 then the default key translator will
 use the first keysym if Shift and/or ShiftLock is on and will
