@@ -220,38 +220,38 @@ structure.
 </para>
 <programlisting>
 typedef struct {
-     WidgetClass superclass;             See <xref linkend="Widget_Classing" xrefstyle='select: title' />
-     String class_name;                  See <xref linkend="Resource_Management" xrefstyle='select: title' />
-     Cardinal widget_size;               See <xref linkend="Widget_Classing" xrefstyle='select: title' />
-     XtProc class_initialize;            See <xref linkend="Widget_Classing" xrefstyle='select: title' />
-     XtWidgetClassProc class_part_initialize; See <xref linkend="Widget_Classing" xrefstyle='select: title' />
-     XtEnum class_inited;                See <xref linkend="Widget_Classing" xrefstyle='select: title' />
-     XtInitProc initialize;              See <xref linkend='Creating_Widgets' xrefstyle='select: title' />
-     XtArgsProc initialize_hook;         See <xref linkend='Creating_Widgets' xrefstyle='select: title' />
-     XtRealizeProc realize;              See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     XtActionList actions;               See <xref linkend='Translation_Management' xrefstyle='select: title' />
-     Cardinal num_actions;               See <xref linkend='Translation_Management' xrefstyle='select: title' />
-     XtResourceList resources;           See <xref linkend="Resource_Management" xrefstyle='select: title' />
-     Cardinal num_resources;             See <xref linkend="Resource_Management" xrefstyle='select: title' />
-     XrmClass xrm_class;                 Private to resource manager
-     Boolean compress_motion;            See <xref linkend='X_Event_Filters' xrefstyle='select: title' />
-     XtEnum compress_exposure;           See <xref linkend='X_Event_Filters' xrefstyle='select: title' />
-     Boolean compress_enterleave;        See <xref linkend='X_Event_Filters' xrefstyle='select: title' />
-     Boolean visible_interest;           See <xref linkend='Widget_Exposure_and_Visibility' xrefstyle='select: title' />
-     XtWidgetProc destroy;               See <xref linkend='Destroying_Widgets' xrefstyle='select: title' />
-     XtWidgetProc resize;                See <xref linkend='Geometry_Management' xrefstyle='select: title' />
-     XtExposeProc expose;                See <xref linkend='Widget_Exposure_and_Visibility' xrefstyle='select: title' />
-     XtSetValuesFunc set_values;         See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' />
-     XtArgsFunc set_values_hook;         See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' />
-     XtAlmostProc set_values_almost;     See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' />
-     XtArgsProc get_values_hook;         See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' />
-     XtAcceptFocusProc accept_focus;     See <xref linkend='Focusing_Events_on_a_Child' xrefstyle='select: title' />
-     XtVersionType version;              See <xref linkend="Widget_Classing" xrefstyle='select: title' />
-     XtPointer callback_private;         Private to callbacks
-     String tm_table;                    See <xref linkend='Translation_Management' xrefstyle='select: title' />
-     XtGeometryHandler query_geometry;   See <xref linkend ='Geometry_Management' xrefstyle='select: title' />
-     XtStringProc display_accelerator;   See <xref linkend='Translation_Management' xrefstyle='select: title' />
-     XtPointer extension;                See <xref linkend="Widget_Classing" xrefstyle='select: title' />
+     WidgetClass superclass;      <lineannotation>See <xref linkend="Widget_Classing" xrefstyle='select: title' /></lineannotation>
+     String class_name;           <lineannotation>See <xref linkend="Resource_Management" xrefstyle='select: title' /></lineannotation>
+     Cardinal widget_size;        <lineannotation>See <xref linkend="Widget_Classing" xrefstyle='select: title' /></lineannotation>
+     XtProc class_initialize;     <lineannotation>See <xref linkend="Widget_Classing" xrefstyle='select: title' /></lineannotation>
+     XtWidgetClassProc class_part_initialize; <lineannotation>See <xref linkend="Widget_Classing" xrefstyle='select: title' /></lineannotation>
+     XtEnum class_inited;         <lineannotation>See <xref linkend="Widget_Classing" xrefstyle='select: title' /></lineannotation>
+     XtInitProc initialize;       <lineannotation>See <xref linkend='Creating_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtArgsProc initialize_hook;  <lineannotation>See <xref linkend='Creating_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtRealizeProc realize;       <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtActionList actions;        <lineannotation>See <xref linkend='Translation_Management' xrefstyle='select: title' /></lineannotation>
+     Cardinal num_actions;        <lineannotation>See <xref linkend='Translation_Management' xrefstyle='select: title' /></lineannotation>
+     XtResourceList resources;    <lineannotation>See <xref linkend="Resource_Management" xrefstyle='select: title' /></lineannotation>
+     Cardinal num_resources;      <lineannotation>See <xref linkend="Resource_Management" xrefstyle='select: title' /></lineannotation>
+     XrmClass xrm_class;          <lineannotation>Private to resource manager</lineannotation>
+     Boolean compress_motion;     <lineannotation>See <xref linkend='X_Event_Filters' xrefstyle='select: title' /></lineannotation>
+     XtEnum compress_exposure;    <lineannotation>See <xref linkend='X_Event_Filters' xrefstyle='select: title' /></lineannotation>
+     Boolean compress_enterleave; <lineannotation>See <xref linkend='X_Event_Filters' xrefstyle='select: title' /></lineannotation>
+     Boolean visible_interest;    <lineannotation>See <xref linkend='Widget_Exposure_and_Visibility' xrefstyle='select: title' /></lineannotation>
+     XtWidgetProc destroy;        <lineannotation>See <xref linkend='Destroying_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtWidgetProc resize;         <lineannotation>See <xref linkend='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     XtExposeProc expose;         <lineannotation>See <xref linkend='Widget_Exposure_and_Visibility' xrefstyle='select: title' /></lineannotation>
+     XtSetValuesFunc set_values;  <lineannotation>See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' /></lineannotation>
+     XtArgsFunc set_values_hook;  <lineannotation>See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' /></lineannotation>
+     XtAlmostProc set_values_almost; <lineannotation>See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' /></lineannotation>
+     XtArgsProc get_values_hook;  <lineannotation>See <xref linkend='Reading_and_Writing_Widget_State' xrefstyle='select: title' /></lineannotation>
+     XtAcceptFocusProc accept_focus; <lineannotation>See <xref linkend='Focusing_Events_on_a_Child' xrefstyle='select: title' /></lineannotation>
+     XtVersionType version;       <lineannotation>See <xref linkend="Widget_Classing" xrefstyle='select: title' /></lineannotation>
+     XtPointer callback_private;  <lineannotation>Private to callbacks</lineannotation>
+     String tm_table;             <lineannotation>See <xref linkend='Translation_Management' xrefstyle='select: title' /></lineannotation>
+     XtGeometryHandler query_geometry; <lineannotation>See <xref linkend ='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     XtStringProc display_accelerator; <lineannotation>See <xref linkend='Translation_Management' xrefstyle='select: title' /></lineannotation>
+     XtPointer extension;         <lineannotation>See <xref linkend="Widget_Classing" xrefstyle='select: title' /></lineannotation>
 } CoreClassPart;
 </programlisting>
 <para>
@@ -318,34 +318,34 @@ structure.
 </para>
 <programlisting>
 typedef struct _CorePart {
-     Widget self;                        Described below
-     WidgetClass widget_class;           See <xref linkend='Widget_Classing' xrefstyle='select: title' />
-     Widget parent;                      See <xref linkend='Creating_Widgets' xrefstyle='select: title' />
-     Boolean being_destroyed;            See <xref linkend='Destroying_Widgets' xrefstyle='select: title' />
-     XtCallbackList destroy_callbacks;   See <xref linkend='Destroying_Widgets' xrefstyle='select: title' />
-     XtPointer constraints;              See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' />
-     Position x;                         See <xref linkend='Geometry_Management' xrefstyle='select: title' />
-     Position y;                         See <xref linkend='Geometry_Management' xrefstyle='select: title' />
-     Dimension width;                    See <xref linkend='Geometry_Management' xrefstyle='select: title' />
-     Dimension height;                   See <xref linkend='Geometry_Management' xrefstyle='select: title' />
-     Dimension border_width;             See <xref linkend='Geometry_Management' xrefstyle='select: title' />
-     Boolean managed;                    See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
-     Boolean sensitive;                  See <xref linkend='Setting_and_Checking_the_Sensitivity_State_of_a_Widget' xrefstyle='select: title' />
-     Boolean ancestor_sensitive;         See <xref linkend='Setting_and_Checking_the_Sensitivity_State_of_a_Widget' xrefstyle='select: title' />
-     XtTranslations accelerators;        See <xref linkend='Translation_Management' xrefstyle='select: title' />
-     Pixel border_pixel;                 See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     Pixmap border_pixmap;               See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     WidgetList popup_list;              See <xref linkend='Pop_Up_Widgets' xrefstyle='select: title' />
-     Cardinal num_popups;                See <xref linkend='Pop_Up_Widgets' xrefstyle='select: title' />
-     String name;                        See <xref linkend='Resource_Management' xrefstyle='select: title' />
-     Screen *screen;                     See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     Colormap colormap;                  See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     Window window;                      See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     Cardinal depth;                     See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     Pixel background_pixel;             See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     Pixmap background_pixmap;           See <xref linkend='Realizing_Widgets' xrefstyle='select: title' />
-     Boolean visible;                    See <xref linkend='Widget_Exposure_and_Visibility' xrefstyle='select: title' />
-     Boolean mapped_when_managed;        See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
+     Widget self;                 <lineannotation>Described below</lineannotation>
+     WidgetClass widget_class;    <lineannotation>See <xref linkend='Widget_Classing' xrefstyle='select: title' /></lineannotation>
+     Widget parent;               <lineannotation>See <xref linkend='Creating_Widgets' xrefstyle='select: title' /></lineannotation>
+     Boolean being_destroyed;     <lineannotation>See <xref linkend='Destroying_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtCallbackList destroy_callbacks; <lineannotation>See <xref linkend='Destroying_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtPointer constraints;       <lineannotation>See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' /></lineannotation>
+     Position x;                  <lineannotation>See <xref linkend='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     Position y;                  <lineannotation>See <xref linkend='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     Dimension width;             <lineannotation>See <xref linkend='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     Dimension height;            <lineannotation>See <xref linkend='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     Dimension border_width;      <lineannotation>See <xref linkend='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     Boolean managed;             <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
+     Boolean sensitive;           <lineannotation>See <xref linkend='Setting_and_Checking_the_Sensitivity_State_of_a_Widget' xrefstyle='select: title' /></lineannotation>
+     Boolean ancestor_sensitive;  <lineannotation>See <xref linkend='Setting_and_Checking_the_Sensitivity_State_of_a_Widget' xrefstyle='select: title' /></lineannotation>
+     XtTranslations accelerators; <lineannotation>See <xref linkend='Translation_Management' xrefstyle='select: title' /></lineannotation>
+     Pixel border_pixel;          <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     Pixmap border_pixmap;        <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     WidgetList popup_list;       <lineannotation>See <xref linkend='Pop_Up_Widgets' xrefstyle='select: title' /></lineannotation>
+     Cardinal num_popups;         <lineannotation>See <xref linkend='Pop_Up_Widgets' xrefstyle='select: title' /></lineannotation>
+     String name;                 <lineannotation>See <xref linkend='Resource_Management' xrefstyle='select: title' /></lineannotation>
+     Screen *screen;              <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     Colormap colormap;           <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     Window window;               <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     Cardinal depth;              <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     Pixel background_pixel;      <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     Pixmap background_pixmap;    <lineannotation>See <xref linkend='Realizing_Widgets' xrefstyle='select: title' /></lineannotation>
+     Boolean visible;             <lineannotation>See <xref linkend='Widget_Exposure_and_Visibility' xrefstyle='select: title' /></lineannotation>
+     Boolean mapped_when_managed; <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
 } CorePart;
 </programlisting>
 <para>
@@ -633,11 +633,11 @@ widgets of the Composite class have the following class fields.
 </para>
 <programlisting>
 typedef struct {
-     XtGeometryHandler geometry_manager; See <xref linkend='Geometry_Management' xrefstyle='select: title' />
-     XtWidgetProc change_managed;        See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
-     XtWidgetProc insert_child;          See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
-     XtWidgetProc delete_child;          See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
-     XtPointer extension;                See <xref linkend='Widget_Classing' xrefstyle='select: title' />
+     XtGeometryHandler geometry_manager; <lineannotation>See <xref linkend='Geometry_Management' xrefstyle='select: title' /></lineannotation>
+     XtWidgetProc change_managed; <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
+     XtWidgetProc insert_child;   <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
+     XtWidgetProc delete_child;   <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
+     XtPointer extension;         <lineannotation>See <xref linkend='Widget_Classing' xrefstyle='select: title' /></lineannotation>
 } CompositeClassPart;
 </programlisting>
 <para>
@@ -651,12 +651,12 @@ is
 </para>
 <programlisting>
 typedef struct {
-     XtPointer next_extension;           See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     XrmQuark record_type;               See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     long version;                       See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     Cardinal record_size;               See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     Boolean accepts_objects;            See <xref linkend='Creating_a_Widget_Instance' xrefstyle='select: title' />
-     Boolean allows_change_managed_set;  See <xref linkend='Bundling_Changes_to_the_Managed_Set' xrefstyle='select: title' />
+     XtPointer next_extension;    <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     XrmQuark record_type;        <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     long version;                <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     Cardinal record_size;        <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     Boolean accepts_objects;     <lineannotation>See <xref linkend='Creating_a_Widget_Instance' xrefstyle='select: title' /></lineannotation>
+     Boolean allows_change_managed_set; <lineannotation>See <xref linkend='Bundling_Changes_to_the_Managed_Set' xrefstyle='select: title' /></lineannotation>
 } CompositeClassExtensionRec, *CompositeClassExtension;
 </programlisting>
 <para>
@@ -725,10 +725,10 @@ structure.
 </para>
 <programlisting>
 typedef struct {
-     WidgetList children;                See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
-     Cardinal num_children;              See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
-     Cardinal num_slots;                 See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' />
-     XtOrderProc insert_position;        See <xref linkend='Insertion_Order_of_Children_The_insert_position_Procedure' xrefstyle='select: title' />
+     WidgetList children;         <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
+     Cardinal num_children;       <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
+     Cardinal num_slots;          <lineannotation>See <xref linkend='Composite_Widgets_and_Their_Children' xrefstyle='select: title' /></lineannotation>
+     XtOrderProc insert_position; <lineannotation>See <xref linkend='Insertion_Order_of_Children_The_insert_position_Procedure' xrefstyle='select: title' /></lineannotation>
 } CompositePart;
 </programlisting>
 <para>
@@ -879,13 +879,13 @@ have the following class fields.
 </para>
 <programlisting>
 typedef struct {
-     XtResourceList resources;           See <xref linkend='Resource_Management' xrefstyle='select: title' />
-     Cardinal num_resources;             See <xref linkend='Resource_Management' xrefstyle='select: title' />
-     Cardinal constraint_size;           See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' />
-     XtInitProc initialize;              See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' />
-     XtWidgetProc destroy;               See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' />
-     XtSetValuesFunc set_values;         See <xref linkend='Setting_Widget_State' xrefstyle='select: title' />
-     XtPointer extension;                See <xref linkend='Widget_Classing' xrefstyle='select: title' />
+     XtResourceList resources;    <lineannotation>See <xref linkend='Resource_Management' xrefstyle='select: title' /></lineannotation>
+     Cardinal num_resources;      <lineannotation>See <xref linkend='Resource_Management' xrefstyle='select: title' /></lineannotation>
+     Cardinal constraint_size;    <lineannotation>See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtInitProc initialize;       <lineannotation>See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtWidgetProc destroy;        <lineannotation>See <xref linkend='Constrained_Composite_Widgets' xrefstyle='select: title' /></lineannotation>
+     XtSetValuesFunc set_values;  <lineannotation>See <xref linkend='Setting_Widget_State' xrefstyle='select: title' /></lineannotation>
+     XtPointer extension;         <lineannotation>See <xref linkend='Widget_Classing' xrefstyle='select: title' /></lineannotation>
 } ConstraintClassPart;
 </programlisting>
 <para>
@@ -898,11 +898,11 @@ is
 </para>
 <programlisting>
 typedef struct {
-     XtPointer next_extension;           See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     XrmQuark record_type;               See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     long version;                       See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     Cardinal record_size;               See <xref linkend='Class_Extension_Records' xrefstyle='select: title' />
-     XtArgsProc get_values_hook;         See <xref linkend='Obtaining_Widget_State' xrefstyle='select: title' />
+     XtPointer next_extension;    <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     XrmQuark record_type;        <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     long version;                <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     Cardinal record_size;        <lineannotation>See <xref linkend='Class_Extension_Records' xrefstyle='select: title' /></lineannotation>
+     XtArgsProc get_values_hook;  <lineannotation>See <xref linkend='Obtaining_Widget_State' xrefstyle='select: title' /></lineannotation>
 } ConstraintClassExtensionRec, *ConstraintClassExtension;
 </programlisting>
 <para>
