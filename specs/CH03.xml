@@ -1316,27 +1316,27 @@ For example, a widget class that needs to maintain a maximum
 width and height for each child might define its constraint record as
 follows:
 </para>
-<literallayout>
-<code>typedef struct {</code>
-<code>        Dimension max_width, max_height;</code>
-<code>} MaxConstraintPart;</code>
-<code>typedef struct {</code>
-<code>        MaxConstraintPart max;</code>
-<code>} MaxConstraintRecord, *MaxConstraint;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        Dimension max_width, max_height;
+} MaxConstraintPart;
+typedef struct {
+        MaxConstraintPart max;
+} MaxConstraintRecord, *MaxConstraint;
+</programlisting>
 <para>
 A subclass of this widget class that also needs to maintain a minimum size would
 define its constraint record as follows:
 </para>
-<literallayout>
-<code>typedef struct {</code>
-<code>        Dimension min_width, min_height;</code>
-<code>} MinConstraintPart;</code>
-<code>typedef struct {</code>
-<code>        MaxConstraintPart max;</code>
-<code>        MinConstraintPart min;</code>
-<code>} MaxMinConstraintRecord, *MaxMinConstraint;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        Dimension min_width, min_height;
+} MinConstraintPart;
+typedef struct {
+        MaxConstraintPart max;
+        MinConstraintPart min;
+} MaxMinConstraintRecord, *MaxMinConstraint;
+</programlisting>
 <para>
 Constraints are allocated, initialized, deallocated, and otherwise maintained
 insofar as possible by the Intrinsics.

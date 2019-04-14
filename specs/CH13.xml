@@ -37,9 +37,9 @@ advantage of newer features added in later revisions may use the
 symbolic macro
 <function>XtSpecificationRelease</function>.
 </para>
-<literallayout>
-<code>#define XtSpecificationRelease 6</code>
-</literallayout>
+<programlisting>
+#define XtSpecificationRelease 6
+</programlisting>
 <para>
 As the symbol
 <function>XtSpecificationRelease</function>
@@ -299,11 +299,11 @@ a resource named &ldquo;baseTranslations&rdquo;.
 <para>
 Applications wishing to take advantage of the new functionality
 would change their application defaults file, e.g., from
-<literallayout>
-<code>        app.widget.translations:         </code><emphasis remap='I'>value</emphasis>
+<programlisting>
+        app.widget.translations:         <emphasis remap='I'>value</emphasis>
 to
-<code>        app.widget.baseTranslations:     </code><emphasis remap='I'>value</emphasis>
-</literallayout>
+        app.widget.baseTranslations:     <emphasis remap='I'>value</emphasis>
+</programlisting>
 If it is important to the application to preserve complete
 compatibility of the defaults file between different versions
 of the application running under Release 4 and Release 5,

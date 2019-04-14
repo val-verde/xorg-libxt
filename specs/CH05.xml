@@ -394,9 +394,9 @@ Some of these routines take an argument of type
 <function>XtGrabKind</function>,
 which is defined as
 </para>
-<literallayout>
-<code>typedef enum {XtGrabNone, XtGrabNonexclusive, XtGrabExclusive} XtGrabKind;</code>
-</literallayout>
+<programlisting>
+typedef enum {XtGrabNone, XtGrabNonexclusive, XtGrabExclusive} XtGrabKind;
+</programlisting>
 
 <para>
 The create_popup_child_proc procedure pointer
@@ -512,9 +512,9 @@ or
 <function>XtGrabExclusive</function>,
 it calls
     </para>
-<literallayout>
-<code>XtAddGrab(</code><emphasis remap='I'>popup_shell</emphasis><code>, (</code><emphasis remap='I'>grab_kind</emphasis><code> == XtGrabExclusive), False)</code>
-</literallayout>
+<programlisting>
+XtAddGrab(<emphasis remap='I'>popup_shell</emphasis>, (<emphasis remap='I'>grab_kind</emphasis> == XtGrabExclusive), False)
+</programlisting>
   </listitem>
   <listitem>
     <para>
@@ -988,12 +988,12 @@ The
 function casts the <emphasis remap='I'>client_data</emphasis> parameter to a pointer of type
 <function>XtPopdownID</function>.
 </para>
-<literallayout>
-<code>typedef struct {</code>
-<code>        Widget shell_widget;</code>
-<code>        Widget enable_widget;</code>
-<code>} XtPopdownIDRec, *XtPopdownID;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        Widget shell_widget;
+        Widget enable_widget;
+} XtPopdownIDRec, *XtPopdownID;
+</programlisting>
 <para>
 The <emphasis remap='I'>shell_widget</emphasis> is the pop-up shell to pop down,
 and the <emphasis remap='I'>enable_widget</emphasis> is usually the widget that was used to pop it up

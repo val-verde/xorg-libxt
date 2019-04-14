@@ -2850,12 +2850,12 @@ dispatched to the widget's expose procedure.  This field must be
 initialized to one of the following values:
 </para>
 
-<literallayout>
-<code>#define XtExposeNoCompress              ((XtEnum)False)</code>
-<code>#define XtExposeCompressSeries          ((XtEnum)True)</code>
-<code>#define XtExposeCompressMultiple        &lt;implementation-defined&gt;</code>
-<code>#define XtExposeCompressMaximal         &lt;implementation-defined&gt;</code>
-</literallayout>
+<programlisting>
+#define XtExposeNoCompress              ((XtEnum)False)
+#define XtExposeCompressSeries          ((XtEnum)True)
+#define XtExposeCompressMultiple        &lt;implementation-defined&gt;
+#define XtExposeCompressMaximal         &lt;implementation-defined&gt;
+</programlisting>
 
 <para>
 optionally ORed with any combination of the following flags (all with
@@ -3140,11 +3140,11 @@ the widgets Label, Pushbutton, and Toggle,
 you could write a single display routine in Label that uses display state
 fields like
 </para>
-<literallayout>
-<code>Boolean         invert;</code>
-<code>Boolean         highlight;</code>
-<code>Dimension       highlight_width;</code>
-</literallayout>
+<programlisting>
+Boolean         invert;
+Boolean         highlight;
+Dimension       highlight_width;
+</programlisting>
 <para>
 Label would have <emphasis remap='I'>invert</emphasis> and <emphasis remap='I'>highlight</emphasis> always
 <function>False</function>
@@ -3521,9 +3521,9 @@ To register an event handler procedure that receives events before or
 after all previously registered event handlers, use
 <xref linkend='XtInsertEventHandler' xrefstyle='select: title'/>.
 </para>
-<literallayout>
-<code>typedef enum {XtListHead, XtListTail} XtListPosition;</code>
-</literallayout>
+<programlisting>
+typedef enum {XtListHead, XtListTail} XtListPosition;
+</programlisting>
 
 <funcsynopsis id='XtInsertEventHandler'>
 <funcprototype>
@@ -4734,13 +4734,13 @@ Resource converters are an exception.
 They require the application context or process to be locked
 before the application can safely call them directly, for example:
 </para>
-<literallayout>
-<code>        </code>...
-<code>        XtAppLock(app_context);</code>
-<code>        XtCvtStringToPixel(dpy, args, num_args, fromVal, toVal, closure_ret);</code>
-<code>        XtAppUnlock(app_context);</code>
-<code>        </code>...
-</literallayout>
+<programlisting>
+        ...
+        XtAppLock(app_context);
+        XtCvtStringToPixel(dpy, args, num_args, fromVal, toVal, closure_ret);
+        XtAppUnlock(app_context);
+        ...
+</programlisting>
 <para>
 When the application relies upon
 <xref linkend='XtConvertAndStore' xrefstyle='select: title'/>
@@ -4755,29 +4755,29 @@ utility functions, such as one which retrieves the being_destroyed field from
 a widget instance, must lock the application context before accessing
 widget internal data.  For example:
 </para>
-<literallayout>
-<code>#include &lt;X11/CoreP.h&gt;</code>
-<code>Boolean BeingDestroyed (Widget widget)</code>
-<code>{</code>
-<code>        Boolean ret;</code>
-<code>        XtAppLock(XtWidgetToApplicationContext(widget));</code>
-<code>        ret = widget-&gt;core.being_destroyed;</code>
-<code>        XtAppUnlock(XtWidgetToApplicationContext(widget));</code>
-<code>        return ret;</code>
-<code>}</code>
-</literallayout>
+<programlisting>
+#include &lt;X11/CoreP.h&gt;
+Boolean BeingDestroyed (Widget widget)
+{
+        Boolean ret;
+        XtAppLock(XtWidgetToApplicationContext(widget));
+        ret = widget-&gt;core.being_destroyed;
+        XtAppUnlock(XtWidgetToApplicationContext(widget));
+        return ret;
+}
+</programlisting>
 <para>
 A client that wishes to atomically call two or more Intrinsics functions
 must lock the application context.  For example:
 </para>
-<literallayout>
-<code>        </code>...
-<code>        XtAppLock(XtWidgetToApplicationContext(widget));</code>
-<code>        XtUnmanageChild (widget1);</code>
-<code>        XtManageChild (widget2);</code>
-<code>        XtAppUnlock(XtWidgetToApplicationContext(widget));</code>
-<code>        </code>...
-</literallayout>
+<programlisting>
+        ...
+        XtAppLock(XtWidgetToApplicationContext(widget));
+        XtUnmanageChild (widget1);
+        XtManageChild (widget2);
+        XtAppUnlock(XtWidgetToApplicationContext(widget));
+        ...
+</programlisting>
 <sect3 id="Locking_the_Application_Context">
 <title>Locking the Application Context</title>
 <para>

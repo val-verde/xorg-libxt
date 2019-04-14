@@ -183,132 +183,132 @@ class has additional class fields, which are all contained in the
 None of the other Shell classes have any additional class fields:
 </para>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        XtPointer extension;</code>
-<code>} ShellClassPart, OverrideShellClassPart,</code>
-<code>WMShellClassPart, VendorShellClassPart, TransientShellClassPart,</code>
-<code>TopLevelShellClassPart, ApplicationShellClassPart, SessionShellClassPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        XtPointer extension;
+} ShellClassPart, OverrideShellClassPart,
+WMShellClassPart, VendorShellClassPart, TransientShellClassPart,
+TopLevelShellClassPart, ApplicationShellClassPart, SessionShellClassPart;
+</programlisting>
 
 <para>The full Shell class record definitions are:</para>
 
-<literallayout>
-<code>typedef struct _ShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>} ShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _ShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+} ShellClassRec;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        XtPointer       next_extension;  </code>See <xref linkend='Class_Extension_Records' />
-<code>        XrmQuark        record_type;     </code>See <xref linkend='Class_Extension_Records' />
-<code>        long            version;         </code>See <xref linkend='Class_Extension_Records' />
-<code>        Cardinal        record_size;     </code>See <xref linkend='Class_Extension_Records' />
-<code>        XtGeometryHandler root_geometry_manager; </code>See below
-<code>} ShellClassExtensionRec, *ShellClassExtension;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        XtPointer       next_extension;  See <xref linkend='Class_Extension_Records' />
+        XrmQuark        record_type;     See <xref linkend='Class_Extension_Records' />
+        long            version;         See <xref linkend='Class_Extension_Records' />
+        Cardinal        record_size;     See <xref linkend='Class_Extension_Records' />
+        XtGeometryHandler root_geometry_manager; See below
+} ShellClassExtensionRec, *ShellClassExtension;
+</programlisting>
 
-<literallayout>
-<code>typedef struct _OverrideShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>        OverrideShellClassPart  override_shell_class;</code>
-<code>} OverrideShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _OverrideShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+        OverrideShellClassPart  override_shell_class;
+} OverrideShellClassRec;
+</programlisting>
 
-<literallayout>
-<code>typedef struct _WMShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>        WMShellClassPart        wm_shell_class;</code>
-<code>} WMShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _WMShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+        WMShellClassPart        wm_shell_class;
+} WMShellClassRec;
+</programlisting>
 
-<literallayout>
-<code>typedef struct _VendorShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>        WMShellClassPart        wm_shell_class;</code>
-<code>        VendorShellClassPart    vendor_shell_class;</code>
-<code>} VendorShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _VendorShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+        WMShellClassPart        wm_shell_class;
+        VendorShellClassPart    vendor_shell_class;
+} VendorShellClassRec;
+</programlisting>
 
-<literallayout>
-<code>typedef struct _TransientShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>        WMShellClassPart        wm_shell_class;</code>
-<code>        VendorShellClassPart    vendor_shell_class;</code>
-<code>        TransientShellClassPart transient_shell_class;</code>
-<code>} TransientShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _TransientShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+        WMShellClassPart        wm_shell_class;
+        VendorShellClassPart    vendor_shell_class;
+        TransientShellClassPart transient_shell_class;
+} TransientShellClassRec;
+</programlisting>
 
-<literallayout>
-<code>typedef struct _TopLevelShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>        WMShellClassPart        wm_shell_class;</code>
-<code>        VendorShellClassPart    vendor_shell_class;</code>
-<code>        TopLevelShellClassPart  top_level_shell_class;</code>
-<code>} TopLevelShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _TopLevelShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+        WMShellClassPart        wm_shell_class;
+        VendorShellClassPart    vendor_shell_class;
+        TopLevelShellClassPart  top_level_shell_class;
+} TopLevelShellClassRec;
+</programlisting>
 
-<literallayout>
-<code>typedef struct _ApplicationShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>        WMShellClassPart        wm_shell_class;</code>
-<code>        VendorShellClassPart    vendor_shell_class;</code>
-<code>        TopLevelShellClassPart  top_level_shell_class;</code>
-<code>        ApplicationShellClassPart application_shell_class;</code>
-<code>} ApplicationShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _ApplicationShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+        WMShellClassPart        wm_shell_class;
+        VendorShellClassPart    vendor_shell_class;
+        TopLevelShellClassPart  top_level_shell_class;
+        ApplicationShellClassPart application_shell_class;
+} ApplicationShellClassRec;
+</programlisting>
 
-<literallayout>
-<code>typedef struct _SessionShellClassRec {</code>
-<code>        CoreClassPart           core_class;</code>
-<code>        CompositeClassPart      composite_class;</code>
-<code>        ShellClassPart          shell_class;</code>
-<code>        WMShellClassPart        wm_shell_class;</code>
-<code>        VendorShellClassPart    vendor_shell_class;</code>
-<code>        TopLevelShellClassPart  top_level_shell_class;</code>
-<code>        ApplicationShellClassPart application_shell_class;</code>
-<code>        SessionShellClassPart   session_shell_class;</code>
-<code>} SessionShellClassRec;</code>
-</literallayout>
+<programlisting>
+typedef struct _SessionShellClassRec {
+        CoreClassPart           core_class;
+        CompositeClassPart      composite_class;
+        ShellClassPart          shell_class;
+        WMShellClassPart        wm_shell_class;
+        VendorShellClassPart    vendor_shell_class;
+        TopLevelShellClassPart  top_level_shell_class;
+        ApplicationShellClassPart application_shell_class;
+        SessionShellClassPart   session_shell_class;
+} SessionShellClassRec;
+</programlisting>
 
 <para>
 The single occurrences of the class records and pointers for creating
 instances of shells are:
 </para>
 
-<literallayout>
-<code>extern ShellClassRec            shellClassRec;</code>
-<code>extern OverrideShellClassRec    overrideShellClassRec;</code>
-<code>extern WMShellClassRec          wmShellClassRec;</code>
-<code>extern VendorShellClassRec      vendorShellClassRec;</code>
-<code>extern TransientShellClassRec   transientShellClassRec;</code>
-<code>extern TopLevelShellClassRec    topLevelShellClassRec;</code>
-<code>extern ApplicationShellClassRec applicationShellClassRec;</code>
-<code>extern SessionShellClassRec     sessionShellClassRec;</code>
-<code>extern WidgetClass              shellWidgetClass;</code>
-<code>extern WidgetClass              overrideShellWidgetClass;</code>
-<code>extern WidgetClass              wmShellWidgetClass;</code>
-<code>extern WidgetClass              vendorShellWidgetClass;</code>
-<code>extern WidgetClass              transientShellWidgetClass;</code>
-<code>extern WidgetClass              topLevelShellWidgetClass;</code>
-<code>extern WidgetClass              applicationShellWidgetClass;</code>
-<code>extern WidgetClass              sessionShellWidgetClass;</code>
-</literallayout>
+<programlisting>
+extern ShellClassRec            shellClassRec;
+extern OverrideShellClassRec    overrideShellClassRec;
+extern WMShellClassRec          wmShellClassRec;
+extern VendorShellClassRec      vendorShellClassRec;
+extern TransientShellClassRec   transientShellClassRec;
+extern TopLevelShellClassRec    topLevelShellClassRec;
+extern ApplicationShellClassRec applicationShellClassRec;
+extern SessionShellClassRec     sessionShellClassRec;
+extern WidgetClass              shellWidgetClass;
+extern WidgetClass              overrideShellWidgetClass;
+extern WidgetClass              wmShellWidgetClass;
+extern WidgetClass              vendorShellWidgetClass;
+extern WidgetClass              transientShellWidgetClass;
+extern WidgetClass              topLevelShellWidgetClass;
+extern WidgetClass              applicationShellWidgetClass;
+extern WidgetClass              sessionShellWidgetClass;
+</programlisting>
 
 <para>
 The following opaque types and opaque variables are defined
@@ -476,191 +476,191 @@ fields defined in
 their widget records:
 </para>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        String                  geometry;</code>
-<code>        XtCreatePopupChildProc  create_popup_child_proc;</code>
-<code>        XtGrabKind              grab_kind;</code>
-<code>        Boolean                 spring_loaded;</code>
-<code>        Boolean                 popped_up;</code>
-<code>        Boolean                 allow_shell_resize;</code>
-<code>        Boolean                 client_specified;</code>
-<code>        Boolean                 save_under;</code>
-<code>        Boolean                 override_redirect;</code>
-<code>        XtCallbackList          popup_callback;</code>
-<code>        XtCallbackList          popdown_callback;</code>
-<code>        Visual *                visual;</code>
-<code>} ShellPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        String                  geometry;
+        XtCreatePopupChildProc  create_popup_child_proc;
+        XtGrabKind              grab_kind;
+        Boolean                 spring_loaded;
+        Boolean                 popped_up;
+        Boolean                 allow_shell_resize;
+        Boolean                 client_specified;
+        Boolean                 save_under;
+        Boolean                 override_redirect;
+        XtCallbackList          popup_callback;
+        XtCallbackList          popdown_callback;
+        Visual *                visual;
+} ShellPart;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        int     empty;</code>
-<code>} OverrideShellPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        int     empty;
+} OverrideShellPart;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        String                  title;</code>
-<code>        int                     wm_timeout;</code>
-<code>        Boolean                 wait_for_wm;</code>
-<code>        Boolean                 transient;</code>
-<code>        Boolean                 urgency;</code>
-<code>        Widget                  client_leader;</code>
-<code>        String                  window_role;</code>
-<code>        struct _OldXSizeHints {</code>
-<code>                long            flags;</code>
-<code>                int             x, y;</code>
-<code>                int             width, height;</code>
-<code>                int             min_width, min_height;</code>
-<code>                int             max_width, max_height;</code>
-<code>                int             width_inc, height_inc;</code>
-<code>                struct {</code>
-<code>                        int     x;</code>
-<code>                        int     y;</code>
-<code>                } min_aspect, max_aspect;</code>
-<code>        } size_hints;</code>
-<code>        XWMHints                wm_hints;</code>
-<code>        int                     base_width, base_height, win_gravity;</code>
-<code>        Atom                    title_encoding;</code>
-<code>} WMShellPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        String                  title;
+        int                     wm_timeout;
+        Boolean                 wait_for_wm;
+        Boolean                 transient;
+        Boolean                 urgency;
+        Widget                  client_leader;
+        String                  window_role;
+        struct _OldXSizeHints {
+                long            flags;
+                int             x, y;
+                int             width, height;
+                int             min_width, min_height;
+                int             max_width, max_height;
+                int             width_inc, height_inc;
+                struct {
+                        int     x;
+                        int     y;
+                } min_aspect, max_aspect;
+        } size_hints;
+        XWMHints                wm_hints;
+        int                     base_width, base_height, win_gravity;
+        Atom                    title_encoding;
+} WMShellPart;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        int     vendor_specific;</code>
-<code>} VendorShellPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        int     vendor_specific;
+} VendorShellPart;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        Widget  transient_for;</code>
-<code>} TransientShellPart;</code>
-<code>typedef struct {</code>
-<code>        String  icon_name;</code>
-<code>        Boolean iconic;</code>
-<code>        Atom    icon_name_encoding;</code>
-<code>} TopLevelShellPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        Widget  transient_for;
+} TransientShellPart;
+typedef struct {
+        String  icon_name;
+        Boolean iconic;
+        Atom    icon_name_encoding;
+} TopLevelShellPart;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        char *  class;</code>
-<code>        XrmClass        xrm_class;</code>
-<code>        int     argc;</code>
-<code>        char ** argv;</code>
-<code>} ApplicationShellPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        char *  class;
+        XrmClass        xrm_class;
+        int     argc;
+        char ** argv;
+} ApplicationShellPart;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        SmcConn         connection;</code>
-<code>        String          session_id;</code>
-<code>        String *        restart_command;</code>
-<code>        String *        clone_command;</code>
-<code>        String *        discard_command;</code>
-<code>        String *        resign_command;</code>
-<code>        String *        shutdown_command;</code>
-<code>        String *        environment;</code>
-<code>        String          current_dir;</code>
-<code>        String          program_path;</code>
-<code>        unsigned char   restart_style;</code>
-<code>        Boolean         join_session;</code>
-<code>        XtCallbackList  save_callbacks;</code>
-<code>        XtCallbackList  interact_callbacks;</code>
-<code>        XtCallbackList  cancel_callbacks;</code>
-<code>        XtCallbackList  save_complete_callbacks;</code>
-<code>        XtCallbackList  die_callbacks;</code>
-<code>        XtCallbackList  error_callbacks;</code>
-<code>} SessionShellPart;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        SmcConn         connection;
+        String          session_id;
+        String *        restart_command;
+        String *        clone_command;
+        String *        discard_command;
+        String *        resign_command;
+        String *        shutdown_command;
+        String *        environment;
+        String          current_dir;
+        String          program_path;
+        unsigned char   restart_style;
+        Boolean         join_session;
+        XtCallbackList  save_callbacks;
+        XtCallbackList  interact_callbacks;
+        XtCallbackList  cancel_callbacks;
+        XtCallbackList  save_complete_callbacks;
+        XtCallbackList  die_callbacks;
+        XtCallbackList  error_callbacks;
+} SessionShellPart;
+</programlisting>
 
 <para>
 The full shell widget instance record definitions are:
 </para>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        CorePart        core;</code>
-<code>        CompositePart   composite;</code>
-<code>        ShellPart       shell;</code>
-<code>} ShellRec, *ShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        CorePart        core;
+        CompositePart   composite;
+        ShellPart       shell;
+} ShellRec, *ShellWidget;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        CorePart        core;</code>
-<code>        CompositePart   composite;</code>
-<code>        ShellPart       shell;</code>
-<code>        OverrideShellPart override;</code>
-<code>} OverrideShellRec, *OverrideShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        CorePart        core;
+        CompositePart   composite;
+        ShellPart       shell;
+        OverrideShellPart override;
+} OverrideShellRec, *OverrideShellWidget;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        CorePart        core;</code>
-<code>        CompositePart   composite;</code>
-<code>        ShellPart       shell;</code>
-<code>        WMShellPart     wm;</code>
-<code>} WMShellRec, *WMShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        CorePart        core;
+        CompositePart   composite;
+        ShellPart       shell;
+        WMShellPart     wm;
+} WMShellRec, *WMShellWidget;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        CorePart        core;</code>
-<code>        CompositePart   composite;</code>
-<code>        ShellPart       shell;</code>
-<code>        WMShellPart     wm;</code>
-<code>        VendorShellPart vendor;</code>
-<code>} VendorShellRec, *VendorShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        CorePart        core;
+        CompositePart   composite;
+        ShellPart       shell;
+        WMShellPart     wm;
+        VendorShellPart vendor;
+} VendorShellRec, *VendorShellWidget;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        CorePart        core;</code>
-<code>        CompositePart   composite;</code>
-<code>        ShellPart       shell;</code>
-<code>        WMShellPart     wm;</code>
-<code>        VendorShellPart vendor;</code>
-<code>        TransientShellPart transient;</code>
-<code>} TransientShellRec, *TransientShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        CorePart        core;
+        CompositePart   composite;
+        ShellPart       shell;
+        WMShellPart     wm;
+        VendorShellPart vendor;
+        TransientShellPart transient;
+} TransientShellRec, *TransientShellWidget;
+</programlisting>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        CorePart                core;</code>
-<code>        CompositePart           composite;</code>
-<code>        ShellPart               shell;</code>
-<code>        WMShellPart             wm;</code>
-<code>        VendorShellPart         vendor;</code>
-<code>        TopLevelShellPart       topLevel;</code>
-<code>} TopLevelShellRec, *TopLevelShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        CorePart                core;
+        CompositePart           composite;
+        ShellPart               shell;
+        WMShellPart             wm;
+        VendorShellPart         vendor;
+        TopLevelShellPart       topLevel;
+} TopLevelShellRec, *TopLevelShellWidget;
+</programlisting>
 
-<literallayout>
-<code>typedef  struct {</code>
-<code>        CorePart                core;</code>
-<code>        CompositePart           composite;</code>
-<code>        ShellPart               shell;</code>
-<code>        WMShellPart             wm;</code>
-<code>        VendorShellPart         vendor;</code>
-<code>        TopLevelShellPart       topLevel;</code>
-<code>        ApplicationShellPart    application;</code>
-<code>} ApplicationShellRec, *ApplicationShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef  struct {
+        CorePart                core;
+        CompositePart           composite;
+        ShellPart               shell;
+        WMShellPart             wm;
+        VendorShellPart         vendor;
+        TopLevelShellPart       topLevel;
+        ApplicationShellPart    application;
+} ApplicationShellRec, *ApplicationShellWidget;
+</programlisting>
 
-<literallayout>
-<code>typedef  struct {</code>
-<code>        CorePart                core;</code>
-<code>        CompositePart           composite;</code>
-<code>        ShellPart               shell;</code>
-<code>        WMShellPart             wm;</code>
-<code>        VendorShellPart         vendor;</code>
-<code>        TopLevelShellPart       topLevel;</code>
-<code>        ApplicationShellPart    application;</code>
-<code>        SessionShellPart        session;</code>
-<code>} SessionShellRec, *SessionShellWidget;</code>
-</literallayout>
+<programlisting>
+typedef  struct {
+        CorePart                core;
+        CompositePart           composite;
+        ShellPart               shell;
+        WMShellPart             wm;
+        VendorShellPart         vendor;
+        TopLevelShellPart       topLevel;
+        ApplicationShellPart    application;
+        SessionShellPart        session;
+} SessionShellRec, *SessionShellWidget;
+</programlisting>
 
 </sect2>
 
@@ -2065,20 +2065,20 @@ The checkpoint token in the <emphasis remap='I'>call_data</emphasis> parameter i
 <function>XtCheckpointToken</function>.
 </para>
 
-<literallayout>
-<code>typedef struct {</code>
-<code>        int     save_type;</code>
-<code>        int     interact_style;</code>
-<code>        Boolean shutdown;</code>
-<code>        Boolean fast;</code>
-<code>        Boolean cancel_shutdown</code>
-<code>        int     phase;</code>
-<code>        int     interact_dialog_type;   /* return */</code>
-<code>        Boolean request_cancel;         /* return */</code>
-<code>        Boolean request_next_phase;     /* return */</code>
-<code>        Boolean save_success;           /* return */</code>
-<code>} XtCheckpointTokenRec, *XtCheckpointToken;</code>
-</literallayout>
+<programlisting>
+typedef struct {
+        int     save_type;
+        int     interact_style;
+        Boolean shutdown;
+        Boolean fast;
+        Boolean cancel_shutdown
+        int     phase;
+        int     interact_dialog_type;   /* return */
+        Boolean request_cancel;         /* return */
+        Boolean request_next_phase;     /* return */
+        Boolean save_success;           /* return */
+} XtCheckpointTokenRec, *XtCheckpointToken;
+</programlisting>
 
 <para>
 The <emphasis remap='I'>save_type</emphasis>, <emphasis remap='I'>interact_style</emphasis>, <emphasis remap='I'>shutdown</emphasis>, and <emphasis remap='I'>fast</emphasis>

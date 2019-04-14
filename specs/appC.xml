@@ -46,10 +46,10 @@ you could define the macro
 as:
 </para>
 
-<literallayout>
-<code>#define XtLabelCreate(name, parent, args, num_args) \</code>
-<code>   ((LabelWidget) XtCreateWidget(name, labelWidgetClass, parent, args, num_args))</code>
-</literallayout>
+<programlisting>
+#define XtLabelCreate(name, parent, args, num_args) \
+   ((LabelWidget) XtCreateWidget(name, labelWidgetClass, parent, args, num_args))
+</programlisting>
 
 <para>
 Pop-up shells in some of the prototypes automatically performed an
