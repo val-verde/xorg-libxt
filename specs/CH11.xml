@@ -2328,7 +2328,7 @@ for itself whether or not a partially completed data transfer is meaningful.
 For more information about <emphasis remap='I'>selection</emphasis>,
 <emphasis remap='I'>target</emphasis>, and
 <emphasis remap='I'>time</emphasis>, see
-<olink targetdoc='icccm' targetptr='Use_of_Selection_Atoms' /> in the
+<olink targetdoc='icccm' targetptr='Use_of_Selection_Atoms'>Use of Selection Atoms</olink> in the
 <olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual.</olink>
 </para>
 
@@ -3233,7 +3233,7 @@ and
 events into a region for clients to process at once
 rather than processing individual rectangles.
 For further information about regions,
-see <olink targetdoc='libX11' targetptr='Manipulating_Regions' />
+see <olink targetdoc='libX11' targetptr='Manipulating_Regions'>Manipulating Regions</olink>
 in <olink targetdoc='libX11' targetptr='libX11'>
 Xlib &mdash; C Language X Interface.</olink>.
 </para>

@@ -1246,7 +1246,7 @@ Shell classes; a client specifying the string in an arglist
 or varargs list must ensure
 that the value remains valid until the shell widget is realized.
 For further information on the geometry string, see
-<olink targetdoc='libX11' targetptr='Parsing_the_Window_Geometry' />
+<olink targetdoc='libX11' targetptr='Parsing_the_Window_Geometry' >Parsing the Window Geometry</olink>
 in <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
 </para>
 
@@ -1281,11 +1281,11 @@ determines
 whether the window manager can intercede when the shell window
 is mapped.
 For further information on override_redirect,
-see <olink targetdoc='libX11' targetptr='Window_Attributes' /> in
+see <olink targetdoc='libX11' targetptr='Window_Attributes' >Window Attributes</olink> in
 <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>
 and
-<olink targetdoc='icccm' targetptr='Pop_up_Windows' /> and
-<olink targetdoc='icccm' targetptr='Redirection_of_Operations' /> in the
+<olink targetdoc='icccm' targetptr='Pop_up_Windows'>Pop-up Windows</olink> and
+<olink targetdoc='icccm' targetptr='Redirection_of_Operations'>Redirection of Operations</olink> in the
 <olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual</olink>.
 The pop-up and pop-down callbacks are called during
 <xref linkend='XtPopup' xrefstyle='select: title'/>
