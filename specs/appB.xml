@@ -122,7 +122,7 @@ Syntax
     </row>
     <row>
       <entry>quoted_string</entry>
-      <entry>= <quote>"</quote> {&lt;Latin 1 character&gt; | escape_char} [&ldquo;\\\\&rdquo; ] <quote>"</quote></entry>
+      <entry>= <quote>"</quote> {&lt;Latin 1 character&gt; | escape_char} [&ldquo;\\"&rdquo; ] <quote>"</quote></entry>
     </row>
     <row>
       <entry>escape_char</entry>
@@ -928,7 +928,7 @@ The canonical representation of a translation table is (see also
     </row>
     <row>
       <entry>quoted_string</entry>
-      <entry>= <quote>"</quote> {&lt;Latin 1 character&gt; | escape_char} [&ldquo;\\\\&rdquo; ] <quote>"</quote>
+      <entry>= <quote>"</quote> {&lt;Latin 1 character&gt; | escape_char} [&ldquo;\\"&rdquo; ] <quote>"</quote>
       </entry>
     </row>
     <row>
