@@ -114,12 +114,12 @@ is
 </para>
 <programlisting>
 typedef struct {
-        XtPointer next_extension;        See <xref linkend='Class_Extension_Records' />
-        XrmQuark record_type;            See <xref linkend='Class_Extension_Records' />
-        long version;                    See <xref linkend='Class_Extension_Records' />
-        Cardinal record_size;            See <xref linkend='Class_Extension_Records' />
-        XtAllocateProc allocate;         See <xref linkend='Widget_Instance_Allocation_The_allocate_Procedure' />.
-        XtDeallocateProc deallocate;     See <xref linkend='Widget_Instance_Deallocation_The_deallocate_Procedure' />.
+        XtPointer next_extension;        <lineannotation>See <xref linkend='Class_Extension_Records' /></lineannotation>
+        XrmQuark record_type;            <lineannotation>See <xref linkend='Class_Extension_Records' /></lineannotation>
+        long version;                    <lineannotation>See <xref linkend='Class_Extension_Records' /></lineannotation>
+        Cardinal record_size;            <lineannotation>See <xref linkend='Class_Extension_Records' /></lineannotation>
+        XtAllocateProc allocate;         <lineannotation>See <xref linkend='Widget_Instance_Allocation_The_allocate_Procedure' /></lineannotation>
+        XtDeallocateProc deallocate;     <lineannotation>See <xref linkend='Widget_Instance_Deallocation_The_deallocate_Procedure' /></lineannotation>
 } ObjectClassExtensionRec, *ObjectClassExtension;
 </programlisting>
 <para>
