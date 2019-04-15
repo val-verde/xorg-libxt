@@ -2300,7 +2300,7 @@ class <emphasis remap='I'>Class</emphasis>.Screen where <emphasis remap='I'>Clas
 <emphasis remap='I'>application_class</emphasis> if <emphasis remap='I'>widget_class</emphasis> is
 <function>applicationShellWidgetClass</function>
 or a subclass thereof.  If <emphasis remap='I'>widget_class</emphasis> is not
-<function>application\%Shell\%Widget\%Class</function>
+<function>applicationShellWidgetClass</function>
 or a subclass, <emphasis remap='I'>Class</emphasis> is the <emphasis remap='I'>class_name</emphasis>
 field from the
 <function>CoreClassPart</function>
@@ -3349,11 +3349,11 @@ maps the widget window.
 <xref linkend='XtVaCreateWidget' xrefstyle='select: title'/>,
 <xref linkend='XtRealizeWidget' xrefstyle='select: title'/>,
 <xref linkend='XtManageChildren' xrefstyle='select: title'/>,
-<function>XtUnmanage\%Children</function>,
+<function>XtUnmanageChildren</function>,
 <xref linkend='XtUnrealizeWidget' xrefstyle='select: title'/>,
 <xref linkend='XtSetMappedWhenManaged' xrefstyle='select: title'/>,
 and
-<function>XtDestroy\%Widget</function>
+<function>XtDestroyWidget</function>
 maintain the following invariants:
 </para>
 <itemizedlist spacing='compact'>
@@ -4181,7 +4181,7 @@ specified:
   <listitem>
     <para>
 If the widget is not a pop-up child and the widget's parent is a subclass of
-<function>composite\%WidgetClass</function>,
+<function>compositeWidgetClass</function>,
 and if the parent is not being destroyed,
 it calls
 <xref linkend='XtUnmanageChild' xrefstyle='select: title'/>
@@ -4208,7 +4208,7 @@ widget in postorder:
   <listitem>
     <para>
 If the widget is not a pop-up child and the widget's parent is a subclass of
-<function>constraint\%WidgetClass</function>,
+<function>constraintWidgetClass</function>,
 it calls the
 <function>ConstraintClassPart</function>
 destroy procedure for the parent,
@@ -4416,7 +4416,7 @@ This constraint destroy procedure pointer is of type
 <xref linkend='XtWidgetProc' xrefstyle='select: title'/>.
 The constraint destroy procedures are called in subclass-to-superclass order,
 starting at the class of the widget's parent and ending at
-<function>constraint\%WidgetClass</function>.
+<function>constraintWidgetClass</function>.
 Therefore, a parent's constraint destroy procedure should deallocate only
 storage that is specific to the constraint subclass
 and not storage allocated by any of its superclasses.

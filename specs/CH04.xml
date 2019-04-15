@@ -918,7 +918,7 @@ is implementation-defined.
 
 <para>
 The resource names, classes, and representation types that are specified in the
-<function>transient\%ShellClassRec</function>
+<function>transientShellClassRec</function>
 resource list are:
 </para>
 
@@ -986,7 +986,7 @@ resource list are:
 
 <para>
 The resource names, classes, and representation types that are specified in the
-<function>application\%ShellClassRec</function>
+<function>applicationShellClassRec</function>
 resource list are:
 </para>
 

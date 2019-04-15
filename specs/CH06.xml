@@ -32,7 +32,7 @@ their children will never make a geometry request.
 Parents, children, and clients each initiate geometry changes differently.
 Because a parent has absolute control of its children's geometry,
 it changes the geometry directly by calling
-<function>XtMove\%Widget</function>,
+<function>XtMoveWidget</function>,
 <xref linkend='XtResizeWidget' xrefstyle='select: title'/>,
 or
 <xref linkend='XtConfigureWidget' xrefstyle='select: title'/>.

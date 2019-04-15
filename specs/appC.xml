@@ -202,7 +202,7 @@ with <emphasis remap='I'>display_string</emphasis> NULL and
 <emphasis remap='I'>application_name</emphasis> NULL, and finally calls
 <xref linkend='XtAppCreateShell' xrefstyle='select: title'/>
 with <emphasis remap='I'>application_name</emphasis> NULL, <emphasis remap='I'>widget_class</emphasis>
-<function>application\%Shell\%Widget\%Class</function>,
+<function>applicationShellWidgetClass</function>,
 and the specified <emphasis remap='I'>args</emphasis> and <emphasis remap='I'>num_args</emphasis>
 and returns the created shell.  The modified <emphasis remap='I'>argc</emphasis> and <emphasis remap='I'>argv</emphasis> returned by
 <xref linkend='XtDisplayInitialize' xrefstyle='select: title'/>

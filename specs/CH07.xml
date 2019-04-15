@@ -242,7 +242,7 @@ type
     <listitem>
       <para>
 Passes the client data argument that was registered for this procedure in
-<function>XtApp\%AddInput</function>.
+<function>XtAppAddInput</function>.
       </para>
     </listitem>
   </varlistentry>
@@ -404,7 +404,7 @@ are of type
     <listitem>
       <para>
 Passes the client data argument that was registered for this procedure in
-<function>XtApp\%AddBlockHook</function>.
+<function>XtAppAddBlockHook</function>.
     </para>
   </listitem>
   </varlistentry>
@@ -546,7 +546,7 @@ type
     <listitem>
       <para>
 Passes the client data argument that was registered for this procedure in
-<function>XtApp\%AddTimeOut</function>.
+<function>XtAppAddTimeOut</function>.
       </para>
     </listitem>
   </varlistentry>
