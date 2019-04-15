@@ -824,10 +824,10 @@ prior to
 as in the following example.
 </para>
 <programlisting>
-        Widget top;
-        XtSetLanguageProc(NULL, NULL, NULL);
-        top = XtOpenApplication(...);
-        ...
+	Widget top;
+	XtSetLanguageProc(NULL, NULL, NULL);
+	top = XtOpenApplication(...);
+	...
 </programlisting>
 </sect1>
 
@@ -1013,12 +1013,12 @@ must contain at least six entries.  These entries must contain
 $HOME as the directory prefix, plus the following substitutions:
         </para>
 <programlisting>
-      1.        %C, %N, %L      or      %C, %N, %l, %t, %c
-      2.        %C, %N, %l
-      3.        %C, %N
-      4.        %N, %L  or      %N, %l, %t, %c
-      5.        %N, %l
-      6.        %N
+1.  %C, %N, %L     or      %C, %N, %l, %t, %c
+2.  %C, %N, %l
+3.  %C, %N
+4.  %N, %L         or      %N, %l, %t, %c
+5.  %N, %l
+6.  %N
 </programlisting>
         <para>
 The order of these six entries within the path must be as given above.
@@ -1035,13 +1035,13 @@ must contain at least seven entries.  These entries must contain the
 following directory prefixes and substitutions:
         </para>
 <programlisting>
-      1.        $XAPPLRESDIR    with    %C, %N, %L      or      %C, %N, %l, %t, %c
-      2.        $XAPPLRESDIR    with    %C, %N, %l
-      3.        $XAPPLRESDIR    with    %C, %N
-      4.        $XAPPLRESDIR    with    %N, %L  or      %N, %l, %t, %c
-      5.        $XAPPLRESDIR    with    %N, %l
-      6.        $XAPPLRESDIR    with    %N
-      7.        $HOME   with    %N
+1. $XAPPLRESDIR    with   %C, %N, %L   or   %C, %N, %l, %t, %c
+2. $XAPPLRESDIR    with   %C, %N, %l
+3. $XAPPLRESDIR    with   %C, %N
+4. $XAPPLRESDIR    with   %N, %L       or   %N, %l, %t, %c
+5. $XAPPLRESDIR    with   %N, %l
+6. $XAPPLRESDIR    with   %N
+7. $HOME           with   %N
 </programlisting>
         <para>
 The order of these seven entries within the path must be as given above.
@@ -1274,22 +1274,22 @@ The format of this table is described in Section 15.9 in <emphasis remap='I'>Xli
 </para>
 <programlisting>
 typedef enum {
-        XrmoptionNoArg,         /* Value is specified in OptionDescRec.value */
-        XrmoptionIsArg,         /* Value is the option string itself */
-        XrmoptionStickyArg,     /* Value is characters immediately following option */
-        XrmoptionSepArg,        /* Value is next argument in argv */
-        XrmoptionResArg,        /* Use the next argument as input to XrmPutLineResource*/
-        XrmoptionSkipArg,       /* Ignore this option and the next argument in argv */
-        XrmoptionSkipNArgs,     /* Ignore this option and the next */
-                                /* OptionDescRec.value arguments in argv */
-        XrmoptionSkipLine       /* Ignore this option and the rest of argv */
+     XrmoptionNoArg,     /* Value is specified in OptionDescRec.value */
+     XrmoptionIsArg,     /* Value is the option string itself */
+     XrmoptionStickyArg, /* Value is characters immediately following option */
+     XrmoptionSepArg,    /* Value is next argument in argv */
+     XrmoptionResArg,    /* Use the next argument as input to XrmPutLineResource*/
+     XrmoptionSkipArg,   /* Ignore this option and the next argument in argv */
+     XrmoptionSkipNArgs, /* Ignore this option and the next */
+                         /* OptionDescRec.value arguments in argv */
+     XrmoptionSkipLine   /* Ignore this option and the rest of argv */
 } XrmOptionKind;
 
 typedef struct {
-        char *option;           /* Option name in argv */
-        char *specifier;        /* Resource name (without application name) */
-        XrmOptionKind argKind;  /* Location of the resource value */
-        XPointer value;         /* Value to provide if XrmoptionNoArg */
+     char *option;       /* Option name in argv */
+     char *specifier;    /* Resource name (without application name) */
+     XrmOptionKind argKind; /* Location of the resource value */
+     XPointer value;     /* Value to provide if XrmoptionNoArg */
 } XrmOptionDescRec, *XrmOptionDescList;
 </programlisting>
 <para>The standard table contains the following entries:</para>
@@ -1613,8 +1613,8 @@ structures, which contains
 </para>
 <programlisting>
 typedef struct {
-        String name;
-        XtArgVal value;
+	String name;
+	XtArgVal value;
 } Arg, *ArgList;
 </programlisting>
 <para>
@@ -1703,8 +1703,8 @@ and use
 </para>
 <programlisting>
 static Args args[] = {
-        {XtNheight, (XtArgVal) 100},
-        {XtNwidth, (XtArgVal) 200},
+	{XtNheight, (XtArgVal) 100},
+	{XtNwidth, (XtArgVal) 200},
 };
 XtSetValues(Widget, args, XtNumber(args));
 </programlisting>
@@ -2762,10 +2762,10 @@ these arguments will be passed to the allocation procedure in an
 </para>
 <programlisting>
 typedef struct {
-        String name;
-        String type;
-        XtArgVal value;
-        int size;
+	String name;
+	String type;
+	XtArgVal value;
+	int size;
 } XtTypedArg, *XtTypedArgList;
 </programlisting>
 <para>
