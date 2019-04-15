@@ -1945,24 +1945,24 @@ a function of the particular display (and colormap).
 <programlisting>
 #define done(type, value) \\
      {                                                 \\
-          if (toVal-&gt;addr != NULL) {                \\
-               if (toVal-&gt;size &lt; sizeof(type)) { \\
-                    toVal-&gt;size = sizeof(type);     \\
+          if (toVal-&gt;addr != NULL) {                   \\
+               if (toVal-&gt;size &lt; sizeof(type)) {       \\
+                    toVal-&gt;size = sizeof(type);        \\
                     return False;                      \\
                }                                       \\
-               *(type*)(toVal-&gt;addr) = (value);     \\
+               *(type*)(toVal-&gt;addr) = (value);        \\
           }                                            \\
           else {                                       \\
                static type static_val;                 \\
                static_val = (value);                   \\
-               toVal-&gt;addr = (XPointer)&amp;static_val; \\
+               toVal-&gt;addr = (XPointer)&amp;static_val;    \\
           }                                            \\
-          toVal-&gt;size = sizeof(type);               \\
+          toVal-&gt;size = sizeof(type);                  \\
           return True;                                 \\
      }
 
 static Boolean CvtStringToPixel(
-     Display        *dpy,
+     Display   *dpy,
      XrmValue  *args,
      Cardinal  *num_args,
      XrmValue  *fromVal,
@@ -1972,7 +1972,7 @@ static Boolean CvtStringToPixel(
      static XColor  screenColor;
      XColor         exactColor;
      Screen         *screen;
-     Colormap  colormap;
+     Colormap       colormap;
      Status         status;
 
      if (*num_args != 2)
