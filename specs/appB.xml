@@ -54,11 +54,11 @@ Syntax
     </row>
     <row>
       <entry>directive</entry>
-      <entry>= ( "#replace" | "#override" | "#augment" ) "\\\\n"</entry>
+      <entry>= ( "#replace" | "#override" | "#augment" ) "\\n"</entry>
     </row>
     <row>
       <entry>production</entry>
-      <entry>= lhs ":" rhs "\\\\n"</entry>
+      <entry>= lhs ":" rhs "\\n"</entry>
     </row>
     <row>
       <entry>lhs</entry>
@@ -70,7 +70,7 @@ Syntax
     </row>
     <row>
       <entry>keychar</entry>
-      <entry>= [ "^" | "$" | "\\\\" ] &lt;ISO Latin 1 character&gt;</entry>
+      <entry>= [ "^" | "$" | "\\" ] &lt;ISO Latin 1 character&gt;</entry>
     </row>
     <row>
       <entry>event</entry>
@@ -142,7 +142,7 @@ The <emphasis remap='I'>params</emphasis> field is parsed into a list of
 values that will be passed to the named action procedure.  A
 <emphasis remap='I'>quoted string</emphasis> may contain an embedded quotation mark if the
 quotation mark is preceded by a single backslash (\).  The
-three-character sequence "\\\"" is interpreted as "single backslash
+three-character sequence "\\"" is interpreted as "single backslash
 followed by end-of-string".
 </para>
 <para><emphasis role='strong'>Modifier Names</emphasis></para>

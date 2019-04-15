@@ -552,9 +552,9 @@ The following illustrates Pushbutton's default translation table:
 </para>
 <programlisting>
 static String defaultTranslations =
-        "&lt;EnterWindow&gt;:   Highlight()\\n\\
-        &lt;LeaveWindow&gt;:    Unhighlight()\\n\\
-        &lt;Btn1Down&gt;:       Set()\\n\\
+        "&lt;EnterWindow&gt;:   Highlight()\n\
+        &lt;LeaveWindow&gt;:    Unhighlight()\n\
+        &lt;Btn1Down&gt;:       Set()\n\
         &lt;Btn1Up&gt;: Notify() Unset()";
 </programlisting>
 <para>

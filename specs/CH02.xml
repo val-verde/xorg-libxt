@@ -544,7 +544,7 @@ function calls
 with the specified <emphasis remap='I'>display_string</emphasis>.
 If <emphasis remap='I'>display_string</emphasis> is NULL,
 <xref linkend='XtOpenDisplay' xrefstyle='select: title'/>
-uses the current value of the \-display option specified in <emphasis remap='I'>argv</emphasis>.
+uses the current value of the -display option specified in <emphasis remap='I'>argv</emphasis>.
 If no display is specified in <emphasis remap='I'>argv</emphasis>,
 the user's default display is retrieved from the environment.
 On POSIX-based systems,
@@ -559,8 +559,8 @@ If this succeeds,
 then calls
 <xref linkend='XtDisplayInitialize' xrefstyle='select: title'/>
 and passes it the opened display and
-the value of the \-name option specified in <emphasis remap='I'>argv</emphasis> as the application name.
-If no \-name option is specified
+the value of the -name option specified in <emphasis remap='I'>argv</emphasis> as the application name.
+If no -name option is specified
 and <emphasis remap='I'>application_name</emphasis> is
 non-NULL, <emphasis remap='I'>application_name</emphasis> is passed to
 <xref linkend='XtDisplayInitialize' xrefstyle='select: title'/>.

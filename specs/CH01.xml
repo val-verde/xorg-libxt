@@ -100,7 +100,7 @@ or
 On a POSIX-based system,
 the Intrinsics object library file is named
 <function>libXt.a</function>
-and is usually referenced as \-lXt when linking the application.
+and is usually referenced as -lXt when linking the application.
 </para>
 </sect1>
 

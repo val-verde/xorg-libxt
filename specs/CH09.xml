@@ -1573,7 +1573,7 @@ Alphabetic case is not significant in the conversion.
 The String-to-CommandArgArray conversion parses a String into an
 array of strings.
 White space characters separate elements of the command line.
-The converter recognizes the backslash character &ldquo;\\&rdquo; as an escape
+The converter recognizes the backslash character &ldquo;\&rdquo; as an escape
 character to allow the following white space character to be part of the
 array element.
 </para>
@@ -1943,22 +1943,22 @@ a function of the particular display (and colormap).
 </para>
 
 <programlisting>
-#define done(type, value) \\
-     {                                                 \\
-          if (toVal-&gt;addr != NULL) {                   \\
-               if (toVal-&gt;size &lt; sizeof(type)) {       \\
-                    toVal-&gt;size = sizeof(type);        \\
-                    return False;                      \\
-               }                                       \\
-               *(type*)(toVal-&gt;addr) = (value);        \\
-          }                                            \\
-          else {                                       \\
-               static type static_val;                 \\
-               static_val = (value);                   \\
-               toVal-&gt;addr = (XPointer)&amp;static_val;    \\
-          }                                            \\
-          toVal-&gt;size = sizeof(type);                  \\
-          return True;                                 \\
+#define done(type, value) \
+     {                                                 \
+          if (toVal-&gt;addr != NULL) {                   \
+               if (toVal-&gt;size &lt; sizeof(type)) {       \
+                    toVal-&gt;size = sizeof(type);        \
+                    return False;                      \
+               }                                       \
+               *(type*)(toVal-&gt;addr) = (value);        \
+          }                                            \
+          else {                                       \
+               static type static_val;                 \
+               static_val = (value);                   \
+               toVal-&gt;addr = (XPointer)&amp;static_val;    \
+          }                                            \
+          toVal-&gt;size = sizeof(type);                  \
+          return True;                                 \
      }
 
 static Boolean CvtStringToPixel(
@@ -2001,7 +2001,7 @@ static Boolean CvtStringToPixel(
                           "noColormap",
                           "cvtStringToPixel",
                           "XtToolkitError",
-                          "Cannot allocate colormap entry for \\"%s\\"",
+                          "Cannot allocate colormap entry for \"%s\"",
                           params, &amp;num_params);
           *converter_data = (char *) False;
           return False;
