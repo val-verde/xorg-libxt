@@ -1944,68 +1944,71 @@ a function of the particular display (and colormap).
 
 <programlisting>
 #define done(type, value) \\
-        {                                                       \\
-                if (toVal-&gt;addr != NULL) {                   \\
-                        if (toVal-&gt;size &lt; sizeof(type)) { \\
-                                toVal-&gt;size = sizeof(type);  \\
-                                return False;                   \\
-                        }                                       \\
-                        *(type*)(toVal-&gt;addr) = (value);     \\
-                }                                               \\
-                else {                                          \\
-                        static type static_val;                 \\
-                        static_val = (value);                   \\
-                        toVal-&gt;addr = (XPointer)&amp;static_val; \\
-                }                                               \\
-                toVal-&gt;size = sizeof(type);                  \\
-                return True;                                    \\
-        }
+     {                                                 \\
+          if (toVal-&gt;addr != NULL) {                \\
+               if (toVal-&gt;size &lt; sizeof(type)) { \\
+                    toVal-&gt;size = sizeof(type);     \\
+                    return False;                      \\
+               }                                       \\
+               *(type*)(toVal-&gt;addr) = (value);     \\
+          }                                            \\
+          else {                                       \\
+               static type static_val;                 \\
+               static_val = (value);                   \\
+               toVal-&gt;addr = (XPointer)&amp;static_val; \\
+          }                                            \\
+          toVal-&gt;size = sizeof(type);               \\
+          return True;                                 \\
+     }
 
 static Boolean CvtStringToPixel(
-        Display         *dpy,
-        XrmValue        *args,
-        Cardinal        *num_args,
-        XrmValue        *fromVal,
-        XrmValue        *toVal,
-        XtPointer       *converter_data)
+     Display        *dpy,
+     XrmValue  *args,
+     Cardinal  *num_args,
+     XrmValue  *fromVal,
+     XrmValue  *toVal,
+     XtPointer *converter_data)
 {
-        static XColor   screenColor;
-        XColor          exactColor;
-        Screen          *screen;
-        Colormap        colormap;
-        Status          status;
+     static XColor  screenColor;
+     XColor         exactColor;
+     Screen         *screen;
+     Colormap  colormap;
+     Status         status;
 
-        if (*num_args != 2)
-                XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
-                        "wrongParameters", "cvtStringToPixel", "XtToolkitError",
-                        "String to pixel conversion needs screen and colormap arguments",
-                        (String *)NULL, (Cardinal *)NULL);
-        screen = *((Screen**) args[0].addr);
-        colormap = *((Colormap *) args[1].addr);
-        if (CompareISOLatin1(str, XtDefaultBackground) == 0) {
-                *closure_ret = False;
-                done(Pixel, WhitePixelOfScreen(screen));
-        }
-        if (CompareISOLatin1(str, XtDefaultForeground) == 0) {
-                *closure_ret = False;
-                done(Pixel, BlackPixelOfScreen(screen));
-        }
-        status = XAllocNamedColor(DisplayOfScreen(screen), colormap, (char*)fromVal-&gt;addr,
-                                               &amp;screenColor, &amp;exactColor);
-        if (status == 0) {
-                String params[1];
-                Cardinal num_params = 1;
-                params[0] = (String)fromVal-&gt;addr;
-                XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
-                        "noColormap", "cvtStringToPixel", "XtToolkitError",
-                        "Cannot allocate colormap entry for \\"%s\\"",
-                        params, &amp;num_params);
-                *converter_data = (char *) False;
-                return False;
-        } else {
-                *converter_data = (char *) True;
-                done(Pixel, &amp;screenColor.pixel);
-        }
+     if (*num_args != 2)
+          XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
+               "wrongParameters", "cvtStringToPixel", "XtToolkitError",
+               "String to pixel conversion needs screen and colormap arguments",
+               (String *)NULL, (Cardinal *)NULL);
+     screen = *((Screen**) args[0].addr);
+     colormap = *((Colormap *) args[1].addr);
+     if (CompareISOLatin1(str, XtDefaultBackground) == 0) {
+          *closure_ret = False;
+          done(Pixel, WhitePixelOfScreen(screen));
+     }
+     if (CompareISOLatin1(str, XtDefaultForeground) == 0) {
+          *closure_ret = False;
+          done(Pixel, BlackPixelOfScreen(screen));
+     }
+     status = XAllocNamedColor(DisplayOfScreen(screen),
+                               colormap, (char*)fromVal-&gt;addr,
+                               &amp;screenColor, &amp;exactColor);
+     if (status == 0) {
+          String params[1];
+          Cardinal num_params = 1;
+          params[0] = (String)fromVal-&gt;addr;
+          XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
+                          "noColormap",
+                          "cvtStringToPixel",
+                          "XtToolkitError",
+                          "Cannot allocate colormap entry for \\"%s\\"",
+                          params, &amp;num_params);
+          *converter_data = (char *) False;
+          return False;
+     } else {
+          *converter_data = (char *) True;
+          done(Pixel, &amp;screenColor.pixel);
+     }
 }
 </programlisting>
 
