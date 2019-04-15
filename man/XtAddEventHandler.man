@@ -87,13 +87,11 @@ typedef enum { XtListHead, XtListTail } XtListPosition;
 .SH ARGUMENTS
 .IP \fIclient_data\fP 1i
 Specifies additional data to be passed to the client's event handler.
-.ds Em to call or unregister this procedure
 .IP \fIevent_mask\fP 1i
-Specifies the event mask for which \*(Em.
-.ds Nm called or removed
+Specifies the event mask for which to call or unregister this procedure.
 .IP \fInonmaskable\fP 1i
 Specifies a Boolean value that indicates whether this procedure should be
-\*(Nm on the nonmaskable events ( 
+called or removed on the nonmaskable events (
 .BR GraphicsExpose ,
 .BR NoExpose ,
 .BR SelectionClear ,
@@ -102,12 +100,10 @@ Specifies a Boolean value that indicates whether this procedure should be
 .BR ClientMessage ,
 and
 .BR MappingNotify ).
-.ds Pr \ to be added or removed
 .IP \fIproc\fP 1i
-Specifies the procedure that is\*(Pr.
-.ds Wi for which this event handler is being registered
+Specifies the procedure that is to be added or removed.
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget for which this event handler is being registered.
 .IP \fIposition\fP 1i
 Specifies when the event handler is to be called relative to other
 previously registered handlers.

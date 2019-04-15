@@ -103,9 +103,8 @@ Boolean XtIsSessionShell(Widget \fIw\fP);
 Specifies the widget.
 .IP \fIwidget_class\fP 1i
 Specifies the widget class.
-.ds Me used
 .IP \fImessage\fP 1i
-Specifies the message that is to be \*(Me.
+Specifies the message that is to be used.
 .SH DESCRIPTION
 The
 .BR XtClass

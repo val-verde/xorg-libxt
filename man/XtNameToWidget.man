@@ -65,9 +65,8 @@ Widget XtNameToWidget(Widget \fIreference\fP, String \fInames\fP);
 .HP
 Widget XtWindowToWidget(Display *\fIdisplay\fP, Window \fIwindow\fP);
 .SH ARGUMENTS
-.ds Di \ on which the window is defined
 .IP \fIdisplay\fP 1i
-Specifies the display\*(Di.
+Specifies the display on which the window is defined.
 .IP \fInames\fP 1i
 Specifies the fully qualified name of the desired widget.
 .IP \fIreference\fP 1i

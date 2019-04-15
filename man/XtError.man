@@ -70,13 +70,11 @@ void XtWarning(String \fImessage\fP);
 .SH ARGUMENTS
 .IP \fImessage\fP 1i
 Specifies the nonfatal error message that is to be reported.
-.ds Ha fatal error procedure, which should not return, \
-or the nonfatal error procedure, which usually returns
 .IP \fIhandler\fP 1i
-Specifies the new \*(Ha.
-.ds Me reported
+Specifies the new fatal error procedure, which should not return, 
+or the nonfatal error procedure, which usually returns.
 .IP \fImessage\fP 1i
-Specifies the message that is to be \*(Me.
+Specifies the message that is to be reported.
 .SH DESCRIPTION
 The
 .BR XtError

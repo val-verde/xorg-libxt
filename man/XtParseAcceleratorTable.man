@@ -68,14 +68,12 @@ void XtInstallAccelerators(Widget \fIdestination\fP, Widget \fIsource\fP);
 .HP
 void XtInstallAllAccelerators(Widget \fIdestination\fP, Widget \fIsource\fP);
 .SH ARGUMENTS
-.ds So to compile
 .IP \fIsource\fP 1i
-Specifies the accelerator table \*(So.
+Specifies the accelerator table to compile.
 .IP \fIdestination\fP 1i
 Specifies the widget on which the accelerators are to be installed.
-.ds Sr widget or the root widget of the widget tree
 .IP \fIsource\fP 1i
-Specifies the \*(Sr from which the accelerators are to come.
+Specifies the widget or the root widget of the widget tree from which the accelerators are to come.
 .SH DESCRIPTION
 The
 .BR XtParseAcceleratorTable

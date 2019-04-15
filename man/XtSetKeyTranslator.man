@@ -74,9 +74,8 @@ KeySym \fIstart\fP, KeySym \fIstop\fP);
 void XtConvertCase(Display *\fIdisplay\fP, KeySym \fIkeysym\fP, KeySym
 *\fIlower_return\fP, KeySym *\fIupper_return\fP);
 .SH ARGUMENTS
-.ds Di
 .IP \fIdisplay\fP 1i
-Specifies the display\*(Di.
+Specifies the display.
 .IP \fIkeycode\fP 1i
 Specifies the KeyCode to translate.
 .IP \fIkeysym\fP 1i
@@ -92,9 +91,8 @@ Specifies the modifiers to the KeyCode.
 .IP \fImodifiers_return\fP 1i
 Returns a mask that indicates the modifiers actually used
 to generate the KeySym.
-.ds Pr \ to perform key translations or conversions
 .IP \fIproc\fP 1i
-Specifies the procedure that is\*(Pr.
+Specifies the procedure that is to perform key translations or conversions.
 .IP \fIstart\fP 1i
 Specifies the first KeySym for which this converter is valid.
 .IP \fIstop\fP 1i
@@ -127,7 +125,7 @@ The new converter overrides any previous converters for KeySyms in that range.
 No interface exists to remove converters;
 you need to register an identity converter.
 When a new converter is registered,
-the \*(xI  refreshes the keyboard state if necessary.
+the \*(xI refreshes the keyboard state if necessary.
 The default converter understands case conversion for all
 KeySyms defined in the core protocol.
 .LP

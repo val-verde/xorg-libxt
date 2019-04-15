@@ -69,15 +69,13 @@ void XtCreateWindow(Widget \fIw\fP, unsigned int \fIwindow_class\fP, Visual
 Specifies the window attributes to use in the
 .BR XCreateWindow
 call.
-.ds Vm attribute fields to use
 .IP \fIvalue_mask\fP 1i
-Specifies which \*(Vm.
+Specifies which attribute fields to use.
 .IP \fIvisual\fP 1i
 Specifies the visual type (usually
 .BR CopyFromParent ).
-.ds Wi that is used to set the x,y coordinates and so on
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget that is used to set the x,y coordinates and so on.
 .IP \fIwindow_class\fP 1i
 Specifies the Xlib window class (for example,
 .BR InputOutput ,

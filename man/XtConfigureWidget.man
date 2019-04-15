@@ -81,12 +81,11 @@ void XtResizeWindow(Widget \fIw\fP);
 Specify the new widget size.
 .IP \fIw\fP 1i
 Specifies the widget.
-.ds Nu new widget
 .IP \fIx\fP 1i
 .br
 .ns
 .IP \fIy\fP 1i
-Specify the \*(Nu x and y coordinates.
+Specify the new widget x and y coordinates.
 .SH DESCRIPTION
 The
 .BR XtConfigureWidget

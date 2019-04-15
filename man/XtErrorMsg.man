@@ -71,19 +71,17 @@ void XtSetWarningMsgHandler(XtErrorMsgHandler \fImsg_handler\fP);
 void XtWarningMsg(String \fIname\fP, String \fItype\fP, String \fIclass\fP,
 String \fIdefault\fP, String *\fIparams\fP, Cardinal *\fInum_params\fP);
 .SH ARGUMENTS
-.ds Cl
 .IP \fIclass\fP 1i
-Specifies the resource class\*(Cl.
+Specifies the resource class of the error message.
 .IP \fIdefault\fP 1i
 Specifies the default message to use.
 .IP \fIname\fP 1i
 Specifies the general kind of error.
 .IP \fItype\fP 1i
 Specifies the detailed name of the error.
-.ds Mh fatal error procedure, which should not return \
-or the nonfatal error procedure, which usually returns
 .IP \fImsg_handler\fP 1i
-Specifies the new \*(Mh.
+Specifies the new fatal error procedure, which should not return 
+or the nonfatal error procedure, which usually returns.
 .IP \fInum_params\fP 1i
 Specifies the number of values in the parameter list.
 .IP \fIparams\fP 1i

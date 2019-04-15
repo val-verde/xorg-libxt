@@ -66,13 +66,11 @@ XtWorkProcId XtAppAddWorkProc(XtAppContext \fIapp_context\fP, XtWorkProc
 .HP
 void XtRemoveWorkProc(XtWorkProcId \fIid\fP);
 .SH ARGUMENTS
-.ds Co that identifies the application
 .IP \fIapp_context\fP 1i
-Specifies the application context \*(Co.
-.ds Cd it is called
+Specifies the application context that identifies the application.
 .IP \fIclient_data\fP 1i
 Specifies the argument that is to be passed to the specified procedure
-when \*(Cd.
+when it is called.
 .IP \fIproc\fP 1i
 Specifies the procedure that is to be called.
 .IP \fIid\fP 1i

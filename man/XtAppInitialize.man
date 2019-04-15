@@ -72,9 +72,8 @@ Widget XtVaAppInitialize(XtAppContext* \fIapp_context_return\fP, String
 .SH ARGUMENTS
 .IP \fIapp_context_return\fP 1i
 Specifies the application context.
-.ds Ac , which usually is the generic name for all instances of this application
 .IP \fIapplication_class\fP 1i
-Specifies the class name of this application\*(Ac.
+Specifies the class name of this application, which usually is the generic name for all instances of this application.
 .IP \fIoptions\fP 1i
 Specifies how to parse the command line for any application-specific resources.
 The options argument is passed as a parameter to

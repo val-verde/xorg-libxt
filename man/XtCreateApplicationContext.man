@@ -72,9 +72,8 @@ void XtToolkitInitialize(void);
 .SH ARGUMENTS
 .IP \fIapp_context\fP 1i
 Specifies the application context.
-.ds wi that you want the application context for
 .IP \fIw\fP 1i
-Specifies the widget.
+Specifies the widget that you want the application context for.
 .SH DESCRIPTION
 The
 .BR XtCreateApplicationContext

@@ -69,12 +69,11 @@ void XtTranslateCoords(Widget \fIw\fP, Position \fIx\fP, \fIy\fP, Position
 .ns
 .IP \fIrooty_return\fP 1i
 Returns the root-relative x and y coordinates.
-.ds Nu widget-relative
 .IP \fIx\fP 1i
 .br
 .ns
 .IP \fIy\fP 1i
-Specify the \*(Nu x and y coordinates.
+Specify the widget-relative x and y coordinates.
 .IP \fIw\fP 1i
 Specifies the widget.
 .SH DESCRIPTION

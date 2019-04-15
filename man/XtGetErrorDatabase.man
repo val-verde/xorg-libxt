@@ -69,9 +69,8 @@ void XtGetErrorDatabaseText(char *\fIname\fP, char *\fItype\fP, char
 .SH ARGUMENTS
 .IP \fIbuffer_return\fP 1i
 Specifies the buffer into which the error message is to be returned.
-.ds Cl \ of the error message
 .IP \fIclass\fP 1i
-Specifies the resource class\*(Cl.
+Specifies the resource class of the error message.
 .IP \fIdefault\fP 1i
 Specifies the default message to use.
 .IP \fIname\fP 1i

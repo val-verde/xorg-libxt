@@ -66,9 +66,8 @@ XtGCMask \fIunused_mask\fP);
 .SH ARGUMENTS
 .IP \fIvalues\fP 1i
 Specifies the actual values for this GC.
-.ds Vm fields of the values are specified
 .IP \fIvalue_mask\fP 1i
-Specifies which \*(Vm.
+Specifies which fields of the values are specified.
 .IP \fIw\fP 1i
 Specifies the widget.
 .IP \fIdepth\fP 1i

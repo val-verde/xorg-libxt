@@ -67,26 +67,23 @@ XtResourceList \fIresources\fP, Cardinal \fInum_resources\fP, ArgList
 .HP
 void XtVaGetApplicationResources(Widget \fIw\fP, XtPointer \fIbase\fP,
 XtResourceList \fIresources\fP, Cardinal \fInum_resources\fP, ...\^);
-.SH ARGUMENTS
-.ds Al to override resources obtained from the resource database
+.SH ARGUMENTS 
 .IP \fIargs\fP 1i
-Specifies the argument list \*(Al.
-.ds Ba written
+Specifies the argument list to override resources obtained from the resource database.
 .IP \fIbase\fP 1i
 Specifies the base address of the subpart data structure where the resources
-should be \*(Ba.
+should be written.
 .IP \fInum_args\fP 1i
 Specifies the number of arguments in the argument list.
 .IP \fInum_resources\fP 1i
 Specifies the number of resources in the resource list.
 .IP \fIresources\fP 1i
 Specifies the resource list for the subpart.
-.ds Wi that wants resources for a subpart \
-or that identifies the resource database to search
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget that wants resources for a subpart 
+or that identifies the resource database to search.
 .IP \fI...\fP 1i
-Specifies the variable arguments \*(Al.
+Specifies the variable arguments to override resources obtained from the resource database.
 .SH DESCRIPTION
 The
 .BR XtGetApplicationResources

@@ -66,17 +66,15 @@ XtIntervalId XtAppAddTimeOut(XtAppContext \fIapp_context\fP, unsigned long
 .HP
 void XtRemoveTimeOut(XtIntervalId \fItimer\fP);
 .SH ARGUMENTS
-.ds Co for which the timer is to be set
 .IP \fIapp_context\fP 1i
-Specifies the application context \*(Co.
+Specifies the application context for which the timer is to be set.
 .IP \fIclient_data\fP 1i
 Specifies the argument that is to be passed to the specified procedure
 when handling the callback.
 .IP \fIinterval\fP 1i
 Specifies the time interval in milliseconds.
-.ds Pr \ to be called when time expires
 .IP \fIproc\fP 1i
-Specifies the procedure that is\*(Pr.
+Specifies the procedure that is to be called when time expires.
 .IP \fItimer\fP 1i
 Specifies the ID for the timeout request to be destroyed.
 .SH DESCRIPTION

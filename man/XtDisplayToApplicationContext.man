@@ -62,9 +62,8 @@ XtDisplayToApplicationContext \- obtain an application context
 .HP
 XtAppContext XtDisplayToApplicationContext(Display* \fIdpy\fP);
 .SH ARGUMENTS
-.ds Wi that you want the application context for
 .IP \fIdpy\fP 1i
-Specifies the display \*(Wi.
+Specifies the display that you want the application context for.
 .SH DESCRIPTION
 The
 .BR XtDisplayToApplicationContext

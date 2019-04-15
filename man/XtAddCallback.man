@@ -81,14 +81,13 @@ Specifies the callback procedure.
 .IP \fIcallbacks\fP 1i
 Specifies the null-terminated list of callback procedures and corresponding
 client data.
-.ds Cn \ to which the procedure is to be appended or deleted
 .IP \fIcallback_name\fP 1i
-Specifies the callback list\*(Cn.
-.ds Cd it is invoked by XtCallbacks or NULL, \
-or the client data to match on the registered callback procedures
+Specifies the callback list to which the procedure is to be appended or
+deleted.
 .IP \fIclient_data\fP 1i
 Specifies the argument that is to be passed to the specified procedure
-when \*(Cd.
+when it is invoked by XtCallbacks or NULL,
+or the client data to match on the registered callback procedures.
 .IP \fIw\fP 1i
 Specifies the widget.
 .SH DESCRIPTION

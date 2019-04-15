@@ -67,13 +67,11 @@ XtPointer \fIcondition\fP, XtInputCallbackProc \fIproc\fP, XtPointer
 .HP
 void XtRemoveInput(XtInputId \fIid\fP);
 .SH ARGUMENTS
-.ds Co that identifies the application
 .IP \fIapp_context\fP 1i
-Specifies the application context \*(Co.
-.ds Cd input is available
+Specifies the application context that identifies the application.
 .IP \fIclient_data\fP 1i
 Specifies the argument that is to be passed to the specified procedure
-when \*(Cd.
+when input is available.
 .IP \fIcondition\fP 1i
 Specifies the mask that indicates a read, write, or exception condition
 or some operating system dependent condition.
@@ -81,9 +79,8 @@ or some operating system dependent condition.
 Specifies the ID returned from the corresponding
 .BR XtAppAddInput
 call.
-.ds Pr \ to be called when input is available
 .IP \fIproc\fP 1i
-Specifies the procedure that is\*(Pr.
+Specifies the procedure that is to be called when input is available.
 .IP \fIsource\fP 1i
 Specifies the source file descriptor on a UNIX-based system
 or other operating system dependent device specification.

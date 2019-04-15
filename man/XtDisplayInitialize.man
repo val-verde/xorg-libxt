@@ -83,9 +83,8 @@ Specifies a pointer to the number of command line parameters.
 Specifies the command line parameters.
 .IP \fIapp_context\fP 1i
 Specifies the application context.
-.ds Ac , which usually is the generic name for all instances of this application
 .IP \fIapplication_class\fP 1i
-Specifies the class name of this application\*(Ac.
+Specifies the class name of this application, which usually is the generic name for all instances of this application.
 .IP \fIapplication_name\fP 1i
 Specifies the name of the application instance.
 .IP \fIdisplay\fP 1i

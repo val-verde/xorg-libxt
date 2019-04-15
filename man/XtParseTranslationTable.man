@@ -75,9 +75,8 @@ void XtUninstallTranslations(Widget \fIw\fP);
 Specifies the translation table to compile.
 .IP \fItranslations\fP 1i
 Specifies the compiled translation table to merge in (must not be NULL).
-.ds Wi into which the new translations are to be merged or removed
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget into which the new translations are to be merged or removed.
 .SH DESCRIPTION
 The
 .BR XtParseTranslationTable

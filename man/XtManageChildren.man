@@ -235,9 +235,8 @@ is defined with an \fIallows_change_managed_set\fP field with a value of
 or if no
 .BR CompositeClassExtension
 is defined, and
-.BR XtChangeManagedSet was invoked with a NULL
-\fIdo_change_proc\fP procedure, then the following is
-performed:
+.BR XtChangeManagedSet 
+was invoked with a NULL \fIdo_change_proc\fP procedure, then the following is performed:
 .RS
 .IP \- 5
 For each child on the \fIunmanage_children\fP list; if the child is

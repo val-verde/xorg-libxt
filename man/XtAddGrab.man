@@ -72,9 +72,8 @@ or also to previous widgets in the cascade.
 .IP \fIspring_loaded\fP 1i
 Specifies whether this widget was popped up because the user pressed
 a pointer button.
-.ds Wi to add to or remove from the modal cascade
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget to add to or remove from the modal cascade.
 .SH DESCRIPTION
 The
 .BR XtAddGrab

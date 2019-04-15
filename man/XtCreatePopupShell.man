@@ -67,21 +67,18 @@ Widget \fIparent\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
 Widget XtVaCreatePopupShell(String \fIname\fP, WidgetClass \fIwidget_class\fP,
 Widget \fIparent\fP, ...\^);
 .SH ARGUMENTS
-.ds Al to override the resource defaults
 .IP \fIargs\fP 1i
-Specifies the argument list \*(Al.
-.ds Sh \ shell
+Specifies the argument list to override the resource defaults.
 .IP \fIname\fP 1i
-Specifies the text name for the created\*(Sh widget.
+Specifies the text name for the created shell widget.
 .IP \fInum_args\fP 1i
 Specifies the number of arguments in the argument list.
 .IP \fIparent\fP 1i
 Specifies the parent widget.
-.ds Wc \ pointer for the created shell widget
 .IP \fIwidget_class\fP 1i
-Specifies the widget class\*(Wc.
+Specifies the widget class pointer for the created shell widget.
 .IP \fI...\fP 1i
-Specifies the variable argument list \*(Al.
+Specifies the variable argument list to override the resource defaults.
 .SH DESCRIPTION
 The
 .BR XtCreatePopupShell

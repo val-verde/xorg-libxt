@@ -71,9 +71,8 @@ XtCallbackStatus;
 .HP
 XtCallbackStatus XtHasCallbacks(Widget \fIw\fP, String \fIcallback_name\fP);
 .SH ARGUMENTS
-.ds Cn \ to be executed or checked
 .IP \fIcallback_name\fP 1i
-Specifies the callback list\*(Cn.
+Specifies the callback list to be executed or checked.
 .IP \fIcall_data\fP 1i
 Specifies a callback-list specific data value to pass to each of the callback
 procedure in the list.

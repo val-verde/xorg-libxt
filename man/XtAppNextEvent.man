@@ -77,9 +77,8 @@ Boolean XtDispatchEvent(XEvent *\fIevent\fP);
 .HP
 void XtAppMainLoop(XtAppContext \fIapp_context\fP);
 .SH ARGUMENTS
-.ds Co that identifies the application
 .IP \fIapp_context\fP 1i
-Specifies the application context \*(Co.
+Specifies the application context that identifies the application.
 .IP \fIevent\fP 1i
 Specifies a pointer to the event structure that is to be dispatched
 to the appropriate event handler.

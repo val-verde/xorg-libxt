@@ -67,10 +67,8 @@ String \fIto_type\fP, XrmValuePtr \fIto_return\fP);
 void XtDirectConvert(XtConverter \fIconverter\fP, XrmValuePtr \fIargs\fP,
 Cardinal \fInum_args\fP, XrmValuePtr \fIfrom\fP, XrmValuePtr \fIto_return\fP);
 .SH ARGUMENTS
-.ds Al that contains the additional arguments needed to perform \
-the conversion (often NULL)
 .IP \fIargs\fP 1i
-Specifies the argument list \*(Al.
+Specifies the argument list that contains the additional arguments needed to perform the conversion (often NULL).
 .IP \fIconverter\fP 1i
 Specifies the conversion procedure that is to be called.
 .IP \fIfrom\fP 1i
@@ -83,9 +81,8 @@ Specifies the number of additional arguments (often zero).
 Specifies the destination type.
 .IP \fIto_return\fP 1i
 Returns the converted value.
-.ds Wi to use for additional arguments (if any are needed)
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget to use for additional arguments (if any are needed).
 .SH DESCRIPTION
 The
 .BR XtConvert

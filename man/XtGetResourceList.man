@@ -75,9 +75,8 @@ Specifies a pointer to where to store the returned resource list.
 The caller must free this storage using
 .BR XtFree
 when done with it.
-.ds Cl \ for which you want the list
 .IP \fIwidget_class\fP 1i
-Specifies the widget class.
+Specifies the widget class for which you want the list.
 .SH DESCRIPTION
 If
 .BR XtGetResourceList

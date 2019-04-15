@@ -74,9 +74,8 @@ if the requesting widget is not interested in handling
 .IP \fIrequest\fP 1i
 Specifies the desired widget geometry (size, position, border width,
 and stacking order).
-.ds Wi that is making the request
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget that is making the request.
 .IP \fIwidth_return\fP 1i
 .br
 .ns

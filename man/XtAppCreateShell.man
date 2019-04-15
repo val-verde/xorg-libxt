@@ -70,21 +70,19 @@ Widget XtVaAppCreateShell(String \fIapplication_name\fP, String
 .SH ARGUMENTS
 .IP \fIapplication_name\fP 1i
 Specifies the name of the application instance.
-.ds Ac , which usually is the generic name for all instances of this application
 .IP \fIapplication_class\fP 1i
-Specifies the class name of this application\*(Ac.
-.ds Wc \ that the application top-level widget should be
+Specifies the class name of this application, which 
+usually is the generic name for all instances of this application.
 .IP \fIwidget_class\fP 1i
-Specifies the widget class\*(Wc.
-.ds Di \ from which to get the resources
+Specifies the widget class that the application top-level widget should be.
 .IP \fIdisplay\fP 1i
-Specifies the display\*(Di.
+Specifies the display from which to get the resources.
 .IP \fIargs\fP 1i
-Specifies the argument list\*(Di.
+Specifies the argument list from which to get the resources.
 .IP \fInum_args\fP 1i
 Specifies the number of arguments in the argument list.
 .IP \fI...\fP 1i
-Specifies the variable argument list\*(Di.
+Specifies the variable argument list from which to get the resources.
 .SH DESCRIPTION
 The
 .BR XtAppCreateShell

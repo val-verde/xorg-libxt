@@ -90,12 +90,11 @@ Specifies an atom that describes the type of the selection (for example,
 .BR XA_SECONDARY ,
 or
 .BR XA_CLIPBOARD ).
-.ds Ti ownership should commence or is to be relinquished
 .IP \fItime\fP 1i
-Specifies the timestamp that indicates when the selection \*(Ti.
-.ds Wi that wishes to become the owner or to relinquish ownership
+Specifies the timestamp that indicates when the selection 
+ownership should commence or is to be relinquished.
 .IP \fIw\fP 1i
-Specifies the widget \*(Wi.
+Specifies the widget that wishes to become the owner or to relinquish ownership.
 .SH DESCRIPTION
 The
 .BR XtOwnSelection

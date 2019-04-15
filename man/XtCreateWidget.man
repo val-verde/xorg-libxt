@@ -77,9 +77,8 @@ Widget XtVaCreateManagedWidget(String \fIname\fP, WidgetClass
 .HP
 void XtDestroyWidget(Widget \fIw\fP);
 .SH ARGUMENTS
-.ds Al to override the resource defaults
 .IP \fIargs\fP 1i
-Specifies the argument list \*(Al.
+Specifies the argument list to override the resource defaults.
 .IP \fIname\fP 1i
 Specifies the resource name for the created widget,
 which is used for retrieving resources
@@ -91,11 +90,10 @@ Specifies the number of arguments in the argument list.
 Specifies the parent widget.
 .IP \fIw\fP 1i
 Specifies the widget.
-.ds Wc \ pointer for the created widget
 .IP \fIwidget_class\fP 1i
-Specifies the widget class\*(Wc.
+Specifies the widget class pointer for the created widget.
 .IP \fI...\fP
-Specifies the variable argument list \*(Al.
+Specifies the variable argument list to override the resource defaults.
 .SH DESCRIPTION
 The
 .BR XtCreateWidget

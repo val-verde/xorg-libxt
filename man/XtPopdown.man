@@ -75,12 +75,10 @@ which is not used by this procedure.
 Specifies a pointer to the
 .BR XtPopdownID
 structure.
-.ds Ps \ to pop down
 .IP \fIpopup_shell\fP 1i
-Specifies the widget shell\*(Ps.
-.ds Sn down
+Specifies the widget shell to pop down.
 .IP \fIshell_name\fP 1i
-Specifies the name of the widget shell to pop \*(Sn.
+Specifies the name of the widget shell to pop down.
 .IP \fIw\fP 1i
 Specifies the widget.
 .SH DESCRIPTION

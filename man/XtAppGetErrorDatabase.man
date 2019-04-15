@@ -71,9 +71,8 @@ void XtAppGetErrorDatabaseText(XtAppContext \fIapp_context\fP, char
 Specifies the application context.
 .IP \fIbuffer_return\fP 1i
 Specifies the buffer into which the error message is to be returned.
-.ds Cl \ of the error message
 .IP \fIclass\fP 1i
-Specifies the resource class\*(Cl.
+Specifies the resource class of the error message.
 .IP \fIdatabase\fP 1i
 Specifies the name of the alternative database that is to be used
 or NULL if the application's database is to be used.
