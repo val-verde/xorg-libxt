@@ -202,11 +202,11 @@ typedef struct _ShellClassRec {
 </programlisting>
 
 <programlisting>
-typedef struct {
-        XtPointer       next_extension;  See <xref linkend='Class_Extension_Records' />
-        XrmQuark        record_type;     See <xref linkend='Class_Extension_Records' />
-        long            version;         See <xref linkend='Class_Extension_Records' />
-        Cardinal        record_size;     See <xref linkend='Class_Extension_Records' />
+typedef struct {    <lineannotation>See <xref linkend='Class_Extension_Records' /></lineannotation>
+        XtPointer               next_extension;
+        XrmQuark                record_type;
+        long                    version;
+        Cardinal                record_size;
         XtGeometryHandler root_geometry_manager; See below
 } ShellClassExtensionRec, *ShellClassExtension;
 </programlisting>
