@@ -3464,7 +3464,7 @@ The high-level functions construct a string to pass to the lower-level
 interface.
 The strings may be specified in application code and are
 overridden by the contents of an external systemwide file,
-the "error database file".  The location and name of this file are
+the &ldquo;error database file&rdquo;.  The location and name of this file are
 implementation-dependent.
 </para>
 <note>
@@ -3602,7 +3602,7 @@ Specifies the number of entries in <emphasis remap='I'>params</emphasis>.
 
 <para>
 The specified name can be a general kind of error,
-like "invalidParameters" or "invalidWindow",
+like &ldquo;invalidParameters&rdquo; or &ldquo;invalidWindow&rdquo;,
 and the specified type gives extra information
 such as the name of the routine in which the error was detected.
 Standard
@@ -3715,9 +3715,9 @@ returns the appropriate message from the error database
 or returns the specified default message if one is not found in the
 error database.
 To form the full resource name and class when querying the database,
-the <emphasis remap='I'>name</emphasis> and <emphasis remap='I'>type</emphasis> are concatenated with a single "."
+the <emphasis remap='I'>name</emphasis> and <emphasis remap='I'>type</emphasis> are concatenated with a single &ldquo;.&rdquo;
 between them and the <emphasis remap='I'>class</emphasis> is concatenated with itself with a
-single "." if it does not already contain a ".".
+single &ldquo;.&rdquo; if it does not already contain a &ldquo;.&rdquo;.
 </para>
 
 <para>
@@ -3922,7 +3922,7 @@ Specifies the number of entries in <emphasis remap='I'>params</emphasis>.
 
 <para>
 The Intrinsics internal errors all have class
-"XtToolkitError".
+&ldquo;XtToolkitError&rdquo;.
 </para>
 
 <para>
@@ -4065,7 +4065,7 @@ Specifies the number of entries in <emphasis remap='I'>params</emphasis>.
 
 <para>
 The Intrinsics internal warnings all have class
-"XtToolkitError".
+&ldquo;XtToolkitError&rdquo;.
 </para>
 
 <para>
@@ -4483,9 +4483,9 @@ Specifies a procedure called to judge each potential file name, or NULL.
 The <emphasis remap='I'>path</emphasis> parameter specifies a string that consists of a series of
 potential file names delimited by colons.  Within each name, the
 percent character specifies a string substitution selected by the
-following character.  The character sequence "%:" specifies an
+following character.  The character sequence &ldquo;%:&rdquo; specifies an
 embedded colon that is not a delimiter; the sequence is replaced by a
-single colon.  The character sequence "%%" specifies a percent
+single colon.  The character sequence &ldquo;%%&rdquo; specifies a percent
 character that does not introduce a substitution; the sequence is
 replaced by a single percent character.  If a percent character is
 followed by any other character,
@@ -4497,7 +4497,7 @@ replaces the percent and match characters with the string in the
 corresponding <emphasis remap='I'>substitution</emphasis> field.  A <emphasis remap='I'>substitution</emphasis> field entry of NULL
 is equivalent to a pointer to an empty string.  If the operating
 system does not interpret multiple embedded name separators in the
-path (i.e., "/" in POSIX) the same way as a single separator,
+path (i.e., &ldquo;/&rdquo; in POSIX) the same way as a single separator,
 <xref linkend='XtFindFile' xrefstyle='select: title'/>
 will collapse multiple separators into a single one after performing
 all string substitutions.  Except for collapsing embedded separators,
@@ -4634,12 +4634,12 @@ are determined from the value of the language string retrieved by
 <xref linkend='XtDisplayInitialize' xrefstyle='select: title'/>
 for the specified display.
 To set the
-language for all applications specify "*xnlLanguage: <emphasis remap='I'>lang</emphasis>" in the
+language for all applications specify &ldquo;*xnlLanguage: <emphasis remap='I'>lang</emphasis>&rdquo; in the
 resource database.
 The format and content of the language string are
 implementation-defined.   One suggested syntax is to compose
-the language string of three parts;  a  "language  part",  a
-"territory  part" and a "codeset part".  The manner in which
+the language string of three parts;  a  &ldquo;language  part&rdquo;,  a
+&ldquo;territory  part&rdquo; and a &ldquo;codeset part&rdquo;.  The manner in which
 this composition is accomplished is implementation-defined,
 and the Intrinsics make no interpretation of the parts other
 than to use them in substitutions as described below.
@@ -4793,12 +4793,12 @@ adjacent colons, <function>%N%S</function> is inserted between them.
 <para>
 The <emphasis remap='I'>type</emphasis> parameter is intended to be a category of files, usually
 being translated into a directory in the pathname.  Possible values
-might include "app-defaults", "help", and "bitmap".
+might include &ldquo;app-defaults&rdquo;, &ldquo;help&rdquo;, and &ldquo;bitmap&rdquo;.
 </para>
 
 <para>
 The <emphasis remap='I'>suffix</emphasis> parameter is intended to be appended to the file name.
-Possible values might include ".txt", ".dat", and ".bm".
+Possible values might include &ldquo;.txt&rdquo;, &ldquo;.dat&rdquo;, and &ldquo;.bm&rdquo;.
 </para>
 
 <para>
@@ -4826,7 +4826,7 @@ The %D substitution allows the addition of path
 elements to the implementation-specific default path, typically to
 allow additional directories to be searched without preventing
 resources in the system directories from being found.  For example, a
-user installing resource files under a directory called "ourdir"
+user installing resource files under a directory called &ldquo;ourdir&rdquo;
 might set
 <emphasis role='strong'>XFILESEARCHPATH</emphasis>
 to
@@ -4861,11 +4861,11 @@ when it is no longer needed.
 Applications may register
 functions that are called at a particular control points in the Intrinsics.
 These functions are intended to be used to provide notification
-of an "X Toolkit event", such as widget creation, to an external agent,
+of an &ldquo;X Toolkit event&rdquo;, such as widget creation, to an external agent,
 such as an interactive resource editor, drag-and-drop server, or
 an aid for physically challenged users.
 The control points containing such registration hooks are identified
-in a "hook registration" object.
+in a &ldquo;hook registration&rdquo; object.
 </para>
 
 <para>

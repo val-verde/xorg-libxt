@@ -4973,8 +4973,8 @@ or
 <xref linkend='XtAppProcessEvent' xrefstyle='select: title'/>
 and another thread in the same application context opens a new display,
 adds an alternate input, or a timeout, any new source(s) will not
-normally be "noticed" by the blocked thread.  Any new sources are
-"noticed" the next time one of these functions is called.
+normally be &ldquo;noticed&rdquo; by the blocked thread.  Any new sources are
+&ldquo;noticed&rdquo; the next time one of these functions is called.
 </para>
 
 <para>

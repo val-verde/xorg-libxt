@@ -967,9 +967,9 @@ Specifies the name of the type to which the string could not be converted.
 <para>
 The
 <xref linkend='XtStringConversionWarning' xrefstyle='select: title'/>
-function issues a warning message with name "conversionError",
-type "string", class "XtToolkitError, and the default message string
-"Cannot convert "<emphasis remap='I'>src</emphasis>" to type <emphasis remap='I'>dst_type</emphasis>".  This routine
+function issues a warning message with name &ldquo;conversionError&rdquo;,
+type &ldquo;string&rdquo;, class &ldquo;XtToolkitError&rdquo;, and the default message string
+&ldquo;Cannot convert "<emphasis remap='I'>src</emphasis>" to type <emphasis remap='I'>dst_type</emphasis>&rdquo;.  This routine
 has been superseded by
 <xref linkend='XtDisplayStringConversionWarning' xrefstyle='select: title'/>.
 </para>
@@ -1588,9 +1588,9 @@ associated with the default application context
 or returns the specified default message if one is not found in the
 error database.
 To form the full resource name and class when querying the database,
-the <emphasis remap='I'>name</emphasis> and <emphasis remap='I'>type</emphasis> are concatenated with a single "."
+the <emphasis remap='I'>name</emphasis> and <emphasis remap='I'>type</emphasis> are concatenated with a single &ldquo;.&rdquo;
 between them and the <emphasis remap='I'>class</emphasis> is concatenated with itself with a
-single "." if it does not already contain a ".".
+single &ldquo;.&rdquo; if it does not already contain a &ldquo;.&rdquo;.
 This routine has been superseded by
 <xref linkend='XtAppGetErrorDatabaseText' xrefstyle='select: title'/>.
 </para>

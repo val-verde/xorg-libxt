@@ -1488,7 +1488,7 @@ perform an
 using a wildcard font name and use the first
 font in the list.  This wildcard font name should be as broad as
 possible to maximize the probability of locating a useable font;
-for example, "-*-*-*-R-*-*-*-120-*-*-*-*-ISO8859-1".)
+for example, &ldquo;<code>-*-*-*-R-*-*-*-120-*-*-*-*-ISO8859-1</code>&rdquo;.)
     </para>
   </listitem>
   <listitem>
@@ -1528,7 +1528,7 @@ perform an
 using a wildcard base font name.
 This wildcard base font name should be as broad as
 possible to maximize the probability of locating a useable font;
-for example, "-*-*-*-R-*-*-*-120-*-*-*-*".)
+for example, &ldquo;<code>-*-*-*-R-*-*-*-120-*-*-*-*</code>&rdquo;.)
     </para>
   </listitem>
   <listitem>

@@ -1886,10 +1886,10 @@ and <emphasis remap='I'>program_path</emphasis>
 resources.  At that time, if <emphasis remap='I'>restart_command</emphasis> is NULL, the value
 of the <emphasis remap='I'>argv</emphasis> resource will be copied to <emphasis remap='I'>restart_command</emphasis>.
 Whether or not <emphasis remap='I'>restart_command</emphasis> was NULL,
-if "<emphasis>-xtsessionID</emphasis>" "<emphasis>&lt;session id&gt;</emphasis>" does not
+if &ldquo;<emphasis>-xtsessionID</emphasis>&rdquo; &ldquo;<emphasis>&lt;session id&gt;</emphasis>&rdquo; does not
 already appear in the <emphasis remap='I'>restart_command</emphasis>, it will be added by the
 initialize and set_values methods at the beginning of the command arguments;
-if the "<emphasis>-xtsessionID</emphasis>" argument already appears with an incorrect
+if the &ldquo;<emphasis>-xtsessionID</emphasis>&rdquo; argument already appears with an incorrect
 <emphasis>session id</emphasis> in the following argument, that argument
 will be replaced with the current <emphasis>session id</emphasis>.
 </para>
@@ -1898,7 +1898,7 @@ will be replaced with the current <emphasis>session id</emphasis>.
 After this, the shell initialize and set_values procedures check the
 <emphasis remap='I'>clone_command</emphasis>.  If <emphasis remap='I'>clone_command</emphasis> is NULL,
 <emphasis remap='I'>restart_command</emphasis> will be copied to <emphasis remap='I'>clone_command</emphasis>,
-except the "<emphasis>-xtsessionID</emphasis>" and following argument will not be copied.
+except the &ldquo;<emphasis>-xtsessionID</emphasis>&rdquo; and following argument will not be copied.
 </para>
 
 <para>
@@ -1922,7 +1922,7 @@ see <xref linkend='Predefined_Resource_Converters' />.
 <para>
 The resource type EnvironmentArray is a NULL-terminated array of
 pointers to strings;
-each string has the format "name=value".
+each string has the format &ldquo;name=value&rdquo;.
 The `=' character may not appear in the name,
 and the string is terminated by a null character.
 </para>
