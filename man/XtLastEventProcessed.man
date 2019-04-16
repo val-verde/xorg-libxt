@@ -33,28 +33,6 @@
 .ds Vn 2.2
 .hw XtLast-Event-Processed XtLast-Timestamp-Processed wid-get
 .na
-.de Ds
-.nf
-.in +0.4i
-.ft CW
-..
-.de De
-.ce 0
-.fi
-..
-.de IN		\" send an index entry to the stderr
-..
-.de Pn
-.ie t \\$1\fB\^\\$2\^\fR\\$3
-.el \\$1\fI\^\\$2\^\fP\\$3
-..
-.de ZN
-.ie t \fB\^\\$1\^\fR\\$2
-.el \fI\^\\$1\^\fP\\$2
-..
-.de ny
-..
-.ny 0
 .TH XtLastEventProcessed __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
 .SH NAME
 XtLastEventProcessed, XtLastTimestampProcessed \- last event, last timestamp processed
