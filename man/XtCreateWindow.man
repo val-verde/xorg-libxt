@@ -67,7 +67,7 @@ void XtCreateWindow(Widget \fIw\fP, unsigned int \fIwindow_class\fP, Visual
 .SH ARGUMENTS
 .IP \fIattributes\fP 1i
 Specifies the window attributes to use in the
-.BR XCreateWindow
+.B XCreateWindow
 call.
 .IP \fIvalue_mask\fP 1i
 Specifies which attribute fields to use.
@@ -84,15 +84,15 @@ or
 .BR CopyFromParent ).
 .SH DESCRIPTION
 The
-.BR XtCreateWindow
+.B XtCreateWindow
 function calls the Xlib
-.BR XCreateWindow
+.B XCreateWindow
 function with values from the widget structure and the passed parameters.
 Then, it assigns the created window to the widget's window field.
 .LP
-.BR XtCreateWindow
+.B XtCreateWindow
 evaluates the following fields of the
-.BR Core
+.B Core
 widget structure:
 .IP \(bu 5
 depth

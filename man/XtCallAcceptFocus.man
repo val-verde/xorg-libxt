@@ -69,12 +69,12 @@ Specifies the X time of the event that is causing the accept focus.
 Specifies the widget.
 .SH DESCRIPTION
 The
-.BR XtCallAcceptFocus
+.B XtCallAcceptFocus
 function calls the specified widget's accept_focus procedure,
 passing it the specified widget and time, and returns what the accept_focus
 procedure returns.
 If accept_focus is NULL,
-.BR XtCallAcceptFocus
+.B XtCallAcceptFocus
 returns
 .BR False .
 .SH "SEE ALSO"

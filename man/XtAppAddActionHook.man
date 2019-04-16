@@ -72,7 +72,7 @@ Specifies the action hook procedure.
 .IP \fInum_args\fP 1i
 Specifies the application-specific data to be passed to the action hook.
 .SH DESCRIPTION
-.BR XtAppAddActionHook
+.B XtAppAddActionHook
 adds the specified procedure to the front of a list maintained in the
 application context. In the future, when an action routine is about to
 be invoked for any widget in this application context, either through
@@ -82,11 +82,11 @@ the action hohok procedures will be called in reverse order of registration
 jut prior to invoking the action routine.
 .LP
 Action hook procedures are removed automatically and the
-.BR XtActionHookId
+.B XtActionHookId
 s destroyed when the application context in which they were added is
 destroyed.
 .LP
-.BR XtRemoveActionHook
+.B XtRemoveActionHook
 removes the specified action hook procedure from the list in which it
 was registered.
 .SH "SEE ALSO"

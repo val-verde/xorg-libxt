@@ -75,15 +75,15 @@ Specifies the language procedure, or NULL.
 Specifies additional client data to be passed to the language procedure
 when it is called.
 .SH DESCRIPTION
-.BR XtSetLanguageProc
+.B XtSetLanguageProc
 sets the language procedure that will be called from
-.BR XtDisplayInitialize
+.B XtDisplayInitialize
 for all subsequent Displays initialized in the specified application
 context. If \fIapp_context\fP is NULL, the specified language procedure
 is registered in all application contexts created by the calling process,
 including any future application contexts that may be created. If
 \fIproc\fP is NULL a default language procedure is registered.
-.BR XtSetLanguageProc
+.B XtSetLanguageProc
 returns the previously registered language procedure. If a language
 procedure has not yet been registered, the return value is unspecified
 but if this return value is used in a subsequent call to
@@ -100,14 +100,14 @@ language ). If an error is encountered a warning message is issued with
 .BR XtWarning .
 .IP \(bu 5
 Calls
-.BR XSupportsLocale
+.B XSupportsLocale
 to verify that the current locale is supported. If the locale is not
 supported, a warning message is issued with
-.BR XtWarning
+.B XtWarning
 and the locale is set to ``C''.
 .IP \(bu 5
 Calls
-.BR XSetLocaleModifiers
+.B XSetLocaleModifiers
 specifying the empty string.
 .IP \(bu 5
 Returns the value of the current locale. On ANSI C-based systems this
@@ -118,9 +118,9 @@ NULL ).
 .LP
 A client wishing to use this mechanism to establish locale can do so
 by calling
-.BR XtSetLanguageProc
+.B XtSetLanguageProc
 prior to
-.BR XtDisplayInitialize.
+.B XtDisplayInitialize.
 .SH "SEE ALSO"
 .br
 \fI\*(xT\fP

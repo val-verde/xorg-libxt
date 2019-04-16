@@ -77,7 +77,7 @@ Specifies the mask that indicates a read, write, or exception condition
 or some operating system dependent condition.
 .IP \fIid\fP 1i
 Specifies the ID returned from the corresponding
-.BR XtAppAddInput
+.B XtAppAddInput
 call.
 .IP \fIproc\fP 1i
 Specifies the procedure that is to be called when input is available.
@@ -86,12 +86,12 @@ Specifies the source file descriptor on a UNIX-based system
 or other operating system dependent device specification.
 .SH DESCRIPTION
 The
-.BR XtAppAddInput
+.B XtAppAddInput
 function registers with the \*(xI read routine a new source of events,
 which is usually file input but can also be file output.
 Note that file should be loosely interpreted to mean any sink
 or source of data.
-.BR XtAppAddInput
+.B XtAppAddInput
 also specifies the conditions under which the source can generate events.
 When input is pending on this source,
 the callback procedure is called.
@@ -104,7 +104,7 @@ the condition is some union of
 and
 .BR XtInputExceptMask .
 The
-.BR XtRemoveInput
+.B XtRemoveInput
 function causes the \*(xI read routine to stop watching for input
 from the input source.
 .SH "SEE ALSO"
@@ -117,16 +117,16 @@ XtAppAddTimeOut(__libmansuffix__),XtAppAddSignal(__libmansuffix__)
 .SH "BUGS"
 In ANSI C it is necessary to cast the condition to an XtPointer, e.g.:
 .RS 4
-.br
+.ft CW
 XtAppAddInput(app_context,
 .RS 4
 .br
 source,
 .br
-.B (XtPointer)
-(XtInputReadMask | XtInputWriteMask),
+\fB(XtPointer)\fP (XtInputReadMask | XtInputWriteMask),
 .br
 proc,
 .br
 client_data);
+.ft R
 .RE

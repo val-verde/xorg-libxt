@@ -85,9 +85,9 @@ Specifies the number of entries in \fIsubstitutions\fP.
 Specifies a procedure called to judge each potential file name, or NULL.
 .SH DESCRIPTION
 The substitutions specified by
-.BR XtResolvePathname
+.B XtResolvePathname
 are determined from the value of the language string retrieved by
-.BR XtDisplayInitialize
+.B XtDisplayInitialize
 for the specified display.
 To set the
 language for all applications specify ``*xnlLanguage: \fIlang\fP'' in the
@@ -101,9 +101,9 @@ this composition is accomplished is implementation-defined
 and the \*(xI make no interpretation of the parts other
 than to use them in substitutions as described below.
 .LP
-.BR XtResolvePathname
+.B XtResolvePathname
 calls
-.BR XtFindFile
+.B XtFindFile
 with the following substitutions
 in addition to any passed by the caller and returns the value returned by
 .BR XtFindFile :
@@ -133,12 +133,12 @@ If a path is passed to
 it will be passed along to
 .BR XtFindFile .
 If the \fIpath\fP argument is NULL, the value of the
-.BR \s-1XFILESEARCHPATH\s+1
+.B \s-1XFILESEARCHPATH\s+1
 .IN "XFILESEARCHPATH" "" "@DEF@"
 environment variable will be passed to
 .BR XtFindFile .
 If
-.BR \s-1XFILESEARCHPATH\s+1
+.B \s-1XFILESEARCHPATH\s+1
 is not defined, an implementation-specific default path will be used
 which contains at least 6 entries.  These entries
 must contain the following substitutions:
@@ -190,7 +190,7 @@ allow additional directories to be searched without preventing
 resources in the system directories from being found.  For example, a
 user installing resource files under a directory called ``ourdir''
 might set
-.BR \s-1XFILESEARCHPATH\s+1
+.B \s-1XFILESEARCHPATH\s+1
 to
 .IP
 %D:ourdir/%T/%N%C:ourdir/%T/%N
@@ -205,7 +205,7 @@ and \fIapplication_class\fP are the values returned by
 If no value is specified in the database, the empty string is used.
 .LP
 It is the responsibility of the caller to free the returned string using
-.BR XtFree
+.B XtFree
 when it is no longer needed.
 .SH "SEE ALSO"
 .br

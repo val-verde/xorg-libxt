@@ -66,7 +66,7 @@ Widget XtGetKeyboardFocusWidget(Widget \fIwidget\fP);
 Specifies the widget for this event handler.
 Must be of class Core or any subclass thereof.
 .SH DESCRIPTION
-.BR XtGetKeyboardFocusWidget
+.B XtGetKeyboardFocusWidget
 function returns the widget that would be the end result of keyboard
 event forwarding for a keyboard event for the specified widget.
 .SH "SEE ALSO"

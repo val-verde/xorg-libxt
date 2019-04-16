@@ -88,51 +88,51 @@ Specifies the widget.
 Specify the new widget x and y coordinates.
 .SH DESCRIPTION
 The
-.BR XtConfigureWidget
+.B XtConfigureWidget
 function returns immediately if the specified geometry fields
 are the same as the old values.
 Otherwise,
-.BR XtConfigureWidget
+.B XtConfigureWidget
 writes the new x, y, width, height, and border_width values
 into the widget and, if the widget is realized, makes an Xlib
-.BR XConfigureWindow
+.B XConfigureWindow
 call on the widget's window.
 .LP
 If either the new width or height is different from its old value,
-.BR XtConfigureWidget
+.B XtConfigureWidget
 calls the widget's resize procedure to notify it of the size change;
 otherwise, it simply returns.
 .LP
 The
-.BR XtMoveWidget
+.B XtMoveWidget
 function returns immediately if the specified geometry fields
 are the same as the old values.
 Otherwise,
-.BR XtMoveWidget
+.B XtMoveWidget
 writes the new x and y values into the widget
 and, if the widget is realized, issues an Xlib
-.BR XMoveWindow
+.B XMoveWindow
 call on the widget's window.
 .LP
 The
-.BR XtResizeWidget
+.B XtResizeWidget
 function returns immediately if the specified geometry fields
 are the same as the old values.
 Otherwise,
-.BR XtResizeWidget
+.B XtResizeWidget
 writes the new width, height, and border_width values into
 the widget and, if the widget is realized, issues an
-.BR XConfigureWindow
+.B XConfigureWindow
 call on the widget's window.
 .LP
 If the new width or height are different from the old values,
-.BR XtResizeWidget
+.B XtResizeWidget
 calls the widget's resize procedure to notify it of the size change.
 .LP
 The
-.BR XtResizeWindow
+.B XtResizeWindow
 function calls the
-.BR XConfigureWindow
+.B XConfigureWindow
 Xlib function to make the window of the specified widget match its width,
 height, and border width.
 This request is done unconditionally because there is no way to tell if these

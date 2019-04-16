@@ -150,7 +150,7 @@ static void CallExtensionSelector(
     for (p = widget->core.event_table; p != NULL; p = p->next)
 	if (p->has_type_specifier &&
 	    EXT_TYPE(p) >= rec->min && EXT_TYPE(p) <= rec->max)
-	    count += p->mask;
+	    count = (Cardinal) (count + p->mask);
 
     if (count == 0 && !forceCall) return;
 
@@ -230,7 +230,7 @@ RemoveEventHandler(
 	Display* dpy = XtDisplay (widget);
 
 	if (oldMask != mask)
-	    XSelectInput(dpy, XtWindow(widget), mask);
+	    XSelectInput(dpy, XtWindow(widget), (long) mask);
 
 	if (has_type_specifier) {
 	    XtPerDisplay pd = _XtGetPerDisplay(dpy);
@@ -348,9 +348,9 @@ AddEventHandler(
 		i++;
 	    if (i == p->mask) {
 		p = (XtEventRec*) XtRealloc((char*)p,
-					    sizeof(XtEventRec) +
+					    (Cardinal)(sizeof(XtEventRec) +
 					    sizeof(XtEventRecExt) +
-					    p->mask * sizeof(XtPointer));
+					    p->mask * sizeof(XtPointer)));
 		EXT_SELECT_DATA(p,i) = select_data;
 		p->mask++;
 		*pp = p;
@@ -363,7 +363,7 @@ AddEventHandler(
 	Display* dpy = XtDisplay (widget);
 
 	if (oldMask != mask)
-	    XSelectInput(dpy, XtWindow(widget), mask);
+	    XSelectInput(dpy, XtWindow(widget), (long) mask);
 
 	if (has_type_specifier) {
 	    XtPerDisplay pd = _XtGetPerDisplay (dpy);
@@ -514,7 +514,7 @@ static const WidgetRec WWfake;	/* placeholder for deletions */
 
 #define WWHASH(tab,win) ((win) & tab->mask)
 #define WWREHASHVAL(tab,win) ((((win) % tab->rehash) + 2) | 1)
-#define WWREHASH(tab,idx,rehash) ((idx + rehash) & tab->mask)
+#define WWREHASH(tab,idx,rehash) ((unsigned)(idx + rehash) & (tab->mask))
 #define WWTABLE(display) (_XtGetPerDisplay(display)->WWtable)
 
 static void ExpandWWTable(WWTable);
@@ -547,11 +547,11 @@ void XtRegisterDrawable(
     if ((tab->occupied + (tab->occupied >> 2)) > tab->mask)
 	ExpandWWTable(tab);
 
-    idx = WWHASH(tab, window);
+    idx = (int) WWHASH(tab, window);
     if ((entry = tab->entries[idx]) && entry != &WWfake) {
-	rehash = WWREHASHVAL(tab, window);
+	rehash = (int) WWREHASHVAL(tab, window);
 	do {
-	    idx = WWREHASH(tab, idx, rehash);
+	    idx = (int) WWREHASH(tab, idx, rehash);
 	} while ((entry = tab->entries[idx]) && entry != &WWfake);
     }
     if (!entry)
@@ -593,12 +593,12 @@ void XtUnregisterDrawable(
 	UNLOCK_APP(app);
 	return;
     }
-    idx = WWHASH(tab, window);
+    idx = (int) WWHASH(tab, window);
     if ((entry = tab->entries[idx])) {
 	if (entry != widget) {
-	    rehash = WWREHASHVAL(tab, window);
+	    rehash = (int) WWREHASHVAL(tab, window);
 	    do {
-		idx = WWREHASH(tab, idx, rehash);
+		idx = (int) WWREHASH(tab, idx, rehash);
 		if (!(entry = tab->entries[idx])) {
 		    UNLOCK_PROCESS;
 		    UNLOCK_APP(app);
@@ -633,11 +633,11 @@ static void ExpandWWTable(
     entries = tab->entries = (Widget *) __XtCalloc(tab->mask+1, sizeof(Widget));
     for (oldidx = 0; oldidx <= oldmask; oldidx++) {
 	if ((entry = oldentries[oldidx]) && entry != &WWfake) {
-	    newidx = WWHASH(tab, XtWindow(entry));
+	    newidx = (Cardinal) WWHASH(tab, XtWindow(entry));
 	    if (entries[newidx]) {
-		rehash = WWREHASHVAL(tab, XtWindow(entry));
+		rehash = (Cardinal) WWREHASHVAL(tab, XtWindow(entry));
 		do {
-		    newidx = WWREHASH(tab, newidx, rehash);
+		    newidx = (Cardinal) WWREHASH(tab, newidx, rehash);
 		} while (entries[newidx]);
 	    }
 	    entries[newidx] = entry;
@@ -662,11 +662,11 @@ Widget XtWindowToWidget(
     LOCK_APP(app);
     LOCK_PROCESS;
     tab = WWTABLE(display);
-    idx = WWHASH(tab, window);
+    idx = (int) WWHASH(tab, window);
     if ((entry = tab->entries[idx]) && XtWindow(entry) != window) {
-	rehash = WWREHASHVAL(tab, window);
+	rehash = (int) WWREHASHVAL(tab, window);
 	do {
-	    idx = WWREHASH(tab, idx, rehash);
+	    idx = (int) WWREHASH(tab, idx, rehash);
 	} while ((entry = tab->entries[idx]) && XtWindow(entry) != window);
     }
     if (entry) {
@@ -740,8 +740,8 @@ static Boolean CallEventHandlers(
 	    numprocs++;
     }
     if (numprocs > EHMAXSIZE) {
-	proc = (XtEventHandler *)__XtMalloc(numprocs * (sizeof(XtEventHandler) +
-						      sizeof(XtPointer)));
+	proc = (XtEventHandler *)__XtMalloc((Cardinal)((size_t)numprocs * (sizeof(XtEventHandler) +
+						      sizeof(XtPointer))));
 	closure = (XtPointer *)(proc + numprocs);
     } else {
 	proc = procs;
@@ -1037,10 +1037,10 @@ void XtAddExposureToRegion(
     /* These Expose and GraphicsExpose fields are at identical offsets */
 
     if (event->type == Expose || event->type == GraphicsExpose) {
-	rect.x = ev->x;
-	rect.y = ev->y;
-	rect.width = ev->width;
-	rect.height = ev->height;
+	rect.x = (Position) ev->x;
+	rect.y = (Position) ev->y;
+	rect.width = (Dimension) ev->width;
+	rect.height = (Dimension) ev->height;
 	XUnionRectWithRegion(&rect, region, region);
     }
 }
@@ -1061,10 +1061,10 @@ static void AddExposureToRectangularRegion(
     XExposeEvent *ev = (XExposeEvent *) event;
     /* These Expose and GraphicsExpose fields are at identical offsets */
 
-    rect.x = ev->x;
-    rect.y = ev->y;
-    rect.width = ev->width;
-    rect.height = ev->height;
+    rect.x = (Position) ev->x;
+    rect.y = (Position) ev->y;
+    rect.width = (Dimension) ev->width;
+    rect.height = (Dimension) ev->height;
 
     if (XEmptyRegion(region)) {
 	XUnionRectWithRegion(&rect, region, region);
@@ -1331,7 +1331,7 @@ Boolean _XtDefaultDispatcher(
 	    was_dispatched = (XFilterEvent(event, XtWindow(widget))
 			      || XtDispatchEventToWidget(widget, event));
 	}
-	else was_dispatched = XFilterEvent(event, None);
+	else was_dispatched = (Boolean) XFilterEvent(event, None);
     }
     else if (grabType == pass) {
 	if (event->type == LeaveNotify ||
@@ -1359,7 +1359,7 @@ Boolean _XtDefaultDispatcher(
 
 	if ((grabList == NULL ||_XtOnGrabList(dspWidget, grabList))
 	    && XtIsSensitive(dspWidget)) {
-	    if ((was_filtered = XFilterEvent(event, XtWindow(dspWidget)))) {
+	    if ((was_filtered = (Boolean) XFilterEvent(event, XtWindow(dspWidget)))) {
 		/* If this event activated a device grab, release it. */
 		_XtUngrabBadGrabs(event, widget, mask, pdi);
 		was_dispatched = True;
@@ -1487,7 +1487,7 @@ void XtAddGrab(
 	XtAppWarningMsg(app,
 		"grabError", "xtAddGrab", XtCXtToolkitError,
 		"XtAddGrab requires exclusive grab if spring_loaded is TRUE",
-		(String *) NULL, (Cardinal *) NULL);
+		NULL, NULL);
 	exclusive = TRUE;
     }
 
@@ -1522,7 +1522,7 @@ void XtRemoveGrab(
 	    XtAppWarningMsg(app,
 		       "grabError","xtRemoveGrab",XtCXtToolkitError,
 		       "XtRemoveGrab asked to remove a widget not on the list",
-		       (String *)NULL, (Cardinal *)NULL);
+		       NULL, NULL);
 	    UNLOCK_PROCESS;
     	    UNLOCK_APP(app);
 	    return;
@@ -1672,7 +1672,7 @@ void XtRegisterExtensionSelector(
     if (dpy == NULL) XtErrorMsg("nullDisplay",
 		"xtRegisterExtensionSelector", XtCXtToolkitError,
 		"XtRegisterExtensionSelector requires a non-NULL display",
-		(String *) NULL, (Cardinal *) NULL);
+		NULL, NULL);
 
     LOCK_APP(app);
     LOCK_PROCESS;
@@ -1690,7 +1690,7 @@ void XtRegisterExtensionSelector(
 	    XtErrorMsg("rangeError", "xtRegisterExtensionSelector",
 		       XtCXtToolkitError,
 	"Attempt to register multiple selectors for one extension event type",
-		       (String *) NULL, (Cardinal *) NULL);
+		       NULL, NULL);
 	    UNLOCK_PROCESS;
 	    UNLOCK_APP(app);
 	    return;
@@ -1699,7 +1699,7 @@ void XtRegisterExtensionSelector(
     pd->ext_select_count++;
     pd->ext_select_list =
 	    (ExtSelectRec *) XtRealloc((char *) pd->ext_select_list,
-		       pd->ext_select_count * sizeof(ExtSelectRec));
+		       (Cardinal) ((size_t)pd->ext_select_count * sizeof(ExtSelectRec)));
     for (i = pd->ext_select_count - 1; i > 0; i--) {
 	if (pd->ext_select_list[i-1].min > min_event_type) {
 	    pd->ext_select_list[i] = pd->ext_select_list[i-1];

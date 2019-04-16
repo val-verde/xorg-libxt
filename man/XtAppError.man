@@ -83,21 +83,21 @@ or the nonfatal error procedure, which usually returns.
 Specifies the message that is to be reported.
 .SH DESCRIPTION
 The
-.BR XtAppError
+.B XtAppError
 function calls the installed error procedure and passes the specified message.
 .LP
 The
-.BR XtAppSetErrorHandler
+.B XtAppSetErrorHandler
 function registers the specified procedure,
 which is called when a fatal error condition occurs.
 .LP
 The
-.BR XtAppSetWarningHandler
+.B XtAppSetWarningHandler
 registers the specified procedure,
 which is called when a nonfatal error condition occurs.
 .LP
 The
-.BR XtAppWarning
+.B XtAppWarning
 function calls the installed nonfatal error procedure and passes the
 specified message.
 .SH "SEE ALSO"

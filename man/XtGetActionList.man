@@ -70,16 +70,16 @@ Returns the action list.
 .IP \fInum_actions_return\fP 1i
 Returns the number of action procedures declared by the class.
 .SH DESCRIPTION
-.BR XtGetActionList
+.B XtGetActionList
 returns the action table defined by the specified widget class. This
 table does not include actions defined by the superclasses. If
 \fIwidget_class\fP is not initialized, or is not
-.BR coreWidgetClass
+.B coreWidgetClass
 or a subclass thereof, or if the class does not define any actions,
 *\fIactions_return\fP will be NULL and *\fInum_actions_return\fP will
 be zero. If *\fIactions_return\fP is non-NULL the client is responsible
 for freeing the table using
-.BR XtFree
+.B XtFree
 when it is no longer needed.
 .SH "SEE ALSO"
 .br

@@ -241,10 +241,10 @@ static Boolean IsOutside(
      */
     XtTranslateCoords(w, 0, 0, &left, &top);
     /* We need to take borders into consideration */
-    left = left - w->core.border_width;
-    top =  top - w->core.border_width;
-    right = left +  w->core.width + w->core.border_width;
-    bottom = top +  w->core.height + w->core.border_width;
+    left = (Position) (left - w->core.border_width);
+    top =  (Position) (top - w->core.border_width);
+    right = (Position) (left +  w->core.width + w->core.border_width);
+    bottom = (Position) (top +  w->core.height + w->core.border_width);
 
     if (
 	(e->x_root < left) || (e->y_root < top) ||
@@ -367,12 +367,12 @@ static Widget 	FindKeyDestination(
 			      }
 			    if ((grab = CheckServerGrabs((XEvent*)event,
 							pseudoTrace,
-							pseudoTraceDepth)))
+							(Cardinal)pseudoTraceDepth)))
 			      {
 				  XtDevice device = &pdi->keyboard;
 
 				  device->grabType = XtPseudoPassiveServerGrab;
-				  pdi->activatingKey = event->keycode;
+				  pdi->activatingKey = (KeyCode) event->keycode;
 				  device->grab = *grab;
 
 				  if (grab
@@ -411,7 +411,7 @@ Widget _XtProcessKeyboardEvent(
 		  !IsServerGrab(device->grabType) &&
 		  (newGrab = CheckServerGrabs((XEvent*)event,
 					      pdi->trace,
-					      pdi->traceDepth)))
+					      (Cardinal) pdi->traceDepth)))
 		{
 		    /*
 		     * honor pseudo-grab from prior event by X
@@ -424,7 +424,7 @@ Widget _XtProcessKeyboardEvent(
 		      {
 			  /* Activate the grab */
 			  device->grab = *newGrab;
-			  pdi->activatingKey = event->keycode;
+			  pdi->activatingKey = (KeyCode) event->keycode;
 			  device->grabType = XtPassiveServerGrab;
 		      }
 		}

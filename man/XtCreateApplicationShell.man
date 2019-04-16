@@ -72,9 +72,9 @@ Specifies the argument list to override any other resource specifications.
 Specifies the number of arguments in the argument list.
 .SH DESCRIPTION
 The procedure
-.BR XtCreateApplicationShell
+.B XtCreateApplicationShell
 calls
-.BR XtAppCreateShell
+.B XtAppCreateShell
 with the \fIapplication\fP NULL, the application class passed to
 .BR XtInitialize ,
 and the default application context created by

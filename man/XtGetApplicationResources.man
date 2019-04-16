@@ -86,14 +86,14 @@ or that identifies the resource database to search.
 Specifies the variable arguments to override resources obtained from the resource database.
 .SH DESCRIPTION
 The
-.BR XtGetApplicationResources
+.B XtGetApplicationResources
 function first uses the passed widget,
 which is usually an application shell,
 to construct a resource name and class list,
 Then, it retrieves the resources from the argument list,
 the resource database, or the resource list default values.
 After adding base to each address,
-.BR XtGetApplicationResources
+.B XtGetApplicationResources
 copies the resources into the address given in the resource list.
 If args is NULL,
 num_args must be zero.

@@ -82,13 +82,13 @@ Specifies the size in bits of the data in the elements of \fIvalue\fP.
 The specified parameters will be copied and stored in a new property of
 the specified type and format on the requestor's window. To initiate a
 selection request with a target and these parameters, a subsequent call to
-.BR XtGetSelectionValue
+.B XtGetSelectionValue
 or to
-.BR XtGetSelectionValueIncremental
+.B XtGetSelectionValueIncremental
 specifying the same requestor widget and selection atom will generate a
-.BR ConvertSelection
+.B ConvertSelection
 request referring referring to the property containing the parameters. If
-.BR XtSetSelectionParameters
+.B XtSetSelectionParameters
 is called more than once with the same widget and selection without a
 call to specify a request, the most recently specified parameters are
 used in the subsequent request.
@@ -99,18 +99,18 @@ sizeof(short); if 32, sizeof(long).
 .LP
 To generate a MULTIPLE target request with parameters for any of the
 multiple targets of the selection request, precede individual calls to
-.BR XtGetSelectionValue
+.B XtGetSelectionValue
 and
-.BR XtGetSelectionValueIncremental
+.B XtGetSelectionValueIncremental
 with corresponding individual calls to
 .BR XtSetSelectionParameters ,
 and enclose these all within
-.BR XtCreateSelectionRequest
+.B XtCreateSelectionRequest
 and
 .BR XtSendSelectionRequest .
-.BR XtGetSelectionValues
+.B XtGetSelectionValues
 and
-.BR XtGetSelectionValuesIncremental
+.B XtGetSelectionValuesIncremental
 cannot be used  to make selection requests with parameterized targets.
 .SH "SEE ALSO"
 XtGetSelectionParameters(__libmansuffix__)

@@ -107,48 +107,48 @@ Specifies the widget class.
 Specifies the message that is to be used.
 .SH DESCRIPTION
 The
-.BR XtClass
+.B XtClass
 function returns a pointer to the widget's class structure.
 .LP
 The
-.BR XtSuperclass
+.B XtSuperclass
 function returns a pointer to the widget's superclass class structure.
 .LP
 The
-.BR XtIsSubclass
+.B XtIsSubclass
 function returns
-.BR True
+.B True
 if the class of the specified widget is equal to or is a subclass of
 the specified class. The widget's class can be any number of subclasses
 down the chain and need not be an immediate subclass of the specified
 class. Composite widgets that need to restrict the class of the items
 they contain can use
-.BR XtIsSubclass
+.B XtIsSubclass
 to find out if a widget belongs to the desired class of objects.
 .LP
 The
-.BR XtCheckSubclass
+.B XtCheckSubclass
 macro determines if the class of the specified widget is equal to
 or is a subclass of the specified widget class.
 The widget can be any number of subclasses down the chain
 and need not be an immediate subclass of the specified widget class.
 If the specified widget is not a subclass,
-.BR XtCheckSubclass
+.B XtCheckSubclass
 constructs an error message from the supplied message,
 the widget's actual class, and the expected class and calls
 .BR XtErrorMsg .
-.BR XtCheckSubclass
+.B XtCheckSubclass
 should be used at the entry point of exported routines to ensure
 that the client has passed in a valid widget class for the exported operation.
 .LP
-.BR XtCheckSubclass
+.B XtCheckSubclass
 is only executed when the widget has been compiled with the compiler symbol
 DEBUG defined; otherwise, it is defined as the empty string
 and generates no code.
 .LP
 To test if a given widget belongs to a subclass of an Intrinsics-defined
 class, the Intrinsics defines macros or functions equivalent to
-.BR XtIsSubclass
+.B XtIsSubclass
 for each of the built-in classes. These procedures are
 .BR XtIsObject ,
 .BR XtIsRectObj ,

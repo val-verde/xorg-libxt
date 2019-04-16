@@ -101,7 +101,7 @@ Specifies the post unmanage, pre manage hook procedure to invoke.
 Specifies the client data to be passed to the hook procedure.
 .SH DESCRIPTION
 The
-.BR XtManageChildren
+.B XtManageChildren
 function performs the following:
 .IP \(bu 5
 Issues an error if the children do not all have the same parent or
@@ -110,7 +110,7 @@ if the parent is not a subclass of
 .IP \(bu 5
 Returns immediately if the common parent is being destroyed;
 otherwise, for each unique child on the list,
-.BR XtManageChildren
+.B XtManageChildren
 ignores the child if it already is managed or is being destroyed
 and marks it if not.
 .IP \(bu 5
@@ -121,7 +121,7 @@ it makes some of the newly managed children viewable:
 Calls the change_managed routine of the widgets' parent.
 .IP \- 5
 Calls
-.BR XtRealizeWidget
+.B XtRealizeWidget
 on each previously unmanaged child that is unrealized.
 .IP \- 5
 Maps each previously unmanaged child that has map_when_managed
@@ -132,10 +132,10 @@ Managing children is independent of the ordering of children and
 independent of creating and deleting children.
 The layout routine of the parent
 should consider children whose managed field is
-.BR True
+.B True
 and should ignore all other children.
 Note that some composite widgets, especially fixed boxes, call
-.BR XtManageChild
+.B XtManageChild
 from their insert_child procedure.
 .LP
 If the parent widget is realized,
@@ -145,18 +145,18 @@ The parent can reposition and resize any of its children.
 It moves each child as needed by calling
 .BR XtMoveWidget ,
 which first updates the x and y fields and then calls
-.BR XMoveWindow
+.B XMoveWindow
 if the widget is realized.
 .LP
 The
-.BR XtManageChild
+.B XtManageChild
 function constructs a
-.BR WidgetList
+.B WidgetList
 of length one and calls
 .BR XtManageChildren .
 .LP
 The
-.BR XtUnmanageChildren
+.B XtUnmanageChildren
 function performs the following:
 .IP \(bu 5
 Issues an error if the children do not all have the same parent
@@ -165,7 +165,7 @@ or if the parent is not a subclass of
 .IP \(bu 5
 Returns immediately if the common parent is being destroyed;
 otherwise, for each unique child on the list,
-.BR XtUnmanageChildren
+.B XtUnmanageChildren
 performs the following:
 .RS
 .IP \- 5
@@ -180,19 +180,19 @@ Calls the change_managed routine of the widgets' parent
 after all children have been marked
 if the parent is realized.
 .LP
-.BR XtUnmanageChildren
+.B XtUnmanageChildren
 does not destroy the children widgets.
 Removing widgets from a parent's managed set is often a temporary banishment,
 and, some time later, you may manage the children again.
 .LP
 The
-.BR XtUnmanageChild
+.B XtUnmanageChild
 function constructs a widget list
 of length one and calls
 .BR XtUnmanageChildren .
 .LP
 The
-.BR XtChangeManagedSet
+.B XtChangeManagedSet
 function performs the following:
 .IP \(bu 5
 Issues an error if the widgets specified in the \fImanage_children\fP
@@ -202,41 +202,42 @@ if that parent is not a subclass of compositeWidgetClass.
 Returns immediately if the common parent is being destroyed.
 .IP \(bu 5
 If no
-.BR CompositeClassExtension
+.B CompositeClassExtension
 is defined, or a
-.BR CompositeClassExtension
+.B CompositeClassExtension
 is defined but with an \fIallows_change_managed_set\fP field with a
 value of
 .BR False ,
 and
-.BR XtChangeManagedSet
+.B XtChangeManagedSet
 was invoked with a non-NULL \fIdo_change_proc\fP procedure
 then
-.BR XtChangeManagedSet
+.B XtChangeManagedSet
 performs the following:
 .RS
 .IP \- 5
 Calls
-.BR XtUnmanageChildren
+.B XtUnmanageChildren
 (\fIunmanage_children\fP, \fInum_unmanage_children\fP).
 .IP \- 5
 Calls the \fIdo_change_proc\fP specified.
 .IP \- 5
 Calls
-.BR XtManageChildren
+.B XtManageChildren
 (\fImanage_children\fP, \fInum_manage_children\fP) and then returns
 immediately.
 .RE
 .IP \(bu 5
 Otherwise, if a
-.BR CompositeClassExtension
+.B CompositeClassExtension
 is defined with an \fIallows_change_managed_set\fP field with a value of
 .BR True ,
 or if no
-.BR CompositeClassExtension
+.B CompositeClassExtension
 is defined, and
-.BR XtChangeManagedSet 
-was invoked with a NULL \fIdo_change_proc\fP procedure, then the following is performed:
+.B XtChangeManagedSet 
+was invoked with a NULL \fIdo_change_proc\fP procedure, then the following is
+performed:
 .RS
 .IP \- 5
 For each child on the \fIunmanage_children\fP list; if the child is
@@ -258,7 +259,7 @@ of the newly managed children are made viewable by:
 .RS
 .IP \- 5
 Calling
-.BR XtRealizeWidget
+.B XtRealizeWidget
 on each of the previously unmanaged child that is unrealized.
 .IP \- 5
 Mapping each previously unmanaged child that has \fImap_when_managed\fP
@@ -266,12 +267,12 @@ Mapping each previously unmanaged child that has \fImap_when_managed\fP
 .RE
 .LP
 The
-.BR XtIsManaged
+.B XtIsManaged
 function returns
-.BR True
+.B True
 if the specified widget is of class RectObj or any subclass thereof and
 is managed, or
-.BR False
+.B False
 otherwise.
 .SH "SEE ALSO"
 XtMapWidget(__libmansuffix__),

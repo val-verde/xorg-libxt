@@ -102,8 +102,8 @@ static void GrabAllCorrectKeys(
 					  &careOn, &careMask);
 	if (!resolved) return;
     }
-    careOn |= modMatch->modifiers;
-    careMask |= modMatch->modifierMask;
+    careOn = (careOn | (Modifiers)modMatch->modifiers);
+    careMask = (careMask | (Modifiers)modMatch->modifierMask);
 
     XtKeysymToKeycodeList(
 	    dpy,
@@ -130,13 +130,13 @@ static void GrabAllCorrectKeys(
 			);
 		/* continue; */		/* grab all modifier combinations */
 	    }
-	    least_mod = modifiers_return & (~modifiers_return + 1);
-	    for (std_mods = modifiers_return;
+	    least_mod = (int) (modifiers_return & (~modifiers_return + 1));
+	    for (std_mods = (int) modifiers_return;
 		 std_mods >= least_mod; std_mods--) {
 		Modifiers dummy;
 		 /* check all useful combinations of modifier bits */
-		if (modifiers_return & std_mods &&
-		    !(~modifiers_return & std_mods)) {
+		if ((modifiers_return & (Modifiers)std_mods) &&
+		    !(~modifiers_return & (Modifiers)std_mods)) {
 		    XtTranslateKeycode( dpy, *keycodeP,
 					(Modifiers)std_mods,
 					&dummy, &keysym );
@@ -205,10 +205,10 @@ static Boolean DoGrab(
 					      &careOn, &careMask);
 	    if (!resolved) break;
 	}
-	careOn |= modMatch->modifiers;
+	careOn = (careOn | (Modifiers) modMatch->modifiers);
 	XtGrabButton(
 		     widget,
-		     (unsigned) typeMatch->eventCode,
+		     (int) typeMatch->eventCode,
 		     careOn,
 		     grabP->owner_events,
 		     grabP->event_mask,
@@ -231,7 +231,7 @@ static Boolean DoGrab(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 			"invalidPopup","unsupportedOperation",XtCXtToolkitError,
 			"Pop-up menu creation is only supported on Button, Key or EnterNotify events.",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
 	break;
     }
     UNLOCK_PROCESS;
@@ -277,7 +277,7 @@ void _XtRegisterGrabs(
 		     */
 		    doGrab.widget = widget;
 		    doGrab.grabP = grabP;
-		    doGrab.count = count;
+		    doGrab.count = (TMShortCard) count;
 		    _XtTraverseStateTree((TMStateTree)*stateTreePtr,
 					 DoGrab,
 					 (XtPointer)&doGrab);

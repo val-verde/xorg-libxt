@@ -85,26 +85,26 @@ The mask is the bitwise inclusive OR of any combination of
 and
 .BR XtIMSignal .
 As a convenience, the \*(tk defines the symbolic name
-.BR XtIMAll
+.B XtIMAll
 to be the bitwise inclusive OR of all event types.
 .SH DESCRIPTION
-.BR XtNextEvent
+.B XtNextEvent
 has been replaced by
 .BR XtAppNextEvent .
 .LP
-.BR XtPeekEvent
+.B XtPeekEvent
 has been replaced by
 .BR XtAppPeekEvent .
 .LP
-.BR XtPending
+.B XtPending
 has been replaced by
 .BR XtAppPending .
 .LP
-.BR XtProcessEvent
+.B XtProcessEvent
 has been replaced by
 .BR XtAppProcessEvent .
 .LP
-.BR XtMainLoop
+.B XtMainLoop
 has been replaced by
 .BR XtAppMainLoop .
 .SH "SEE ALSO"

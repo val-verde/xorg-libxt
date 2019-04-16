@@ -82,19 +82,19 @@ Specifies the number of additional arguments to the converter or zero.
 .IP \fIto_type\fP 1i
 Specifies the destination type.
 .SH DESCRIPTION
-.BR XtAppAddConverter
+.B XtAppAddConverter
 is equivalent in function to
-.BR XtAppSetTypeConverter
+.B XtAppSetTypeConverter
 with \fIcache_type\fP equal to
-.BR XtCacheAll
+.B XtCacheAll
 for old-format type converters. It has been superseded by
 .BR XtAppSetTypeConverter .
 .LP
-.BR XtAddConverter
+.B XtAddConverter
 is equivalent in function to
-.BR XtSetTypeConverter
+.B XtSetTypeConverter
 with \fIcache_type\fP equal to
-.BR XtCacheAll
+.B XtCacheAll
 for old-format type converters. It has been superseded by
 .BR XtSetTypeConverter .
 .SH "SEE ALSO"

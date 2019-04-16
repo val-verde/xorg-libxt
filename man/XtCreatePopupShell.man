@@ -81,9 +81,9 @@ Specifies the widget class pointer for the created shell widget.
 Specifies the variable argument list to override the resource defaults.
 .SH DESCRIPTION
 The
-.BR XtCreatePopupShell
+.B XtCreatePopupShell
 function ensures that the specified class is a subclass of
-.BR Shell
+.B Shell
 and, rather than using insert_child to attach the widget to the parent's
 .IN "insert_child procedure"
 children list, attaches the shell to the parent's pop-ups list directly.

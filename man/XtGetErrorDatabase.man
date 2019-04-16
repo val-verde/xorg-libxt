@@ -83,12 +83,12 @@ of the error message.
 Specifies the size of the buffer in bytes.
 .SH DESCRIPTION
 The
-.BR XtGetErrorDatabase
+.B XtGetErrorDatabase
 function has been superceded by
 .BR XtAppGetErrorDatabase .
 .LP
 The
-.BR XtGetErrorDatabaseText
+.B XtGetErrorDatabaseText
 function has been superceded by
 .BR XtAppGetErrorDatabaseText .
 .SH "SEE ALSO"

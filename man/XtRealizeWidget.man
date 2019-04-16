@@ -71,7 +71,7 @@ void XtUnrealizeWidget(Widget \fIw\fP);
 Specifies the widget.
 .SH DESCRIPTION
 If the widget is already realized,
-.BR XtRealizeWidget
+.B XtRealizeWidget
 simply returns.
 Otherwise, it performs the following:
 .IP \(bu 5
@@ -83,16 +83,16 @@ at the specified widget and calls the change_managed procedure
 of each composite widget that has one or more managed children.
 .IP \(bu 5
 Constructs an
-.BR XSetWindowAttributes
+.B XSetWindowAttributes
 structure filled in with information derived from the
-.BR Core
+.B Core
 widget fields and calls the realize procedure for the widget,
 which adds any widget-specific attributes and creates the X window.
 .IP \(bu 5
 If the widget is
 not a subclass of
 .BR compositeWidgetClass ,
-.BR XtRealizeWidget
+.B XtRealizeWidget
 returns; otherwise, it continues and performs the following:
 .RS
 .IP \- 5
@@ -112,13 +112,13 @@ Some people seem to like this to indicate certain states.)
 If the widget is a top-level shell widget (that is, it has no parent), and
 mapped_when_managed is
 .BR True ,
-.BR XtRealizeWidget
+.B XtRealizeWidget
 maps the widget window.
 .LP
 The
-.BR XtIsRealized
+.B XtIsRealized
 function returns
-.BR True
+.B True
 if the widget has been realized,
 that is, if the widget has a nonzero X window ID.
 .LP
@@ -127,12 +127,12 @@ operate differently
 after the widget has been realized.
 .LP
 The
-.BR XtUnrealizeWidget
+.B XtUnrealizeWidget
 function destroys the windows of an existing widget and all of its
 children (recursively down the widget tree).
 To recreate the windows at a later time,
 call
-.BR XtRealizeWidget
+.B XtRealizeWidget
 again.
 If the widget was managed,
 it will be unmanaged automatically before its window is freed.

@@ -70,29 +70,29 @@ Intrinsics.
 Returns the modifiers that caused the match, if non-NULL.
 .SH DESCRIPTION
 If
-.BR XtGetActionKeysym
+.B XtGetActionKeysym
 is called after an action procedure has been invoked by the Intrinsics
 and before that action procedure returns, and if the event pointer has
 the same value as the event pointer passed to that action routine, and
 if the event is a
-.BR KeyPress
+.B KeyPress
 or
-.BR KeyRelease
+.B KeyRelease
 event, then
-.BR XtGetActionKeysym
+.B XtGetActionKeysym
 returns the KeySym that matched the final event specification in the
 translation table and, if \fImodifiers_return\fP is non-NULL, the
 modifier state actually used to generate this KeySym; otherwise, if
 the event is a
-.BR KeyPress
+.B KeyPress
 or
-.BR KeyRelease
+.B KeyRelease
 event, then
-.BR XtGetActionKeysym
+.B XtGetActionKeysym
 calls
-.BR XtTranslateKeycode
+.B XtTranslateKeycode
 and returns the results; else it returns
-.BR NoSymbol
+.B NoSymbol
 and does not examine \fImodifiers_return\fP.
 .SH "SEE ALSO"
 .br

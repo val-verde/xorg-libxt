@@ -99,12 +99,12 @@ Specifies the first KeySym for which this converter is valid.
 Specifies the last KeySym for which this converter is valid.
 .SH DESCRIPTION
 The
-.BR XtSetKeyTranslator
+.B XtSetKeyTranslator
 function sets the specified procedure as the current key translator.
 The default translator is
 .BR XtTranslateKey ,
 an
-.BR XtKeyProc
+.B XtKeyProc
 that uses Shift and Lock modifiers with the interpretations defined
 by the core protocol.
 It is provided so that new translators can call it to get default
@@ -112,12 +112,12 @@ KeyCode-to-KeySym translations and so that the default translator
 can be reinstalled.
 .LP
 The
-.BR XtTranslateKeycode
+.B XtTranslateKeycode
 function passes the specified arguments
 directly to the currently registered KeyCode to KeySym translator.
 .LP
 The
-.BR XtRegisterCaseConverter
+.B XtRegisterCaseConverter
 registers the specified case converter.
 The start and stop arguments provide the inclusive range of KeySyms
 for which this converter is to be called.
@@ -130,10 +130,10 @@ The default converter understands case conversion for all
 KeySyms defined in the core protocol.
 .LP
 The
-.BR XtConvertCase
+.B XtConvertCase
 function calls the appropriate converter and returns the results.
 A user-supplied
-.BR XtKeyProc
+.B XtKeyProc
 may need to use this function.
 .SH "SEE ALSO"
 .br

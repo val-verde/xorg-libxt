@@ -67,19 +67,19 @@ Must be specified as NULL.
 Specifies a variable parameter list of resource name and value pairs.
 .SH DESCRIPTION
 The
-.BR XtVaCreateArgsList
+.B XtVaCreateArgsList
 function allocates memory and copies its arguments into a single list
 pointer, which may be used with
 .BR XtVaNestedList .
 The end of both lists is identified by a \fIname\fP entry containing
 NULL. Any entries of type
-.BR XtVaTypedArg
+.B XtVaTypedArg
 are copied as specified without applying conversions. Data passed by
 reference (including Strings) are not copied, only the pointers
 themselves; the caller must ensure that the data remain valid for
 the lifetime of the created varargs list. The list should be freed
 using
-.BR XtFree
+.B XtFree
 when no longer needed.
 .SH "SEE ALSO"
 .br

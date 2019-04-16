@@ -129,7 +129,7 @@ SOFTWARE.
 #define XtStackAlloc(size, stack_cache_array)     \
     ((size) <= sizeof(stack_cache_array)	  \
     ?  (XtPointer)(stack_cache_array)		  \
-    :  XtMalloc((unsigned)(size)))
+    :  XtMalloc((Cardinal)(size)))
 
 #define XtStackFree(pointer, stack_cache_array) \
     { if ((pointer) != ((XtPointer)(stack_cache_array))) XtFree(pointer); }

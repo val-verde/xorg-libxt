@@ -242,7 +242,7 @@ static void CompositeInsertChild(
 	cw->composite.num_slots +=  (cw->composite.num_slots / 2) + 2;
 	cw->composite.children = children =
 	    (WidgetList) XtRealloc((XtPointer) children,
-	    (unsigned) (cw->composite.num_slots) * sizeof(Widget));
+	    (Cardinal)((unsigned) (cw->composite.num_slots) * sizeof(Widget)));
     }
     /* Ripple children up one space from "position" */
     for (i = cw->composite.num_children; i > position; i--) {

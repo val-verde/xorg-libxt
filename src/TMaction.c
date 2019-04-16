@@ -117,16 +117,16 @@ static CompiledActionTable CompileActionTable(
 
     if (! stat) {
 	cTableHold = cActions = (CompiledActionTable)
-	    __XtMalloc(count * sizeof(CompiledAction));
+	    __XtMalloc((Cardinal)((size_t)count * sizeof(CompiledAction)));
 
-	for (i=count; --i >= 0; cActions++, actions++) {
+	for (i= (int)count; --i >= 0; cActions++, actions++) {
 	    cActions->proc = actions->proc;
 	    cActions->signature = (*func)(actions->string);
 	}
     } else {
 	cTableHold = (CompiledActionTable) actions;
 
-	for (i=count; --i >= 0; actions++)
+	for (i= (int)count; --i >= 0; actions++)
 	    ((CompiledActionTable) actions)->signature =
 		(*func)(actions->string);
     }
@@ -136,7 +136,7 @@ static CompiledActionTable CompileActionTable(
     for (i=1; (Cardinal) i <= count - 1; i++) {
 	register Cardinal j;
 	hold = cActions[i];
-	j = i;
+	j = (Cardinal)i;
 	while (j && cActions[j-1].signature > hold.signature) {
 	    cActions[j] = cActions[j-1];
 	    j--;
@@ -181,7 +181,7 @@ static void ReportUnboundActions(
 		String s = XrmQuarkToString(stateTree->quarkTbl[j]);
 		if (num_unbound != 0)
 		    num_chars += 2;
-		num_chars += strlen(s);
+		num_chars += (Cardinal)strlen(s);
 		num_unbound++;
 	    }
 	}
@@ -228,7 +228,7 @@ static CompiledAction *SearchActionTable(
     register int i, left, right;
 
     left = 0;
-    right = numActions - 1;
+    right = (int)numActions - 1;
     while (left <= right) {
 	i = (left + right) >> 1;
 	if (signature < actionTable[i].signature)
@@ -251,7 +251,7 @@ static int BindActions(
     TMShortCard		numActions,
     Cardinal 		*ndxP)
 {
-    register int unbound = stateTree->numQuarks - *ndxP;
+    register int unbound = (int)(stateTree->numQuarks - *ndxP);
     CompiledAction* action;
     register Cardinal ndx;
     register Boolean savedNdx = False;
@@ -331,7 +331,7 @@ static int  BindProcs(
 		BindActions(stateTree,
 			    procs,
 			    GetClassActions(class),
-			    class->core_class.num_actions,
+			    (TMShortCard) class->core_class.num_actions,
 			    &ndx);
 	    class = class->core_class.superclass;
         } while (unbound != 0 && class != NULL);
@@ -444,7 +444,7 @@ static XtActionProc *EnterBindCache(
     LOCK_PROCESS;
     classCache = GetClassCache(w);
     bindCachePtr = &classCache->bindCache;
-    procsSize = stateTree->numQuarks * sizeof(XtActionProc);
+    procsSize = (TMShortCard)(stateTree->numQuarks * sizeof(XtActionProc));
 
     for (bindCache = *bindCachePtr;
 	 (*bindCachePtr);
@@ -466,8 +466,8 @@ static XtActionProc *EnterBindCache(
       {
 	  *bindCachePtr =
 	    bindCache = (TMBindCache)
-	      __XtMalloc(sizeof(TMBindCacheRec) +
-		       (procsSize - sizeof(XtActionProc)));
+	      __XtMalloc((Cardinal)(sizeof(TMBindCacheRec) +
+		       (size_t)(procsSize - sizeof(XtActionProc))));
 	  bindCache->next = NULL;
 	  bindCache->status = *bindStatus;
 	  bindCache->status.refCount = 1;
@@ -553,7 +553,7 @@ static void RemoveAccelerators(
         XtAppWarningMsg(XtWidgetToApplicationContext(widget),
             XtNtranslationError,"nullTable",XtCXtToolkitError,
             "Can't remove accelerators from NULL table",
-            (String *)NULL, (Cardinal *)NULL);
+            NULL, NULL);
         return;
     }
 
@@ -581,7 +581,7 @@ static void RemoveAccelerators(
       XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 		      XtNtranslationError,"nullTable",XtCXtToolkitError,
 		      "Tried to remove nonexistent accelerators",
-		      (String *)NULL, (Cardinal *)NULL);
+		      NULL, NULL);
     else {
 	if (!destination->core.being_destroyed)
 	  for (i = 0; i < numXlations; i++)
@@ -776,7 +776,7 @@ void XtAppAddActions(
     rec->next = app->action_table;
     app->action_table = rec;
     rec->table = CompileActionTable(actions, num_actions, False, False);
-    rec->count = num_actions;
+    rec->count = (TMShortCard) num_actions;
     UNLOCK_APP(app);
 }
 
@@ -804,10 +804,10 @@ void XtGetActionList(
     *num_actions_return = widget_class->core_class.num_actions;
     if (*num_actions_return) {
 	list = *actions_return = (XtActionList)
-	    __XtMalloc(*num_actions_return * sizeof(XtActionsRec));
+	    __XtMalloc((Cardinal)((size_t)*num_actions_return * sizeof(XtActionsRec)));
 	table = GetClassActions(widget_class);
 	if (table != NULL) {
-	    for (i= (*num_actions_return); --i >= 0; list++, table++) {
+	    for (i= (int)(*num_actions_return); --i >= 0; list++, table++) {
 		list->string = XrmQuarkToString(table->signature);
 		list->proc = table->proc;
 	    }
@@ -855,7 +855,7 @@ void XtMenuPopupAction(
 	XtAppWarningMsg(app,
 		      "invalidParameters","xtMenuPopupAction",XtCXtToolkitError,
 			"MenuPopup wants exactly one argument",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -868,7 +868,7 @@ void XtMenuPopupAction(
 	XtAppWarningMsg(app,
 		"invalidPopup","unsupportedOperation",XtCXtToolkitError,
 "Pop-up menu creation is only supported on ButtonPress, KeyPress or EnterNotify events.",
-                  (String *)NULL, (Cardinal *)NULL);
+                  NULL, NULL);
 	UNLOCK_APP(app);
 	return;
     }
@@ -914,7 +914,7 @@ static void _XtMenuPopdownAction(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 			"invalidParameters","xtMenuPopdown",XtCXtToolkitError,
 			"XtMenuPopdown called with num_params != 0 or 1",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
     }
 }
 

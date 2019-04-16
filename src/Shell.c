@@ -1193,11 +1193,11 @@ static void Realize(
 	     */
 	    register Widget *childP = w->composite.children;
 	    int i;
-	    for (i = w->composite.num_children; i; i--, childP++) {
+	    for (i = (int) w->composite.num_children; i; i--, childP++) {
 		if (XtIsWidget(*childP) && XtIsManaged(*childP)) {
 		    if ((*childP)->core.background_pixmap
 			    != XtUnspecifiedPixmap) {
-			mask &= ~(CWBackPixel);
+			mask &= (unsigned long) (~(CWBackPixel));
 			mask |= CWBackPixmap;
 			attr->background_pixmap =
 			    w->core.background_pixmap =
@@ -1502,7 +1502,7 @@ static void _popup_set_prop(
 				XInternAtom(XtDisplay((Widget)w),
 					    "WM_LOCALE_NAME", False),
 				XA_STRING, 8, PropModeReplace,
-				(unsigned char *)locale, strlen(locale));
+				(unsigned char *)locale, (int) strlen(locale));
 	}
 	UNLOCK_PROCESS;
 
@@ -1525,7 +1525,7 @@ static void _popup_set_prop(
 						"SM_CLIENT_ID", False),
 				    XA_STRING, 8, PropModeReplace,
 				    (unsigned char *) sm_client_id,
-				    strlen(sm_client_id));
+				    (int) strlen(sm_client_id));
 		}
 	    }
 	}
@@ -1537,7 +1537,7 @@ static void _popup_set_prop(
 					"WM_WINDOW_ROLE", False),
 			    XA_STRING, 8, PropModeReplace,
 			    (unsigned char *)wmshell->wm.window_role,
-			    strlen(wmshell->wm.window_role));
+			    (int) strlen(wmshell->wm.window_role));
 }
 
 /* ARGSUSED */
@@ -1555,7 +1555,7 @@ static void EventHandler(
 		XtAppErrorMsg(XtWidgetToApplicationContext(wid),
 			"invalidWindow","eventHandler",XtCXtToolkitError,
                         "Event with wrong window",
-			(String *)NULL, (Cardinal *)NULL);
+			NULL, NULL);
 		return;
 	}
 
@@ -1567,16 +1567,16 @@ static void EventHandler(
 		if( NEQ(width) || NEQ(height) || NEQ(border_width) ) {
 			sizechanged = TRUE;
 #undef NEQ
-			w->core.width = event->xconfigure.width;
-			w->core.height = event->xconfigure.height;
-			w->core.border_width = event->xconfigure.border_width;
+			w->core.width = (Dimension) event->xconfigure.width;
+			w->core.height = (Dimension) event->xconfigure.height;
+			w->core.border_width = (Dimension) event->xconfigure.border_width;
 		}
 		if (event->xany.send_event /* ICCCM compliant synthetic ev */
 		    /* || w->shell.override_redirect */
 		    || w->shell.client_specified & _XtShellNotReparented)
 	        {
-		    w->core.x = event->xconfigure.x;
-		    w->core.y = event->xconfigure.y;
+		    w->core.x = (Position) event->xconfigure.x;
+		    w->core.y = (Position) event->xconfigure.y;
 		    w->shell.client_specified |= _XtShellPositionValid;
 		}
 		else w->shell.client_specified &= ~_XtShellPositionValid;
@@ -1599,8 +1599,8 @@ static void EventHandler(
 		       w->shell.client_specified &=
 			   ~(_XtShellNotReparented | _XtShellPositionValid);
 		   else {
-		       w->core.x = event->xreparent.x;
-		       w->core.y = event->xreparent.y;
+		       w->core.x = (Position) event->xreparent.x;
+		       w->core.y = (Position) event->xreparent.y;
 		       w->shell.client_specified |=
 			   (_XtShellNotReparented | _XtShellPositionValid);
 		   }
@@ -1885,7 +1885,7 @@ static XtGeometryResult GeometryManager(
 		wid->core.width = shell->core.width;
 		wid->core.height = shell->core.height;
 		if (request->request_mode & CWBorderWidth) {
-		    wid->core.x = wid->core.y = -request->border_width;
+		    wid->core.x = wid->core.y = (Position) (-request->border_width);
 		}
 	    }
 	    return XtGeometryYes;
@@ -1941,7 +1941,7 @@ static Boolean _wait_for_response(
 	unsigned long timeout;
 
 	if (XtIsWMShell((Widget)w))
-	    timeout = ((WMShellWidget)w)->wm.wm_timeout;
+	    timeout = (unsigned long) ((WMShellWidget)w)->wm.wm_timeout;
 	else
 	    timeout = DEFAULT_WM_TIMEOUT;
 
@@ -2008,16 +2008,16 @@ static XtGeometryResult RootGeometryManager(
     oldborder_width = w->core.border_width;
 
 #define PutBackGeometry() \
-	{ w->core.x = oldx; \
-	  w->core.y = oldy; \
-	  w->core.width = oldwidth; \
-	  w->core.height = oldheight; \
-	  w->core.border_width = oldborder_width; }
+	{ w->core.x = (Position) (oldx); \
+	  w->core.y = (Position) (oldy); \
+	  w->core.width = (Dimension) (oldwidth); \
+	  w->core.height = (Dimension) (oldheight); \
+	  w->core.border_width = (Dimension) (oldborder_width); }
 
     if (mask & CWX) {
-	    if (w->core.x == request->x) mask &= ~CWX;
+	    if (w->core.x == request->x) mask &= (unsigned int) (~CWX);
 	    else {
-		w->core.x = values.x = request->x;
+		w->core.x = (Position) (values.x = request->x);
 		if (wm) {
 		    hintp->flags &= ~USPosition;
 		    hintp->flags |= PPosition;
@@ -2026,9 +2026,9 @@ static XtGeometryResult RootGeometryManager(
 	    }
     }
     if (mask & CWY) {
-	    if (w->core.y == request->y) mask &= ~CWY;
+	    if (w->core.y == request->y) mask &= (unsigned int) (~CWY);
 	    else {
-		w->core.y = values.y = request->y;
+		w->core.y = (Position) (values.y = request->y);
 		if (wm) {
 		    hintp->flags &= ~USPosition;
 		    hintp->flags |= PPosition;
@@ -2038,16 +2038,16 @@ static XtGeometryResult RootGeometryManager(
     }
     if (mask & CWBorderWidth) {
 	    if (w->core.border_width == request->border_width) {
-		    mask &= ~CWBorderWidth;
+		    mask &= (unsigned int) (~CWBorderWidth);
 	    } else
 		w->core.border_width =
-		    values.border_width =
-			request->border_width;
+		    (Dimension) (values.border_width =
+			request->border_width);
     }
     if (mask & CWWidth) {
-	    if (w->core.width == request->width) mask &= ~CWWidth;
+	    if (w->core.width == request->width) mask &= (unsigned int) (~CWWidth);
 	    else {
-		w->core.width = values.width = request->width;
+		w->core.width = (Dimension)(values.width = request->width);
 		if (wm) {
 		    hintp->flags &= ~USSize;
 		    hintp->flags |= PSize;
@@ -2056,9 +2056,9 @@ static XtGeometryResult RootGeometryManager(
 	    }
     }
     if (mask & CWHeight) {
-	    if (w->core.height == request->height) mask &= ~CWHeight;
+	    if (w->core.height == request->height) mask &= (unsigned int) (~CWHeight);
 	    else {
-		w->core.height = values.height = request->height;
+		w->core.height = (Dimension)(values.height = request->height);
 		if (wm) {
 		    hintp->flags &= ~USSize;
 		    hintp->flags |= PSize;
@@ -2113,7 +2113,7 @@ static XtGeometryResult RootGeometryManager(
     /* If no non-stacking bits are set, there's no way to tell whether
        or not this worked, so assume it did */
 
-    if (!(mask & ~(CWStackMode | CWSibling))) return XtGeometryYes;
+    if (!(mask & (unsigned)(~(CWStackMode | CWSibling)))) return XtGeometryYes;
 
     if (wm && ((WMShellWidget)w)->wm.wait_for_wm == FALSE) {
 	    /* the window manager is sick
@@ -2184,14 +2184,14 @@ static XtGeometryResult RootGeometryManager(
 		return XtGeometryNo;
 	    }
 	    else {
-		w->core.width = event.xconfigure.width;
-		w->core.height = event.xconfigure.height;
-		w->core.border_width = event.xconfigure.border_width;
+		w->core.width = (Dimension) event.xconfigure.width;
+		w->core.height = (Dimension) event.xconfigure.height;
+		w->core.border_width = (Dimension) event.xconfigure.border_width;
 		if (event.xany.send_event || /* ICCCM compliant synth */
 		    w->shell.client_specified & _XtShellNotReparented) {
 
-		    w->core.x = event.xconfigure.x;
-		    w->core.y = event.xconfigure.y;
+		    w->core.x = (Position) event.xconfigure.x;
+		    w->core.y = (Position) event.xconfigure.y;
 		    w->shell.client_specified |= _XtShellPositionValid;
 		}
 		else w->shell.client_specified &= ~_XtShellPositionValid;
@@ -2209,7 +2209,7 @@ static XtGeometryResult RootGeometryManager(
 	} else XtAppWarningMsg(XtWidgetToApplicationContext((Widget)w),
 			       "internalError", "shell", XtCXtToolkitError,
 			       "Shell's window manager interaction is broken",
-			       (String *)NULL, (Cardinal *)NULL);
+			       NULL, NULL);
     } else if (wm) { /* no event */
 	((WMShellWidget)w)->wm.wait_for_wm = FALSE; /* timed out; must be broken */
     }
@@ -2377,7 +2377,7 @@ static Boolean WMSetValues(
 					    False),
 				XA_STRING, 8, PropModeReplace,
 				(unsigned char *)nwmshell->wm.window_role,
-				strlen(nwmshell->wm.window_role));
+				(int) strlen(nwmshell->wm.window_role));
 	    } else if (XtIsRealized(new) && ! nwmshell->wm.window_role) {
 		XDeleteProperty(XtDisplay(new), XtWindow(new),
 				XInternAtom(XtDisplay(new), "WM_WINDOW_ROLE",
@@ -2487,11 +2487,11 @@ static String * NewArgv(
 
     if (count <= 0 || !str) return NULL;
 
-    for (num = count; num--; str++) {
-	nbytes += strlen(*str);
+    for (num = (Cardinal) count; num--; str++) {
+	nbytes = (nbytes + (Cardinal) strlen(*str));
 	nbytes++;
     }
-    num = (count+1) * sizeof(String);
+    num = (Cardinal) ((size_t)(count+1) * sizeof(String));
     new = newarray = (String *) __XtMalloc(num + nbytes);
     sptr = ((char *) new) + num;
 
@@ -2661,7 +2661,7 @@ static Boolean SessionSetValues(
 					    False),
 				XA_STRING, 8, PropModeReplace,
 				(unsigned char *) nw->session.session_id,
-				strlen(nw->session.session_id));
+				(int) strlen(nw->session.session_id));
 	}
     }
     return False;
@@ -2682,8 +2682,8 @@ void _XtShellGetCoordinates(
 				     (int) -w->core.border_width,
 				     (int) -w->core.border_width,
 				     &tmpx, &tmpy, &tmpchild);
-	w->core.x = tmpx;
-	w->core.y = tmpy;
+	w->core.x = (Position) tmpx;
+	w->core.y = (Position) tmpy;
 	w->shell.client_specified |= _XtShellPositionValid;
     }
     *x = w->core.x;
@@ -2722,7 +2722,7 @@ static void ApplicationShellInsertChild(
 	XtAppWarningMsg(XtWidgetToApplicationContext(widget),
 	       "invalidClass", "applicationShellInsertChild", XtCXtToolkitError,
 	       "ApplicationShell does not accept RectObj children; ignored",
-	       (String*)NULL, (Cardinal*)NULL);
+	       NULL, NULL);
     }
     else {
 	XtWidgetProc insert_child;
@@ -2853,10 +2853,10 @@ static String * NewStringArray(String *str)
     if (!str) return NULL;
 
     for (num = 0; *str; num++, str++) {
-	nbytes += strlen(*str);
+	nbytes = nbytes + (Cardinal)strlen(*str);
 	nbytes++;
     }
-    num = (num + 1) * sizeof(String);
+    num = (Cardinal)((size_t)(num + 1) * sizeof(String));
     new = newarray = (String *) __XtMalloc(num + nbytes);
     sptr = ((char *) new) + num;
 
@@ -2906,7 +2906,7 @@ static SmProp * ArrayPack(char *name, XtPointer closure)
     p->num_vals = 1;
     p->type = SmARRAY8;
     p->name = name;
-    p->vals->length = strlen(prop) + 1;
+    p->vals->length = (int) strlen(prop) + 1;
     p->vals->value = prop;
     return p;
 }
@@ -2923,13 +2923,13 @@ static SmProp * ListPack(
 
     for (ptr = prop; *ptr; ptr++)
 	n++;
-    p = (SmProp*) __XtMalloc(sizeof(SmProp) + (Cardinal)(n*sizeof(SmPropValue)));
+    p = (SmProp*) __XtMalloc((Cardinal)(sizeof(SmProp) + (size_t)n * sizeof(SmPropValue)));
     p->vals = (SmPropValue *) (((char *) p) + sizeof(SmProp));
     p->num_vals = n;
     p->type = SmLISTofARRAY8;
     p->name = name;
     for (ptr = prop, vals = p->vals; *ptr; ptr++, vals++) {
-	vals->length = strlen(*ptr) + 1;
+	vals->length = (int) strlen(*ptr) + 1;
 	vals->value = *ptr;
     }
     return p;
@@ -3099,8 +3099,8 @@ static void XtCallSaveCallbacks(
     save->next = NULL;
     save->save_type = save_type;
     save->interact_style = interact;
-    save->shutdown = shutdown;
-    save->fast = fast;
+    save->shutdown = (Boolean) shutdown;
+    save->fast = (Boolean) fast;
     save->cancel_shutdown = False;
     save->phase = 1;
     save->interact_dialog_type = SmDialogNormal;
@@ -3380,17 +3380,17 @@ static String* EditCommand(
 	count++;
 
     if (want) {
-	s = new = (String *) __XtMalloc((Cardinal)(count+3) * sizeof(String*));
+	s = new = (String *) __XtMalloc((Cardinal)((size_t) (count+3) * sizeof(String*)));
 	*s = *sarray;		s++; sarray++;
 	*s = "-xtsessionID";	s++;
 	*s = str;		s++;
 	for (; --count > 0; s++, sarray++)
 	    *s = *sarray;
-	*s = (String) NULL;
+	*s = NULL;
     } else {
 	if (count < 3)
 	    return NewStringArray(sarray);
-	s = new = (String *) __XtMalloc((Cardinal)(count-1) * sizeof(String*));
+	s = new = (String *) __XtMalloc((Cardinal)((size_t)(count-1) * sizeof(String*)));
 	for (; --count >= 0; sarray++) {
 	    if (strcmp(*sarray, "-xtsessionID") == 0) {
 		sarray++;
@@ -3400,7 +3400,7 @@ static String* EditCommand(
 		s++;
 	    }
 	}
-	*s = (String) NULL;
+	*s = NULL;
     }
     s = new;
     new = NewStringArray(new);

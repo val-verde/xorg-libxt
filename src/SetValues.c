@@ -158,7 +158,7 @@ CallConstraintSetValues (
 	    XtAppErrorMsg(XtWidgetToApplicationContext(current),
 		    "invalidClass","constraintSetValue",XtCXtToolkitError,
                  "Subclass of Constraint required in CallConstraintSetValues",
-                  (String *)NULL, (Cardinal *)NULL);
+                  NULL, NULL);
 	LOCK_PROCESS;
 	superclass = (ConstraintWidgetClass) class->core_class.superclass;
 	UNLOCK_PROCESS;
@@ -214,7 +214,7 @@ void XtSetValues(
         XtAppErrorMsg(app,
 		"invalidArgCount","xtSetValues",XtCXtToolkitError,
                 "Argument count > 0 on NULL argument list in XtSetValues",
-                 (String *)NULL, (Cardinal *)NULL);
+                 NULL, NULL);
     }
 
     /* Allocate and copy current widget into old widget */
@@ -383,7 +383,7 @@ void XtSetValues(
 			    "invalidProcedure","set_values_almost",
 			  XtCXtToolkitError,
 			  "set_values_almost procedure shouldn't be NULL",
-			  (String *)NULL, (Cardinal *)NULL);
+			  NULL, NULL);
 		    break;
 		}
 		if (result == XtGeometryNo) geoReply.request_mode = 0;
@@ -432,8 +432,8 @@ void XtSetValues(
 				 XtName(w),XtName(pw)));
 		  XClearArea (XtDisplay (pw), XtWindow (pw),
 			      r->rectangle.x, r->rectangle.y,
-			      r->rectangle.width + bw2,
-			      r->rectangle.height + bw2,TRUE);
+			      (unsigned) (r->rectangle.width + bw2),
+			      (unsigned) (r->rectangle.height + bw2), TRUE);
 	      }
 	  }
         }

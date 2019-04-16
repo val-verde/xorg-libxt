@@ -88,14 +88,14 @@ of the error message.
 Specifies the size of the buffer in bytes.
 .SH DESCRIPTION
 The
-.BR XtAppGetErrorDatabase
+.B XtAppGetErrorDatabase
 function returns the address of the error database.
 The \*(xI do a lazy binding of the error database and do not merge in the
 database file until the first call to
 .BR XtAppGetErrorDatbaseText .
 .LP
 The
-.BR XtAppGetErrorDatabaseText
+.B XtAppGetErrorDatabaseText
 returns the appropriate message from the error database
 or returns the specified default message if one is not found in the
 error database.

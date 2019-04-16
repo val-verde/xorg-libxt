@@ -83,7 +83,7 @@ Specifies the widget that is making the request.
 Return the allowed widget width and height.
 .SH DESCRIPTION
 Depending on the condition,
-.BR XtMakeGeometryRequest
+.B XtMakeGeometryRequest
 performs the following:
 .IP \(bu 5
 If the widget is unmanaged or the widget's parent is not realized,
@@ -91,7 +91,7 @@ it makes the changes and returns
 .BR XtGeometryYes .
 .IP \(bu 5
 If the parent is not a subclass of
-.BR compositeWidgetClass
+.B compositeWidgetClass
 or the parent's geometry_manager is NULL,
 it issues an error.
 .IP \(bu 5
@@ -108,14 +108,14 @@ otherwise, it calls the parent's geometry_manager procedure
 with the given parameters.
 .IP \(bu 5
 If the parent's geometry manager returns
-.BR XtGeometryYes
+.B XtGeometryYes
 and if
-.BR XtCWQueryOnly
+.B XtCWQueryOnly
 is not set in the request_mode
 and if the widget is realized,
-.BR XtMakeGeometryRequest
+.B XtMakeGeometryRequest
 calls the
-.BR XConfigureWindow
+.B XConfigureWindow
 Xlib function to reconfigure the widget's window (set its size, location,
 and stacking order as appropriate).
 .IP \(bu 5
@@ -123,29 +123,29 @@ If the geometry manager returns
 .BR XtGeometryDone ,
 the change has been approved and actually has been done.
 In this case,
-.BR XtMakeGeometryRequest
+.B XtMakeGeometryRequest
 does no configuring and returns
 .BR XtGeometryYes .
-.BR XtMakeGeometryRequest
+.B XtMakeGeometryRequest
 never returns
 .BR XtGeometryDone .
 .LP
 Otherwise,
-.BR XtMakeGeometryRequest
+.B XtMakeGeometryRequest
 returns the resulting value from the parent's geometry manager.
 .LP
 Children of primitive widgets are always unmanaged; thus,
-.BR XtMakeGeometryRequest
+.B XtMakeGeometryRequest
 always returns
-.BR XtGeometryYes
+.B XtGeometryYes
 when called by a child of a primitive widget.
 .LP
 The
-.BR XtMakeResizeRequest
+.B XtMakeResizeRequest
 function, a simple interface to
 .BR XtMakeGeometryRequest ,
 creates a
-.BR XtWidgetGeometry
+.B XtWidgetGeometry
 structure and specifies that width and height should change.
 The geometry manager is free to modify any of the other window attributes
 (position or stacking order) to satisfy the resize request.
@@ -154,10 +154,10 @@ If the return value is
 width_return and height_return contain a compromise width and height.
 If these are acceptable,
 the widget should immediately make an
-.BR XtMakeResizeRequest
+.B XtMakeResizeRequest
 and request that the compromise width and height be applied.
 If the widget is not interested in
-.BR XtGeometryAlmost
+.B XtGeometryAlmost
 replies,
 it can pass NULL for width_return and height_return.
 .SH "SEE ALSO"

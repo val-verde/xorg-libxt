@@ -143,20 +143,20 @@ Cardinal XtAsprintf(
     if (len < 0)
 	_XtAllocError("vsnprintf");
 
-    *new_string = XtMalloc(len + 1); /* snprintf doesn't count trailing '\0' */
+    *new_string = XtMalloc((Cardinal) len + 1); /* snprintf doesn't count trailing '\0' */
     if (len < sizeof(buf))
     {
-	strncpy(*new_string, buf, len);
+	strncpy(*new_string, buf, (size_t) len);
 	(*new_string)[len] = '\0';
     }
     else
     {
 	va_start(ap, format);
-	if (vsnprintf(*new_string, len + 1, format, ap) < 0)
+	if (vsnprintf(*new_string, (size_t) (len + 1), format, ap) < 0)
 	    _XtAllocError("vsnprintf");
 	va_end(ap);
     }
-    return len;
+    return (Cardinal) len;
 }
 
 
@@ -252,7 +252,7 @@ char* _XtHeapAlloc(
 	    printf( "allocating large segment (%d bytes) on heap %#x\n",
 		    bytes, heap );
 #endif
-	    heap_loc = XtMalloc(bytes + sizeof(char*));
+	    heap_loc = XtMalloc(bytes + (Cardinal) sizeof(char*));
 	    if (heap->start) {
 		*(char**)heap_loc = *(char**)heap->start;
 		*(char**)heap->start = heap_loc;
@@ -273,10 +273,10 @@ char* _XtHeapAlloc(
 	heap->current = heap_loc + sizeof(char*);
 	heap->bytes_remaining = HEAP_SEGMENT_SIZE - sizeof(char*);
     }
-    bytes = (bytes + (sizeof(long) - 1)) & (~(sizeof(long) - 1));
+    bytes = (Cardinal) ((bytes + (sizeof(long) - 1)) & (~(sizeof(long) - 1)));
     heap_loc = heap->current;
     heap->current += bytes;
-    heap->bytes_remaining -= bytes; /* can be negative, if rounded */
+    heap->bytes_remaining = (heap->bytes_remaining - (int) bytes); /* can be negative, if rounded */
     return heap_loc;
 }
 

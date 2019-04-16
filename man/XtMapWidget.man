@@ -76,26 +76,26 @@ Specifies the widget.
 If the widget is realized and managed
 and if the new value of map_when_managed is
 .BR True ,
-.BR XtSetMappedWhenManaged
+.B XtSetMappedWhenManaged
 maps the window.
 If the widget is realized and managed
 and if the new value of map_when_managed is
 .BR False ,
 it unmaps the window.
-.BR XtSetMappedWhenManaged
+.B XtSetMappedWhenManaged
 is a convenience function that is equivalent to (but slightly faster than)
 calling
-.BR XtSetValues
+.B XtSetValues
 and setting the new value for the mappedWhenManaged resource.
 As an alternative to using
-.BR XtSetMappedWhenManaged
+.B XtSetMappedWhenManaged
 to control mapping,
 a client may set mapped_when_managed to
-.BR False
+.B False
 and use
-.BR XtMapWidget
+.B XtMapWidget
 and
-.BR XtUnmapWidget
+.B XtUnmapWidget
 explicitly.
 .SH "SEE ALSO"
 XtManageChildren(__libmansuffix__)

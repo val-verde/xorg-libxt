@@ -83,7 +83,7 @@ The list of extension records at the specified offset in the specified
 \fItype\fP, a version greater than or equal to the specified \fIversion\fP,
 and a record size greater than or equal the specified \fIrecord_size\fP
 if it is nonzero.
-.BR XtGetClassExtension
+.B XtGetClassExtension
 returns a pointer to a matching extension record or NULL if no match
 is found. The returned extension record is owned by the widget class
 and must not be modified or freed by the caller, except possibly to

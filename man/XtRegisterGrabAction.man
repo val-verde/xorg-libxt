@@ -71,11 +71,11 @@ Specifies the action procedure to search for in translation tables.
 .IP \fIparams\fP 1i
 .IP \fInum_params\fP 1i
 Specify arguments to
-.BR XtGrabButton
+.B XtGrabButton
 or
-.BR XtGrabKey
+.B XtGrabKey
 .SH DESCRIPTION
-.BR XtRegisterGrabAction
+.B XtRegisterGrabAction
 adds the specified \fIaction_proc\fP to a list known to the translation
 manager.
 .SH "SEE ALSO"

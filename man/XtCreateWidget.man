@@ -96,7 +96,7 @@ Specifies the widget class pointer for the created widget.
 Specifies the variable argument list to override the resource defaults.
 .SH DESCRIPTION
 The
-.BR XtCreateWidget
+.B XtCreateWidget
 function performs much of the boilerplate operations of widget creation:
 .IP \(bu 5
 Checks to see if the class_initialize procedure has been called for this class
@@ -124,7 +124,7 @@ and all superclasses up to
 .BR constraintWidgetClass .
 .IP \(bu 5
 Calls the initialize procedures for the widget by starting at the
-.BR Core
+.B Core
 initialize procedure on down to the widget's initialize procedure.
 .IP \(bu 5
 If the parent is a subclass of
@@ -138,24 +138,24 @@ If the parent is a subclass of
 .BR constraintWidgetClass ,
 it calls the constraint initialize procedures,
 starting at
-.BR constraintWidgetClass
+.B constraintWidgetClass
 on down to the parent's constraint initialize procedure.
 .LP
 Note that you can determine the number of arguments in an argument list
 by using the
-.BR  XtNumber
+.B  XtNumber
 macro.
 For further information, see Section 11.1.
 .LP
 The
-.BR XtCreateManagedWidget
+.B XtCreateManagedWidget
 function is a convenience routine that calls
-.BR XtCreateWidget
+.B XtCreateWidget
 and
 .BR XtManageChild .
 .LP
 The
-.BR XtDestroyWidget
+.B XtDestroyWidget
 function provides the only method of destroying a widget,
 including widgets that need to destroy themselves.
 It can be called at any time,
@@ -164,7 +164,7 @@ This requires a two-phase destroy process in order to avoid dangling
 references to destroyed widgets.
 .LP
 In phase one,
-.BR XtDestroyWidget
+.B XtDestroyWidget
 performs the following:
 .IP \(bu 5
 If the being_destroyed field of the widget is
@@ -173,7 +173,7 @@ it returns immediately.
 .IP \(bu 5
 Recursively descends the widget tree and
 sets the being_destroyed field to
-.BR True
+.B True
 for the widget and all children.
 .IP \(bu 5
 Adds the widget to a list of widgets (the destroy list) that should be
@@ -187,12 +187,12 @@ Phase two occurs when all procedures that should execute as a result of
 the current event have been called (including all procedures registered with
 the event and translation managers),
 that is, when the current invocation of
-.BR XtDispatchEvent
+.B XtDispatchEvent
 is about to return or immediately if not in
 .BR XtDispatchEvent .
 .LP
 In phase two,
-.BR XtDestroyWidget
+.B XtDestroyWidget
 performs the following on each entry in the destroy list:
 .IP \(bu 5
 Calls the destroy callback procedures registered on the widget
@@ -200,10 +200,10 @@ Calls the destroy callback procedures registered on the widget
 before parent callbacks).
 .IP \(bu 5
 If the widget's parent is a subclass of
-.BR compositeWidgetClass
+.B compositeWidgetClass
 and if the parent is not being destroyed,
 it calls
-.BR XtUnmanageChild
+.B XtUnmanageChild
 on the widget and then calls the widget's parent's delete_child procedure
 (see Section 3.4).
 .IP \(bu 5
@@ -223,7 +223,7 @@ until finally it calls the destroy procedure declared in the Core
 class record.
 .IP \(bu 5
 Calls
-.BR XDestroyWindow
+.B XDestroyWindow
 if the widget is realized (that is, has an X window).
 The server recursively destroys all descendant windows.
 .IP \(bu 5

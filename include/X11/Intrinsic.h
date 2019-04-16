@@ -63,7 +63,16 @@ in this Software without prior written authorization from The Open Group.
 
 #define XtSpecificationRelease 6
 
+/*
+ * As used in its function interface, the String type of libXt can be readonly.
+ * But compiling libXt with this feature may require some internal changes,
+ * e.g., casts and occasionally using a plain "char*".
+ */
+#ifdef _CONST_X_STRING
+typedef const char *String;
+#else
 typedef char *String;
+#endif
 
 /* We do this in order to get "const" declarations to work right.  We
  * use _XtString instead of String so that C++ applications can

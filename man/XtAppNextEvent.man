@@ -93,11 +93,11 @@ The mask is the bitwise inclusive OR of any combination of
 and
 .BR XtIMSignal .
 As a convenience, the \*(tk defines the symbolic name
-.BR XtIMAll
+.B XtIMAll
 to be the bitwise inclusive OR of all event types.
 .SH DESCRIPTION
 If the X event queue is empty,
-.BR XtAppNextEvent
+.B XtAppNextEvent
 flushes the X output buffers of each Display in the application context
 and waits for an event while looking at the other input sources, timeout
 timeout values, and signal handlers and calling any callback procedures
@@ -105,21 +105,21 @@ triggered by them.  This wait time can be used for background processing
 (see Section 7.8).
 .LP
 If there is an event in the queue,
-.BR XtAppPeekEvent
+.B XtAppPeekEvent
 fills in the event and returns a nonzero value. If no X input is on the
 queue,
-.BR XtAppPeekEvent
+.B XtAppPeekEvent
 flushes the output buffer and blocks until input is available
 (possibly calling some timeout callbacks in the process).
 If the input is an event,
-.BR XtAppPeekEvent
+.B XtAppPeekEvent
 fills in the event and returns a nonzero value.
 Otherwise, the input is for an alternate input source, and
-.BR XtAppPeekEvent
+.B XtAppPeekEvent
 returns zero.
 .LP
 The
-.BR XtAppPending
+.B XtAppPending
 function returns a nonzero value if there are events pending from the
 X server, timer pending, or other input sources pending. The value
 returned is a bit mask that is the OR of
@@ -127,24 +127,24 @@ returned is a bit mask that is the OR of
 .BR XtIMTimer ,
 .BR XtIMAlternateInput ,
 and
-.BR XtIMSignal
+.B XtIMSignal
 (see
 .BR XtAppProcessEvent ).
 If there are no events pending,
-.BR XtAppPending
+.B XtAppPending
 flushes the output buffer and returns zero.
 .LP
 The
-.BR XtAppProcessEvent
+.B XtAppProcessEvent
 function processes one timer, alternate input, signal source, or X
 event.  If there is nothing of the appropriate type to process,
-.BR XtAppProcessEvent
+.B XtAppProcessEvent
 blocks until there is.
 If there is more than one type of thing available to process,
 it is undefined which will get processed.
 Usually, this procedure is not called by client applications (see
 .BR XtAppMainLoop ).
-.BR XtAppProcessEvent
+.B XtAppProcessEvent
 processes timer events by calling any appropriate timer callbacks,
 alternate input by calling any appropriate alternate input callbacks,
 signal source by calling any appropriate signal callbacks, and X events
@@ -161,41 +161,41 @@ the event is ignored and the dispatcher simply returns.
 The order in which the handlers are called is undefined.
 .LP
 The
-.BR XtDispatchEvent
+.B XtDispatchEvent
 function sends those events to the event handler functions that
 have been previously registered with the dispatch routine.
-.BR XtDispatchEvent
+.B XtDispatchEvent
 returns
-.BR True
+.B True
 if it dispatched the event to some handler and
-.BR False
+.B False
 if it found no handler to dispatch the event to.
 The most common use of
-.BR XtDispatchEvent
+.B XtDispatchEvent
 is to dispatch events acquired with the
-.BR XtAppNextEvent
+.B XtAppNextEvent
 procedure.
 However, it also can be used to dispatch user-constructed events.
-.BR XtDispatchEvent
+.B XtDispatchEvent
 also is responsible for implementing the grab semantics for
 .BR XtAddGrab .
 .LP
 The
-.BR XtAppMainLoop
+.B XtAppMainLoop
 function first reads the next incoming X event by calling
-.BR XtAppNextEvent
+.B XtAppNextEvent
 and then it dispatches the event to the appropriate registered procedure
 by calling
 .BR XtDispatchEvent .
 This constitutes the main loop of \*(tk applications,
 and, as such, it does not return unless
-.BR XtAppSetExitFlag
+.B XtAppSetExitFlag
 is called.
 Applications are expected to exit in response to some user action.
 There is nothing special about
 .BR XtAppMainLoop ;
 it is simply an loop that calls
-.BR XtAppNextEvent
+.B XtAppNextEvent
 and then
 .BR XtDispatchEvent ,
 until

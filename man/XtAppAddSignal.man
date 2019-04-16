@@ -74,48 +74,48 @@ Specifies the argument that is to be passed to the specified procedure
 when a signal has been raised.
 .IP \fIid\fP 1i
 Specifies the ID returned from the corresponding
-.BR XtAppAddSignal
+.B XtAppAddSignal
 call.
 .IP \fIproc\fP 1i
 Specifies the procedure that is to be called when the signal has been
 raised.
 .SH DESCRIPTION
 The
-.BR XtAppAddSignal
+.B XtAppAddSignal
 function initiates a mechanism for handling signals within the context
 of the Intrinsics. Prior to establishing an operating system dependent
 signal handler the application may call
-.BR XtAppAddSignal
+.B XtAppAddSignal
 and store the returned \fIid\fP in a place accessible to the signal
 handler.
 .LP
 Upon receipt of a signal from the operating system, the application may
 call
-.BR XtNoticeSignal
+.B XtNoticeSignal
 passing the \fIid\fP returned by the call to
 .BR XtAppAddSignal .
 .LP
-.BR XtNoticeSignal
+.B XtNoticeSignal
 is the only Intrinsics function that can safely be called from a signal
 handler. If
-.BR XtNoticeSignal
+.B XtNoticeSignal
 is called multiple times before the Intrinsics are able to invoke the
 registered callback, the callback is only called once. Logically the
 Intrinsics maintain ``pending'' for each registered callback. This
 flag is initially
-.BR False
+.B False
 and is set to
-.BR True
+.B True
 by
 .BR XtNoticeSignal ;
 the Intrinsics invoke the callback whenever the flag is
 .BR True ,
 and the flag is set to
-.BR False
+.B False
 just before the callback is invoked.
 .LP
 The
-.BR XtRemoveSignal
+.B XtRemoveSignal
 function is called to remove the specified Intrinsics signal handler. The
 client should disable the source of the signal before calling
 .BR XtRemoveSignal .

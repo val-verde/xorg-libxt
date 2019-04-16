@@ -99,35 +99,35 @@ Specifies the variable argument list to override any other resource
 specification for the created shell widget.
 .SH DESCRIPTION
 The
-.BR XtAppInitialize
+.B XtAppInitialize
 function calls
-.BR XtToolkitInitialize
+.B XtToolkitInitialize
 followed by
 .BR XtCreateApplicationContext ,
 then calls
-.BR XtOpenDisplay
+.B XtOpenDisplay
 with \fIdisplay_string\fP NULL and \fIapplication_name\fP NULL, and
 finally calls
-.BR XtAppCreateShell
+.B XtAppCreateShell
 with \fIapplication_name\fP NULL, \fIwidget_class\fP
 .BR applicationShellWidgetClass ,
 and the specified \fIargs\fP and \fInum_args\fP and returns the
 created shell. The modified \fIargc\fP and \fIargv\fP returned by
-.BR XtDisplayInitialize
+.B XtDisplayInitialize
 are returned in \fIargc_in_out\fP and \fIargv_in_out\fP. If
 \fIapp_context_return\fP is not NULL, the created application context
 is also returned. If the display specified by the command line cannot
 be opened, an error message is issued and
-.BR XtAppInitialize
+.B XtAppInitialize
 terminates the application. If \fIfallback_resources\fP is non-NULL,
-.BR XtAppSetFallbackResources
+.B XtAppSetFallbackResources
 is called with the value prior to calling
 .BR XtOpenDisplay .
 .LP
 XtAppInitialize and XtVaAppInitialize have been superceded by
-.BR XtOpenApplication
+.B XtOpenApplication
 and
-.BR XtVaOpenApplication
+.B XtVaOpenApplication
 respectively.
 .SH "SEE ALSO"
 XtOpenApplication(__libmansuffix__), XtVaOpenApplication(__libmansuffix__)

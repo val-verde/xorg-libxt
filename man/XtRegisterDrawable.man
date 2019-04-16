@@ -72,10 +72,10 @@ Specifies the drawable to register.
 .IP \fIwidget\fP 1i
 Specifies the widget to register the drawable for.
 .SH DESCRIPTION
-.BR XtRegisterDrawable
+.B XtRegisterDrawable
 associates the specified drawable with the specified widget so that
 future calls to
-.BR XtWindowToWidget
+.B XtWindowToWidget
 with the drawable will return the widget. The default event dispatcher
 will dispatch future core events that arrive with the drawable to the
 widget as though the event contained the widget's window, but the event
@@ -85,15 +85,15 @@ or action procedures.
 If the drawable is already registered with another widget, or if the
 drawable is the window of a widget in the client's widget tree, the
 results of calling
-.BR XtRegisterDrawable
+.B XtRegisterDrawable
 are undefined.
 .LP
-.BR XtUnregisterDrawable
+.B XtUnregisterDrawable
 removes an association created with
 .BR XtRegisterDrawable .
 If the drawable is the window of a widget in the client's widget tree
 the results of calling
-.BR XtUnregisterDrawable
+.B XtUnregisterDrawable
 are undefined.
 .SH "SEE ALSO"
 .br

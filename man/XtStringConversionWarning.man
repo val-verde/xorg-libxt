@@ -69,12 +69,12 @@ Specifies the string that could not be converted.
 Specifies the name of the type to which the string could not be converted.
 .SH DESCRIPTION
 The
-.BR XtStringConversionWarning
+.B XtStringConversionWarning
 function issues a warning message with name ``conversionError'',
 type ``string'', class ``XtToolkitError, and the default message string
 ``Cannot convert "\fIsrc\fP" to type \fIdst_type\fP''.
 .LP
-.BR XtStringConversionWarning
+.B XtStringConversionWarning
 has been replaced by
 .BR XtDisplayStringConversionWarning .
 .SH "SEE ALSO"

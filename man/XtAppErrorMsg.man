@@ -95,22 +95,22 @@ Specifies the number of values in the parameter list.
 Specifies a pointer to a list of values to be stored in the message.
 .SH DESCRIPTION
 The
-.BR XtAppErrorMsg
+.B XtAppErrorMsg
 function calls the high-level error handler and passes the specified
 information.
 .LP
 The
-.BR XtAppSetErrorMsgHandler
+.B XtAppSetErrorMsgHandler
 function registers the specified  procedure,
 which is called when a fatal error occurs.
 .LP
 The
-.BR XtAppSetWarningMsgHandler
+.B XtAppSetWarningMsgHandler
 function registers the specified procedure,
 which is called when a nonfatal error condition occurs.
 .LP
 The
-.BR XtAppWarningMsg
+.B XtAppWarningMsg
 function calls the high-level error handler and passes the specified
 information.
 .SH "SEE ALSO"

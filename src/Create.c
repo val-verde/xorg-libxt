@@ -297,7 +297,7 @@ xtWidgetAlloc(
 		(sizeof(struct {char a; unsigned long b;}) -
 		 sizeof(unsigned long) + sizeof(double))) {
 		if (csize && !(csize & (sizeof(double) - 1)))
-		    wsize = (wsize + sizeof(double) - 1) & ~(sizeof(double)-1);
+		    wsize = (Cardinal) ((wsize + sizeof(double) - 1) & ~(sizeof(double)-1));
 	    }
 	}
 	widget = (Widget) __XtCalloc(1,(unsigned)(wsize + csize));
@@ -620,7 +620,7 @@ popupPostProc(Widget w)
 
     parent->core.popup_list =
 	(WidgetList) XtRealloc((char*) parent->core.popup_list,
-		(unsigned) (parent->core.num_popups+1) * sizeof(Widget));
+		(Cardinal)((unsigned) (parent->core.num_popups+1) * sizeof(Widget)));
     parent->core.popup_list[parent->core.num_popups++] = w;
 }
 
@@ -640,12 +640,12 @@ _XtCreatePopupShell(
     if (parent == NULL) {
 	XtErrorMsg("invalidParent",XtNxtCreatePopupShell,XtCXtToolkitError,
 		"XtCreatePopupShell requires non-NULL parent",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
     } else if (widget_class == NULL) {
 	XtAppErrorMsg(XtWidgetToApplicationContext(parent),
 		"invalidClass",XtNxtCreatePopupShell,XtCXtToolkitError,
 		"XtCreatePopupShell requires non-NULL widget class",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
     }
     XtCheckSubclass(parent, coreWidgetClass, "in XtCreatePopupShell");
     default_screen = parent->core.screen;
@@ -697,7 +697,7 @@ _XtAppCreateShell(
 	XtAppErrorMsg(XtDisplayToApplicationContext(display),
 		"invalidClass","xtAppCreateShell",XtCXtToolkitError,
 		"XtAppCreateShell requires non-NULL widget class",
-		(String *)NULL, (Cardinal *)NULL);
+		NULL, NULL);
     }
     if (name == NULL)
 	name = XrmNameToString(_XtGetPerDisplay(display)->name);

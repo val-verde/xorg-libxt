@@ -151,7 +151,7 @@ static void IntelABIWriteHeader (FILE *f, File *phile)
 		      externrefstr, conststr ? conststr : fileprotstr, t->name);
 	for (te = t->tableent; te; te = te->next) {
 	    (void) fprintf (f,
-		"#ifndef %s%s\n#define %s%s ((char*)&%s[%lu])\n#endif\n",
+		"#ifndef %s%s\n#define %s%s ((String)&%s[%lu])\n#endif\n",
 		prefixstr, te->left, prefixstr, te->left, t->name,
 		(unsigned long) te->offset);
 	}
@@ -230,7 +230,7 @@ static void DefaultWriteHeader (FILE *f, File *phile)
     for (t = phile->table; t; t = t->next) {
 	for (te = t->tableent; te; te = te->next) {
 	    (void) fprintf (f,
-		"#ifndef %s%s\n#define %s%s ((char*)&%s[%lu])\n#endif\n",
+		"#ifndef %s%s\n#define %s%s ((String)&%s[%lu])\n#endif\n",
 		prefixstr, te->left, prefixstr, te->left, phile->table->name,
 		(unsigned long) te->offset);
 	}
