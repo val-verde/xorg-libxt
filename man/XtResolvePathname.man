@@ -70,7 +70,6 @@ for the specified display.
 To set the
 language for all applications specify ``*xnlLanguage: \fIlang\fP'' in the
 resource database.
-.IN "xnlLanguage"
 The format and content of the language string are
 implementation-defined.   One suggested syntax is to compose
 the language string of three parts;  a  ``language  part'',  a

@@ -92,7 +92,6 @@ value (if no new value is specified) to a new widget data record.
 .B XtSetValues
 then calls the set_values procedures for the widget in superclass-to-subclass
 order.
-.IN "hook"
 If the widget has any non-NULL set_values_hook fields,
 these are called immediately after the
 corresponding set_values procedure.

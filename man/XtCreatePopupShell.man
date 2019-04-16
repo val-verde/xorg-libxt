@@ -63,7 +63,6 @@ The
 function ensures that the specified class is a subclass of
 .B Shell
 and, rather than using insert_child to attach the widget to the parent's
-.IN "insert_child procedure"
 children list, attaches the shell to the parent's pop-ups list directly.
 .LP
 A spring-loaded pop-up invoked from a translation table already must exist
