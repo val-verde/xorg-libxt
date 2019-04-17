@@ -38,7 +38,7 @@ symbolic macro
 <function>XtSpecificationRelease</function>.
 </para>
 <programlisting>
-#define XtSpecificationRelease 6
+#define XtSpecificationRelease 7
 </programlisting>
 <para>
 As the symbol

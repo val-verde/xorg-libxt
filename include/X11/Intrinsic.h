@@ -61,7 +61,7 @@ in this Software without prior written authorization from The Open Group.
 #include <string.h>		/* for XtNewString */
 #endif /* XT_BC else */
 
-#define XtSpecificationRelease 6
+#define XtSpecificationRelease 7
 
 /*
  * As used in its function interface, the String type of libXt can be readonly.
