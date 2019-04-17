@@ -173,7 +173,6 @@ and proceeds down to the subclass chain to the parent's constraint resources.
 If the argument list contains a resource name that is not found in any of the
 resource lists searched,
 the value at the corresponding address is not modified.
-.IN "hook"
 Finally, if the get_values_hook procedures are non-NULL,
 they are called in superclass-to-subclass order after
 all the resource values have been fetched by

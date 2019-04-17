@@ -114,7 +114,6 @@ it will be passed along to
 .BR XtFindFile .
 If the \fIpath\fP argument is NULL, the value of the
 .B \s-1XFILESEARCHPATH\s+1
-.IN "XFILESEARCHPATH" "" "@DEF@"
 environment variable will be passed to
 .BR XtFindFile .
 If
