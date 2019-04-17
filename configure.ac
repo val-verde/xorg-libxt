@@ -131,7 +131,7 @@ AC_ARG_ENABLE(geo-tattler, AS_HELP_STRING([--enable-geo-tattler], [Enable geo-ta
 	GEO_TATTLER="$enableval", GEO_TATTLER="no")
 AC_MSG_RESULT($GEO_TATTLER)
 if test "x$GEO_TATTLER" = "xyes" ; then
-	AC_DEFINE(XT_GEO_TATTLER, 1, [Define to 1 to use standard C const feature.])
+	AC_DEFINE(XT_GEO_TATTLER, 1, [Define to 1 to enable geo-tattler traces.])
 fi
 
 # --enable-unit-tests
