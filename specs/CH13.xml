@@ -824,7 +824,7 @@ in any <code>XmRowColumn</code>.
 </listitem>
 <listitem>
 <para>
-X11R6.4 added
+X11R6.4 (1998) added
 <xref linkend='Resource_Configuration_Management' />.
 The release notes explain that by saying
 <blockquote>
@@ -843,6 +843,21 @@ is not a standard part of the X Toolkit Intrinsics (libXt).
 It is neither an X Consortium standard nor an X Project Team specification.
 </para>
 </blockquote>
+</para>
+</listitem>
+<listitem>
+<para>
+X11R6.5 (2000) documented a bug-fix for XtAppPeekEvent in the release notes,
+stating that it now worked as described in the specification.
+It also modified the description of XtAppPeekEvent in the specification.
+Previously the specification stated that no known implementations behaved
+as specified.
+</para>
+</listitem>
+<listitem>
+<para>
+Subsequent releases X11R6.6 (2001) through X11R6.9
+did not document any new or improved features.
 </para>
 </listitem>
 </itemizedlist>
