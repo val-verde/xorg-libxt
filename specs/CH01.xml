@@ -1754,9 +1754,9 @@ static XtResource resources[] = {
 }
 
 /* Forward declarations of procedures */
-static void ClassInitialize();
-static void Initialize();
-static void Realize();
+static void ClassInitialize(void);
+static void Initialize(Widget, Widget, ArgList, Cardinal*);
+static void Realize(Widget, XtValueMask*, XSetWindowAttributes*);
 static void SetText();
 static void GetText();
      .
@@ -2297,7 +2297,7 @@ a class structure is constant.
 The following example provides the class initialization procedure for a Label class.
 </para>
 <programlisting>
-static void ClassInitialize()
+static void ClassInitialize(void)
 {
      XtSetTypeConverter(XtRString, XtRJustify, CvtStringToJustify,
           NULL, 0, XtCacheNone, NULL);

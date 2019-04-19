@@ -266,7 +266,7 @@ The Intrinsics define the following resource types:
     </row>
     <row>
       <entry><function>XtRFunction</function></entry>
-      <entry>(*)()</entry>
+      <entry>(*)(Widget)</entry>
     </row>
     <row>
       <entry><function>XtRGeometry</function></entry>
