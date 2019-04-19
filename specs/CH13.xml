@@ -779,7 +779,7 @@ which returns a list of the X displays associated with an application context.
 <para>
 The Toolkit was proposed in X10R4, released at the end of 1986.
 The X11R6 documentation was completed in mid&ndash;1994.
-Over most of the twelve years through X11R6.9,
+Over most of the eleven years through X11R6.9,
 only minor changes were made to the specification.
 Some changes are documented only in the release notes:
 </para>
@@ -856,8 +856,198 @@ as specified.
 </listitem>
 <listitem>
 <para>
-Subsequent releases X11R6.6 (2001) through X11R6.9
+Subsequent releases X11R6.6 (2001) through X11R6.9 (2005)
 did not document any new or improved features.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Throughout this interval,
+there were undocumented fixes and improvements made to the X Toolkit library.
+The documentation was modified to fix minor errors,
+improve the formatting, and
+update version numbers.
+</para>
+</sect2>
+<sect2 id="Changes_During_X11R7">
+<title>Changes During X11R7</title>
+<para>
+X11R7 releases starting in 2005 continued this trend,
+converting the documentation from nroff to sgml.
+X11R7.7 (2012) provides the same Intrinsics specification
+(aside from details of formatting and version numbers) as X11R6 (1995).
+</para>
+<para>
+The updates for this specification are a continuation of X11R7.7,
+because (as of April 2019) there are no plans for an X11R7.8 release.
+</para>
+</sect2>
+<sect2 id="Converting_to_Standard_C">
+<title>Converting to Standard C</title>
+<para>
+The Intrinsics specification was first released with X11R3 in 1989.
+That was too early to take Standard C (i.e., ANSI C) into account.
+Because vendors generally did not provide a no-cost Standard C compiler,
+the X Toolkit library initially supported both K&amp;R and ANSI C.
+The X11R5 release notes mention using gcc, with some caveats.
+As a result, the specification and implementation gave equal attention
+to both K&amp;R and ANSI C.
+</para>
+<para>
+This example shows how a function prototype was used in the C header files:
+</para>
+<programlisting>
+extern Display *XtOpenDisplay(
+#if NeedFunctionPrototypes
+    XtAppContext        /* app_context */,
+    _Xconst _XtString   /* display_string */,
+    _Xconst _XtString   /* application_name */,
+    _Xconst _XtString   /* application_class */,
+    XrmOptionDescRec*   /* options */,
+    Cardinal            /* num_options */,
+    int*                /* argc */,
+    char**              /* argv */
+#endif
+);
+</programlisting>
+<para>
+The parameters for the ANSI C prototype were conditionally compiled.
+Used with a K&amp;R compiler, those parameters were ignored.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+The X Toolkit library used <code>const</code> in just a few cases.
+The specification did not mention it at all.
+</para>
+<para>
+Over time, that was seen as a problem,
+partly because of gcc's warning options
+such as <emphasis remap='I'>write-strings</emphasis>,
+introduced in early 1988 (released with gcc 1.27 in late 1988).
+Quoting from gcc 2.58's documentation (late 1993):
+<programlisting>
+`-Wwrite-strings'
+     Give string constants the type `const char[LENGTH]' so that
+     copying the address of one into a non-`const' `char *' pointer
+     will get a warning.  These warnings will help you find at compile
+     time code that can try to write into a string constant, but only
+     if you have been very careful about using `const' in declarations
+     and prototypes.  <emphasis remap='I'>Otherwise, it will just be a nuisance; this is
+     why we did not make `-Wall' request these warnings.</emphasis>
+</programlisting>
+</para>
+<para>
+Others did not agree that it was a nuisance. Besides the obvious advantage
+of improving program correctness, making a symbol &ldquo;const&rdquo;
+gave the compiler and linker a hint that the symbol could be put into
+the text (read-only) section, eliminating some steps needed by the linker
+to adjust addresses and thereby reducing the time it took to load a
+program into memory.
+</para>
+<para>
+Other gcc warning options (such as
+such as <emphasis remap='I'>cast-qual</emphasis>)
+are useful for improving programs.
+They give similar information, because unless told otherwise,
+gcc would treat string values as nonwritable.
+Quoting from gcc 1.27:
+<programlisting>
+   * GNU CC normally makes string constants read-only.  If several
+     identical-looking string constants are used, GNU CC stores only
+     one copy of the string.
+     ...
+     The best solution to these problems is to change the program to
+     use `char'-array variables with initialization strings for these
+     purposes instead of string constants.  But if this is not
+     possible, you can use the `-fwritable-strings' flag, which
+     directs GNU CC to handle string constants the same way most C
+     compilers do.
+</programlisting>
+and
+<programlisting>
+    `-fwritable-strings'
+          Store string constants in the writable data segment and
+          don't uniquize them.  This is for compatibility with old
+          programs which assume they can write into string constants.
+          Writing into string constants is a very bad idea;
+          ``constants'' should be constant.
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>
+Several prototypes in the implementation
+use the private type <code>_XtString</code>.
+The specification and implementation also used a <code>String</code>
+type without explaining when it is appropriate.
+<programlisting>
+typedef char *String;
+
+/* We do this in order to get "const" declarations to work right.  We
+ * use _XtString instead of String so that C++ applications can
+ * #define String to something else if they choose, to avoid conflicts
+ * with other C++ libraries.
+ */
+#define _XtString char*
+</programlisting>
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Other features of Standard C were neglected in the specification because
+it was accommodating K&amp;R C:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+K&amp;R C has no <code>void</code> keyword.
+The specification used it for return-types,
+but not to indicate an empty parameter list.
+The specification also stated that
+<code>void*</code> would be used for the <code>XtPointer</code> type.
+</para>
+<para>
+The conversion to sgml lost the <code>void</code> return-type.
+</para>
+</listitem>
+<listitem>
+<para>
+Standard C uses an ellipsis for variable-length argument lists, e.g., for
+<xref linkend='XtVaAppCreateShell' />.
+Again, there was a conditional-compilation symbol
+(<code>NeedVarargsPrototypes</code>)
+to handle the different forms used.
+Here is an example:
+<programlisting>
+#if NeedVarargsPrototypes
+void
+XtVaGetApplicationResources(Widget widget, XtPointer base, XtResourceList resources, Cardinal num_resources, ...)
+#else
+/*VARARGS4*/
+void XtVaGetApplicationResources(widget, base, resources, num_resources, va_alist)
+    Widget widget;
+    XtPointer base;
+    XtResourceList resources;
+    Cardinal num_resources;
+    va_dcl
+#endif
+</programlisting>
+</para>
+<para>
+One problem with the conditional-compilation was
+that it was easy to make a mistake with the order
+of parameters between the two forms.
+Developers would frequently group together parameters
+which used the same type, whether or not they were adjacent in
+the Standard C prototype.
+</para>
+<para>
+A comment in the X11R4 header file said that this was temporary,
+until function prototypes worked everywhere.
+That was finally removed in X11R6.7 (fourteen years later).
+However, the subsequent conversion to sgml
+lost the ellipsis from the prototypes shown in the specification.
 </para>
 </listitem>
 </itemizedlist>
