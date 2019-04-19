@@ -991,6 +991,52 @@ typedef char *String;
  */
 #define _XtString char*
 </programlisting>
+That is, the developers were providing for some workaround to allow
+C++ applications to use the stricter compiler checking
+associated with <code>const</code>.
+</para>
+</listitem>
+<listitem>
+<para>
+The <code>String</code> type is not the only type used in the
+prototypes for the X Toolkit library.
+Its developers were also concerned with porting the library
+to platforms with different size-constraints.
+They defined different types (used in the function prototypes)
+depending on whether a &ldquo;wide&rdquo; parameter type was appropriate: 
+<programlisting>
+/* _Xt names are private to Xt implementation, do not use in client code */
+#if NeedWidePrototypes
+#define _XtBoolean	int
+#define _XtDimension	unsigned int
+#define _XtKeyCode	unsigned int
+#define _XtPosition	int
+#define _XtXtEnum	unsigned int
+#else
+#define _XtBoolean	Boolean
+#define _XtDimension	Dimension
+#define _XtKeyCode	KeyCode
+#define _XtPosition	Position
+#define _XtXtEnum	XtEnum
+#endif /* NeedWidePrototypes */
+</programlisting>
+and
+<programlisting>
+#ifdef CRAY
+typedef long		Boolean;
+typedef char*		XtArgVal;
+typedef long		XtEnum;
+#else
+typedef char		Boolean;
+typedef long		XtArgVal;
+typedef unsigned char	XtEnum;
+#endif
+</programlisting>
+In practice, wide-prototypes are rarely used, not well supported.
+The specification did not clarify the distinction
+between <code>Bool</code> (mentioned as a resource type)
+and <code>Boolean</code> (used in all of the data structures).
+The implementation used both, predominantly the latter.
 </para>
 </listitem>
 </itemizedlist>
