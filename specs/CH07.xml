@@ -391,7 +391,7 @@ are of type
 
 <funcsynopsis id='XtBlockHookProc'>
 <funcprototype>
-<funcdef>void <function>*XtBlockHookProc</function></funcdef>
+<funcdef>typedef void <function>*XtBlockHookProc</function></funcdef>
    <paramdef>XtPointer <parameter>client_data</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -532,7 +532,7 @@ type
 
 <funcsynopsis id='XtTimerCallbackProc'>
 <funcprototype>
-<funcdef>void <function>*XtTimerCallbackProc</function></funcdef>
+<funcdef>typedef void <function>*XtTimerCallbackProc</function></funcdef>
    <paramdef>XtPointer <parameter>client_data</parameter></paramdef>
    <paramdef>XtIntervalId *<parameter>timer</parameter></paramdef>
 </funcprototype>

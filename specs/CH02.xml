@@ -3189,7 +3189,7 @@ The initialize_hook procedure pointer is of type
 
 <funcsynopsis id='XtArgsProc'>
 <funcprototype>
-  <funcdef>typedef void<function>(*XtArgsProc)</function></funcdef>
+  <funcdef>typedef void <function>(*XtArgsProc)</function></funcdef>
   <paramdef>Widget <parameter>w</parameter></paramdef>
   <paramdef>ArgList <parameter>args</parameter></paramdef>
   <paramdef>Cardinal * <parameter>num_args</parameter></paramdef>

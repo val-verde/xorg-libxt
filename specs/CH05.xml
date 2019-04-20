@@ -406,7 +406,7 @@ in the shell widget instance record is of type
 
 <funcsynopsis id='XtCreatePopupChildProc'>
 <funcprototype>
-<funcdef>void <function>*XtCreatePopupChildProc</function></funcdef>
+<funcdef>typedef void <function>*XtCreatePopupChildProc</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>

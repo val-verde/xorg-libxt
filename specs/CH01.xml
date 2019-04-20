@@ -2226,7 +2226,7 @@ The class_part_initialize procedure pointer is of type
 
 <funcsynopsis>
 <funcprototype>
-  <funcdef>void <function>(*XtWidgetClassProc)(WidgetClass)</function></funcdef>
+  <funcdef>typedef void <function>(*XtWidgetClassProc)(WidgetClass)</function></funcdef>
   <paramdef>WidgetClass<parameter> widget_class</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>

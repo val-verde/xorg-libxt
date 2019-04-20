@@ -917,7 +917,7 @@ Used with a K&amp;R compiler, those parameters were ignored.
 <itemizedlist>
 <listitem>
 <para>
-The X Toolkit library used <code>const</code> in just a few cases.
+The X Toolkit library used <type>const</type> in just a few cases.
 The specification did not mention it at all.
 </para>
 <para>
@@ -978,8 +978,8 @@ and
 <listitem>
 <para>
 Several prototypes in the implementation
-use the private type <code>_XtString</code>.
-The specification and implementation also used a <code>String</code>
+use the private type <type>_XtString</type>.
+The specification and implementation also used a <type>String</type>
 type without explaining when it is appropriate.
 <programlisting>
 typedef char *String;
@@ -993,12 +993,12 @@ typedef char *String;
 </programlisting>
 That is, the developers were providing for some workaround to allow
 C++ applications to use the stricter compiler checking
-associated with <code>const</code>.
+associated with <type>const</type>.
 </para>
 </listitem>
 <listitem>
 <para>
-The <code>String</code> type is not the only type used in the
+The <type>String</type> type is not the only type used in the
 prototypes for the X Toolkit library.
 Its developers were also concerned with porting the library
 to platforms with different size-constraints.
@@ -1034,8 +1034,8 @@ typedef unsigned char	XtEnum;
 </programlisting>
 In practice, wide-prototypes are rarely used, not well supported.
 The specification did not clarify the distinction
-between <code>Bool</code> (mentioned as a resource type)
-and <code>Boolean</code> (used in all of the data structures).
+between <type>Bool</type> (mentioned as a resource type)
+and <type>Boolean</type> (used in all of the data structures).
 The implementation used both, predominantly the latter.
 </para>
 </listitem>
@@ -1047,14 +1047,14 @@ it was accommodating K&amp;R C:
 <itemizedlist>
 <listitem>
 <para>
-K&amp;R C has no <code>void</code> keyword.
+K&amp;R C has no <type>void</type> keyword.
 The specification used it for return-types,
 but not to indicate an empty parameter list.
 The specification also stated that
-<code>void*</code> would be used for the <code>XtPointer</code> type.
+<type>void*</type> would be used for the <type>XtPointer</type> type.
 </para>
 <para>
-The conversion to sgml lost the <code>void</code> return-type.
+The conversion to sgml lost the <type>void</type> return-type.
 </para>
 </listitem>
 <listitem>
