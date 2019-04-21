@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
-[ <!ENTITY % defs SYSTEM "defs.ent"> %defs;
+[
+ <!ENTITY % defs SYSTEM "defs.ent"> %defs;
+ <!ENTITY % xt_defs SYSTEM "libXt.ent"> %xt_defs;
 ]>
 
 <book id="intrinsics" lang="en">
 
 <bookinfo>
-   <title>X Toolkit Intrinsics - C Language Interface</title>
+   <title>X Toolkit Intrinsics &ndash; C Language Interface</title>
    <subtitle>X Window System</subtitle>
    <releaseinfo>X Version 11, Release &fullrelvers;</releaseinfo>
-   <printhistory><para>First Revision - April, 1994</para></printhistory>
+   <releaseinfo>X Toolkit Intrinsics Version &package_version;</releaseinfo>
+   <printhistory><para>First Revision &ndash; April, 1994</para></printhistory>
    <authorgroup>
       <author>
          <firstname>Joel</firstname><surname>McCormack</surname>
@@ -34,8 +37,8 @@
          </affiliation>
       </author>
    </authorgroup>
-   <printhistory><para>version 7 edited by Thomas E. Dickey <ulink url="https://invisible-island.net"/></para></printhistory>
    <printhistory><para>version 6 edited by Donna Converse X Consortium, Inc.</para></printhistory>
+   <printhistory><para>version 7 edited by Thomas E. Dickey <ulink url="https://invisible-island.net"/></para></printhistory>
 
 <legalnotice>
 <para>XWindow System is a trademark of X Consortium, Inc.</para>

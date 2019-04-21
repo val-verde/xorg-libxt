@@ -203,6 +203,7 @@ AC_CONFIG_FILES([Makefile
 		include/Makefile
 		man/Makefile
 		specs/Makefile
+		specs/libXt.ent
 		test/Makefile
 		xt.pc])
 AC_OUTPUT
