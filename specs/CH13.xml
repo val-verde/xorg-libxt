@@ -1097,6 +1097,54 @@ lost the ellipsis from the prototypes shown in the specification.
 </para>
 </listitem>
 </itemizedlist>
+<para>
+Support for K&amp;R C was removed from the header files in 2003
+(released in X11R6.7),
+and from the library source in 2004
+(released in X11R6.9).
+The wide-prototype feature is still present in 2019, but generally unused.
+</para>
+<para>
+Removing support for K&amp;R C did not address the issues of <type>const</type>.
+That was done in 2019:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+The <type>String</type> is conditionally defined,
+to provide compatibility with existing applications.
+</para>
+</listitem>
+<listitem>
+<para>
+If the symbol <symbol>_CONST_X_STRING</symbol> is defined,
+<type>String</type> is read-only as shown here.
+<programlisting>
+/*
+ * As used in its function interface, the String type of libXt can be readonly.
+ * But compiling libXt with this feature may require some internal changes,
+ * e.g., casts and occasionally using a plain "char*".
+ */
+#ifdef _CONST_X_STRING
+typedef const char *String;
+#else
+typedef char *String;
+#endif
+</programlisting>
+</para>
+</listitem>
+<listitem>
+<para>
+Applications which use the newer <type>const</type> feature must define
+<symbol>_CONST_X_STRING</symbol> to enable this feature.
+</para>
+</listitem>
+<listitem>
+<para>
+By default, the X Toolkit library uses the <type>const</type> feature.
+</para>
+</listitem>
+</itemizedlist>
 </sect2>
 </sect1>
 </chapter>
