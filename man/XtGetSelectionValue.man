@@ -38,6 +38,7 @@
 .SH NAME
 XtGetSelectionValue, XtGetSelectionValues \- obtain selection values
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetSelectionValue(Widget \fIw\fP,
 Atom \fIselection\fP,

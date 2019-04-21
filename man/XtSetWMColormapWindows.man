@@ -37,6 +37,7 @@
 .SH NAME
 XtSetWMColormapWindows \- Set the value of the WM_COLORMAP_WINDOWS property
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtSetWMColormapWindows(Widget \fIwidget\fP, Widget* \fIlist\fP, Cardinal
 \fIcount\fP);

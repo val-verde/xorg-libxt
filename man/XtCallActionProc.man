@@ -37,6 +37,7 @@
 .SH NAME
 XtCallActionProc \- invoke an action procedure directly
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtCallActionProc(Widget \fIwidget\fP, const char *\fIaction\fP,
 XEvent *\fIevent\fP, String *\fIparams\fP, Cardinal \fInum_params\fP);

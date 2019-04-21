@@ -38,6 +38,7 @@
 .SH NAME
 XtAppAddTimeOut, XtRemoveTimeOut \- register and remove timeouts
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtIntervalId XtAppAddTimeOut(XtAppContext \fIapp_context\fP, unsigned long
 \fIinterval\fP, XtTimerCallbackProc \fIproc\fP, XtPointer \fIclient_data\fP);

@@ -37,6 +37,7 @@
 .SH NAME
 XtAppSetExitFlag, XtAppGetExitFlag \- thread support functions
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAppSetExitFlag(XtAppContext \fIapp_context\fP);
 .HP

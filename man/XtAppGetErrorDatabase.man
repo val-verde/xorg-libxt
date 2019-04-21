@@ -38,6 +38,7 @@
 .SH NAME
 XtAppGetErrorDatabase, XtAppGetErrorDatabaseText \- obtain error database
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XrmDatabase *XtAppGetErrorDatabase(\^XtAppContext \fIapp_context\fP);
 .HP

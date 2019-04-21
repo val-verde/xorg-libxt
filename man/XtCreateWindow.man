@@ -38,6 +38,7 @@
 .SH NAME
 XtCreateWindow \- window creation convenience function
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtCreateWindow(Widget \fIw\fP, unsigned int \fIwindow_class\fP, Visual
 *\fIvisual\fP, XtValueMask \fIvalue_mask\fP, XSetWindowAttributes

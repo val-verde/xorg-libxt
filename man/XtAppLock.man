@@ -37,6 +37,7 @@
 .SH NAME
 XtAppLock, XtAppUnlock \- lock and unlock application context
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAppLock(XtAppContext \fIapp_context\fP);
 .HP

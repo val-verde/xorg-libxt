@@ -38,6 +38,7 @@
 .SH NAME
 XtCreateApplicationShell \- create top-level widget instance
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Widget XtCreateApplicationShell(const char *\fIname\fP, WidgetClass \fIwidget_class\fP,
 ArgList \fIargs\fP, Cardinal \fInum_args\fP);

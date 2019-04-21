@@ -39,6 +39,7 @@
 .SH NAME
 XtCreateWidget, XtVaCreateWidget, XtCreateManagedWidget, XtVaCreateManagedWidget, XtDestroyWidget \- create and destroy widgets
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Widget XtCreateWidget(const char *\fIname\fP, WidgetClass \fIwidget_class\fP,
 Widget \fIparent\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);

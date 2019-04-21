@@ -37,6 +37,7 @@
 .SH NAME
 XtOpenApplication, XtVaOpenApplication \- initialize, open, or close a display
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Widget XtOpenApplication(XtAppContext *\fIapp_context_return\fP,
 const char *\fIapplication_class\fP,

@@ -37,6 +37,7 @@
 .SH NAME
 XtAllocateGC \- obtain a sharable GC with modifiable fields
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 GC XtAllocateGC(Widget \fIw\fP, Cardinal \fIdepth\fP, XtGCMask
 \fIvalue_mask\fP, XGCValues *\fIvalues\fP, XtGCMask \fIdynamic_mask\fP,

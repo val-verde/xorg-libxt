@@ -37,6 +37,7 @@
 .SH NAME
 XtName \- obtain widget's name
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 String XtName(Widget \fIw\fP);
 .SH ARGUMENTS

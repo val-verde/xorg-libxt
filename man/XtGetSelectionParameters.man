@@ -37,6 +37,7 @@
 .SH NAME
 XtGetSelectionParameters \- retrieve target parameters for a selection request with a single target
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetSelectionParameters(Widget \fIowner\fP, Atom \fIselection\fP,
 XtRequestId \fIrequest_id\fP, Atom *\fItype_return\fP, XtPointer

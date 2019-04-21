@@ -38,6 +38,7 @@
 .SH NAME
 XtDisplayInitialize, XtOpenDisplay, XtDatabase, XtScreenDatabase, XtCloseDisplay \- initialize, open, or close a display
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtDisplayInitialize(XtAppContext \fIapp_context\fP,
 Display *\fIdisplay\fP,

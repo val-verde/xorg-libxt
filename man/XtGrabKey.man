@@ -38,6 +38,7 @@
 .SH NAME
 XtGrabKey, XtUngrabKey, XtGrabKeyboard, XtUngrabKeyboard, XtGrabButton, XtUngrabButton, XtGrabPointer, XtUngrabPointer \- manage grabs
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGrabKey(Widget \fIwidget\fP, KeyCode \fIkeycode\fP, Modifiers
 \fImodifiers\fP, Boolean \fIowner_events\fP, int \fIpointer_mode\fP, int

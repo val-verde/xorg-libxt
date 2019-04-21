@@ -38,6 +38,7 @@
 .SH NAME
 XtGetSubresources, XtVaGetSubresources \- obtain subresources
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetSubresources(Widget \fIw\fP,
 XtPointer \fIbase\fP,

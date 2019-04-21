@@ -37,6 +37,7 @@
 .SH NAME
 XtAppSetTypeConverter, XtSetTypeConverter \- register resource converter
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAppSetTypeConverter(XtAppContext \fIapp_context\fP,
 const char *\fIfrom_type\fP, const char * \fIto_type\fP,

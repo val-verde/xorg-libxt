@@ -37,6 +37,7 @@
 .SH NAME
 XtError, XtSetErrorHandler, XtSetWarningHandler, XtWarning \- low-level error handlers
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtError(const char *\fImessage\fP);
 .HP

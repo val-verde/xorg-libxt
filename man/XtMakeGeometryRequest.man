@@ -38,6 +38,7 @@
 .SH NAME
 XtMakeGeometryRequest, XtMakeResizeRequest \- make geometry manager request
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtGeometryResult XtMakeGeometryRequest(Widget \fIw\fP, XtWidgetGeometry
 *\fIrequest\fP, XtWidgetGeometry *\fIreply_return\fP);

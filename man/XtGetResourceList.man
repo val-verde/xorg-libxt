@@ -38,6 +38,7 @@
 .SH NAME
 XtGetResourceList, XtGetConstraintResourceList \- obtain resource list
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetResourceList(WidgetClass \fIclass\fP, XtResourceList
 *\fIresources_return\fP, Cardinal *\fInum_resources_return\fP);

@@ -39,6 +39,7 @@
 .SH NAME
 XtAppNextEvent, XtAppPending, XtAppPeekEvent, XtAppProcessEvent, XtDispatchEvent, XtAppMainLoop \- query and process events and input
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAppNextEvent(XtAppContext \fIapp_context\fP, XEvent
 *\fIevent_return\fP);

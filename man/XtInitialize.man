@@ -37,6 +37,7 @@
 .SH NAME
 XtInitialize \- initialize
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Widget XtInitialize(const char *\fIshell_name\fP,
 const char *\fIapplication_class\fP,

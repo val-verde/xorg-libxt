@@ -38,6 +38,7 @@
 .SH NAME
 XtGetErrorDatabase, XtGetErrorDatabaseText \- obtain error database
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XrmDatabase *XtGetErrorDatabase(void);
 .HP

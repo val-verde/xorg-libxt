@@ -38,6 +38,7 @@
 .SH NAME
 XtBuildEventMask \- retrieve a widget's event mask
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 EventMask XtBuildEventMask(Widget \fIw\fP);
 .SH ARGUMENTS

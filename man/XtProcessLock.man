@@ -37,6 +37,7 @@
 .SH NAME
 XtProcessLock, XtProcessUnlock \- lock and unlock process
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtProcessLock(void);
 .HP

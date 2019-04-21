@@ -39,6 +39,7 @@
 .SH NAME
 XtAppError, XtAppSetErrorHandler, XtAppSetWarningHandler, XtAppWarning \- low-level error handlers
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAppError(XtAppContext \fIapp_context\fP, const char *\fImessage\fP);
 .HP

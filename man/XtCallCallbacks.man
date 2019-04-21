@@ -37,6 +37,7 @@
 .SH NAME
 XtCallCallbacks, XtCallCallbackList, XtHasCallbacks \- process callbacks
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtCallCallbacks(Widget \fIw\fP, const char *\fIcallback_name\fP,
 XtPointer \fIcall_data\fP);

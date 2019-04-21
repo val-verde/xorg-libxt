@@ -37,6 +37,7 @@
 .SH NAME
 XtResolvePathname \- search for a file using standard substitution
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 char * XtResolvePathname(Display *\fIdisplay\fP,
 const char *\fItype\fP,

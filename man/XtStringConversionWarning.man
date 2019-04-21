@@ -38,6 +38,7 @@
 .SH NAME
 XtStringConversionWarning \- issue a conversion warning message
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtStringConversionWarning(const char *\fIsrc\fP, const char *\fIdst_type\fP);
 .SH ARGUMENTS

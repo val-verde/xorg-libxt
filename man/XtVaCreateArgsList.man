@@ -38,6 +38,7 @@
 .SH NAME
 XtVaCreateArgsList \- dynamically allocate a varargs list
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtVarArgsList XtVaCreateArgsList(XtPointer \fIunused\fP, ...\^);
 .SH ARGUMENTS

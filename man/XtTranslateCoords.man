@@ -38,6 +38,7 @@
 .SH NAME
 XtTranslateCoords \- translate widget coordinates
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtTranslateCoords(Widget \fIw\fP,
 Position \fIx\fP,

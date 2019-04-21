@@ -38,6 +38,7 @@
 .SH NAME
 XtDisplayStringConversionWarning \- issue a conversion warning message
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtDisplayStringConversionWarning(Display* \fIdisplay\fP,
 const char *\fIfrom_value\fP,

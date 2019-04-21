@@ -37,6 +37,7 @@
 .SH NAME
 XtGetApplicationNameAndClass \- retrieve application name and class
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetApplicationNameAndClass(Display* \fIdisplay\fP, String*
 \fIname_return\fP, String* \fIclass_return\fP);

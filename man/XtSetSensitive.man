@@ -38,6 +38,7 @@
 .SH NAME
 XtSetSensitive, XtIsSensitive \- set and check a widget's sensitivity state
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtSetSensitive(Widget \fIw\fP, Boolean \fIsensitive\fP);
 .HP

@@ -39,6 +39,7 @@
 .SH NAME
 XtAddCallback, XtAddCallbacks, XtRemoveCallback, XtRemoveCallbacks, XtRemoveAllCallbacks \- add and remove callback procedures
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAddCallback(Widget \fIw\fP, const char *\fIcallback_name\fP, XtCallbackProc
 \fIcallback\fP, XtPointer \fIclient_data\fP);

@@ -37,6 +37,7 @@
 .SH NAME
 XtOffset, XtOffsetOf, XtNumber \- determine the byte offset or number of array elements
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Cardinal XtOffset(Type \fIpointer_type\fP, Field \fIfield_name\fP);
 .HP

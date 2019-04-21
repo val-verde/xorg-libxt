@@ -37,6 +37,7 @@
 .SH NAME
 XtDisplayToApplicationContext \- obtain an application context
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtAppContext XtDisplayToApplicationContext(Display* \fIdpy\fP);
 .SH ARGUMENTS

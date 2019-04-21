@@ -38,6 +38,7 @@
 .SH NAME
 XtCreateSelectionRequest, XtSendSelectionRequest, XtCancelSelectionRequest \- bundle multiple selection conversion requests into a single request using MULTIPLE target
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtCreateSelectionRequest(Widget \fIrequestor\fP, Atom \fIselection\fP);
 .HP

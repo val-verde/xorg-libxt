@@ -38,6 +38,7 @@
 .SH NAME
 XtMalloc, XtCalloc, XtRealloc, XtFree, XtNew, XtNewString \- memory management functions
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 char *XtMalloc(Cardinal \fIsize\fP);
 .HP

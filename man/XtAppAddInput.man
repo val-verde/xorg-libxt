@@ -38,6 +38,7 @@
 .SH NAME
 XtAppAddInput, XtRemoveInput \- register and remove an input source
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtInputId XtAppAddInput(XtAppContext \fIapp_context\fP, int \fIsource\fP,
 XtPointer \fIcondition\fP, XtInputCallbackProc \fIproc\fP, XtPointer

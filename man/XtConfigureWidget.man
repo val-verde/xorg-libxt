@@ -38,6 +38,7 @@
 .SH NAME
 XtConfigureWidget, XtMoveWidget, XtResizeWidget \- move and resize widgets
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtConfigureWidget(Widget \fIw\fP, Position \fIx\fP, Position \fIy\fP,
 Dimension \fIwidth\fP, Dimension \fIheight\fP, Dimension \fIborder_width\fP);

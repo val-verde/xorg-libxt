@@ -38,6 +38,7 @@
 .SH NAME
 XtConvert, XtDirectConvert \- invoke resource converters
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtConvert(Widget \fIw\fP,
 const char *\fIfrom_type\fP, XrmValuePtr \fIfrom\fP,

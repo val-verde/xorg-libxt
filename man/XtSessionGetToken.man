@@ -38,6 +38,7 @@
 .SH NAME
 XtSessionGetToken, XtSessionReturnToken \- token management for checkpointing
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtCheckpointToken XtSessionGetToken(Widget \fIw\fP);
 .HP

@@ -39,6 +39,7 @@
 .SH NAME
 XtSetKeyTranslator, XtTranslateKeycode, XtRegisterCaseConverter, XtConvertCase \- convert KeySym to KeyCodes
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtSetKeyTranslator(Display *\fIdisplay\fP, XtKeyProc \fIproc\fP);
 .HP

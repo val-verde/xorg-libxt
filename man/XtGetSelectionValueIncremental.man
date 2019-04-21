@@ -37,6 +37,7 @@
 .SH NAME
 XtGetSelectionValueIncremental, XtGetSelectionValuesIncremental \- obtain selection values
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetSelectionValueIncremental(Widget \fIw\fP, Atom \fIselection\fP, Atom
 \fItarget\fP, XtSelectionCallbackProc \fIcallback\fP, XtPointer

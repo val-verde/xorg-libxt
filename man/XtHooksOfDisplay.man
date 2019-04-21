@@ -37,6 +37,7 @@
 .SH NAME
 XtHooksOfDisplay \- external agent access points
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Widget XtHooksOfDisplay(Display* \fIdisplay\fP);
 .SH ARGUMENTS

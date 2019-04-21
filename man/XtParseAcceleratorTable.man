@@ -39,6 +39,7 @@
 .SH NAME
 XtParseAcceleratorTable, XtInstallAccelerators, XtInstallAllAccelerators \- managing accelerator tables
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtAccelerators XtParseAcceleratorTable(const char * \fIsource\fP);
 .HP

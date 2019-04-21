@@ -38,6 +38,7 @@
 .SH NAME
 XtAddGrab, XtRemoveGrab \- redirect user input to a modal widget
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAddGrab(Widget \fIw\fP, Boolean \fIexclusive\fP, Boolean
 \fIspring_loaded\fP);

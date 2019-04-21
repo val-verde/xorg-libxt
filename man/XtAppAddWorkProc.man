@@ -38,6 +38,7 @@
 .SH NAME
 XtAppAddWorkProc, XtRemoveWorkProc \- Add and remove background processing procedures
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtWorkProcId XtAppAddWorkProc(XtAppContext \fIapp_context\fP, XtWorkProc
 \fIproc\fP, XtPointer \fIclient_data\fP);

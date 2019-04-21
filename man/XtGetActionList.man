@@ -37,6 +37,7 @@
 .SH NAME
 XtGetActionList \- obtain class action list
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetActionList(WidgetClass \fIwidget_class\fP, XtActionList*
 \fIactions_return\fP, Cardinal* \fInum_actions_return\fP);

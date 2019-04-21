@@ -37,6 +37,7 @@
 .SH NAME
 XtRegisterDrawable \- register a drawable with the Intrinsics event dispatcher
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtRegisterDrawable(Display* \fIdisplay\fP, Drawable \fIdrawable\fP,
 Widget \fIwidget\fP);

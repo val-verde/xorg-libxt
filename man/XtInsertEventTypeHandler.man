@@ -40,6 +40,7 @@ XtInsertEventTypeHandler, XtRemoveEventTypeHandler,
 XtRegisterExtensionSelector, XtSetEventDispatcher, XtDispatchEventToWidget
 \- extension event handling
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtInsertEventTypeHandler(Widget \fIwidget\fP, int \fIevent_type\fP,
 XtPointer \fIselect_data\fP, XtEventHandler \fIproc\fP, XtPointer

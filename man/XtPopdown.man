@@ -38,6 +38,7 @@
 .SH NAME
 XtPopdown, XtCallbackPopdown \- unmap a pop-up
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtPopdown(Widget \fIpopup_shell\fP);
 .HP

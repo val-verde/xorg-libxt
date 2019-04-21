@@ -37,6 +37,7 @@
 .SH NAME
 XtRegisterGrabAction \- register button and key grabs
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtRegisterGrabAction(XtActionProc \fIaction_proc\fP, Boolean
 \fIowner_events\fP, unsigned int \fIevent_mask\fP, int \fIpointer_mode\fP, int

@@ -38,6 +38,7 @@
 .SH NAME
 XtSetKeyboardFocus \- focus events on a child widget
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtSetKeyboardFocus(Widget \fIsubtree\fP, Widget \fIdescendant\fP);
 .SH ARGUMENTS

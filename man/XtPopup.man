@@ -39,6 +39,7 @@
 .SH NAME
 XtPopup, XtPopupSpringLoaded, XtCallbackNone, XtCallbackNonexclusive, XtCallbackExclusive \- map a pop-up
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtPopup(Widget \fIpopup_shell\fP, XtGrabKind \fIgrab_kind\fP);
 .HP

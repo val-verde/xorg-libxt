@@ -39,6 +39,7 @@
 .SH NAME
 XtParseTranslationTable, XtAugmentTranslations, XtOverrideTranslations, XtUninstallTranslations \- manage translation tables
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtTranslations XtParseTranslationTable(const char *\fItable\fP);
 .HP

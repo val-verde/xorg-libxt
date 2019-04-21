@@ -38,6 +38,7 @@
 .SH NAME
 XtMapWidget, XtSetMappedWhenManaged, XtUnmapWidget \- map and unmap widgets
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtMapWidget(Widget \fIw\fP\^);
 .HP
