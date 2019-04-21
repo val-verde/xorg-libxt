@@ -3,6 +3,57 @@
 
 <!-- <acknowledgements> -->
 <dedication>
+<title>Acknowledgments</title>
+
+
+<note>
+<title>Acknowledgments for X11R7</title>
+<para>
+This update to the X11 Intrinsics drops support for K&amp;R C,
+as well as improving its use of Standard C features,
+notably <type>const</type>.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Matt Dew did the initial conversion of this specification from nroff to DocBook.
+</para>
+<para>
+Later, I expanded on that, improving the formatting, as
+well as updating the function prototypes in the specification
+as well as the related manual pages.
+</para>
+</listitem>
+<listitem>
+<para>
+Matthieu Herrb modified the Intrinsics header files to drop support
+for K&amp;R C, leaving the Standard C prototypes.
+</para>
+<para>
+Later, he applied my changes to complete the conversion of the
+library source from a mixture of K&amp;R C and Standard C to
+just use the standard language features.
+</para>
+</listitem>
+<listitem>
+<para>
+Others (including
+Alan Coopersmith,
+Gaetan Nadon,
+Walter Harms,
+and Kevin E. Martin) have worked to
+maintain the library's build-scripts and documentation.
+</para>
+</listitem>
+</itemizedlist>
+<literallayout>
+Thomas E. Dickey
+invisible-island.net
+April 2019
+</literallayout>
+</note>
+
+<note>
 <title>Acknowledgments for X11R6</title>
 
 <para>
@@ -322,5 +373,6 @@ Donna Converse
 X Consortium
 April 1994
 </literallayout>
+</note>
 </dedication>
 <!-- </acknowledgements> -->

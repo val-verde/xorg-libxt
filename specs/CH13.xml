@@ -863,7 +863,7 @@ did not document any new or improved features.
 </itemizedlist>
 <para>
 Throughout this interval,
-there were undocumented fixes and improvements made to the X Toolkit library.
+there were undocumented fixes and improvements made to the X Toolkit Intrinsics library.
 The documentation was modified to fix minor errors,
 improve the formatting, and
 update version numbers.
@@ -888,7 +888,7 @@ because (as of April 2019) there are no plans for an X11R7.8 release.
 The Intrinsics specification was first released with X11R3 in 1989.
 That was too early to take Standard C (i.e., ANSI C) into account.
 Because vendors generally did not provide a no-cost Standard C compiler,
-the X Toolkit library initially supported both K&amp;R and ANSI C.
+the X Toolkit Intrinsics library initially supported both K&amp;R and ANSI C.
 The X11R5 release notes mention using gcc, with some caveats.
 As a result, the specification and implementation gave equal attention
 to both K&amp;R and ANSI C.
@@ -917,7 +917,7 @@ Used with a K&amp;R compiler, those parameters were ignored.
 <itemizedlist>
 <listitem>
 <para>
-The X Toolkit library used <type>const</type> in just a few cases.
+The X Toolkit Intrinsics library used <type>const</type> in just a few cases.
 The specification did not mention it at all.
 </para>
 <para>
@@ -999,7 +999,7 @@ associated with <type>const</type>.
 <listitem>
 <para>
 The <type>String</type> type is not the only type used in the
-prototypes for the X Toolkit library.
+prototypes for the X Toolkit Intrinsics library.
 Its developers were also concerned with porting the library
 to platforms with different size-constraints.
 They defined different types (used in the function prototypes)
@@ -1141,7 +1141,39 @@ Applications which use the newer <type>const</type> feature must define
 </listitem>
 <listitem>
 <para>
-By default, the X Toolkit library uses the <type>const</type> feature.
+By default, the X Toolkit Intrinsics library
+uses the <type>const</type> feature.
+It has been updated to make use of the <type>const</type> feature
+for improved type-checking.
+</para>
+</listitem>
+<listitem>
+<para>
+Because the X Toolkit Intrinsics library uses <type>const</type>,
+some prototypes have been modified.
+For example:
+<itemizedlist>
+<listitem>
+<para>
+Most of the parameters which used <type>String</type> are unmodified; 
+a few (such as the <emphasis remap='I'>argv</emphasis>&ndash;parameters)
+are actually read/write.
+They are now <type>char*</type> parameters.
+</para>
+<para>
+Many of the strings passed to the library are stored in widgets
+without reallocating a copy.
+Those are treated as read-only, and use the <type>String</type> type.
+</para>
+</listitem>
+<listitem>
+<para>
+Each change to the documentation was verified using scripts that
+extracted the function prototypes and used the C compiler to check
+for compatibility.
+</para>
+</listitem>
+</itemizedlist>
 </para>
 </listitem>
 </itemizedlist>
