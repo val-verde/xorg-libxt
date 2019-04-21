@@ -1980,7 +1980,7 @@ All these macros and functions have the same argument description.
 
 <funcsynopsis id='XtIs'>
 <funcprototype>
-  <funcdef>Boolean <function>XtIs<subscript>class</subscript></function></funcdef>
+  <funcdef>Boolean <function>XtIs<subscript>&lt;class&gt;</subscript></function></funcdef>
   <paramdef>Widget<parameter> w</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
