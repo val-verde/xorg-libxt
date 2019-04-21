@@ -3618,7 +3618,7 @@ which simplifies the creation of windows for widgets.
   <paramdef>unsigned int <parameter>window_class</parameter></paramdef>
   <paramdef>Visual * <parameter>visual</parameter></paramdef>
   <paramdef>XtValueMask <parameter>value_mask</parameter></paramdef>
-  <paramdef>XSetWindowAttributes <parameter>attributes</parameter></paramdef>
+  <paramdef>XSetWindowAttributes * <parameter>attributes</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 

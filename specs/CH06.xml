@@ -613,7 +613,7 @@ The geometry_manager procedure pointer in a composite widget class is of type
 
 <funcsynopsis id='XtGeometryHandler'>
 <funcprototype>
-<funcdef>XtGeometryResult <function>*XtGeometryHandler</function></funcdef>
+<funcdef>typedef XtGeometryResult <function>*XtGeometryHandler</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
    <paramdef>XtWidgetGeometry *<parameter>request</parameter></paramdef>
    <paramdef>XtWidgetGeometry *<parameter>geometry_return</parameter></paramdef>

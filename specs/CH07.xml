@@ -1805,7 +1805,7 @@ The accept_focus procedure pointer is of type
 
 <funcsynopsis id='XtAcceptFocusProc'>
 <funcprototype>
-<funcdef>Boolean <function>*XtAcceptFocusProc</function></funcdef>
+<funcdef>typedef Boolean <function>*XtAcceptFocusProc</function></funcdef>
 
    <paramdef>Widget <parameter>w</parameter></paramdef>
    <paramdef>Time *<parameter>time</parameter></paramdef>
