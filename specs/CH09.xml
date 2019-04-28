@@ -2587,7 +2587,8 @@ the address of a function of type
       <para>
 Passes the object for which the resource is being
 converted, or NULL if the converter was invoked by
-XtCallConverter or XtDirectConvert.
+<xref linkend='XtCallConverter' xrefstyle='select: title'/> or
+<xref linkend='XtDirectConvert' xrefstyle='select: title'/>.
       </para>
     </listitem>
   </varlistentry>
@@ -2614,12 +2615,12 @@ conversion argument.
   </varlistentry>
 </variablelist>
 <para>
-When invoked, the XtConvertArgProc procedure must derive a
+When invoked, the <function>XtConvertArgProc</function> procedure must derive a
 conversion argument and store the address and size of the
 argument in the location pointed to by value.
 </para>
 <para>
-In order to permit reentrancy, the XtConvertArgProc should
+In order to permit reentrancy, the <function>XtConvertArgProc</function> should
 return the address of storage whose lifetime is no shorter
 than the lifetime of object.
 If object is NULL,
@@ -2631,7 +2632,8 @@ is removed from the conversion cache.
 </para>
 <para>
 The following example illustrates how to register the
-CvtStringToPixel routine given earlier:
+<function>CvtStringToPixel</function>
+routine given earlier:
 </para>
 <programlisting>
 static XtConvertArgRec colorConvertArgs[] = {
@@ -2670,18 +2672,29 @@ version cache.	This way the cache is smaller and has fewer
 and more widely applicable entries.
 </para>
 <para>
-If any conversion arguments of type XtBaseOffset,
-XtResourceString, XtResourceQuark, and XtWidgetBaseOffset are
-specified for conversions performed by XtGetApplicationResources,
-XtGetSubresources, XtVaGetApplicationResources, or
-XtVaGetSubresources, the arguments are computed with respect
+If any conversion arguments of type
+<type>XtBaseOffset</type>,
+<type>XtResourceString</type>,
+<type>XtResourceQuark</type>,
+and
+<type>XtWidgetBaseOffset</type>
+are
+specified for conversions performed by
+<type>XtGetApplicationResources</type>,
+<type>XtGetSubresources</type>,
+<type>XtVaGetApplicationResources</type>,
+or
+<type>XtVaGetSubresources</type>,
+the arguments are computed with respect
 to the specified widget, not the base address or resource
 list specified in the call.
 </para>
 <para>
-If the XtConvertArgProc modifies the resource database, the
+If the <function>XtConvertArgProc</function> modifies the resource database, the
 changes affect any in‐progress widget creation,
-XtGetApplicationResources, or XtGetSubresources
+<xref linkend='XtGetApplicationResources' xrefstyle='select: title'/>,
+or
+<xref linkend='XtGetSubresources' xrefstyle='select: title'/>
 in an implementation‐defined manner;
 however, insertion of new entries or changes
 to existing entries are allowed and will not directly cause
