@@ -39,6 +39,7 @@
 .SH NAME
 XtCreateApplicationContext, XtDestroyApplicationContext, XtWidgetToApplicationContext, XtToolkitInitialize \- create, destroy, and obtain an application context
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtAppContext XtCreateApplicationContext(void);
 .HP

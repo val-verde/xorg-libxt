@@ -37,6 +37,7 @@
 .SH NAME
 XtAppReleaseCacheRefs \- decrement reference counts for resources
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAppReleaseCacheRefs(XtAppContext \fIapp_context\fP, XtCacheRef*
 \fIrefs\fP);

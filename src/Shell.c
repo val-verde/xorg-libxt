@@ -1055,9 +1055,9 @@ static void TopLevelInitialize(
 	    w->wm.wm_hints.initial_state = IconicState;
 }
 
-static String *NewArgv(int, String *);
-static String *NewStringArray(String *);
-static void FreeStringArray(String *);
+static _XtString *NewArgv(int, _XtString *);
+static _XtString *NewStringArray(_XtString *);
+static void FreeStringArray(_XtString *);
 
 /* ARGSUSED */
 static void ApplicationInitialize(
@@ -1461,7 +1461,7 @@ static void _popup_set_prop(
 				 );
 	}
 
-	classhint.res_name = w->core.name;
+	classhint.res_name = (_XtString) w->core.name;
 	/* For the class, look up to the top of the tree */
 	for (p = (Widget)w; p->core.parent != NULL; p = p->core.parent);
 	if (XtIsApplicationShell(p)) {
@@ -1469,7 +1469,7 @@ static void _popup_set_prop(
 		((ApplicationShellWidget)p)->application.class;
 	} else {
 	    LOCK_PROCESS;
-	    classhint.res_class = XtClass(p)->core_class.class_name;
+	    classhint.res_class = (_XtString) XtClass(p)->core_class.class_name;
 	    UNLOCK_PROCESS;
 	}
 
@@ -1712,7 +1712,7 @@ static void SessionDestroy(
     FreeStringArray(w->session.shutdown_command);
     FreeStringArray(w->session.environment);
     XtFree(w->session.current_dir);
-    XtFree(w->session.program_path);
+    XtFree((_XtString) w->session.program_path);
 #endif /* !XT_NO_SM */
 }
 
@@ -2299,7 +2299,7 @@ static Boolean WMSetValues(
 
 	if (nwmshell->wm.title != owmshell->wm.title) {
 	    XtFree(owmshell->wm.title);
-	    if (! nwmshell->wm.title) nwmshell->wm.title = "";
+	    if (! nwmshell->wm.title) nwmshell->wm.title = (_XtString) "";
 	    nwmshell->wm.title = XtNewString(nwmshell->wm.title);
 	    title_changed = True;
 	} else
@@ -2370,7 +2370,7 @@ static Boolean WMSetValues(
 	}
 
 	if (nwmshell->wm.window_role != owmshell->wm.window_role) {
-	    XtFree(owmshell->wm.window_role);
+	    XtFree((_XtString) owmshell->wm.window_role);
 	    if (set_prop && nwmshell->wm.window_role) {
 		XChangeProperty(XtDisplay(new), XtWindow(new),
 				XInternAtom(XtDisplay(new), "WM_WINDOW_ROLE",
@@ -2422,7 +2422,7 @@ static Boolean TopLevelSetValues(
 
     if (old->topLevel.icon_name != new->topLevel.icon_name) {
 	XtFree((XtPointer)old->topLevel.icon_name);
-	if (! new->topLevel.icon_name) new->topLevel.icon_name = "";
+	if (! new->topLevel.icon_name) new->topLevel.icon_name = (_XtString) "";
 	new->topLevel.icon_name = XtNewString(new->topLevel.icon_name);
 	name_changed = True;
     } else
@@ -2475,15 +2475,16 @@ static Boolean TopLevelSetValues(
     return False;
 }
 
-static String * NewArgv(
+static _XtString * NewArgv(
     int count,
-    String *str)  /* do not assume it's terminated by a NULL element */
+    _XtString *str)  /* do not assume it's terminated by a NULL element */
 {
     Cardinal nbytes = 0;
     Cardinal num = 0;
-    String *newarray, *new;
-    String *strarray = str;
-    String sptr;
+    _XtString *newarray;
+    _XtString *new;
+    _XtString *strarray = str;
+    _XtString sptr;
 
     if (count <= 0 || !str) return NULL;
 
@@ -2491,8 +2492,8 @@ static String * NewArgv(
 	nbytes = (nbytes + (Cardinal) strlen(*str));
 	nbytes++;
     }
-    num = (Cardinal) ((size_t)(count+1) * sizeof(String));
-    new = newarray = (String *) __XtMalloc(num + nbytes);
+    num = (Cardinal) ((size_t)(count+1) * sizeof(_XtString));
+    new = newarray = (_XtString *) __XtMalloc(num + nbytes);
     sptr = ((char *) new) + num;
 
     for (str = strarray; count--; str++) {
@@ -2746,7 +2747,7 @@ static void ApplicationShellInsertChild(
 #define XtSessionInteract	1
 
 static void CallSaveCallbacks(SessionShellWidget );
-static String *EditCommand(String, String *, String *);
+static _XtString *EditCommand(_XtString, _XtString *, _XtString *);
 static Boolean ExamineToken(XtPointer);
 static void GetIceEvent(XtPointer, int *, XtInputId *);
 static XtCheckpointToken GetToken(Widget, int);
@@ -2842,13 +2843,14 @@ static void JoinSession(
 
 #endif /* !XT_NO_SM */
 
-static String * NewStringArray(String *str)
+static _XtString * NewStringArray(_XtString *str)
 {
     Cardinal nbytes = 0;
     Cardinal num = 0;
-    String *newarray, *new;
-    String *strarray = str;
-    String sptr;
+    _XtString *newarray;
+    _XtString *new;
+    _XtString *strarray = str;
+    _XtString sptr;
 
     if (!str) return NULL;
 
@@ -2856,8 +2858,8 @@ static String * NewStringArray(String *str)
 	nbytes = nbytes + (Cardinal)strlen(*str);
 	nbytes++;
     }
-    num = (Cardinal)((size_t)(num + 1) * sizeof(String));
-    new = newarray = (String *) __XtMalloc(num + nbytes);
+    num = (Cardinal)((size_t)(num + 1) * sizeof(_XtString));
+    new = newarray = (_XtString *) __XtMalloc(num + nbytes);
     sptr = ((char *) new) + num;
 
     for (str = strarray; *str; str++) {
@@ -2871,16 +2873,16 @@ static String * NewStringArray(String *str)
     return newarray;
 }
 
-static void FreeStringArray(String *str)
+static void FreeStringArray(_XtString *str)
 {
     if (str)
-	XtFree((char *) str);
+	XtFree((_XtString) str);
 }
 
 
 #ifndef XT_NO_SM
 static SmProp * CardPack(
-    char *name,
+    _Xconst _XtString name,
     XtPointer closure)
 {
     unsigned char *prop = (unsigned char *) closure;
@@ -2889,35 +2891,35 @@ static SmProp * CardPack(
     p = (SmProp *) __XtMalloc(sizeof(SmProp) + sizeof(SmPropValue));
     p->vals = (SmPropValue *) (((char *) p) + sizeof(SmProp));
     p->num_vals = 1;
-    p->type = SmCARD8;
-    p->name = name;
+    p->type = (char *)SmCARD8;
+    p->name = (char *)name;
     p->vals->length = 1;
     p->vals->value = (SmPointer) prop;
     return p;
 }
 
-static SmProp * ArrayPack(char *name, XtPointer closure)
+static SmProp * ArrayPack(_Xconst _XtString name, XtPointer closure)
 {
-    String prop = *(String *) closure;
+    _XtString prop = *(_XtString *) closure;
     SmProp *p;
 
     p = (SmProp *) __XtMalloc(sizeof(SmProp) + sizeof(SmPropValue));
     p->vals = (SmPropValue *) (((char *) p) + sizeof(SmProp));
     p->num_vals = 1;
-    p->type = SmARRAY8;
-    p->name = name;
+    p->type = (char *)SmARRAY8;
+    p->name = (char *) name;
     p->vals->length = (int) strlen(prop) + 1;
     p->vals->value = prop;
     return p;
 }
 
 static SmProp * ListPack(
-    char *name,
+    _Xconst _XtString name,
     XtPointer closure)
 {
-    String *prop = *(String **) closure;
+    _XtString *prop = *(_XtString **) closure;
     SmProp *p;
-    String *ptr;
+    _XtString *ptr;
     SmPropValue *vals;
     int n = 0;
 
@@ -2926,8 +2928,8 @@ static SmProp * ListPack(
     p = (SmProp*) __XtMalloc((Cardinal)(sizeof(SmProp) + (size_t)n * sizeof(SmPropValue)));
     p->vals = (SmPropValue *) (((char *) p) + sizeof(SmProp));
     p->num_vals = n;
-    p->type = SmLISTofARRAY8;
-    p->name = name;
+    p->type = (char *)SmLISTofARRAY8;
+    p->name = (char *)name;
     for (ptr = prop, vals = p->vals; *ptr; ptr++, vals++) {
 	vals->length = (int) strlen(*ptr) + 1;
 	vals->value = *ptr;
@@ -2943,10 +2945,10 @@ static void FreePacks(
 	XtFree((char *) props[num_props]);
 }
 
-typedef SmProp* (*PackProc)(char *, XtPointer);
+typedef SmProp* (*PackProc)(_Xconst _XtString, XtPointer);
 
 typedef struct PropertyRec {
-    char *	name;
+    String	name;
     int		offset;
     PackProc	proc;
 } PropertyRec, *PropertyTable;
@@ -3030,7 +3032,7 @@ static void SetSessionProperties(
 	num_props = 0;
 	for (n = XtNumber(propertyTable); n; n--, p++, mask <<= 1)
 	    if (mask & unset_mask)
-		pnames[num_props++] = p->name;
+		pnames[num_props++] = (char *)p->name;
 	SmcDeleteProperties(w->session.connection, num_props, pnames);
     }
 }
@@ -3341,7 +3343,7 @@ void XtSessionReturnToken(XtCheckpointToken token)
 
 static Boolean IsInArray(
     String str,
-    String *sarray)
+    _XtString *sarray)
 {
     if (str == NULL || sarray == NULL)
 	return False;
@@ -3352,17 +3354,17 @@ static Boolean IsInArray(
     return False;
 }
 
-static String* EditCommand(
-    String str,		/* if not NULL, the sm_client_id */
-    String *src1,	/* first choice */
-    String *src2)	/* alternate */
+static _XtString* EditCommand(
+    _XtString str,		/* if not NULL, the sm_client_id */
+    _XtString *src1,	/* first choice */
+    _XtString *src2)	/* alternate */
 {
     Boolean have;
     Boolean want;
     int count;
-    String *sarray;
-    String *s;
-    String *new;
+    _XtString *sarray;
+    _XtString *s;
+    _XtString *new;
 
     want = (str != NULL);
     sarray = (src1 ? src1 : src2);
@@ -3380,17 +3382,17 @@ static String* EditCommand(
 	count++;
 
     if (want) {
-	s = new = (String *) __XtMalloc((Cardinal)((size_t) (count+3) * sizeof(String*)));
-	*s = *sarray;		s++; sarray++;
-	*s = "-xtsessionID";	s++;
-	*s = str;		s++;
+	s = new = (_XtString *) __XtMalloc((Cardinal)((size_t) (count+3) * sizeof(_XtString*)));
+	*s = *sarray;				s++; sarray++;
+	*s = (_XtString) "-xtsessionID";	s++;
+	*s = str;				s++;
 	for (; --count > 0; s++, sarray++)
 	    *s = *sarray;
 	*s = NULL;
     } else {
 	if (count < 3)
 	    return NewStringArray(sarray);
-	s = new = (String *) __XtMalloc((Cardinal)((size_t)(count-1) * sizeof(String*)));
+	s = new = (_XtString *) __XtMalloc((Cardinal)((size_t)(count-1) * sizeof(_XtString*)));
 	for (; --count >= 0; sarray++) {
 	    if (strcmp(*sarray, "-xtsessionID") == 0) {
 		sarray++;

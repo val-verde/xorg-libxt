@@ -37,6 +37,7 @@
 .SH NAME
 XtGetKeyboardFocusWidget \- extension event handling
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Widget XtGetKeyboardFocusWidget(Widget \fIwidget\fP);
 .SH ARGUMENTS

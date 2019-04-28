@@ -39,6 +39,7 @@
 .SH NAME
 XtSetValues, XtVaSetValues, XtSetSubvalues, XtVaSetSubvalues, XtGetValues, XtVaGetValues, XtGetSubvalues, XtVaGetSubvalues \- obtain and set widget resources
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtSetValues(Widget \fIw\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
 .HP
@@ -92,7 +93,6 @@ value (if no new value is specified) to a new widget data record.
 .B XtSetValues
 then calls the set_values procedures for the widget in superclass-to-subclass
 order.
-.IN "hook"
 If the widget has any non-NULL set_values_hook fields,
 these are called immediately after the
 corresponding set_values procedure.
@@ -174,7 +174,6 @@ and proceeds down to the subclass chain to the parent's constraint resources.
 If the argument list contains a resource name that is not found in any of the
 resource lists searched,
 the value at the corresponding address is not modified.
-.IN "hook"
 Finally, if the get_values_hook procedures are non-NULL,
 they are called in superclass-to-subclass order after
 all the resource values have been fetched by

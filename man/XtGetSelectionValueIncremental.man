@@ -37,6 +37,7 @@
 .SH NAME
 XtGetSelectionValueIncremental, XtGetSelectionValuesIncremental \- obtain selection values
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetSelectionValueIncremental(Widget \fIw\fP, Atom \fIselection\fP, Atom
 \fItarget\fP, XtSelectionCallbackProc \fIcallback\fP, XtPointer
@@ -44,7 +45,7 @@ void XtGetSelectionValueIncremental(Widget \fIw\fP, Atom \fIselection\fP, Atom
 .HP
 void XtGetSelectionValuesIncremental(Widget \fIw\fP, Atom \fIselection\fP,
 Atom *\fItargets\fP, int \fIcount\fP, XtSelectionCallbackProc \fIcallback\fP,
-XtPointer \fIclient_data\fP, Time \fItime\fP);
+XtPointer *\fIclient_data\fP, Time \fItime\fP);
 .SH ARGUMENTS
 .IP \fIcallback\fP 1i
 Specifies the callback procedure that is to be called when the selection value has been obtained.

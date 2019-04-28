@@ -38,6 +38,7 @@
 .SH NAME
 XtParent \- obtain widget's parent widget id
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Widget XtParent(Widget \fIw\fP);
 .SH ARGUMENTS

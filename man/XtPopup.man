@@ -39,21 +39,23 @@
 .SH NAME
 XtPopup, XtPopupSpringLoaded, XtCallbackNone, XtCallbackNonexclusive, XtCallbackExclusive \- map a pop-up
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtPopup(Widget \fIpopup_shell\fP, XtGrabKind \fIgrab_kind\fP);
 .HP
 void XtPopupSpringLoaded(Widget \fIpopup_shell\fP);
 .HP
 void XtCallbackNone(Widget \fIw\fP, XtPointer \fIclient_data\fP, XtPointer
-\fIcall_data\fP):
+\fIcall_data\fP);
 .HP
 void XtCallbackNonexclusive(Widget \fIw\fP, XtPointer \fIclient_data\fP,
 XtPointer \fIcall_data\fP);
 .HP
 void XtCallbackExclusive(Widget \fIw\fP, XtPointer \fIclient_data\fP,
 XtPointer \fIcall_data\fP);
+.SH ACTIONS
 .HP
-void MenuPopup(String \fIshell_name\fP);
+void XtMenuPopup(String \fIshell_name\fP);
 .SH ARGUMENTS
 .IP \fIcall_data\fP 1i
 Specifies the callback data,
@@ -155,18 +157,18 @@ an application must provide customized code for
 callbacks that create pop-up shells dynamically or that must do more than
 desensitizing the button.
 .LP
-.B MenuPopup
+.B XtMenuPopup
 is known to the translation manager,
 which must perform special actions for spring-loaded pop-ups.
 Calls to
-.B MenuPopup
+.B XtMenuPopup
 in a translation specification are mapped into calls to a
 nonexported action procedure,
 and the translation manager fills in parameters
 based on the event specified on the left-hand side of a translation.
 .LP
 If
-.B MenuPopup
+.B XtMenuPopup
 is invoked on
 .B ButtonPress
 (possibly with modifiers),
@@ -175,7 +177,7 @@ the translation manager pops up the shell with grab_kind set to
 and spring_loaded set to
 .BR True .
 If
-.B MenuPopup
+.B XtMenuPopup
 is invoked on
 .B EnterWindow
 (possibly with modifiers),
@@ -225,14 +227,14 @@ with popup_shell specified.
 .LP
 (Note that these actions are the same as those for
 .BR XtPopup .)
-.B MenuPopup
+.B XtMenuPopup
 tries to find the shell by searching the widget tree starting at
 the parent of the widget in which it is invoked.
 If it finds a shell with the specified name in the pop-up children of
 that parent, it pops up the shell with the appropriate parameters.
 Otherwise, it moves up the parent chain as needed.
 If
-.B MenuPopup
+.B XtMenuPopup
 gets to the application widget and cannot find a matching shell,
 it generates an error.
 .SH "SEE ALSO"

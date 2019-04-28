@@ -128,7 +128,7 @@ void _XtHeapInit(
  * require varargs macros everywhere, which are only standard in C99 & later.
  */
 Cardinal XtAsprintf(
-    String *new_string,
+    _XtString *new_string,
     _Xconst char * _X_RESTRICT_KYWD format,
     ...)
 {

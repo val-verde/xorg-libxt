@@ -122,7 +122,7 @@ static void AddToAppContext(
 	if (app->count >= app->max) {
 	    app->max = (short) (app->max + DISPLAYS_TO_ADD);
 	    app->list = (Display **) XtRealloc((char *)app->list,
-		    (Cardinal) ((unsigned) app->max * sizeof(Display *)));
+		    (Cardinal) (((size_t) app->max) * sizeof(Display *)));
 	}
 
 	app->list[app->count++] = d;
@@ -243,13 +243,13 @@ static XtPerDisplay InitPerDisplay(
 
 Display *XtOpenDisplay(
 	XtAppContext app,
-	_Xconst char* displayName,
-	_Xconst char* applName,
-	_Xconst char* className,
+	_Xconst _XtString displayName,
+	_Xconst _XtString applName,
+	_Xconst _XtString className,
 	XrmOptionDescRec *urlist,
 	Cardinal num_urs,
 	int *argc,
-	String *argv)
+	_XtString *argv)
 {
 	Display *d;
 	XrmDatabase db = NULL;
@@ -289,7 +289,7 @@ Display *XtOpenDisplay(
 	    int len;
 	    displayName = XDisplayName(displayName);
 	    len = (int) strlen (displayName);
-	    app->display_name_tried = (String) __XtMalloc ((Cardinal)(len + 1));
+	    app->display_name_tried = (_XtString) __XtMalloc ((Cardinal)(len + 1));
 	    strncpy ((char*) app->display_name_tried, displayName, (size_t) (len + 1));
 	    app->display_name_tried[len] = '\0';
 	}
@@ -305,10 +305,10 @@ _XtAppInit(
 	XrmOptionDescRec *options,
 	Cardinal num_options,
 	int *argc_in_out,
-	String **argv_in_out,
+	_XtString **argv_in_out,
 	String * fallback_resources)
 {
-    String *saved_argv;
+    _XtString *saved_argv;
     int i;
     Display *dpy;
 
@@ -316,8 +316,8 @@ _XtAppInit(
  * Save away argv and argc so we can set the properties later
  */
 
-    saved_argv = (String *)
-	__XtMalloc( (Cardinal)((size_t)(*argc_in_out + 1) * sizeof(String)) );
+    saved_argv = (_XtString *)
+	__XtMalloc( (Cardinal)((size_t)(*argc_in_out + 1) * sizeof(_XtString)) );
 
     for (i = 0 ; i < *argc_in_out ; i++) saved_argv[i] = (*argv_in_out)[i];
     saved_argv[i] = NULL;	/* NULL terminate that sucker. */
@@ -349,12 +349,12 @@ void
 XtDisplayInitialize(
 	XtAppContext app,
 	Display *dpy,
-	_Xconst char* name,
-	_Xconst char* classname,
+	_Xconst _XtString name,
+	_Xconst _XtString classname,
 	XrmOptionDescRec *urlist,
 	Cardinal num_urs,
 	int *argc,
-	String *argv
+	_XtString *argv
 	)
 {
     XtPerDisplay pd;
@@ -653,7 +653,7 @@ static void CloseDisplay(Display *dpy)
 		XrmDestroyDatabase(xtpd->cmd_db);
 	    if (xtpd->server_db)
 		XrmDestroyDatabase(xtpd->server_db);
-	    XtFree(xtpd->language);
+	    XtFree((_XtString)xtpd->language);
 	    if (xtpd->dispatcher_list != NULL)
 		XtFree((char *) xtpd->dispatcher_list);
 	    if (xtpd->ext_select_list != NULL)

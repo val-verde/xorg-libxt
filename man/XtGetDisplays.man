@@ -37,6 +37,7 @@
 .SH NAME
 XtGetDisplays \- retrieve a list of displays associated with an application context
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetDisplays(XtAppContext \fIapp_context\fP, Display
 ***\fIdpy_return\fP, Cardinal* \fInum_dpy_return\fP);

@@ -105,13 +105,17 @@ static void GrabAllCorrectKeys(
     careOn = (careOn | (Modifiers)modMatch->modifiers);
     careMask = (careMask | (Modifiers)modMatch->modifierMask);
 
+    keycodes = NULL;
     XtKeysymToKeycodeList(
 	    dpy,
 	    (KeySym)typeMatch->eventCode,
 	    &keycodes,
 	    &keycount
 			 );
-    if (keycount == 0) return;
+    if (keycount == 0) {
+	XtFree((char *)keycodes);
+	return;
+    }
     for (keycodeP = keycodes; keycount--; keycodeP++) {
 	if (modMatch->standard) {
 	    /* find standard modifiers that produce this keysym */
@@ -120,8 +124,10 @@ static void GrabAllCorrectKeys(
 	    Modifiers modifiers_return;
 	    XtTranslateKeycode( dpy, *keycodeP, (Modifiers)0,
 			        &modifiers_return, &keysym );
-	    if (careOn & modifiers_return)
+	    if (careOn & modifiers_return) {
+		XtFree((char *)keycodes);
 		return;
+	    }
 	    if (keysym == typeMatch->eventCode) {
 		XtGrabKey(widget, *keycodeP, careOn,
 			  grabP->owner_events,

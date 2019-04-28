@@ -37,6 +37,7 @@
 .SH NAME
 XtToolkitThreadInitialize \- initialize the toolkit for multiple threads
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Boolean XtToolkitThreadInitialize(void);
 .SH DESCRIPTION

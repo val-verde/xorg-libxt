@@ -38,13 +38,15 @@
 .SH NAME
 XtPopdown, XtCallbackPopdown \- unmap a pop-up
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtPopdown(Widget \fIpopup_shell\fP);
 .HP
 void XtCallbackPopdown(Widget \fIw\fP, XtPointer \fIclient_data\fP, XtPointer
 \fIcall_data\fP);
+.SH ACTIONS
 .HP
-void MenuPopdown(String \fIshell_name\fP);
+void XtMenuPopdown(String \fIshell_name\fP);
 .SH ARGUMENTS
 .IP \fIcall_data\fP 1i
 Specifies the callback data,
@@ -117,12 +119,12 @@ and then calls
 to resensitize the enable_widget.
 .LP
 If a shell name is not given,
-.B MenuPopdown
+.B XtMenuPopdown
 calls
 .B XtPopdown
 with the widget for which the translation is specified.
 If a shell_name is specified in the translation table,
-.B MenuPopdown
+.B XtMenuPopdown
 tries to find the shell by looking up the widget tree starting at the
 parent of the widget in which it is invoked.
 If it finds a shell with the specified name in the pop-up children
@@ -130,7 +132,7 @@ of that parent,
 it pops down the shell;
 otherwise, it moves up the parent chain as needed.
 If
-.B MenuPopdown
+.B XtMenuPopdown
 gets to the application top-level shell widget
 and cannot find a matching shell,
 it generates an error.

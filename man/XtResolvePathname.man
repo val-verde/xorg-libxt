@@ -37,11 +37,15 @@
 .SH NAME
 XtResolvePathname \- search for a file using standard substitution
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-String XtResolvePathname(Display *\fIdisplay\fP, String \fItype\fP, String
-\fIfilename\fP, String \fIsuffix\fP, String \fIpath\fP, Substitution
-\fIsubstitutions\fP, Cardinal \fInum_substitutions\fP, XtFilePredicate
-\fIpredicate\fP);
+char * XtResolvePathname(Display *\fIdisplay\fP,
+const char *\fItype\fP,
+const char *\fIfilename\fP,
+const char *\fIsuffix\fP,
+const char *\fIpath\fP,
+Substitution \fIsubstitutions\fP, Cardinal \fInum_substitutions\fP,
+XtFilePredicate \fIpredicate\fP);
 .SH ARGUMENTS
 .IP \fIdisplay\fP 1.2i
 Specifies the display to use to find the language for language substitutions.
@@ -70,7 +74,6 @@ for the specified display.
 To set the
 language for all applications specify ``*xnlLanguage: \fIlang\fP'' in the
 resource database.
-.IN "xnlLanguage"
 The format and content of the language string are
 implementation-defined.   One suggested syntax is to compose
 the language string of three parts;  a  ``language  part'',  a
@@ -112,7 +115,6 @@ it will be passed along to
 .BR XtFindFile .
 If the \fIpath\fP argument is NULL, the value of the
 .B \s-1XFILESEARCHPATH\s+1
-.IN "XFILESEARCHPATH" "" "@DEF@"
 environment variable will be passed to
 .BR XtFindFile .
 If

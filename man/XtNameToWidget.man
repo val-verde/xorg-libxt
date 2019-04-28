@@ -38,8 +38,9 @@
 .SH NAME
 XtNameToWidget, XtWindowToWidget \- translating strings to widgets or widgets to windows
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-Widget XtNameToWidget(Widget \fIreference\fP, String \fInames\fP);
+Widget XtNameToWidget(Widget \fIreference\fP, const char *\fInames\fP);
 .HP
 Widget XtWindowToWidget(Display *\fIdisplay\fP, Window \fIwindow\fP);
 .SH ARGUMENTS

@@ -131,7 +131,7 @@ void XtGetErrorDatabaseText(
     register _Xconst char* type,
     register _Xconst char* class,
     _Xconst char* defaultp,
-    String buffer,
+    _XtString buffer,
     int nbytes)
 {
 #if GLOBALERRORS
@@ -149,12 +149,12 @@ void XtAppGetErrorDatabaseText(
     register _Xconst char* type,
     register _Xconst char* class,
     _Xconst char* defaultp,
-    String buffer,
+    _XtString buffer,
     int nbytes,
     XrmDatabase db)
 {
     String str_class;
-    String type_str;
+    _XtString type_str;
     XrmValue result;
     char *str_name = NULL;
     char *temp = NULL;

@@ -37,9 +37,10 @@
 .SH NAME
 XtCallActionProc \- invoke an action procedure directly
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-void XtCallActionProc(Widget \fIwidget\fP, String \fIaction\fP, XEvent*
-\fIevent\fP, String* \fIparams\fP, Cardinal \fInum_params\fP);
+void XtCallActionProc(Widget \fIwidget\fP, const char *\fIaction\fP,
+XEvent *\fIevent\fP, String *\fIparams\fP, Cardinal \fInum_params\fP);
 .SH ARGUMENTS
 .IP \fIwidget\fP 1i
 Specifies the widget in which the action is to be invoked. Must be

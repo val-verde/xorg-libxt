@@ -557,6 +557,7 @@ _set_and_search (
 			} else
 				_search_child (w, local_index, remainder,
 					resource, value, last_token, last_part);
+			XtFree (part);
 			return;
 		}
 		if (token == '*') {

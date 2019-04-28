@@ -37,6 +37,7 @@
 .SH NAME
 XtGetSelectionTimeout, XtSetSelectionTimeout \- set and obtain selection timeout values
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 unsigned long XtGetSelectionTimeout(void);
 .HP

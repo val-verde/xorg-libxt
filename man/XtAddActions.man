@@ -38,6 +38,7 @@
 .SH NAME
 XtAddActions \- register an action table
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAddActions(XtActionList \fIactions\fP, Cardinal \fInum_actions\fP);
 .SH ARGUMENTS

@@ -38,8 +38,9 @@
 .SH NAME
 XtStringConversionWarning \- issue a conversion warning message
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-void XtStringConversionWarning(String \fIsrc\fP, String \fIdst_type\fP);
+void XtStringConversionWarning(const char *\fIsrc\fP, const char *\fIdst_type\fP);
 .SH ARGUMENTS
 .IP \fIsrc\fP 1i
 Specifies the string that could not be converted.

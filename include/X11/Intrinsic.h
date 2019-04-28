@@ -61,7 +61,7 @@ in this Software without prior written authorization from The Open Group.
 #include <string.h>		/* for XtNewString */
 #endif /* XT_BC else */
 
-#define XtSpecificationRelease 6
+#define XtSpecificationRelease 7
 
 /*
  * As used in its function interface, the String type of libXt can be readonly.
@@ -405,7 +405,7 @@ typedef Boolean (*XtWorkProc)(
 
 typedef struct {
     char match;
-    String substitution;
+    _XtString substitution;
 } SubstitutionRec, *Substitution;
 
 typedef Boolean (*XtFilePredicate)(
@@ -1446,7 +1446,7 @@ extern void XtDisplayInitialize(
     XrmOptionDescRec* 	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc */,
-    char**		/* argv */
+    _XtString*		/* argv */
 );
 
 extern Widget XtOpenApplication(
@@ -1455,7 +1455,7 @@ extern Widget XtOpenApplication(
     XrmOptionDescList 	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc_in_out */,
-    String*		/* argv_in_out */,
+    _XtString*		/* argv_in_out */,
     String*		/* fallback_resources */,
     WidgetClass		/* widget_class */,
     ArgList 		/* args */,
@@ -1468,7 +1468,7 @@ extern Widget XtVaOpenApplication(
     XrmOptionDescList	/* options */,
     Cardinal		/* num_options */,
     int*		/* argc_in_out */,
-    String*		/* argv_in_out */,
+    _XtString*		/* argv_in_out */,
     String*		/* fallback_resources */,
     WidgetClass		/* widget_class */,
     ...
@@ -1480,7 +1480,7 @@ extern Widget XtAppInitialize( /* obsolete */
     XrmOptionDescList 	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc_in_out */,
-    String*		/* argv_in_out */,
+    _XtString*		/* argv_in_out */,
     String*		/* fallback_resources */,
     ArgList 		/* args */,
     Cardinal 		/* num_args */
@@ -1492,7 +1492,7 @@ extern Widget XtVaAppInitialize( /* obsolete */
     XrmOptionDescList	/* options */,
     Cardinal		/* num_options */,
     int*		/* argc_in_out */,
-    String*		/* argv_in_out */,
+    _XtString*		/* argv_in_out */,
     String*		/* fallback_resources */,
     ...
 ) _X_SENTINEL(0);
@@ -1503,7 +1503,7 @@ extern Widget XtInitialize( /* obsolete */
     XrmOptionDescRec* 	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc */,
-    char**		/* argv */
+    _XtString*		/* argv */
 );
 
 extern Display *XtOpenDisplay(
@@ -1514,7 +1514,7 @@ extern Display *XtOpenDisplay(
     XrmOptionDescRec*	/* options */,
     Cardinal 		/* num_options */,
     int*		/* argc */,
-    char**		/* argv */
+    _XtString*		/* argv */
 );
 
 extern XtAppContext XtCreateApplicationContext(
@@ -1816,7 +1816,7 @@ extern void XtAppGetErrorDatabaseText(
     _Xconst _XtString	/* type */,
     _Xconst _XtString	/* class */,
     _Xconst _XtString 	/* default */,
-    String 		/* buffer_return */,
+    _XtString 		/* buffer_return */,
     int 		/* nbytes */,
     XrmDatabase 	/* database */
 );
@@ -1826,7 +1826,7 @@ extern void XtGetErrorDatabaseText( /* obsolete */
     _Xconst _XtString	/* type */,
     _Xconst _XtString	/* class */,
     _Xconst _XtString 	/* default */,
-    String 		/* buffer_return */,
+    _XtString 		/* buffer_return */,
     int 		/* nbytes */
 );
 
@@ -1858,7 +1858,7 @@ extern void XtFree(
 # define _X_RESTRICT_KYWD
 #endif
 extern Cardinal XtAsprintf(
-    String *new_string,
+    _XtString *new_string,
     _Xconst char * _X_RESTRICT_KYWD format,
     ...
 ) _X_ATTRIBUTE_PRINTF(2,3);
@@ -1983,14 +1983,14 @@ extern void XtSetWMColormapWindows(
     Cardinal		/* count */
 );
 
-extern String XtFindFile(
+extern _XtString XtFindFile(
     _Xconst _XtString	/* path */,
     Substitution	/* substitutions */,
     Cardinal 		/* num_substitutions */,
     XtFilePredicate	/* predicate */
 );
 
-extern String XtResolvePathname(
+extern _XtString XtResolvePathname(
     Display*		/* dpy */,
     _Xconst _XtString	/* type */,
     _Xconst _XtString	/* filename */,

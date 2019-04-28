@@ -37,10 +37,12 @@
 .SH NAME
 XtInitialize \- initialize
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-Widget XtInitialize(String \fIshell_name\fP, String \fIapplication_class\fP,
-XrmOptionDescRec* \fIoptions\fP, Cardinal \fInum_options\fP, int* \fIargc\fP,
-char** \fIargv\fP);
+Widget XtInitialize(const char *\fIshell_name\fP,
+const char *\fIapplication_class\fP,
+XrmOptionDescRec* \fIoptions\fP, Cardinal \fInum_options\fP,
+int* \fIargc\fP, char** \fIargv\fP);
 .SH ARGUMENTS
 .IP \fIshell_name\fP 1i
 Specifies the name of the created shell widget.

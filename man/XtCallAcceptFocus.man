@@ -38,6 +38,7 @@
 .SH NAME
 XtCallAcceptFocus \- calla widget's accept_focus procedure
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Boolean XtCallAcceptFocus(Widget \fIw\fP, Time *\fItime\fP);
 .SH ARGUMENTS

@@ -38,6 +38,7 @@
 .SH NAME
 XtAppGetSelectionTimeout, XtAppSetSelectionTimeout \- set and obtain selection timeout values
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 unsigned long XtAppGetSelectionTimeout(XtAppContext \fIapp_context\fP);
 .HP

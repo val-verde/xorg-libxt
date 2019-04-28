@@ -38,6 +38,7 @@
 .SH NAME
 XtSetArg, XtMergeArgLists \- set and merge ArgLists
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 int XtSetArg(Arg \fIarg\fP, String \fIname\fP, XtArgVal \fIvalue\fP);
 .HP

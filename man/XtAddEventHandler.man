@@ -39,6 +39,7 @@
 .SH NAME
 XtAddEventHandler, XtAddRawEventHandler, XtRemoveEventHandler, XtRemoveRawEventHandler, XtInsertEventHandler, XtInsertRawEventHandler \- add and remove event handlers
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAddEventHandler(Widget \fIw\fP, EventMask \fIevent_mask\fP, Boolean
 \fInonmaskable\fP, XtEventHandler \fIproc\fP, XtPointer \fIclient_data\fP);

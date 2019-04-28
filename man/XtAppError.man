@@ -39,16 +39,17 @@
 .SH NAME
 XtAppError, XtAppSetErrorHandler, XtAppSetWarningHandler, XtAppWarning \- low-level error handlers
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-void XtAppError(XtAppContext \fIapp_context\fP, String \fImessage\fP);
+void XtAppError(XtAppContext \fIapp_context\fP, const char *\fImessage\fP);
 .HP
-void XtAppSetErrorHandler(XtAppContext \fIapp_context\fP, XtErrorHandler
+XtErrorHandler XtAppSetErrorHandler(XtAppContext \fIapp_context\fP, XtErrorHandler
 \fIhandler\fP);
 .HP
-void XtAppSetWarningHandler(XtAppContext \fIapp_context\fP, XtErrorHandler
+XtErrorHandler XtAppSetWarningHandler(XtAppContext \fIapp_context\fP, XtErrorHandler
 \fIhandler\fP);
 .HP
-void XtAppWarning(XtAppContext \fIapp_context\fP, String \fImessage\fP);
+void XtAppWarning(XtAppContext \fIapp_context\fP, const char *\fImessage\fP);
 .SH ARGUMENTS
 .IP \fIapp_context\fP 1i
 Specifies the application context.

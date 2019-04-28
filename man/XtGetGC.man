@@ -38,6 +38,7 @@
 .SH NAME
 XtGetGC, XtReleaseGC \- obtain and destroy a sharable GC
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 GC XtGetGC(Widget \fIw\fP, XtGCMask \fIvalue_mask\fP, XGCValues
 *\fIvalues\fP);

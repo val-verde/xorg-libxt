@@ -301,7 +301,7 @@ void XtToolkitInitialize(void)
 
 
 String _XtGetUserName(
-    String dest,
+    _XtString dest,
     int len)
 {
 #ifdef WIN32
@@ -335,7 +335,7 @@ String _XtGetUserName(
 
 
 static String GetRootDirName(
-    String dest,
+    _XtString dest,
     int len)
 {
 #ifdef WIN32
@@ -754,7 +754,7 @@ XrmDatabase _XtPreparseCommandLine(
     XrmOptionDescRec *urlist,
     Cardinal num_urs,
     int argc,
-    String *argv,
+    _XtString *argv,
     /* return */
     String *applName,
     String *displayName,
@@ -767,10 +767,10 @@ XrmDatabase _XtPreparseCommandLine(
     XrmName class_list[3];
     XrmRepresentation type;
     XrmValue val;
-    String *targv;
+    _XtString *targv;
     int targc = argc;
 
-    targv = (String *) __XtMalloc((Cardinal)(sizeof(char *) * (size_t)argc));
+    targv = (_XtString *) __XtMalloc((Cardinal)(sizeof(_XtString*) * (size_t)argc));
     (void) memmove(targv, argv, sizeof(char *) * (size_t) argc);
     _MergeOptionTables(opTable, XtNumber(opTable), urlist, num_urs,
 		       &options, &num_options);
@@ -985,7 +985,7 @@ XtAppSetFallbackResources(
 Widget XtOpenApplication(XtAppContext *app_context_return,
 			 _Xconst char *application_class,
 			 XrmOptionDescRec *options, Cardinal num_options,
-			 int *argc_in_out, String *argv_in_out,
+			 int *argc_in_out, _XtString *argv_in_out,
 			 String *fallback_resources, WidgetClass widget_class,
 			 ArgList args_in, Cardinal num_args_in)
 {
@@ -1029,7 +1029,7 @@ XtAppInitialize(
     XrmOptionDescRec *options,
     Cardinal num_options,
     int *argc_in_out,
-    String *argv_in_out,
+    _XtString *argv_in_out,
     String *fallback_resources,
     ArgList args_in,
     Cardinal num_args_in)
@@ -1045,12 +1045,12 @@ XtAppInitialize(
 /*ARGSUSED*/
 Widget
 XtInitialize(
-    _Xconst char* name,
-    _Xconst char* classname,
+    _Xconst _XtString name,
+    _Xconst _XtString classname,
     XrmOptionDescRec *options,
     Cardinal num_options,
     int *argc,
-    String *argv)
+    _XtString *argv)
 {
     Widget root;
     XtAppContext app_con;

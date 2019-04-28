@@ -38,6 +38,7 @@
 .SH NAME
 XtAddExposureToRegion \- merge exposure events into a region
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAddExposureToRegion(XEvent *\fIevent\fP, Region \fIregion\fP);
 .SH ARGUMENTS

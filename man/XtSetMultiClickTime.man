@@ -37,6 +37,7 @@
 .SH NAME
 XtSetMultiClickTime, XtGetMultiClickTime \- set and get multi-click times
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtSetMultiClickTime(Display* \fIdisplay\fP, int \fItime\fP);
 .HP

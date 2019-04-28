@@ -37,8 +37,9 @@
 .SH NAME
 XtFindFile \- search for a file using substitutions in the path list
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-String XtFindFile(String \fIpath\fP, Substitution \fIsubstitutions\fP,
+char * XtFindFile(const char *\fIpath\fP, Substitution \fIsubstitutions\fP,
 Cardinal \fInum_substitutions\fP, XtFilePredicate \fIpredicate\fP);
 .SH ARGUMENTS
 .IP \fIpath\fP 1i

@@ -39,18 +39,19 @@
 .SH NAME
 XtCreateWidget, XtVaCreateWidget, XtCreateManagedWidget, XtVaCreateManagedWidget, XtDestroyWidget \- create and destroy widgets
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-Widget XtCreateWidget(String \fIname\fP, WidgetClass \fIwidget_class\fP,
+Widget XtCreateWidget(const char *\fIname\fP, WidgetClass \fIwidget_class\fP,
 Widget \fIparent\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
 .HP
-Widget XtVaCreateWidget(String \fIname\fP, WidgetClass \fIwidget_class\fP,
+Widget XtVaCreateWidget(const char *\fIname\fP, WidgetClass \fIwidget_class\fP,
 Widget \fIparent\fP, ...\^);
 .HP
-Widget XtCreateManagedWidget(String \fIname\fP, WidgetClass
+Widget XtCreateManagedWidget(const char *\fIname\fP, WidgetClass
 \fIwidget_class\fP, Widget \fIparent\fP, ArgList \fIargs\fP, Cardinal
 \fInum_args\fP);
 .HP
-Widget XtVaCreateManagedWidget(String \fIname\fP, WidgetClass
+Widget XtVaCreateManagedWidget(const char *\fIname\fP, WidgetClass
 \fIwidget_class\fP, Widget \fIparent\fP, ...\^);
 .HP
 void XtDestroyWidget(Widget \fIw\fP);

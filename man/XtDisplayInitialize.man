@@ -38,16 +38,21 @@
 .SH NAME
 XtDisplayInitialize, XtOpenDisplay, XtDatabase, XtScreenDatabase, XtCloseDisplay \- initialize, open, or close a display
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-void XtDisplayInitialize(XtAppContext \fIapp_context\fP, Display
-*\fIdisplay\fP, String \fIapplication_name\fP, String \fIapplication_class\fP,
-XrmOptionDescRec *\fIoptions\fP, Cardinal \fInum_options\fP, int *\fIargc\fP,
-String *\fIargv\fP);
+void XtDisplayInitialize(XtAppContext \fIapp_context\fP,
+Display *\fIdisplay\fP,
+const char *\fIapplication_name\fP,
+const char *\fIapplication_class\fP,
+XrmOptionDescRec *\fIoptions\fP, Cardinal \fInum_options\fP,
+int *\fIargc\fP, char **\fIargv\fP);
 .HP
-Display *XtOpenDisplay(XtAppContext \fIapp_context\fP, String
-\fIdisplay_string\fP, String \fIapplication_name\fP, String
-\fIapplication_class\fP, XrmOptionDescRec *\fIoptions\fP, Cardinal
-\fInum_options\fP, int *\fIargc\fP, String *\fIargv\fP);
+Display *XtOpenDisplay(XtAppContext \fIapp_context\fP,
+const char *\fIdisplay_string\fP,
+const char *\fIapplication_name\fP,
+const char *\fIapplication_class\fP,
+XrmOptionDescRec *\fIoptions\fP, Cardinal \fInum_options\fP,
+int *\fIargc\fP, char **\fIargv\fP);
 .HP
 void XtCloseDisplay(Display *\fIdisplay\fP);
 .HP

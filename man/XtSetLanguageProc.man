@@ -38,8 +38,9 @@
 .SH NAME
 XtSetLanguageProc \- set the language procedure
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-Widget XtSetLanguageProc(XtAppContext \fIapp_context\fP, XtLanguageProc
+XtLanguageProc XtSetLanguageProc(XtAppContext \fIapp_context\fP, XtLanguageProc
 \fIproc\fP, XtPointer \fIclient_data\fP);
 .SH ARGUMENTS
 .IP \fIapp_context\fP 1i

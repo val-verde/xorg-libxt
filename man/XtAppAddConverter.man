@@ -38,14 +38,15 @@
 .SH NAME
 XtAppAddConverter, XtAddConverter \- register resource converter
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-void XtAppAddConverter(XtAppContext \fIapp_context\fP, String \fIfrom_type\fP,
-String \fIto_type\fP, XtConverter \fIconverter\fP, XtConvertArgList
-\fIconvert_args\fP, Cardinal \fInum_args\fP);
+void XtAppAddConverter(XtAppContext \fIapp_context\fP, const char *\fIfrom_type\fP,
+const char *\fIto_type\fP, XtConverter \fIconverter\fP,
+XtConvertArgList \fIconvert_args\fP, Cardinal \fInum_args\fP);
 .HP
-void XtAddConverter(String \fIfrom_type\fP, String \fIto_type\fP, XtConverter
-\fIconverter\fP, XtConvertArgList \fIconvert_args\fP, Cardinal
-\fInum_args\fP);
+void XtAddConverter(const char *\fIfrom_type\fP, const char *\fIto_type\fP,
+XtConverter \fIconverter\fP, XtConvertArgList \fIconvert_args\fP,
+Cardinal \fInum_args\fP);
 .SH ARGUMENTS
 .IP \fIapp_context\fP 1i
 Specifies the application context.

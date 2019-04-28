@@ -37,6 +37,7 @@
 .SH NAME
 XtSetSelectionParameters \- specify target parameters for a selection request with a single target
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtSetSelectionParameters(Widget \fIrequestor\fP, Atom \fIselection\fP,
 Atom \fItype\fP, XtPointer \fIvalue\fP, unsigned long \fIlength\fP, int

@@ -1060,23 +1060,25 @@ static Boolean Resolve(
 }
 
 
-String XtFindFile(
-    _Xconst char* path,
+_XtString XtFindFile(
+    _Xconst _XtString path,
     Substitution substitutions,
     Cardinal num_substitutions,
     XtFilePredicate predicate)
 {
-    char *buf, *buf1, *buf2, *colon;
+    char *buf, *buf1, *buf2;
+    _Xconst _XtString colon;
     int len;
     Boolean firstTime = TRUE;
 
-    buf = buf1 = __XtMalloc((unsigned)PATH_MAX);
+    buf1 = __XtMalloc((unsigned)PATH_MAX);
     buf2 = __XtMalloc((unsigned)PATH_MAX);
+    buf = buf1;
 
     if (predicate == NULL) predicate = TestFile;
 
     while (1) {
-	colon = (String)path;
+	colon = path;
 	/* skip leading colons */
 	while (*colon) {
 	    if (*colon != ':') break;
@@ -1105,9 +1107,12 @@ String XtFindFile(
 #ifdef XNL_DEBUG
 		    printf("File found.\n");
 #endif /* XNL_DEBUG */
-		    if (buf == buf1) XtFree(buf2);
-		    else XtFree(buf1);
-		    return buf;
+		    if (buf == buf1) {
+			XtFree(buf2);
+			return buf1;
+		    }
+		    XtFree(buf1);
+		    return buf2;
 		}
 		if (buf == buf1)
 		    buf = buf2;
@@ -1134,7 +1139,7 @@ String XtFindFile(
 /* The implementation of this routine is operating system dependent */
 /* Should match the code in Xlib _XlcMapOSLocaleName */
 
-static char *ExtractLocaleName(
+static String ExtractLocaleName(
     String	lang)
 {
 
@@ -1184,8 +1189,8 @@ static char *ExtractLocaleName(
 #  endif
 # endif
 
-    char           *start;
-    char           *end;
+    String          start;
+    String          end;
     int             len;
 # ifdef SKIPCOUNT
     int		    n;
@@ -1252,7 +1257,8 @@ static void FillInLangSubs(
     XtPerDisplay pd)
 {
     int len;
-    char *string, *p1, *p2, *p3;
+    String string;
+    char *p1, *p2, *p3;
     char **rest;
     char *ch;
 
@@ -1273,7 +1279,7 @@ static void FillInLangSubs(
     }
 
     len = (int) strlen(string) + 1;
-    subs[0].substitution = string;
+    subs[0].substitution = (_XtString) string;
     p1 = subs[1].substitution = __XtMalloc((Cardinal) (3*len));
     p2 = subs[2].substitution = subs[1].substitution + len;
     p3 = subs[3].substitution = subs[2].substitution + len;
@@ -1334,7 +1340,7 @@ static SubstitutionRec defaultSubs[] = {
 };
 
 
-String XtResolvePathname(
+_XtString XtResolvePathname(
     Display *dpy,
     _Xconst char* type,
     _Xconst char* filename,
@@ -1449,9 +1455,9 @@ String XtResolvePathname(
 	for (def = defaultSubs; i--; sub++, def++) sub->match = def->match;
 	for (i = (int) num_substitutions; i--; ) *sub++ = *substitutions++;
     }
-    merged_substitutions[0].substitution = (String)filename;
-    merged_substitutions[1].substitution = (String)type;
-    merged_substitutions[2].substitution = (String)suffix;
+    merged_substitutions[0].substitution = (_XtString)filename;
+    merged_substitutions[1].substitution = (_XtString)type;
+    merged_substitutions[2].substitution = (_XtString)suffix;
     name_list[0] = pd->name;
     name_list[1] = XrmPermStringToQuark("customization");
     name_list[2] = NULLQUARK;

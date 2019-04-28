@@ -37,6 +37,7 @@
 .SH NAME
 XtAppSetFallbackResources \- set fallback resources
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtAppSetFallbackResources(XtAppContext \fIapp_context\fP, String*
 \fIspecification_list\fP);

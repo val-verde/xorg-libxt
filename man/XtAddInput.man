@@ -37,11 +37,12 @@
 .SH NAME
 XtAddInput, XtAddTimeOut, XtAddWorkProc \- register input, timeout, and workprocs
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtInputId XtAddInput(int \fIsource\fP, XtPointer \fIcondition\fP,
 XtInputCallbackProc \fIproc\fP, XtPointer \fIclient_data\fP);
 .HP
-XtIntervalId XtAddTimeOut(unsigned long \fIinterval\fP, XtInputCallbackProc
+XtIntervalId XtAddTimeOut(unsigned long \fIinterval\fP, XtTimerCallbackProc 
 \fIproc\fP, XtPointer \fIclient_data\fP);
 .HP
 XtWorkProcId XtAddWorkProc(XtWorkProc \fIproc\fP, XtPointer

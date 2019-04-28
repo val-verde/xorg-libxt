@@ -39,6 +39,8 @@
 .SH NAME
 XtManageChildren, XtManageChild, XtUnmanageChildren, XtUnmanageChild, XtChangeManagedSet, XtIsManaged \- manage and unmanage children
 .SH SYNTAX
+#include <X11/Intrinsic.h>
+.HP
 typedef Widget *WidgetList;
 .HP
 void XtManageChildren(WidgetList \fIchildren\fP, Cardinal \fInum_children\fP);

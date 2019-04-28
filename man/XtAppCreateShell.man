@@ -37,12 +37,13 @@
 .SH NAME
 XtAppCreateShell, XtVaAppCreateShell \- create top-level widget instance
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-Widget XtAppCreateShell(String \fIapplication_name\fP, String
-\fIapplication_class\fP, WidgetClass \fIwidget_class\fP, Display
-*\fIdisplay\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
+Widget XtAppCreateShell(const char *\fIapplication_name\fP,
+const char *\fIapplication_class\fP, WidgetClass \fIwidget_class\fP,
+Display *\fIdisplay\fP, ArgList \fIargs\fP, Cardinal \fInum_args\fP);
 .HP
-Widget XtVaAppCreateShell(String \fIapplication_name\fP, String
+Widget XtVaAppCreateShell(const char * \fIapplication_name\fP, const char *
 \fIapplication_class\fP, WidgetClass \fIwidget_class\fP, Display
 *\fIdisplay\fP, ...\^);
 .SH ARGUMENTS

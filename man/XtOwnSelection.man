@@ -38,6 +38,7 @@
 .SH NAME
 XtOwnSelection, XtOwnSelectionIncremental, XtDisownSelection \- set selection owner
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Boolean XtOwnSelection(Widget \fIw\fP, Atom \fIselection\fP, Time \fItime\fP,
 XtConvertSelectionProc \fIconvert_proc\fP, XtLoseSelectionProc

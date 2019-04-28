@@ -38,6 +38,7 @@
 .SH NAME
 XtNextEvent, XtPending, XtPeekEvent, XtProcessEvent, XtMainLoop \- query and process events and input
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtNextEvent(XEvent *\fIevent_return\fP);
 .HP

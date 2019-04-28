@@ -37,6 +37,7 @@
 .SH NAME
 XtAppAddSignal, XtRemoveSignal, XtNoticeSignal \- register and remove a signal source
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtSignalId XtAppAddSignal(XtAppContext \fIapp_context\fP, XtSignalCallbackProc
 \fIproc\fP, XtPointer \fIclient_data\fP);

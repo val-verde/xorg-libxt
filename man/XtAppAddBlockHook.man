@@ -37,6 +37,7 @@
 .SH NAME
 XtAppAddBlockHook, XtRemoveBlockHook \- register a block hook procedure
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtBlockHookId XtAppAddBlockHook(XtAppContext \fIapp_context\fP,
 XtBlockHookProc \fIproc\fP, XtPointer \fIclient_data\fP);

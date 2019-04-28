@@ -38,6 +38,7 @@
 .SH NAME
 XtGetApplicationResources, XtVaGetApplicationResources \- obtain application resources
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtGetApplicationResources(Widget \fIw\fP, XtPointer \fIbase\fP,
 XtResourceList \fIresources\fP, Cardinal \fInum_resources\fP, ArgList

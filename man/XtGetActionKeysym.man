@@ -37,6 +37,7 @@
 .SH NAME
 XtGetActionKeysym \- obtain corresponding keysym
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 KeySym XtGetActionKeysym(XEvent* \fIevent\fP, Modifiers*
 \fImodifiers_return\fP);

@@ -37,6 +37,7 @@
 .SH NAME
 XtDisplay, XtDisplayOfObject, XtScreen, XtScreenOfObject, XtWindow, XtWindowOfObject \- obtain window information about a widget
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 Display *XtDisplay(Widget \fIw\fP);
 .HP

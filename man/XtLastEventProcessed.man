@@ -37,6 +37,7 @@
 .SH NAME
 XtLastEventProcessed, XtLastTimestampProcessed \- last event, last timestamp processed
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XEvent* XtLastEventProcessed(Display* \fIdisplay\fP);
 .HP

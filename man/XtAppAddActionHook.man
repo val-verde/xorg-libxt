@@ -37,6 +37,7 @@
 .SH NAME
 XtAppAddActionHook, XtRemoveActionHook \- register an action hook procedure
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtActionHookId XtAppAddActionHook(XtAppContext \fIapp_context\fP,
 XtActionHookProc \fIproc\fP, XtPointer \fIclient_data\fP);

@@ -39,20 +39,21 @@
 .SH NAME
 XtAddCallback, XtAddCallbacks, XtRemoveCallback, XtRemoveCallbacks, XtRemoveAllCallbacks \- add and remove callback procedures
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-void XtAddCallback(Widget \fIw\fP, String \fIcallback_name\fP, XtCallbackProc
+void XtAddCallback(Widget \fIw\fP, const char *\fIcallback_name\fP, XtCallbackProc
 \fIcallback\fP, XtPointer \fIclient_data\fP);
 .HP
-void XtAddCallbacks(Widget \fIw\fP, String \fIcallback_name\fP, XtCallbackList
+void XtAddCallbacks(Widget \fIw\fP, const char *\fIcallback_name\fP, XtCallbackList
 \fIcallbacks\fP);
 .HP
-void XtRemoveCallback(Widget \fIw\fP, String \fIcallback_name\fP,
+void XtRemoveCallback(Widget \fIw\fP, const char *\fIcallback_name\fP,
 XtCallbackProc \fIcallback\fP, XtPointer \fIclient_data\fP);
 .HP
-void XtRemoveCallbacks(Widget \fIw\fP, String \fIcallback_name\fP,
+void XtRemoveCallbacks(Widget \fIw\fP, const char *\fIcallback_name\fP,
 XtCallbackList \fIcallbacks\fP);
 .HP
-void XtRemoveAllCallbacks(Widget \fIw\fP, String \fIcallback_name\fP,
+void XtRemoveAllCallbacks(Widget \fIw\fP, const char *\fIcallback_name\fP);
 .SH ARGUMENTS
 .IP \fIcallback\fP 1i
 Specifies the callback procedure.

@@ -37,6 +37,7 @@
 .SH NAME
 XtGetClassExtension \- locate a class extension record
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtPointer XtGetClassExtension(WidgetClass \fIobject_class\fP, Cardinal
 \fIbyte_offset\fP, XrmQuark \fItype\fP, long \fIversion\fP, Cardinal

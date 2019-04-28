@@ -38,12 +38,14 @@
 .SH NAME
 XtAppGetErrorDatabase, XtAppGetErrorDatabaseText \- obtain error database
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XrmDatabase *XtAppGetErrorDatabase(\^XtAppContext \fIapp_context\fP);
 .HP
-void XtAppGetErrorDatabaseText(XtAppContext \fIapp_context\fP, char
-*\fIname\fP, char *\fItype\fP, char *\fIclass\fP, char *\fIdefault\fP, char
-*\fIbuffer_return\fP, int \fInbytes\fP, XrmDatabase \fIdatabase\fP);
+void XtAppGetErrorDatabaseText(XtAppContext \fIapp_context\fP,
+const char *\fIname\fP, const char *\fItype\fP, const char *\fIclass\fP,
+const char *\fIdefaultMsg\fP, char *\fIbuffer_return\fP, int \fInbytes\fP,
+XrmDatabase \fIdatabase\fP);
 .SH ARGUMENTS
 .IP \fIapp_context\fP 1i
 Specifies the application context.
@@ -54,7 +56,7 @@ Specifies the resource class of the error message.
 .IP \fIdatabase\fP 1i
 Specifies the name of the alternative database that is to be used
 or NULL if the application's database is to be used.
-.IP \fIdefault\fP 1i
+.IP \fIdefaultMsg\fP 1i
 Specifies the default message to use.
 .IP \fIname\fP 1i
 .br

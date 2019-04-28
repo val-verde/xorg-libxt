@@ -41,6 +41,7 @@
 .SH NAME
 XtClass, XtSuperclass, XtIsSubclass, XtCheckSubclass, XtIsObject, XtIsRectObj, XtIsWidget, XtIsComposite, XtIsConstraint, XtIsShell, XtIsOverrideShell, XtIsWMShell, XtIsVendorShell, XtIsTransientShell, XtIsTopLevelShell, XtIsApplicationShell, XtIsSessionShell \- obtain and verify a widget's class
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 WidgetClass XtClass(Widget \fIw\fP);
 .HP
@@ -59,7 +60,7 @@ Boolean XtIsWidget(Widget \fIw\fP);
 .HP
 Boolean XtIsComposite(Widget \fIw\fP);
 .HP
-Boolean XtIsConstraint(Widget \fIw\fP,
+Boolean XtIsConstraint(Widget \fIw\fP);
 .HP
 Boolean XtIsShell(Widget \fIw\fP);
 .HP

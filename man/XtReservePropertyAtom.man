@@ -37,8 +37,9 @@
 .SH NAME
 XtReservePropertyAtom, XtReleasePropertyAtom \- maintain a cache of property atoms
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
-Widget XtReservePropertyAtom(Widget \fIw\fP);
+Atom XtReservePropertyAtom(Widget \fIw\fP);
 .HP
 void XtReleasePropertyAtom(Widget \fIw\fP, Atom \fIatom\fP);
 .SH ARGUMENTS

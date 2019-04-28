@@ -38,6 +38,7 @@
 .SH NAME
 XtQueryGeometry \- query the preferred geometry of a child widget
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XtGeometryResult XtQueryGeometry(Widget \fIw\fP\^, XtWidgetGeometry
 *\fIintended\fP, XtWidgetGeometry *\fIpreferred_return\fP\^);

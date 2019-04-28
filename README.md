@@ -4,8 +4,8 @@ libXt - X Toolkit Intrinsics library
 Documentation for this library can be found in the included man pages; and
 the libXt spec from the specs directory of the source, also available at:
 
- - https://www.x.org/releases/current/doc/Xt/Xt.html
- - https://www.x.org/releases/current/doc/Xt/Xt.pdf
+ - https://www.x.org/releases/current/doc/libXt/intrinsics.html
+ - https://www.x.org/releases/current/doc/libXt/intrinsics.pdf
 
 and the O'Reilly X Toolkit books, which they have made freely available online:
 

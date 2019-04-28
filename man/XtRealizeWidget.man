@@ -38,6 +38,7 @@
 .SH NAME
 XtRealizeWidget, XtIsRealized, XtUnrealizeWidget \- realize and unrealize widgets
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 void XtRealizeWidget(Widget \fIw\fP);
 .HP

@@ -37,6 +37,7 @@
 .SH NAME
 XtGetSelectionRequest \- retrieve the event that triggered the XtConvertSelectionProc
 .SH SYNTAX
+#include <X11/Intrinsic.h>
 .HP
 XSelectionRequestEvent* XtGetSelectionRequest(Widget \fIw\fP, Atom
 \fIselection\fP, XtRequestId \fIrequest_id\fP);
