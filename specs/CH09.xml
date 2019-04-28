@@ -2572,74 +2572,120 @@ the address of a function of type
 <funcsynopsis id='XtConvertArgProc'>
 <funcprototype>
 <funcdef>typedef void <function>(*XtConvertArgProc)</function></funcdef>
-   <paramdef>XtAppContext <parameter>app</parameter></paramdef>
-   <paramdef>XrmValue *<parameter>to</parameter></paramdef>
-   <paramdef>XtPointer <parameter>converter_data</parameter></paramdef>
-   <paramdef>XrmValue *<parameter>args</parameter></paramdef>
-   <paramdef>Cardinal *<parameter>num_args</parameter></paramdef>
+   <paramdef>Widget <parameter>object</parameter></paramdef>
+   <paramdef>Cardinal *<parameter>size</parameter></paramdef>
+   <paramdef>XrmValue *<parameter>value</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
 
 <variablelist>
   <varlistentry>
     <term>
-      <emphasis remap='I'>app</emphasis>
+      <emphasis remap='I'>object</emphasis>
     </term>
     <listitem>
       <para>
-Specifies an application context in which the resource is being freed.
+Passes the object for which the resource is being
+converted, or NULL if the converter was invoked by
+XtCallConverter or XtDirectConvert.
       </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
-      <emphasis remap='I'>to</emphasis>
+      <emphasis remap='I'>size</emphasis>
     </term>
     <listitem>
       <para>
-Specifies a descriptor for the resource produced by the type converter.
+Passes a pointer to the size field from the XtConvertArgRec.
       </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
-      <emphasis remap='I'>converter_data</emphasis>
+      <emphasis remap='I'>value</emphasis>
     </term>
     <listitem>
       <para>
-Specifies the converter-specific data returned by the type converter.
+Passes a pointer to a descriptor into which the procedure must store the
+conversion argument.
       </para>
     </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <emphasis remap='I'>args</emphasis>
-    </term>
-    <listitem>
-      <para>
-Specifies the additional converter arguments as passed
-to the type converter when the conversion was performed.
-      </para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <emphasis remap='I'>num_args</emphasis>
-    </term>
-    <listitem>
-      <para>
-Specifies the number of entries in <emphasis remap='I'>args</emphasis>.
-    </para>
-  </listitem>
   </varlistentry>
 </variablelist>
-
 <para>
-The destructor procedure is responsible for freeing the resource
-specified by the <emphasis remap='I'>to</emphasis> argument, including any auxiliary storage
-associated with that resource, but not the memory directly addressed
-by the size and location in the <emphasis remap='I'>to</emphasis> argument or the memory specified
-by <emphasis remap='I'>args</emphasis>.
+When invoked, the XtConvertArgProc procedure must derive a
+conversion argument and store the address and size of the
+argument in the location pointed to by value.
+</para>
+<para>
+In order to permit reentrancy, the XtConvertArgProc should
+return the address of storage whose lifetime is no shorter
+than the lifetime of object.
+If object is NULL,
+the lifetime of the conversion argument must be no shorter than the
+lifetime of the resource with which the conversion argument
+is associated.	The Intrinsics do not guarantee to copy this
+storage but do guarantee not to reference it if the resource
+is removed from the conversion cache.
+</para>
+<para>
+The following example illustrates how to register the
+CvtStringToPixel routine given earlier:
+</para>
+<programlisting>
+static XtConvertArgRec colorConvertArgs[] = {
+  {XtWidgetBaseOffset,
+   (XtPointer)XtOffset(Widget, core.screen),
+   sizeof(Screen*)},
+  {XtWidgetBaseOffset,
+   (XtPointer)XtOffset(Widget, core.colormap),
+   sizeof(Colormap)}
+};
+
+XtSetTypeConverter(XtRString,
+                   XtRPixel,
+                   CvtStringToPixel,
+                   colorConvertArgs,
+                   XtNumber(colorConvertArgs),
+                   XtCacheByDisplay, NULL);
+</programlisting>
+<para>
+The conversion argument descriptors colorConvertArgs and
+screenConvertArg are predefined by the Intrinsics.  Both
+take the values from the closest windowed ancestor if the
+object is not of a subclass of Core.  The screenConvertArg
+descriptor puts the widget’s screen field into args[0].  The
+colorConvertArgs descriptor puts the widget’s screen field
+into args[0], and the widget’s colormap field into args[1].
+</para>
+<para>
+Conversion routines should not just put a descriptor for the
+address of the base of the widget into args[0], and use that
+in the routine.  They should pass in the actual values on
+which the conversion depends.  By keeping the dependencies
+of the conversion procedure specific, it is more likely that
+subsequent conversions will find what they need in the con‐
+version cache.	This way the cache is smaller and has fewer
+and more widely applicable entries.
+</para>
+<para>
+If any conversion arguments of type XtBaseOffset,
+XtResourceString, XtResourceQuark, and XtWidgetBaseOffset are
+specified for conversions performed by XtGetApplicationResources,
+XtGetSubresources, XtVaGetApplicationResources, or
+XtVaGetSubresources, the arguments are computed with respect
+to the specified widget, not the base address or resource
+list specified in the call.
+</para>
+<para>
+If the XtConvertArgProc modifies the resource database, the
+changes affect any in‐progress widget creation,
+XtGetApplicationResources, or XtGetSubresources
+in an implementation‐defined manner;
+however, insertion of new entries or changes
+to existing entries are allowed and will not directly cause
+an error.
 </para>
 </sect2>
 
