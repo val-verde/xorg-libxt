@@ -1549,9 +1549,12 @@ void XtMainLoop(void)
 void XtAppMainLoop(
 	XtAppContext app)
 {
+    long m = XtIMAll;
     LOCK_APP(app);
     do {
-	XtAppProcessEvent(app, XtIMAll);
+	if( m == 0 ) m=XtIMAll;
+	XtAppProcessEvent(app, m);
+	m >>= 1;
     } while(app->exit_flag == FALSE);
     UNLOCK_APP(app);
 }
