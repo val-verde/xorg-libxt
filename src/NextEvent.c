@@ -75,6 +75,9 @@ in this Software without prior written authorization from The Open Group.
 #include <stdio.h>
 #include <errno.h>
 
+#ifdef _WIN32
+typedef long suseconds_t;
+#endif
 
 static TimerEventRec* freeTimerRecs;
 static WorkProcRec* freeWorkRecs;
