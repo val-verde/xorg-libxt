@@ -1196,6 +1196,9 @@ static String ExtractLocaleName(
     int		    n;
 # endif
     static char*    buf = NULL;
+# ifdef WHITEFILL
+    char *temp;
+# endif
 
     start = lang;
 # ifdef SKIPCOUNT
@@ -1226,8 +1229,8 @@ static String ExtractLocaleName(
 	    strncpy(buf, start, (size_t) len);
 	    *(buf + len) = '\0';
 # ifdef WHITEFILL
-	    for (start = buf; start = strchr(start, ' '); )
-		*start++ = '-';
+	    for (temp = buf; temp = strchr(temp, ' '); )
+		*temp++ = '-';
 # endif
 	    return buf;
 	} else  /* if no ENDCHAR is found we are at the end of the line */
@@ -1239,8 +1242,8 @@ static String ExtractLocaleName(
 	else buf = XtMalloc (strlen (lang) + 1);
 	if (buf == NULL) return NULL;
 	strcpy(buf, lang);
-	for (start = buf; start = strchr(start, ' '); )
-	    *start++ = '-';
+	for (temp = buf; temp = strchr(temp, ' '); )
+	    *temp++ = '-';
 	return buf;
     }
 # endif
