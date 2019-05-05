@@ -1495,7 +1495,7 @@ The
 function returns the address of the error database.
 The Intrinsics do a lazy binding of the error database and do not merge in the
 database file until the first call to
-<function>XtGetErrorDatbaseText</function>.
+<function>XtGetErrorDatabaseText</function>.
 This routine has been replaced by
 <xref linkend='XtAppGetErrorDatabase' xrefstyle='select: title'/>.
 </para>

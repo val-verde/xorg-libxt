@@ -2377,7 +2377,7 @@ if it found no handler to which to dispatch the event.
 <xref linkend='XtDispatchEvent' xrefstyle='select: title'/>
 records the last timestamp in any event that
 contains a timestamp (see
-<function>XtLastTimestampProcessed ),</function>
+<function>XtLastTimestampProcessed</function>),
 regardless of whether it was filtered or dispatched.
 If a modal cascade is active with <emphasis remap='I'>spring_loaded</emphasis>
 <function>True</function>,

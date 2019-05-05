@@ -324,7 +324,7 @@ or any subclass:
 <function>XtIsWMShell</function>,
 <function>XtIsVendorShell</function>,
 <function>XtIsTransientShell</function>,
-<function>XtIsToplevelShell</function>,
+<function>XtIsTopLevelShell</function>,
 <function>XtIsApplicationShell</function>,
 <function>XtIsSessionShell</function>
     </para>

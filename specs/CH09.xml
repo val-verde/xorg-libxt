@@ -658,7 +658,7 @@ static XtResource resources[] = {
 <para>
 The complete resource name for a field of a widget instance is the
 concatenation of the application shell name (from
-<function>XtAppCreateShell ),</function>
+<function>XtAppCreateShell</function>),
 the instance names of all the widget's parents up to the
 top of the widget tree,
 the instance name of the widget itself,
@@ -666,7 +666,7 @@ and the resource name of the specified field of the widget.
 Similarly,
 the full resource class of a field of a widget instance is the
 concatenation of the application class (from
-<function>XtAppCreateShell ),</function>
+<function>XtAppCreateShell</function>),
 the widget class names of all the widget's parents up to the
 top of the widget tree,
 the widget class name of the widget itself,

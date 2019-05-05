@@ -157,7 +157,7 @@ implementation-dependent; widgets may make no assumptions about the
 value stored in this resource if it is non-NULL.  Except to compare
 the value to NULL (which is equivalent to
 <function>XtCallbackStatus</function>
-<function>XtCallbackHasNone ),</function>
+<function>XtCallbackHasNone</function>),
 access to callback list resources must be made
 through other Intrinsics procedures.
 </para>

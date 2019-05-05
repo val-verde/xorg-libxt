@@ -1079,7 +1079,7 @@ class, and representation type symbolic constants.
     </row>
     <row>
       <entry>XtHsetValues</entry>
-      <entry>"Xtsetvalues"</entry>
+      <entry>"XtsetValues"</entry>
     </row>
     <row>
       <entry>XtHmanageChildren</entry>

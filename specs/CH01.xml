@@ -2182,8 +2182,10 @@ the following field of
 <function>ConstraintClassPart</function>
 is chained from the subclass up to the
 Constraint class:
-     <emphasis remap='I'>destroy</emphasis>
 </para>
+<programlisting>
+                                         <emphasis remap='I'>destroy</emphasis>
+</programlisting>
 </sect2>
 
 <sect2 id="Class_Initialization_class_initialize_and_class_part_initialize_Procedures">

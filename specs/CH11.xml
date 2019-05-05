@@ -1245,7 +1245,7 @@ selection data from the Intrinsics is of type
 
 <funcsynopsis id='XtSelectionCallbackProc'>
 <funcprototype>
-<funcdef>typedef void <function>(*XtSelectionCallbackPro)</function></funcdef>
+<funcdef>typedef void <function>(*XtSelectionCallbackProc)</function></funcdef>
    <paramdef>Widget <parameter>w</parameter></paramdef>
    <paramdef>XtPointer <parameter>client_data</parameter></paramdef>
    <paramdef>Atom *<parameter>selection</parameter></paramdef>
@@ -4937,7 +4937,7 @@ as an argument:
 <function>XtIsWMShell</function>,
 <function>XtIsVendorShell</function>,
 <function>XtIsTransientShell</function>,
-<function>XtIsToplevelShell</function>,
+<function>XtIsTopLevelShell</function>,
 <function>XtIsApplicationShell</function>,
 <function>XtIsSessionShell</function>
     </para>
@@ -5475,7 +5475,7 @@ called upon completion of phase one destroy for a widget.
 </para>
 
 <para>
-The XtNshells and XtnumShells are read-only resources that report a
+The XtNshells and XtNnumShells are read-only resources that report a
 list of all parentless shell widgets associated with a display.
 </para>
 

@@ -725,7 +725,7 @@ Although
 resizes the widget's window
 (if the geometry
 manager returns
-<function>XtGeometryYes ),</function>
+<function>XtGeometryYes</function>),
 it does not call the widget class's resize procedure.
 The requesting widget must perform whatever
 resizing calculations are needed explicitly.

@@ -2777,7 +2777,7 @@ record is of type
 
 <funcsynopsis id='XtAllocateProc'>
 <funcprototype>
-  <funcdef>typedef void <function>(*AllocateProc)</function></funcdef>
+  <funcdef>typedef void <function>(*XtAllocateProc)</function></funcdef>
       <paramdef>WidgetClass <parameter>widget_class</parameter></paramdef>
       <paramdef>Cardinal* <parameter>constraint_size</parameter></paramdef>
       <paramdef>Cardinal* <parameter>more_bytes</parameter></paramdef>
