@@ -519,8 +519,8 @@ static XtCacheRef *GetResources(
     }
 
     /* Mark each resource as not found on arg list */
-    memset((char *) found, 0, (size_t) (num_resources * sizeof(Boolean)));
-    memset((char *) typed, 0, (size_t) (num_resources * sizeof(int)));
+    memset((void *) found, 0, (size_t) (num_resources * sizeof(Boolean)));
+    memset((void *) typed, 0, (size_t) (num_resources * sizeof(int)));
 
     /* Copy the args into the resources, mark each as found */
     {

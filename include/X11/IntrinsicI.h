@@ -117,15 +117,15 @@ SOFTWARE.
 #include <X11/Xfuncs.h>
 
 #define XtMemmove(dst, src, size)	\
-    if ((char *)(dst) != (char *)(src)) {		    \
-	(void) memcpy((char *) (dst), (char *) (src), (size_t) (size)); \
+    if ((const void *)(dst) != (const void *)(src)) {		    \
+	(void) memcpy((void *) (dst), (const void *) (src), (size_t) (size)); \
     }
 
 #define XtBZero(dst, size) 	\
-	memset((char *) (dst), 0, (size_t) (size))
+	memset((void *) (dst), 0, (size_t) (size))
 
 #define XtMemcmp(b1, b2, size) 		\
-	memcmp((char *) (b1), (char *) (b2), (size_t) (size))
+	memcmp((const void *) (b1), (const void *) (b2), (size_t) (size))
 
 
 /****************************************************************

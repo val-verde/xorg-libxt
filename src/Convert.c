@@ -649,7 +649,7 @@ void XtDirectConvert(
 	 && (p->from.size == from->size)
 	 && !(p->from_is_value ?
 	      XtMemcmp(&p->from.addr, from->addr, from->size) :
-	      memcmp((char *)p->from.addr, (char *)from->addr, from->size))
+	      memcmp((const void *)p->from.addr, (const void *)from->addr, from->size))
          && (p->num_args == num_args)) {
 	    if ((i = num_args)) {
 		XrmValue *pargs = CARGS(p);
@@ -747,7 +747,7 @@ CallConverter(
 	     && (p->from.size == from->size)
 	     && !(p->from_is_value ?
 		  XtMemcmp(&p->from.addr, from->addr, from->size) :
-		  memcmp((char *)p->from.addr, (char *)from->addr, from->size))
+		  memcmp((const void *)p->from.addr, (const void *)from->addr, from->size))
 	     && (p->num_args == num_args)) {
 		if ((i = num_args)) {
 		    XrmValue *pargs = CARGS(p);
