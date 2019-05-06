@@ -1542,7 +1542,7 @@ void XtMainLoop(void)
 void XtAppMainLoop(
 	XtAppContext app)
 {
-    long m = XtIMAll;
+    XtInputMask m = XtIMAll;
     LOCK_APP(app);
     do {
 	if( m == 0 ) m=XtIMAll;
