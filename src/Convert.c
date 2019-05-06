@@ -216,11 +216,11 @@ void _XtTableAddConverter(
     p->converter    = converter;
     p->destructor   = destructor;
     p->num_args     = (unsigned short) num_args;
-    p->global       = global;
+    XtSetBit(p->global, global);
     args = ConvertArgs(p);
     while (num_args--)
 	*args++ = *convert_args++;
-    p->new_style    = new_style;
+    XtSetBit(p->new_style, new_style);
     p->do_ref_count = False;
     if (destructor || (cache_type & 0xff)) {
 	p->cache_type = (char) (cache_type & 0xff);
@@ -383,9 +383,9 @@ CacheEnter(
     }
     if (!to->addr)
 	succeeded = False;
-    p->conversion_succeeded = succeeded;
-    p->is_refcounted = do_ref;
-    p->must_be_freed = do_free;
+    XtSetBit(p->conversion_succeeded, succeeded);
+    XtSetBit(p->is_refcounted, do_ref);
+    XtSetBit(p->must_be_freed, do_free);
     p->next	    = *pHashEntry;
     if (p->next && p->next->has_ext)
 	CEXT(p->next)->prev = &p->next;

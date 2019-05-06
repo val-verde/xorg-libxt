@@ -961,7 +961,7 @@ static Boolean OwnSelection(
     ctx->loses = lose;
     ctx->notify = notify;
     ctx->owner_cancel = cancel;
-    ctx->incremental = incremental;
+    XtSetBit(ctx->incremental, incremental);
     ctx->owner_closure = closure;
     ctx->was_disowned = FALSE;
 

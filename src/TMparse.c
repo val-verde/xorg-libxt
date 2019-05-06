@@ -554,13 +554,13 @@ static void StoreLateBindings(
         temp = (LateBindingsPtr)XtRealloc((char *)temp,
             (unsigned)((count+number+1) * sizeof(LateBindings)) );
         *lateBindings = temp;
-        temp[count].knot = notL;
-        temp[count].pair = pair;
+        XtSetBit(temp[count].knot, notL);
+        XtSetBit(temp[count].pair, pair);
 	if (count == 0)
 	    temp[count].ref_count = 1;
         temp[count++].keysym = keysymL;
         if (keysymR){
-            temp[count].knot = notR;
+            XtSetBit(temp[count].knot, notR);
             temp[count].pair = FALSE;
 	    temp[count].ref_count = 0;
             temp[count++].keysym = keysymR;
@@ -1916,7 +1916,7 @@ static XtTranslations ParseTranslationTable(
 
     parseTree->isSimple = TRUE;
     parseTree->mappingNotifyInterest = FALSE;
-    parseTree->isAccelerator = isAccelerator;
+    XtSetBit(parseTree->isAccelerator, isAccelerator);
     parseTree->isStackBranchHeads =
       parseTree->isStackQuarks =
 	parseTree->isStackComplexBranchHeads = TRUE;

@@ -1457,8 +1457,8 @@ static XtGrabRec *NewGrabRec(
     gl		      = XtNew(XtGrabRec);
     gl->next	      = NULL;
     gl->widget        = widget;
-    gl->exclusive     = exclusive;
-    gl->spring_loaded = spring_loaded;
+    XtSetBit(gl->exclusive,     exclusive);
+    XtSetBit(gl->spring_loaded, spring_loaded);
 
     return gl;
 }

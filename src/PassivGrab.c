@@ -166,11 +166,11 @@ static XtServerGrabPtr CreateGrab(
 				      : 0));
     grab->next = NULL;
     grab->widget = widget;
-    grab->ownerEvents = ownerEvents;
-    grab->pointerMode = pointer_mode;
-    grab->keyboardMode = keyboard_mode;
+    XtSetBit(grab->ownerEvents, ownerEvents);
+    XtSetBit(grab->pointerMode, pointer_mode);
+    XtSetBit(grab->keyboardMode, keyboard_mode);
     grab->eventMask = event_mask;
-    grab->hasExt = need_ext;
+    XtSetBit(grab->hasExt, need_ext);
     grab->confineToIsWidgetWin = (XtWindow (widget) == confine_to);
     grab->modifiers = (unsigned short) modifiers;
     grab->keybut = keybut;
@@ -928,9 +928,9 @@ static int GrabDevice (
 	  device->grab.widget = widget;
 	  device->grab.modifiers = 0;
 	  device->grab.keybut = 0;
-	  device->grab.ownerEvents = owner_events;
-	  device->grab.pointerMode = pointer_mode;
-	  device->grab.keyboardMode = keyboard_mode;
+	  XtSetBit(device->grab.ownerEvents, owner_events);
+	  XtSetBit(device->grab.pointerMode, pointer_mode);
+	  XtSetBit(device->grab.keyboardMode, keyboard_mode);
 	  device->grab.hasExt = False;
 	  device->grabType = XtActiveServerGrab;
 	  pdi->activatingKey = (KeyCode)0;

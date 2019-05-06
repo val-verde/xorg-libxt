@@ -1580,7 +1580,7 @@ void _XtAddEventSeqToStateTree(
 	  if (eventSeq->event.eventType == MappingNotify)
 	    stateTree->mappingNotifyInterest = True;
 	  branchHead->hasActions = True;
-	  branchHead->more = eventSeq->actions->idx;
+	  XtSetBits(branchHead->more, eventSeq->actions->idx, 13);
 	  FreeActions(eventSeq->actions);
 	  eventSeq->actions = NULL;
 	  return;
@@ -1589,7 +1589,7 @@ void _XtAddEventSeqToStateTree(
     branchHead->isSimple = False;
     if (!eventSeq->next)
       branchHead->hasActions = True;
-    branchHead->more = GetComplexBranchIndex(stateTree, typeIndex, modIndex);
+    XtSetBits(branchHead->more, GetComplexBranchIndex(stateTree, typeIndex, modIndex), 13);
     state = &stateTree->complexBranchHeadTbl[TMBranchMore(branchHead)];
 
     for (;;) {
