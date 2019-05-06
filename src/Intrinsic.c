@@ -1388,7 +1388,7 @@ _XtString XtResolvePathname(
     }
 
     bytesAllocd = bytesLeft = 1000;
-    massagedPath = ALLOCATE_LOCAL(bytesAllocd);
+    massagedPath = ALLOCATE_LOCAL((size_t)bytesAllocd);
     if (massagedPath == NULL) _XtAllocError(NULL);
 
     if (path[0] == ':') {
