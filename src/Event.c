@@ -1067,10 +1067,10 @@ static void AddExposureToRectangularRegion(
 	XClipBox(region, &bbox);
 	merged.x = MIN(rect.x, bbox.x);
 	merged.y = MIN(rect.y, bbox.y);
-	merged.width = MAX(rect.x + rect.width,
-			   bbox.x + bbox.width) - merged.x;
-	merged.height = MAX(rect.y + rect.height,
-			    bbox.y + bbox.height) - merged.y;
+	merged.width = (unsigned short)(MAX(rect.x + rect.width,
+					    bbox.x + bbox.width) - merged.x);
+	merged.height = (unsigned short)(MAX(rect.y + rect.height,
+					     bbox.y + bbox.height) - merged.y);
 	XUnionRectWithRegion(&merged, region, region);
     }
 }
