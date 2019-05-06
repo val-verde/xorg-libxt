@@ -92,8 +92,8 @@ if (sb->current - sb->start > (int)sb->max - STR_THRESHOLD) 	\
 }
 
 #define ExpandForChars(sb, nchars ) \
-    if ((unsigned)(sb->current - sb->start) > (sb->max - STR_THRESHOLD - nchars)) { \
-	_XtString old = sb->start;					\
+    if ((unsigned)(sb->current - sb->start) > (sb->max - STR_THRESHOLD - (Cardinal) nchars)) { \
+	_XtString old = sb->start;				\
 	sb->start = XtRealloc(old,				\
 	    (Cardinal)(sb->max = (Cardinal)(sb->max + STR_INCAMOUNT + (Cardinal) nchars)));	\
 	sb->current = sb->current - old + sb->start;		\

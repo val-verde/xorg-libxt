@@ -166,7 +166,7 @@ static void CallExtensionSelector(
 		data[count++] = EXT_SELECT_DATA(p, i);
 	    }
 
-    (*rec->proc)(widget, types, data, count, rec->client_data);
+    (*rec->proc)(widget, types, data, (int) count, rec->client_data);
     DEALLOCATE_LOCAL((char*) types);
     DEALLOCATE_LOCAL((char*) data);
 }

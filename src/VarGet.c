@@ -161,7 +161,7 @@ GetTypedArg(
     from_val.size = from_size;
     from_val.addr = (XPointer)value;
     to_val.addr = (XPointer)typed_arg->value;
-    to_val.size = typed_arg->size;
+    to_val.size = (unsigned) typed_arg->size;
 
     if (!XtConvertAndStore(widget, from_type, &from_val,
 			   typed_arg->type, &to_val)) {
@@ -234,7 +234,7 @@ XtVaGetValues(Widget widget, ...)
     _XtCountVaList(var, &total_count, &typed_count);
 
     if (total_count != typed_count) {
-        args = (ArgList)__XtMalloc((unsigned)((total_count - typed_count)
+        args = (ArgList)__XtMalloc((unsigned)((size_t)(total_count - typed_count)
 				* sizeof(Arg)));
     }
     else args = NULL;		/* for lint; really unused */
@@ -272,7 +272,7 @@ XtVaGetValues(Widget widget, ...)
     XtFree((XtPointer)resources);
 
     if (total_count != typed_count) {
-	XtGetValues(widget, args, count);
+	XtGetValues(widget, args, (Cardinal) count);
 	XtFree((XtPointer)args);
     }
     UNLOCK_APP(app);

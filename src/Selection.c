@@ -141,6 +141,7 @@ static Atom GetParamInfo(Widget, Atom);
 static int StorageSize[3] = {1, sizeof(short), sizeof(long)};
 #define BYTELENGTH(length, format) ((length) * (size_t)StorageSize[(format)>>4])
 #define NUMELEM(bytelength, format) ((bytelength) / StorageSize[(format)>>4])
+#define NUMELEM2(bytelength, format) ((unsigned long)(bytelength) / (unsigned long) StorageSize[(format)>>4])
 
 /* Xlib and Xt are permitted to have different memory allocators, and in the
  * XtSelectionCallbackProc the client is instructed to free the selection
@@ -1192,7 +1193,7 @@ static void HandleGetIncrement(
     XtRemoveTimeOut(info->timeout);
 #endif
     if (length == 0) {
-       unsigned long u_offset = NUMELEM(info->offset, info->format);
+       unsigned long u_offset = NUMELEM2(info->offset, info->format);
        (*info->callbacks[n])(widget, *info->req_closure, &ctx->selection,
 			     &info->type,
 			     (info->offset == 0 ? value : info->value),
@@ -1503,7 +1504,7 @@ static void DoLocalTransfer(
 			    &size, ctx->owner_closure, (XtRequestId*)&req);
 		  }
 		  if (total == NULL) total = __XtMalloc(1);
-		  totallength = NUMELEM(totallength, format);
+		  totallength = NUMELEM2(totallength, format);
 		  (*callback)(widget, closure, &selection, &resulttype,
 		    total,  &totallength, &format);
 	      }

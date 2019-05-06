@@ -1424,7 +1424,7 @@ XtTranslations _XtCreateXlations(
 
     xlations = (XtTranslations)
       __XtMalloc((Cardinal)(sizeof(TranslationData) +
-	       (numStateTrees - 1) * sizeof(TMStateTree)));
+	       (size_t)(numStateTrees - 1) * sizeof(TMStateTree)));
 #ifdef TRACE_TM
     LOCK_PROCESS;
     if (_XtGlobalTM.numTms == _XtGlobalTM.tmTblSize) {
@@ -1773,8 +1773,8 @@ static XtTranslations UnmergeTranslations(
     if (xlations->composers[1]) {
 	second = UnmergeTranslations(widget, xlations->composers[1],
 				     unmergeXlations,
-				     (TMShortCard)currIndex +
-				     xlations->composers[0]->numStateTrees,
+				     (TMShortCard)(currIndex +
+				     xlations->composers[0]->numStateTrees),
 				     oldBindings, numOldBindings,
 				     newBindings, numNewBindingsRtn);
     }
@@ -2020,7 +2020,7 @@ static Boolean ComposeTranslations(
 		(&((TMSimpleBindData)bindData)->bindTbl[0]);
     }
 
-    numBytes =(TMShortCard) (((oldXlations ? oldXlations->numStateTrees : 0)
+    numBytes =(TMShortCard) ((size_t)((oldXlations ? oldXlations->numStateTrees : 0)
 		+ newXlations->numStateTrees) * sizeof(TMComplexBindProcsRec));
     newBindings = (TMComplexBindProcs) XtStackAlloc(numBytes,  stackBindings);
     XtBZero((char *)newBindings, numBytes);
