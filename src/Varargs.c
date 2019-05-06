@@ -244,7 +244,7 @@ TypedArgToArg(
 	    arg_return->value = *(XtArgVal *)to_val.addr;
 	else if (to_val.size > sizeof(XtArgVal)) {
 	    arg_return->value = (XtArgVal) (void *) __XtMalloc(to_val.size);
-	    memory_return->value = (XtArgVal)
+	    if ((memory_return->value = arg_return->value) != 0)
 		memcpy((void *)arg_return->value, to_val.addr, to_val.size);
 	}
     }
