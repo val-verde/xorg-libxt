@@ -169,7 +169,7 @@ static XtServerGrabPtr CreateGrab(
     XtSetBit(grab->ownerEvents, ownerEvents);
     XtSetBit(grab->pointerMode, pointer_mode);
     XtSetBit(grab->keyboardMode, keyboard_mode);
-    grab->eventMask = event_mask;
+    grab->eventMask = (unsigned short)event_mask;
     XtSetBit(grab->hasExt, need_ext);
     grab->confineToIsWidgetWin = (XtWindow (widget) == confine_to);
     grab->modifiers = (unsigned short) modifiers;

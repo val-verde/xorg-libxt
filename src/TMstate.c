@@ -1916,7 +1916,7 @@ static TMBindData MakeBindData(
 		sizeof(TMSimpleBindProcsRec)));
 
     bindData = (TMBindData) __XtCalloc((Cardinal) sizeof(char), (Cardinal) bytes);
-    bindData->simple.isComplex = isComplex;
+    XtSetBit(bindData->simple.isComplex, isComplex);
     if (isComplex) {
 	TMComplexBindData cBindData = (TMComplexBindData)bindData;
 	/*

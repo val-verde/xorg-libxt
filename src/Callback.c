@@ -125,7 +125,7 @@ void _XtAddCallback(
 	    __XtMalloc((Cardinal) (sizeof(InternalCallbackRec) +
 		     sizeof(XtCallbackRec) * (size_t) (count + 1)));
 	(void) memmove((char *)ToList(icl), (char *)ToList(*callbacks),
-		       sizeof(XtCallbackRec) * count);
+		       sizeof(XtCallbackRec) * (size_t) count);
     } else {
 	icl = (InternalCallbackList)
 	    XtRealloc((char *) icl, (Cardinal)(sizeof(InternalCallbackRec) +

@@ -680,7 +680,7 @@ WaitLoop:
 		    } else
 #else
 		    if ((wt.time_spent.tv_sec * 1000 + wt.time_spent.tv_usec / 1000) < wt.poll_wait) {
-			wt.poll_wait -= (wt.time_spent.tv_sec * 1000 + wt.time_spent.tv_usec / 1000);
+			wt.poll_wait -= (int)(wt.time_spent.tv_sec * 1000 + wt.time_spent.tv_usec / 1000);
 			continue;
 		    } else
 #endif

@@ -1874,7 +1874,7 @@ static String CheckForPoundSign(
 	str++;
 	start = str;
 	str = ScanIdent(str);
-	len = MIN(19, str-start);
+	len = MIN(19, (int)(str - start));
 	(void) memmove(operation, start, (size_t) len);
 	operation[len] = '\0';
 	if (!strcmp(operation,"replace"))
