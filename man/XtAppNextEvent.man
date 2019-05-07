@@ -181,8 +181,8 @@ returns true.
 .LP
 Applications can provide their own version of this loop,
 which tests some global termination flag or tests that the number
-of top-level widgets is larger than zero before circling back to the call to
-.BR XtAppNextEvent .
+of top-level widgets is larger than zero before circling back
+for the next event.
 .SH "SEE ALSO"
 .br
 \fI\*(xT\fP

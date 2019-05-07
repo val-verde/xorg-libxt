@@ -2426,21 +2426,17 @@ Specifies the application context that identifies the application.
 </variablelist>
 
 <para>
-The
-<xref linkend='XtAppMainLoop' xrefstyle='select: title'/>
-function first reads the next incoming X event by calling
-<xref linkend='XtAppNextEvent' xrefstyle='select: title'/>
-and then dispatches the event to the appropriate registered procedure
-by calling
-<xref linkend='XtDispatchEvent' xrefstyle='select: title'/>.
+The <xref linkend='XtAppMainLoop' xrefstyle='select: title'/>
+function processes events using
+<xref linkend='XtAppProcessEvent' xrefstyle='select: title'/>,
+varying the <emphasis remap='I'>mask parameter</emphasis>
+and using <xref linkend='XtAppPending' xrefstyle='select: title'/>
+to ensure that it has a chance to handle events of all types,
+i.e., X events, timer events, input events and signal sources.
 This constitutes the main loop of X Toolkit applications.
 There is nothing special about
 <xref linkend='XtAppMainLoop' xrefstyle='select: title'/>;
-it simply calls
-<xref linkend='XtAppNextEvent' xrefstyle='select: title'/>
-and then
-<xref linkend='XtDispatchEvent' xrefstyle='select: title'/>
-in a conditional loop.
+it simply processes events in a conditional loop.
 At the bottom of the loop, it checks to see if the specified
 application context's destroy flag is set.
 If the flag is set, the loop breaks.
