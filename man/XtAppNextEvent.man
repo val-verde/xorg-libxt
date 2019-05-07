@@ -80,13 +80,14 @@ If the X event queue is empty,
 flushes the X output buffers of each Display in the application context
 and waits for an event while looking at the other input sources, timeout
 timeout values, and signal handlers and calling any callback procedures
-triggered by them.  This wait time can be used for background processing
+triggered by them.
+This wait time can be used for background processing
 (see Section 7.8).
 .LP
 If there is an event in the queue,
 .B XtAppPeekEvent
-fills in the event and returns a nonzero value. If no X input is on the
-queue,
+fills in the event and returns a nonzero value.
+If no X input is on the queue,
 .B XtAppPeekEvent
 flushes the output buffer and blocks until input is available
 (possibly calling some timeout callbacks in the process).
@@ -100,8 +101,8 @@ returns zero.
 The
 .B XtAppPending
 function returns a nonzero value if there are events pending from the
-X server, timer pending, or other input sources pending. The value
-returned is a bit mask that is the OR of
+X server, timer pending, or other input sources pending.
+The value returned is a bit mask that is the OR of
 .BR XtIMXEvent ,
 .BR XtIMTimer ,
 .BR XtIMAlternateInput ,
@@ -161,11 +162,12 @@ also is responsible for implementing the grab semantics for
 .LP
 The
 .B XtAppMainLoop
-function first reads the next incoming X event by calling
-.B XtAppNextEvent
-and then it dispatches the event to the appropriate registered procedure
-by calling
-.BR XtDispatchEvent .
+function processes events using
+.BR XtAppProcessEvent ,
+varying the \fImask\fP parameter and using
+.B XtAppPending
+to ensure that it has a chance to handle events of all types,
+i.e., X events, timer events, input events and signal sources.
 This constitutes the main loop of \*(tk applications,
 and, as such, it does not return unless
 .B XtAppSetExitFlag
@@ -173,11 +175,7 @@ is called.
 Applications are expected to exit in response to some user action.
 There is nothing special about
 .BR XtAppMainLoop ;
-it is simply an loop that calls
-.B XtAppNextEvent
-and then
-.BR XtDispatchEvent ,
-until
+it is simply an loop that processes events until
 .BR XtAppGetExitFlag ()
 returns true.
 .LP
