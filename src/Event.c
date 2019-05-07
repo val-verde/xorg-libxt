@@ -74,6 +74,7 @@ in this Software without prior written authorization from The Open Group.
 #include "IntrinsicI.h"
 #include "Shell.h"
 #include "StringDefs.h"
+#include <stdio.h>
 
 typedef struct _XtEventRecExt {
     int type;
@@ -1543,10 +1544,17 @@ void XtAppMainLoop(
 	XtAppContext app)
 {
     XtInputMask m = XtIMAll;
+    XtInputMask t;
     LOCK_APP(app);
     do {
-	if( m == 0 ) m=XtIMAll;
-	XtAppProcessEvent(app, m);
+	if (m == 0) {
+	    m = XtIMAll;
+	    /* wait for any event, blocking */
+	    XtAppProcessEvent(app, m);
+	} else if (((t = XtAppPending(app)) & m)) {
+	    /* wait for certain events, stepping through choices */
+	    XtAppProcessEvent(app, t & m);
+	}
 	m >>= 1;
     } while(app->exit_flag == FALSE);
     UNLOCK_APP(app);
