@@ -390,7 +390,7 @@ void XtRemoveEventHandler(
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
     RemoveEventHandler(widget, (XtPointer) &eventMask, 0, FALSE,
-		       other, proc, closure, FALSE);
+		       (Boolean) other, proc, closure, FALSE);
     UNLOCK_APP(app);
 }
 
@@ -403,7 +403,7 @@ void XtAddEventHandler(
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
 		    proc, closure, XtListTail, FALSE, FALSE);
     UNLOCK_APP(app);
 }
@@ -418,7 +418,7 @@ void XtInsertEventHandler(
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
 		    proc, closure, position, TRUE, FALSE);
     UNLOCK_APP(app);
 }
@@ -433,7 +433,7 @@ void XtRemoveRawEventHandler(
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
     RemoveEventHandler(widget, (XtPointer) &eventMask, 0, FALSE,
-		       other, proc, closure, TRUE);
+		       (Boolean) other, proc, closure, TRUE);
     UNLOCK_APP(app);
 }
 
@@ -447,7 +447,7 @@ void XtInsertRawEventHandler(
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
 		    proc, closure, position, TRUE, TRUE);
     UNLOCK_APP(app);
 }
@@ -461,7 +461,7 @@ void XtAddRawEventHandler(
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
 		    proc, closure, XtListTail, FALSE, TRUE);
     UNLOCK_APP(app);
 }
@@ -1484,7 +1484,7 @@ void XtAddGrab(
 	exclusive = TRUE;
     }
 
-    gl = NewGrabRec(widget, exclusive, spring_loaded);
+    gl = NewGrabRec(widget, (Boolean) exclusive, (Boolean) spring_loaded);
     gl->next = *grabListPtr;
     *grabListPtr = gl;
 

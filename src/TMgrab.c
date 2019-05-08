@@ -327,7 +327,7 @@ void XtRegisterGrabAction(
 	}
 #endif /*DEBUG*/
 
-    actionP->owner_events = owner_events;
+    actionP->owner_events = (Boolean) owner_events;
     actionP->event_mask = event_mask;
     actionP->pointer_mode = pointer_mode;
     actionP->keyboard_mode = keyboard_mode;

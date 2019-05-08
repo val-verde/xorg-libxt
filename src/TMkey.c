@@ -590,7 +590,7 @@ void XtTranslateKey(
 	*keysym_return = NoSymbol;
     UNLOCK_APP(app);
 #else
-    XkbLookupKeySym(dpy, keycode, modifiers, modifiers_return, keysym_return);
+    XkbLookupKeySym(dpy, (KeyCode) keycode, modifiers, modifiers_return, keysym_return);
 #endif
 }
 

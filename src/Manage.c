@@ -373,7 +373,7 @@ void XtSetMappedWhenManaged(
 	UNLOCK_APP(app);
 	return;
     }
-    widget->core.mapped_when_managed = mapped_when_managed;
+    widget->core.mapped_when_managed = (Boolean) mapped_when_managed;
 
     hookobj = XtHooksOfDisplay(XtDisplay(widget));
     if (XtHasCallbacks(hookobj, XtNchangeHook) == XtCallbackHasSome) {

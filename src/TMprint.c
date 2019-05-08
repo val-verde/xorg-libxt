@@ -716,7 +716,7 @@ _XtString _XtPrintXlations(
 	}
 #endif /* TRACE_TM */
 	PrintState(sb, (TMStateTree)stateTree, branchHead,
-		   includeRHS, accelWidget, XtDisplay(w));
+		   (Boolean) includeRHS, accelWidget, XtDisplay(w));
     }
     XtStackFree((XtPointer)prints, (XtPointer)stackPrints);
     return (sb->start);

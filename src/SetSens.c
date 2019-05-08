@@ -129,7 +129,7 @@ void XtSetSensitive(
     if (widget->core.ancestor_sensitive && XtIsComposite (widget)) {
 	children = ((CompositeWidget) widget)->composite.children;
 	for (i = 0; i < ((CompositeWidget)widget)->composite.num_children; i++){
-	    SetAncestorSensitive (children[i], sensitive);
+	    SetAncestorSensitive (children[i], (Boolean) sensitive);
 	}
     }
     UNLOCK_APP(app);

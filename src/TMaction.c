@@ -422,7 +422,7 @@ XtPointer _XtInitializeActionData(
     TMClassCache	classCache;
 
     classCache = XtNew(TMClassCacheRec);
-    classCache->actions = CompileActionTable(actions, count, inPlace, True);
+    classCache->actions = CompileActionTable(actions, count, (Boolean) inPlace, True);
     classCache->bindCache = NULL;
     return (XtPointer)classCache;
 }

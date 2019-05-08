@@ -581,7 +581,7 @@ int _XtWaitForSomething(
 	drop_lock = FALSE;
 #endif
 
-    InitTimes (block, howlong, &wt);
+    InitTimes ((Boolean) block, howlong, &wt);
 
 #ifdef USE_POLL
     wf.fdlist = NULL;
@@ -593,7 +593,7 @@ WaitLoop:
     app->rebuild_fdlist = TRUE;
 
     while (1) {
-	AdjustTimes (app, block, howlong, ignoreTimers, &wt);
+	AdjustTimes (app, (Boolean) block, howlong, (Boolean) ignoreTimers, &wt);
 
 	if (block && app->block_hook_list) {
 	    BlockHook hook;
@@ -614,7 +614,7 @@ WaitLoop:
 	}
 
 	if (app->rebuild_fdlist)
-	    InitFds (app, ignoreEvents, ignoreInputs, &wf);
+	    InitFds (app, (Boolean) ignoreEvents, (Boolean) ignoreInputs, &wf);
 
 #ifdef XTHREADS /* { */
 	if (drop_lock) {
@@ -721,7 +721,7 @@ WaitLoop:
 	return -1;
     } else
 	FindInputs (app, &wf, nfds,
-		    ignoreEvents, ignoreInputs,
+		    (Boolean) ignoreEvents, (Boolean) ignoreInputs,
 		    &dpy_no, &found_input);
 
     if (dpy_no >= 0 || found_input) {

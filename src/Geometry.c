@@ -522,8 +522,8 @@ XtMakeResizeRequest(
 
     LOCK_APP(app);
     request.request_mode = CWWidth | CWHeight;
-    request.width = width;
-    request.height = height;
+    request.width = (Dimension) width;
+    request.height = (Dimension) height;
 
     if (XtHasCallbacks(hookobj, XtNgeometryHook) == XtCallbackHasSome) {
 	call_data.type = XtHpreGeometry;
@@ -546,13 +546,13 @@ XtMakeResizeRequest(
 	if (r == XtGeometryAlmost && reply.request_mode & CWWidth)
 	    *replyWidth = reply.width;
 	else
-	    *replyWidth = width;
+	    *replyWidth = (Dimension) width;
     }
     if (replyHeight != NULL) {
 	if (r == XtGeometryAlmost && reply.request_mode & CWHeight)
 	    *replyHeight = reply.height;
 	else
-	    *replyHeight = height;
+	    *replyHeight = (Dimension) height;
     }
     UNLOCK_APP(app);
     return ((r == XtGeometryDone) ? XtGeometryYes : r);
@@ -617,34 +617,34 @@ void XtConfigureWidget(
     req.changeMask = 0;
     if ((old.x = w->core.x) != x) {
 	CALLGEOTAT(_XtGeoTrace(w,"x move from %d to %d\n",w->core.x, x));
-	req.changes.x = w->core.x = x;
+	req.changes.x = w->core.x = (Position) x;
 	req.changeMask |= CWX;
     }
 
     if ((old.y = w->core.y) != y) {
 	CALLGEOTAT(_XtGeoTrace(w,"y move from %d to %d\n",w->core.y, y));
-	req.changes.y = w->core.y = y;
+	req.changes.y = w->core.y = (Position) y;
 	req.changeMask |= CWY;
     }
 
     if ((old.width = w->core.width) != width) {
 	CALLGEOTAT(_XtGeoTrace(w,
 			 "width move from %d to %d\n",w->core.width, width));
-	req.changes.width = w->core.width = width;
+	req.changes.width = w->core.width = (Dimension) width;
 	req.changeMask |= CWWidth;
     }
 
     if ((old.height = w->core.height) != height) {
 	CALLGEOTAT(_XtGeoTrace(w,
 		       "height move from %d to %d\n",w->core.height, height));
-	req.changes.height = w->core.height = height;
+	req.changes.height = w->core.height = (Dimension) height;
 	req.changeMask |= CWHeight;
     }
 
     if ((old.border_width = w->core.border_width) != borderWidth) {
 	CALLGEOTAT(_XtGeoTrace(w,"border_width move from %d to %d\n",
 		    w->core.border_width,borderWidth ));
-	req.changes.border_width = w->core.border_width = borderWidth;
+	req.changes.border_width = w->core.border_width = (Dimension) borderWidth;
 	req.changeMask |= CWBorderWidth;
     }
 
@@ -712,8 +712,8 @@ void XtTranslateCoords(
     if (rootx == NULL) rootx = &garbagex;
     if (rooty == NULL) rooty = &garbagey;
 
-    *rootx = x;
-    *rooty = y;
+    *rootx = (Position) x;
+    *rooty = (Position) y;
 
     for (; w != NULL && ! XtIsShell(w); w = w->core.parent) {
 	*rootx = (Position) (*rootx + w->core.x + w->core.border_width);
