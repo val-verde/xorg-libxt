@@ -74,7 +74,6 @@ in this Software without prior written authorization from The Open Group.
 #include "IntrinsicI.h"
 #include "Shell.h"
 #include "StringDefs.h"
-#include <stdio.h>
 
 typedef struct _XtEventRecExt {
     int type;
