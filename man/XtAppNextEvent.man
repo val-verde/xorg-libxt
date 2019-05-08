@@ -117,7 +117,8 @@ flushes the output buffer and returns zero.
 The
 .B XtAppProcessEvent
 function processes one timer, alternate input, signal source, or X
-event.  If there is nothing of the appropriate type to process,
+event.
+If there is nothing of the appropriate type to process,
 .B XtAppProcessEvent
 blocks until there is.
 If there is more than one type of thing available to process,

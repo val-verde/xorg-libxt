@@ -76,7 +76,8 @@ contexts created by the calling process, including any future application
 contexts that may be created.
 .B XtAppSetTypeConverter
 registers the specified type converter in the single application context
-specified. If the same \fIfrom_type\fP and \fIto_type\fP are specified
+specified.
+If the same \fIfrom_type\fP and \fIto_type\fP are specified
 in multiple calls to either function, the most recent overrides the
 previous ones.
 .SH "SEE ALSO"

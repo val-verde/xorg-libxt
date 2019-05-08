@@ -169,7 +169,8 @@ the results are not defined.
 The
 .B XtScreenDatabase
 function returns the fully merged resource database associated with the
-specified screen. If the \fIscreen\fP does not belong to a
+specified screen.
+If the \fIscreen\fP does not belong to a
 .B Display
 initialized by
 .BR XtDisplayInitialize ,

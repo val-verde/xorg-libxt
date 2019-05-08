@@ -72,9 +72,11 @@ finally calls
 with \fIapplication_name\fP NULL, \fIwidget_class\fP
 .BR applicationShellWidgetClass ,
 and the specified \fIargs\fP and \fInum_args\fP and returns the
-created shell. The semantics of calling
+created shell.
+The semantics of calling
 .B XtInitialize
-more than once are undefined. This routine has been replaced by
+more than once are undefined.
+This routine has been replaced by
 .BR XtAppInitialize .
 .SH "SEE ALSO"
 .BR XtAppInitialize (__libmansuffix__)

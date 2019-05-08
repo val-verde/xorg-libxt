@@ -43,7 +43,8 @@ void XtCallActionProc(Widget \fIwidget\fP, const char *\fIaction\fP,
 XEvent *\fIevent\fP, String *\fIparams\fP, Cardinal \fInum_params\fP);
 .SH ARGUMENTS
 .IP \fIwidget\fP 1i
-Specifies the widget in which the action is to be invoked. Must be
+Specifies the widget in which the action is to be invoked.
+Must be
 of class core of any subclass thereof.
 .IP \fIaction\fP 1i
 Specifies the name of the action routine.
@@ -56,12 +57,15 @@ Specifies the num of entries in \fIparams\fP.
 .SH DESCRIPTION
 .B XtCallActionProc
 searches for the named action routine in the same manner and order as
-translation tables are bound. If found, the action routine is invoked
-with the specified widget, event pointer, and parameters. It is the
+translation tables are bound.
+If found, the action routine is invoked
+with the specified widget, event pointer, and parameters.
+It is the
 responsibility of the caller to ensure that the contents of \fIevent\fP,
 \fIparams\fP, and \fInum_params\fP arguments are appropriate for the
 specified routine, and if necessary, that the specified widget is
-realized or sensitive. If the named action routine cannot be found,
+realized or sensitive.
+If the named action routine cannot be found,
 .B XtCallActionProc
 generates a warning message and returns.
 .SH "SEE ALSO"

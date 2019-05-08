@@ -43,7 +43,8 @@ Boolean XtToolkitThreadInitialize(void);
 .SH DESCRIPTION
 If
 .B XtToolkitThreadInitialize
-was previously called, it returns. The application programmer must ensure
+was previously called, it returns.
+The application programmer must ensure
 that two or more threads do not simultaneously attempt to call
 .BR XtToolkitThreadInitialize ;
 the effect of this is undefined.

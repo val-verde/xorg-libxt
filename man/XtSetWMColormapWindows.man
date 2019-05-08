@@ -44,7 +44,8 @@ void XtSetWMColormapWindows(Widget \fIwidget\fP, Widget* \fIlist\fP, Cardinal
 .SH ARGUMENTS
 .IP \fIwidget\fP 1i
 Specifies the widget on whose window the WM_COLORMAP_WINDOWS property
-will be stored. Must be of class Core or any subclass thereof.
+will be stored.
+Must be of class Core or any subclass thereof.
 .IP \fIlist\fP 1i
 Specifies a list of widgets whose windows are are potentially to be
 listed in the WM_COLORMAP_WINDOWS property.
@@ -53,7 +54,8 @@ Specifies the number of widgets in \fIlist\fP.
 .SH DESCRIPTION
 .B XtSetWMColormapWindows
 returns immediately if \fIwidget\fP is not realized or if \fIcount\fP
-is zero. Otherwise,
+is zero.
+Otherwise,
 .B XtSetWMColormapWindows
 constructs an ordered list of windows by examining each widget in
 \fIlist\fP in turn and ignoring the widget if it is not realized,

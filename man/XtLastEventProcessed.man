@@ -49,7 +49,8 @@ Specifies the open display connection.
 .B XtLastEventProcessed
 returns the last event passed to
 .B XtDispatchEvent
-for the specified display and NULL if there has been no event. The
+for the specified display and NULL if there has been no event.
+The
 client must not modify the contents of the returned event.
 .LP
 .B XtLastTimestampProcessed

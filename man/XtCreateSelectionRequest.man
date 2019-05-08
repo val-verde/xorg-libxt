@@ -48,7 +48,8 @@ void XtSendSelectionRequest(Widget \fIrequestor\fP, Atom \fIselection\fP, Time
 void XtCancelSelectionRequest(Widget \fIrequestor\fP, Atom \fIselection\fP);
 .SH ARGUMENTS
 .IP \fIrequestor\fP 1i
-Specifies the widget making the request. Must be of class Core or a
+Specifies the widget making the request.
+Must be of class Core or a
 subclass thereof.
 .IP \fIselection\fP 1i
 Specifies the particular selection desired.
@@ -64,7 +65,8 @@ and
 with the requestor and selection as specified to
 .B XtCreateSelectionRequest
 will be bundled into a single selection conversion request with
-multiple targets. The request is actually initiated by calling
+multiple targets.
+The request is actually initiated by calling
 .BR XtSendSelectionRequest .
 .LP
 When
@@ -73,9 +75,11 @@ is called with a value of \fIrequestor\fP and \fIselection\fP matching
 a previous call to
 .BR XtCreateSelectionRequest ,
 a selection conversion request is actually sent to the selection owner.
-If a single target request is queued, that request is made. If multiple
+If a single target request is queued, that request is made.
+If multiple
 targets are queued they are bundled into a single request with the
-target MULTIPLE using the specified timestamp. As the conversions are
+target MULTIPLE using the specified timestamp.
+As the conversions are
 made, the callbacks associated with each
 .B XtGetSelectionValue
 and
@@ -95,7 +99,8 @@ When
 .B XtCancelSelectionRequest
 is called, any requests queued since the last call to
 .B XtCreateSelectionRequest
-are cleaned up. Subsequent calls to
+are cleaned up.
+Subsequent calls to
 .BR XtGetSelectionValue ,
 .BR XtGetSelectionValues ,
 .BR XtGetSelectionValueIncremental ,

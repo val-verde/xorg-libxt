@@ -55,9 +55,11 @@ may only be called from within an
 .B XtConvertSelectionProc
 procedure and returns a pointer to the
 .B SelectionRequest
-event that caused the conversion procedure to be invoked. \fIRequest_id\fP
+event that caused the conversion procedure to be invoked.
+\fIRequest_id\fP
 specifies a unique id for the individual request in the case that
-multiple incremental transfers are outstanding. For atomic transfers,
+multiple incremental transfers are outstanding.
+For atomic transfers,
 \fIrequest_id\fP must be specified as NULL. If no
 .B SelectionRequest
 event is being processed for the specified \fIwidget\fP, \fIselection\fP,

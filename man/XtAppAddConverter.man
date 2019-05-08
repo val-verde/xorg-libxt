@@ -66,7 +66,8 @@ is equivalent in function to
 .B XtAppSetTypeConverter
 with \fIcache_type\fP equal to
 .B XtCacheAll
-for old-format type converters. It has been superseded by
+for old-format type converters.
+It has been superseded by
 .BR XtAppSetTypeConverter .
 .LP
 .B XtAddConverter
@@ -74,7 +75,8 @@ is equivalent in function to
 .B XtSetTypeConverter
 with \fIcache_type\fP equal to
 .B XtCacheAll
-for old-format type converters. It has been superseded by
+for old-format type converters.
+It has been superseded by
 .BR XtSetTypeConverter .
 .SH "SEE ALSO"
 XtConvert(__libmansuffix__),

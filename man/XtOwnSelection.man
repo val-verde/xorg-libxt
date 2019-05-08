@@ -95,11 +95,13 @@ if the widget fails to obtain selection ownership in the first place.
 The
 .B XtOwnSelectionIncremental
 procedure informs the Intrinsics incremental selection mechanism that
-the specified widget wishes to own the selection. It returns
+the specified widget wishes to own the selection.
+It returns
 .B True
 if the specified widget successfully becomes the selection owner or
 .B False
-otherwise. For more information about \fIselection\fP, \fItarget\fP,
+otherwise.
+For more information about \fIselection\fP, \fItarget\fP,
 and \fItime\fP, see Section 2.6 of the \fIInter-Client Communication
 Conventions Manual\fP.
 .LP

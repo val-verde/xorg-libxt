@@ -55,10 +55,12 @@ pointer, which may be used with
 The end of both lists is identified by a \fIname\fP entry containing
 NULL. Any entries of type
 .B XtVaTypedArg
-are copied as specified without applying conversions. Data passed by
+are copied as specified without applying conversions.
+Data passed by
 reference (including Strings) are not copied, only the pointers
 themselves; the caller must ensure that the data remain valid for
-the lifetime of the created varargs list. The list should be freed
+the lifetime of the created varargs list.
+The list should be freed
 using
 .B XtFree
 when no longer needed.

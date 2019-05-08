@@ -53,7 +53,8 @@ Specifies the application-specific data to be passed to the action hook.
 .SH DESCRIPTION
 .B XtAppAddActionHook
 adds the specified procedure to the front of a list maintained in the
-application context. In the future, when an action routine is about to
+application context.
+In the future, when an action routine is about to
 be invoked for any widget in this application context, either through
 the translation manager or via
 .BR XtCallActionProc ,

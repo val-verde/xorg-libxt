@@ -53,8 +53,10 @@ Returns the application class.
 .B XtGetApplicationNameAndClass
 returns the application name and class passed to
 .B XtDisplayInitialize
-for the specified display. If the display was never initialized or
-has been closed, the result is undefined. The returned strings are
+for the specified display.
+If the display was never initialized or
+has been closed, the result is undefined.
+The returned strings are
 owned by the Intrinsics and must not be modified or freed by the
 caller.
 .SH "SEE ALSO"

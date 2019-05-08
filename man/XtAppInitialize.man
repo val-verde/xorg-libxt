@@ -91,14 +91,17 @@ finally calls
 with \fIapplication_name\fP NULL, \fIwidget_class\fP
 .BR applicationShellWidgetClass ,
 and the specified \fIargs\fP and \fInum_args\fP and returns the
-created shell. The modified \fIargc\fP and \fIargv\fP returned by
+created shell.
+The modified \fIargc\fP and \fIargv\fP returned by
 .B XtDisplayInitialize
 are returned in \fIargc_in_out\fP and \fIargv_in_out\fP. If
 \fIapp_context_return\fP is not NULL, the created application context
-is also returned. If the display specified by the command line cannot
+is also returned.
+If the display specified by the command line cannot
 be opened, an error message is issued and
 .B XtAppInitialize
-terminates the application. If \fIfallback_resources\fP is non-NULL,
+terminates the application.
+If \fIfallback_resources\fP is non-NULL,
 .B XtAppSetFallbackResources
 is called with the value prior to calling
 .BR XtOpenDisplay .

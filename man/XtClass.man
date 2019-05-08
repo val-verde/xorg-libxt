@@ -98,9 +98,11 @@ The
 function returns
 .B True
 if the class of the specified widget is equal to or is a subclass of
-the specified class. The widget's class can be any number of subclasses
+the specified class.
+The widget's class can be any number of subclasses
 down the chain and need not be an immediate subclass of the specified
-class. Composite widgets that need to restrict the class of the items
+class.
+Composite widgets that need to restrict the class of the items
 they contain can use
 .B XtIsSubclass
 to find out if a widget belongs to the desired class of objects.
@@ -128,7 +130,8 @@ and generates no code.
 To test if a given widget belongs to a subclass of an Intrinsics-defined
 class, the Intrinsics defines macros or functions equivalent to
 .B XtIsSubclass
-for each of the built-in classes. These procedures are
+for each of the built-in classes.
+These procedures are
 .BR XtIsObject ,
 .BR XtIsRectObj ,
 .BR XtIsWidget ,

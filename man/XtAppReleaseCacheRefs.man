@@ -49,10 +49,11 @@ Specifies the list of cache references to be released.
 .SH DESCRIPTION
 .B XtAppReleaseCacheRefs
 decrements the reference count for the conversion entries identified
-by the \fIrefs\fP argument. This argument is a pointer to a NULL-terminated
-list of
+by the \fIrefs\fP argument.
+This argument is a pointer to a NULL-terminated list of
 .B XtCacheRef
-values. If any reference count reaches zero, the destructor, if any, will
+values.
+If any reference count reaches zero, the destructor, if any, will
 be called and the resource removed from the conversion cache.
 .SH "SEE ALSO"
 .br

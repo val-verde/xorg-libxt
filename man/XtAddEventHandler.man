@@ -120,14 +120,16 @@ this does not affect the widget's mask and never causes a call on
 .B XtInsertEventHandler
 is identical to
 .B XtAddEventHandler
-with the additional \fIposition\fP argument. if \fIposition\fP is
+with the additional \fIposition\fP argument.
+If \fIposition\fP is
 .BR XtListHead ,
 the event handler is registered to that it will be called before
 any event handlers that were previously registered for the same widget.
 If \fIposition\fP is
 .BR XtListTail ,
 the event handler is registered to be called after any previously
-registered event handlers. If the procedure is already registered with
+registered event handlers.
+If the procedure is already registered with
 the same \fIclient_data\fP value, the specified mask augments the
 existing mask and the procedure is repositioned in the list.
 .LP
@@ -136,7 +138,8 @@ is similar to
 .B XtInsertEventHandler
 except that it does not modify the widget's event mask and never causes an
 .B XSelectInput
-for the specified events. If the procedure is already registered with the
+for the specified events.
+If the procedure is already registered with the
 same \fIclient_data\fP value, the specified mask augments the existing
 mask and the procedure is repositioned in the list.
 .SH "SEE ALSO"

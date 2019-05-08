@@ -96,8 +96,10 @@ If the widget is realized
 .B XtInsertEventTypeHandler
 calls
 .B XSelectInput
-if necessary. Specifying NULL for \fIselect_data\fP is equivalent to
-specifying a pointer to an event mask containing 0. This is similar to the
+if necessary.
+Specifying NULL for \fIselect_data\fP is equivalent to
+specifying a pointer to an event mask containing 0.
+This is similar to the
 .B XtInsertRawEventHandler
 function.
 .LP
@@ -111,7 +113,8 @@ as long as the event handler remains registered with this value of
 \fIselect_data\fP.
 .LP
 The \fIposition\fP argument allows the client to control the order of the
-invocation of event handlers registered for the same event type. If the
+invocation of event handlers registered for the same event type.
+If the
 client does not care about the order, it should normally specify
 .BR XtListTail ,
 which registers this event handler after any previously registered
@@ -121,7 +124,8 @@ The
 .B XtRemoveEventTypeHandler
 function unregisters an even handler registered with
 .B XtInsertEventTypeHandler
-for the specified event type. The request is ignored if \fIclient_data\fP
+for the specified event type.
+The request is ignored if \fIclient_data\fP
 does not match the value given with the handler was registered.
 .LP
 If \fIevent_type\fP specifies on of the core X protocol events,
@@ -132,8 +136,10 @@ If the widget is realized,
 .B XtRemoveEventTypeHandler
 calls
 .B XSelectInput
-if necessary. Specifying NULL for \fIselect_data\fP is equivalent to
-specifying a pointer to an event mask containing 0. This is similar to the
+if necessary.
+Specifying NULL for \fIselect_data\fP is equivalent to
+specifying a pointer to an event mask containing 0.
+This is similar to the
 .B XtRemoveRawEventHandler
 function.
 .LP
@@ -150,7 +156,8 @@ If \fImin_event_type\fP and \fImax_event_type\fP match the parameters to
 a previous call to
 .B XtRegisterExtensionSelector
 for the same display, the \fIproc\fP and \fIclient_data\fP replace the
-previously registered values. If the range specified by \fImin_event_type\fP
+previously registered values.
+If the range specified by \fImin_event_type\fP
 and \fImax_event_type\fP overlaps the range of the parameters to a
 previous call for the same display in any other way, an error results.
 .LP
@@ -159,7 +166,8 @@ The
 function registers the event dispatcher procedure specified by \fIproc\fP
 for events with the type \fIevent_type\fP. The previously registered
 dispatcher (or the default dispatcher if there was no previously registered
-dispatcher) is returned. If \fIproc\fP is NULL, the default procedure is
+dispatcher) is returned.
+If \fIproc\fP is NULL, the default procedure is
 restored for the specified type.
 .LP
 In the future, when
@@ -173,7 +181,8 @@ The
 function scans the list of registered event handlers for the specified
 widget and calls each handler that has been registered for the specified
 event type, subject to the \fIcontinue_to_dispatch\fP value returned by
-each handler. The Intrinsics behave as if event handlers were registered
+each handler.
+The Intrinsics behave as if event handlers were registered
 at the head of the list for
 .BR Expose ,
 .BR NoExpose ,

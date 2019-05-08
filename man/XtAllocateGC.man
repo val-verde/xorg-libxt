@@ -62,17 +62,20 @@ function returns a sharable GC that may be modified by the client.
 The \fIscreen\fP field of the specified widget or of the nearest
 widget ancestor of the specified object and the specified \fIdepth\fP
 argument supply the root and drawable depths for which the GC is to
-be valid. If \fIdepth\fP is zero the depth is taken from the \fIdepth\fP
+be valid.
+If \fIdepth\fP is zero the depth is taken from the \fIdepth\fP
 field of the specified widget or of the nearest widget ancestor of the
 specified object.
 .LP
 The \fIvalue_mask\fP argument specifies the fields of the GC that will
 be initialized with the respective members of the \fIvalues\fP structure.
 The \fIdynamic_mask\fP argument specifies fields that the caller intends
-to modify during program execution. The caller must ensure that the
+to modify during program execution.
+The caller must ensure that the
 corresponding GC field is set prior to each use of the GC. The
 \fIunused_mask\fP argument specifies fields of the GC that are of no
-interest to the caller. The caller may make no assumptions about the
+interest to the caller.
+The caller may make no assumptions about the
 contents of any fields specified in \fIunused_mask\fP. The caller may
 assume that at all times all fields not specified in either
 \fIdynamic_mask\fP or \fIunused_mask\fP have their default value if

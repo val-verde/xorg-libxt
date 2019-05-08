@@ -63,7 +63,8 @@ is not required to copy \fIspecification_list\fP; the caller must
 ensure that the contents of the list and the strings addressed by the
 list remain valid until all displays are initialized or until
 .B XtAppSetFallbackResources
-is called again. The value NULL for \fIspecification_list\fP removes
+is called again.
+The value NULL for \fIspecification_list\fP removes
 any previous fallback resource specification for the application context.
 The intended use for fallback resources is to provide a minimal number
 of resources that will make the application usable (or at least terminate

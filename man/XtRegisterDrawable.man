@@ -55,7 +55,8 @@ Specifies the widget to register the drawable for.
 associates the specified drawable with the specified widget so that
 future calls to
 .B XtWindowToWidget
-with the drawable will return the widget. The default event dispatcher
+with the drawable will return the widget.
+The default event dispatcher
 will dispatch future core events that arrive with the drawable to the
 widget as though the event contained the widget's window, but the event
 itself will not be changed in any way when being passed to even handler

@@ -56,7 +56,8 @@ Specifies a pointer to an atom in which the property type of the
 parameters will be stored.
 .IP \fIvalue_return\fP 1i
 Specifies a pointer into which a pointer to the parameters are to be
-stored. A NULL will be stored if no parameters accompany the request.
+stored.
+A NULL will be stored if no parameters accompany the request.
 .IP \fIlength_return\fP 1i
 Specifies a pointer into which the number of data elements in
 \fIvalue_return\fP of size indicated by \fIformat_return\fP will be

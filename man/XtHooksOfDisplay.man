@@ -45,7 +45,9 @@ Widget XtHooksOfDisplay(Display* \fIdisplay\fP);
 Specifies the desired display.
 .SH DESCRIPTION
 The class of this object is a private, implementation dependent, subclass
-of Object. The hook object has no parent. The resources of this object are
+of Object.
+The hook object has no parent.
+The resources of this object are
 the callback lists for hooks and the read-only resources for getting a
 list of parentless shells.
 .SH "SEE ALSO"

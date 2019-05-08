@@ -90,7 +90,8 @@ registered or was registered with cache type
 or
 .B XtCacheByDisplay
 looks in the conversion cache to see if this conversion procedure
-has been called with the specified conversion arguments. If so, it
+has been called with the specified conversion arguments.
+If so, it
 checks the success status of the prior call, and if the conversion
 failed,
 .B XtCallConverter
@@ -118,13 +119,15 @@ enters the result into the cache.
 then returns what the converter returned.
 .LP
 The \fIcache_ref_return\fP field specifies storage allocated by the
-caller in which an opaque value will be stored. If the type converter
+caller in which an opaque value will be stored.
+If the type converter
 has been registered with the
 .B XtCacheRefCount
 modifier and if the value returned in in \fIcache_ref_return\fP is
 non-NULL, then the call should store the \fIcache_ref_return\fP value
 in order to decrement the reference count when the converted value
-is no longer required. The \fIcache_ref_return\fP argument should be
+is no longer required.
+The \fIcache_ref_return\fP argument should be
 NULL if the caller is unwilling or unable to store the value.
 .SH "SEE ALSO"
 XtAppReleaseCacheRefs(__libmansuffix__)

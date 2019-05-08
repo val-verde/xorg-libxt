@@ -44,7 +44,8 @@ Atom \fItype\fP, XtPointer \fIvalue\fP, unsigned long \fIlength\fP, int
 \fIformat\fP);
 .SH ARGUMENTS
 .IP \fIrequestor\fP 1i
-Specifies the widget making the request. Must be of class Core or any
+Specifies the widget making the request.
+Must be of class Core or any
 subclass thereof.
 .IP \fIselection\fP 1i
 Specifies the atom that names the selection.
@@ -59,20 +60,23 @@ element of a sized indicated by \fIformat\fP.
 Specifies the size in bits of the data in the elements of \fIvalue\fP.
 .SH DESCRIPTION
 The specified parameters will be copied and stored in a new property of
-the specified type and format on the requestor's window. To initiate a
+the specified type and format on the requestor's window.
+To initiate a
 selection request with a target and these parameters, a subsequent call to
 .B XtGetSelectionValue
 or to
 .B XtGetSelectionValueIncremental
 specifying the same requestor widget and selection atom will generate a
 .B ConvertSelection
-request referring referring to the property containing the parameters. If
+request referring referring to the property containing the parameters.
+If
 .B XtSetSelectionParameters
 is called more than once with the same widget and selection without a
 call to specify a request, the most recently specified parameters are
 used in the subsequent request.
 .LP
-The possible values of \fIformat\fP may be 8, 16, or 32. If the \fIformat\fP
+The possible values of \fIformat\fP may be 8, 16, or 32.
+If the \fIformat\fP
 is 8, the elements of \fIvalue\fP are assumed to be sizeof(char); if 16,
 sizeof(short); if 32, sizeof(long).
 .LP

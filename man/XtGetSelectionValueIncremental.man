@@ -76,13 +76,15 @@ except that the \fIselection_callback\fP procedure will be called
 repeatedly upon delivery of multiple segments of the selection value.
 The end of the selection value is indicated when \fIselection_callback\fP
 is called with a non-NULL value of length zero, which must still be
-freed by the client. If the transfer of the selection is aborted in the
+freed by the client.
+If the transfer of the selection is aborted in the
 middle of a transfer (for example, because to timeout), the
 \fIselection_callback\fP procedure is called with a type value equal
 to the symbolic constant
 .B XT_CONVERT_FAIL
 so that the requestor can dispose of the partial selection value it has
-collected up until that point. Upon receiving
+collected up until that point.
+Upon receiving
 .BR XT_CONVERT_FAIL ,
 the requesting client must determine for itself whether or not a
 partially completed transfer is meaningful.

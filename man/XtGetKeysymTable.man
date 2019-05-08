@@ -67,7 +67,8 @@ Returns the number of KeyCodes in the keycode list.
 .SH DESCRIPTION
 .B XtGetKeysymTable
 returns a pointer to the Intrinsics' copy of the server's KeyCode-to-KeySym
-table. This table must not be modified.
+table.
+This table must not be modified.
 .LP
 The
 .B XtKeysymToKeycodeList
