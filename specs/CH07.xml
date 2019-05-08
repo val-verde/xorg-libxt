@@ -2449,8 +2449,21 @@ and
 <para>
 Applications can provide their own version of this loop,
 which tests some global termination flag or tests that the number
-of top-level widgets is larger than zero before circling back to the call to
-<xref linkend='XtAppNextEvent' xrefstyle='select: title'/>.
+of top-level widgets is larger than zero before
+circling back for the next event.
+</para>
+
+<para>
+The design of 
+<xref linkend='XtAppMainLoop' xrefstyle='select: title'/>
+has changed since Release 6.
+Originally it looped over calls to
+<xref linkend='XtAppNextEvent' xrefstyle='select: title'/>,
+and
+<xref linkend='XtDispatchEvent' xrefstyle='select: title'/>,
+but because the latter returns only after an X event
+(not for timers, signals, inputs),
+it was modified to allow any type of event to break out of the loop.
 </para>
 </sect1>
 
