@@ -312,16 +312,16 @@ NestedArgtoArg(
 void
 _XtFreeArgList(
     ArgList	args,	     /* as returned by _XtVaToArgList */
-    int		total_count, /*  argument count returned by _XtCountVaList */
+    int		total_count, /*	 argument count returned by _XtCountVaList */
     int 	typed_count) /* typed arg count returned by _XtCountVaList */
 {
-    ArgList p;
-
     if (args) {
-	if (typed_count)
+	if (typed_count) {
+	    ArgList p;
 	    for (p = args + total_count; total_count--; ++p) {
 		XtFree((char *)p->value);
 	    }
+	}
 	XtFree((char *)args);
     }
 }

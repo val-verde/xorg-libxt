@@ -104,12 +104,12 @@ static XtServerGrabPtr CheckServerGrabs(
     Widget	*trace,
     Cardinal	traceDepth)
 {
-    XtServerGrabPtr 	grab;
     Cardinal		i;
 
     for (i = traceDepth;  i > 0; i--)
       {
-	 if ((grab = _XtCheckServerGrabsOnWidget(event, trace[i-1], KEYBOARD)))
+	XtServerGrabPtr grab;
+	if ((grab = _XtCheckServerGrabsOnWidget(event, trace[i-1], KEYBOARD)))
 	   return (grab);
      }
     return (XtServerGrabPtr)0;
@@ -395,7 +395,7 @@ Widget _XtProcessKeyboardEvent(
     XtPerDisplayInput pdi)
 {
     XtDevice		device = &pdi->keyboard;
-    XtServerGrabPtr	newGrab, devGrab = &device->grab;
+    XtServerGrabPtr	devGrab = &device->grab;
     XtServerGrabRec	prevGrabRec;
     XtServerGrabType	prevGrabType = device->grabType;
     Widget		dspWidget = NULL;
@@ -407,6 +407,8 @@ Widget _XtProcessKeyboardEvent(
       {
 	case KeyPress:
 	  {
+	      XtServerGrabPtr	newGrab;
+
 	      if (event->keycode != 0 && /* Xlib XIM composed input */
 		  !IsServerGrab(device->grabType) &&
 		  (newGrab = CheckServerGrabs((XEvent*)event,

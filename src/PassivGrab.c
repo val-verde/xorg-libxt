@@ -655,8 +655,6 @@ static void MakeGrabs(
     XtPerDisplayInput	pdi)
 {
     XtServerGrabPtr	next = *passiveListPtr;
-    XtServerGrabPtr	grab;
-    XtPerWidgetInput	pwi;
     /*
      * make MakeGrab build a new list that has had the merge
      * processing done on it. Start with an empty list
@@ -666,6 +664,9 @@ static void MakeGrabs(
     *passiveListPtr = NULL;
     while (next)
       {
+	  XtServerGrabPtr grab;
+	  XtPerWidgetInput pwi;
+
 	  grab = next;
 	  next = grab->next;
 	  pwi = _XtGetPerWidgetInput(grab->widget, FALSE);

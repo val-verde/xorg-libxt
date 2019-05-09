@@ -250,11 +250,10 @@ static void MapChildren(
 {
     Cardinal i;
     WidgetList children;
-    register Widget child;
 
     children = cwp->children;
     for (i = 0; i <  cwp->num_children; i++) {
-	child = children[i];
+        Widget child = children[i];
 	if (XtIsWidget (child)){
 	    if (child->core.managed && child->core.mapped_when_managed) {
 		XtMapWidget (children[i]);
@@ -269,11 +268,10 @@ static Boolean ShouldMapAllChildren(
 {
     Cardinal i;
     WidgetList children;
-    register Widget child;
 
     children = cwp->children;
     for (i = 0; i < cwp->num_children; i++) {
-	child = children[i];
+	Widget child = children[i];
 	if (XtIsWidget(child)) {
 	    if (XtIsRealized(child) && (! (child->core.managed
 					  && child->core.mapped_when_managed))){
@@ -403,8 +401,6 @@ static void UnrealizeWidget(
     Widget		widget)
 {
     CompositeWidget	cw;
-    Cardinal		i;
-    WidgetList		children;
 
     if (!XtIsWidget(widget) || !XtIsRealized(widget)) return;
 
@@ -413,6 +409,9 @@ static void UnrealizeWidget(
 
     /* Recurse on children */
     if (XtIsComposite (widget)) {
+	Cardinal i;
+	WidgetList children;
+
 	cw = (CompositeWidget) widget;
 	children = cw->composite.children;
 	/* Unrealize all children */
@@ -592,7 +591,6 @@ static Widget NameListToWidget(
     XrmBindingList  bindings,
     int in_depth, int *out_depth, int *found_depth)
 {
-    Widget w1, w2;
     int d1, d2;
 
     if (in_depth >= *found_depth) {
@@ -615,6 +613,8 @@ static Widget NameListToWidget(
 		in_depth, out_depth, found_depth);
 
     } else {	/* XrmBindLoosely */
+	Widget w1, w2;
+
 	w1 = SearchChildren(root, names, bindings, MatchExactChildren,
 		in_depth, &d1, found_depth);
 	w2 = SearchChildren(root, names, bindings, MatchWildChildren,
@@ -1578,10 +1578,10 @@ _XtGeoTab (int direction)  /* +1 or -1 */
 void
 _XtGeoTrace (Widget widget, const char *fmt, ...)
 {
-    va_list args;
-    int i ;
-
     if (IsTattled(widget)) {
+	va_list args;
+	int i ;
+
 	va_start(args, fmt);
 	for (i=0; i<n_tab; i++) printf("     ");
 	(void) vprintf(fmt, args);

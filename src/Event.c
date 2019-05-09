@@ -183,7 +183,7 @@ RemoveEventHandler(
     Boolean raw)
 {
     XtEventRec *p, **pp;
-    EventMask eventMask, oldMask = XtBuildEventMask(widget);
+    EventMask oldMask = XtBuildEventMask(widget);
 
     if (raw) raw = 1;
     pp = &widget->core.event_table;
@@ -196,7 +196,7 @@ RemoveEventHandler(
 
     /* un-register it */
     if (!has_type_specifier) {
-	eventMask = *(EventMask*)select_data;
+        EventMask eventMask = *(EventMask*)select_data;
 	eventMask &= ~NonMaskableMask;
 	if (other)
 	    eventMask |= NonMaskableMask;
@@ -525,7 +525,7 @@ void XtRegisterDrawable(
     Widget widget)
 {
     WWTable tab;
-    int idx, rehash;
+    int idx;
     Widget entry;
     Window window = (Window) drawable;
     WIDGET_TO_APPCON(widget);
@@ -549,7 +549,7 @@ void XtRegisterDrawable(
 
     idx = (int) WWHASH(tab, window);
     if ((entry = tab->entries[idx]) && entry != &WWfake) {
-	rehash = (int) WWREHASHVAL(tab, window);
+	int rehash = (int) WWREHASHVAL(tab, window);
 	do {
 	    idx = (int) WWREHASH(tab, idx, rehash);
 	} while ((entry = tab->entries[idx]) && entry != &WWfake);
@@ -568,7 +568,7 @@ void XtUnregisterDrawable(
     Drawable drawable)
 {
     WWTable tab;
-    int idx, rehash;
+    int idx;
     Widget entry;
     Window window = (Window) drawable;
     Widget widget = XtWindowToWidget (display, window);
@@ -596,7 +596,7 @@ void XtUnregisterDrawable(
     idx = (int) WWHASH(tab, window);
     if ((entry = tab->entries[idx])) {
 	if (entry != widget) {
-	    rehash = (int) WWREHASHVAL(tab, window);
+	    int rehash = (int) WWREHASHVAL(tab, window);
 	    do {
 		idx = (int) WWREHASH(tab, idx, rehash);
 		if (!(entry = tab->entries[idx])) {
@@ -651,9 +651,9 @@ Widget XtWindowToWidget(
     register Display *display,
     register Window window)
 {
-    register WWTable tab;
-    register int idx, rehash;
-    register Widget entry;
+    WWTable tab;
+    int idx;
+    Widget entry;
     WWPair pair;
     DPY_TO_APPCON(display);
 
@@ -664,7 +664,7 @@ Widget XtWindowToWidget(
     tab = WWTABLE(display);
     idx = (int) WWHASH(tab, window);
     if ((entry = tab->entries[idx]) && XtWindow(entry) != window) {
-	rehash = (int) WWREHASHVAL(tab, window);
+	int rehash = (int) WWREHASHVAL(tab, window);
 	do {
 	    idx = (int) WWREHASH(tab, idx, rehash);
 	} while ((entry = tab->entries[idx]) && XtWindow(entry) != window);
@@ -1667,7 +1667,6 @@ void XtRegisterExtensionSelector(
     XtExtensionSelectProc	proc,
     XtPointer 		client_data)
 {
-    ExtSelectRec *e;
     XtPerDisplay pd;
     int i;
     DPY_TO_APPCON(dpy);
@@ -1682,7 +1681,7 @@ void XtRegisterExtensionSelector(
     pd = _XtGetPerDisplay(dpy);
 
     for (i = 0; i < pd->ext_select_count; i++) {
-	e = &pd->ext_select_list[i];
+        ExtSelectRec *e = &pd->ext_select_list[i];
 	if (e->min == min_event_type && e->max == max_event_type) {
 	    e->proc = proc;
 	    e->client_data = client_data;

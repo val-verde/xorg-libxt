@@ -676,7 +676,6 @@ _search_widget_tree (
 	char	*last_part;
 	char	*remainder = NULL;
 	char	last_token;
-	char	*indx, *copy;
 	char	*loose, *tight;
 	int	loose_len, tight_len;
 
@@ -729,6 +728,7 @@ _search_widget_tree (
 	 * Prepend a '.' to the remainder string if there is no leading token.
 	 */
 	} else {
+		char *indx, *copy;
 		if (remainder[0] != '*' && remainder[0] != '.') {
 			XtAsprintf (&copy, ".%s", remainder);
 			XtFree (remainder);
@@ -894,10 +894,7 @@ _XtResourceConfigurationEH (
 	unsigned long	nitems;
 	unsigned long	leftover;
 	char		*data = NULL;
-	unsigned long	resource_len;
 	char		*data_ptr;
-	char		*resource;
-	char		*value;
 #ifdef DEBUG
 	int		indent = 0;
 #endif
@@ -967,6 +964,7 @@ _XtResourceConfigurationEH (
 		if (data) {
 			char *data_end = data + nitems;
 			char *data_value;
+			unsigned long resource_len;
 
 			resource_len = strtoul (data, &data_ptr, 10);
 
@@ -977,6 +975,9 @@ _XtResourceConfigurationEH (
 				data_ptr = data_value = NULL;
 
 			if (data_value > data_ptr && data_value < data_end) {
+				char *resource;
+				char *value;
+
 				*data_value++ = '\0';
 
 				resource = XtNewString (data_ptr);

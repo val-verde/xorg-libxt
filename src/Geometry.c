@@ -562,11 +562,12 @@ void XtResizeWindow(
     Widget w)
 {
     XtConfigureHookDataRec req;
-    Widget hookobj;
     WIDGET_TO_APPCON(w);
 
     LOCK_APP(app);
     if (XtIsRealized(w)) {
+        Widget hookobj;
+
 	req.changes.width = w->core.width;
 	req.changes.height = w->core.height;
 	req.changes.border_width = w->core.border_width;
@@ -603,7 +604,6 @@ void XtConfigureWidget(
     _XtDimension borderWidth)
 {
     XtConfigureHookDataRec req;
-    Widget hookobj;
     XWindowChanges old;
     WIDGET_TO_APPCON(w);
 
@@ -649,6 +649,8 @@ void XtConfigureWidget(
     }
 
     if (req.changeMask != 0) {
+        Widget hookobj;
+
 	if (XtIsRealized(w)) {
 	    if (XtIsWidget(w)) {
 		CALLGEOTAT(_XtGeoTrace(w,

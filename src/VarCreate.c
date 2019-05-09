@@ -357,12 +357,15 @@ XtVaOpenApplication(
     WidgetClass widget_class,
     ...)
 {
+    Widget      code;
     va_list	var;
 
     va_start(var, widget_class);
-    return _XtVaOpenApplication(app_context_return, (String)application_class,
+    code = _XtVaOpenApplication(app_context_return, (String)application_class,
 				options, num_options, argc_in_out, argv_in_out,
 				fallback_resources, widget_class, var);
+    va_end(var);
+    return code;
 }
 
 Widget
@@ -376,13 +379,16 @@ XtVaAppInitialize(
     String *fallback_resources,
     ...)
 {
+    Widget      code;
     va_list	var;
 
     va_start(var, fallback_resources);
-    return _XtVaOpenApplication(app_context_return, (String)application_class,
+    code = _XtVaOpenApplication(app_context_return, (String)application_class,
 				options, num_options, argc_in_out, argv_in_out,
 				fallback_resources,
 				applicationShellWidgetClass, var);
+    va_end(var);
+    return code;
 }
 
 #endif /* !((SUNSHLIB || AIXSHLIB) && SHAREDCODE) */

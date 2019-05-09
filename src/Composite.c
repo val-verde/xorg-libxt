@@ -139,7 +139,7 @@ static void InheritAllowsChangeManagedSet(
     WidgetClass widget_class)
 {
     CompositeWidgetClass cc = (CompositeWidgetClass) widget_class;
-    CompositeClassExtension ext, super_ext, new_ext;
+    CompositeClassExtension ext, super_ext;
 
     ext = (CompositeClassExtension)
 	XtGetClassExtension(widget_class,
@@ -158,6 +158,7 @@ static void InheritAllowsChangeManagedSet(
     if (super_ext && super_ext->version == XtCompositeExtensionVersion &&
 	super_ext->record_size == sizeof(CompositeClassExtensionRec) &&
 	super_ext->allows_change_managed_set) {
+        CompositeClassExtension new_ext;
 
 	new_ext = (CompositeClassExtension)
 	    __XtCalloc(1, sizeof(CompositeClassExtensionRec));

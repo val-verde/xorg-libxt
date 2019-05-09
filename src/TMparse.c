@@ -537,9 +537,12 @@ static void StoreLateBindings(
     LateBindingsPtr* lateBindings)
 {
     LateBindingsPtr temp;
-    Boolean pair = FALSE;
-    unsigned long count,number;
+
     if (lateBindings != NULL){
+	Boolean pair = FALSE;
+	unsigned long count;
+	unsigned long number;
+
         temp = *lateBindings;
         if (temp != NULL) {
             for (count = 0; temp[count].keysym; count++){/*EMPTY*/}
@@ -593,7 +596,7 @@ static Boolean _XtLookupModifier(
     Value *valueP,
     Bool constMask)
 {
-    register int i, left, right;
+    int left, right;
     static int previous = 0;
 
     LOCK_PROCESS;
@@ -609,7 +612,7 @@ static Boolean _XtLookupModifier(
     left = 0;
     right = XtNumber(modifiers) - 1;
     while (left <= right) {
-	i = (left + right) >> 1;
+	int i = (left + right) >> 1;
 	if (signature < modifiers[i].signature)
 	    right = i - 1;
 	else if (signature > modifiers[i].signature)
@@ -1694,8 +1697,7 @@ static String ParseParamSeq(
     } ParamRec;
 
     ParamPtr params = NULL;
-    register Cardinal num_params = 0;
-    register Cardinal i;
+    Cardinal num_params = 0;
 
     ScanWhitespace(str);
     while (*str != ')' && *str != '\0' && !IsNewline(*str)) {
@@ -1721,6 +1723,8 @@ static String ParseParamSeq(
     if (num_params != 0) {
 	String *paramP = (String *)
 		__XtMalloc( (Cardinal)((num_params+1) * sizeof(String)) );
+	Cardinal i;
+
 	*paramSeqP = paramP;
 	*paramNumP = num_params;
 	paramP += num_params; /* list is LIFO right now */
@@ -1863,14 +1867,16 @@ static String CheckForPoundSign(
     _XtTranslateOp defaultOp,
     _XtTranslateOp *actualOpRtn)
 {
-    String start;
-    char operation[20];
     _XtTranslateOp opType;
 
     opType = defaultOp;
     ScanWhitespace(str);
+
     if (*str == '#') {
+	String start;
+	char operation[20];
 	int len;
+
 	str++;
 	start = str;
 	str = ScanIdent(str);

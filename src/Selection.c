@@ -174,18 +174,19 @@ static PropList GetPropList(
     Display *dpy)
 {
     PropList sarray;
-    Atom atoms[4];
-    static char* names[] = {
-	"INCR",
-	"MULTIPLE",
-	"TIMESTAMP",
-	"_XT_SELECTION_0" };
 
     LOCK_PROCESS;
     if (selectPropertyContext == 0)
 	selectPropertyContext = XUniqueContext();
     if (XFindContext(dpy, DefaultRootWindow(dpy), selectPropertyContext,
 		     (XPointer *)&sarray)) {
+	Atom atoms[4];
+	static char* names[] = {
+	    "INCR",
+	    "MULTIPLE",
+	    "TIMESTAMP",
+	    "_XT_SELECTION_0" };
+
 	XtPerDisplay pd = _XtGetPerDisplay(dpy);
 	sarray = (PropList) __XtMalloc((unsigned) sizeof(PropListRec));
 	sarray->dpy = dpy;
@@ -803,8 +804,6 @@ static void HandleSelectionEvents(
     Select ctx;
     XSelectionEvent ev;
     Atom target;
-    int count;
-    Boolean writeback = FALSE;
 
     ctx = (Select) closure;
     switch (event->type) {
@@ -841,6 +840,9 @@ static void HandleSelectionEvents(
 	      int format;
 	      unsigned long bytesafter, length;
 	      unsigned char *value = NULL;
+	      int count;
+	      Boolean writeback = FALSE;
+
 	      ev.property = event->xselectionrequest.property;
 	      StartProtectedSection(ev.display, ev.requestor);
 	      if (XGetWindowProperty(ev.display, ev.requestor,
@@ -1126,8 +1128,6 @@ static void ReqTimedOut(
     unsigned long bytesafter;
     unsigned long proplength;
     Atom type;
-    XtPointer *c;
-    int i;
 
     if (*info->target == info->ctx->prop_list->indirect_atom) {
 	IndirectPair *pairs = NULL;
@@ -1136,6 +1136,9 @@ static void ReqTimedOut(
 			       AnyPropertyType, &type, &format, &proplength,
 			       &bytesafter, (unsigned char **) &pairs)
 	    == Success) {
+	    XtPointer *c;
+	    int i;
+
 	    XFree(pairs);
 	    for (proplength = proplength / IndirectPairWordSize, i = 0,
 		     c = info->req_closure;
@@ -1260,8 +1263,8 @@ static unsigned long IncrPropSize(
      int format,
      unsigned long length)
 {
-    unsigned long size;
     if (format == 32) {
+	unsigned long size;
 	size = ((unsigned long*)value)[length-1]; /* %%% what order for longs? */
 	return size;
     }
@@ -1383,7 +1386,6 @@ static void HandleSelectionReplies(
     unsigned long length;
     int format;
     Atom type;
-    XtPointer *c;
 
     if (event->type != SelectionNotify) return;
     if (!MATCH_SELECT(event, info)) return; /* not really for us */
@@ -1394,6 +1396,8 @@ static void HandleSelectionReplies(
 		HandleSelectionReplies, (XtPointer) info );
     if (event->target == ctx->prop_list->indirect_atom) {
        IndirectPair *pairs = NULL, *p;
+       XtPointer *c;
+
        if (XGetWindowProperty(dpy, XtWindow(widget), info->property, 0L,
 			      10000000, True, AnyPropertyType, &type, &format,
 			      &length, &bytesafter, (unsigned char **) &pairs)
@@ -1546,7 +1550,6 @@ static void GetSelectionValue(
     Atom property)
 {
     Select ctx;
-    CallBackInfo info;
     Atom properties[1];
 
     properties[0] = property;
@@ -1566,6 +1569,7 @@ static void GetSelectionValue(
 	    ctx->req = NULL;
     }
     else {
+	CallBackInfo info;
 	info = MakeInfo(ctx, &callback, &closure, 1, widget,
 			time, &incremental, properties);
 	info->target = (Atom *)__XtMalloc((unsigned) sizeof(Atom));
@@ -1643,9 +1647,7 @@ static void GetSelectionValues(
     Atom *properties)
 {
     Select ctx;
-    CallBackInfo info;
-    IndirectPair *pairs, *p;
-    Atom *t;
+    IndirectPair *pairs;
 
     if (count == 0) return;
     ctx = FindCtx(XtDisplay(widget), selection);
@@ -1671,6 +1673,9 @@ static void GetSelectionValues(
     } else {
         XtSelectionCallbackProc *passed_callbacks;
 	XtSelectionCallbackProc stack_cbs[32];
+	CallBackInfo info;
+	IndirectPair *p;
+	Atom *t;
         int i = 0, j = 0;
 
 	passed_callbacks = (XtSelectionCallbackProc *)
@@ -1933,7 +1938,6 @@ static Boolean IsGatheringRequest(
   Window window = XtWindow(wid);
   Display *dpy = XtDisplay(wid);
   Boolean found = False;
-  int i;
 
   if (multipleContext == 0) multipleContext = XUniqueContext();
 
@@ -1941,7 +1945,7 @@ static Boolean IsGatheringRequest(
   (void) XFindContext(dpy, window, multipleContext, (XPointer*) &qi);
 
   if (qi != NULL) {
-    i = 0;
+    int i = 0;
     while(qi->selections[i] != None) {
       if (qi->selections[i] == sel) {
 	found = True;
@@ -2044,7 +2048,6 @@ void XtSendSelectionRequest(
   QueuedRequestInfo queueInfo;
   Window window = XtWindow(widget);
   Display *dpy = XtDisplay(widget);
-  int i;
 
   LOCK_PROCESS;
   if (multipleContext == 0) multipleContext = XUniqueContext();
@@ -2052,6 +2055,7 @@ void XtSendSelectionRequest(
   queueInfo = NULL;
   (void) XFindContext(dpy, window, multipleContext, (XPointer*) &queueInfo);
   if (queueInfo != NULL) {
+    int i;
     int count = 0;
     QueuedRequest *req = queueInfo->requests;
 
@@ -2222,7 +2226,6 @@ static void AddParamInfo(
     Atom selection,
     Atom param_atom)
 {
-    int n;
     Param p;
     ParamInfo pinfo;
 
@@ -2240,6 +2243,7 @@ static void AddParamInfo(
 			    (char *)pinfo);
     }
     else {
+	int n;
 	for (n = (int) pinfo->count, p = pinfo->paramlist; n; n--, p++) {
 	    if (p->selection == None || p->selection == selection)
 		break;
@@ -2263,8 +2267,6 @@ static void RemoveParamInfo(
     Widget w,
     Atom selection)
 {
-    int n;
-    Param p;
     ParamInfo pinfo;
     Boolean retain = False;
 
@@ -2272,6 +2274,8 @@ static void RemoveParamInfo(
     if (paramPropertyContext
 	&& (XFindContext(XtDisplay(w), XtWindow(w), paramPropertyContext,
 			 (XPointer *) &pinfo) == 0)) {
+	Param p;
+	int n;
 
 	/* Find and invalidate the parameter data. */
 	for (n = (int) pinfo->count, p = pinfo->paramlist; n; n--, p++) {
@@ -2296,8 +2300,6 @@ static Atom GetParamInfo(
     Widget w,
     Atom selection)
 {
-    int n;
-    Param p;
     ParamInfo pinfo;
     Atom atom = None;
 
@@ -2305,6 +2307,8 @@ static Atom GetParamInfo(
     if (paramPropertyContext
 	&& (XFindContext(XtDisplay(w), XtWindow(w), paramPropertyContext,
 			 (XPointer *) &pinfo) == 0)) {
+	Param p;
+	int n;
 
 	for (n = (int) pinfo->count, p = pinfo->paramlist; n; n--, p++)
 	    if (p->selection == selection) {

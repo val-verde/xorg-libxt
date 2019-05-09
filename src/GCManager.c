@@ -162,8 +162,7 @@ void _XtGClistFree(
     Display *dpy,
     register XtPerDisplay pd)
 {
-    register GCptr GClist, next;
-    register int i;
+    GCptr GClist, next;
 
     GClist = pd->GClist;
     while (GClist) {
@@ -172,6 +171,7 @@ void _XtGClistFree(
 	GClist = next;
     }
     if (pd->pixmap_tab) {
+	int i;
 	for (i = ScreenCount(dpy); --i >= 0; ) {
 	    if (pd->pixmap_tab[i])
 		XtFree((char *)pd->pixmap_tab[i]);

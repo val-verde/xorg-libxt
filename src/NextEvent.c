@@ -369,7 +369,6 @@ static void FindInputs (
     int* dpy_no,
     int* found_input)
 {
-    XtInputMask condition;
     InputEvent *ep;
     int ii;
 #ifndef USE_POLL /* { check ready file descriptors block */
@@ -387,7 +386,8 @@ static void FindInputs (
 #endif
 
     for (ii = 0; ii < wf->nfds && nfds > 0; ii++) {
-	condition = 0;
+	XtInputMask condition = 0;
+
 	if (FD_ISSET (ii, &wf->rmask)
 #ifdef XTHREADS
 	    && FD_ISSET (ii, &rmask)
@@ -473,7 +473,7 @@ ENDILOOP:   ;
     if (!ignoreInputs) {
 	fdlp = &wf->fdlist[wf->num_dpys];
 	for (ii = wf->num_dpys; ii < wf->fdlistlen; ii++, fdlp++) {
-	    condition = 0;
+	    XtInputMask condition = 0;
 	    if (fdlp->revents) {
 		if (fdlp->revents & (XPOLL_READ|POLLHUP|POLLERR)
 #ifdef XTHREADS
@@ -1376,10 +1376,10 @@ void XtAppProcessEvent(
 	    if (CallWorkProc(app)) continue;
 
 	    d = _XtWaitForSomething (app,
-				    (mask & XtIMXEvent ? FALSE : TRUE),
-				    (mask & XtIMTimer ? FALSE : TRUE),
-				    (mask & XtIMAlternateInput ? FALSE : TRUE),
-				    (mask & XtIMSignal ? FALSE : TRUE),
+				    ((mask & XtIMXEvent) ? FALSE : TRUE),
+				    ((mask & XtIMTimer) ? FALSE : TRUE),
+				    ((mask & XtIMAlternateInput) ? FALSE : TRUE),
+				    ((mask & XtIMSignal) ? FALSE : TRUE),
 				    TRUE,
 #ifdef XTHREADS
 				    TRUE,

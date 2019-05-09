@@ -147,6 +147,7 @@ static void PrintModifiers(
     CHECK_STR_OVERFLOW(sb);
     PRINTMOD(Button4Mask, "Button4");
     PRINTMOD(Button5Mask, "Button5");
+    (void) notfirst;
 
 #undef PRINTMOD
 }
@@ -208,7 +209,7 @@ static void PrintCode(
     if (mask != 0) {
 	if (mask != ~0UL)
 	    (void) sprintf(sb->current, "0x%lx:0x%lx", mask, code);
-	else (void) sprintf(sb->current, /*"0x%lx"*/ "%d", (unsigned)code);
+	else (void) sprintf(sb->current, /*"0x%lx"*/ "%u", (unsigned)code);
 	sb->current += strlen(sb->current);
     }
 }
@@ -495,12 +496,13 @@ static int FindNextMatch(
     TMShortCard		startIndex)
 {
     TMShortCard		i;
-    TMComplexStateTree 	stateTree;
     StatePtr		currState, candState;
     Boolean		noMatch = True;
-    TMBranchHead	prBranchHead;
 
     for (i = startIndex; noMatch && i < numPrints; i++) {
+	TMBranchHead prBranchHead;
+	TMComplexStateTree stateTree;
+
 	stateTree = (TMComplexStateTree)
 	  xlations->stateTreeTbl[printData[i].tIndex];
 	prBranchHead =
@@ -864,8 +866,6 @@ String _XtPrintEventSeq(
     Display *dpy)
 {
     TMStringBufRec	sbRec, *sb = &sbRec;
-    TMTypeMatch		typeMatch;
-    TMModifierMatch	modMatch;
 #define MAXSEQS 100
     EventSeqPtr		eventSeqs[MAXSEQS];
     TMShortCard		i, j;
@@ -884,6 +884,9 @@ String _XtPrintEventSeq(
       }
     LOCK_PROCESS;
     for (j = 0; j < i; j++) {
+	TMTypeMatch typeMatch;
+	TMModifierMatch modMatch;
+
 	typeMatch =
 	  TMGetTypeMatch(_XtGetTypeIndex(&eventSeqs[j]->event));
 	modMatch =

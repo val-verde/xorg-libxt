@@ -253,7 +253,6 @@ Display *XtOpenDisplay(
 {
 	Display *d;
 	XrmDatabase db = NULL;
-	XtPerDisplay pd;
 	String language = NULL;
 
 	LOCK_APP(app);
@@ -282,6 +281,7 @@ Display *XtOpenDisplay(
 	}
 
 	if (d) {
+	    XtPerDisplay pd;
 	    pd = InitPerDisplay(d, app, applName, className);
 	    pd->language = language;
 	    _XtDisplayInitialize(d, pd, applName, urlist, num_urs, argc, argv);
@@ -593,7 +593,6 @@ static void CloseDisplay(Display *dpy)
         register XtPerDisplay xtpd;
 	register PerDisplayTablePtr pd, opd = NULL;
 	XrmDatabase db;
-	int i;
 
 	XtDestroyWidget(XtHooksOfDisplay(dpy));
 
@@ -616,6 +615,8 @@ static void CloseDisplay(Display *dpy)
 	xtpd = &(pd->perDpy);
 
         if (xtpd != NULL) {
+	    int i;
+
 	    if (xtpd->destroy_callbacks != NULL) {
 		XtCallCallbackList((Widget) NULL,
 				   (XtCallbackList)xtpd->destroy_callbacks,

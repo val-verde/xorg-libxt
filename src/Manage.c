@@ -416,7 +416,6 @@ void XtChangeManagedSet(
     int i;
     Cardinal some_unmanaged;
     Boolean call_out;
-    CompositeClassExtension ext;
     XtAppContext app;
     Widget hookobj;
     XtChangeHookDataRec call_data;
@@ -455,7 +454,7 @@ void XtChangeManagedSet(
 
     call_out = False;
     if (do_change_proc) {
-	ext = (CompositeClassExtension)
+	CompositeClassExtension ext = (CompositeClassExtension)
 	    XtGetClassExtension(parent->core.widget_class,
 				XtOffsetOf(CompositeClassRec,
 					   composite_class.extension),

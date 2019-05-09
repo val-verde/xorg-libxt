@@ -426,13 +426,13 @@ void _XtResourceDependencies(
 void _XtConstraintResDependencies(
     ConstraintWidgetClass wc)
 {
-    ConstraintWidgetClass sc;
-
     if (wc == (ConstraintWidgetClass) constraintWidgetClass) {
 	_XtDependencies(&(wc->constraint_class.resources),
 			&(wc->constraint_class.num_resources),
 			(XrmResourceList *)NULL, (unsigned)0, (unsigned)0);
     } else {
+	ConstraintWidgetClass sc;
+
 	sc = (ConstraintWidgetClass) wc->core_class.superclass;
 	_XtDependencies(&(wc->constraint_class.resources),
 			&(wc->constraint_class.num_resources),
@@ -941,8 +941,7 @@ XtCacheRef *_XtGetResources(
     XrmQuark	    quark_cache[100];
     XrmQuarkList    quark_args;
     WidgetClass     wc;
-    ConstraintWidgetClass   cwc;
-    XtCacheRef	    *cache_refs, *cache_refs_core;
+    XtCacheRef	    *cache_refs;
     Cardinal	    count;
 
     wc = XtClass(w);
@@ -967,6 +966,9 @@ XtCacheRef *_XtGetResources(
 	typed_args, num_typed_args, XtIsWidget(w));
 
     if (w->core.constraints != NULL) {
+	ConstraintWidgetClass cwc;
+	XtCacheRef *cache_refs_core;
+
 	cwc = (ConstraintWidgetClass) XtClass(w->core.parent);
 	cache_refs_core =
 	    GetResources(w, (char*)w->core.constraints, names, classes,
@@ -1071,7 +1073,7 @@ void _XtGetApplicationResources (
     XrmQuark	    quark_cache[100];
     XrmQuarkList    quark_args;
     XrmResourceList* table;
-    Cardinal        count, ntyped_args = num_typed_args;
+    Cardinal        ntyped_args = num_typed_args;
 #ifdef XTHREADS
     XtAppContext    app;
 #endif
@@ -1097,7 +1099,7 @@ void _XtGetApplicationResources (
 	classes[1] = NULLQUARK;
     }
     else {
-	count = CountTreeDepth(w);
+	Cardinal count = CountTreeDepth(w);
         names = (XrmName*) XtStackAlloc(count * sizeof(XrmName), names_s);
         classes = (XrmClass*) XtStackAlloc(count * sizeof(XrmClass), classes_s);
 	if (names == NULL || classes == NULL) _XtAllocError(NULL);

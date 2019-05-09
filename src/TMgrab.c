@@ -189,7 +189,6 @@ static Boolean DoGrab(
     TMModifierMatch	modMatch;
     Modifiers		careOn = 0;
     Modifiers		careMask = 0;
-    Boolean		resolved;
 
     LOCK_PROCESS;
     typeMatch = TMGetTypeMatch(typeIndex);
@@ -206,9 +205,9 @@ static Boolean DoGrab(
       case ButtonPress:
       case ButtonRelease:
 	if (modMatch->lateModifiers) {
-	    resolved = _XtComputeLateBindings(XtDisplay(widget),
-					      modMatch->lateModifiers,
-					      &careOn, &careMask);
+	    Boolean resolved = _XtComputeLateBindings(XtDisplay(widget),
+						      modMatch->lateModifiers,
+						      &careOn, &careMask);
 	    if (!resolved) break;
 	}
 	careOn = (careOn | (Modifiers) modMatch->modifiers);
