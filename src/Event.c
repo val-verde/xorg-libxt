@@ -315,7 +315,6 @@ AddEventHandler(
 	if (position == XtListHead) {
 	    p->next = widget->core.event_table;
 	    widget->core.event_table = p;
-	    pp = &widget->core.event_table;
 	} else {
 	    *pp = p;
 	    p->next = NULL;

@@ -199,8 +199,9 @@ AppUnlock(XtAppContext app)
     xmutex_unlock(app_lock->mutex);
 #else
     xthread_t self;
-    (void)self;
     self = xthread_self();
+    (void)self;
+
     xmutex_lock(app_lock->mutex);
     assert(xthread_equal(app_lock->holder, self));
     if (app_lock->level != 0) {

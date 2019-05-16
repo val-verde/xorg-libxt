@@ -159,7 +159,7 @@ static void ReportUnboundActions(
     XtTranslations	xlations,
     TMBindData		bindData)
 {
-    TMSimpleStateTree	stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[0];
+    TMSimpleStateTree	stateTree;
     Cardinal num_unbound = 0;
     Cardinal num_params = 1;
     char* message;
@@ -193,7 +193,6 @@ static void ReportUnboundActions(
 
 	*message = '\0';
 	num_unbound = 0;
-	stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[0];
 	for (i=0; i < xlations->numStateTrees; i++) {
 	    if (bindData->simple.isComplex)
 		procs = TMGetComplexBindEntry(bindData, i)->procs;
@@ -607,8 +606,6 @@ void _XtBindActions(
 
     if ((xlations == NULL) || widget->core.being_destroyed)
       return;
-
-    stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[0];
 
     for (i = 0; i < xlations->numStateTrees; i++)
       {

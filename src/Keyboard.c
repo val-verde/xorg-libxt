@@ -331,7 +331,6 @@ static Widget 	FindKeyDestination(
 			{
 			    XtUngrabKeyboard(devGrab->widget,
 					     event->time);
-			    devGrabType = XtNoServerGrab;
 			}
 		      /*
 		       * if there isn't a grab with then check
@@ -576,9 +575,7 @@ void _XtHandleFocus(
 	      newFocalPoint = XtUnrelated;
 	      break;
 	    case NotifyInferior:
-	      newFocalPoint = XtMyDescendant;
 	      return;
-	      break;
 	  }
 	break;
     }

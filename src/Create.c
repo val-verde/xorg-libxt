@@ -407,7 +407,6 @@ xtCreate(
     }
 
     wsize = widget_class->core_class.widget_size;
-    csize = 0;
     req_widget = (Widget) XtStackAlloc(wsize, widget_cache);
     (void) memmove ((char *) req_widget, (char *) widget, (size_t) wsize);
     CallInitialize (XtClass(widget), req_widget, widget, args, num_args);
