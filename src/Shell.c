@@ -2014,6 +2014,7 @@ static XtGeometryResult RootGeometryManager(
 	  w->core.height = (Dimension) (oldheight); \
 	  w->core.border_width = (Dimension) (oldborder_width); }
 
+    memset(&values, 0, sizeof(values));
     if (mask & CWX) {
 	    if (w->core.x == request->x) mask &= (unsigned int) (~CWX);
 	    else {
