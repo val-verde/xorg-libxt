@@ -234,44 +234,46 @@ XtVaGetValues(Widget widget, ...)
     _XtCountVaList(var, &total_count, &typed_count);
 
     if (total_count != typed_count) {
-        args = (ArgList)__XtMalloc((unsigned)((size_t)(total_count - typed_count)
-				* sizeof(Arg)));
+	size_t limit = (size_t)(total_count - typed_count);
+        args = (ArgList)__XtMalloc((unsigned)(limit * sizeof(Arg)));
     }
     else args = NULL;		/* for lint; really unused */
     va_end(var);
 
-    va_start(var,widget);
-    for(attr = va_arg(var, String), count = 0 ; attr != NULL;
-			attr = va_arg(var, String)) {
-	if (strcmp(attr, XtVaTypedArg) == 0) {
-	    typed_arg.name = va_arg(var, String);
-	    typed_arg.type = va_arg(var, String);
-	    typed_arg.value = va_arg(var, XtArgVal);
-	    typed_arg.size = va_arg(var, int);
+    if (args != NULL) {
+	va_start(var,widget);
+	for(attr = va_arg(var, String), count = 0 ; attr != NULL;
+			    attr = va_arg(var, String)) {
+	    if (strcmp(attr, XtVaTypedArg) == 0) {
+		typed_arg.name = va_arg(var, String);
+		typed_arg.type = va_arg(var, String);
+		typed_arg.value = va_arg(var, XtArgVal);
+		typed_arg.size = va_arg(var, int);
 
-	    if (resources == NULL) {
-		XtGetResourceList(XtClass(widget), &resources,&num_resources);
+		if (resources == NULL) {
+		    XtGetResourceList(XtClass(widget), &resources,&num_resources);
+		}
+
+		GetTypedArg(widget, &typed_arg, resources, num_resources);
+	    } else if (strcmp(attr, XtVaNestedList) == 0) {
+		if (resources == NULL) {
+		    XtGetResourceList(XtClass(widget),&resources, &num_resources);
+		}
+
+		count += GetNestedArg(widget, va_arg(var, XtTypedArgList),
+					 (args+count), resources, num_resources);
+	    } else {
+		args[count].name = attr;
+		args[count].value = va_arg(var, XtArgVal);
+		count ++;
 	    }
-
-	    GetTypedArg(widget, &typed_arg, resources, num_resources);
-	} else if (strcmp(attr, XtVaNestedList) == 0) {
-	    if (resources == NULL) {
-		XtGetResourceList(XtClass(widget),&resources, &num_resources);
-	    }
-
-	    count += GetNestedArg(widget, va_arg(var, XtTypedArgList),
-				     (args+count), resources, num_resources);
-	} else {
-	    args[count].name = attr;
-	    args[count].value = va_arg(var, XtArgVal);
-	    count ++;
 	}
+	va_end(var);
     }
-    va_end(var);
 
     XtFree((XtPointer)resources);
 
-    if (total_count != typed_count) {
+    if (args != NULL) {
 	XtGetValues(widget, args, (Cardinal) count);
 	XtFree((XtPointer)args);
     }
