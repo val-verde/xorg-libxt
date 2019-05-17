@@ -172,7 +172,7 @@ extern String XtCXtToolkitError;
 
 extern void _XtAllocError(
     String	/* alloc_type */
-);
+) _X_NORETURN;
 
 extern void _XtCompileResourceList(
     XtResourceList 	/* resources */,
