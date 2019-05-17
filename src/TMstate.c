@@ -1765,7 +1765,8 @@ static XtTranslations UnmergeTranslations(
     else
       first = NULL;
 
-    if (xlations->composers[1]) {
+    if (xlations->composers[0]
+	&& xlations->composers[1]) {
 	second = UnmergeTranslations(widget, xlations->composers[1],
 				     unmergeXlations,
 				     (TMShortCard)(currIndex +

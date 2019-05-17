@@ -270,6 +270,9 @@ xtWidgetAlloc(
     Cardinal                csize = 0;
     ObjectClassExtension    ext;
 
+    if (widget_class == NULL)
+	return 0;
+
     LOCK_PROCESS;
     if (! (widget_class->core_class.class_inited))
 	XtInitializeWidgetClass(widget_class);

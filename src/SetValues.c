@@ -155,20 +155,22 @@ CallConstraintSetValues (
     if ((WidgetClass)class != constraintWidgetClass) {
 	ConstraintWidgetClass superclass;
 
-	if (class == NULL)
+	if (class == NULL) {
 	    XtAppErrorMsg(XtWidgetToApplicationContext(current),
 		    "invalidClass","constraintSetValue",XtCXtToolkitError,
                  "Subclass of Constraint required in CallConstraintSetValues",
                   NULL, NULL);
-	LOCK_PROCESS;
-	superclass = (ConstraintWidgetClass) class->core_class.superclass;
-	UNLOCK_PROCESS;
-	redisplay =
-	   CallConstraintSetValues(superclass,
-				   current, request, new, args, num_args);
+	} else {
+	    LOCK_PROCESS;
+	    superclass = (ConstraintWidgetClass) class->core_class.superclass;
+	    UNLOCK_PROCESS;
+	    redisplay =
+	       CallConstraintSetValues(superclass,
+				       current, request, new, args, num_args);
+	}
     }
     LOCK_PROCESS;
-    set_values = class->constraint_class.set_values;
+    set_values = class ? class->constraint_class.set_values : NULL;
     UNLOCK_PROCESS;
     if (set_values)
         redisplay |= (*set_values) (current, request, new, args, &num_args);

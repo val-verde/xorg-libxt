@@ -555,6 +555,7 @@ PerDisplayTablePtr _XtperDisplayList = NULL;
 XtPerDisplay _XtSortPerDisplayList(Display *dpy)
 {
 	register PerDisplayTablePtr pd, opd = NULL;
+	XtPerDisplay result = NULL;
 
 	LOCK_PROCESS;
 	for (pd = _XtperDisplayList;
@@ -567,17 +568,18 @@ XtPerDisplay _XtSortPerDisplayList(Display *dpy)
 	    XtErrorMsg(XtNnoPerDisplay, "getPerDisplay", XtCXtToolkitError,
 		    "Couldn't find per display information",
 		    NULL, NULL);
-	}
+	} else {
+	    if (pd != _XtperDisplayList) {	/* move it to the front */
+		/* opd points to the previous one... */
 
-	if (pd != _XtperDisplayList) {	/* move it to the front */
-	    /* opd points to the previous one... */
-
-	    opd->next = pd->next;
-	    pd->next = _XtperDisplayList;
-	    _XtperDisplayList = pd;
+		opd->next = pd->next;
+		pd->next = _XtperDisplayList;
+		_XtperDisplayList = pd;
+	    }
+	    result = &(pd->perDpy);
 	}
 	UNLOCK_PROCESS;
-	return &(pd->perDpy);
+	return result;
 }
 
 XtAppContext XtDisplayToApplicationContext(Display *dpy)
@@ -590,7 +592,7 @@ XtAppContext XtDisplayToApplicationContext(Display *dpy)
 
 static void CloseDisplay(Display *dpy)
 {
-        register XtPerDisplay xtpd;
+        register XtPerDisplay xtpd = NULL;
 	register PerDisplayTablePtr pd, opd = NULL;
 	XrmDatabase db;
 
@@ -607,12 +609,13 @@ static void CloseDisplay(Display *dpy)
 	    XtErrorMsg(XtNnoPerDisplay, "closeDisplay", XtCXtToolkitError,
 		    "Couldn't find per display information",
 		    NULL, NULL);
+	} else {
+
+	    if (pd == _XtperDisplayList) _XtperDisplayList = pd->next;
+	    else opd->next = pd->next;
+
+	    xtpd = &(pd->perDpy);
 	}
-
-	if (pd == _XtperDisplayList) _XtperDisplayList = pd->next;
-	else opd->next = pd->next;
-
-	xtpd = &(pd->perDpy);
 
         if (xtpd != NULL) {
 	    int i;

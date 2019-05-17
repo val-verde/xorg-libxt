@@ -116,7 +116,9 @@ _XtMakeGeometryRequest (
     XtGeometryHandler manager = (XtGeometryHandler) NULL;
     XtGeometryResult returnCode;
     Widget parent = widget->core.parent;
-    Boolean managed, parentRealized, rgm = False;
+    Boolean managed;
+    Boolean parentRealized = False;
+    Boolean rgm = False;
     XtConfigureHookDataRec req;
     Widget hookobj;
 
@@ -163,21 +165,22 @@ _XtMakeGeometryRequest (
 	parentRealized = TRUE;
 	UNLOCK_PROCESS;
     } else /* not shell */ {
-	if (parent == NULL)
+	if (parent == NULL) {
 	    XtAppErrorMsg(XtWidgetToApplicationContext(widget),
 			  "invalidParent","xtMakeGeometryRequest",
 			  XtCXtToolkitError,
 			  "non-shell has no parent in XtMakeGeometryRequest",
 			  NULL, NULL);
-
-	managed = XtIsManaged(widget);
-	parentRealized = XtIsRealized(parent);
-	if (XtIsComposite(parent))
-	{
-	    LOCK_PROCESS;
-	    manager = ((CompositeWidgetClass) (parent->core.widget_class))
-		      ->composite_class.geometry_manager;
-	    UNLOCK_PROCESS;
+	} else {
+	    managed = XtIsManaged(widget);
+	    parentRealized = XtIsRealized(parent);
+	    if (XtIsComposite(parent))
+	    {
+		LOCK_PROCESS;
+		manager = ((CompositeWidgetClass) (parent->core.widget_class))
+			  ->composite_class.geometry_manager;
+		UNLOCK_PROCESS;
+	    }
 	}
     }
 

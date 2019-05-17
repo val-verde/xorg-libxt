@@ -350,7 +350,7 @@ _XtVaToArgList(
     ArgList		args = (ArgList)NULL;
     XtTypedArg		typed_arg;
     XtResourceList	resources = (XtResourceList)NULL;
-    Cardinal		num_resources;
+    Cardinal		num_resources = 0;
     Boolean		fetched_resource_list = False;
 
     if (max_count  == 0) {
@@ -360,44 +360,48 @@ _XtVaToArgList(
     }
 
     args = (ArgList)__XtMalloc((Cardinal)((size_t)(max_count * 2) * sizeof(Arg)));
-    for (count = max_count * 2; --count >= 0; )
-	args[count].value = (XtArgVal) NULL;
-    count = 0;
+    if (args) {
+	for (count = max_count * 2; --count >= 0; )
+	    args[count].value = (XtArgVal) NULL;
+	count = 0;
 
-    for(attr = va_arg(var, String) ; attr != NULL;
-			attr = va_arg(var, String)) {
-	if (strcmp(attr, XtVaTypedArg) == 0) {
-	    typed_arg.name = va_arg(var, String);
-	    typed_arg.type = va_arg(var, String);
-	    typed_arg.value = va_arg(var, XtArgVal);
-	    typed_arg.size = va_arg(var, int);
+	for(attr = va_arg(var, String) ; attr != NULL;
+			    attr = va_arg(var, String)) {
+	    if (strcmp(attr, XtVaTypedArg) == 0) {
+		typed_arg.name = va_arg(var, String);
+		typed_arg.type = va_arg(var, String);
+		typed_arg.value = va_arg(var, XtArgVal);
+		typed_arg.size = va_arg(var, int);
 
-	    /* if widget is NULL, typed args are ignored */
-	    if (widget != NULL) {
-		if (!fetched_resource_list) {
-		    GetResources(widget, &resources, &num_resources);
-		    fetched_resource_list = True;
+		/* if widget is NULL, typed args are ignored */
+		if (widget != NULL) {
+		    if (!fetched_resource_list) {
+			GetResources(widget, &resources, &num_resources);
+			fetched_resource_list = True;
+		    }
+		    count += TypedArgToArg(widget, &typed_arg, &args[count],
+					      resources, num_resources,
+					      &args[max_count + count]);
 		}
-		count += TypedArgToArg(widget, &typed_arg, &args[count],
-					  resources, num_resources,
-					  &args[max_count + count]);
-	    }
-	} else if (strcmp(attr, XtVaNestedList) == 0) {
-	    if (widget != NULL) {
-		if (!fetched_resource_list) {
-		    GetResources(widget, &resources, &num_resources);
-		    fetched_resource_list = True;
+	    } else if (strcmp(attr, XtVaNestedList) == 0) {
+		if (widget != NULL) {
+		    if (!fetched_resource_list) {
+			GetResources(widget, &resources, &num_resources);
+			fetched_resource_list = True;
+		    }
 		}
-	    }
 
-	    count += NestedArgtoArg(widget, va_arg(var, XtTypedArgList),
-				       &args[count], resources, num_resources,
-				       &args[max_count + count]);
-	} else {
-	    args[count].name = attr;
-	    args[count].value = va_arg(var, XtArgVal);
-	    count ++;
+		count += NestedArgtoArg(widget, va_arg(var, XtTypedArgList),
+					   &args[count], resources, num_resources,
+					   &args[max_count + count]);
+	    } else {
+		args[count].name = attr;
+		args[count].value = va_arg(var, XtArgVal);
+		count ++;
+	    }
 	}
+    } else {
+	count = 0;
     }
 
     XtFree((XtPointer)resources);
@@ -407,7 +411,7 @@ _XtVaToArgList(
 }
 
 /*	Function Name: GetResources
- *	Description: Retreives the normal and constraint resources
+ *	Description: Retrieves the normal and constraint resources
  *                   for this widget.
  *	Arguments: widget - the widget.
  * RETURNED        res_list - the list of resource for this widget

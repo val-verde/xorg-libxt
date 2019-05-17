@@ -941,7 +941,7 @@ XtCacheRef *_XtGetResources(
     XrmQuark	    quark_cache[100];
     XrmQuarkList    quark_args;
     WidgetClass     wc;
-    XtCacheRef	    *cache_refs;
+    XtCacheRef	    *cache_refs = NULL;
     Cardinal	    count;
 
     wc = XtClass(w);
@@ -949,38 +949,41 @@ XtCacheRef *_XtGetResources(
     count = CountTreeDepth(w);
     names = (XrmName*) XtStackAlloc (count * sizeof(XrmName), names_s);
     classes = (XrmClass*) XtStackAlloc (count * sizeof(XrmClass), classes_s);
-    if (names == NULL || classes == NULL) _XtAllocError(NULL);
+    if (names == NULL || classes == NULL) {
+	_XtAllocError(NULL);
+    } else {
 
-    /* Get names, classes for widget and ancestors */
-    GetNamesAndClasses(w, names, classes);
+	/* Get names, classes for widget and ancestors */
+	GetNamesAndClasses(w, names, classes);
 
-    /* Compile arg list into quarks */
-    CacheArgs(args, num_args, typed_args, *num_typed_args, quark_cache,
-	      XtNumber(quark_cache), &quark_args);
+	/* Compile arg list into quarks */
+	CacheArgs(args, num_args, typed_args, *num_typed_args, quark_cache,
+		  XtNumber(quark_cache), &quark_args);
 
-    /* Get normal resources */
-    LOCK_PROCESS;
-    cache_refs = GetResources(w, (char*)w, names, classes,
-	(XrmResourceList *) wc->core_class.resources,
-	wc->core_class.num_resources, quark_args, args, num_args,
-	typed_args, num_typed_args, XtIsWidget(w));
+	/* Get normal resources */
+	LOCK_PROCESS;
+	cache_refs = GetResources(w, (char*)w, names, classes,
+	    (XrmResourceList *) wc->core_class.resources,
+	    wc->core_class.num_resources, quark_args, args, num_args,
+	    typed_args, num_typed_args, XtIsWidget(w));
 
-    if (w->core.constraints != NULL) {
-	ConstraintWidgetClass cwc;
-	XtCacheRef *cache_refs_core;
+	if (w->core.constraints != NULL) {
+	    ConstraintWidgetClass cwc;
+	    XtCacheRef *cache_refs_core;
 
-	cwc = (ConstraintWidgetClass) XtClass(w->core.parent);
-	cache_refs_core =
-	    GetResources(w, (char*)w->core.constraints, names, classes,
-	    (XrmResourceList *) cwc->constraint_class.resources,
-	    cwc->constraint_class.num_resources,
-	    quark_args, args, num_args, typed_args, num_typed_args, False);
-	 XtFree((char *)cache_refs_core);
+	    cwc = (ConstraintWidgetClass) XtClass(w->core.parent);
+	    cache_refs_core =
+		GetResources(w, (char*)w->core.constraints, names, classes,
+		(XrmResourceList *) cwc->constraint_class.resources,
+		cwc->constraint_class.num_resources,
+		quark_args, args, num_args, typed_args, num_typed_args, False);
+	     XtFree((char *)cache_refs_core);
+	}
+	FreeCache(quark_cache, quark_args);
+	UNLOCK_PROCESS;
+	XtStackFree((XtPointer)names, names_s);
+	XtStackFree((XtPointer)classes, classes_s);
     }
-    FreeCache(quark_cache, quark_args);
-    UNLOCK_PROCESS;
-    XtStackFree((XtPointer)names, names_s);
-    XtStackFree((XtPointer)classes, classes_s);
     return cache_refs;
 } /* _XtGetResources */
 
@@ -1013,35 +1016,37 @@ void _XtGetSubresources (
     count++;	/* make sure there's enough room for name and class */
     names = (XrmName*) XtStackAlloc(count * sizeof(XrmName), names_s);
     classes = (XrmClass*) XtStackAlloc(count * sizeof(XrmClass), classes_s);
-    if (names == NULL || classes == NULL) _XtAllocError(NULL);
+    if (names == NULL || classes == NULL) {
+	_XtAllocError(NULL);
+    } else {
+	/* Get full name, class of subobject */
+	GetNamesAndClasses(w, names, classes);
+	count -= 2;
+	names[count] = StringToName(name);
+	classes[count] = StringToClass(class);
+	count++;
+	names[count] = NULLQUARK;
+	classes[count] = NULLQUARK;
 
-    /* Get full name, class of subobject */
-    GetNamesAndClasses(w, names, classes);
-    count -= 2;
-    names[count] = StringToName(name);
-    classes[count] = StringToClass(class);
-    count++;
-    names[count] = NULLQUARK;
-    classes[count] = NULLQUARK;
+	/* Compile arg list into quarks */
+	CacheArgs(args, num_args, typed_args, num_typed_args,
+		  quark_cache, XtNumber(quark_cache), &quark_args);
 
-    /* Compile arg list into quarks */
-    CacheArgs(args, num_args, typed_args, num_typed_args,
-	      quark_cache, XtNumber(quark_cache), &quark_args);
-
-    /* Compile resource list if needed */
-    if (((int) resources->resource_offset) >= 0) {
-	XrmCompileResourceListEphem(resources, num_resources);
+	/* Compile resource list if needed */
+	if (((int) resources->resource_offset) >= 0) {
+	    XrmCompileResourceListEphem(resources, num_resources);
+	}
+	table = _XtCreateIndirectionTable(resources, num_resources);
+	Resrc = GetResources(w, (char*)base, names, classes, table, num_resources,
+			    quark_args, args, num_args,
+			    typed_args, &ntyped_args, False);
+	FreeCache(quark_cache, quark_args);
+	XtFree((char *)table);
+	XtFree((char *)Resrc);
+	XtStackFree((XtPointer)names, names_s);
+	XtStackFree((XtPointer)classes, classes_s);
+	UNLOCK_APP(app);
     }
-    table = _XtCreateIndirectionTable(resources, num_resources);
-    Resrc = GetResources(w, (char*)base, names, classes, table, num_resources,
-			quark_args, args, num_args,
-			typed_args, &ntyped_args, False);
-    FreeCache(quark_cache, quark_args);
-    XtFree((char *)table);
-    XtFree((char *)Resrc);
-    XtStackFree((XtPointer)names, names_s);
-    XtStackFree((XtPointer)classes, classes_s);
-    UNLOCK_APP(app);
 }
 
 void XtGetSubresources (
@@ -1093,17 +1098,24 @@ void _XtGetApplicationResources (
 	XtPerDisplay pd = _XtGetPerDisplay(_XtDefaultAppContext()->list[0]);
 	names = (XrmName*) XtStackAlloc (2 * sizeof(XrmName), names_s);
 	classes = (XrmClass*) XtStackAlloc (2 * sizeof(XrmClass), classes_s);
-	names[0] = pd->name;
-	names[1] = NULLQUARK;
-	classes[0] = pd->class;
-	classes[1] = NULLQUARK;
+	if (names == NULL || classes == NULL) {
+	    _XtAllocError(NULL);
+	} else {
+	    names[0] = pd->name;
+	    names[1] = NULLQUARK;
+	    classes[0] = pd->class;
+	    classes[1] = NULLQUARK;
+	}
     }
     else {
 	Cardinal count = CountTreeDepth(w);
         names = (XrmName*) XtStackAlloc(count * sizeof(XrmName), names_s);
         classes = (XrmClass*) XtStackAlloc(count * sizeof(XrmClass), classes_s);
-	if (names == NULL || classes == NULL) _XtAllocError(NULL);
-	GetNamesAndClasses(w, names, classes);
+	if (names == NULL || classes == NULL) {
+	    _XtAllocError(NULL);
+	} else {
+	    GetNamesAndClasses(w, names, classes);
+	}
     }
 
     /* Compile arg list into quarks */

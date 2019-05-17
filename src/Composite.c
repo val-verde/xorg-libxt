@@ -184,34 +184,32 @@ static void CompositeClassPartInitialize(
     wcPtr = (CompositePartPtr)
 	&(((CompositeWidgetClass)myWidgetClass)->composite_class);
 
-    if (myWidgetClass != compositeWidgetClass)
+    if (myWidgetClass != compositeWidgetClass) {
 	/* don't compute possible bogus pointer */
 	superPtr = (CompositePartPtr)&(((CompositeWidgetClass)myWidgetClass
 			->core_class.superclass)->composite_class);
 
-    /* We don't need to check for null super since we'll get to composite
-       eventually, and it had better define them!  */
+	LOCK_PROCESS;
+	if (wcPtr->geometry_manager == XtInheritGeometryManager) {
+	    wcPtr->geometry_manager =
+		    superPtr->geometry_manager;
+	}
 
-    LOCK_PROCESS;
-    if (wcPtr->geometry_manager == XtInheritGeometryManager) {
-	wcPtr->geometry_manager =
-		superPtr->geometry_manager;
-    }
+	if (wcPtr->change_managed == XtInheritChangeManaged) {
+	    wcPtr->change_managed =
+		    superPtr->change_managed;
+	    InheritAllowsChangeManagedSet(myWidgetClass);
+	}
 
-    if (wcPtr->change_managed == XtInheritChangeManaged) {
-	wcPtr->change_managed =
-		superPtr->change_managed;
-	InheritAllowsChangeManagedSet(myWidgetClass);
-    }
+	if (wcPtr->insert_child == XtInheritInsertChild) {
+	    wcPtr->insert_child = superPtr->insert_child;
+	}
 
-    if (wcPtr->insert_child == XtInheritInsertChild) {
-	wcPtr->insert_child = superPtr->insert_child;
+	if (wcPtr->delete_child == XtInheritDeleteChild) {
+	    wcPtr->delete_child = superPtr->delete_child;
+	}
+	UNLOCK_PROCESS;
     }
-
-    if (wcPtr->delete_child == XtInheritDeleteChild) {
-	wcPtr->delete_child = superPtr->delete_child;
-    }
-    UNLOCK_PROCESS;
 }
 
 static void CompositeDestroy(

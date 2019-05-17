@@ -404,7 +404,7 @@ CacheEnter(
 	(void) memmove((char *)p->from.addr, (char *)from->addr, from->size);
     }
     p->num_args = (unsigned short) num_args;
-    if (num_args) {
+    if (num_args && args) {
 	XrmValue *pargs = CARGS(p);
         register    Cardinal i;
 	for (i = 0; i < num_args; i++) {
@@ -453,7 +453,7 @@ static void FreeCacheRec(
 	*(CEXT(p)->prev) = p->next;
 	if (p->next && p->next->has_ext)
 	    CEXT(p->next)->prev = CEXT(p)->prev;
-    } else {
+    } else if (prev) {
 	*prev = p->next;
 	if (p->next && p->next->has_ext)
 	    CEXT(p->next)->prev = prev;

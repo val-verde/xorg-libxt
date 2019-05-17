@@ -561,15 +561,16 @@ static void FetchDisplayArg(
     Cardinal *size,
     XrmValue* value)
 {
-    if (widget == NULL)
+    if (widget == NULL) {
 	XtErrorMsg("missingWidget", "fetchDisplayArg", XtCXtToolkitError,
 		   "FetchDisplayArg called without a widget to reference",
 		   NULL, NULL);
         /* can't return any useful Display and caller will de-ref NULL,
 	   so aborting is the only useful option */
-
-    value->size = sizeof(Display*);
-    value->addr = (XPointer)&DisplayOfScreen(XtScreenOfObject(widget));
+    } else {
+	value->size = sizeof(Display*);
+	value->addr = (XPointer)&DisplayOfScreen(XtScreenOfObject(widget));
+    }
 }
 
 static XtConvertArgRec const displayConvertArg[] = {
