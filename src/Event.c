@@ -110,16 +110,17 @@ EventMask XtBuildEventMask(
     WIDGET_TO_APPCON(widget);
 
     LOCK_APP(app);
-    for (ev = widget->core.event_table; ev != NULL; ev = ev->next)
-	if (ev->select) {
-	    if (!ev->has_type_specifier)
-		mask |= ev->mask;
-	    else {
-		if (EXT_TYPE(ev) < LASTEvent) {
-		    Cardinal i;
-		    for (i = 0; i < ev->mask; i++)
-			if (EXT_SELECT_DATA(ev, i))
-			    mask |= *(EventMask*)EXT_SELECT_DATA(ev, i);
+    for (ev = widget->core.event_table; ev != NULL; ev = ev->next) {
+	if (! ev->select) continue;
+
+	if (!ev->has_type_specifier)
+	    mask |= ev->mask;
+	else {
+	    if (EXT_TYPE(ev) < LASTEvent) {
+		Cardinal i;
+		for (i = 0; i < ev->mask; i++)
+		    if (EXT_SELECT_DATA(ev, i))
+		        mask |= *(EventMask*)EXT_SELECT_DATA(ev, i);
 		}
 	    }
 	}
