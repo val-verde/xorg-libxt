@@ -323,11 +323,10 @@ static Boolean CoreSetValues(
     Boolean redisplay;
     Mask    window_mask;
     XSetWindowAttributes attributes;
-    XtTranslations save;
 
     redisplay = FALSE;
     if  (old->core.tm.translations != new->core.tm.translations) {
-	save = new->core.tm.translations;
+	XtTranslations save = new->core.tm.translations;
 	new->core.tm.translations = old->core.tm.translations;
 	_XtMergeTranslations(new, save, XtTableReplace);
     }

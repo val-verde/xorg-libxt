@@ -467,7 +467,6 @@ Boolean XtCvtStringToPixel(
     XtPerDisplay    pd = _XtGetPerDisplay(dpy);
     Colormap	    colormap;
     Status	    status;
-    String          params[1];
     Cardinal	    num_params=1;
 
     if (*num_args != 2) {
@@ -497,6 +496,7 @@ Boolean XtCvtStringToPixel(
     if (status == 0) {
 	_Xconst _XtString msg;
 	_Xconst _XtString type;
+	String params[1];
 
 	params[0] = str;
 	/* Server returns a specific error code but Xlib discards it.  Ugh */
@@ -561,15 +561,16 @@ static void FetchDisplayArg(
     Cardinal *size,
     XrmValue* value)
 {
-    if (widget == NULL)
+    if (widget == NULL) {
 	XtErrorMsg("missingWidget", "fetchDisplayArg", XtCXtToolkitError,
 		   "FetchDisplayArg called without a widget to reference",
 		   NULL, NULL);
         /* can't return any useful Display and caller will de-ref NULL,
 	   so aborting is the only useful option */
-
-    value->size = sizeof(Display*);
-    value->addr = (XPointer)&DisplayOfScreen(XtScreenOfObject(widget));
+    } else {
+	value->size = sizeof(Display*);
+	value->addr = (XPointer)&DisplayOfScreen(XtScreenOfObject(widget));
+    }
 }
 
 static XtConvertArgRec const displayConvertArg[] = {
@@ -809,11 +810,8 @@ Boolean XtCvtStringToFloat(
     int ret;
     float f, nan;
 
-#ifndef ISC /* On ISC this generates a core dump :-( at least with gs */
-    /* depending on the system this may or may not do anything useful */
-    (void) sscanf ("NaNS", "%g",
+    (void) sscanf ("NaN", "%g",
 		   toVal->addr != NULL ? (float*) toVal->addr : &nan);
-#endif
 
     if (*num_args != 0)
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -1629,7 +1627,6 @@ Boolean XtCvtStringToCommandArgArray(
     String *strarray, *ptr;
     char *src;
     char *dst, *dst_str;
-    char *start;
     int tokens, len;
 
     if (*num_args != 0)
@@ -1643,6 +1640,8 @@ Boolean XtCvtStringToCommandArgArray(
     tokens = 0;
 
     while (*src != '\0') {
+	char *start;
+
 	/* skip whitespace */
 	while (IsWhitespace(*src) || IsNewline(*src))
 	    src++;
@@ -1704,10 +1703,8 @@ static void ArgArrayDestructor(
     XrmValuePtr	args,
     Cardinal	*num_args)
 {
-    _XtString *strarray;
-
     if (closure) {
-	strarray = (_XtString*) closure;
+	_XtString *strarray = (_XtString*) closure;
 	XtFree(*strarray);
 	XtFree((char *) strarray);
     }

@@ -163,7 +163,6 @@ void XtAddCallback(
     )
 {
     InternalCallbackList *callbacks;
-    Widget hookobj;
     XtAppContext app = XtWidgetToApplicationContext(widget);
 
     LOCK_APP(app);
@@ -178,7 +177,7 @@ void XtAddCallback(
     }
     _XtAddCallback(callbacks, callback, closure);
     if (!_XtIsHookObject(widget)) {
-	hookobj = XtHooksOfDisplay(XtDisplayOfObject(widget));
+        Widget hookobj = XtHooksOfDisplay(XtDisplayOfObject(widget));
 	if (XtHasCallbacks(hookobj, XtNchangeHook) == XtCallbackHasSome) {
 	    XtChangeHookDataRec call_data;
 
@@ -499,9 +498,9 @@ InternalCallbackList _XtCompileCallbackList(
 XtCallbackList _XtGetCallbackList(
     InternalCallbackList *callbacks)
 {
-    register int i;
-    register InternalCallbackList icl;
-    register XtCallbackList cl, ocl;
+    int i;
+    InternalCallbackList icl;
+    XtCallbackList cl;
 
     icl = *callbacks;
     if (!icl) {
@@ -512,6 +511,7 @@ XtCallbackList _XtGetCallbackList(
 	return ToList(icl);
     i = icl->count;
     if (icl->call_state) {
+        XtCallbackList ocl;
 	icl->call_state |= _XtCBFreeAfterCalling;
 	ocl = ToList(icl);
 	icl = (InternalCallbackList) __XtMalloc((Cardinal)(sizeof(InternalCallbackRec) +

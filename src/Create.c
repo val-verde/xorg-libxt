@@ -267,8 +267,11 @@ xtWidgetAlloc(
     Cardinal	num_typed_args)
 {
     Widget widget;
-    Cardinal                wsize, csize = 0;
+    Cardinal                csize = 0;
     ObjectClassExtension    ext;
+
+    if (widget_class == NULL)
+	return 0;
 
     LOCK_PROCESS;
     if (! (widget_class->core_class.class_inited))
@@ -290,7 +293,7 @@ xtWidgetAlloc(
 	(*allocate)(widget_class, &csize, &extra, args, &nargs,
 		    typed_args, &ntyped, &widget, NULL);
     } else {
-	wsize = widget_class->core_class.widget_size;
+        Cardinal wsize = widget_class->core_class.widget_size;
 	UNLOCK_PROCESS;
 	if (csize) {
 	    if (sizeof(struct {char a; double b;}) !=
@@ -318,7 +321,6 @@ CompileCallbacks(
     Widget widget)
 {
     CallbackTable offsets;
-    InternalCallbackList* cl;
     int i;
 
     LOCK_PROCESS;
@@ -326,7 +328,7 @@ CompileCallbacks(
 	widget->core.widget_class->core_class.callback_private;
 
     for (i = (int)(long) *(offsets++); --i >= 0; offsets++) {
-	cl = (InternalCallbackList *)
+        InternalCallbackList* cl = (InternalCallbackList *)
 	    ((char *) widget - (*offsets)->xrm_offset - 1);
 	if (*cl)
 	    *cl = _XtCompileCallbackList((XtCallbackList) *cl);
@@ -351,13 +353,11 @@ xtCreate(
 {
     /* need to use strictest alignment rules possible in next two decls. */
     double                  widget_cache[100];
-    double                  constraint_cache[20];
     Widget                  req_widget;
     XtPointer               req_constraints = NULL;
     Cardinal                wsize, csize;
     Widget	    	    widget;
     XtCacheRef		    *cache_refs;
-    Cardinal		    i;
     XtCreateHookDataRec     call_data;
 
     widget = xtWidgetAlloc(widget_class, parent_constraint_class, parent,
@@ -392,6 +392,7 @@ xtCreate(
 
     /* Convert typed arg list to arg list */
     if (typed_args != NULL && num_typed_args > 0) {
+	Cardinal i;
 	args = (ArgList)ALLOCATE_LOCAL(sizeof(Arg) * num_typed_args);
 	if (args == NULL) _XtAllocError(NULL);
 	for (i = 0; i < num_typed_args; i++) {
@@ -409,11 +410,11 @@ xtCreate(
     }
 
     wsize = widget_class->core_class.widget_size;
-    csize = 0;
     req_widget = (Widget) XtStackAlloc(wsize, widget_cache);
     (void) memmove ((char *) req_widget, (char *) widget, (size_t) wsize);
     CallInitialize (XtClass(widget), req_widget, widget, args, num_args);
     if (parent_constraint_class != NULL) {
+	double constraint_cache[20];
         csize = parent_constraint_class->constraint_class.constraint_size;
 	if (csize) {
 	    req_constraints = XtStackAlloc(csize, constraint_cache);

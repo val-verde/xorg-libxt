@@ -151,23 +151,26 @@ CallConstraintSetValues (
 {
     Boolean redisplay = FALSE;
     XtSetValuesFunc set_values;
-    ConstraintWidgetClass superclass;
 
     if ((WidgetClass)class != constraintWidgetClass) {
-	if (class == NULL)
+	ConstraintWidgetClass superclass;
+
+	if (class == NULL) {
 	    XtAppErrorMsg(XtWidgetToApplicationContext(current),
 		    "invalidClass","constraintSetValue",XtCXtToolkitError,
                  "Subclass of Constraint required in CallConstraintSetValues",
                   NULL, NULL);
-	LOCK_PROCESS;
-	superclass = (ConstraintWidgetClass) class->core_class.superclass;
-	UNLOCK_PROCESS;
-	redisplay =
-	   CallConstraintSetValues(superclass,
-				   current, request, new, args, num_args);
+	} else {
+	    LOCK_PROCESS;
+	    superclass = (ConstraintWidgetClass) class->core_class.superclass;
+	    UNLOCK_PROCESS;
+	    redisplay =
+	       CallConstraintSetValues(superclass,
+				       current, request, new, args, num_args);
+	}
     }
     LOCK_PROCESS;
-    set_values = class->constraint_class.set_values;
+    set_values = class ? class->constraint_class.set_values : NULL;
     UNLOCK_PROCESS;
     if (set_values)
         redisplay |= (*set_values) (current, request, new, args, &num_args);
@@ -204,7 +207,6 @@ void XtSetValues(
     WidgetClass     wc;
     ConstraintWidgetClass cwc = NULL;
     Boolean	    hasConstraints;
-    XtAlmostProc set_values_almost;
     XtAppContext app = XtWidgetToApplicationContext(w);
     Widget hookobj = XtHooksOfDisplay(XtDisplayOfObject(w));
 
@@ -350,6 +352,7 @@ void XtSetValues(
 	    CALLGEOTAT(_XtGeoTab(1));
 	    do {
 		XtGeometryHookDataRec call_data;
+		XtAlmostProc set_values_almost;
 
 		if (XtHasCallbacks(hookobj, XtNgeometryHook) == XtCallbackHasSome) {
 		    call_data.type = XtHpreGeometry;

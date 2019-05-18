@@ -177,7 +177,6 @@ Boolean _XtComputeLateBindings(
     int i,j,ref;
     ModToKeysymTable* temp;
     XtPerDisplay perDisplay;
-    Boolean found;
     KeySym tempKeysym = NoSymbol;
 
     perDisplay = _XtGetPerDisplay(dpy);
@@ -190,7 +189,7 @@ Boolean _XtComputeLateBindings(
     }
     _InitializeKeysymTables(dpy, perDisplay);
     for (ref=0; lateModifiers[ref].keysym; ref++) {
-        found = FALSE;
+        Boolean found = FALSE;
         for (i=0;i<8;i++) {
             temp = &(perDisplay->modsToKeysyms[i]);
             for (j=0;j<temp->count;j++){
@@ -250,13 +249,11 @@ Boolean _XtMatchUsingDontCareMods(
     Modifiers modifiers_return;
     KeySym keysym_return;
     Modifiers useful_mods;
-    int i, num_modbits;
     Modifiers computed = 0;
     Modifiers computedMask = 0;
     Boolean resolved = TRUE;
     Display *dpy = eventSeq->xev->xany.display;
     XtPerDisplay pd;
-    TMKeyContext tm_context;
 
     if (modMatch->lateModifiers != NULL)
 	resolved = _XtComputeLateBindings(dpy, modMatch->lateModifiers,
@@ -267,6 +264,9 @@ Boolean _XtMatchUsingDontCareMods(
 
     if ( (computed & computedMask) ==
         (eventSeq->event.modifiers & computedMask) ) {
+	TMKeyContext tm_context;
+	int num_modbits;
+	int i;
 
 	pd = _XtGetPerDisplay(dpy);
 	tm_context = pd->tm_context;
@@ -374,7 +374,6 @@ Boolean _XtMatchUsingStandardMods (
     KeySym keysym_return;
     Modifiers computed= 0;
     Modifiers computedMask = 0;
-    Boolean resolved = TRUE;
     Display *dpy = eventSeq->xev->xany.display;
     XtPerDisplay pd = _XtGetPerDisplay(dpy);
     TMKeyContext tm_context = pd->tm_context;
@@ -402,6 +401,8 @@ Boolean _XtMatchUsingStandardMods (
 
     if ((typeMatch->eventCode & typeMatch->eventCodeMask) ==
              (keysym_return & typeMatch->eventCodeMask)) {
+	Boolean resolved = TRUE;
+
         if (modMatch->lateModifiers != NULL)
             resolved = _XtComputeLateBindings(dpy, modMatch->lateModifiers,
 					      &computed, &computedMask);
@@ -590,7 +591,7 @@ void XtTranslateKey(
 	*keysym_return = NoSymbol;
     UNLOCK_APP(app);
 #else
-    XkbLookupKeySym(dpy, keycode, modifiers, modifiers_return, keysym_return);
+    XkbLookupKeySym(dpy, (KeyCode) keycode, modifiers, modifiers_return, keysym_return);
 #endif
 }
 
@@ -671,7 +672,7 @@ void XtKeysymToKeycodeList(
 {
     XtPerDisplay pd;
     unsigned keycode;
-    int per, match;
+    int per;
     register KeySym *syms;
     register int i, j;
     KeySym lsym, usym;
@@ -688,7 +689,7 @@ void XtKeysymToKeycodeList(
     for (syms = pd->keysyms, keycode = (unsigned) pd->min_keycode;
 	 (int)keycode <= pd->max_keycode;
 	 syms += per, keycode++) {
-	match = 0;
+	int match = 0;
 	for (j = 0; j < per; j++) {
 	    if (syms[j] == keysym) {
 		match = 1;

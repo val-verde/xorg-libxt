@@ -362,7 +362,6 @@ CacheEnter(
 {
     register	CachePtr *pHashEntry;
     register	CachePtr p;
-    register    Cardinal i;
 
     LOCK_PROCESS;
     pHashEntry = &cacheHashTable[hash & CACHEHASHMASK];
@@ -405,8 +404,9 @@ CacheEnter(
 	(void) memmove((char *)p->from.addr, (char *)from->addr, from->size);
     }
     p->num_args = (unsigned short) num_args;
-    if (num_args) {
+    if (num_args && args) {
 	XrmValue *pargs = CARGS(p);
+        register    Cardinal i;
 	for (i = 0; i < num_args; i++) {
 	    pargs[i].size = args[i].size;
 	    pargs[i].addr = (XPointer)_XtHeapAlloc(heap, args[i].size);
@@ -453,7 +453,7 @@ static void FreeCacheRec(
 	*(CEXT(p)->prev) = p->next;
 	if (p->next && p->next->has_ext)
 	    CEXT(p->next)->prev = CEXT(p)->prev;
-    } else {
+    } else if (prev) {
 	*prev = p->next;
 	if (p->next && p->next->has_ext)
 	    CEXT(p->next)->prev = prev;
@@ -481,12 +481,11 @@ void _XtCacheFlushTag(
     XtPointer	tag)
 {
     int i;
-    register CachePtr *prev;
     register CachePtr rec;
 
     LOCK_PROCESS;
     for (i = CACHEHASHSIZE; --i >= 0;) {
-	prev = &cacheHashTable[i];
+        register CachePtr *prev = &cacheHashTable[i];
 	while ((rec = *prev)) {
 	    if (rec->tag == tag)
 		FreeCacheRec(app, rec, prev);
@@ -532,12 +531,12 @@ static Boolean ResourceQuarkToOffset(
     XrmName     name,
     Cardinal    *offset)
 {
-    register WidgetClass     wc;
-    register Cardinal        i;
-    register XrmResourceList res, *resources;
+    WidgetClass     wc;
+    Cardinal        i;
+    XrmResourceList res;
 
     for (wc = widget_class; wc; wc = wc->core_class.superclass) {
-	resources = (XrmResourceList*) wc->core_class.resources;
+	XrmResourceList *resources = (XrmResourceList*) wc->core_class.resources;
 	for (i = 0; i < wc->core_class.num_resources; i++, resources++) {
 	    res = *resources;
 	    if (res->xrm_name == name) {
@@ -725,7 +724,6 @@ CallConverter(
 {
     CachePtr p;
     int	hash;
-    Cardinal i;
     Boolean retval;
 
     if (!cP || ((cP->cache_type == XtCacheNone) && !cP->destructor)) {
@@ -750,6 +748,7 @@ CallConverter(
 		  XtMemcmp(&p->from.addr, from->addr, from->size) :
 		  memcmp((const void *)p->from.addr, (const void *)from->addr, from->size))
 	     && (p->num_args == num_args)) {
+		Cardinal i;
 		if ((i = num_args)) {
 		    XrmValue *pargs = CARGS(p);
 		    /* Are all args the same data ? */

@@ -537,9 +537,12 @@ static void StoreLateBindings(
     LateBindingsPtr* lateBindings)
 {
     LateBindingsPtr temp;
-    Boolean pair = FALSE;
-    unsigned long count,number;
+
     if (lateBindings != NULL){
+	Boolean pair = FALSE;
+	unsigned long count;
+	unsigned long number;
+
         temp = *lateBindings;
         if (temp != NULL) {
             for (count = 0; temp[count].keysym; count++){/*EMPTY*/}
@@ -593,7 +596,7 @@ static Boolean _XtLookupModifier(
     Value *valueP,
     Bool constMask)
 {
-    register int i, left, right;
+    int left, right;
     static int previous = 0;
 
     LOCK_PROCESS;
@@ -609,7 +612,7 @@ static Boolean _XtLookupModifier(
     left = 0;
     right = XtNumber(modifiers) - 1;
     while (left <= right) {
-	i = (left + right) >> 1;
+	int i = (left + right) >> 1;
 	if (signature < modifiers[i].signature)
 	    right = i - 1;
 	else if (signature > modifiers[i].signature)
@@ -653,25 +656,22 @@ static String FetchModifierToken(
     if (*str == '$') {
         *token_return = QMeta;
         str++;
-        return str;
-    }
-    if (*str == '^') {
+    } else if (*str == '^') {
         *token_return = QCtrl;
         str++;
-        return str;
-    }
-    str = ScanIdent(str);
-    if (start != str) {
-	char modStrbuf[100];
-	char* modStr;
+    } else {
+	str = ScanIdent(str);
+	if (start != str) {
+	    char modStrbuf[100];
+	    char* modStr;
 
-	modStr = XtStackAlloc ((size_t)(str - start + 1), modStrbuf);
-	if (modStr == NULL) _XtAllocError (NULL);
-	(void) memmove(modStr, start, (size_t) (str - start));
-	modStr[str-start] = '\0';
-	*token_return = XrmStringToQuark(modStr);
-	XtStackFree (modStr, modStrbuf);
-	return str;
+	    modStr = XtStackAlloc ((size_t)(str - start + 1), modStrbuf);
+	    if (modStr == NULL) _XtAllocError (NULL);
+	    (void) memmove(modStr, start, (size_t) (str - start));
+	    modStr[str-start] = '\0';
+	    *token_return = XrmStringToQuark(modStr);
+	    XtStackFree (modStr, modStrbuf);
+	}
     }
     return str;
 }
@@ -684,7 +684,7 @@ static String ParseModifiers(
     register String start;
     Boolean notFlag, exclusive, keysymAsMod;
     Value maskBit;
-    XrmQuark Qmod;
+    XrmQuark Qmod = QNone;
 
     ScanWhitespace(str);
     start = str;
@@ -956,7 +956,7 @@ static String ParseKeySym(
 {
     String start;
     char keySymNamebuf[100];
-    char* keySymName;
+    char* keySymName = NULL;
 
     ScanWhitespace(str);
 
@@ -993,7 +993,7 @@ static String ParseKeySym(
 	event->event.eventCode = StringToKeySym(keySymName, error);
 	event->event.eventCodeMask = (unsigned long) (~0L);
     }
-    if (*error) {
+    if (*error && keySymName) {
 	/* We never get here when keySymName hasn't been allocated */
 	if (keySymName[0] == '<') {
 	    /* special case for common error */
@@ -1694,8 +1694,7 @@ static String ParseParamSeq(
     } ParamRec;
 
     ParamPtr params = NULL;
-    register Cardinal num_params = 0;
-    register Cardinal i;
+    Cardinal num_params = 0;
 
     ScanWhitespace(str);
     while (*str != ')' && *str != '\0' && !IsNewline(*str)) {
@@ -1721,6 +1720,8 @@ static String ParseParamSeq(
     if (num_params != 0) {
 	String *paramP = (String *)
 		__XtMalloc( (Cardinal)((num_params+1) * sizeof(String)) );
+	Cardinal i;
+
 	*paramSeqP = paramP;
 	*paramNumP = num_params;
 	paramP += num_params; /* list is LIFO right now */
@@ -1772,9 +1773,11 @@ static String ParseActionSeq(
     ActionPtr 		*actionsP,
     Boolean		*error)
 {
-    ActionPtr *nextActionP = actionsP;
+    ActionPtr *nextActionP;
 
-    *actionsP = NULL;
+    if ((nextActionP = actionsP) != NULL)
+	*actionsP = NULL;
+
     while (*str != '\0' && !IsNewline(*str)) {
 	register ActionPtr	action;
 	XrmQuark quark;
@@ -1792,8 +1795,10 @@ static String ParseActionSeq(
 
 	action->idx = _XtGetQuarkIndex(parseTree, quark);
 	ScanWhitespace(str);
-	*nextActionP = action;
-	nextActionP = &action->next;
+	if (nextActionP) {
+	    *nextActionP = action;
+	    nextActionP = &action->next;
+	}
     }
     if (IsNewline(*str)) str++;
     ScanWhitespace(str);
@@ -1839,21 +1844,18 @@ static String ParseTranslationTableProduction(
     String	production = str;
 
     actionsP = NULL;
-    str = ParseEventSeq(str, &eventSeq, &actionsP,error);
+    str = ParseEventSeq(str, &eventSeq, &actionsP, error);
     if (*error == TRUE) {
 	ShowProduction(production);
-        FreeEventSeq(eventSeq);
-        return (str);
+    } else {
+	ScanWhitespace(str);
+	str = ParseActionSeq(parseTree, str, actionsP, error);
+	if (*error == TRUE) {
+	    ShowProduction(production);
+	} else {
+	    _XtAddEventSeqToStateTree(eventSeq, parseTree);
+	}
     }
-    ScanWhitespace(str);
-    str = ParseActionSeq(parseTree, str, actionsP, error);
-    if (*error == TRUE) {
-	ShowProduction(production);
-        FreeEventSeq(eventSeq);
-        return (str);
-    }
-
-    _XtAddEventSeqToStateTree(eventSeq, parseTree);
     FreeEventSeq(eventSeq);
     return (str);
 }
@@ -1863,14 +1865,16 @@ static String CheckForPoundSign(
     _XtTranslateOp defaultOp,
     _XtTranslateOp *actualOpRtn)
 {
-    String start;
-    char operation[20];
     _XtTranslateOp opType;
 
     opType = defaultOp;
     ScanWhitespace(str);
+
     if (*str == '#') {
+	String start;
+	char operation[20];
 	int len;
+
 	str++;
 	start = str;
 	str = ScanIdent(str);

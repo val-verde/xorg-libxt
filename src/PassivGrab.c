@@ -655,8 +655,6 @@ static void MakeGrabs(
     XtPerDisplayInput	pdi)
 {
     XtServerGrabPtr	next = *passiveListPtr;
-    XtServerGrabPtr	grab;
-    XtPerWidgetInput	pwi;
     /*
      * make MakeGrab build a new list that has had the merge
      * processing done on it. Start with an empty list
@@ -666,6 +664,9 @@ static void MakeGrabs(
     *passiveListPtr = NULL;
     while (next)
       {
+	  XtServerGrabPtr grab;
+	  XtPerWidgetInput pwi;
+
 	  grab = next;
 	  next = grab->next;
 	  pwi = _XtGetPerWidgetInput(grab->widget, FALSE);
@@ -830,7 +831,7 @@ void  XtGrabKey (
     WIDGET_TO_APPCON(widget);
 
     LOCK_APP(app);
-    GrabKeyOrButton(widget, (KeyCode)keycode, modifiers, owner_events,
+    GrabKeyOrButton(widget, (KeyCode)keycode, modifiers, (Boolean) owner_events,
 		    pointer_mode, keyboard_mode,
 		    (Mask)0, (Window)None, (Cursor)None, KEYBOARD);
     UNLOCK_APP(app);
@@ -850,7 +851,7 @@ void  XtGrabButton(
     WIDGET_TO_APPCON(widget);
 
     LOCK_APP(app);
-    GrabKeyOrButton(widget, (KeyCode)button, modifiers, owner_events,
+    GrabKeyOrButton(widget, (KeyCode)button, modifiers, (Boolean) owner_events,
 		    pointer_mode, keyboard_mode,
 		    (Mask)event_mask, confine_to, cursor, POINTER);
     UNLOCK_APP(app);
@@ -982,7 +983,7 @@ int XtGrabKeyboard (
     WIDGET_TO_APPCON(widget);
 
     LOCK_APP(app);
-    retval = GrabDevice (widget, owner_events,
+    retval = GrabDevice (widget, (Boolean) owner_events,
 			pointer_mode, keyboard_mode,
 			(Mask)0, (Window)None, (Cursor)None, time, KEYBOARD);
     UNLOCK_APP(app);
@@ -1025,7 +1026,7 @@ int XtGrabPointer (
     WIDGET_TO_APPCON(widget);
 
     LOCK_APP(app);
-    retval = GrabDevice (widget, owner_events,
+    retval = GrabDevice (widget, (Boolean) owner_events,
 			pointer_mode, keyboard_mode,
 			(Mask)event_mask, confine_to,
 			cursor, time, POINTER);

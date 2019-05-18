@@ -360,7 +360,6 @@ static String GetRootDirName(
 #ifdef X_NEEDS_PWPARAMS
     _Xgetpwparams pwparams;
 #endif
-    struct passwd *pw;
     static char *ptr;
 
     if (len <= 0 || dest == NULL)
@@ -370,6 +369,7 @@ static String GetRootDirName(
 	(void) strncpy (dest, ptr, (size_t)(len-1));
 	dest[len-1] = '\0';
     } else {
+        struct passwd *pw;
 	if ((ptr = getenv("USER")))
 	    pw = _XGetpwnam(ptr,pwparams);
 	else
@@ -425,16 +425,16 @@ static void CombineUserDefaults(
     Display *dpy,
     XrmDatabase *pdb)
 {
-#ifdef __MINGW32__
-    const char *slashDotXdefaults = "/Xdefaults";
-#else
-    const char *slashDotXdefaults = "/.Xdefaults";
-#endif
     char *dpy_defaults = XResourceManagerString(dpy);
 
     if (dpy_defaults) {
 	XrmCombineDatabase(XrmGetStringDatabase(dpy_defaults), pdb, False);
     } else {
+#ifdef __MINGW32__
+	const char *slashDotXdefaults = "/Xdefaults";
+#else
+	const char *slashDotXdefaults = "/.Xdefaults";
+#endif
 	char filename[PATH_MAX];
 	(void) GetRootDirName(filename,
 			PATH_MAX - (int)strlen (slashDotXdefaults) - 1);
@@ -648,12 +648,11 @@ static void _MergeOptionTables(
     Cardinal *num_dst)
 {
     XrmOptionDescRec *table, *endP;
-    register XrmOptionDescRec *opt1, *whereP, *dstP;
-    register const XrmOptionDescRec *opt2;
+    XrmOptionDescRec *opt1, *dstP;
+    const XrmOptionDescRec *opt2;
     int i1;
     Cardinal i2;
     int dst_len, order;
-    Boolean found;
     enum {Check, NotSorted, IsSorted} sort_order = Check;
 
     *dst = table = (XrmOptionDescRec*)
@@ -666,6 +665,9 @@ static void _MergeOptionTables(
     }
     endP = &table[dst_len = (int)num_src1];
     for (opt2 = src2, i2= 0; i2 < num_src2; opt2++, i2++) {
+        XrmOptionDescRec *whereP;
+        Boolean found;
+
 	found = False;
 	whereP = endP-1;	/* assume new option goes at the end */
 	for (opt1 = table, i1 = 0; i1 < dst_len; opt1++, i1++) {

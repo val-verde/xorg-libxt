@@ -113,14 +113,14 @@ static TMShortCard GetBranchHead(
 #define TM_BRANCH_HEAD_TBL_REALLOC 	8
 
     TMBranchHead branchHead = parseTree->branchHeadTbl;
-    TMShortCard	newSize, i;
-
     /*
      * dummy is used as a place holder for later matching in old-style
      * matching behavior. If there's already an entry we don't need
      * another dummy.
      */
     if (isDummy) {
+        TMShortCard	i;
+
 	for (i = 0; i < parseTree->numBranchHeads; i++, branchHead++) {
 	    if ((branchHead->typeIndex == typeIndex) &&
 		(branchHead->modIndex == modIndex))
@@ -129,6 +129,8 @@ static TMShortCard GetBranchHead(
     }
     if (parseTree->numBranchHeads == parseTree->branchHeadTblSize)
       {
+          TMShortCard	newSize;
+
 	  if (parseTree->branchHeadTblSize == 0)
 	    parseTree->branchHeadTblSize = (TMShortCard) (parseTree->branchHeadTblSize + TM_BRANCH_HEAD_TBL_ALLOC);
 	  else
@@ -170,7 +172,7 @@ TMShortCard _XtGetQuarkIndex(
 {
 #define TM_QUARK_TBL_ALLOC 	16
 #define TM_QUARK_TBL_REALLOC 	16
-    TMShortCard  i = parseTree->numQuarks;
+    TMShortCard i;
 
     for (i=0; i < parseTree->numQuarks; i++)
       if (parseTree->quarkTbl[i] == quark)
@@ -778,25 +780,22 @@ static void HandleSimpleState(
     TMEventRec	*curEventPtr)
 {
     XtTranslations	xlations = tmRecPtr->translations;
-    TMSimpleStateTree	stateTree;
     TMContext		*contextPtr = GetContextPtr(tmRecPtr);
     TMShortCard		i;
     ActionRec		*actions = NULL;
     Boolean		matchExact = False;
     Boolean	       	match = False;
     StatePtr		complexMatchState = NULL;
-    int			currIndex;
     TMShortCard		typeIndex = 0, modIndex = 0;
     int			matchTreeIndex = TM_NO_MATCH;
 
     LOCK_PROCESS;
-    stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[0];
-
     for (i = 0;
 	 ((!match || !complexMatchState) && (i < xlations->numStateTrees));
 	 i++){
-	stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[i];
-	currIndex = -1;
+	int currIndex = -1;
+	TMSimpleStateTree stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[i];
+
 	/*
 	 * don't process this tree if we're only looking for a
 	 * complexMatchState and there are no complex states
@@ -1255,7 +1254,6 @@ void _XtInstallTranslations(
 {
     XtTranslations xlations;
     Cardinal	i;
-    TMStateTree	stateTree;
     Boolean  mappingNotifyInterest = False;
 
     xlations = widget->core.tm.translations;
@@ -1281,7 +1279,7 @@ void _XtInstallTranslations(
 	 i < xlations->numStateTrees;
 	 i++)
       {
-	  stateTree = xlations->stateTreeTbl[i];
+	  TMStateTree	stateTree = xlations->stateTreeTbl[i];
 	  _XtTraverseStateTree(stateTree,
 			    AggregateEventMask,
 			    (XtPointer)&xlations->eventMask);
@@ -1327,7 +1325,6 @@ void _XtRemoveTranslations(
     Widget widget)
 {
     Cardinal	i;
-    TMSimpleStateTree	stateTree;
     Boolean  		mappingNotifyInterest = False;
     XtTranslations		xlations = widget->core.tm.translations;
 
@@ -1338,7 +1335,7 @@ void _XtRemoveTranslations(
 	 i < xlations->numStateTrees;
 	 i++)
       {
-	  stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[i];
+	  TMSimpleStateTree stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[i];
 	  mappingNotifyInterest = (Boolean) (mappingNotifyInterest | stateTree->mappingNotifyInterest);
       }
     if (mappingNotifyInterest)
@@ -1367,11 +1364,9 @@ void _XtDestroyTMData(
 
     if ((cBindData = (TMComplexBindData)widget->core.tm.proc_table)) {
 	if (cBindData->isComplex) {
-	    ATranslations	aXlations, nXlations;
-
-	    nXlations = (ATranslations) cBindData->accel_context;
+	    ATranslations nXlations = (ATranslations) cBindData->accel_context;
 	    while (nXlations){
-		aXlations = nXlations;
+		ATranslations aXlations = nXlations;
 		nXlations = nXlations->next;
 		XtFree((char *)aXlations);
 	    }
@@ -1770,7 +1765,8 @@ static XtTranslations UnmergeTranslations(
     else
       first = NULL;
 
-    if (xlations->composers[1]) {
+    if (xlations->composers[0]
+	&& xlations->composers[1]) {
 	second = UnmergeTranslations(widget, xlations->composers[1],
 				     unmergeXlations,
 				     (TMShortCard)(currIndex +
@@ -1828,7 +1824,7 @@ static XtTranslations MergeTranslations(
     TMComplexBindProcs	bindings;
     TMShortCard		i, j;
     TMStateTree 	*treePtr;
-    TMShortCard		numNew = *numNewRtn;
+    TMShortCard		numNew;
     MergeBindRec	bindPair[2];
 
     /* If the new translation has an accelerator context then pull it
@@ -2209,7 +2205,6 @@ void XtInstallAccelerators(
 {
     XtTranslations	aXlations;
     _XtTranslateOp	op;
-    _XtString		buf;
     WIDGET_TO_APPCON(destination);
 
     /*
@@ -2232,8 +2227,7 @@ void XtInstallAccelerators(
 
     if (ComposeTranslations(destination, op, source, aXlations) &&
 	(XtClass(source)->core_class.display_accelerator != NULL)) {
-
-	buf = _XtPrintXlations(destination, aXlations, source, False);
+	_XtString buf = _XtPrintXlations(destination, aXlations, source, False);
 	(*(XtClass(source)->core_class.display_accelerator))(source,buf);
 	XtFree(buf);
     }
@@ -2246,14 +2240,13 @@ void XtInstallAllAccelerators(
     Widget source)
 {
     Cardinal i;
-    CompositeWidget cw;
     WIDGET_TO_APPCON(destination);
 
     /* Recurse down normal children */
     LOCK_APP(app);
     LOCK_PROCESS;
     if (XtIsComposite(source)) {
-        cw = (CompositeWidget) source;
+        CompositeWidget cw = (CompositeWidget) source;
         for (i = 0; i < cw->composite.num_children; i++) {
             XtInstallAllAccelerators(destination,cw->composite.children[i]);
         }

@@ -118,10 +118,16 @@ _set_resource_values (
 	Display		*dpy;
 	XrmDatabase	tmp_db;
 
-	if (!XtIsWidget (w))
-		dpy = XtDisplay (w->core.parent);
-	else
-		dpy = XtDisplay (w);
+	if (last_part == NULL)
+	    return;
+
+	if (!XtIsWidget (w)) {
+	    if (w == 0 || w->core.parent == 0)
+		return;
+	    dpy = XtDisplay (w->core.parent);
+	} else {
+	    dpy = XtDisplay (w);
+	}
 	tmp_db = XtDatabase(dpy);
 
 	/*
@@ -676,7 +682,6 @@ _search_widget_tree (
 	char	*last_part;
 	char	*remainder = NULL;
 	char	last_token;
-	char	*indx, *copy;
 	char	*loose, *tight;
 	int	loose_len, tight_len;
 
@@ -715,32 +720,35 @@ _search_widget_tree (
 	 * Parse last segment off of resource string, (eg. background, font,
 	 * etc.)
 	 */
-	last_token = _get_last_part (remainder, &last_part);
-	/*
-	 * this case covers resources of only one level (eg. *background)
-	 */
-	if (remainder[0] == 0) {
-		_set_resource_values (w, resource, value, last_part);
-		if (last_token == '*')
-			_apply_values_to_children (parent, remainder, resource,
-				value, last_token, last_part);
-	/*
-	 * all other resource strings are recursively applied to the widget tree.
-	 * Prepend a '.' to the remainder string if there is no leading token.
-	 */
-	} else {
-		if (remainder[0] != '*' && remainder[0] != '.') {
-			XtAsprintf (&copy, ".%s", remainder);
-			XtFree (remainder);
-			remainder = copy;
-		}
-		indx = remainder;
-		_set_and_search (parent, indx, remainder, resource, value,
-			last_token, last_part);
-	}
+	if (remainder) {
+	    last_token = _get_last_part (remainder, &last_part);
+	    /*
+	     * this case covers resources of only one level (eg. *background)
+	     */
+	    if (remainder[0] == 0) {
+		    _set_resource_values (w, resource, value, last_part);
+		    if (last_token == '*')
+			    _apply_values_to_children (parent, remainder, resource,
+				    value, last_token, last_part);
+	    /*
+	     * all other resource strings are recursively applied to the widget tree.
+	     * Prepend a '.' to the remainder string if there is no leading token.
+	     */
+	    } else {
+		    char *indx, *copy;
+		    if (remainder[0] != '*' && remainder[0] != '.') {
+			    XtAsprintf (&copy, ".%s", remainder);
+			    XtFree (remainder);
+			    remainder = copy;
+		    }
+		    indx = remainder;
+		    _set_and_search (parent, indx, remainder, resource, value,
+			    last_token, last_part);
+	    }
 
-	XtFree (remainder);
-	XtFree (last_part);
+	    XtFree (remainder);
+	    XtFree (last_part);
+	}
 }
 
 /*
@@ -894,10 +902,7 @@ _XtResourceConfigurationEH (
 	unsigned long	nitems;
 	unsigned long	leftover;
 	char		*data = NULL;
-	unsigned long	resource_len;
 	char		*data_ptr;
-	char		*resource;
-	char		*value;
 #ifdef DEBUG
 	int		indent = 0;
 #endif
@@ -967,6 +972,7 @@ _XtResourceConfigurationEH (
 		if (data) {
 			char *data_end = data + nitems;
 			char *data_value;
+			unsigned long resource_len;
 
 			resource_len = strtoul (data, &data_ptr, 10);
 
@@ -977,6 +983,9 @@ _XtResourceConfigurationEH (
 				data_ptr = data_value = NULL;
 
 			if (data_value > data_ptr && data_value < data_end) {
+				char *resource;
+				char *value;
+
 				*data_value++ = '\0';
 
 				resource = XtNewString (data_ptr);

@@ -2014,6 +2014,7 @@ static XtGeometryResult RootGeometryManager(
 	  w->core.height = (Dimension) (oldheight); \
 	  w->core.border_width = (Dimension) (oldborder_width); }
 
+    memset(&values, 0, sizeof(values));
     if (mask & CWX) {
 	    if (w->core.x == request->x) mask &= (unsigned int) (~CWX);
 	    else {
@@ -2981,7 +2982,6 @@ static void SetSessionProperties(
     XtPointer *addr;
     unsigned long mask;
     SmProp *props[XT_NUM_SM_PROPS];
-    char *pnames[XT_NUM_SM_PROPS];
 
     if (w->session.connection == NULL)
 	return;
@@ -3028,6 +3028,8 @@ static void SetSessionProperties(
     }
 
     if (unset_mask) {
+	char *pnames[XT_NUM_SM_PROPS];
+
 	mask = 1L;
 	num_props = 0;
 	for (n = XtNumber(propertyTable); n; n--, p++, mask <<= 1)
@@ -3069,13 +3071,13 @@ static void CleanUpSave(
 static void CallSaveCallbacks(
     SessionShellWidget w)
 {
-    XtCheckpointToken token;
-
     if (XtHasCallbacks((Widget) w, XtNsaveCallback) != XtCallbackHasSome) {
 	/* if the application makes no attempt to save state, report failure */
 	SmcSaveYourselfDone(w->session.connection, False);
 	CleanUpSave(w);
     } else {
+	XtCheckpointToken token;
+
 	w->session.checkpoint_state = XtSaveActive;
 	token = GetToken((Widget) w, XtSessionCheckpoint);
 	_XtCallConditionalCallbackList((Widget)w, w->session.save_callbacks,
@@ -3125,7 +3127,6 @@ static void XtInteractPermission(
 {
     Widget w = (Widget) data;
     SessionShellWidget sw = (SessionShellWidget) data;
-    XtCheckpointToken token;
     XtCallbackProc callback;
     XtPointer client_data;
 
@@ -3133,6 +3134,8 @@ static void XtInteractPermission(
     _XtPeekCallback(w, sw->session.interact_callbacks, &callback,
 		    &client_data);
     if (callback) {
+	XtCheckpointToken token;
+
 	sw->session.checkpoint_state = XtInteractActive;
 	token = GetToken(w, XtSessionInteract);
     	XtRemoveCallback(w, XtNinteractCallback, callback, client_data);

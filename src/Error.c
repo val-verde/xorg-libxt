@@ -93,7 +93,7 @@ void _XtDefaultError(String) _X_NORETURN;
 void _XtDefaultWarning(String);
 static XtErrorMsgHandler errorMsgHandler = _XtDefaultErrorMsg;
 static XtErrorMsgHandler warningMsgHandler = _XtDefaultWarningMsg;
-static XtErrorHandler errorHandler = _XtDefaultError;
+static XtErrorHandler errorHandler _X_NORETURN = _XtDefaultError;
 static XtErrorHandler warningHandler = _XtDefaultWarning;
 #endif /* GLOBALERRORS */
 
@@ -344,6 +344,7 @@ void XtErrorMsg(
     (*errorMsgHandler)((String)name,(String)type,(String)class,
 		       (String)defaultp,params,num_params);
     UNLOCK_PROCESS;
+    exit(1);
 #else
     XtAppErrorMsg(_XtDefaultAppContext(),name,type,class,
 	    defaultp,params,num_params);
@@ -364,6 +365,7 @@ void XtAppErrorMsg(
     (*errorMsgHandler)((String)name,(String)type,(String)class,
 		       (String)defaultp,params,num_params);
     UNLOCK_PROCESS;
+    exit(1);
 #else
     LOCK_APP(app);
     (*app->errorMsgHandler)(name,type,class,defaultp,params,num_params);
@@ -412,7 +414,7 @@ void XtAppWarningMsg(
 }
 
 void XtSetErrorMsgHandler(
-    XtErrorMsgHandler handler)
+    XtErrorMsgHandler handler _X_NORETURN)
 {
 #if GLOBALERRORS
     LOCK_PROCESS;
@@ -426,7 +428,7 @@ void XtSetErrorMsgHandler(
 
 XtErrorMsgHandler XtAppSetErrorMsgHandler(
     XtAppContext app,
-    XtErrorMsgHandler handler)
+    XtErrorMsgHandler handler _X_NORETURN)
 {
     XtErrorMsgHandler old;
 #if GLOBALERRORS
@@ -547,7 +549,7 @@ void XtAppWarning(
 #endif /* GLOBALERRORS */
 }
 
-void XtSetErrorHandler(XtErrorHandler handler)
+void XtSetErrorHandler(XtErrorHandler handler _X_NORETURN)
 {
 #if GLOBALERRORS
     LOCK_PROCESS;
@@ -561,7 +563,7 @@ void XtSetErrorHandler(XtErrorHandler handler)
 
 XtErrorHandler XtAppSetErrorHandler(
     XtAppContext app,
-    XtErrorHandler handler)
+    XtErrorHandler handler _X_NORETURN)
 {
     XtErrorHandler old;
 #if GLOBALERRORS

@@ -159,12 +159,11 @@ static void ReportUnboundActions(
     XtTranslations	xlations,
     TMBindData		bindData)
 {
-    TMSimpleStateTree	stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[0];
+    TMSimpleStateTree	stateTree;
     Cardinal num_unbound = 0;
     Cardinal num_params = 1;
     char* message;
     char messagebuf[1000];
-    String params[1];
     register Cardinal num_chars = 0;
     register Cardinal i, j;
     XtActionProc *procs;
@@ -190,9 +189,10 @@ static void ReportUnboundActions(
 	return;
     message = XtStackAlloc (num_chars + 1, messagebuf);
     if (message != NULL) {
+	String params[1];
+
 	*message = '\0';
 	num_unbound = 0;
-	stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[0];
 	for (i=0; i < xlations->numStateTrees; i++) {
 	    if (bindData->simple.isComplex)
 		procs = TMGetComplexBindEntry(bindData, i)->procs;
@@ -225,12 +225,12 @@ static CompiledAction *SearchActionTable(
     CompiledActionTable	actionTable,
     Cardinal		numActions)
 {
-    register int i, left, right;
+    int left, right;
 
     left = 0;
     right = (int)numActions - 1;
     while (left <= right) {
-	i = (left + right) >> 1;
+	int i = (left + right) >> 1;
 	if (signature < actionTable[i].signature)
 	    right = i - 1;
 	else if (signature > actionTable[i].signature)
@@ -422,7 +422,7 @@ XtPointer _XtInitializeActionData(
     TMClassCache	classCache;
 
     classCache = XtNew(TMClassCacheRec);
-    classCache->actions = CompileActionTable(actions, count, inPlace, True);
+    classCache->actions = CompileActionTable(actions, count, (Boolean) inPlace, True);
     classCache->bindCache = NULL;
     return (XtPointer)classCache;
 }
@@ -607,8 +607,6 @@ void _XtBindActions(
     if ((xlations == NULL) || widget->core.being_destroyed)
       return;
 
-    stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[0];
-
     for (i = 0; i < xlations->numStateTrees; i++)
       {
 	  stateTree = (TMSimpleStateTree)xlations->stateTreeTbl[i];
@@ -785,9 +783,7 @@ void XtGetActionList(
     XtActionList* actions_return,
     Cardinal* num_actions_return)
 {
-    XtActionList list;
     CompiledActionTable table;
-    int i;
 
     *actions_return = NULL;
     *num_actions_return = 0;
@@ -803,10 +799,13 @@ void XtGetActionList(
     }
     *num_actions_return = widget_class->core_class.num_actions;
     if (*num_actions_return) {
-	list = *actions_return = (XtActionList)
+	XtActionList list = *actions_return = (XtActionList)
 	    __XtMalloc((Cardinal)((size_t)*num_actions_return * sizeof(XtActionsRec)));
+
 	table = GetClassActions(widget_class);
+
 	if (table != NULL) {
+	    int i;
 	    for (i= (int)(*num_actions_return); --i >= 0; list++, table++) {
 		list->string = XrmQuarkToString(table->signature);
 		list->proc = table->proc;

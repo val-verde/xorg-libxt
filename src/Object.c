@@ -258,15 +258,15 @@ static Boolean ObjectSetValues(
     ArgList	args,
     Cardinal *	num_args)
 {
-    register CallbackTable offsets;
-    register int i;
-    register InternalCallbackList *ol, *nl;
+    CallbackTable offsets;
+    int i;
 
     LOCK_PROCESS;
     /* Compile any callback lists into internal form */
     offsets = (CallbackTable) XtClass(widget)->core_class.callback_private;
 
     for (i= (int)(long) *(offsets++); --i >= 0; offsets++) {
+	InternalCallbackList *ol, *nl;
 	ol = (InternalCallbackList *)
 	    ((char *) old - (*offsets)->xrm_offset - 1);
 	nl = (InternalCallbackList *)
@@ -286,9 +286,8 @@ static Boolean ObjectSetValues(
 static void ObjectDestroy (
     register Widget    widget)
 {
-    register CallbackTable offsets;
-    register int i;
-    register InternalCallbackList cl;
+    CallbackTable offsets;
+    int i;
 
     /* Remove all callbacks associated with widget */
     LOCK_PROCESS;
@@ -296,7 +295,7 @@ static void ObjectDestroy (
 	widget->core.widget_class->core_class.callback_private;
 
     for (i = (int)(long) *(offsets++); --i >= 0; offsets++) {
-	cl = *(InternalCallbackList *)
+	InternalCallbackList cl = *(InternalCallbackList *)
 	    ((char *) widget - (*offsets)->xrm_offset - 1);
 	if (cl) XtFree((char *) cl);
     }

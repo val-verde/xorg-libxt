@@ -1712,11 +1712,11 @@ void XtSessionReturnToken(
 
 extern XtErrorMsgHandler XtAppSetErrorMsgHandler(
     XtAppContext 	/* app_context */,
-    XtErrorMsgHandler 	/* handler */
+    XtErrorMsgHandler 	/* handler */ _X_NORETURN
 );
 
 extern void XtSetErrorMsgHandler( /* obsolete */
-    XtErrorMsgHandler 	/* handler */
+    XtErrorMsgHandler 	/* handler */ _X_NORETURN
 );
 
 extern XtErrorMsgHandler XtAppSetWarningMsgHandler(
@@ -1736,7 +1736,7 @@ extern void XtAppErrorMsg(
     _Xconst _XtString	/* default */,
     String*		/* params */,
     Cardinal*		/* num_params */
-);
+) _X_NORETURN;
 
 extern void XtErrorMsg( /* obsolete */
     _Xconst _XtString 	/* name */,
@@ -1745,7 +1745,7 @@ extern void XtErrorMsg( /* obsolete */
     _Xconst _XtString	/* default */,
     String*		/* params */,
     Cardinal*		/* num_params */
-);
+) _X_NORETURN;
 
 extern void XtAppWarningMsg(
     XtAppContext 	/* app_context */,
@@ -1768,11 +1768,11 @@ extern void XtWarningMsg( /* obsolete */
 
 extern XtErrorHandler XtAppSetErrorHandler(
     XtAppContext 	/* app_context */,
-    XtErrorHandler 	/* handler */
+    XtErrorHandler 	/* handler */ _X_NORETURN
 );
 
 extern void XtSetErrorHandler( /* obsolete */
-    XtErrorHandler 	/* handler */
+    XtErrorHandler 	/* handler */ _X_NORETURN
 );
 
 extern XtErrorHandler XtAppSetWarningHandler(
@@ -1787,11 +1787,11 @@ extern void XtSetWarningHandler( /* obsolete */
 extern void XtAppError(
     XtAppContext 	/* app_context */,
     _Xconst _XtString	/* message */
-);
+) _X_NORETURN;
 
 extern void XtError( /* obsolete */
     _Xconst _XtString	/* message */
-);
+) _X_NORETURN;
 
 extern void XtAppWarning(
     XtAppContext 	/* app_context */,

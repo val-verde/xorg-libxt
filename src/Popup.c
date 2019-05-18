@@ -70,7 +70,7 @@ void _XtPopup(
 	XtCallCallbacks(widget, XtNpopupCallback, (XtPointer)&call_data);
 	shell_widget->shell.popped_up = TRUE;
 	shell_widget->shell.grab_kind = grab_kind;
-	shell_widget->shell.spring_loaded = spring_loaded;
+	shell_widget->shell.spring_loaded = (Boolean) spring_loaded;
 	if (shell_widget->shell.create_popup_child_proc != NULL) {
 	    (*(shell_widget->shell.create_popup_child_proc))(widget);
 	}

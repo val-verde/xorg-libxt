@@ -139,7 +139,7 @@ static void InheritAllowsChangeManagedSet(
     WidgetClass widget_class)
 {
     CompositeWidgetClass cc = (CompositeWidgetClass) widget_class;
-    CompositeClassExtension ext, super_ext, new_ext;
+    CompositeClassExtension ext, super_ext;
 
     ext = (CompositeClassExtension)
 	XtGetClassExtension(widget_class,
@@ -158,6 +158,7 @@ static void InheritAllowsChangeManagedSet(
     if (super_ext && super_ext->version == XtCompositeExtensionVersion &&
 	super_ext->record_size == sizeof(CompositeClassExtensionRec) &&
 	super_ext->allows_change_managed_set) {
+        CompositeClassExtension new_ext;
 
 	new_ext = (CompositeClassExtension)
 	    __XtCalloc(1, sizeof(CompositeClassExtensionRec));
@@ -183,34 +184,32 @@ static void CompositeClassPartInitialize(
     wcPtr = (CompositePartPtr)
 	&(((CompositeWidgetClass)myWidgetClass)->composite_class);
 
-    if (myWidgetClass != compositeWidgetClass)
+    if (myWidgetClass != compositeWidgetClass) {
 	/* don't compute possible bogus pointer */
 	superPtr = (CompositePartPtr)&(((CompositeWidgetClass)myWidgetClass
 			->core_class.superclass)->composite_class);
 
-    /* We don't need to check for null super since we'll get to composite
-       eventually, and it had better define them!  */
+	LOCK_PROCESS;
+	if (wcPtr->geometry_manager == XtInheritGeometryManager) {
+	    wcPtr->geometry_manager =
+		    superPtr->geometry_manager;
+	}
 
-    LOCK_PROCESS;
-    if (wcPtr->geometry_manager == XtInheritGeometryManager) {
-	wcPtr->geometry_manager =
-		superPtr->geometry_manager;
-    }
+	if (wcPtr->change_managed == XtInheritChangeManaged) {
+	    wcPtr->change_managed =
+		    superPtr->change_managed;
+	    InheritAllowsChangeManagedSet(myWidgetClass);
+	}
 
-    if (wcPtr->change_managed == XtInheritChangeManaged) {
-	wcPtr->change_managed =
-		superPtr->change_managed;
-	InheritAllowsChangeManagedSet(myWidgetClass);
-    }
+	if (wcPtr->insert_child == XtInheritInsertChild) {
+	    wcPtr->insert_child = superPtr->insert_child;
+	}
 
-    if (wcPtr->insert_child == XtInheritInsertChild) {
-	wcPtr->insert_child = superPtr->insert_child;
+	if (wcPtr->delete_child == XtInheritDeleteChild) {
+	    wcPtr->delete_child = superPtr->delete_child;
+	}
+	UNLOCK_PROCESS;
     }
-
-    if (wcPtr->delete_child == XtInheritDeleteChild) {
-	wcPtr->delete_child = superPtr->delete_child;
-    }
-    UNLOCK_PROCESS;
 }
 
 static void CompositeDestroy(
