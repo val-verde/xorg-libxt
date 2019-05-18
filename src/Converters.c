@@ -810,11 +810,8 @@ Boolean XtCvtStringToFloat(
     int ret;
     float f, nan;
 
-#ifndef ISC /* On ISC this generates a core dump :-( at least with gs */
-    /* depending on the system this may or may not do anything useful */
-    (void) sscanf ("NaNS", "%g",
+    (void) sscanf ("NaN", "%g",
 		   toVal->addr != NULL ? (float*) toVal->addr : &nan);
-#endif
 
     if (*num_args != 0)
 	XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
