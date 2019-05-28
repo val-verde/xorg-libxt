@@ -307,7 +307,7 @@ void _XtHeapFree(
 typedef struct _Stats *StatsPtr;
 typedef struct _Stats {
     StatsPtr prev, next;
-    char *file;
+    const char *file;
     int line;
     unsigned size;
     unsigned long seq;
@@ -317,9 +317,9 @@ typedef struct _Stats {
 static StatsPtr XtMemory = (StatsPtr)NULL;
 static unsigned long ActiveXtMemory = 0;
 static unsigned long XtSeqId = 0;
-static unsigned long XtSeqBreakpoint = ~0;
+static unsigned long XtSeqBreakpoint = (unsigned long)(~0UL);
 
-#define StatsSize(n) ((((n) + (sizeof(long) - 1)) & ~(sizeof(long) - 1)) + sizeof(Stats))
+#define StatsSize(n) (unsigned)((((n) + (sizeof(long) - 1)) & ~(sizeof(long) - 1)) + sizeof(Stats))
 #define ToStats(ptr) ((StatsPtr)(ptr - sizeof(Stats)))
 #define ToMem(ptr) (((char *)ptr) + sizeof(Stats))
 
@@ -349,7 +349,7 @@ static void _XtBreakpoint(
 
 char *_XtMalloc(
     unsigned size,
-    char *file,
+    const char *file,
     int line)
 {
     StatsPtr ptr;
@@ -375,7 +375,7 @@ char *XtMalloc(
 char *_XtRealloc(
     char     *ptr,
     unsigned size,
-    char *file,
+    const char *file,
     int line)
 {
    char *newptr;
@@ -401,7 +401,7 @@ char *XtRealloc(
 
 char *_XtCalloc(
     unsigned num, unsigned size,
-    char *file,
+    const char *file,
     int line)
 {
     StatsPtr ptr;
@@ -475,7 +475,7 @@ void XtFree(char *ptr)
 char *_XtHeapMalloc(
     Heap *heap,
     Cardinal size,
-    char *file,
+    const char *file,
     int line)
 {
     StatsPtr ptr;
@@ -493,7 +493,7 @@ char *_XtHeapMalloc(
     return retval;
 }
 
-void _XtHeapFree(register XtPointer heap)
+void _XtHeapFree(Heap* heap)
 {
     register StatsPtr mem, next;
 
@@ -517,7 +517,7 @@ void _XtHeapFree(register XtPointer heap)
 
 #include <stdio.h>
 
-void _XtPrintMemory(char * filename)
+void _XtPrintMemory(const char * filename)
 {
     register StatsPtr mem;
     FILE *f;
@@ -527,10 +527,10 @@ void _XtPrintMemory(char * filename)
     else
 	f = fopen(filename, "w");
     LOCK_PROCESS;
-    fprintf(f, "total size: %d\n", ActiveXtMemory);
+    fprintf(f, "total size: %lu\n", ActiveXtMemory);
     for (mem = XtMemory; mem; mem = mem->next) {
 	if (mem->file)
-	    fprintf(f, "size: %6d  seq: %5d  %12s(%4d)  %s\n",
+	    fprintf(f, "size: %6d  seq: %5lu  %12s(%4d)  %s\n",
 		    mem->size, mem->seq,
 		    mem->file, mem->line, mem->heap ? "heap" : "");
     }
