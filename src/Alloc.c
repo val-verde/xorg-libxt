@@ -249,7 +249,7 @@ char* _XtHeapAlloc(
 	if ((bytes + sizeof(char*)) >= (HEAP_SEGMENT_SIZE>>1)) {
 	    /* preserve current segment; insert this one in front */
 #ifdef _TRACE_HEAP
-	    printf( "allocating large segment (%d bytes) on heap %#x\n",
+	    printf( "allocating large segment (%d bytes) on heap %p\n",
 		    bytes, heap );
 #endif
 	    heap_loc = XtMalloc(bytes + (Cardinal) sizeof(char*));
@@ -265,7 +265,7 @@ char* _XtHeapAlloc(
 	}
 	/* else discard remainder of this segment */
 #ifdef _TRACE_HEAP
-	printf( "allocating new segment on heap %#x\n", heap );
+	printf( "allocating new segment on heap %p\n", heap );
 #endif
 	heap_loc = XtMalloc((unsigned)HEAP_SEGMENT_SIZE);
 	*(char**)heap_loc = heap->start;
