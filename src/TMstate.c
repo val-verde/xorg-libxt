@@ -1423,10 +1423,10 @@ XtTranslations _XtCreateXlations(
 #ifdef TRACE_TM
     LOCK_PROCESS;
     if (_XtGlobalTM.numTms == _XtGlobalTM.tmTblSize) {
-	_XtGlobalTM.tmTblSize += 16;
+	_XtGlobalTM.tmTblSize = (TMShortCard)(_XtGlobalTM.tmTblSize + 16);
 	_XtGlobalTM.tmTbl = (XtTranslations *)
 	  XtRealloc((char *)_XtGlobalTM.tmTbl,
-		   _XtGlobalTM.tmTblSize * sizeof(XtTranslations));
+		    (Cardinal)(_XtGlobalTM.tmTblSize * sizeof(XtTranslations)));
     }
     _XtGlobalTM.tmTbl[_XtGlobalTM.numTms++] = xlations;
     UNLOCK_PROCESS;
@@ -1601,7 +1601,7 @@ void _XtAddEventSeqToStateTree(
 	      AmbigActions(initialEvent, state, stateTree);
 	    (*state)->actions = eventSeq->actions;
 #ifdef TRACE_TM
-	    LOCK_PROCESS
+	    LOCK_PROCESS;
 	    _XtGlobalTM.numComplexActions++;
 	    UNLOCK_PROCESS;
 #endif /* TRACE_TM */
