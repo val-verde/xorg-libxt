@@ -1229,7 +1229,7 @@ static String ExtractLocaleName(
 	    strncpy(buf, start, (size_t) len);
 	    *(buf + len) = '\0';
 # ifdef WHITEFILL
-	    for (temp = buf; temp = strchr(temp, ' '); )
+	    for (temp = buf; (temp = strchr(temp, ' ')) != NULL; )
 		*temp++ = '-';
 # endif
 	    return buf;
@@ -1239,10 +1239,10 @@ static String ExtractLocaleName(
 # ifdef WHITEFILL
     if (strchr(lang, ' ')) {
 	if (buf != NULL) XtFree (buf);
-	else buf = XtMalloc (strlen (lang) + 1);
+	else buf = XtMalloc ((Cardinal)strlen (lang) + 1);
 	if (buf == NULL) return NULL;
 	strcpy(buf, lang);
-	for (temp = buf; temp = strchr(temp, ' '); )
+	for (temp = buf; (temp = strchr(temp, ' ')) != NULL; )
 	    *temp++ = '-';
 	return buf;
     }
