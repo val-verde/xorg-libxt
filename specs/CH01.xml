@@ -1048,7 +1048,7 @@ value
     </term>
     <listitem>
       <para>
-An unsigned integer datum with a minimum range of [0..2^16-1].
+An unsigned integer datum with a minimum range of [0..2<superscript>16</superscript>-1].
       </para>
     </listitem>
   </varlistentry>
@@ -1059,7 +1059,7 @@ An unsigned integer datum with a minimum range of [0..2^16-1].
     </term>
     <listitem>
       <para>
-An unsigned integer datum with a minimum range of [0..2^16-1].
+An unsigned integer datum with a minimum range of [0..2<superscript>16</superscript>-1].
       </para>
     </listitem>
   </varlistentry>
@@ -1070,7 +1070,7 @@ An unsigned integer datum with a minimum range of [0..2^16-1].
     </term>
     <listitem>
       <para>
-A signed integer datum with a minimum range of [-2^15..2^15-1].
+A signed integer datum with a minimum range of [-2<superscript>15</superscript>..2<superscript>15</superscript>-1].
       </para>
     </listitem>
   </varlistentry>
