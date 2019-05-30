@@ -312,10 +312,6 @@ class, and representation type symbolic constants.
       <entry>"sensitive"</entry>
     </row>
     <row>
-      <entry>XtNsession</entry>
-      <entry>"session"</entry>
-    </row>
-    <row>
       <entry>XtNshells</entry>
       <entry>"shells"</entry>
     </row>
@@ -627,10 +623,6 @@ class, and representation type symbolic constants.
     <row>
       <entry>XtCSensitive</entry>
       <entry>"Sensitive"</entry>
-    </row>
-    <row>
-      <entry>XtCSession</entry>
-      <entry>"Session"</entry>
     </row>
     <row>
       <entry>XtCSpace</entry>
