@@ -32,6 +32,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
+.ie \n(.g .ds `` \(lq
+.el       .ds `` ``
+.ie \n(.g .ds '' \(rq
+.el       .ds '' ''
 .hw XtString-Conversion-Warning wid-get
 .na
 .TH XtStringConversionWarning __libmansuffix__ __xorgversion__ "XT COMPATIBILITY FUNCTIONS"
@@ -49,9 +53,11 @@ Specifies the name of the type to which the string could not be converted.
 .SH DESCRIPTION
 The
 .B XtStringConversionWarning
-function issues a warning message with name ``conversionError'',
-type ``string'', class ``XtToolkitError, and the default message string
-``Cannot convert "\fIsrc\fP" to type \fIdst_type\fP''.
+function issues a warning message with name \*(``conversionError\*('',
+type \*(``string\*('',
+class \*(``XtToolkitError\*('',
+and the default message string
+\*(``Cannot convert "\fIsrc\fP" to type \fIdst_type\fP\*(''.
 .LP
 .B XtStringConversionWarning
 has been replaced by

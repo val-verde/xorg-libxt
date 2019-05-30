@@ -32,6 +32,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
+.ie \n(.g .ds `` \(lq
+.el       .ds `` ``
+.ie \n(.g .ds '' \(rq
+.el       .ds '' ''
 .hw XtCreate-Popup-Shell XtVaCreate-Popup-Shell wid-get
 .na
 .TH XtCreatePopupShell __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
@@ -69,7 +73,7 @@ children list, attaches the shell to the parent's pop-ups list directly.
 A spring-loaded pop-up invoked from a translation table already must exist
 at the time that the translation is invoked,
 so the translation manager can find the shell by name.
-Pop-ups invoked in other ways can be created ``on-the-fly'' when
+Pop-ups invoked in other ways can be created \*(``on-the-fly\*('' when
 the pop-up actually is needed.
 This delayed creation of the shell is particularly useful when you pop up
 an unspecified number of pop-ups.

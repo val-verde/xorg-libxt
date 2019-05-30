@@ -31,6 +31,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
+.ie \n(.g .ds `` \(lq
+.el       .ds `` ``
+.ie \n(.g .ds '' \(rq
+.el       .ds '' ''
 .hw XtFind-File wid-get
 .na
 .TH XtFindFile __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
@@ -56,10 +60,10 @@ potential file names delimited by colons.
 Within each name, the
 percent character specifies a string substitution selected by the
 following character.
-The character sequence ``%:'' specifies an
+The character sequence \*(``%:\*('' specifies an
 embedded colon that is not a delimiter; the sequence is replaced by a
 single colon.
-The character sequence ``%%'' specifies a percent
+The character sequence \*(``%%\*('' specifies a percent
 character that does not introduce a substitution; the sequence is
 replaced by a single percent character.
 If a percent character is
@@ -73,7 +77,7 @@ A \fIsubstitution\fP field entry of NULL
 is equivalent to a pointer to an empty string.
 If the operating
 system does not interpret multiple embedded name separators in the
-path (i.e., ``/'' in POSIX) the same way as a single separator,
+path (i.e., \*(``/\*('' in POSIX) the same way as a single separator,
 .B XtFindFile
 will collapse multiple separators into a single one after performing
 all string substitutions.

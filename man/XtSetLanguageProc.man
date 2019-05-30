@@ -32,6 +32,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
+.ie \n(.g .ds `` \(lq
+.el       .ds `` ``
+.ie \n(.g .ds '' \(rq
+.el       .ds '' ''
 .hw XtSet-Language-Proc wid-get
 .na
 .TH XtSetLanguageProc __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
@@ -89,7 +93,7 @@ to verify that the current locale is supported.
 If the locale is not
 supported, a warning message is issued with
 .B XtWarning
-and the locale is set to ``C''.
+and the locale is set to \*(``C\*(''.
 .IP \(bu 5
 Calls
 .B XSetLocaleModifiers

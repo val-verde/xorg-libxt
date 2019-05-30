@@ -31,6 +31,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
+.ie \n(.g .ds `` \(lq
+.el       .ds `` ``
+.ie \n(.g .ds '' \(rq
+.el       .ds '' ''
 .hw XtApp-Add-Signal wid-get
 .na
 .TH XtAppAddSignal __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
@@ -83,7 +87,7 @@ If
 is called multiple times before the Intrinsics are able to invoke the
 registered callback, the callback is only called once.
 Logically the
-Intrinsics maintain ``pending'' for each registered callback.
+Intrinsics maintain \*(``pending\*('' for each registered callback.
 This flag is initially
 .B False
 and is set to

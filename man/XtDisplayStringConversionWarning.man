@@ -32,6 +32,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
+.ie \n(.g .ds `` \(lq
+.el       .ds `` ``
+.ie \n(.g .ds '' \(rq
+.el       .ds '' ''
 .hw XtDisplay-String-Conversion-Warning wid-get
 .na
 .TH XtDisplayStringConversionWarning __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
@@ -55,9 +59,11 @@ The
 .B XtDisplayStringConversionWarning
 function issues a warning message using
 .B XtAppWarningMsg
-with name ``conversionError'', type ``string'', class ``XtToolkitError,
-and the default message string ``Cannot convert "\fIfrom_value\fP" to
-type \fIto_type\fP''.
+with name \*(``conversionError\*('',
+type \*(``string\*('',
+class \*(``XtToolkitError\*('',
+and the default message string
+\*(``Cannot convert "\fIfrom_value\fP" to type \fIto_type\fP\*(''.
 .LP
 To issue other types of warning or error messages, the type converter
 should use

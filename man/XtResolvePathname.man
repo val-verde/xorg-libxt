@@ -31,6 +31,10 @@
 .ds xC Inter-Client Communication Conventions Manual
 .ds Rn 3
 .ds Vn 2.2
+.ie \n(.g .ds `` \(lq
+.el       .ds `` ``
+.ie \n(.g .ds '' \(rq
+.el       .ds '' ''
 .hw XtResolve-Pathname wid-get
 .na
 .TH XtResolvePathname __libmansuffix__ __xorgversion__ "XT FUNCTIONS"
@@ -72,13 +76,14 @@ are determined from the value of the language string retrieved by
 .B XtDisplayInitialize
 for the specified display.
 To set the
-language for all applications specify ``*xnlLanguage: \fIlang\fP'' in the
+language for all applications specify \*(``*xnlLanguage: \fIlang\fP\*('' in the
 resource database.
 The format and content of the language string are
 implementation-defined.
 One suggested syntax is to compose
-the language string of three parts;  a  ``language  part'',  a
-``territory  part'' and a ``codeset part''.
+the language string of three parts:
+a  \*(``language  part\*('',  a
+\*(``territory  part\*('' and a \*(``codeset part\*(''.
 The manner in which
 this composition is accomplished is implementation-defined
 and the \*(xI make no interpretation of the parts other
@@ -146,10 +151,10 @@ adjacent colons, \fB%N%S\fP will be inserted between them.
 The \fItype\fP parameter is intended to be a category of files, usually
 being translated into a directory in the pathname.
 Possible values
-might include ``app-defaults'', ``help'', and ``bitmap''.
+might include \*(``app-defaults\*('', \*(``help\*('', and \*(``bitmap\*(''.
 .LP
 The \fIsuffix\fP parameter is intended to be appended to the file name.
-Possible values might include ``.txt'', ``.dat'', and ``.bm''.
+Possible values might include \*(``.txt\*('', \*(``.dat\*('', and \*(``.bm\*(''.
 .LP
 A suggested value for the default path on POSIX-based systems is
 .IP
@@ -175,7 +180,7 @@ elements to the implementation-specific default path, typically to
 allow additional directories to be searched without preventing
 resources in the system directories from being found.
 For example, a
-user installing resource files under a directory called ``ourdir''
+user installing resource files under a directory called \*(``ourdir\*(''
 might set
 .B \s-1XFILESEARCHPATH\s+1
 to
