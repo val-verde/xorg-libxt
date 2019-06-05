@@ -209,7 +209,7 @@ extern void _XtHeapFree(Heap* heap);
 extern char *_XtHeapMalloc(
     Heap*	/* heap */,
     Cardinal	/* size */,
-    char *	/* file */,
+    const char */* file */,
     int		/* line */
 );
 

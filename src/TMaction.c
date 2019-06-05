@@ -476,11 +476,12 @@ static XtActionProc *EnterBindCache(
 	  bindCache->widgetClass = XtClass(w);
 	  if (_XtGlobalTM.numBindCache == _XtGlobalTM.bindCacheTblSize)
 	    {
-		_XtGlobalTM.bindCacheTblSize += 16;
+		_XtGlobalTM.bindCacheTblSize =
+			    (TMShortCard)(_XtGlobalTM.bindCacheTblSize + 16);
 		_XtGlobalTM.bindCacheTbl = (TMBindCache *)
 		  XtRealloc((char *)_XtGlobalTM.bindCacheTbl,
-			    ((_XtGlobalTM.bindCacheTblSize) *
-			     sizeof(TMBindCache)));
+			    (Cardinal)((_XtGlobalTM.bindCacheTblSize) *
+				       sizeof(TMBindCache)));
 	    }
 	  _XtGlobalTM.bindCacheTbl[_XtGlobalTM.numBindCache++] = bindCache;
 #endif /* TRACE_TM */

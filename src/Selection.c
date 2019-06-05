@@ -1212,7 +1212,7 @@ static void HandleGetIncrement(
 #ifdef XT_COPY_SELECTION
 	  int size = (int) BYTELENGTH(length, info->format) + 1;
 	  char *tmp = __XtMalloc((Cardinal) size);
-	  (void) memmove(tmp, value, size);
+	  (void) memmove(tmp, value, (size_t) size);
 	  XFree(value);
 	  value = tmp;
 #endif
@@ -1321,7 +1321,7 @@ Boolean HandleNormal(
     if (value) {   /* it could have been deleted after the SelectionNotify */
 	int size = (int) BYTELENGTH(length, info->format) + 1;
 	char *tmp = __XtMalloc((Cardinal) size);
-	(void) memmove(tmp, value, size);
+	(void) memmove(tmp, value, (size_t) size);
 	XFree(value);
 	value = (unsigned char *) tmp;
     }
@@ -2206,7 +2206,7 @@ void XtGetSelectionParameters(
 	if (*value_return) {
 	    int size = (int) BYTELENGTH(*length_return, *format_return) + 1;
 	    char *tmp = __XtMalloc((Cardinal) size);
-	    (void) memmove(tmp, *value_return, size);
+	    (void) memmove(tmp, *value_return, (size_t) size);
 	    XFree(*value_return);
 	    *value_return = tmp;
 	}

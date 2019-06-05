@@ -1867,27 +1867,33 @@ extern Cardinal XtAsprintf(
 
 extern char *_XtMalloc( /* implementation-private */
     Cardinal	/* size */,
-    char *	/* file */,
+    const char */* file */,
     int	        /* line */
 );
 
 extern char *_XtRealloc( /* implementation-private */
     char *	/* ptr */,
     Cardinal    /* size */,
-    char *	/* file */,
+    const char */* file */,
     int		/* line */
 );
 
 extern char *_XtCalloc( /* implementation-private */
     Cardinal	/* num */,
     Cardinal 	/* size */,
-    char *	/* file */,
+    const char */* file */,
     int		/* line */
 );
 
 extern void _XtFree( /* implementation-private */
     char *	/* ptr */
 );
+
+extern Boolean _XtIsValidPointer( /* implementation-private */
+    char *	/* ptr */);
+
+extern void _XtPrintMemory( /* implementation-private */
+    const char */* filename */);
 
 #define XtMalloc(size) _XtMalloc(size, __FILE__, __LINE__)
 #define XtRealloc(ptr,size) _XtRealloc(ptr, size, __FILE__, __LINE__)
