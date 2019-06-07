@@ -3277,7 +3277,7 @@ event.
     <listitem>
       <para>
 Specifies the region object (as defined in
-<function>&lt;X11/Xutil.h&gt;</function>).
+<filename class="headerfile">&lt;X11/Xutil.h&gt;</filename>).
     </para>
   </listitem>
   </varlistentry>

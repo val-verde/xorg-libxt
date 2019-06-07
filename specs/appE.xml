@@ -5,7 +5,7 @@
 <title>Defined Strings</title>
 
 <para>
-The <function>StringDefs.h</function>
+The <filename class="headerfile">StringDefs.h</filename>
 header file contains definitions for the following resource name,
 class, and representation type symbolic constants.
 </para>
@@ -1179,7 +1179,7 @@ class, and representation type symbolic constants.
 
 <para>
 The
-<function>Shell.h</function>
+<filename class="headerfile">Shell.h</filename>
 header file contains definitions for the following resource name,
 class, and representation type symbolic constants.
 </para>

@@ -591,7 +591,7 @@ the session manager in restarting applications based on the Intrinsics.
 <para>
 The resource name and class strings defined by the Intrinsics shell
 widgets in
-<function>&lt;X11/Shell.h&gt;</function>
+<filename class="headerfile">&lt;X11/Shell.h&gt;</filename>
 are now listed in Appendix E.  The addition of a new symbol
 for the
 <function>WMShell</function>

@@ -77,29 +77,29 @@ any module, widget, or application that calls an Intrinsics procedure.
 <para>
 Applications that use the Intrinsics mechanisms
 must include the header files
-<function>&lt;X11/Intrinsic.h&gt;</function>
+<filename class="headerfile">&lt;X11/Intrinsic.h&gt;</filename>
 and
-<function>&lt;X11/StringDefs.h&gt;</function>,
+<filename class="headerfile">&lt;X11/StringDefs.h&gt;</filename>,
 or their equivalent,
 and they may also include
-<function>&lt;X11/Xatoms.h&gt;</function>
+<filename class="headerfile">&lt;X11/Xatoms.h&gt;</filename>
 and
-<function>&lt;X11/Shell.h&gt;</function>.
+<filename class="headerfile">&lt;X11/Shell.h&gt;</filename>.
 In addition, widget implementations should include
-<function>&lt;X11/IntrinsicP.h&gt;</function>
+<filename class="headerfile">&lt;X11/IntrinsicP.h&gt;</filename>
 instead of
-<function>&lt;X11/Intrinsic.h&gt;</function>.
+<filename class="headerfile">&lt;X11/Intrinsic.h&gt;</filename>.
 </para>
 
 <para>
 The applications must also include the additional header files for
 each widget class that they are to use (for example,
-<function>&lt;X11/Xaw/Label.h&gt;</function>
+<filename class="headerfile">&lt;X11/Xaw/Label.h&gt;</filename>
 or
-<function>&lt;X11/Xaw/Scrollbar.h&gt;).</function>
+<filename class="headerfile">&lt;X11/Xaw/Scrollbar.h&gt;).</filename>
 On a POSIX-based system,
 the Intrinsics object library file is named
-<function>libXt.a</function>
+<filename class="libraryfile">libXt.a</filename>
 and is usually referenced as -lXt when linking the application.
 </para>
 </sect1>
@@ -279,7 +279,7 @@ creating instances of Core are
 
 <para>
 In
-<function>IntrinsicP.h</function>:
+<filename class="headerfile">IntrinsicP.h</filename>:
 </para>
 <programlisting>
 extern WidgetClassRec widgetClassRec;
@@ -287,7 +287,7 @@ extern WidgetClassRec widgetClassRec;
 </programlisting>
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 extern WidgetClass widgetClass, coreWidgetClass;
@@ -303,7 +303,7 @@ are defined for generic actions on widgets.
 In order to make these types opaque and ensure that the compiler
 does not allow applications to access private data, the Intrinsics use
 incomplete structure definitions in
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 typedef struct _WidgetClassRec *WidgetClass, *CoreWidgetClass;
@@ -368,7 +368,7 @@ to specific widget types.
 In order to make these types opaque and ensure that the compiler
 does not allow applications to access private data, the Intrinsics use
 incomplete structure definitions in
-<function>Intrinsic.h</function>.
+<filename class="headerfile">Intrinsic.h</filename>.
 </para>
 <programlisting>
 typedef struct _WidgetRec *Widget, *CoreWidget;
@@ -677,14 +677,14 @@ instances of Composite are
 
 <para>
 In
-<function>IntrinsicP.h</function>:
+<filename class="headerfile">IntrinsicP.h</filename>:
 </para>
 <programlisting>
 extern CompositeClassRec compositeClassRec;
 </programlisting>
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 extern WidgetClass compositeWidgetClass;
@@ -703,7 +703,7 @@ The symbolic constant for the
 version identifier is
 <function>XtCompositeExtensionVersion</function>
 (see <xref linkend='Class_Extension_Records' />).
-<function>Intrinsic.h</function>
+<filename class="headerfile">Intrinsic.h</filename>
 uses an incomplete structure
 definition to ensure that the compiler catches attempts to access
 private data.
@@ -743,7 +743,7 @@ typedef struct {
 } CompositeRec, *CompositeWidget;
 </programlisting>
 <para>
-<function>Intrinsic.h</function>
+<filename class="headerfile">Intrinsic.h</filename>
 uses an incomplete structure definition to ensure that the
 compiler catches attempts to access private data.
 </para>
@@ -924,14 +924,14 @@ instances of Constraint are
 
 <para>
 In
-<function>IntrinsicP.h</function>:
+<filename class="headerfile">IntrinsicP.h</filename>:
 </para>
 <programlisting>
 extern ConstraintClassRec constraintClassRec;
 </programlisting>
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 extern WidgetClass constraintWidgetClass;
@@ -951,7 +951,7 @@ The symbolic constant for the
 version identifier is
 <function>XtConstraintExtensionVersion</function>
 (see <xref linkend='Class_Extension_Records' />).
-<function>Intrinsic.h</function>
+<filename class="headerfile">Intrinsic.h</filename>
 uses an incomplete structure definition to ensure that the
 compiler catches attempts to access private data.
 </para>
@@ -990,7 +990,7 @@ typedef struct {
 } ConstraintRec, *ConstraintWidget;
 </programlisting>
 <para>
-<function>Intrinsic.h</function>
+<filename class="headerfile">Intrinsic.h</filename>
 uses an incomplete structure definition to ensure that the
 compiler catches attempts to access private data.
 </para>
@@ -1267,7 +1267,7 @@ the <emphasis remap='I'>background_pixmap</emphasis> field has the corresponding
 XtNbackgroundPixmap,
 which is defined as the string &ldquo;backgroundPixmap&rdquo;.
 Many predefined names are listed in
-<function>&lt;X11/StringDefs.h&gt;</function>.
+<filename class="headerfile">&lt;X11/StringDefs.h&gt;</filename>.
 Before you invent a new name,
 you should make sure there is not already a name that you can use.
     </para>
@@ -1280,7 +1280,7 @@ Each resource class string should have a symbolic identifier prefixed with
 &ldquo;XtC&rdquo;
 (for example, XtCBorderWidth).
 Many predefined classes are listed in
-<function>&lt;X11/StringDefs.h&gt;</function>.
+<filename class="headerfile">&lt;X11/StringDefs.h&gt;</filename>.
     </para>
   </listitem>
   <listitem>
@@ -1291,7 +1291,7 @@ Each representation string should have a symbolic identifier prefixed with
 &ldquo;XtR&rdquo;
 (for example, XtRTranslationTable).
 Many predefined representation types are listed in
-<function>&lt;X11/StringDefs.h&gt;</function>.
+<filename class="headerfile">&lt;X11/StringDefs.h&gt;</filename>.
     </para>
   </listitem>
   <listitem>
@@ -1456,7 +1456,7 @@ For example,
 the public .h file for the
 Constraint
 widget class is
-<function>Constraint.h</function>.
+<filename class="headerfile">Constraint.h</filename>.
 </para>
 </sect2>
 
@@ -1626,7 +1626,7 @@ For example,
 the private .h file for the
 Constraint
 widget class is
-<function>ConstrainP.h</function>.
+<filename class="headerfile">ConstrainP.h</filename>.
 </para>
 </sect2>
 
@@ -2009,7 +2009,7 @@ To check a widget's class
 and to generate a debugging error message, use
 <xref linkend='XtCheckSubclass' xrefstyle='select: title'/>,
 defined in
-<function>&lt;X11/IntrinsicP.h&gt;</function>:
+<filename class="headerfile">&lt;X11/IntrinsicP.h&gt;</filename>:
 </para>
 
 <funcsynopsis id='XtCheckSubclass'>
@@ -2427,7 +2427,7 @@ is a procedure that issues an error message if it is actually called.
 
 <para>
 For example,
-<function>CompositeP.h</function>
+<filename class="headerfile">CompositeP.h</filename>
 contains these definitions:
 </para>
 <programlisting>
@@ -2453,6 +2453,7 @@ static void CompositeClassPartInitialize(WidgetClass widgetClass)
      .
      .
      .
+}
 </programlisting>
 <para>
 Nonprocedure fields may be inherited in the same manner as procedure

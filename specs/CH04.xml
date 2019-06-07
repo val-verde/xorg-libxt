@@ -399,17 +399,17 @@ Shell.
 <para>
 The declarations for all Intrinsics-defined shells except
 VendorShell appear in
-<function>Shell.h</function>
+<filename class="headerfile">Shell.h</filename>
 and
-<function>ShellP.h</function>.
+<filename class="headerfile">ShellP.h</filename>.
 VendorShell has separate public and private .h files which are included by
-<function>Shell.h</function>
+<filename class="headerfile">Shell.h</filename>
 and
-<function>ShellP.h</function>.
+<filename class="headerfile">ShellP.h</filename>.
 </para>
 
 <para>
-<function>Shell.h</function>
+<filename class="headerfile">Shell.h</filename>
 uses incomplete structure definitions to ensure that the
 compiler catches attempts to access private data in any of the Shell
 instance or class data structures.

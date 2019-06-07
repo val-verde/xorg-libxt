@@ -830,7 +830,7 @@ corresponding Latin 1 KeySym, for example, &ldquo;0&rdquo; is the KeySym XK_0.
 Other single character KeySyms are treated as literal constants from Latin 1,
 for example, &ldquo;!&rdquo; is treated as 0x21.
 Standard KeySym names are as defined in
-<function>&lt;X11/keysymdef.h&gt;</function>
+<filename>&lt;X11/keysymdef.h&gt;</filename>
 with the &ldquo;XK_&rdquo; prefix removed.
 </para>
 

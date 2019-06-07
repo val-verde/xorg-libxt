@@ -141,14 +141,14 @@ are
 
 <para>
 In
-<function>IntrinsicP.h</function>:
+<filename class="headerfile">IntrinsicP.h</filename>:
 </para>
 <programlisting>
 extern ObjectClassRec objectClassRec;
 </programlisting>
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 extern WidgetClass objectClass;
@@ -166,7 +166,7 @@ The symbolic constant for the
 version identifier is
 <function>XtObjectExtensionVersion</function>
 (see <xref linkend='Class_Extension_Records' />).
-<function>Intrinsic.h</function>
+<filename class="headerfile">Intrinsic.h</filename>
 uses an incomplete structure definition to ensure that the
 compiler catches attempts to access private data:
 </para>
@@ -207,7 +207,7 @@ object types.
 
 <para>
 In
-<function>IntrinsicP.h</function>:
+<filename class="headerfile">IntrinsicP.h</filename>:
 </para>
 <programlisting>
 typedef struct _ObjectRec {
@@ -216,7 +216,7 @@ typedef struct _ObjectRec {
 </programlisting>
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 typedef struct _ObjectRec *Object;
@@ -571,14 +571,14 @@ are
 
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 extern RectObjClassRec rectObjClassRec;
 </programlisting>
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 extern WidgetClass rectObjClass;
@@ -593,7 +593,7 @@ and the opaque variable
 are defined for generic actions on objects
 whose class is RectObj or a subclass of
 RectObj.
-<function>Intrinsic.h</function>
+<filename class="headerfile">Intrinsic.h</filename>
 uses an incomplete structure definition to ensure that the compiler
 catches attempts to access private data:
 </para>
@@ -637,7 +637,7 @@ typedef struct _RectObjRec {
 </programlisting>
 <para>
 In
-<function>Intrinsic.h</function>:
+<filename class="headerfile">Intrinsic.h</filename>:
 </para>
 <programlisting>
 typedef struct _RectObjRec* RectObj;

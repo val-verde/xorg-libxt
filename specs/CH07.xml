@@ -626,7 +626,7 @@ call
 and store the resulting identifier in a place accessible to the signal
 handler.  When a signal arrives, the signal handler should call
 <xref linkend='XtNoticeSignal' xrefstyle='select: title'/>
-to notify the Intrinsics that a signal has occured.  To register a signal
+to notify the Intrinsics that a signal has occurred.  To register a signal
 callback use
 <xref linkend='XtAppAddSignal' xrefstyle='select: title'/>.
 </para>
@@ -713,7 +713,7 @@ call.
 </variablelist>
 
 <para>
-To notify the Intrinsics that a signal has occured, use
+To notify the Intrinsics that a signal has occurred, use
 <xref linkend='XtNoticeSignal' xrefstyle='select: title'/>.
 </para>
 
@@ -2259,7 +2259,7 @@ The mask is the bitwise inclusive OR of any combination of
 and
 <function>XtIMSignal</function>.
 As a convenience,
-<function>Intrinsic.h</function>
+<filename class="headerfile">Intrinsic.h</filename>
 defines the symbolic name
 <function>XtIMAll</function>
 to be the bitwise inclusive OR of these four event types.

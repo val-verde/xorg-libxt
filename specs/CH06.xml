@@ -289,7 +289,7 @@ typedef enum {
 
 <para>
 The <emphasis remap='I'>request_mode</emphasis> definitions are from
-<function>&lt;X11/X.h&gt;</function>.
+<filename class="headerfile">&lt;X11/X.h&gt;</filename>.
 </para>
 
 <informaltable frame='none'>
@@ -376,7 +376,7 @@ structure the caller wants to specify.
 
 <para>
 The <emphasis remap='I'>stack_mode</emphasis> definitions are from
-<function>&lt;X11/X.h&gt;</function>:
+<filename class="headerfile">&lt;X11/X.h&gt;</filename>:
 </para>
 
 <informaltable frame='none'>

@@ -84,7 +84,7 @@ sequence &ldquo;Xt&rdquo; are reserved to the Intrinsics for future standard and
 implementation-dependent uses.
 Widget header files typically contain a symbolic name for each resource name.
 All resource names, classes, and types used by the Intrinsics are named in
-<function>&lt;X11/StringDefs.h&gt;</function>.
+<filename class="headerfile">&lt;X11/StringDefs.h&gt;</filename>.
 The Intrinsics's symbolic resource names begin with
 &ldquo;XtN&rdquo;
 and are followed by the string name (for example, XtNbackgroundPixel
@@ -370,7 +370,7 @@ The Intrinsics define the following resource types:
 </informaltable>
 
 <para>
-<function>&lt;X11/StringDefs.h&gt;</function>
+<filename class="headerfile">&lt;X11/StringDefs.h&gt;</filename>
 also defines the following resource types as a
 convenience for widgets, although they do not have any corresponding
 data type assigned:
@@ -1754,7 +1754,7 @@ an input value of representation type
 Type converters use pointers to
 <function>XrmValue</function>
 structures (defined in
-<function>&lt;X11/Xresource.h&gt;;</function>
+<filename class="headerfile">&lt;X11/Xresource.h&gt;;</filename>
 see <olink targetdoc='libX11' targetptr='Creating_and_Storing_Databases'>Section 15.4</olink> in
 <olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface.</olink>)
 for input and output values.
@@ -2514,7 +2514,7 @@ and the structure
 <function>XtConvertArgRec</function>
 specify how each argument is derived.
 These are defined in
-<function>&lt;X11/Intrinsic.h&gt;</function>.
+<filename class="headerfile">&lt;X11/Intrinsic.h&gt;</filename>.
 </para>
 <programlisting>
 typedef enum {
