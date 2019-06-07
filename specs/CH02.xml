@@ -435,7 +435,7 @@ add it to an application context, use
 
 <funcsynopsis id='XtOpenDisplay'>
 <funcprototype>
-  <funcdef>Display <function>*XtOpenDisplay</function></funcdef>
+  <funcdef>Display *<function>XtOpenDisplay</function></funcdef>
        <paramdef>XtAppContext <parameter>app_context</parameter></paramdef>
        <paramdef>const char * <parameter>display_string</parameter></paramdef>
        <paramdef>const char * <parameter>application_name</parameter></paramdef>
