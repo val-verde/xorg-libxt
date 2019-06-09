@@ -207,8 +207,8 @@ _set_resource_values (
 					cur->core.widget_class->core_class.class_name);
 			}
 		}
-		if (resource_class != NULL)
-			XtFree (resource_class);
+
+		XtFree (resource_class);
 		resource_class = temp;
 
 		cur = XtParent(cur);
@@ -219,8 +219,8 @@ _set_resource_values (
 	 */
 	XtAsprintf (&temp, "%s.%s", resource_name,
 		resources_return[res_index].resource_name);
-	if (resource_name != NULL)
-		XtFree (resource_name);
+
+	XtFree (resource_name);
 	resource_name = temp;
 
 	/*
@@ -228,8 +228,8 @@ _set_resource_values (
 	 */
 	XtAsprintf (&temp, "%s.%s", resource_class,
 		resources_return[res_index].resource_class);
-	if (resource_class != NULL)
-		XtFree (resource_class);
+
+	XtFree (resource_class);
 	resource_class = temp;
 
 #ifdef DEBUG
@@ -1008,6 +1008,5 @@ _XtResourceConfigurationEH (
 		}
 	}
 
-	if (data)
-		XFree ((char *)data);
+	XFree ((char *)data);
 }

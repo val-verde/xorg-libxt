@@ -435,20 +435,19 @@ void _XtBuildKeysymTables(
 #define KeysymTableSize 16
 
     FLUSHKEYCACHE(pd->tm_context);
-    if (pd->keysyms)
-	XFree( (char *)pd->keysyms );
+
+    XFree( (char *)pd->keysyms );
     pd->keysyms_serial = NextRequest(dpy);
     pd->keysyms = XGetKeyboardMapping(dpy, (KeyCode) pd->min_keycode,
 				      pd->max_keycode-pd->min_keycode+1,
 				      &pd->keysyms_per_keycode);
-    if (pd->modKeysyms)
-	XtFree((char *)pd->modKeysyms);
-    if (pd->modsToKeysyms)
-	XtFree((char *)pd->modsToKeysyms);
+    XtFree((char *)pd->modKeysyms);
+
     pd->modKeysyms = (KeySym*)__XtMalloc((Cardinal)KeysymTableSize*sizeof(KeySym));
     maxCount = KeysymTableSize;
     tempCount = 0;
 
+    XtFree((char *)pd->modsToKeysyms);
     table = (ModToKeysymTable*)__XtMalloc((Cardinal)8*sizeof(ModToKeysymTable));
     pd->modsToKeysyms = table;
 
