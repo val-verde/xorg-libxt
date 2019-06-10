@@ -1239,9 +1239,8 @@ static String ExtractLocaleName(
 # ifdef WHITEFILL
     if (strchr(lang, ' ')) {
 	if (buf != NULL) XtFree (buf);
-	else buf = XtMalloc ((Cardinal)strlen (lang) + 1);
+	buf = strdup (lang);
 	if (buf == NULL) return NULL;
-	strcpy(buf, lang);
 	for (temp = buf; (temp = strchr(temp, ' ')) != NULL; )
 	    *temp++ = '-';
 	return buf;

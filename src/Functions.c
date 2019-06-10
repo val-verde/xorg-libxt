@@ -212,5 +212,5 @@ String XtNewString(String str)
     if (str == NULL)
 	return NULL;
     else
-	return strcpy(__XtMalloc((unsigned)strlen(str) + 1), str);
+	return strdup(str);
 }
