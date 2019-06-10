@@ -128,21 +128,12 @@ with the following arguments specified:
 .RE
 .LP
 .B XtNewString
-returns a pointer to the allocated storage.
-If there is insufficient memory to allocate the new block,
+returns a pointer to a new string which is a duplicate of 
+.IR string .
+If there is insufficient memory to allocate the new block, or the argument is NULL
 .B XtNewString
-calls
-.BR XtErrorMsg .
-.B XtNewString
-is a convenience macro that calls
-.B XtMalloc
-with the following arguments specified:
-.LP
-.RS .5i
-.ft CW
-(strcpy(XtMalloc((unsigned) strlen(str) + 1), str))
-.ft R
-.RE
+returns NULL. The memory can be freed with 
+.BR XtFree .
 .LP
 The
 .B XtAsprintf
