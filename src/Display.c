@@ -127,12 +127,12 @@ static void AddToAppContext(
 
 	app->list[app->count++] = d;
 	app->rebuild_fdlist = TRUE;
-#ifndef USE_POLL
+#ifdef USE_POLL
+	app->fds.nfds++;
+#else
 	if (ConnectionNumber(d) + 1 > app->fds.nfds) {
 	    app->fds.nfds = ConnectionNumber(d) + 1;
 	}
-#else
-	app->fds.nfds++;
 #endif
 #undef DISPLAYS_TO_ADD
 }
@@ -151,13 +151,13 @@ static void XtDeleteFromAppContext(
 	    app->count--;
 	}
 	app->rebuild_fdlist = TRUE;
-#ifndef USE_POLL
+#ifdef USE_POLL
+	app->fds.nfds--;
+#else
 	if ((ConnectionNumber(d) + 1) == app->fds.nfds)
 	    app->fds.nfds--;
 	else			/* Unnecessary, just to be fool-proof */
 	    FD_CLR(ConnectionNumber(d), &app->fds.rmask);
-#else
-	app->fds.nfds--;
 #endif
 }
 
