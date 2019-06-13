@@ -1599,7 +1599,7 @@ The String-to-InitialState conversion accepts the values
 <function>NormalState</function>
 or
 <function>IconicState</function>
-as defined by the <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis>.
+as defined by the <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis>.
 </para>
 
 <para>

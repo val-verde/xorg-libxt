@@ -1404,7 +1404,7 @@ needed, as the table may change prior to dispatching each event.
 <para>
 For more information on this table, see
 <olink targetdoc='libX11' targetptr='Manipulating_the_Keyboard_Encoding'>Section 12.7</olink> in
-<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface.</olink>.
+<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
 </para>
 
 <para>

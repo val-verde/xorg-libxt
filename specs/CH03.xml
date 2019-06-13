@@ -1001,7 +1001,7 @@ The <emphasis remap='I'>do_change_proc</emphasis> is of type
 
 <funcsynopsis id='XtDoChangeProc'>
 <funcprototype>
-<funcdef>typedef void <function>*XtDoChangeProc</function></funcdef>
+<funcdef>typedef void *<function>XtDoChangeProc</function></funcdef>
 
    <paramdef>Widget <parameter>composite_parent</parameter></paramdef>
    <paramdef>WidgetList <parameter>unmange_children</parameter></paramdef>

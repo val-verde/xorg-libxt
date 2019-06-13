@@ -1484,7 +1484,7 @@ an application- or widget-specific database), use
 
 <funcsynopsis id='XtGetErrorDatabase'>
 <funcprototype>
-<funcdef>XrmDatabase <function>*XtGetErrorDatabase</function></funcdef>
+<funcdef>XrmDatabase *<function>XtGetErrorDatabase</function></funcdef>
       <paramdef><parameter>void</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>

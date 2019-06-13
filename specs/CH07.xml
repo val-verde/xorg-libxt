@@ -391,7 +391,7 @@ are of type
 
 <funcsynopsis id='XtBlockHookProc'>
 <funcprototype>
-<funcdef>typedef void <function>*XtBlockHookProc</function></funcdef>
+<funcdef>typedef void *<function>XtBlockHookProc</function></funcdef>
    <paramdef>XtPointer <parameter>client_data</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -532,7 +532,7 @@ type
 
 <funcsynopsis id='XtTimerCallbackProc'>
 <funcprototype>
-<funcdef>typedef void <function>*XtTimerCallbackProc</function></funcdef>
+<funcdef>typedef void *<function>XtTimerCallbackProc</function></funcdef>
    <paramdef>XtPointer <parameter>client_data</parameter></paramdef>
    <paramdef>XtIntervalId *<parameter>timer</parameter></paramdef>
 </funcprototype>
@@ -1805,7 +1805,7 @@ The accept_focus procedure pointer is of type
 
 <funcsynopsis id='XtAcceptFocusProc'>
 <funcprototype>
-<funcdef>typedef Boolean <function>*XtAcceptFocusProc</function></funcdef>
+<funcdef>typedef Boolean *<function>XtAcceptFocusProc</function></funcdef>
 
    <paramdef>Widget <parameter>w</parameter></paramdef>
    <paramdef>Time *<parameter>time</parameter></paramdef>
@@ -1838,7 +1838,7 @@ Specifies the X time of the event causing the accept focus.
 <para>
 Widgets that need the input focus can call
 <function>XSetInputFocus</function>
-explicitly, pursuant to the restrictions of the <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis>.
+explicitly, pursuant to the restrictions of the <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis>.
 To allow outside agents, such as the parent,
 to cause a widget to take the input focus,
 every widget exports an accept_focus procedure.
@@ -2896,7 +2896,7 @@ passing the modified exposure event and (unless
 is specified) the region.
 For more information on regions, see
 <olink targetdoc='libX11' targetptr='Manipulating_Regions'>Section 16.5</olink> in
-<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface.</olink>.)
+<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>.
 </para>
 
 <para>
@@ -4264,7 +4264,7 @@ To register a procedure to select extension events for a widget, use
 <funcsynopsis id='XtRegisterExtensionSelector'>
 <funcprototype>
 <funcdef>void <function>XtRegisterExtensionSelector</function></funcdef>
-   <paramdef>Display <parameter>*display</parameter></paramdef>
+   <paramdef>Display *<parameter>display</parameter></paramdef>
    <paramdef>int <parameter>min_event_type</parameter></paramdef>
    <paramdef>int <parameter>max_event_type</parameter></paramdef>
    <paramdef>XtExtensionSelectProc <parameter>proc</parameter></paramdef>

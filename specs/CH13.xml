@@ -156,7 +156,7 @@ semantics.
 <sect2 id="Subclasses_of_WMShell">
 <title>Subclasses of WMShell</title>
 <para>
-The formal adoption of the <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis> as
+The formal adoption of the <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis> as
 an X Consortium standard has meant the addition of four fields to
 <function>WMShellPart</function>
 and one field to
@@ -556,7 +556,7 @@ has been added.
 <sect2 id="Communication_with_Window_and_Session_Managers">
 <title>Communication with Window and Session Managers</title>
 <para>
-The revision of the <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis> as an X Consortium standard has resulted
+The revision of the <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis> as an X Consortium standard has resulted
 in the addition of three fields to the specification of
 <function>WMShellPart</function>.
 These are <emphasis remap='I'>urgency</emphasis>, <emphasis remap='I'>client_leader</emphasis>, and <emphasis remap='I'>window_role</emphasis>.
@@ -730,7 +730,7 @@ ignore NumLock and apply the normal protocol semantics.
 <title>Selections</title>
 <para>
 The targets of selection requests may be parameterized, as described
-by the revised <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis>.
+by the revised <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis>.
 When such requests are made,
 <xref linkend='XtSetSelectionParameters' xrefstyle='select: title'/>
 is used by the requestor to specify the target parameters and

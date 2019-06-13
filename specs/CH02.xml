@@ -3770,7 +3770,7 @@ will be of class Object or a subclass.
 
 <funcsynopsis id='XtScreen'>
 <funcprototype>
-  <funcdef>Screen <function>*XtScreen</function></funcdef>
+  <funcdef>Screen *<function>XtScreen</function></funcdef>
   <paramdef>Widget <parameter>w</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -3830,7 +3830,7 @@ and
 
 <funcsynopsis id='XtDisplayOfObject'>
 <funcprototype>
-  <funcdef>Display <function>*XtDisplayOfObject</function></funcdef>
+  <funcdef>Display *<function>XtDisplayOfObject</function></funcdef>
   <paramdef>Widget <parameter>w</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>
@@ -3861,7 +3861,7 @@ Widget or a subclass thereof.
 
 <funcsynopsis id='XtScreenOfObject'>
 <funcprototype>
-  <funcdef>Screen <function>*XtScreenOfObject</function></funcdef>
+  <funcdef>Screen *<function>XtScreenOfObject</function></funcdef>
   <paramdef>Widget <parameter>object</parameter></paramdef>
 </funcprototype>
 </funcsynopsis>

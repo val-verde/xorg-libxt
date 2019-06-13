@@ -782,7 +782,7 @@ server when the last user of a given GC releases it.
 <para>
 Arbitrary widgets in multiple applications can communicate
 with each other by means of the Intrinsics global selection mechanism,
-which conforms to the specifications in the <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis>.
+which conforms to the specifications in the <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis>.
 The Intrinsics supply functions for providing and receiving selection data in
 one logical piece (atomic transfers)
 or in smaller logical segments (incremental transfers).
@@ -1046,7 +1046,7 @@ byte-swap the data if necessary.
 This procedure does not need to worry about responding to the
 MULTIPLE or the TIMESTAMP target values (see
 <xref linkend='Window_Creation_Convenience_Routine' />
-in the <olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual.</olink>).
+in the <olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual</olink>).
 A selection request with
 the MULTIPLE target type is transparently transformed into a
 series of calls to this procedure, one for each target type, and a
@@ -1465,7 +1465,7 @@ For more information about <emphasis remap='I'>selection</emphasis>,
 <emphasis remap='I'>target</emphasis>, and
 <emphasis remap='I'>time</emphasis>, see
 <olink targetdoc='icccm' targetptr='Use_of_Selection_Atoms'>Section 2.6</olink> in the
-<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual.</olink>.
+<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual</olink>.
 </para>
 
 <funcsynopsis id='XtGetSelectionValues'>
@@ -1575,7 +1575,7 @@ target value with the corresponding client data.
 For more information about <emphasis remap='I'>selection</emphasis>, <emphasis remap='I'>target</emphasis>, and
 <emphasis remap='I'>time</emphasis>, see
 <olink targetdoc='icccm' targetptr='Use_of_Selection_Atoms'>section 2.6</olink>
-in the <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis>.
+in the <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis>.
 </para>
 </sect3>
 <sect3 id="Setting_the_Selection_Owner">
@@ -2329,7 +2329,7 @@ For more information about <emphasis remap='I'>selection</emphasis>,
 <emphasis remap='I'>target</emphasis>, and
 <emphasis remap='I'>time</emphasis>, see
 <olink targetdoc='icccm' targetptr='Use_of_Selection_Atoms'>Use of Selection Atoms</olink> in the
-<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual.</olink>
+<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual</olink>.
 </para>
 
 <funcsynopsis id='XtGetSelectionValuesIncremental'>
@@ -2446,7 +2446,7 @@ repeatedly.
 For more information about <emphasis remap='I'>selection</emphasis>, <emphasis remap='I'>target</emphasis>, and
 <emphasis remap='I'>time</emphasis>, see
 <olink targetdoc='icccm' targetptr='Use_of_Selection_Atoms'>Section 2.6</olink> in the
-<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual.</olink>
+<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual</olink>.
 </para>
 </sect3>
 <sect3 id="Setting_the_Selection_Owner_for_Incremental_Transfers">
@@ -2578,7 +2578,7 @@ otherwise.
 For more information about <emphasis remap='I'>selection</emphasis>, <emphasis remap='I'>target</emphasis>, and
 <emphasis remap='I'>time</emphasis>, see
 <olink targetdoc='icccm' targetptr='Use_of_Selection_Atoms'>Section 2.6</olink> in the
-<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual.</olink>
+<olink targetdoc='icccm' targetptr='icccm'>Inter-Client Communication Conventions Manual</olink>.
 </para>
 
 <para>
@@ -4351,7 +4351,7 @@ Finally,
 <xref linkend='XtSetWMColormapWindows' xrefstyle='select: title'/>
 stores the resulting window list in the <emphasis role='strong'>WM_COLORMAP_WINDOWS</emphasis>
 property on the specified widget's window.
-Refer to Section 4.1.8 in the <emphasis remap='I'>Inter-Client Communication Conventions Manual.</emphasis> for details of
+Refer to Section 4.1.8 in the <emphasis remap='I'>Inter-Client Communication Conventions Manual</emphasis> for details of
 the semantics of the <emphasis role='strong'>WM_COLORMAP_WINDOWS</emphasis> property.
 </para>
 </sect1>
