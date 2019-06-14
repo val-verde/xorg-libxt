@@ -444,7 +444,7 @@ For definition and behavior of
 and
 <function>Opposite</function>,
 <olink targetdoc='libX11' targetptr='Configuring_Windows' >BLAH</olink>
-in <olink targetptr='libX11' targetdoc='libX11'>Xlib &mdash; C Language X Interface.</olink>.
+in <olink targetptr='libX11' targetdoc='libX11'>Xlib &mdash; C Language X Interface</olink>.
 <function>XtSMDontChange</function>
 indicates that the widget wants its current stacking order preserved.
 </para>

@@ -274,15 +274,27 @@ The WidgetClass arguments to the following procedures may be
 or any subclass:
 </para>
 
+<itemizedlist spacing='compact'>
+<listitem>
 <para>
-<emphasis role='strong'>XtInitializeWidgetClass</emphasis>,
-<emphasis role='strong'>XtCreateWidget</emphasis>,
-<emphasis role='strong'>XtVaCreateWidget</emphasis>
-<emphasis role='strong'>XtIsSubclass</emphasis>,
-<emphasis role='strong'>XtCheckSubclass</emphasis>
-<emphasis role='strong'>XtGetResourceList</emphasis>,
-<emphasis role='strong'>XtGetConstraintResourceList</emphasis>
+<xref linkend='XtInitializeWidgetClass' xrefstyle='select: title'/>,
+<xref linkend='XtCreateWidget' xrefstyle='select: title'/>,
+<xref linkend='XtVaCreateWidget' xrefstyle='select: title'/>
 </para>
+</listitem>
+<listitem>
+<para>
+<xref linkend='XtIsSubclass' xrefstyle='select: title'/>,
+<xref linkend='XtCheckSubclass' xrefstyle='select: title'/>
+</para>
+</listitem>
+<listitem>
+<para>
+<xref linkend='XtGetResourceList' xrefstyle='select: title'/>,
+<xref linkend='XtGetConstraintResourceList' xrefstyle='select: title'/>
+</para>
+</listitem>
+</itemizedlist>
 
 <para>
 The Widget arguments to the following procedures may be of class

@@ -1552,7 +1552,7 @@ is required in a different locale.
 <para>
 The String-to-Gravity conversion accepts string values that are the
 names of window and bit gravities and their numerical equivalents,
-as defined in <emphasis remap='I'>Xlib &mdash; C Language X Interface.</emphasis>:
+as defined in <emphasis remap='I'>Xlib &mdash; C Language X Interface</emphasis>:
 <function>ForgetGravity</function>,
 <function>UnmapGravity</function>,
 <function>NorthWestGravity</function>,
@@ -1756,7 +1756,7 @@ Type converters use pointers to
 structures (defined in
 <filename class="headerfile">&lt;X11/Xresource.h&gt;;</filename>
 see <olink targetdoc='libX11' targetptr='Creating_and_Storing_Databases'>Section 15.4</olink> in
-<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface.</olink>)
+<olink targetdoc='libX11' targetptr='libX11'>Xlib &mdash; C Language X Interface</olink>)
 for input and output values.
 </para>
 <programlisting>
@@ -2667,8 +2667,8 @@ address of the base of the widget into args[0], and use that
 in the routine.  They should pass in the actual values on
 which the conversion depends.  By keeping the dependencies
 of the conversion procedure specific, it is more likely that
-subsequent conversions will find what they need in the con‐
-version cache.	This way the cache is smaller and has fewer
+subsequent conversions will find what they need in the conversion cache.
+This way the cache is smaller and has fewer
 and more widely applicable entries.
 </para>
 <para>
@@ -2691,11 +2691,11 @@ list specified in the call.
 </para>
 <para>
 If the <function>XtConvertArgProc</function> modifies the resource database, the
-changes affect any in‐progress widget creation,
+changes affect any in-progress widget creation,
 <xref linkend='XtGetApplicationResources' xrefstyle='select: title'/>,
 or
 <xref linkend='XtGetSubresources' xrefstyle='select: title'/>
-in an implementation‐defined manner;
+in an implementation-defined manner;
 however, insertion of new entries or changes
 to existing entries are allowed and will not directly cause
 an error.

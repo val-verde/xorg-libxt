@@ -903,9 +903,6 @@ resource list are:
       <entry>XtCUrgency</entry>
       <entry>XtRBoolean</entry>
     </row>
-    <row>
-      <entry>_</entry>
-    </row>
   </tbody>
   </tgroup>
 </informaltable>

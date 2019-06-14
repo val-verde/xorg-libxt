@@ -1757,8 +1757,8 @@ static XtResource resources[] = {
 static void ClassInitialize(void);
 static void Initialize(Widget, Widget, ArgList, Cardinal*);
 static void Realize(Widget, XtValueMask*, XSetWindowAttributes*);
-static void SetText();
-static void GetText();
+static void SetText(Widget, String);
+static void GetText(Widget);
      .
      .
      .
@@ -2705,7 +2705,7 @@ header file for a widget class should provide a symbolic constant for
 subclasses to use to initialize this field.
 The <emphasis remap='I'>record_size</emphasis> field value includes the four common header fields and
 should normally be initialized with
-<function>sizeof ().</function>
+<function>sizeof().</function>
 </para>
 
 <para>
