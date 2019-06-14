@@ -1269,9 +1269,6 @@ void XtAppNextEvent(
 	if (d != -1) {
 	  GotEvent:
 	    XNextEvent (app->list[d], event);
-#ifdef XTHREADS
-	    /* assert(app->list[d] == event->xany.display); */
-#endif
 	    app->last = (short) d;
 	    if (event->xany.type == MappingNotify)
 		_XtRefreshMapping(event, False);
@@ -1383,9 +1380,6 @@ void XtAppProcessEvent(
 	    if (mask & XtIMXEvent && d != -1) {
 	      GotEvent:
 		XNextEvent(app->list[d], &event);
-#ifdef XTHREADS
-		/* assert(app->list[d] == event.xany.display); */
-#endif
 		app->last = (short) d;
 		if (event.xany.type == MappingNotify) {
 		    _XtRefreshMapping(&event, False);
