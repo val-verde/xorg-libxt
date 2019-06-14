@@ -559,9 +559,7 @@ int _XtWaitForSomething(
     _XtBoolean ignoreInputs,
     _XtBoolean ignoreSignals,
     _XtBoolean block,
-#ifdef XTHREADS
-    _XtBoolean drop_lock,
-#endif
+    _XtBoolean drop_lock,	/* only needed with XTHREADS */
     unsigned long *howlong)
 {
     wait_times_t wt;
@@ -581,6 +579,8 @@ int _XtWaitForSomething(
     /* If not multi-threaded, never drop lock */
     if (app->lock == (ThreadAppProc) NULL)
 	drop_lock = FALSE;
+#else
+    drop_lock=drop_lock;	/* avoid unsed warning */
 #endif
 
     InitTimes ((Boolean) block, howlong, &wt);
@@ -1142,9 +1142,7 @@ static void DoOtherSources(
 	    (void) _XtWaitForSomething (app,
 					TRUE, TRUE, FALSE, TRUE,
 					FALSE,
-#ifdef XTHREADS
 					TRUE,
-#endif
 					(unsigned long *)NULL);
 	    DrainQueue();
 	}
@@ -1265,9 +1263,7 @@ void XtAppNextEvent(
 	d = _XtWaitForSomething (app,
 				 FALSE, FALSE, FALSE, FALSE,
 				 TRUE,
-#ifdef XTHREADS
 				 TRUE,
-#endif
 				 (unsigned long *) NULL);
 
 	if (d != -1) {
@@ -1345,9 +1341,7 @@ void XtAppProcessEvent(
 		    (void) _XtWaitForSomething (app,
 						TRUE, TRUE, FALSE, TRUE,
 						FALSE,
-#ifdef XTHREADS
 						TRUE,
-#endif
 						(unsigned long *)NULL);
 		}
 		if (app->outstandingQueue != NULL) {
@@ -1383,9 +1377,7 @@ void XtAppProcessEvent(
 				    ((mask & XtIMAlternateInput) ? FALSE : TRUE),
 				    ((mask & XtIMSignal) ? FALSE : TRUE),
 				    TRUE,
-#ifdef XTHREADS
 				    TRUE,
-#endif
 				    (unsigned long *) NULL);
 
 	    if (mask & XtIMXEvent && d != -1) {
@@ -1467,9 +1459,7 @@ XtInputMask XtAppPending(
 	    if(_XtWaitForSomething (app,
 				    FALSE, TRUE, FALSE, TRUE,
 				    FALSE,
-#ifdef XTHREADS
 				    TRUE,
-#endif
 				    (unsigned long *) NULL) != -1)
 		ret |= XtIMXEvent;
 	    if (app->outstandingQueue != NULL) ret |= XtIMAlternateInput;
@@ -1501,9 +1491,7 @@ static Boolean PeekOtherSources(
 	    (void) _XtWaitForSomething (app,
 					TRUE, TRUE, FALSE, TRUE,
 					FALSE,
-#ifdef XTHREADS
 					TRUE,
-#endif
 					(unsigned long *)NULL);
 	    if (app->outstandingQueue != NULL) return TRUE;
 	}
@@ -1558,9 +1546,7 @@ Boolean XtAppPeekEvent(
 		d = _XtWaitForSomething (app,
 			FALSE, FALSE, FALSE, FALSE,
 			TRUE,
-#ifdef XTHREADS
 			TRUE,
-#endif
 			(unsigned long *) NULL);
 
 		if (d != -1) {  /* event */
