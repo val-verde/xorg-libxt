@@ -177,7 +177,7 @@ void XtAppGetErrorDatabaseText(
     (void) sprintf(str_name, "%s.%s", name, type);
     /* XrmGetResource requires the name and class to be fully qualified
      * and to have the same number of components. */
-    str_class = (char *)class;
+    str_class = (String)class;
     if (! strchr(class, '.')) {
 	if (!(temp = ALLOCATE_LOCAL(2 * strlen(class) + 2)))
 	    _XtAllocError(NULL);

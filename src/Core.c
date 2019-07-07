@@ -246,7 +246,7 @@ static void CoreClassPartInitialize(
 		super->core_class.display_accelerator;
     }
 
-    if (wc->core_class.tm_table == (char *) XtInheritTranslations) {
+    if (wc->core_class.tm_table == XtInheritTranslations) {
 	wc->core_class.tm_table =
 		wc->core_class.superclass->core_class.tm_table;
     } else if (wc->core_class.tm_table != NULL) {
