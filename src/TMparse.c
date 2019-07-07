@@ -1780,7 +1780,7 @@ static String ParseActionSeq(
 
     while (*str != '\0' && !IsNewline(*str)) {
 	register ActionPtr	action;
-	XrmQuark quark;
+	XrmQuark quark = NULLQUARK;
 
 	action = XtNew(ActionRec);
         action->params = NULL;
@@ -2068,7 +2068,7 @@ XtAccelerators XtParseAcceleratorTable(
 {
     Boolean error = FALSE;
     XtAccelerators ret =
-	(XtAccelerators) ParseTranslationTable ((char *)source, TRUE, XtTableAugment, &error);
+	(XtAccelerators) ParseTranslationTable (source, TRUE, XtTableAugment, &error);
     if (error == TRUE)
         XtWarningMsg ("parseError", "cvtStringToAcceleratorTable",
 	  XtCXtToolkitError,
@@ -2081,7 +2081,7 @@ XtTranslations XtParseTranslationTable(
     _Xconst char* source)
 {
     Boolean error = FALSE;
-    XtTranslations ret = ParseTranslationTable((char *)source, FALSE, XtTableReplace, &error);
+    XtTranslations ret = ParseTranslationTable(source, FALSE, XtTableReplace, &error);
     if (error == TRUE)
         XtWarningMsg ("parseError",
 	  "cvtStringToTranslationTable", XtCXtToolkitError,
