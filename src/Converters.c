@@ -135,7 +135,7 @@ void _XtConvertInitialize(void)
     _XtQString		= XrmPermStringToQuark(XtRString);
 }
 
-#define	donestr(type, value, tstr) \
+#define	done_typed_string(type, typed_value, tstr) \
 	{							\
 	    if (toVal->addr != NULL) {				\
 		if (toVal->size < sizeof(type)) {		\
@@ -144,11 +144,32 @@ void _XtConvertInitialize(void)
 			(char*) fromVal->addr, tstr);		\
 		    return False;				\
 		}						\
-		*(type*)(toVal->addr) = (type) (value);		\
+		*(type*)(toVal->addr) = typed_value;		\
 	    }							\
 	    else {						\
 		static type static_val;				\
-		static_val = (type) (value);			\
+		static_val = typed_value;			\
+		toVal->addr = (XPointer)&static_val;		\
+	    }							\
+	    toVal->size = sizeof(type);				\
+	    return True;					\
+	}
+
+#define	done_string(type, value, tstr) \
+	done_typed_string(type, (type) (value), tstr)
+
+#define	done_typed(type, typed_value) \
+	{							\
+	    if (toVal->addr != NULL) {				\
+		if (toVal->size < sizeof(type)) {		\
+		    toVal->size = sizeof(type);			\
+		    return False;				\
+		}						\
+		*(type*)(toVal->addr) = typed_value;		\
+	    }							\
+	    else {						\
+		static type static_val;				\
+		static_val = typed_value;			\
 		toVal->addr = (XPointer)&static_val;		\
 	    }							\
 	    toVal->size = sizeof(type);				\
@@ -156,22 +177,7 @@ void _XtConvertInitialize(void)
 	}
 
 #define	done(type, value) \
-	{							\
-	    if (toVal->addr != NULL) {				\
-		if (toVal->size < sizeof(type)) {		\
-		    toVal->size = sizeof(type);			\
-		    return False;				\
-		}						\
-		*(type*)(toVal->addr) = (type) (value);		\
-	    }							\
-	    else {						\
-		static type static_val;				\
-		static_val = (type) (value);			\
-		toVal->addr = (XPointer)&static_val;		\
-	    }							\
-	    toVal->size = sizeof(type);				\
-	    return True;					\
-	}
+	done_typed(type, (type) (value))
 
 void XtDisplayStringConversionWarning(
     Display* dpy,
@@ -354,12 +360,12 @@ Boolean XtCvtStringToBoolean(
     if (   (CompareISOLatin1(str, "true") == 0)
 	|| (CompareISOLatin1(str, "yes") == 0)
 	|| (CompareISOLatin1(str, "on") == 0)
-	|| (CompareISOLatin1(str, "1") == 0))	donestr( Boolean, True, XtRBoolean );
+	|| (CompareISOLatin1(str, "1") == 0))	done_string( Boolean, True, XtRBoolean );
 
     if (   (CompareISOLatin1(str, "false") == 0)
 	|| (CompareISOLatin1(str, "no") == 0)
 	|| (CompareISOLatin1(str, "off") == 0)
-	|| (CompareISOLatin1(str, "0") == 0))	donestr( Boolean, False, XtRBoolean );
+	|| (CompareISOLatin1(str, "0") == 0))	done_string( Boolean, False, XtRBoolean );
 
     XtDisplayStringConversionWarning(dpy, str, XtRBoolean);
     return False;
@@ -404,12 +410,12 @@ Boolean XtCvtStringToBool(
     if (   (CompareISOLatin1(str, "true") == 0)
 	|| (CompareISOLatin1(str, "yes") == 0)
 	|| (CompareISOLatin1(str, "on") == 0)
-	|| (CompareISOLatin1(str, "1") == 0))	donestr( Bool, True, XtRBool );
+	|| (CompareISOLatin1(str, "1") == 0))	done_string( Bool, True, XtRBool );
 
     if (   (CompareISOLatin1(str, "false") == 0)
 	|| (CompareISOLatin1(str, "no") == 0)
 	|| (CompareISOLatin1(str, "off") == 0)
-	|| (CompareISOLatin1(str, "0") == 0))	donestr( Bool, False, XtRBool );
+	|| (CompareISOLatin1(str, "0") == 0))	done_string( Bool, False, XtRBool );
 
     XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRBool);
     return False;
@@ -448,7 +454,7 @@ Boolean XtCvtIntToColor(
     c.pixel = (unsigned long) (*(int *)fromVal->addr);
 
     XQueryColor(DisplayOfScreen(screen), colormap, &c);
-    done(XColor, c);
+    done_typed(XColor, c);
 }
 
 
@@ -482,13 +488,13 @@ Boolean XtCvtStringToPixel(
 
     if (CompareISOLatin1(str, XtDefaultBackground) == 0) {
 	*closure_ret = NULL;
-	if (pd->rv) donestr(Pixel, BlackPixelOfScreen(screen), XtRPixel)
-	else	    donestr(Pixel, WhitePixelOfScreen(screen), XtRPixel);
+	if (pd->rv) done_string(Pixel, BlackPixelOfScreen(screen), XtRPixel)
+	else	    done_string(Pixel, WhitePixelOfScreen(screen), XtRPixel);
     }
     if (CompareISOLatin1(str, XtDefaultForeground) == 0) {
 	*closure_ret = NULL;
-	if (pd->rv) donestr(Pixel, WhitePixelOfScreen(screen), XtRPixel)
-        else	    donestr(Pixel, BlackPixelOfScreen(screen), XtRPixel);
+	if (pd->rv) done_string(Pixel, WhitePixelOfScreen(screen), XtRPixel)
+        else	    done_string(Pixel, BlackPixelOfScreen(screen), XtRPixel);
     }
 
     status = XAllocNamedColor(DisplayOfScreen(screen), colormap,
@@ -516,7 +522,7 @@ Boolean XtCvtStringToPixel(
 	return False;
     } else {
 	*closure_ret = (char*)True;
-        donestr(Pixel, screenColor.pixel, XtRPixel);
+        done_string(Pixel, screenColor.pixel, XtRPixel);
     }
 }
 
@@ -684,7 +690,7 @@ Boolean XtCvtStringToCursor(
 	if (strcmp(name, nP->name) == 0) {
 	    Display *display = *(Display**)args[0].addr;
 	    Cursor cursor = XCreateFontCursor(display, nP->shape );
-	    donestr(Cursor, cursor, XtRCursor);
+	    done_string(Cursor, cursor, XtRCursor);
 	}
     }
     XtDisplayStringConversionWarning(dpy, name, XtRCursor);
@@ -732,7 +738,7 @@ Boolean XtCvtStringToDisplay(
 
     d = XOpenDisplay((char *)fromVal->addr);
     if (d != NULL)
-	donestr(Display*, d, XtRDisplay);
+	done_string(Display*, d, XtRDisplay);
 
     XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRDisplay);
     return False;
@@ -758,7 +764,7 @@ Boolean XtCvtStringToFile(
 
     f = fopen((char *)fromVal->addr, "r");
     if (f != NULL)
-	donestr(FILE*, f, XtRFile);
+	done_string(FILE*, f, XtRFile);
 
     XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRFile);
     return False;
@@ -826,7 +832,7 @@ Boolean XtCvtStringToFloat(
 	XtDisplayStringConversionWarning (dpy, (char*) fromVal->addr, XtRFloat);
 	return False;
     }
-    donestr(float, f, XtRFloat);
+    done_string(float, f, XtRFloat);
 }
 
 /*ARGSUSED*/
@@ -854,7 +860,7 @@ Boolean XtCvtStringToFont(
     if (CompareISOLatin1((String)fromVal->addr, XtDefaultFont) != 0) {
 	f = XLoadFont(display, (char *)fromVal->addr);
 	if (f != 0) {
-  Done:	    donestr( Font, f, XtRFont );
+  Done:	    done_string( Font, f, XtRFont );
 	}
 	XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRFont);
     }
@@ -976,7 +982,7 @@ Boolean XtCvtStringToFontSet(
             XFreeStringList(missing_charset_list);
       }
       if (f != NULL) {
-  Done:           donestr( XFontSet, f, XtRFontSet );
+  Done:           done_string( XFontSet, f, XtRFontSet );
       }
       XtDisplayStringConversionWarning(dpy, (char *)fromVal->addr, XtRFontSet);
     }
@@ -1110,7 +1116,7 @@ XtCvtStringToFontStruct(
     if (CompareISOLatin1((String)fromVal->addr, XtDefaultFont) != 0) {
 	f = XLoadQueryFont(display, (char *)fromVal->addr);
 	if (f != NULL) {
-  Done:	    donestr( XFontStruct*, f, XtRFontStruct);
+  Done:	    done_string( XFontStruct*, f, XtRFontStruct);
 	}
 
 	XtDisplayStringConversionWarning(dpy, (char*)fromVal->addr,
@@ -1198,7 +1204,7 @@ Boolean XtCvtStringToInt(
                   "String to Integer conversion needs no extra arguments",
                   NULL, NULL);
     if (IsInteger((String)fromVal->addr, &i))
-	donestr(int, i, XtRInt);
+	done_string(int, i, XtRInt);
 
     XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRInt);
     return False;
@@ -1221,7 +1227,7 @@ Boolean XtCvtStringToShort(
           "String to Integer conversion needs no extra arguments",
            NULL, NULL);
     if (IsInteger((String)fromVal->addr, &i))
-        donestr(short, (short)i, XtRShort);
+        done_string(short, (short)i, XtRShort);
 
     XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRShort);
     return False;
@@ -1247,7 +1253,7 @@ Boolean XtCvtStringToDimension(
         if ( i < 0 )
             XtDisplayStringConversionWarning(dpy, (char*)fromVal->addr,
 					     XtRDimension);
-        donestr(Dimension, (Dimension)i, XtRDimension);
+        done_string(Dimension, (Dimension)i, XtRDimension);
     }
     XtDisplayStringConversionWarning(dpy, (char *) fromVal->addr, XtRDimension);
     return False;
@@ -1291,7 +1297,7 @@ Boolean XtCvtStringToUnsignedChar(
         if ( i < 0 || i > 255 )
             XtDisplayStringConversionWarning(dpy, (char*)fromVal->addr,
 					     XtRUnsignedChar);
-        donestr(unsigned char, i, XtRUnsignedChar);
+        done_string(unsigned char, i, XtRUnsignedChar);
     }
     XtDisplayStringConversionWarning(dpy, (char*)fromVal->addr,
 				     XtRUnsignedChar);
@@ -1433,11 +1439,11 @@ XtCvtStringToInitialState(
                   "String to InitialState conversion needs no extra arguments",
                    NULL, NULL);
 
-    if (CompareISOLatin1(str, "NormalState") == 0) donestr(int, NormalState, XtRInitialState);
-    if (CompareISOLatin1(str, "IconicState") == 0) donestr(int, IconicState, XtRInitialState);
+    if (CompareISOLatin1(str, "NormalState") == 0) done_string(int, NormalState, XtRInitialState);
+    if (CompareISOLatin1(str, "IconicState") == 0) done_string(int, IconicState, XtRInitialState);
     {
 	int val;
-	if (IsInteger(str, &val)) donestr( int, val, XtRInitialState );
+	if (IsInteger(str, &val)) done_string( int, val, XtRInitialState );
     }
     XtDisplayStringConversionWarning(dpy, str, XtRInitialState);
     return False;
@@ -1486,7 +1492,7 @@ Boolean XtCvtStringToVisual(
 		     (int)*(int*)args[1].addr,
 		     vc,
 		     &vinfo) ) {
-	donestr( Visual*, vinfo.visual, XtRVisual );
+	done_string( Visual*, vinfo.visual, XtRVisual );
     }
     else {
 	String params[2];
@@ -1522,7 +1528,7 @@ Boolean XtCvtStringToAtom(
     }
 
     atom =  XInternAtom( *(Display**)args->addr, (char*)fromVal->addr, False );
-    donestr(Atom, atom, XtRAtom);
+    done_string(Atom, atom, XtRAtom);
 }
 
 /*ARGSUSED*/
@@ -1567,7 +1573,7 @@ Boolean XtCvtStringToDirectoryString(
      * The memory is freed when all cache references are released.
      */
     str = XtNewString(str);
-    donestr(String, str, XtRDirectoryString);
+    done_string(String, str, XtRDirectoryString);
 }
 
 /*ARGSUSED*/
@@ -1604,13 +1610,13 @@ Boolean XtCvtStringToRestartStyle(
               NULL, NULL);
 
     if (CompareISOLatin1(str, "RestartIfRunning") == 0)
-	donestr(unsigned char, SmRestartIfRunning, XtRRestartStyle);
+	done_string(unsigned char, SmRestartIfRunning, XtRRestartStyle);
     if (CompareISOLatin1(str, "RestartAnyway") == 0)
-	donestr(unsigned char, SmRestartAnyway, XtRRestartStyle);
+	done_string(unsigned char, SmRestartAnyway, XtRRestartStyle);
     if (CompareISOLatin1(str, "RestartImmediately") == 0)
-	donestr(unsigned char, SmRestartImmediately, XtRRestartStyle);
+	done_string(unsigned char, SmRestartImmediately, XtRRestartStyle);
     if (CompareISOLatin1(str, "RestartNever") == 0)
-	donestr(unsigned char, SmRestartNever, XtRRestartStyle);
+	done_string(unsigned char, SmRestartNever, XtRRestartStyle);
     XtDisplayStringConversionWarning(dpy, str, XtRRestartStyle);
     return False;
 }
@@ -1692,7 +1698,7 @@ Boolean XtCvtStringToCommandArgArray(
     *ptr = NULL;
 
     *closure_ret = (XtPointer) strarray;
-    donestr(char**, strarray, XtRCommandArgArray)
+    done_typed_string(String*, strarray, XtRCommandArgArray)
 }
 
 /*ARGSUSED*/
@@ -1773,7 +1779,7 @@ Boolean XtCvtStringToGravity (
 	CopyISOLatin1Lowered (lowerName, s);
 	q = XrmStringToQuark (lowerName);
 	for (np = names; np->name; np++)
-	    if (np->quark == q) donestr(int, np->gravity, XtRGravity);
+	    if (np->quark == q) done_string(int, np->gravity, XtRGravity);
     }
     XtDisplayStringConversionWarning(dpy, (char *)fromVal->addr, XtRGravity);
     return False;
