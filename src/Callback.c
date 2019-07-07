@@ -194,7 +194,7 @@ void XtAddCallback(
 
 /* ARGSUSED */
 static void AddCallbacks(
-    Widget		    widget,
+    Widget		    widget _X_UNUSED,
     InternalCallbackList   *callbacks,
     XtCallbackList	    newcallbacks)
 {
@@ -640,7 +640,7 @@ void XtCallCallbackList(
 } /* XtCallCallbackList */
 
 void _XtPeekCallback(
-    Widget widget,
+    Widget widget _X_UNUSED,
     XtCallbackList callbacks,
     XtCallbackProc *callback,
     XtPointer *closure)

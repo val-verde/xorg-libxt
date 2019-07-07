@@ -729,9 +729,9 @@ _XtString _XtPrintXlations(
 /*ARGSUSED*/
 void _XtDisplayTranslations(
     Widget widget,
-    XEvent *event,
-    String *params,
-    Cardinal *num_params)
+    XEvent *event _X_UNUSED,
+    String *params _X_UNUSED,
+    Cardinal *num_params _X_UNUSED)
 {
     _XtString 	xString;
 
@@ -748,9 +748,9 @@ void _XtDisplayTranslations(
 /*ARGSUSED*/
 void _XtDisplayAccelerators(
     Widget widget,
-    XEvent *event,
-    String *params,
-    Cardinal *num_params)
+    XEvent *event _X_UNUSED,
+    String *params _X_UNUSED,
+    Cardinal *num_params _X_UNUSED)
 {
     _XtString 	xString;
 
@@ -769,8 +769,8 @@ void _XtDisplayAccelerators(
 void _XtDisplayInstalledAccelerators(
     Widget widget,
     XEvent *event,
-    String *params,
-    Cardinal *num_params)
+    String *params _X_UNUSED,
+    Cardinal *num_params _X_UNUSED)
 {
     Widget eventWidget
 	= XtWindowToWidget(event->xany.display, event->xany.window);

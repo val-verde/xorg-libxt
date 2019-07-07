@@ -54,7 +54,7 @@ SOFTWARE.
 void XtCallbackNone(
     Widget  widget,
     XtPointer closure,
-    XtPointer call_data)
+    XtPointer call_data _X_UNUSED)
 {
     XtSetSensitive(widget, FALSE);
     _XtPopup((Widget) closure, XtGrabNone, FALSE);
@@ -64,7 +64,7 @@ void XtCallbackNone(
 void XtCallbackNonexclusive(
     Widget  widget,
     XtPointer closure,
-    XtPointer call_data)
+    XtPointer call_data _X_UNUSED)
 {
 
     XtSetSensitive(widget, FALSE);
@@ -75,7 +75,7 @@ void XtCallbackNonexclusive(
 void XtCallbackExclusive(
     Widget  widget,
     XtPointer closure,
-    XtPointer call_data)
+    XtPointer call_data _X_UNUSED)
 {
     XtSetSensitive(widget, FALSE);
     _XtPopup((Widget) closure, XtGrabExclusive, FALSE);

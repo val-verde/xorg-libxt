@@ -516,7 +516,7 @@ static void DestroyPassiveList(
 void _XtDestroyServerGrabs(
     Widget		w,
     XtPointer		closure,
-    XtPointer		call_data) /* unused */
+    XtPointer		call_data _X_UNUSED)
 {
     XtPerWidgetInput	pwi = (XtPerWidgetInput)closure;
     XtPerDisplayInput	pdi;
@@ -596,10 +596,10 @@ XtServerGrabPtr _XtCheckServerGrabsOnWidget (
 
 /*ARGSUSED*/
 static void  ActiveHandler (
-    Widget 		widget,
-    XtPointer		pdi,
-    XEvent 		*event,
-    Boolean		*cont)
+    Widget 		widget _X_UNUSED,
+    XtPointer		pdi _X_UNUSED,
+    XEvent 		*event _X_UNUSED,
+    Boolean		*cont _X_UNUSED)
 {
     /* nothing */
 }
@@ -686,8 +686,8 @@ static void MakeGrabs(
 static void  RealizeHandler (
     Widget 		widget,
     XtPointer		closure,
-    XEvent 		*event,	/* unused */
-    Boolean		*cont)	/* unused */
+    XEvent 		*event _X_UNUSED,
+    Boolean		*cont _X_UNUSED)
 {
     XtPerWidgetInput	pwi = (XtPerWidgetInput)closure;
     XtPerDisplayInput	pdi;

@@ -365,7 +365,7 @@ static int IoWait (
 static void FindInputs (
     XtAppContext app,
     wait_fds_ptr_t wf,
-    int nfds,
+    int nfds _X_UNUSED,
     Boolean ignoreEvents,
     Boolean ignoreInputs,
     int* dpy_no,

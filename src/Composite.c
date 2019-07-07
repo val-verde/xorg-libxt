@@ -276,10 +276,10 @@ static void CompositeDeleteChild(
 
 /* ARGSUSED */
 static void CompositeInitialize(
-    Widget   requested_widget,
+    Widget   requested_widget _X_UNUSED,
     Widget   new_widget,
-    ArgList args,
-    Cardinal *num_args)
+    ArgList args _X_UNUSED,
+    Cardinal *num_args _X_UNUSED)
 {
     register CompositeWidget cw;
 

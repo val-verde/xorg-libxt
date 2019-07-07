@@ -738,7 +738,7 @@ XtAppCreateShell(
 /* ARGSUSED */
 Widget
 XtCreateApplicationShell(
-    _Xconst char* name,		/* unused in R3 and later */
+    _Xconst char* name _X_UNUSED,
     WidgetClass widget_class,
     ArgList     args,
     Cardinal    num_args

@@ -82,9 +82,9 @@ in this Software without prior written authorization from The Open Group.
 
 /*ARGSUSED*/
 static void FreeActionHookList(
-    Widget widget,		/* unused (and invalid) */
+    Widget widget _X_UNUSED,
     XtPointer closure,		/* ActionHook* */
-    XtPointer call_data)	/* unused */
+    XtPointer call_data _X_UNUSED)
 {
     ActionHook list = *(ActionHook*)closure;
     while (list != NULL) {

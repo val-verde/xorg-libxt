@@ -33,9 +33,9 @@ in this Software without prior written authorization from The Open Group.
 #include "CreateI.h"
 
 static void FreeBlockHookList(
-    Widget widget,		/* unused (and invalid) */
+    Widget widget _X_UNUSED,
     XtPointer closure,		/* ActionHook* */
-    XtPointer call_data)	/* unused */
+    XtPointer call_data _X_UNUSED)
 {
     BlockHook list = *(BlockHook*)closure;
     while (list != NULL) {
@@ -93,7 +93,7 @@ void XtRemoveBlockHook(
 static void DeleteShellFromHookObj(
     Widget shell,
     XtPointer closure,
-    XtPointer call_data)
+    XtPointer call_data _X_UNUSED)
 {
     /* app_con is locked when this function is called */
     Cardinal ii, jj;

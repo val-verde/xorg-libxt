@@ -253,10 +253,10 @@ static void ObjectClassPartInitialize(
 /*ARGSUSED*/
 static Boolean ObjectSetValues(
     Widget	old,
-    Widget	request,
+    Widget	request _X_UNUSED,
     Widget	widget,
-    ArgList	args,
-    Cardinal *	num_args)
+    ArgList	args _X_UNUSED,
+    Cardinal *	num_args _X_UNUSED)
 {
     CallbackTable offsets;
     int i;

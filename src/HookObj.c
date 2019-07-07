@@ -106,8 +106,8 @@ externaldef(hookObjectClass) WidgetClass hookObjectClass =
 
 static void FreeShellList(
     Widget w,
-    XtPointer closure,
-    XtPointer call_data)
+    XtPointer closure _X_UNUSED,
+    XtPointer call_data _X_UNUSED)
 {
     HookObject h = (HookObject)w;
     if (h->hooks.shells != NULL)
@@ -115,10 +115,10 @@ static void FreeShellList(
 }
 
 static void Initialize(
-    Widget req,
+    Widget req _X_UNUSED,
     Widget new,
-    ArgList args,
-    Cardinal* num_args)
+    ArgList args _X_UNUSED,
+    Cardinal* num_args _X_UNUSED)
 {
     HookObject w = (HookObject) new;
     w->hooks.max_shells = 0;
@@ -126,9 +126,9 @@ static void Initialize(
 }
 
 static void GetValuesHook(
-    Widget widget,
-    ArgList args,
-    Cardinal* num_args)
+    Widget widget _X_UNUSED,
+    ArgList args _X_UNUSED,
+    Cardinal* num_args _X_UNUSED)
 {
     /* get the XtNshells and XtNnumShells pseudo-resources */
 }

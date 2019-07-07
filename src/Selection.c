@@ -156,9 +156,9 @@ static int StorageSize[3] = {1, sizeof(short), sizeof(long)};
 
 /*ARGSUSED*/
 static void FreePropList(
- Widget w,			/* unused */
+ Widget w _X_UNUSED,
  XtPointer closure,
- XtPointer callData)		/* unused */
+ XtPointer callData _X_UNUSED)
 {
     PropList sarray = (PropList)closure;
     LOCK_PROCESS;
@@ -364,7 +364,7 @@ static Select FindCtx(
 /*ARGSUSED*/
 static void WidgetDestroyed(
     Widget widget,
-    XtPointer closure, XtPointer data)
+    XtPointer closure, XtPointer data _X_UNUSED)
 {
     Select ctx = (Select) closure;
     if (ctx->widget == widget) {
@@ -544,7 +544,7 @@ static void RemoveHandler(
 /* ARGSUSED */
 static void OwnerTimedOut(
     XtPointer closure,
-    XtIntervalId   *id)
+    XtIntervalId   *id _X_UNUSED)
 {
     Request req = (Request)closure;
     Select ctx = req->ctx;
@@ -609,10 +609,10 @@ static void AllSent(
 
 /*ARGSUSED*/
 static void HandlePropertyGone(
-    Widget widget,
+    Widget widget _X_UNUSED,
     XtPointer closure,
     XEvent *ev,
-    Boolean *cont)
+    Boolean *cont _X_UNUSED)
 {
     XPropertyEvent *event = (XPropertyEvent *) ev;
     Request req = (Request)closure;
@@ -675,7 +675,7 @@ static void PrepareIncremental(
     Request req,
     Widget widget,
     Window window,
-    Atom property,
+    Atom property _X_UNUSED,
     Atom target,
     Atom targetType,
     XtPointer value,
@@ -799,7 +799,7 @@ static void HandleSelectionEvents(
     Widget widget,
     XtPointer closure,
     XEvent *event,
-    Boolean *cont)
+    Boolean *cont _X_UNUSED)
 {
     Select ctx;
     XSelectionEvent ev;
@@ -1071,7 +1071,7 @@ static void ReqCleanup(
     Widget widget,
     XtPointer closure,
     XEvent *ev,
-    Boolean *cont)
+    Boolean *cont _X_UNUSED)
 {
     CallBackInfo info = (CallBackInfo)closure;
     unsigned long bytesafter, length;
@@ -1118,7 +1118,7 @@ static void ReqCleanup(
 /* ARGSUSED */
 static void ReqTimedOut(
     XtPointer closure,
-    XtIntervalId   *id)
+    XtIntervalId   *id _X_UNUSED)
 {
     XtPointer value = NULL;
     unsigned long length = 0;
@@ -1171,7 +1171,7 @@ static void HandleGetIncrement(
     Widget widget,
     XtPointer closure,
     XEvent *ev,
-    Boolean *cont)
+    Boolean *cont _X_UNUSED)
 {
     XPropertyEvent *event = (XPropertyEvent *) ev;
     CallBackInfo info = (CallBackInfo) closure;
@@ -1376,7 +1376,7 @@ static void HandleSelectionReplies(
     Widget widget,
     XtPointer closure,
     XEvent *ev,
-    Boolean *cont)
+    Boolean *cont _X_UNUSED)
 {
     XSelectionEvent *event = (XSelectionEvent *) ev;
     Display *dpy = event->display;

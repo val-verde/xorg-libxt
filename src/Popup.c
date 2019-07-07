@@ -182,9 +182,9 @@ void XtPopdown(
 
 /* ARGSUSED */
 void XtCallbackPopdown(
-    Widget  widget,
+    Widget  widget _X_UNUSED,
     XtPointer closure,
-    XtPointer call_data)
+    XtPointer call_data _X_UNUSED)
 {
     register XtPopdownID id = (XtPopdownID) closure;
 

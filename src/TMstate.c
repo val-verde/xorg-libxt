@@ -215,8 +215,8 @@ TMShortCard _XtGetQuarkIndex(
 /*ARGSUSED*/
 static TMShortCard GetComplexBranchIndex(
     TMParseStateTree	parseTree,
-    TMShortCard		typeIndex,
-    TMShortCard		modIndex)
+    TMShortCard		typeIndex _X_UNUSED,
+    TMShortCard		modIndex _X_UNUSED)
 {
 #define TM_COMPLEXBRANCH_HEAD_TBL_ALLOC 8
 #define TM_COMPLEXBRANCH_HEAD_TBL_REALLOC 4
@@ -458,7 +458,7 @@ Boolean _XtRegularMatch(
 /*ARGSUSED*/
 Boolean _XtMatchAtom(
     TMTypeMatch 	typeMatch,
-    TMModifierMatch	modMatch,
+    TMModifierMatch	modMatch _X_UNUSED,
     TMEventPtr 		eventSeq)
 {
     Atom	atom;
@@ -1104,7 +1104,7 @@ void _XtTranslateEvent (
 
 /*ARGSUSED*/
 static StatePtr NewState(
-    TMParseStateTree stateTree,
+    TMParseStateTree stateTree _X_UNUSED,
     TMShortCard	typeIndex,
     TMShortCard	modIndex)
 {
@@ -1218,7 +1218,7 @@ static EventMask EventToMask(
 
 /*ARGSUSED*/
 static void DispatchMappingNotify(
-    Widget widget,		/* will be NULL from _RefreshMapping */
+    Widget widget _X_UNUSED,		/* will be NULL from _RefreshMapping */
     XtPointer closure,		/* real Widget */
     XtPointer call_data)	/* XEvent* */
 {
@@ -1230,7 +1230,7 @@ static void DispatchMappingNotify(
 static void RemoveFromMappingCallbacks(
     Widget widget,
     XtPointer closure,		/* target widget */
-    XtPointer call_data)
+    XtPointer call_data _X_UNUSED)
 {
     _XtRemoveCallback( &_XtGetPerDisplay(XtDisplay(widget))->mapping_callbacks,
 		       DispatchMappingNotify,
@@ -1640,12 +1640,12 @@ void _XtAddEventSeqToStateTree(
 
 /*ARGSUSED*/
 Boolean _XtCvtMergeTranslations(
-    Display	*dpy,
-    XrmValuePtr args,
+    Display	*dpy _X_UNUSED,
+    XrmValuePtr args _X_UNUSED,
     Cardinal    *num_args,
     XrmValuePtr from,
     XrmValuePtr to,
-    XtPointer	*closure_ret)
+    XtPointer	*closure_ret _X_UNUSED)
 {
     XtTranslations 	first, second, xlations;
     TMStateTree		*stateTrees, stackStateTrees[16];
@@ -2125,7 +2125,7 @@ XtTranslations _XtGetTranslationValue(
 
 /*ARGSUSED*/
 static void RemoveStateTree(
-    TMStateTree	tree)
+    TMStateTree	tree _X_UNUSED)
 {
 #ifdef REFCNT_TRANSLATIONS
     TMComplexStateTree stateTree = (TMComplexStateTree)tree;
@@ -2178,8 +2178,8 @@ void _XtRemoveStateTreeByIndex(
 void _XtFreeTranslations(
     XtAppContext app,
     XrmValuePtr	toVal,
-    XtPointer	closure,
-    XrmValuePtr	args,
+    XtPointer	closure _X_UNUSED,
+    XrmValuePtr	args _X_UNUSED,
     Cardinal	*num_args)
 {
     XtTranslations 	xlations;

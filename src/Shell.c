@@ -919,7 +919,7 @@ static void _popup_set_prop(ShellWidget);
 /*ARGSUSED*/
 static void XtCopyDefaultDepth(
     Widget      widget,
-    int		offset,
+    int		offset _X_UNUSED,
     XrmValue    *value)
 {
     value->addr = (XPointer)(&DefaultDepthOfScreen(XtScreenOfObject(widget)));
@@ -938,7 +938,7 @@ void _XtShellDepth(
 /*ARGSUSED*/
 static void XtCopyDefaultColormap(
     Widget      widget,
-    int		offset,
+    int		offset _X_UNUSED,
     XrmValue    *value)
 {
     value->addr = (XPointer)(&DefaultColormapOfScreen(XtScreenOfObject(widget)));
@@ -970,7 +970,7 @@ void _XtShellAncestorSensitive(
 static
 void _XtTitleEncoding(
     Widget widget,
-    int offset,
+    int offset _X_UNUSED,
     XrmValue *value)
 {
     static Atom atom;
@@ -982,10 +982,10 @@ void _XtTitleEncoding(
 
 /* ARGSUSED */
 static void Initialize(
-	Widget req,
+	Widget req _X_UNUSED,
 	Widget new,
-	ArgList args,		/* unused */
-	Cardinal *num_args)	/* unused */
+	ArgList args _X_UNUSED,
+	Cardinal *num_args _X_UNUSED)
 {
 	ShellWidget w = (ShellWidget) new;
 
@@ -1012,9 +1012,9 @@ static void Initialize(
 
 /* ARGSUSED */
 static void WMInitialize(
-	Widget req, Widget new,
-	ArgList args,		/* unused */
-	Cardinal *num_args)	/* unused */
+	Widget req _X_UNUSED, Widget new,
+	ArgList args _X_UNUSED,
+	Cardinal *num_args _X_UNUSED)
 {
 	WMShellWidget w = (WMShellWidget) new;
 	TopLevelShellWidget tls = (TopLevelShellWidget) new;	/* maybe */
@@ -1039,9 +1039,9 @@ static void WMInitialize(
 
 /* ARGSUSED */
 static void TopLevelInitialize(
-	Widget req, Widget new,
-	ArgList args,		/* unused */
-	Cardinal *num_args)	/* unused */
+	Widget req _X_UNUSED, Widget new,
+	ArgList args _X_UNUSED,
+	Cardinal *num_args _X_UNUSED)
 {
 	TopLevelShellWidget w = (TopLevelShellWidget) new;
 
@@ -1061,9 +1061,10 @@ static void FreeStringArray(_XtString *);
 
 /* ARGSUSED */
 static void ApplicationInitialize(
-    Widget req, Widget new,
-    ArgList args,		/* unused */
-    Cardinal *num_args)		/* unused */
+    Widget req _X_UNUSED,
+    Widget new,
+    ArgList args _X_UNUSED,
+    Cardinal *num_args _X_UNUSED)
 {
     ApplicationShellWidget w = (ApplicationShellWidget)new;
 
@@ -1109,9 +1110,10 @@ typedef struct _XtSaveYourselfRec {
 
 /* ARGSUSED */
 static void SessionInitialize(
-    Widget req, Widget new,
-    ArgList args,		/* unused */
-    Cardinal *num_args)		/* unused */
+    Widget req _X_UNUSED,
+    Widget new,
+    ArgList args _X_UNUSED,
+    Cardinal *num_args _X_UNUSED)
 {
 #ifndef XT_NO_SM
     SessionShellWidget w = (SessionShellWidget)new;
@@ -1543,9 +1545,9 @@ static void _popup_set_prop(
 /* ARGSUSED */
 static void EventHandler(
 	Widget wid,
-	XtPointer closure,	/* unused */
+	XtPointer closure _X_UNUSED,
 	XEvent *event,
-        Boolean *continue_to_dispatch) /* unused */
+        Boolean *continue_to_dispatch _X_UNUSED)
 {
 	register ShellWidget w = (ShellWidget) wid;
 	WMShellWidget wmshell = (WMShellWidget) w;
@@ -1846,7 +1848,7 @@ static void ChangeManaged(Widget wid)
 static XtGeometryResult GeometryManager(
 	Widget wid,
 	XtWidgetGeometry *request,
-	XtWidgetGeometry *reply)
+	XtWidgetGeometry *reply _X_UNUSED)
 {
 	ShellWidget shell = (ShellWidget)(wid->core.parent);
 	XtWidgetGeometry my_request;
@@ -1976,7 +1978,7 @@ static Boolean _wait_for_response(
 /*ARGSUSED*/
 static XtGeometryResult RootGeometryManager(
     Widget gw,
-    XtWidgetGeometry *request, XtWidgetGeometry *reply)
+    XtWidgetGeometry *request, XtWidgetGeometry *reply _X_UNUSED)
 {
     register ShellWidget w = (ShellWidget)gw;
     XWindowChanges values;
@@ -2224,7 +2226,7 @@ static XtGeometryResult RootGeometryManager(
 
 /* ARGSUSED */
 static Boolean SetValues(
-	Widget old, Widget ref, Widget new,
+	Widget old, Widget ref _X_UNUSED, Widget new,
 	ArgList args,
 	Cardinal *num_args)
 {
@@ -2270,9 +2272,11 @@ static Boolean SetValues(
 
 /* ARGSUSED */
 static Boolean WMSetValues(
-	Widget old, Widget ref, Widget new,
-	ArgList args,		/* unused */
-	Cardinal *num_args)	/* unused */
+	Widget old,
+	Widget ref _X_UNUSED,
+	Widget new,
+	ArgList args _X_UNUSED,
+	Cardinal *num_args _X_UNUSED)
 {
 	WMShellWidget nwmshell = (WMShellWidget) new;
 	WMShellWidget owmshell = (WMShellWidget) old;
@@ -2391,9 +2395,11 @@ static Boolean WMSetValues(
 
 /*ARGSUSED*/
 static Boolean TransientSetValues(
-     Widget oldW, Widget refW, Widget newW,
-     ArgList args,		/* unused */
-     Cardinal *num_args)	/* unused */
+     Widget oldW,
+     Widget refW _X_UNUSED,
+     Widget newW,
+     ArgList args _X_UNUSED,
+     Cardinal *num_args _X_UNUSED)
 {
     TransientShellWidget old = (TransientShellWidget)oldW;
     TransientShellWidget new = (TransientShellWidget)newW;
@@ -2413,9 +2419,11 @@ static Boolean TransientSetValues(
 
 /* ARGSUSED */
 static Boolean TopLevelSetValues(
-     Widget oldW, Widget refW, Widget newW,
-     ArgList args,		/* unused */
-     Cardinal *num_args)	/* unused */
+     Widget oldW,
+     Widget refW _X_UNUSED,
+     Widget newW,
+     ArgList args _X_UNUSED,
+     Cardinal *num_args _X_UNUSED)
 {
     TopLevelShellWidget old = (TopLevelShellWidget)oldW;
     TopLevelShellWidget new = (TopLevelShellWidget)newW;
@@ -2511,9 +2519,9 @@ static _XtString * NewArgv(
 
 /*ARGSUSED*/
 static Boolean ApplicationSetValues(
-    Widget current, Widget request, Widget new,
-    ArgList args,
-    Cardinal *num_args)
+    Widget current, Widget request _X_UNUSED, Widget new,
+    ArgList args _X_UNUSED,
+    Cardinal *num_args _X_UNUSED)
 {
     ApplicationShellWidget nw = (ApplicationShellWidget) new;
     ApplicationShellWidget cw = (ApplicationShellWidget) current;
@@ -2540,9 +2548,9 @@ static Boolean ApplicationSetValues(
 
 /*ARGSUSED*/
 static Boolean SessionSetValues(
-    Widget current, Widget request, Widget new,
-    ArgList args,
-    Cardinal *num_args)
+    Widget current, Widget request _X_UNUSED, Widget new,
+    ArgList args _X_UNUSED,
+    Cardinal *num_args _X_UNUSED)
 {
 #ifndef XT_NO_SM
     SessionShellWidget nw = (SessionShellWidget) new;
@@ -3042,8 +3050,8 @@ static void SetSessionProperties(
 /*ARGSUSED*/
 static void GetIceEvent(
     XtPointer	client_data,
-    int *	source,
-    XtInputId *	id)
+    int *	source _X_UNUSED,
+    XtInputId *	id _X_UNUSED)
 {
     SessionShellWidget w = (SessionShellWidget) client_data;
     IceProcessMessagesStatus status;
@@ -3088,7 +3096,7 @@ static void CallSaveCallbacks(
 
 /*ARGSUSED*/
 static void XtCallSaveCallbacks(
-    SmcConn	connection,	/* unused */
+    SmcConn	connection _X_UNUSED,
     SmPointer	client_data,
     int		save_type,
     Bool	shutdown,
@@ -3147,7 +3155,7 @@ static void XtInteractPermission(
 
 /*ARGSUSED*/
 static void XtCallSaveCompleteCallbacks(
-    SmcConn	connection,
+    SmcConn	connection _X_UNUSED,
     SmPointer	client_data)
 {
     SessionShellWidget w =  (SessionShellWidget) client_data;
@@ -3158,7 +3166,7 @@ static void XtCallSaveCompleteCallbacks(
 
 /*ARGSUSED*/
 static void XtCallNextPhaseCallbacks(
-    SmcConn	connection,	/* unused */
+    SmcConn	connection _X_UNUSED,
     SmPointer	client_data)
 {
     SessionShellWidget w =  (SessionShellWidget) client_data;
@@ -3168,7 +3176,7 @@ static void XtCallNextPhaseCallbacks(
 
 /*ARGSUSED*/
 static void XtCallDieCallbacks(
-    SmcConn	connection,	/* unused */
+    SmcConn	connection _X_UNUSED,
     SmPointer	client_data)
 {
     SessionShellWidget w =  (SessionShellWidget) client_data;
@@ -3180,7 +3188,7 @@ static void XtCallDieCallbacks(
 
 /*ARGSUSED*/
 static void XtCallCancelCallbacks(
-    SmcConn	connection,	/* unused */
+    SmcConn	connection _X_UNUSED,
     SmPointer	client_data)
 {
     SessionShellWidget w = (SessionShellWidget) client_data;

@@ -542,7 +542,7 @@ static void RemoveFromBindCache(
 /* ARGSUSED */
 static void RemoveAccelerators(
     Widget widget,
-    XtPointer closure, XtPointer data)
+    XtPointer closure, XtPointer data _X_UNUSED)
 {
     Widget 		destination = (Widget)closure;
     TMComplexBindProcs	bindProcs;
@@ -892,7 +892,7 @@ void XtMenuPopupAction(
 /*ARGSUSED*/
 static void _XtMenuPopdownAction(
     Widget widget,
-    XEvent *event,
+    XEvent *event _X_UNUSED,
     String *params,
     Cardinal *num_params)
 {

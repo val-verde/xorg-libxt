@@ -127,7 +127,7 @@ WidgetClass rectObjClass = (WidgetClass)&rectObjClassRec;
 /*ARGSUSED*/
 static void XtCopyAncestorSensitive(
     Widget      widget,
-    int		offset,
+    int		offset _X_UNUSED,
     XrmValue    *value)
 {
     static Boolean  sensitive;
@@ -181,8 +181,8 @@ static void RectClassPartInitialize(
 
 /*ARGSUSED*/
 static void RectSetValuesAlmost(
-    Widget		old,
-    Widget		new,
+    Widget		old _X_UNUSED,
+    Widget		new _X_UNUSED,
     XtWidgetGeometry    *request,
     XtWidgetGeometry    *reply)
 {

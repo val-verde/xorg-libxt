@@ -866,8 +866,8 @@ static KeySym StringToKeySym(
 /* ARGSUSED */
 static void ParseModImmed(
     Value value,
-    LateBindingsPtr* lateBindings,
-    Boolean notFlag,
+    LateBindingsPtr* lateBindings _X_UNUSED,
+    Boolean notFlag _X_UNUSED,
     Value* valueP)
 {
     *valueP = value;
@@ -905,7 +905,7 @@ static String ParseImmed(
     register String str,
     register Opaque closure,
     register EventPtr event,
-    Boolean* error)
+    Boolean* error _X_UNUSED)
 {
     event->event.eventCode = (unsigned long)closure;
     event->event.eventCodeMask = (unsigned long) (~0UL);
@@ -918,7 +918,7 @@ static String ParseAddModifier(
     register String str,
     register Opaque closure,
     register EventPtr event,
-    Boolean* error)
+    Boolean* error _X_UNUSED)
 {
     register unsigned long modval = (unsigned long)closure;
     event->event.modifiers |= modval;
@@ -950,7 +950,7 @@ static String ParseKeyAndModifiers(
 /*ARGSUSED*/
 static String ParseKeySym(
     register String str,
-    Opaque closure,
+    Opaque closure _X_UNUSED,
     EventPtr event,
     Boolean* error)
 {
@@ -1052,9 +1052,9 @@ static String ParseTable(
 /*ARGSUSED*/
 static String ParseNone(
     String str,
-    Opaque closure,
+    Opaque closure _X_UNUSED,
     EventPtr event,
-    Boolean* error)
+    Boolean* error _X_UNUSED)
 {
     event->event.eventCode = 0;
     event->event.eventCodeMask = 0;
@@ -1065,7 +1065,7 @@ static String ParseNone(
 /*ARGSUSED*/
 static String ParseAtom(
     String str,
-    Opaque closure,
+    Opaque closure _X_UNUSED,
     EventPtr event,
     Boolean* error)
 {
@@ -1964,11 +1964,11 @@ static XtTranslations ParseTranslationTable(
 /*ARGSUSED*/
 Boolean XtCvtStringToAcceleratorTable(
     Display*	dpy,
-    XrmValuePtr args,
+    XrmValuePtr args _X_UNUSED,
     Cardinal    *num_args,
     XrmValuePtr from,
     XrmValuePtr to,
-    XtPointer	*closure)
+    XtPointer	*closure _X_UNUSED)
 {
     String str;
     Boolean error = FALSE;
@@ -2014,11 +2014,11 @@ Boolean XtCvtStringToAcceleratorTable(
 Boolean
 XtCvtStringToTranslationTable(
     Display	*dpy,
-    XrmValuePtr args,
+    XrmValuePtr args _X_UNUSED,
     Cardinal    *num_args,
     XrmValuePtr from,
     XrmValuePtr to,
-    XtPointer	*closure_ret)
+    XtPointer	*closure_ret _X_UNUSED)
 {
     String str;
     Boolean error = FALSE;

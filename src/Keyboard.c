@@ -502,7 +502,7 @@ void _XtHandleFocus(
     Widget widget,
     XtPointer client_data,	/* child who wants focus */
     XEvent *event,
-    Boolean *cont)		/* unused */
+    Boolean *cont _X_UNUSED)
 {
     XtPerDisplayInput 	pdi = _XtGetPerDisplayInput(XtDisplay(widget));
     XtPerWidgetInput	pwi = (XtPerWidgetInput)client_data;
@@ -716,8 +716,8 @@ static void AddFocusHandler(
 static void QueryEventMask(
     Widget widget,		/* child who gets focus */
     XtPointer client_data,	/* ancestor giving it */
-    XEvent *event,
-    Boolean *cont)		/* unused */
+    XEvent *event _X_UNUSED,
+    Boolean *cont _X_UNUSED)
 {
     /* widget was once the target of an XtSetKeyboardFocus but
      * was unrealized at the time.   Make sure ancestor still wants
@@ -747,9 +747,9 @@ static void QueryEventMask(
 
 /* ARGSUSED */
 static void FocusDestroyCallback(
-    Widget  widget,
+    Widget  widget _X_UNUSED,
     XtPointer closure,		/* Widget */
-    XtPointer call_data)
+    XtPointer call_data _X_UNUSED)
 {
     XtSetKeyboardFocus((Widget)closure, NULL);
 }

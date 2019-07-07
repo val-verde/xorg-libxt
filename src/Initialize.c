@@ -445,7 +445,7 @@ static void CombineUserDefaults(
 
 /*ARGSUSED*/
 static Bool StoreDBEntry(
-    XrmDatabase		*db,
+    XrmDatabase		*db _X_UNUSED,
     XrmBindingList      bindings,
     XrmQuarkList	quarks,
     XrmRepresentation   *type,
@@ -468,9 +468,9 @@ static XrmDatabase CopyDB(XrmDatabase db)
 
 /*ARGSUSED*/
 static String _XtDefaultLanguageProc(
-    Display   *dpy,	/* unused */
+    Display   *dpy _X_UNUSED,
     String     xnl,
-    XtPointer  closure)	/* unused */
+    XtPointer  closure _X_UNUSED)
 {
     if (! setlocale(LC_ALL, xnl))
 	XtWarning("locale not supported by C library, locale unchanged");
@@ -844,7 +844,7 @@ static void GetLanguage(
 static void ProcessInternalConnection (
     XtPointer client_data,
     int* fd,
-    XtInputId* id)
+    XtInputId* id _X_UNUSED)
 {
     XProcessInternalConnection ((Display *) client_data, *fd);
 }
@@ -1047,7 +1047,7 @@ XtAppInitialize(
 /*ARGSUSED*/
 Widget
 XtInitialize(
-    _Xconst _XtString name,
+    _Xconst _XtString name _X_UNUSED,
     _Xconst _XtString classname,
     XrmOptionDescRec *options,
     Cardinal num_options,

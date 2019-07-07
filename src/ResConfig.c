@@ -405,7 +405,7 @@ _search_child (
 /* ARGSUSED */
 static char
 _get_part (
-	char *remainder,
+	char *remainder _X_UNUSED,
 	char **indx,
 	char **part)
 {
@@ -894,7 +894,7 @@ dump_widget_tree (
 void
 _XtResourceConfigurationEH (
 	Widget w,
-	XtPointer client_data,
+	XtPointer client_data _X_UNUSED,
 	XEvent *event)
 {
 	Atom		actual_type;

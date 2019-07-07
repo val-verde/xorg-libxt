@@ -335,7 +335,7 @@ void XtRegisterGrabAction(
 
 /*ARGSUSED*/
 void _XtGrabInitialize(
-    XtAppContext	app)
+    XtAppContext	app _X_UNUSED)
 {
     LOCK_PROCESS;
     if (grabActionList == NULL)

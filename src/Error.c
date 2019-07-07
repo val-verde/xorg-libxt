@@ -111,7 +111,7 @@ XrmDatabase *XtGetErrorDatabase(void)
 }
 
 XrmDatabase *XtAppGetErrorDatabase(
-	XtAppContext app)
+	XtAppContext app _X_UNUSED)
 {
     XrmDatabase* retval;
 #if GLOBALERRORS
@@ -144,7 +144,7 @@ void XtGetErrorDatabaseText(
 }
 
 void XtAppGetErrorDatabaseText(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     register _Xconst char* name,
     register _Xconst char* type,
     register _Xconst char* class,
@@ -352,7 +352,7 @@ void XtErrorMsg(
 }
 
 void XtAppErrorMsg(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     _Xconst char* name,
     _Xconst char* type,
     _Xconst char* class,
@@ -393,7 +393,7 @@ void XtWarningMsg(
 }
 
 void XtAppWarningMsg(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     _Xconst char* name,
     _Xconst char* type,
     _Xconst char* class,
@@ -427,7 +427,7 @@ void XtSetErrorMsgHandler(
 }
 
 XtErrorMsgHandler XtAppSetErrorMsgHandler(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     XtErrorMsgHandler handler _X_NORETURN)
 {
     XtErrorMsgHandler old;
@@ -461,7 +461,7 @@ void XtSetWarningMsgHandler(
 }
 
 XtErrorMsgHandler XtAppSetWarningMsgHandler(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     XtErrorMsgHandler handler)
 {
     XtErrorMsgHandler old;
@@ -508,7 +508,7 @@ void XtError(
 }
 
 void XtAppError(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     _Xconst char* message)
 {
 #if GLOBALERRORS
@@ -535,7 +535,7 @@ void XtWarning(
 }
 
 void XtAppWarning(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     _Xconst char* message)
 {
 #if GLOBALERRORS
@@ -562,7 +562,7 @@ void XtSetErrorHandler(XtErrorHandler handler _X_NORETURN)
 }
 
 XtErrorHandler XtAppSetErrorHandler(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     XtErrorHandler handler _X_NORETURN)
 {
     XtErrorHandler old;
@@ -595,7 +595,7 @@ void XtSetWarningHandler(XtErrorHandler handler)
 }
 
 XtErrorHandler XtAppSetWarningHandler(
-    XtAppContext app,
+    XtAppContext app _X_UNUSED,
     XtErrorHandler handler)
 {
     XtErrorHandler old;
@@ -616,10 +616,10 @@ XtErrorHandler XtAppSetWarningHandler(
 }
 
 void _XtSetDefaultErrorHandlers(
-    XtErrorMsgHandler *errMsg,
-    XtErrorMsgHandler *warnMsg,
-    XtErrorHandler *err,
-    XtErrorHandler *warn)
+    XtErrorMsgHandler *errMsg _X_UNUSED,
+    XtErrorMsgHandler *warnMsg _X_UNUSED,
+    XtErrorHandler *err _X_UNUSED,
+    XtErrorHandler *warn _X_UNUSED)
 {
 #ifndef GLOBALERRORS
     LOCK_PROCESS;

@@ -214,7 +214,7 @@ externaldef (WidgetClass) WidgetClass coreWidgetClass = &widgetClassRec;
 /*ARGSUSED*/
 static void XtCopyScreen(
     Widget      widget,
-    int		offset,
+    int		offset _X_UNUSED,
     XrmValue    *value)
 {
     value->addr = (XPointer)(&widget->core.screen);
@@ -270,10 +270,10 @@ static void CoreClassPartInitialize(
 }
 /* ARGSUSED */
 static void CoreInitialize(
-    Widget   requested_widget,
+    Widget   requested_widget _X_UNUSED,
     register Widget new_widget,
-    ArgList args,
-    Cardinal *num_args)
+    ArgList args _X_UNUSED,
+    Cardinal *num_args _X_UNUSED)
 {
     XtTranslations save1, save2;
     new_widget->core.event_table = NULL;
@@ -316,9 +316,9 @@ static void CoreDestroy (
 
 /* ARGSUSED */
 static Boolean CoreSetValues(
-    Widget old, Widget reference, Widget new,
-    ArgList args,
-    Cardinal *num_args)
+    Widget old, Widget reference _X_UNUSED, Widget new,
+    ArgList args _X_UNUSED,
+    Cardinal *num_args _X_UNUSED)
 {
     Boolean redisplay;
     Mask    window_mask;
@@ -397,8 +397,8 @@ static Boolean CoreSetValues(
 
 /*ARGSUSED*/
 static void CoreSetValuesAlmost(
-    Widget		old,
-    Widget		new,
+    Widget		old _X_UNUSED,
+    Widget		new _X_UNUSED,
     XtWidgetGeometry    *request,
     XtWidgetGeometry    *reply)
 {

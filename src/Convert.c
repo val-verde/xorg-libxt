@@ -1072,9 +1072,9 @@ void XtAppReleaseCacheRefs(
 
 /* ARGSUSED */
 void XtCallbackReleaseCacheRefList(
-    Widget widget,		/* unused */
+    Widget widget,
     XtPointer closure,
-    XtPointer call_data)	/* unused */
+    XtPointer call_data _X_UNUSED)
 {
     XtAppReleaseCacheRefs( XtWidgetToApplicationContext(widget),
 			   (XtCacheRef*)closure );
@@ -1084,9 +1084,9 @@ void XtCallbackReleaseCacheRefList(
 
 /* ARGSUSED */
 void XtCallbackReleaseCacheRef(
-    Widget widget,		/* unused */
+    Widget widget,
     XtPointer closure,
-    XtPointer call_data)	/* unused */
+    XtPointer call_data _X_UNUSED)
 {
     XtCacheRef cache_refs[2];
     cache_refs[0] = (XtCacheRef)closure;

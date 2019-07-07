@@ -1137,7 +1137,7 @@ XtPerDisplay pd)
 /* ARGSUSED */
 static Bool
 CheckExposureEvent(
-Display * disp,
+Display * disp _X_UNUSED,
 XEvent * event,
 char * arg)
 {
@@ -1440,8 +1440,8 @@ Boolean XtDispatchEvent (
 /* ARGSUSED */
 static void GrabDestroyCallback(
     Widget  widget,
-    XtPointer closure,
-    XtPointer call_data)
+    XtPointer closure _X_UNUSED,
+    XtPointer call_data _X_UNUSED)
 {
     /* Remove widget from grab list if it destroyed */
     XtRemoveGrab(widget);
