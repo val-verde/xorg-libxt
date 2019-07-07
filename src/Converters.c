@@ -488,13 +488,13 @@ Boolean XtCvtStringToPixel(
 
     if (CompareISOLatin1(str, XtDefaultBackground) == 0) {
 	*closure_ret = NULL;
-	if (pd->rv) done_string(Pixel, BlackPixelOfScreen(screen), XtRPixel)
-	else	    done_string(Pixel, WhitePixelOfScreen(screen), XtRPixel);
+	if (pd->rv) { done_string(Pixel, BlackPixelOfScreen(screen), XtRPixel); }
+	else	    { done_string(Pixel, WhitePixelOfScreen(screen), XtRPixel); }
     }
     if (CompareISOLatin1(str, XtDefaultForeground) == 0) {
 	*closure_ret = NULL;
-	if (pd->rv) done_string(Pixel, WhitePixelOfScreen(screen), XtRPixel)
-        else	    done_string(Pixel, BlackPixelOfScreen(screen), XtRPixel);
+	if (pd->rv) { done_string(Pixel, WhitePixelOfScreen(screen), XtRPixel); }
+        else	    { done_string(Pixel, BlackPixelOfScreen(screen), XtRPixel); }
     }
 
     status = XAllocNamedColor(DisplayOfScreen(screen), colormap,

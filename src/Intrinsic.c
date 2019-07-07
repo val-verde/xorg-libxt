@@ -1027,9 +1027,9 @@ static Boolean Resolve(
 		break;
 	    }
 
-	    if (*source == ':' || *source == escape)
-		PUT(*source)
-	    else {
+	    if (*source == ':' || *source == escape) {
+		PUT(*source);
+	    } else {
 		/* Match the character against the match array */
 		register Cardinal j;
 
@@ -1037,8 +1037,9 @@ static Boolean Resolve(
 
 		/* Substitute the substitution string */
 
-		if (j >= num) PUT(*source)
-		else if (sub[j].substitution != NULL) {
+		if (j >= num) {
+		    PUT(*source);
+		} else if (sub[j].substitution != NULL) {
 		    char *sp = sub[j].substitution;
 		    while (*sp) {
 			PUT(*sp);
