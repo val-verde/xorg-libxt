@@ -492,7 +492,7 @@ Boolean XtCvtStringToPixel(
     }
 
     status = XAllocNamedColor(DisplayOfScreen(screen), colormap,
-			      (char*)str, &screenColor, &exactColor);
+			      (_Xconst char*)str, &screenColor, &exactColor);
     if (status == 0) {
 	_Xconst _XtString msg;
 	_Xconst _XtString type;
@@ -500,7 +500,7 @@ Boolean XtCvtStringToPixel(
 
 	params[0] = str;
 	/* Server returns a specific error code but Xlib discards it.  Ugh */
-	if (XLookupColor(DisplayOfScreen(screen), colormap, (char*)str,
+	if (XLookupColor(DisplayOfScreen(screen), colormap, (_Xconst char*)str,
 			 &exactColor, &screenColor)) {
 	    type = "noColormap";
 	    msg = "Cannot allocate colormap entry for \"%s\"";
@@ -1784,12 +1784,12 @@ void _XtAddDefaultConverters(
 {
 #define Add(from, to, proc, convert_args, num_args, cache) \
     _XtTableAddConverter(table, from, to, proc, \
-	    (XtConvertArgList) convert_args, (Cardinal)num_args, \
+	    (XtConvertArgRec const*) convert_args, (Cardinal)num_args, \
 	    True, cache, (XtDestructor)NULL, True)
 
 #define Add2(from, to, proc, convert_args, num_args, cache, destructor) \
     _XtTableAddConverter(table, from, to, proc, \
-	    (XtConvertArgList) convert_args, (Cardinal)num_args, \
+	    (XtConvertArgRec const *) convert_args, (Cardinal)num_args, \
 	    True, cache, destructor, True)
 
     Add(XtQColor, XtQPixel,       XtCvtColorToPixel,   NULL, 0, XtCacheNone);

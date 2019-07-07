@@ -144,7 +144,7 @@ Cardinal XtAsprintf(
 	_XtAllocError("vsnprintf");
 
     *new_string = XtMalloc((Cardinal) len + 1); /* snprintf doesn't count trailing '\0' */
-    if (len < sizeof(buf))
+    if ((size_t)len < sizeof(buf))
     {
 	strncpy(*new_string, buf, (size_t) len);
 	(*new_string)[len] = '\0';

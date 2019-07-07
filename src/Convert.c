@@ -188,7 +188,7 @@ void _XtTableAddConverter(
     XrmRepresentation   from_type,
     XrmRepresentation   to_type,
     XtTypeConverter	converter,
-    XtConvertArgList    convert_args,
+    XtConvertArgRec const *convert_args,
     Cardinal		num_args,
     _XtBoolean		new_style,
     XtCacheType		cache_type,
