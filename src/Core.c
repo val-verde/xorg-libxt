@@ -223,7 +223,6 @@ WidgetClass widgetClass = &widgetClassRec;
 externaldef(WidgetClass)
 WidgetClass coreWidgetClass = &widgetClassRec;
 
-/*ARGSUSED*/
 static void
 XtCopyScreen(Widget widget, int offset _X_UNUSED, XrmValue *value)
 {
@@ -282,7 +281,6 @@ CoreClassPartInitialize(register WidgetClass wc)
     UNLOCK_PROCESS;
 }
 
-/* ARGSUSED */
 static void
 CoreInitialize(Widget requested_widget _X_UNUSED,
                register Widget new_widget,
@@ -329,7 +327,6 @@ CoreDestroy(Widget widget)
 
 }                               /* CoreDestroy */
 
-/* ARGSUSED */
 static Boolean
 CoreSetValues(Widget old,
               Widget reference _X_UNUSED,
@@ -414,7 +411,6 @@ CoreSetValues(Widget old,
     return redisplay;
 }                               /* CoreSetValues */
 
-/*ARGSUSED*/
 static void
 CoreSetValuesAlmost(Widget old _X_UNUSED,
                     Widget new _X_UNUSED,

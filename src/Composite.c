@@ -287,7 +287,6 @@ CompositeDeleteChild(Widget w)
     }
 }
 
-/* ARGSUSED */
 static void
 CompositeInitialize(Widget requested_widget _X_UNUSED,
                     Widget new_widget,

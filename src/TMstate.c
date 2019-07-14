@@ -71,7 +71,6 @@ in this Software without prior written authorization from The Open Group.
 /* TMstate.c -- maintains the state table of actions for the translation
  *              manager.
  */
- /*LINTLIBRARY*/
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -215,7 +214,7 @@ _XtGetQuarkIndex(TMParseStateTree parseTree, XrmQuark quark)
  * Get an entry from the parseTrees complex branchHead tbl. If there's none
  * there then allocate one
  */
- /*ARGSUSED*/ static TMShortCard
+static TMShortCard
 GetComplexBranchIndex(TMParseStateTree parseTree,
                       TMShortCard typeIndex _X_UNUSED,
                       TMShortCard modIndex _X_UNUSED)
@@ -469,7 +468,6 @@ _XtRegularMatch(TMTypeMatch typeMatch,
             (eventSeq->event.modifiers & computedMask));
 }
 
-/*ARGSUSED*/
 Boolean
 _XtMatchAtom(TMTypeMatch typeMatch,
              TMModifierMatch modMatch _X_UNUSED,
@@ -1080,7 +1078,7 @@ _XtTranslateEvent(Widget w, XEvent *event)
         HandleComplexState(w, tmRecPtr, &curEvent);
 }
 
- /*ARGSUSED*/ static StatePtr
+static StatePtr
 NewState(TMParseStateTree stateTree _X_UNUSED,
          TMShortCard typeIndex,
          TMShortCard modIndex)
@@ -1186,7 +1184,7 @@ EventToMask(TMTypeMatch typeMatch, TMModifierMatch modMatch)
     return returnMask;
 }
 
- /*ARGSUSED*/ static void
+static void
 DispatchMappingNotify(Widget widget _X_UNUSED,  /* will be NULL from _RefreshMapping */
                       XtPointer closure,        /* real Widget */
                       XtPointer call_data)      /* XEvent* */
@@ -1194,7 +1192,7 @@ DispatchMappingNotify(Widget widget _X_UNUSED,  /* will be NULL from _RefreshMap
     _XtTranslateEvent((Widget) closure, (XEvent *) call_data);
 }
 
- /*ARGSUSED*/ static void
+static void
 RemoveFromMappingCallbacks(Widget widget,
                            XtPointer closure,    /* target widget */
                            XtPointer call_data _X_UNUSED)
@@ -1469,7 +1467,7 @@ FreeActions(ActionPtr actions)
     }
 }
 
- /*ARGSUSED*/ static void
+static void
 AmbigActions(EventSeqPtr initialEvent,
              StatePtr * state,
              TMParseStateTree stateTree)
@@ -1596,14 +1594,13 @@ _XtAddEventSeqToStateTree(EventSeqPtr eventSeq, TMParseStateTree stateTree)
 /*
  * Internal Converter for merging. Old and New must both be valid xlations
  */
-
- /*ARGSUSED*/
-    Boolean _XtCvtMergeTranslations(Display *dpy _X_UNUSED,
-                                    XrmValuePtr args _X_UNUSED,
-                                    Cardinal * num_args,
-                                    XrmValuePtr from,
-                                    XrmValuePtr to,
-                                    XtPointer * closure_ret _X_UNUSED)
+Boolean
+_XtCvtMergeTranslations(Display *dpy _X_UNUSED,
+                        XrmValuePtr args _X_UNUSED,
+                        Cardinal * num_args,
+                        XrmValuePtr from,
+                        XrmValuePtr to,
+                        XtPointer * closure_ret _X_UNUSED)
 {
     XtTranslations first, second, xlations;
     TMStateTree *stateTrees, stackStateTrees[16];
@@ -2083,7 +2080,7 @@ _XtGetTranslationValue(Widget w)
     }
 }
 
- /*ARGSUSED*/ static void
+static void
 RemoveStateTree(TMStateTree tree _X_UNUSED)
 {
 #ifdef REFCNT_TRANSLATIONS
@@ -2130,7 +2127,6 @@ _XtRemoveStateTreeByIndex(XtTranslations xlations, TMShortCard i)
     }
 }
 
-/* ARGSUSED */
 void
 _XtFreeTranslations(XtAppContext app,
                     XrmValuePtr toVal,

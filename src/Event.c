@@ -1165,7 +1165,6 @@ SendExposureEvent(XEvent *event, Widget widget, XtPerDisplay pd)
  *       and GraphicsExpose.
  */
 
-/* ARGSUSED */
 static Bool
 CheckExposureEvent(Display *disp _X_UNUSED, XEvent *event, char *arg)
 {
@@ -1505,7 +1504,6 @@ XtDispatchEvent(XEvent *event)
     return was_dispatched;
 }
 
-/* ARGSUSED */
 static void
 GrabDestroyCallback(Widget widget,
                     XtPointer closure _X_UNUSED,

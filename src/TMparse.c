@@ -900,7 +900,6 @@ StringToKeySym(String str, Boolean * error)
     return NoSymbol;
 }
 
-/* ARGSUSED */
 static void
 ParseModImmed(Value value,
               LateBindingsPtr * lateBindings _X_UNUSED,
@@ -936,7 +935,6 @@ static String stupid_optimizer_kludge;
 #define BROKEN_OPTIMIZER_HACK(val) val
 #endif
 
-/* ARGSUSED */
 static String
 ParseImmed(register String str,
            register Opaque closure,
@@ -949,7 +947,6 @@ ParseImmed(register String str,
     return BROKEN_OPTIMIZER_HACK(str);
 }
 
-/* ARGSUSED */
 static String
 ParseAddModifier(register String str,
                  register Opaque closure,
@@ -985,7 +982,6 @@ ParseKeyAndModifiers(String str,
     return str;
 }
 
-/*ARGSUSED*/
 static String
 ParseKeySym(register String str,
             Opaque closure _X_UNUSED,
@@ -1087,7 +1083,7 @@ ParseTable(register String str, Opaque closure, EventPtr event, Boolean * error)
     return PanicModeRecovery(str);
 }
 
- /*ARGSUSED*/ static String
+static String
 ParseNone(String str,
           Opaque closure _X_UNUSED,
           EventPtr event,
@@ -1099,7 +1095,7 @@ ParseNone(String str,
     return BROKEN_OPTIMIZER_HACK(str);
 }
 
- /*ARGSUSED*/ static String
+static String
 ParseAtom(String str, Opaque closure _X_UNUSED, EventPtr event, Boolean * error)
 {
     ScanWhitespace(str);
@@ -2022,7 +2018,6 @@ ParseTranslationTable(String source,
 
 /*** public procedures ***/
 
-/*ARGSUSED*/
 Boolean
 XtCvtStringToAcceleratorTable(Display *dpy,
                               XrmValuePtr args _X_UNUSED,
@@ -2076,7 +2071,6 @@ XtCvtStringToAcceleratorTable(Display *dpy,
     return (error != TRUE);
 }
 
-/*ARGSUSED*/
 Boolean
 XtCvtStringToTranslationTable(Display *dpy,
                               XrmValuePtr args _X_UNUSED,

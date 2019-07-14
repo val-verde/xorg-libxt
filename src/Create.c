@@ -741,7 +741,6 @@ XtAppCreateShell(_Xconst char *name,
     return retval;
 }
 
-/* ARGSUSED */
 Widget
 XtCreateApplicationShell(_Xconst char *name _X_UNUSED,
                          WidgetClass widget_class,

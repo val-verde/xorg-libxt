@@ -195,7 +195,6 @@ XtAddCallback(Widget widget,
     UNLOCK_APP(app);
 }                               /* XtAddCallback */
 
-/* ARGSUSED */
 static void
 AddCallbacks(Widget widget _X_UNUSED,
              InternalCallbackList * callbacks,

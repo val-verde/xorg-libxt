@@ -521,7 +521,6 @@ RemoveFromBindCache(Widget w, XtActionProc * procs)
     UNLOCK_PROCESS;
 }
 
-/* ARGSUSED */
 static void
 RemoveAccelerators(Widget widget, XtPointer closure, XtPointer data _X_UNUSED)
 {
@@ -854,7 +853,7 @@ XtMenuPopupAction(Widget widget,
     UNLOCK_APP(app);
 }
 
- /*ARGSUSED*/ static void
+static void
 _XtMenuPopdownAction(Widget widget,
                      XEvent *event _X_UNUSED,
                      String * params,

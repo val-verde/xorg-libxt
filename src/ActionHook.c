@@ -1,4 +1,3 @@
- /*LINTLIBRARY*/
 /***********************************************************
 Copyright (c) 1993, Oracle and/or its affiliates. All rights reserved.
 
@@ -75,7 +74,6 @@ in this Software without prior written authorization from The Open Group.
 #endif
 #include "IntrinsicI.h"
 
-/*ARGSUSED*/
 static void
 FreeActionHookList(Widget widget _X_UNUSED,
 		   XtPointer closure,  /* ActionHook* */

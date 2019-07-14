@@ -68,7 +68,6 @@ in this Software without prior written authorization from The Open Group.
 
 */
 
-/*LINTLIBRARY*/
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -725,7 +724,6 @@ _XtPrintXlations(Widget w,
 }
 
 #ifndef NO_MIT_HACKS
-/*ARGSUSED*/
 void
 _XtDisplayTranslations(Widget widget,
                        XEvent *event _X_UNUSED,
@@ -742,7 +740,6 @@ _XtDisplayTranslations(Widget widget,
     }
 }
 
-/*ARGSUSED*/
 void
 _XtDisplayAccelerators(Widget widget,
                        XEvent *event _X_UNUSED,
@@ -758,7 +755,6 @@ _XtDisplayAccelerators(Widget widget,
     }
 }
 
-/*ARGSUSED*/
 void
 _XtDisplayInstalledAccelerators(Widget widget,
                                 XEvent *event,

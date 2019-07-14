@@ -1103,7 +1103,6 @@ XtAppReleaseCacheRefs(XtAppContext app, XtCacheRef * refs)
     UNLOCK_APP(app);
 }
 
-/* ARGSUSED */
 void
 XtCallbackReleaseCacheRefList(Widget widget,
                               XtPointer closure,
@@ -1114,7 +1113,6 @@ XtCallbackReleaseCacheRefList(Widget widget,
     XtFree(closure);
 }
 
-/* ARGSUSED */
 void
 XtCallbackReleaseCacheRef(Widget widget,
                           XtPointer closure,
