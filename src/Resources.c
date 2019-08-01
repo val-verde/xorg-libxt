@@ -138,7 +138,7 @@ _XtCopyFromArg(XtArgVal src, char *dst, register unsigned int size)
 }                               /* _XtCopyFromArg */
 
 void
-_XtCopyToArg(char *src, XtArgVal * dst, register unsigned int size)
+_XtCopyToArg(char *src, XtArgVal *dst, register unsigned int size)
 {
     if (!*dst) {
 #ifdef GETVALUES_BUG
@@ -189,7 +189,7 @@ _XtCopyToArg(char *src, XtArgVal * dst, register unsigned int size)
 }                               /* _XtCopyToArg */
 
 static void
-CopyToArg(char *src, XtArgVal * dst, register unsigned int size)
+CopyToArg(char *src, XtArgVal *dst, register unsigned int size)
 {
     if (!*dst) {
         /* old GetValues semantics (storing directly into arglists) are bad,
@@ -352,15 +352,15 @@ BadSize(Cardinal size, XrmQuark name)
  * create and XrmResourceList.
  */
 void
-_XtDependencies(XtResourceList * class_resp,    /* VAR */
-                Cardinal * class_num_resp,      /* VAR */
-                XrmResourceList * super_res,
+_XtDependencies(XtResourceList *class_resp,    /* VAR */
+                Cardinal *class_num_resp,      /* VAR */
+                XrmResourceList *super_res,
                 Cardinal super_num_res,
                 Cardinal super_widget_size)
 {
     register XrmResourceList *new_res;
     Cardinal new_num_res;
-    XrmResourceList class_res = (XrmResourceList) * class_resp;
+    XrmResourceList class_res = (XrmResourceList) *class_resp;
     Cardinal class_num_res = *class_num_resp;
     register Cardinal i, j;
     Cardinal new_next;
@@ -374,8 +374,7 @@ _XtDependencies(XtResourceList * class_resp,    /* VAR */
 
     /* Allocate and initialize new_res with superclass resource pointers */
     new_num_res = super_num_res + class_num_res;
-    new_res =
-        (XrmResourceList *)
+    new_res = (XrmResourceList *)
         __XtMalloc((Cardinal) (new_num_res * sizeof(XrmResourceList)));
     if (super_num_res > 0)
         XtMemmove(new_res, super_res, super_num_res * sizeof(XrmResourceList));
@@ -462,8 +461,7 @@ _XtCreateIndirectionTable(XtResourceList resources, Cardinal num_resources)
     register Cardinal idx;
     XrmResourceList *table;
 
-    table =
-        (XrmResourceList *)
+    table = (XrmResourceList *)
         __XtMalloc((Cardinal) (num_resources * sizeof(XrmResourceList)));
     for (idx = 0; idx < num_resources; idx++)
         table[idx] = (XrmResourceList) (&(resources[idx]));
@@ -475,13 +473,13 @@ GetResources(Widget widget,             /* Widget resources are associated with 
              char *base,                /* Base address of memory to write to */
              XrmNameList names,         /* Full inheritance name of widget */
              XrmClassList classes,      /* Full inheritance class of widget     */
-             XrmResourceList * table,   /* The list of resources required.      */
+             XrmResourceList *table,    /* The list of resources required.      */
              unsigned num_resources,    /* number of items in resource list     */
              XrmQuarkList quark_args,   /* Arg names quarkified                 */
              ArgList args,              /* ArgList to override resources */
              unsigned num_args,         /* number of items in arg list  */
              XtTypedArgList typed_args, /* Typed arg list to override resources */
-             Cardinal * pNumTypedArgs,  /* number of items in typed arg list    */
+             Cardinal *pNumTypedArgs,   /* number of items in typed arg list    */
              Boolean tm_hack)           /* do baseTranslations                  */
 {            
 /*
@@ -910,7 +908,7 @@ GetResources(Widget widget,             /* Widget resources are associated with 
             else {
                 /* value.addr can be NULL see: !already_copied */
                 if (value.addr)
-                    *((XtTranslations *) & widget->core.tm.current_state) =
+                    *((XtTranslations *) &widget->core.tm.current_state) =
                         *((XtTranslations *) value.addr);
             }
         }
@@ -926,6 +924,7 @@ GetResources(Widget widget,             /* Widget resources are associated with 
         XtCacheRef *refs = (XtCacheRef *)
             __XtMalloc((Cardinal)
                        (sizeof(XtCacheRef) * (size_t) (cache_ref_size + 1)));
+
         (void) memmove(refs, cache_ref,
                        sizeof(XtCacheRef) * (size_t) cache_ref_size);
         refs[cache_ref_size] = NULL;
@@ -976,7 +975,7 @@ _XtGetResources(register Widget w,
                 ArgList args,
                 Cardinal num_args,
                 XtTypedArgList typed_args,
-                Cardinal * num_typed_args)
+                Cardinal *num_typed_args)
 {
     XrmName *names, names_s[50];
     XrmClass *classes, classes_s[50];

@@ -101,7 +101,7 @@ _XtClearAncestorCache(Widget widget)
 }
 
 static XtServerGrabPtr
-CheckServerGrabs(XEvent *event, Widget * trace, Cardinal traceDepth)
+CheckServerGrabs(XEvent *event, Widget *trace, Cardinal traceDepth)
 {
     Cardinal i;
 
@@ -129,7 +129,7 @@ IsParent(Widget a, Widget b)
 #define RelRtn(lca, type) {*relTypeRtn = type; return lca;}
 
 static Widget
-CommonAncestor(register Widget a, register Widget b, XtGeneology * relTypeRtn)
+CommonAncestor(register Widget a, register Widget b, XtGeneology *relTypeRtn)
 {
     if (a == b) {
         RelRtn(a, XtMySelf)
@@ -152,10 +152,10 @@ CommonAncestor(register Widget a, register Widget b, XtGeneology * relTypeRtn)
 
 static Widget
 _FindFocusWidget(Widget widget,
-                 Widget * trace,
+                 Widget *trace,
                  int traceDepth,
                  Boolean activeCheck,
-                 Boolean * isTarget)
+                 Boolean *isTarget)
 {
     int src;
     Widget dst;
@@ -457,7 +457,7 @@ void
 _XtHandleFocus(Widget widget,
                XtPointer client_data, /* child who wants focus */
                XEvent *event,
-               Boolean * cont _X_UNUSED)
+               Boolean *cont _X_UNUSED)
 {
     XtPerDisplayInput pdi = _XtGetPerDisplayInput(XtDisplay(widget));
     XtPerWidgetInput pwi = (XtPerWidgetInput) client_data;
@@ -662,7 +662,7 @@ static void
 QueryEventMask(Widget widget,           /* child who gets focus */
                XtPointer client_data,   /* ancestor giving it */
                XEvent *event _X_UNUSED,
-               Boolean * cont _X_UNUSED)
+               Boolean *cont _X_UNUSED)
 {
     /* widget was once the target of an XtSetKeyboardFocus but
      * was unrealized at the time.   Make sure ancestor still wants
@@ -799,7 +799,7 @@ XtSetKeyboardFocus(Widget widget, Widget descendant)
         call_data.event_data = (XtPointer) descendant;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_PROCESS;
     UNLOCK_APP(app);

@@ -377,7 +377,7 @@ GrabMatchesSecond(register XtServerGrabPtr pFirstGrab,
  */
 
 static void
-DeleteServerGrabFromList(XtServerGrabPtr * passiveListPtr,
+DeleteServerGrabFromList(XtServerGrabPtr *passiveListPtr,
                          XtServerGrabPtr pMinuendGrab)
 {
     register XtServerGrabPtr *next;
@@ -488,7 +488,7 @@ DeleteServerGrabFromList(XtServerGrabPtr * passiveListPtr,
 }
 
 static void
-DestroyPassiveList(XtServerGrabPtr * passiveListPtr)
+DestroyPassiveList(XtServerGrabPtr *passiveListPtr)
 {
     XtServerGrabPtr next, grab;
 
@@ -590,7 +590,7 @@ static void
 ActiveHandler(Widget widget _X_UNUSED,
               XtPointer pdi _X_UNUSED,
               XEvent *event _X_UNUSED,
-              Boolean * cont _X_UNUSED)
+              Boolean *cont _X_UNUSED)
 {
     /* nothing */
 }
@@ -600,7 +600,7 @@ ActiveHandler(Widget widget _X_UNUSED,
  */
 static void
 MakeGrab(XtServerGrabPtr grab,
-         XtServerGrabPtr * passiveListPtr,
+         XtServerGrabPtr *passiveListPtr,
          Boolean isKeyboard,
          XtPerDisplayInput pdi,
          XtPerWidgetInput pwi)
@@ -640,7 +640,7 @@ MakeGrab(XtServerGrabPtr grab,
 }
 
 static void
-MakeGrabs(XtServerGrabPtr * passiveListPtr,
+MakeGrabs(XtServerGrabPtr *passiveListPtr,
           Boolean isKeyboard,
           XtPerDisplayInput pdi)
 {
@@ -676,7 +676,7 @@ static void
 RealizeHandler(Widget widget,
                XtPointer closure,
                XEvent *event _X_UNUSED,
-               Boolean * cont _X_UNUSED)
+               Boolean *cont _X_UNUSED)
 {
     XtPerWidgetInput pwi = (XtPerWidgetInput) closure;
     XtPerDisplayInput pdi;

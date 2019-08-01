@@ -101,7 +101,7 @@ XtAppAddActionHook(XtAppContext app, XtActionHookProc proc, XtPointer closure)
     hook->closure = closure;
     if (app->action_hook_list == NULL) {
         _XtAddCallback(&app->destroy_callbacks,
-                       FreeActionHookList, (XtPointer) & app->action_hook_list);
+                       FreeActionHookList, (XtPointer) &app->action_hook_list);
     }
     app->action_hook_list = hook;
     UNLOCK_APP(app);
@@ -121,7 +121,7 @@ XtRemoveActionHook(XtActionHookId id)
         XtFree((XtPointer) hook);
         if (app->action_hook_list == NULL)
             _XtRemoveCallback(&app->destroy_callbacks, FreeActionHookList,
-                              (XtPointer) & app->action_hook_list);
+                              (XtPointer) &app->action_hook_list);
     }
 #ifdef DEBUG
     else {

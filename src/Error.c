@@ -240,8 +240,8 @@ DefaultMsg(String name,
            String type,
            String class,
            String defaultp,
-           String * params,
-           Cardinal * num_params,
+           String *params,
+           Cardinal *num_params,
            Bool error,
            void (*fn) (_Xconst _XtString))
 {
@@ -336,8 +336,8 @@ _XtDefaultErrorMsg(String name,
                    String type,
                    String class,
                    String defaultp,
-                   String * params,
-                   Cardinal * num_params)
+                   String *params,
+                   Cardinal *num_params)
 {
     DefaultMsg(name, type, class, defaultp, params, num_params, True, XtError);
 }
@@ -347,8 +347,8 @@ _XtDefaultWarningMsg(String name,
                      String type,
                      String class,
                      String defaultp,
-                     String * params,
-                     Cardinal * num_params)
+                     String *params,
+                     Cardinal *num_params)
 {
     DefaultMsg(name, type, class, defaultp, params, num_params, False,
                XtWarning);
@@ -359,8 +359,8 @@ XtErrorMsg(_Xconst char *name,
            _Xconst char *type,
            _Xconst char *class,
            _Xconst char *defaultp,
-           String * params,
-           Cardinal * num_params)
+           String *params,
+           Cardinal *num_params)
 {
 #if GLOBALERRORS
     LOCK_PROCESS;
@@ -380,8 +380,8 @@ XtAppErrorMsg(XtAppContext app _X_UNUSED,
               _Xconst char *type,
               _Xconst char *class,
               _Xconst char *defaultp,
-              String * params,
-              Cardinal * num_params)
+              String *params,
+              Cardinal *num_params)
 {
 #if GLOBALERRORS
     LOCK_PROCESS;
@@ -400,7 +400,9 @@ void
 XtWarningMsg(_Xconst char *name,
              _Xconst char *type,
              _Xconst char *class,
-             _Xconst char *defaultp, String * params, Cardinal * num_params)
+             _Xconst char *defaultp,
+             String *params,
+             Cardinal *num_params)
 {
 #if GLOBALERRORS
     LOCK_PROCESS;
@@ -419,8 +421,8 @@ XtAppWarningMsg(XtAppContext app _X_UNUSED,
                 _Xconst char *type,
                 _Xconst char *class,
                 _Xconst char *defaultp,
-                String * params,
-                Cardinal * num_params)
+                String *params,
+                Cardinal *num_params)
 {
 #if GLOBALERRORS
     LOCK_PROCESS;
@@ -665,10 +667,10 @@ XtAppSetWarningHandler(XtAppContext app _X_UNUSED, XtErrorHandler handler)
 }
 
 void
-_XtSetDefaultErrorHandlers(XtErrorMsgHandler * errMsg _X_UNUSED,
-                           XtErrorMsgHandler * warnMsg _X_UNUSED,
-                           XtErrorHandler * err _X_UNUSED,
-                           XtErrorHandler * warn _X_UNUSED)
+_XtSetDefaultErrorHandlers(XtErrorMsgHandler *errMsg _X_UNUSED,
+                           XtErrorMsgHandler *warnMsg _X_UNUSED,
+                           XtErrorHandler *err _X_UNUSED,
+                           XtErrorHandler *warn _X_UNUSED)
 {
 #ifndef GLOBALERRORS
     LOCK_PROCESS;

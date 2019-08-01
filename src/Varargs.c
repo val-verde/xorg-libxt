@@ -326,8 +326,8 @@ _XtFreeArgList(ArgList args,    /* as returned by _XtVaToArgList */
     }
 }
 
-static void GetResources(Widget widget, XtResourceList * res_list,
-                         Cardinal * number);
+static void GetResources(Widget widget, XtResourceList *res_list,
+                         Cardinal *number);
 
 /*
  *    Given a variable argument list, _XtVaToArgList() returns the
@@ -339,8 +339,8 @@ void
 _XtVaToArgList(Widget widget,
                va_list var,
                int max_count,
-               ArgList * args_return,
-               Cardinal * num_args_return)
+               ArgList *args_return,
+               Cardinal *num_args_return)
 {
     String attr;
     int count;
@@ -422,7 +422,7 @@ _XtVaToArgList(Widget widget,
  */
 
 static void
-GetResources(Widget widget, XtResourceList * res_list, Cardinal * number)
+GetResources(Widget widget, XtResourceList *res_list, Cardinal *number)
 {
     Widget parent = XtParent(widget);
 
@@ -487,8 +487,8 @@ NestedArgtoTypedArg(XtTypedArgList args, XtTypedArgList avlist)
 void
 _XtVaToTypedArgList(va_list var,
                     int max_count,
-                    XtTypedArgList * args_return,
-                    Cardinal * num_args_return)
+                    XtTypedArgList *args_return,
+                    Cardinal *num_args_return)
 {
     XtTypedArgList args = NULL;
     String attr;

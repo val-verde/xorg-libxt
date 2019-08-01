@@ -278,12 +278,12 @@ FreeInfo(CallBackInfo info)
 
 static CallBackInfo
 MakeInfo(Select ctx,
-         XtSelectionCallbackProc * callbacks,
-         XtPointer * closures,
+         XtSelectionCallbackProc *callbacks,
+         XtPointer *closures,
          int count,
          Widget widget,
          Time time,
-         Boolean * incremental,
+         Boolean *incremental,
          Atom *properties)
 {
     CallBackInfo info = XtNew(CallBackInfoRec);
@@ -294,8 +294,7 @@ MakeInfo(Select ctx,
                    ((size_t) count * sizeof(XtSelectionCallbackProc)));
     (void) memmove((char *) info->callbacks, (char *) callbacks,
                    (size_t) count * sizeof(XtSelectionCallbackProc));
-    info->req_closure =
-        (XtPointer *)
+    info->req_closure = (XtPointer *)
         __XtMalloc((unsigned) ((size_t) count * sizeof(XtPointer)));
     (void) memmove((char *) info->req_closure, (char *) closures,
                    (size_t) count * sizeof(XtPointer));
@@ -544,14 +543,14 @@ RemoveHandler(Request req,
 }
 
 static void
-OwnerTimedOut(XtPointer closure, XtIntervalId * id _X_UNUSED)
+OwnerTimedOut(XtPointer closure, XtIntervalId *id _X_UNUSED)
 {
     Request req = (Request) closure;
     Select ctx = req->ctx;
 
     if (ctx->incremental && (ctx->owner_cancel != NULL)) {
         (*ctx->owner_cancel) (ctx->widget, &ctx->selection,
-                              &req->target, (XtRequestId *) & req,
+                              &req->target, (XtRequestId *) &req,
                               ctx->owner_closure);
     }
     else {
@@ -564,7 +563,7 @@ OwnerTimedOut(XtPointer closure, XtIntervalId * id _X_UNUSED)
             if (ctx->incremental)
                 (*(XtSelectionDoneIncrProc) ctx->notify)
                     (ctx->widget, &ctx->selection, &req->target,
-                     (XtRequestId *) & req, ctx->owner_closure);
+                     (XtRequestId *) &req, ctx->owner_closure);
             else
                 (*ctx->notify) (ctx->widget, &ctx->selection, &req->target);
         }
@@ -615,7 +614,7 @@ static void
 HandlePropertyGone(Widget widget _X_UNUSED,
                    XtPointer closure,
                    XEvent *ev,
-                   Boolean * cont _X_UNUSED)
+                   Boolean *cont _X_UNUSED)
 {
     XPropertyEvent *event = (XPropertyEvent *) ev;
     Request req = (Request) closure;
@@ -633,7 +632,7 @@ HandlePropertyGone(Widget widget _X_UNUSED,
             if (ctx->incremental) {
                 (*(XtSelectionDoneIncrProc) ctx->notify)
                     (ctx->widget, &ctx->selection, &req->target,
-                     (XtRequestId *) & req, ctx->owner_closure);
+                     (XtRequestId *) &req, ctx->owner_closure);
             }
             else
                 (*ctx->notify) (ctx->widget, &ctx->selection, &req->target);
@@ -656,7 +655,7 @@ HandlePropertyGone(Widget widget _X_UNUSED,
                     (ctx->widget, &ctx->selection, &req->target,
                      &req->type, &req->value,
                      &req->bytelength, &req->format,
-                     &size, ctx->owner_closure, (XtPointer *) & req);
+                     &size, ctx->owner_closure, (XtPointer *) &req);
                 if (req->bytelength)
                     req->bytelength = BYTELENGTH(req->bytelength, req->format);
                 req->offset = 0;
@@ -750,7 +749,7 @@ GetConversion(Select ctx,       /* logical owner */
             if ((*(XtConvertSelectionIncrProc) ctx->convert)
                 (ctx->widget, &event->selection, &target,
                  &targetType, &value, &length, &format,
-                 &size, ctx->owner_closure, (XtRequestId *) & req)
+                 &size, ctx->owner_closure, (XtRequestId *) &req)
                 == FALSE) {
                 XtFree((char *) req);
                 ctx->ref_count--;
@@ -814,7 +813,7 @@ static void
 HandleSelectionEvents(Widget widget,
                       XtPointer closure,
                       XEvent *event,
-                      Boolean * cont _X_UNUSED)
+                      Boolean *cont _X_UNUSED)
 {
     Select ctx;
     XSelectionEvent ev;
@@ -1090,7 +1089,7 @@ static void
 ReqCleanup(Widget widget,
            XtPointer closure,
            XEvent *ev,
-           Boolean * cont _X_UNUSED)
+           Boolean *cont _X_UNUSED)
 {
     CallBackInfo info = (CallBackInfo) closure;
     unsigned long bytesafter, length;
@@ -1140,7 +1139,7 @@ ReqCleanup(Widget widget,
 }
 
 static void
-ReqTimedOut(XtPointer closure, XtIntervalId * id _X_UNUSED)
+ReqTimedOut(XtPointer closure, XtIntervalId *id _X_UNUSED)
 {
     XtPointer value = NULL;
     unsigned long length = 0;
@@ -1195,7 +1194,7 @@ static void
 HandleGetIncrement(Widget widget,
                    XtPointer closure,
                    XEvent *ev,
-                   Boolean * cont _X_UNUSED)
+                   Boolean *cont _X_UNUSED)
 {
     XPropertyEvent *event = (XPropertyEvent *) ev;
     CallBackInfo info = (CallBackInfo) closure;
@@ -1410,7 +1409,7 @@ static void
 HandleSelectionReplies(Widget widget,
                        XtPointer closure,
                        XEvent *ev,
-                       Boolean * cont _X_UNUSED)
+                       Boolean *cont _X_UNUSED)
 {
     XSelectionEvent *event = (XSelectionEvent *) ev;
     Display *dpy = event->display;
@@ -1502,7 +1501,7 @@ DoLocalTransfer(Request req,
         if (!(*(XtConvertSelectionIncrProc) ctx->convert)
             (ctx->widget, &selection, &target,
              &resulttype, &value, &length, &format,
-             &size, ctx->owner_closure, (XtRequestId *) & req)) {
+             &size, ctx->owner_closure, (XtRequestId *) &req)) {
             HandleNone(widget, callback, closure, selection);
         }
         else {
@@ -1532,7 +1531,7 @@ DoLocalTransfer(Request req,
                         (*(XtConvertSelectionIncrProc) ctx->convert)
                             (ctx->widget, &selection, &target,
                              &resulttype, &value, &length, &format,
-                             &size, ctx->owner_closure, (XtRequestId *) & req);
+                             &size, ctx->owner_closure, (XtRequestId *) &req);
                     }
                     else
                         allSent = TRUE;
@@ -1551,7 +1550,7 @@ DoLocalTransfer(Request req,
                     (*(XtConvertSelectionIncrProc) ctx->convert)
                         (ctx->widget, &selection, &target,
                          &resulttype, &value, &length, &format,
-                         &size, ctx->owner_closure, (XtRequestId *) & req);
+                         &size, ctx->owner_closure, (XtRequestId *) &req);
                 }
                 if (total == NULL)
                     total = __XtMalloc(1);
@@ -1562,7 +1561,7 @@ DoLocalTransfer(Request req,
             if (ctx->notify)
                 (*(XtSelectionDoneIncrProc) ctx->notify)
                     (ctx->widget, &selection, &target,
-                     (XtRequestId *) & req, ctx->owner_closure);
+                     (XtRequestId *) &req, ctx->owner_closure);
             else
                 XtFree((char *) value);
         }
@@ -1694,11 +1693,11 @@ GetSelectionValues(Widget widget,
                    Atom selection,
                    Atom *targets,
                    int count,
-                   XtSelectionCallbackProc * callbacks,
+                   XtSelectionCallbackProc *callbacks,
                    int num_callbacks,
-                   XtPointer * closures,
+                   XtPointer *closures,
                    Time time,
-                   Boolean * incremental,
+                   Boolean *incremental,
                    Atom *properties)
 {
     Select ctx;
@@ -1754,14 +1753,12 @@ GetSelectionValues(Widget widget,
                         time, incremental, properties);
         XtStackFree((XtPointer) passed_callbacks, stack_cbs);
 
-        info->target =
-            (Atom *)
+        info->target = (Atom *)
             __XtMalloc((unsigned) ((size_t) (count + 1) * sizeof(Atom)));
         (*info->target) = ctx->prop_list->indirect_atom;
         (void) memmove((char *) info->target + sizeof(Atom), (char *) targets,
                        (size_t) count * sizeof(Atom));
-        pairs =
-            (IndirectPair *)
+        pairs = (IndirectPair *)
             __XtMalloc((unsigned) ((size_t) count * sizeof(IndirectPair)));
         for (p = &pairs[count - 1], t = &targets[count - 1], i = count - 1;
              p >= pairs; p--, t--, i--) {
@@ -1790,7 +1787,7 @@ XtGetSelectionValues(Widget widget,
                      Atom *targets,
                      int count,
                      XtSelectionCallbackProc callback,
-                     XtPointer * closures,
+                     XtPointer *closures,
                      Time time)
 {
     Boolean incremental_values[32];
@@ -1822,7 +1819,7 @@ XtGetSelectionValuesIncremental(Widget widget,
                                 Atom *targets,
                                 int count,
                                 XtSelectionCallbackProc callback,
-                                XtPointer * closures,
+                                XtPointer *closures,
                                 Time time)
 {
     Boolean incremental_values[32];
@@ -1937,10 +1934,10 @@ AddSelectionRequests(Widget wid,
                      Atom sel,
                      int count,
                      Atom *targets,
-                     XtSelectionCallbackProc * callbacks,
+                     XtSelectionCallbackProc *callbacks,
                      int num_cb,
-                     XtPointer * closures,
-                     Boolean * incrementals,
+                     XtPointer *closures,
+                     Boolean *incrementals,
                      Atom *properties)
 {
     QueuedRequestInfo qi;
@@ -2257,7 +2254,7 @@ XtGetSelectionParameters(Widget owner,
                          Atom selection,
                          XtRequestId request_id,
                          Atom *type_return,
-                         XtPointer * value_return,
+                         XtPointer *value_return,
                          unsigned long *length_return,
                          int *format_return)
 {

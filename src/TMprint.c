@@ -305,7 +305,7 @@ PrintEvent(TMStringBuf sb,
 }
 
 static void
-PrintParams(TMStringBuf sb, String * params, Cardinal num_params)
+PrintParams(TMStringBuf sb, String *params, Cardinal num_params)
 {
     register Cardinal i;
 
@@ -358,9 +358,9 @@ PrintActions(TMStringBuf sb,
 
 static Boolean
 LookAheadForCycleOrMulticlick(register StatePtr state,
-                              StatePtr * state_return, /* state to print, usually startState */
+                              StatePtr *state_return, /* state to print, usually startState */
                               int *countP,
-                              StatePtr * nextLevelP)
+                              StatePtr *nextLevelP)
 {
     int repeatCount = 0;
     StatePtr startState = state;
@@ -490,7 +490,7 @@ typedef struct {
 } PrintRec, *Print;
 
 static int
-FindNextMatch(PrintRec * printData,
+FindNextMatch(PrintRec *printData,
               TMShortCard numPrints,
               XtTranslations xlations,
               TMBranchHead branchHead,
@@ -538,11 +538,11 @@ FindNextMatch(PrintRec * printData,
 }
 
 static void
-ProcessLaterMatches(PrintRec * printData,
+ProcessLaterMatches(PrintRec *printData,
                     XtTranslations xlations,
                     TMShortCard tIndex,
                     int bIndex,
-                    TMShortCard * numPrintsRtn)
+                    TMShortCard *numPrintsRtn)
 {
     TMComplexStateTree stateTree;
     int i, j;
@@ -583,10 +583,10 @@ ProcessLaterMatches(PrintRec * printData,
 }
 
 static void
-ProcessStateTree(PrintRec * printData,
+ProcessStateTree(PrintRec *printData,
                  XtTranslations xlations,
                  TMShortCard tIndex,
-                 TMShortCard * numPrintsRtn)
+                 TMShortCard *numPrintsRtn)
 {
     TMComplexStateTree stateTree;
     int i;
@@ -727,8 +727,8 @@ _XtPrintXlations(Widget w,
 void
 _XtDisplayTranslations(Widget widget,
                        XEvent *event _X_UNUSED,
-                       String * params _X_UNUSED,
-                       Cardinal * num_params _X_UNUSED)
+                       String *params _X_UNUSED,
+                       Cardinal *num_params _X_UNUSED)
 {
     _XtString xString;
 
@@ -743,8 +743,8 @@ _XtDisplayTranslations(Widget widget,
 void
 _XtDisplayAccelerators(Widget widget,
                        XEvent *event _X_UNUSED,
-                       String * params _X_UNUSED,
-                       Cardinal * num_params _X_UNUSED)
+                       String *params _X_UNUSED,
+                       Cardinal *num_params _X_UNUSED)
 {
     _XtString xString;
 
@@ -758,8 +758,8 @@ _XtDisplayAccelerators(Widget widget,
 void
 _XtDisplayInstalledAccelerators(Widget widget,
                                 XEvent *event,
-                                String * params _X_UNUSED,
-                                Cardinal * num_params _X_UNUSED)
+                                String *params _X_UNUSED,
+                                Cardinal *num_params _X_UNUSED)
 {
     Widget eventWidget
         = XtWindowToWidget(event->xany.display, event->xany.window);
@@ -819,7 +819,7 @@ _XtDisplayInstalledAccelerators(Widget widget,
 #endif                          /*NO_MIT_HACKS */
 
 String
-_XtPrintActions(register ActionRec * actions, XrmQuark *quarkTbl)
+_XtPrintActions(register ActionRec *actions, XrmQuark *quarkTbl)
 {
     TMStringBufRec sbRec, *sb = &sbRec;
 

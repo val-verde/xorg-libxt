@@ -80,7 +80,7 @@ externaldef(constraintclassrec)
 ConstraintClassRec constraintClassRec = {
     {
     /******* CorePart *******/
-     /* superclass           */ (WidgetClass) & compositeClassRec,
+     /* superclass           */ (WidgetClass) &compositeClassRec,
      /* class_name           */ "Constraint",
      /* widget_size          */ sizeof(ConstraintRec),
      /* class_initialize     */ NULL,
@@ -134,7 +134,7 @@ ConstraintClassRec constraintClassRec = {
 };
 
 externaldef(constraintwidgetclass)
-WidgetClass constraintWidgetClass = (WidgetClass) & constraintClassRec;
+WidgetClass constraintWidgetClass = (WidgetClass) &constraintClassRec;
 
 static void
 ConstraintPartInitialize(WidgetClass wc)

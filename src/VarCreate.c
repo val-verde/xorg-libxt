@@ -256,13 +256,13 @@ XtVaSetSubvalues(XtPointer base,
 }
 
 Widget
-_XtVaOpenApplication(XtAppContext * app_context_return,
+_XtVaOpenApplication(XtAppContext *app_context_return,
                      _Xconst char *application_class,
                      XrmOptionDescList options,
                      Cardinal num_options,
                      int *argc_in_out,
-                     _XtString * argv_in_out,
-                     String * fallback_resources,
+                     _XtString *argv_in_out,
+                     String *fallback_resources,
                      WidgetClass widget_class,
                      va_list var_args)
 {
@@ -320,13 +320,13 @@ _XtVaOpenApplication(XtAppContext * app_context_return,
 }
 
 Widget
-_XtVaAppInitialize(XtAppContext * app_context_return,
+_XtVaAppInitialize(XtAppContext *app_context_return,
                    _Xconst char *application_class,
                    XrmOptionDescList options,
                    Cardinal num_options,
                    int *argc_in_out,
-                   _XtString * argv_in_out,
-                   String * fallback_resources,
+                   _XtString *argv_in_out,
+                   String *fallback_resources,
                    va_list var_args)
 {
     return _XtVaOpenApplication(app_context_return, application_class,
@@ -343,13 +343,13 @@ _XtVaAppInitialize(XtAppContext * app_context_return,
  */
 
 Widget
-XtVaOpenApplication(XtAppContext * app_context_return,
+XtVaOpenApplication(XtAppContext *app_context_return,
                     _Xconst char *application_class,
                     XrmOptionDescList options,
                     Cardinal num_options,
                     int *argc_in_out,
-                    _XtString * argv_in_out,
-                    String * fallback_resources,
+                    _XtString *argv_in_out,
+                    String *fallback_resources,
                     WidgetClass widget_class,
                     ...)
 {
@@ -365,13 +365,13 @@ XtVaOpenApplication(XtAppContext * app_context_return,
 }
 
 Widget
-XtVaAppInitialize(XtAppContext * app_context_return,
+XtVaAppInitialize(XtAppContext *app_context_return,
                   _Xconst char *application_class,
                   XrmOptionDescList options,
                   Cardinal num_options,
                   int *argc_in_out,
-                  _XtString * argv_in_out,
-                  String * fallback_resources,
+                  _XtString *argv_in_out,
+                  String *fallback_resources,
                   ...)
 {
     Widget code;

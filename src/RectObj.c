@@ -126,7 +126,7 @@ externaldef(rectobjclassrec) RectObjClassRec rectObjClassRec = {
 /* *INDENT-ON* */
 
 externaldef(rectObjClass)
-WidgetClass rectObjClass = (WidgetClass) & rectObjClassRec;
+WidgetClass rectObjClass = (WidgetClass) &rectObjClassRec;
 
 static void
 XtCopyAncestorSensitive(Widget widget, int offset _X_UNUSED, XrmValue *value)
@@ -179,8 +179,8 @@ RectClassPartInitialize(register WidgetClass wc)
 static void
 RectSetValuesAlmost(Widget old _X_UNUSED,
                     Widget new _X_UNUSED,
-                    XtWidgetGeometry * request,
-                    XtWidgetGeometry * reply)
+                    XtWidgetGeometry *request,
+                    XtWidgetGeometry *reply)
 {
     *request = *reply;
 }

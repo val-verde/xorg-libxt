@@ -309,10 +309,10 @@ IsInteger(String string, int *value)
 Boolean
 XtCvtIntToBoolean(Display *dpy,
                   XrmValuePtr args _X_UNUSED,
-                  Cardinal * num_args,
+                  Cardinal *num_args,
                   XrmValuePtr fromVal,
                   XrmValuePtr toVal,
-                  XtPointer * closure_ret _X_UNUSED)
+                  XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -326,10 +326,10 @@ XtCvtIntToBoolean(Display *dpy,
 Boolean
 XtCvtIntToShort(Display *dpy,
                 XrmValuePtr args _X_UNUSED,
-                Cardinal * num_args,
+                Cardinal *num_args,
                 XrmValuePtr fromVal,
                 XrmValuePtr toVal,
-                XtPointer * closure_ret _X_UNUSED)
+                XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -342,10 +342,10 @@ XtCvtIntToShort(Display *dpy,
 Boolean
 XtCvtStringToBoolean(Display *dpy,
                      XrmValuePtr args _X_UNUSED,
-                     Cardinal * num_args,
+                     Cardinal *num_args,
                      XrmValuePtr fromVal,
                      XrmValuePtr toVal,
-                     XtPointer * closure_ret _X_UNUSED)
+                     XtPointer *closure_ret _X_UNUSED)
 {
     String str = (String) fromVal->addr;
 
@@ -375,10 +375,10 @@ XtCvtStringToBoolean(Display *dpy,
 Boolean
 XtCvtIntToBool(Display *dpy,
                XrmValuePtr args _X_UNUSED,
-               Cardinal * num_args,
+               Cardinal *num_args,
                XrmValuePtr fromVal,
                XrmValuePtr toVal,
-               XtPointer * closure_ret _X_UNUSED)
+               XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -391,10 +391,10 @@ XtCvtIntToBool(Display *dpy,
 Boolean
 XtCvtStringToBool(Display *dpy,
                   XrmValuePtr args _X_UNUSED,
-                  Cardinal * num_args,
+                  Cardinal *num_args,
                   XrmValuePtr fromVal,
                   XrmValuePtr toVal,
-                  XtPointer * closure_ret _X_UNUSED)
+                  XtPointer *closure_ret _X_UNUSED)
 {
     String str = (String) fromVal->addr;
 
@@ -433,10 +433,10 @@ XtConvertArgRec const colorConvertArgs[] = {
 Boolean
 XtCvtIntToColor(Display *dpy,
                 XrmValuePtr args,
-                Cardinal * num_args,
+                Cardinal *num_args,
                 XrmValuePtr fromVal,
                 XrmValuePtr toVal,
-                XtPointer * closure_ret _X_UNUSED)
+                XtPointer *closure_ret _X_UNUSED)
 {
     XColor c;
     Screen *screen;
@@ -461,10 +461,10 @@ XtCvtIntToColor(Display *dpy,
 Boolean
 XtCvtStringToPixel(Display *dpy,
                    XrmValuePtr args,
-                   Cardinal * num_args,
+                   Cardinal *num_args,
                    XrmValuePtr fromVal,
                    XrmValuePtr toVal,
-                   XtPointer * closure_ret)
+                   XtPointer *closure_ret)
 {
     String str = (String) fromVal->addr;
     XColor screenColor;
@@ -541,7 +541,7 @@ FreePixel(XtAppContext app,
           XrmValuePtr toVal,
           XtPointer closure,
           XrmValuePtr args,
-          Cardinal * num_args)
+          Cardinal *num_args)
 {
     Screen *screen;
     Colormap colormap;
@@ -569,7 +569,7 @@ XtConvertArgRec const screenConvertArg[] = {
 };
 
 static void
-FetchDisplayArg(Widget widget, Cardinal * size _X_UNUSED, XrmValue *value)
+FetchDisplayArg(Widget widget, Cardinal *size _X_UNUSED, XrmValue *value)
 {
     if (widget == NULL) {
         XtErrorMsg("missingWidget", "fetchDisplayArg", XtCXtToolkitError,
@@ -593,10 +593,10 @@ static XtConvertArgRec const displayConvertArg[] = {
 Boolean
 XtCvtStringToCursor(Display *dpy,
                     XrmValuePtr args,
-                    Cardinal * num_args,
+                    Cardinal *num_args,
                     XrmValuePtr fromVal,
                     XrmValuePtr toVal,
-                    XtPointer * closure_ret _X_UNUSED)
+                    XtPointer *closure_ret _X_UNUSED)
 {
     /* *INDENT-OFF* */
     static const struct _CursorName {
@@ -712,7 +712,7 @@ FreeCursor(XtAppContext app,
            XrmValuePtr toVal,
            XtPointer closure _X_UNUSED,
            XrmValuePtr args,
-           Cardinal * num_args)
+           Cardinal *num_args)
 {
     Display *display;
 
@@ -730,10 +730,10 @@ FreeCursor(XtAppContext app,
 Boolean
 XtCvtStringToDisplay(Display *dpy,
                      XrmValuePtr args _X_UNUSED,
-                     Cardinal * num_args,
+                     Cardinal *num_args,
                      XrmValuePtr fromVal,
                      XrmValuePtr toVal,
-                     XtPointer * closure_ret _X_UNUSED)
+                     XtPointer *closure_ret _X_UNUSED)
 {
     Display *d;
 
@@ -755,10 +755,10 @@ XtCvtStringToDisplay(Display *dpy,
 Boolean
 XtCvtStringToFile(Display *dpy,
                   XrmValuePtr args _X_UNUSED,
-                  Cardinal * num_args,
+                  Cardinal *num_args,
                   XrmValuePtr fromVal,
                   XrmValuePtr toVal,
-                  XtPointer * closure_ret _X_UNUSED)
+                  XtPointer *closure_ret _X_UNUSED)
 {
     FILE *f;
 
@@ -782,7 +782,7 @@ FreeFile(XtAppContext app,
          XrmValuePtr toVal,
          XtPointer closure _X_UNUSED,
          XrmValuePtr args _X_UNUSED,
-         Cardinal * num_args)
+         Cardinal *num_args)
 {
     if (*num_args != 0)
         XtAppWarningMsg(app,
@@ -795,10 +795,10 @@ FreeFile(XtAppContext app,
 Boolean
 XtCvtIntToFloat(Display *dpy,
                 XrmValuePtr args _X_UNUSED,
-                Cardinal * num_args,
+                Cardinal *num_args,
                 XrmValuePtr fromVal,
                 XrmValuePtr toVal,
-                XtPointer * closure_ret _X_UNUSED)
+                XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -811,10 +811,10 @@ XtCvtIntToFloat(Display *dpy,
 Boolean
 XtCvtStringToFloat(Display *dpy,
                    XrmValuePtr args _X_UNUSED,
-                   Cardinal * num_args,
+                   Cardinal *num_args,
                    XrmValuePtr fromVal,
                    XrmValuePtr toVal,
-                   XtPointer * closure_ret _X_UNUSED)
+                   XtPointer *closure_ret _X_UNUSED)
 {
     int ret;
     float f, nan;
@@ -842,10 +842,10 @@ XtCvtStringToFloat(Display *dpy,
 Boolean
 XtCvtStringToFont(Display *dpy,
                   XrmValuePtr args,
-                  Cardinal * num_args,
+                  Cardinal *num_args,
                   XrmValuePtr fromVal,
                   XrmValuePtr toVal,
-                  XtPointer * closure_ret _X_UNUSED)
+                  XtPointer *closure_ret _X_UNUSED)
 {
     Font f;
     Display *display;
@@ -920,7 +920,7 @@ FreeFont(XtAppContext app,
          XrmValuePtr toVal,
          XtPointer closure _X_UNUSED,
          XrmValuePtr args,
-         Cardinal * num_args)
+         Cardinal *num_args)
 {
     Display *display;
 
@@ -938,10 +938,10 @@ FreeFont(XtAppContext app,
 Boolean
 XtCvtIntToFont(Display *dpy,
                XrmValuePtr args _X_UNUSED,
-               Cardinal * num_args,
+               Cardinal *num_args,
                XrmValuePtr fromVal,
                XrmValuePtr toVal,
-               XtPointer * closure_ret _X_UNUSED)
+               XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -954,10 +954,10 @@ XtCvtIntToFont(Display *dpy,
 Boolean
 XtCvtStringToFontSet(Display *dpy,
                      XrmValuePtr args,
-                     Cardinal * num_args,
+                     Cardinal *num_args,
                      XrmValuePtr fromVal,
                      XrmValuePtr toVal,
-                     XtPointer * closure_ret _X_UNUSED)
+                     XtPointer *closure_ret _X_UNUSED)
 {
     XFontSet f;
     Display *display;
@@ -1064,7 +1064,8 @@ static void
 FreeFontSet(XtAppContext app,
             XrmValuePtr toVal,
             XtPointer closure _X_UNUSED,
-            XrmValuePtr args, Cardinal * num_args)
+            XrmValuePtr args,
+            Cardinal *num_args)
 {
     Display *display;
 
@@ -1082,7 +1083,7 @@ FreeFontSet(XtAppContext app,
 
 static void
 FetchLocaleArg(Widget widget _X_UNUSED,
-               Cardinal * size _X_UNUSED,
+               Cardinal *size _X_UNUSED,
                XrmValue *value)
 {
     static XrmString locale;
@@ -1103,10 +1104,10 @@ static XtConvertArgRec const localeDisplayConvertArgs[] = {
 Boolean
 XtCvtStringToFontStruct(Display *dpy,
                         XrmValuePtr args,
-                        Cardinal * num_args,
+                        Cardinal *num_args,
                         XrmValuePtr fromVal,
                         XrmValuePtr toVal,
-                        XtPointer * closure_ret _X_UNUSED)
+                        XtPointer *closure_ret _X_UNUSED)
 {
     XFontStruct *f;
     Display *display;
@@ -1186,7 +1187,7 @@ FreeFontStruct(XtAppContext app,
                XrmValuePtr toVal,
                XtPointer closure _X_UNUSED,
                XrmValuePtr args,
-               Cardinal * num_args)
+               Cardinal *num_args)
 {
     Display *display;
 
@@ -1205,10 +1206,10 @@ FreeFontStruct(XtAppContext app,
 Boolean
 XtCvtStringToInt(Display *dpy,
                  XrmValuePtr args _X_UNUSED,
-                 Cardinal * num_args,
+                 Cardinal *num_args,
                  XrmValuePtr fromVal,
                  XrmValuePtr toVal,
-                 XtPointer * closure_ret _X_UNUSED)
+                 XtPointer *closure_ret _X_UNUSED)
 {
     int i;
 
@@ -1227,10 +1228,10 @@ XtCvtStringToInt(Display *dpy,
 Boolean
 XtCvtStringToShort(Display *dpy,
                    XrmValuePtr args _X_UNUSED,
-                   Cardinal * num_args,
+                   Cardinal *num_args,
                    XrmValuePtr fromVal,
                    XrmValuePtr toVal,
-                   XtPointer * closure_ret _X_UNUSED)
+                   XtPointer *closure_ret _X_UNUSED)
 {
     int i;
 
@@ -1250,10 +1251,10 @@ XtCvtStringToShort(Display *dpy,
 Boolean
 XtCvtStringToDimension(Display *dpy,
                        XrmValuePtr args _X_UNUSED,
-                       Cardinal * num_args,
+                       Cardinal *num_args,
                        XrmValuePtr fromVal,
                        XrmValuePtr toVal,
-                       XtPointer * closure_ret _X_UNUSED)
+                       XtPointer *closure_ret _X_UNUSED)
 {
     int i;
 
@@ -1276,10 +1277,10 @@ XtCvtStringToDimension(Display *dpy,
 Boolean
 XtCvtIntToUnsignedChar(Display *dpy,
                        XrmValuePtr args _X_UNUSED,
-                       Cardinal * num_args,
+                       Cardinal *num_args,
                        XrmValuePtr fromVal,
                        XrmValuePtr toVal,
-                       XtPointer * closure_ret _X_UNUSED)
+                       XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -1293,10 +1294,10 @@ XtCvtIntToUnsignedChar(Display *dpy,
 Boolean
 XtCvtStringToUnsignedChar(Display *dpy,
                           XrmValuePtr args _X_UNUSED,
-                          Cardinal * num_args,
+                          Cardinal *num_args,
                           XrmValuePtr fromVal,
                           XrmValuePtr toVal,
-                          XtPointer * closure_ret _X_UNUSED)
+                          XtPointer *closure_ret _X_UNUSED)
 {
     int i;
 
@@ -1320,10 +1321,10 @@ XtCvtStringToUnsignedChar(Display *dpy,
 Boolean
 XtCvtColorToPixel(Display *dpy,
                   XrmValuePtr args _X_UNUSED,
-                  Cardinal * num_args,
+                  Cardinal *num_args,
                   XrmValuePtr fromVal,
                   XrmValuePtr toVal,
-                  XtPointer * closure_ret _X_UNUSED)
+                  XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -1337,10 +1338,10 @@ XtCvtColorToPixel(Display *dpy,
 Boolean
 XtCvtIntToPixel(Display *dpy,
                 XrmValuePtr args _X_UNUSED,
-                Cardinal * num_args,
+                Cardinal *num_args,
                 XrmValuePtr fromVal,
                 XrmValuePtr toVal,
-                XtPointer * closure_ret _X_UNUSED)
+                XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -1353,10 +1354,10 @@ XtCvtIntToPixel(Display *dpy,
 Boolean
 XtCvtIntToPixmap(Display *dpy,
                  XrmValuePtr args _X_UNUSED,
-                 Cardinal * num_args,
+                 Cardinal *num_args,
                  XrmValuePtr fromVal,
                  XrmValuePtr toVal,
-                 XtPointer * closure_ret _X_UNUSED)
+                 XtPointer *closure_ret _X_UNUSED)
 {
     if (*num_args != 0)
         XtAppWarningMsg(XtDisplayToApplicationContext(dpy),
@@ -1438,10 +1439,10 @@ CopyISOLatin1Lowered(char *dst, const char *src)
 Boolean
 XtCvtStringToInitialState(Display *dpy,
                           XrmValuePtr args _X_UNUSED,
-                          Cardinal * num_args,
+                          Cardinal *num_args,
                           XrmValuePtr fromVal,
                           XrmValuePtr toVal,
-                          XtPointer * closure_ret _X_UNUSED)
+                          XtPointer *closure_ret _X_UNUSED)
 {
     String str = (String) fromVal->addr;
 
@@ -1479,10 +1480,10 @@ static XtConvertArgRec const visualConvertArgs[] = {
 
 Boolean
 XtCvtStringToVisual(Display *dpy, XrmValuePtr args,     /* Screen, depth */
-                    Cardinal * num_args,        /* 2 */
+                    Cardinal *num_args,        /* 2 */
                     XrmValuePtr fromVal,
                     XrmValuePtr toVal,
-                    XtPointer * closure_ret _X_UNUSED)
+                    XtPointer *closure_ret _X_UNUSED)
 {
     String str = (String) fromVal->addr;
     int vc;
@@ -1539,10 +1540,10 @@ XtCvtStringToVisual(Display *dpy, XrmValuePtr args,     /* Screen, depth */
 Boolean
 XtCvtStringToAtom(Display *dpy,
                   XrmValuePtr args,
-                  Cardinal * num_args,
+                  Cardinal *num_args,
                   XrmValuePtr fromVal,
                   XrmValuePtr toVal,
-                  XtPointer * closure_ret _X_UNUSED)
+                  XtPointer *closure_ret _X_UNUSED)
 {
     Atom atom;
 
@@ -1562,10 +1563,10 @@ XtCvtStringToAtom(Display *dpy,
 Boolean
 XtCvtStringToDirectoryString(Display *dpy,
                              XrmValuePtr args _X_UNUSED,
-                             Cardinal * num_args,
+                             Cardinal *num_args,
                              XrmValuePtr fromVal,
                              XrmValuePtr toVal,
-                             XtPointer * closure_ret _X_UNUSED)
+                             XtPointer *closure_ret _X_UNUSED)
 {
     String str;
     char directory[PATH_MAX + 1];
@@ -1609,7 +1610,7 @@ FreeDirectoryString(XtAppContext app,
                     XrmValuePtr toVal,
                     XtPointer closure _X_UNUSED,
                     XrmValuePtr args _X_UNUSED,
-                    Cardinal * num_args)
+                    Cardinal *num_args)
 {
     if (*num_args != 0)
         XtAppWarningMsg(app,
@@ -1624,10 +1625,10 @@ FreeDirectoryString(XtAppContext app,
 Boolean
 XtCvtStringToRestartStyle(Display *dpy,
                           XrmValuePtr args _X_UNUSED,
-                          Cardinal * num_args,
+                          Cardinal *num_args,
                           XrmValuePtr fromVal,
                           XrmValuePtr toVal,
-                          XtPointer * closure_ret _X_UNUSED)
+                          XtPointer *closure_ret _X_UNUSED)
 {
     String str = (String) fromVal->addr;
 
@@ -1657,10 +1658,10 @@ XtCvtStringToRestartStyle(Display *dpy,
 Boolean
 XtCvtStringToCommandArgArray(Display *dpy,
                              XrmValuePtr args _X_UNUSED,
-                             Cardinal * num_args,
+                             Cardinal *num_args,
                              XrmValuePtr fromVal,
                              XrmValuePtr toVal,
-                             XtPointer * closure_ret)
+                             XtPointer *closure_ret)
 {
     String *strarray, *ptr;
     char *src;
@@ -1718,8 +1719,7 @@ XtCvtStringToCommandArgArray(Display *dpy,
             dst++;
     }
 
-    ptr = strarray =
-        (String *)
+    ptr = strarray = (String *)
         __XtMalloc((Cardinal) ((size_t) (tokens + 1) * sizeof(String)));
     src = dst_str;
     while (--tokens >= 0) {
@@ -1741,7 +1741,7 @@ ArgArrayDestructor(XtAppContext app _X_UNUSED,
                    XrmValuePtr toVal _X_UNUSED,
                    XtPointer closure,
                    XrmValuePtr args _X_UNUSED,
-                   Cardinal * num_args _X_UNUSED)
+                   Cardinal *num_args _X_UNUSED)
 {
     if (closure) {
         _XtString *strarray = (_XtString *) closure;
@@ -1754,10 +1754,10 @@ ArgArrayDestructor(XtAppContext app _X_UNUSED,
 Boolean
 XtCvtStringToGravity(Display *dpy,
                      XrmValuePtr args _X_UNUSED,
-                     Cardinal * num_args,
+                     Cardinal *num_args,
                      XrmValuePtr fromVal,
                      XrmValuePtr toVal,
-                     XtPointer * closure_ret _X_UNUSED)
+                     XtPointer *closure_ret _X_UNUSED)
 {
     /* *INDENT-OFF* */
     static struct _namepair {

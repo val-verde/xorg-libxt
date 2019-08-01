@@ -756,7 +756,7 @@ _search_widget_tree(Widget w, char *resource, char *value)
  * ERRORS: none
  */
 static int
-_locate_children(Widget parent, Widget ** children)
+_locate_children(Widget parent, Widget **children)
 {
     CompositeWidget comp = (CompositeWidget) parent;
     Cardinal i;

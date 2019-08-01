@@ -373,8 +373,8 @@ IoWait(wait_times_ptr_t wt, wait_fds_ptr_t wf)
 #ifdef USE_POLL
     return poll(wf->fdlist, (nfds_t) wf->fdlistlen, wt->poll_wait);
 #else
-    return Select(wf->nfds, &wf->rmask, &wf->wmask, &wf->emask,
-                  wt->wait_time_ptr);
+    return Select (wf->nfds, &wf->rmask, &wf->wmask, &wf->emask,
+                   wt->wait_time_ptr);
 #endif
 }
 
@@ -795,7 +795,7 @@ XtAddTimeOut(unsigned long interval,
 }
 
 static void
-QueueTimerEvent(XtAppContext app, TimerEventRec * ptr)
+QueueTimerEvent(XtAppContext app, TimerEventRec *ptr)
 {
     TimerEventRec *t, **tt;
 
@@ -826,8 +826,8 @@ XtAppAddTimeOut(XtAppContext app,
     }
     else
         tptr = XtNew(TimerEventRec);
-    UNLOCK_PROCESS;
 
+    UNLOCK_PROCESS;
     tptr->te_next = NULL;
     tptr->te_closure = closure;
     tptr->te_proc = proc;
@@ -839,6 +839,7 @@ XtAppAddTimeOut(XtAppContext app,
     ADD_TIME(tptr->te_timer_value, tptr->te_timer_value, current_time);
     QueueTimerEvent(app, tptr);
     UNLOCK_APP(app);
+
     return ((XtIntervalId) tptr);
 }
 
@@ -890,6 +891,7 @@ XtAppAddWorkProc(XtAppContext app, XtWorkProc proc, XtPointer closure)
     }
     else
         wptr = XtNew(WorkProcRec);
+
     UNLOCK_PROCESS;
     wptr->next = app->workQueue;
     wptr->closure = closure;
@@ -897,6 +899,7 @@ XtAppAddWorkProc(XtAppContext app, XtWorkProc proc, XtPointer closure)
     wptr->app = app;
     app->workQueue = wptr;
     UNLOCK_APP(app);
+
     return (XtWorkProcId) wptr;
 }
 
@@ -946,6 +949,7 @@ XtAppAddSignal(XtAppContext app, XtSignalCallbackProc proc, XtPointer closure)
     }
     else
         sptr = XtNew(SignalEventRec);
+
     UNLOCK_PROCESS;
     sptr->se_next = app->signalQueue;
     sptr->se_closure = closure;
@@ -1049,6 +1053,7 @@ XtAppAddInput(XtAppContext app,
         app->input_max = (short) n;
     }
     sptr = XtNew(InputEvent);
+
     sptr->ie_proc = proc;
     sptr->ie_closure = closure;
     sptr->app = app;

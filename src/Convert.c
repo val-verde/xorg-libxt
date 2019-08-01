@@ -101,7 +101,7 @@ typedef struct _ConverterRec {
 static Heap globalHeap = { NULL, NULL, 0 };
 
 void
-_XtSetDefaultConverterTable(ConverterTable * table)
+_XtSetDefaultConverterTable(ConverterTable *table)
 {
     register ConverterTable globalConverterTable;
 
@@ -346,7 +346,7 @@ XtAppAddConverter(XtAppContext app,
 }
 
 static CachePtr
-CacheEnter(Heap * heap,
+CacheEnter(Heap *heap,
            register XtTypeConverter converter,
            register XrmValuePtr args,
            Cardinal num_args,
@@ -536,7 +536,7 @@ _XtConverterCacheStats(void)
 static Boolean
 ResourceQuarkToOffset(WidgetClass widget_class,
                       XrmName name,
-                      Cardinal * offset)
+                      Cardinal *offset)
 {
     WidgetClass wc;
     Cardinal i;
@@ -733,7 +733,7 @@ CallConverter(Display *dpy,
               Cardinal num_args,
               register XrmValuePtr from,
               XrmValuePtr to,
-              XtCacheRef * cache_ref_return,
+              XtCacheRef *cache_ref_return,
               register ConverterPtr cP)
 {
     CachePtr p;
@@ -876,7 +876,7 @@ XtCallConverter(Display *dpy,
                 Cardinal num_args,
                 register XrmValuePtr from,
                 XrmValuePtr to,
-                XtCacheRef * cache_ref_return)
+                XtCacheRef *cache_ref_return)
 {
     ConverterPtr cP;
     Boolean retval;
@@ -901,7 +901,7 @@ _XtConvert(Widget widget,
            XrmValuePtr from,
            register XrmRepresentation to_type,
            register XrmValuePtr to,
-           XtCacheRef * cache_ref_return)
+           XtCacheRef *cache_ref_return)
 {
     XtAppContext app = XtWidgetToApplicationContext(widget);
     register ConverterPtr p;
@@ -1087,7 +1087,7 @@ XtConvertAndStore(Widget object,
 }
 
 void
-XtAppReleaseCacheRefs(XtAppContext app, XtCacheRef * refs)
+XtAppReleaseCacheRefs(XtAppContext app, XtCacheRef *refs)
 {
     register CachePtr *r;
     register CachePtr p;

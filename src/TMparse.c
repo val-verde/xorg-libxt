@@ -497,7 +497,7 @@ Syntax(_Xconst char *str0, _Xconst char *str1)
 }
 
 static Cardinal
-LookupTMEventType(String eventStr, Boolean * error)
+LookupTMEventType(String eventStr, Boolean *error)
 {
     register int i = 0, left, right;
     register XrmQuark signature;
@@ -535,7 +535,7 @@ StoreLateBindings(KeySym keysymL,
                   Boolean notL,
                   KeySym keysymR,
                   Boolean notR,
-                  LateBindingsPtr * lateBindings)
+                  LateBindingsPtr *lateBindings)
 {
     LateBindingsPtr temp;
 
@@ -585,10 +585,10 @@ StoreLateBindings(KeySym keysymL,
 
 static void
 _XtParseKeysymMod(String name,
-                  LateBindingsPtr * lateBindings,
+                  LateBindingsPtr *lateBindings,
                   Boolean notFlag,
-                  Value * valueP,
-                  Boolean * error)
+                  Value *valueP,
+                  Boolean *error)
 {
     KeySym keySym;
 
@@ -601,9 +601,9 @@ _XtParseKeysymMod(String name,
 
 static Boolean
 _XtLookupModifier(XrmQuark signature,
-                  LateBindingsPtr * lateBindings,
+                  LateBindingsPtr *lateBindings,
                   Boolean notFlag,
-                  Value * valueP,
+                  Value *valueP,
                   Bool constMask)
 {
     int left, right;
@@ -691,7 +691,7 @@ FetchModifierToken(String str, XrmQuark *token_return)
 }
 
 static String
-ParseModifiers(register String str, EventPtr event, Boolean * error)
+ParseModifiers(register String str, EventPtr event, Boolean *error)
 {
     register String start;
     Boolean notFlag, exclusive, keysymAsMod;
@@ -781,8 +781,8 @@ ParseModifiers(register String str, EventPtr event, Boolean * error)
 static String
 ParseXtEventType(register String str,
                  EventPtr event,
-                 Cardinal * tmEventP,
-                 Boolean * error)
+                 Cardinal *tmEventP,
+                 Boolean *error)
 {
     String start = str;
     char eventTypeStrbuf[100];
@@ -866,7 +866,7 @@ StrToNum(String str)
 }
 
 static KeySym
-StringToKeySym(String str, Boolean * error)
+StringToKeySym(String str, Boolean *error)
 {
     KeySym k;
 
@@ -902,8 +902,9 @@ StringToKeySym(String str, Boolean * error)
 
 static void
 ParseModImmed(Value value,
-              LateBindingsPtr * lateBindings _X_UNUSED,
-              Boolean notFlag _X_UNUSED, Value * valueP)
+              LateBindingsPtr *lateBindings _X_UNUSED,
+              Boolean notFlag _X_UNUSED,
+              Value *valueP)
 {
     *valueP = value;
 }
@@ -913,7 +914,7 @@ ParseModImmed(Value value,
  */
 static void
 ParseModSym(Value value,
-            LateBindingsPtr * lateBindings, Boolean notFlag, Value * valueP)
+            LateBindingsPtr *lateBindings, Boolean notFlag, Value *valueP)
 {
     register KeySym keysymL = (KeySym) value;
     register KeySym keysymR = keysymL + 1;      /* valid for supported keysyms */
@@ -939,7 +940,7 @@ static String
 ParseImmed(register String str,
            register Opaque closure,
            register EventPtr event,
-           Boolean * error _X_UNUSED)
+           Boolean *error _X_UNUSED)
 {
     event->event.eventCode = (unsigned long) closure;
     event->event.eventCodeMask = (unsigned long) (~0UL);
@@ -951,7 +952,7 @@ static String
 ParseAddModifier(register String str,
                  register Opaque closure,
                  register EventPtr event,
-                 Boolean * error _X_UNUSED)
+                 Boolean *error _X_UNUSED)
 {
     register unsigned long modval = (unsigned long) closure;
 
@@ -966,7 +967,7 @@ static String
 ParseKeyAndModifiers(String str,
                      Opaque closure,
                      EventPtr event,
-                     Boolean * error)
+                     Boolean *error)
 {
     str = ParseKeySym(str, closure, event, error);
     if ((unsigned long) closure == 0) {
@@ -986,7 +987,7 @@ static String
 ParseKeySym(register String str,
             Opaque closure _X_UNUSED,
             EventPtr event,
-            Boolean * error)
+            Boolean *error)
 {
     String start;
     char keySymNamebuf[100];
@@ -1050,7 +1051,7 @@ ParseKeySym(register String str,
 }
 
 static String
-ParseTable(register String str, Opaque closure, EventPtr event, Boolean * error)
+ParseTable(register String str, Opaque closure, EventPtr event, Boolean *error)
 {
     register String start = str;
     register XrmQuark signature;
@@ -1087,7 +1088,7 @@ static String
 ParseNone(String str,
           Opaque closure _X_UNUSED,
           EventPtr event,
-          Boolean * error _X_UNUSED)
+          Boolean *error _X_UNUSED)
 {
     event->event.eventCode = 0;
     event->event.eventCodeMask = 0;
@@ -1096,7 +1097,7 @@ ParseNone(String str,
 }
 
 static String
-ParseAtom(String str, Opaque closure _X_UNUSED, EventPtr event, Boolean * error)
+ParseAtom(String str, Opaque closure _X_UNUSED, EventPtr event, Boolean *error)
 {
     ScanWhitespace(str);
 
@@ -1136,8 +1137,8 @@ static String ParseRepeat(String, int *, Boolean *, Boolean *);
 static String
 ParseEvent(register String str,
            EventPtr event, int *reps,
-           Boolean * plus,
-           Boolean * error)
+           Boolean *plus,
+           Boolean *error)
 {
     Cardinal tmEvent;
 
@@ -1191,7 +1192,7 @@ ParseEvent(register String str,
 static String
 ParseQuotedStringEvent(register String str,
                        register EventPtr event,
-                       Boolean * error)
+                       Boolean *error)
 {
     Value metaMask;
     char s[2];
@@ -1230,7 +1231,7 @@ static EventSeqRec timerEventRec = {
 };
 
 static void
-RepeatDown(EventPtr * eventP, int reps, ActionPtr ** actionsP)
+RepeatDown(EventPtr *eventP, int reps, ActionPtr **actionsP)
 {
     EventRec upEventRec;
     register EventPtr event, downEvent;
@@ -1279,7 +1280,7 @@ RepeatDown(EventPtr * eventP, int reps, ActionPtr ** actionsP)
 }
 
 static void
-RepeatDownPlus(EventPtr * eventP, int reps, ActionPtr ** actionsP)
+RepeatDownPlus(EventPtr *eventP, int reps, ActionPtr **actionsP)
 {
     EventRec upEventRec;
     register EventPtr event, downEvent, lastDownEvent = NULL;
@@ -1331,7 +1332,7 @@ RepeatDownPlus(EventPtr * eventP, int reps, ActionPtr ** actionsP)
 }
 
 static void
-RepeatUp(EventPtr * eventP, int reps, ActionPtr ** actionsP)
+RepeatUp(EventPtr *eventP, int reps, ActionPtr **actionsP)
 {
     EventRec upEventRec;
     register EventPtr event, downEvent;
@@ -1389,7 +1390,7 @@ RepeatUp(EventPtr * eventP, int reps, ActionPtr ** actionsP)
 }
 
 static void
-RepeatUpPlus(EventPtr * eventP, int reps, ActionPtr ** actionsP)
+RepeatUpPlus(EventPtr *eventP, int reps, ActionPtr **actionsP)
 {
     EventRec upEventRec;
     register EventPtr event, downEvent, lastUpEvent = NULL;
@@ -1441,7 +1442,7 @@ RepeatUpPlus(EventPtr * eventP, int reps, ActionPtr ** actionsP)
 }
 
 static void
-RepeatOther(EventPtr * eventP, int reps, ActionPtr ** actionsP)
+RepeatOther(EventPtr *eventP, int reps, ActionPtr **actionsP)
 {
     register EventPtr event, tempEvent;
     register int i;
@@ -1463,7 +1464,7 @@ RepeatOther(EventPtr * eventP, int reps, ActionPtr ** actionsP)
 }
 
 static void
-RepeatOtherPlus(EventPtr * eventP, int reps, ActionPtr ** actionsP)
+RepeatOtherPlus(EventPtr *eventP, int reps, ActionPtr **actionsP)
 {
     register EventPtr event, tempEvent;
     register int i;
@@ -1486,7 +1487,7 @@ RepeatOtherPlus(EventPtr * eventP, int reps, ActionPtr ** actionsP)
 }
 
 static void
-RepeatEvent(EventPtr * eventP, int reps, Boolean plus, ActionPtr ** actionsP)
+RepeatEvent(EventPtr *eventP, int reps, Boolean plus, ActionPtr **actionsP)
 {
     switch ((*eventP)->event.eventType) {
 
@@ -1515,7 +1516,7 @@ RepeatEvent(EventPtr * eventP, int reps, Boolean plus, ActionPtr ** actionsP)
 }
 
 static String
-ParseRepeat(register String str, int *reps, Boolean * plus, Boolean * error)
+ParseRepeat(register String str, int *reps, Boolean *plus, Boolean *error)
 {
 
     /*** Parse the repetitions, for double click etc... ***/
@@ -1571,9 +1572,9 @@ ParseRepeat(register String str, int *reps, Boolean * plus, Boolean * error)
 
 static String
 ParseEventSeq(register String str,
-              EventSeqPtr * eventSeqP,
+              EventSeqPtr *eventSeqP,
               ActionPtr ** actionsP,
-              Boolean * error)
+              Boolean *error)
 {
     EventSeqPtr *nextEvent = eventSeqP;
 
@@ -1660,7 +1661,7 @@ ParseEventSeq(register String str,
 }
 
 static String
-ParseActionProc(register String str, XrmQuark *actionProcNameP, Boolean * error)
+ParseActionProc(register String str, XrmQuark *actionProcNameP, Boolean *error)
 {
     register String start = str;
     char procName[200];
@@ -1678,7 +1679,7 @@ ParseActionProc(register String str, XrmQuark *actionProcNameP, Boolean * error)
 }
 
 static String
-ParseString(register String str, _XtString * strP)
+ParseString(register String str, _XtString *strP)
 {
     register String start;
 
@@ -1734,7 +1735,7 @@ ParseString(register String str, _XtString * strP)
 }
 
 static String
-ParseParamSeq(register String str, String ** paramSeqP, Cardinal * paramNumP)
+ParseParamSeq(register String str, String **paramSeqP, Cardinal *paramNumP)
 {
     typedef struct _ParamRec *ParamPtr;
     typedef struct _ParamRec {
@@ -1795,7 +1796,7 @@ ParseParamSeq(register String str, String ** paramSeqP, Cardinal * paramNumP)
 }
 
 static String
-ParseAction(String str, ActionPtr actionP, XrmQuark *quarkP, Boolean * error)
+ParseAction(String str, ActionPtr actionP, XrmQuark *quarkP, Boolean *error)
 {
     str = ParseActionProc(str, quarkP, error);
     if (*error)
@@ -1823,8 +1824,8 @@ ParseAction(String str, ActionPtr actionP, XrmQuark *quarkP, Boolean * error)
 static String
 ParseActionSeq(TMParseStateTree parseTree,
                String str,
-               ActionPtr * actionsP,
-               Boolean * error)
+               ActionPtr *actionsP,
+               Boolean *error)
 {
     ActionPtr *nextActionP;
 
@@ -1893,7 +1894,7 @@ ShowProduction(String currentProduction)
 static String
 ParseTranslationTableProduction(TMParseStateTree parseTree,
                                 register String str,
-                                Boolean * error)
+                                Boolean *error)
 {
     EventSeqPtr eventSeq = NULL;
     ActionPtr *actionsP;
@@ -1921,7 +1922,7 @@ ParseTranslationTableProduction(TMParseStateTree parseTree,
 static String
 CheckForPoundSign(String str,
                   _XtTranslateOp defaultOp,
-                  _XtTranslateOp * actualOpRtn)
+                  _XtTranslateOp *actualOpRtn)
 {
     _XtTranslateOp opType;
 
@@ -1959,7 +1960,7 @@ static XtTranslations
 ParseTranslationTable(String source,
                       Boolean isAccelerator,
                       _XtTranslateOp defaultOp,
-                      Boolean * error)
+                      Boolean *error)
 {
     XtTranslations xlations;
     TMStateTree stateTrees[8];
@@ -2021,10 +2022,10 @@ ParseTranslationTable(String source,
 Boolean
 XtCvtStringToAcceleratorTable(Display *dpy,
                               XrmValuePtr args _X_UNUSED,
-                              Cardinal * num_args,
+                              Cardinal *num_args,
                               XrmValuePtr from,
                               XrmValuePtr to,
-                              XtPointer * closure _X_UNUSED)
+                              XtPointer *closure _X_UNUSED)
 {
     String str;
     Boolean error = FALSE;
@@ -2074,10 +2075,10 @@ XtCvtStringToAcceleratorTable(Display *dpy,
 Boolean
 XtCvtStringToTranslationTable(Display *dpy,
                               XrmValuePtr args _X_UNUSED,
-                              Cardinal * num_args,
+                              Cardinal *num_args,
                               XrmValuePtr from,
                               XrmValuePtr to,
-                              XtPointer * closure_ret _X_UNUSED)
+                              XtPointer *closure_ret _X_UNUSED)
 {
     String str;
     Boolean error = FALSE;
@@ -2132,6 +2133,7 @@ XtParseAcceleratorTable(_Xconst char *source)
     XtAccelerators ret =
         (XtAccelerators) ParseTranslationTable(source, TRUE, XtTableAugment,
                                                &error);
+
     if (error == TRUE)
         XtWarningMsg("parseError", "cvtStringToAcceleratorTable",
                      XtCXtToolkitError,

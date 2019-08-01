@@ -172,8 +172,8 @@ FM(0x1e), FM(0x9e), FM(0x5e), FM(0xde), FM(0x3e), FM(0xbe), FM(0x7e), FM(0xfe)
 Boolean
 _XtComputeLateBindings(Display *dpy,
                        LateBindingsPtr lateModifiers,
-                       Modifiers * computed,
-                       Modifiers * computedMask)
+                       Modifiers *computed,
+                       Modifiers *computedMask)
 {
     int i, j, ref;
     ModToKeysymTable *temp;
@@ -354,8 +354,8 @@ _XtMatchUsingDontCareMods(TMTypeMatch typeMatch,
 void
 XtConvertCase(Display *dpy,
               KeySym keysym,
-              KeySym * lower_return,
-              KeySym * upper_return)
+              KeySym *lower_return,
+              KeySym *upper_return)
 {
     XtPerDisplay pd;
     CaseConverterPtr ptr;
@@ -532,8 +532,8 @@ void
 XtTranslateKeycode(Display *dpy,
                    _XtKeyCode keycode,
                    Modifiers modifiers,
-                   Modifiers * modifiers_return,
-                   KeySym * keysym_return)
+                   Modifiers *modifiers_return,
+                   KeySym *keysym_return)
 {
     XtPerDisplay pd;
 
@@ -552,8 +552,8 @@ void
 XtTranslateKey(register Display *dpy,
                _XtKeyCode keycode,
                Modifiers modifiers,
-               Modifiers * modifiers_return,
-               KeySym * keysym_return)
+               Modifiers *modifiers_return,
+               KeySym *keysym_return)
 {
 #ifndef XKB
     XtPerDisplay pd;
@@ -694,7 +694,7 @@ void
 XtKeysymToKeycodeList(Display *dpy,
                       KeySym keysym,
                       KeyCode **keycodes_return,
-                      Cardinal * keycount_return)
+                      Cardinal *keycount_return)
 {
     XtPerDisplay pd;
     unsigned keycode;

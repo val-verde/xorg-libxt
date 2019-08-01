@@ -82,8 +82,8 @@ in this Software without prior written authorization from The Open Group.
 
 void
 XtGetResourceList(WidgetClass widget_class,
-                  XtResourceList * resources,
-                  Cardinal * num_resources)
+                  XtResourceList *resources,
+                  Cardinal *num_resources)
 {
     int size;
     register Cardinal i, dest = 0;
@@ -119,7 +119,7 @@ XtGetResourceList(WidgetClass widget_class,
             dlist[dest].resource_size = list[i]->resource_size;
             /* trust that resource_offset isn't that big */
             dlist[dest].resource_offset = (Cardinal)
-                - ((int) (list[i]->resource_offset + 1));
+                -((int) (list[i]->resource_offset + 1));
             dlist[dest].default_type = (String)
                 XrmQuarkToString(TOXRMQUARK(list[i]->default_type));
             dlist[dest].default_addr = list[i]->default_addr;
@@ -142,8 +142,8 @@ ClassIsSubclassOf(WidgetClass class, WidgetClass superclass)
 
 void
 XtGetConstraintResourceList(WidgetClass widget_class,
-                            XtResourceList * resources,
-                            Cardinal * num_resources)
+                            XtResourceList *resources,
+                            Cardinal *num_resources)
 {
     int size;
     register Cardinal i, dest = 0;
@@ -192,7 +192,7 @@ XtGetConstraintResourceList(WidgetClass widget_class,
             dlist[dest].resource_size = list[i]->resource_size;
             /* trust that resource_offset isn't that big */
             dlist[dest].resource_offset = (Cardinal)
-                - ((int) (list[i]->resource_offset + 1));
+                -((int) (list[i]->resource_offset + 1));
             dlist[dest].default_type = (String)
                 XrmQuarkToString(TOXRMQUARK(list[i]->default_type));
             dlist[dest].default_addr = list[i]->default_addr;

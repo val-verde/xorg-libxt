@@ -258,7 +258,7 @@ GetComplexBranchIndex(TMParseStateTree parseTree,
 }
 
 TMShortCard
-_XtGetTypeIndex(Event * event)
+_XtGetTypeIndex(Event *event)
 {
     TMShortCard i, j = TM_TYPE_SEGMENT_SIZE;
     TMShortCard typeIndex = 0;
@@ -348,7 +348,7 @@ CompareLateModifiers(LateBindingsPtr lateBind1P, LateBindingsPtr lateBind2P)
 }
 
 TMShortCard
-_XtGetModifierIndex(Event * event)
+_XtGetModifierIndex(Event *event)
 {
     TMShortCard i, j = TM_MOD_SEGMENT_SIZE;
     TMShortCard modIndex = 0;
@@ -609,8 +609,8 @@ HandleActions(Widget w,
               XEvent *event,
               TMSimpleStateTree stateTree,
               Widget accelWidget,
-              XtActionProc * procs,
-              ActionRec * actions)
+              XtActionProc *procs,
+              ActionRec *actions)
 {
     ActionHook actionHookList;
     Widget bindWidget;
@@ -678,7 +678,7 @@ static TMContextRec contextCache[2];
 #define TM_CONTEXT_MATCHES_REALLOC 2
 
 static void
-PushContext(TMContext * contextPtr, StatePtr newState)
+PushContext(TMContext *contextPtr, StatePtr newState)
 {
     TMContext context = *contextPtr;
 
@@ -735,7 +735,7 @@ PushContext(TMContext * contextPtr, StatePtr newState)
 }
 
 static void
-FreeContext(TMContext * contextPtr)
+FreeContext(TMContext *contextPtr)
 {
     TMContext context = NULL;
 
@@ -775,7 +775,7 @@ MatchExact(TMSimpleStateTree stateTree,
 }
 
 static void
-HandleSimpleState(Widget w, XtTM tmRecPtr, TMEventRec * curEventPtr)
+HandleSimpleState(Widget w, XtTM tmRecPtr, TMEventRec *curEventPtr)
 {
     XtTranslations xlations = tmRecPtr->translations;
     TMContext *contextPtr = GetContextPtr(tmRecPtr);
@@ -833,7 +833,7 @@ HandleSimpleState(Widget w, XtTM tmRecPtr, TMEventRec * curEventPtr)
                             actions = currState->actions;
                         tmRecPtr->lastEventTime =
                             GetTime(tmRecPtr, curEventPtr->xev);
-                        FreeContext((TMContext *) & tmRecPtr->current_state);
+                        FreeContext((TMContext *) &tmRecPtr->current_state);
                         match = True;
                         matchTreeIndex = i;
                     }
@@ -890,7 +890,7 @@ static int
 MatchComplexBranch(TMComplexStateTree stateTree,
                    int startIndex,
                    TMContext context,
-                   StatePtr * leafStateRtn)
+                   StatePtr *leafStateRtn)
 {
     TMShortCard i;
 
@@ -920,9 +920,9 @@ MatchComplexBranch(TMComplexStateTree stateTree,
 }
 
 static StatePtr
-TryCurrentTree(TMComplexStateTree * stateTreePtr,
+TryCurrentTree(TMComplexStateTree *stateTreePtr,
                XtTM tmRecPtr,
-               TMEventRec * curEventPtr)
+               TMEventRec *curEventPtr)
 {
     StatePtr candState = NULL, matchState = NULL;
     TMContext *contextPtr = GetContextPtr(tmRecPtr);
@@ -991,14 +991,14 @@ TryCurrentTree(TMComplexStateTree * stateTreePtr,
 }
 
 static void
-HandleComplexState(Widget w, XtTM tmRecPtr, TMEventRec * curEventPtr)
+HandleComplexState(Widget w, XtTM tmRecPtr, TMEventRec *curEventPtr)
 {
     XtTranslations xlations = tmRecPtr->translations;
     TMContext *contextPtr = GetContextPtr(tmRecPtr);
     TMShortCard i, matchTreeIndex = 0;
     StatePtr matchState = NULL, candState;
     TMComplexStateTree *stateTreePtr =
-        (TMComplexStateTree *) & xlations->stateTreeTbl[0];
+        (TMComplexStateTree *) &xlations->stateTreeTbl[0];
 
     LOCK_PROCESS;
     for (i = 0; i < xlations->numStateTrees; i++, stateTreePtr++) {
@@ -1243,7 +1243,7 @@ _XtInstallTranslations(Widget widget)
 
         _XtTraverseStateTree(stateTree,
                              AggregateEventMask,
-                             (XtPointer) & xlations->eventMask);
+                             (XtPointer) &xlations->eventMask);
         mappingNotifyInterest =
             (Boolean) (mappingNotifyInterest |
                        stateTree->simple.mappingNotifyInterest);
@@ -1268,14 +1268,14 @@ _XtInstallTranslations(Widget widget)
 
         if (widget->core.destroy_callbacks != NULL)
             _XtAddCallbackOnce((InternalCallbackList *)
-                               & widget->core.destroy_callbacks,
+                               &widget->core.destroy_callbacks,
                                RemoveFromMappingCallbacks, (XtPointer) widget);
         else
             _XtAddCallback((InternalCallbackList *)
-                           & widget->core.destroy_callbacks,
+                           &widget->core.destroy_callbacks,
                            RemoveFromMappingCallbacks, (XtPointer) widget);
     }
-    _XtBindActions(widget, (XtTM) & widget->core.tm);
+    _XtBindActions(widget, (XtTM) &widget->core.tm);
     _XtRegisterGrabs(widget);
 }
 
@@ -1308,7 +1308,7 @@ _XtUninstallTranslations(Widget widget)
     _XtUnbindActions(widget, xlations, (TMBindData) widget->core.tm.proc_table);
     _XtRemoveTranslations(widget);
     widget->core.tm.translations = NULL;
-    FreeContext((TMContext *) & widget->core.tm.current_state);
+    FreeContext((TMContext *) &widget->core.tm.current_state);
 }
 
 void
@@ -1361,13 +1361,13 @@ XtUninstallTranslations(Widget widget)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_APP(app);
 }
 
 XtTranslations
-_XtCreateXlations(TMStateTree * stateTrees,
+_XtCreateXlations(TMStateTree *stateTrees,
                   TMShortCard numStateTrees,
                   XtTranslations first,
                   XtTranslations second)
@@ -1469,7 +1469,7 @@ FreeActions(ActionPtr actions)
 
 static void
 AmbigActions(EventSeqPtr initialEvent,
-             StatePtr * state,
+             StatePtr *state,
              TMParseStateTree stateTree)
 {
     String params[3];
@@ -1597,10 +1597,10 @@ _XtAddEventSeqToStateTree(EventSeqPtr eventSeq, TMParseStateTree stateTree)
 Boolean
 _XtCvtMergeTranslations(Display *dpy _X_UNUSED,
                         XrmValuePtr args _X_UNUSED,
-                        Cardinal * num_args,
+                        Cardinal *num_args,
                         XrmValuePtr from,
                         XrmValuePtr to,
-                        XtPointer * closure_ret _X_UNUSED)
+                        XtPointer *closure_ret _X_UNUSED)
 {
     XtTranslations first, second, xlations;
     TMStateTree *stateTrees, stackStateTrees[16];
@@ -1703,7 +1703,7 @@ UnmergeTranslations(Widget widget,
                     TMComplexBindProcs oldBindings,
                     TMShortCard numOldBindings,
                     TMComplexBindProcs newBindings,
-                    TMShortCard * numNewBindingsRtn)
+                    TMShortCard *numNewBindingsRtn)
 {
     XtTranslations first, second, result;
 
@@ -1776,7 +1776,7 @@ MergeTranslations(Widget widget,
                   Widget source,
                   TMComplexBindProcs oldBindings,
                   TMComplexBindProcs newBindings,
-                  TMShortCard * numNewRtn)
+                  TMShortCard *numNewRtn)
 {
     XtTranslations newTable = NULL, xlations;
     TMComplexBindProcs bindings;
@@ -1792,7 +1792,7 @@ MergeTranslations(Widget widget,
     if (newXlations->hasBindings) {
         xlations = ((ATranslations) newXlations)->xlations;
         bindings = (TMComplexBindProcs)
-            & ((ATranslations) newXlations)->bindTbl[0];
+            &((ATranslations) newXlations)->bindTbl[0];
     }
     else {
         xlations = newXlations;
@@ -2043,7 +2043,7 @@ ComposeTranslations(Widget dest,
 XtTranslations
 _XtGetTranslationValue(Widget w)
 {
-    XtTM tmRecPtr = (XtTM) & w->core.tm;
+    XtTM tmRecPtr = (XtTM) &w->core.tm;
     ATranslations *aXlationsPtr;
     TMComplexBindData cBindData = (TMComplexBindData) tmRecPtr->proc_table;
     XtTranslations xlations = tmRecPtr->translations;
@@ -2055,11 +2055,11 @@ _XtGetTranslationValue(Widget w)
      * header for the currently installed translations.  If we have,
      * just return that header.  Otherwise create a new header.
      */
-    for (aXlationsPtr = (ATranslations *) & cBindData->accel_context;
+    for (aXlationsPtr = (ATranslations *) &cBindData->accel_context;
          *aXlationsPtr && (*aXlationsPtr)->xlations != xlations;
          aXlationsPtr = &(*aXlationsPtr)->next);
     if (*aXlationsPtr)
-        return (XtTranslations) * aXlationsPtr;
+        return (XtTranslations) *aXlationsPtr;
     else {
         /* create a new aXlations context */
         ATranslations aXlations;
@@ -2132,7 +2132,7 @@ _XtFreeTranslations(XtAppContext app,
                     XrmValuePtr toVal,
                     XtPointer closure _X_UNUSED,
                     XrmValuePtr args _X_UNUSED,
-                    Cardinal * num_args)
+                    Cardinal *num_args)
 {
     XtTranslations xlations;
     int i;
@@ -2248,7 +2248,7 @@ XtAugmentTranslations(Widget widget, XtTranslations new)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_PROCESS;
     UNLOCK_APP(app);
@@ -2272,7 +2272,7 @@ XtOverrideTranslations(Widget widget, XtTranslations new)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_PROCESS;
     UNLOCK_APP(app);

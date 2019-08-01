@@ -219,8 +219,8 @@ AppUnlock(XtAppContext app)
 
 static void
 YieldAppLock(XtAppContext app,
-             Boolean * push_thread,
-             Boolean * pushed_thread,
+             Boolean *push_thread,
+             Boolean *pushed_thread,
              int *level)
 {
     LockPtr app_lock = app->lock_info;
@@ -265,7 +265,7 @@ YieldAppLock(XtAppContext app,
 }
 
 static void
-RestoreAppLock(XtAppContext app, int level, Boolean * pushed_thread)
+RestoreAppLock(XtAppContext app, int level, Boolean *pushed_thread)
 {
     LockPtr app_lock = app->lock_info;
     xthread_t self = xthread_self();

@@ -170,6 +170,7 @@ typedef struct {
 static Boolean
 DoGrab(StatePtr state, XtPointer data)
 {
+    /* *INDENT-EQLS* */
     DoGrabRec *doGrabP     = (DoGrabRec *) data;
     GrabActionRec *grabP   = doGrabP->grabP;
     Widget widget          = doGrabP->widget;
@@ -279,8 +280,8 @@ _XtRegisterGrabs(Widget widget)
                     doGrab.widget = widget;
                     doGrab.grabP = grabP;
                     doGrab.count = (TMShortCard) count;
-                    _XtTraverseStateTree((TMStateTree) * stateTreePtr,
-                                         DoGrab, (XtPointer) & doGrab);
+                    _XtTraverseStateTree((TMStateTree) *stateTreePtr,
+                                         DoGrab, (XtPointer) &doGrab);
                 }
             }
             UNLOCK_PROCESS;

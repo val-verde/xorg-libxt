@@ -35,15 +35,15 @@ in this Software without prior written authorization from The Open Group.
 #include "CreateI.h"
 
 #if defined(AIXSHLIB)
-WidgetClass vendorShellWidgetClass = (WidgetClass) & vendorShellClassRec;
+WidgetClass vendorShellWidgetClass = (WidgetClass) &vendorShellClassRec;
 
 static void
 _XtVendorInitialize()
 {
     transientShellWidgetClass->core_class.superclass =
-        (WidgetClass) & vendorShellClassRec;
+        (WidgetClass) &vendorShellClassRec;
     topLevelShellWidgetClass->core_class.superclass =
-        (WidgetClass) & vendorShellClassRec;
+        (WidgetClass) &vendorShellClassRec;
 }
 
 #define VENDORINIT _XtVendorInitialize();
@@ -88,7 +88,7 @@ Widget
 XtInitialize(_Xconst char *name,
              _Xconst char *classname,
              XrmOptionDescRec *options,
-             Cardinal num_options, int *argc, String * argv)
+             Cardinal num_options, int *argc, String *argv)
 {
     extern Widget _XtInitialize();
 
@@ -97,13 +97,13 @@ XtInitialize(_Xconst char *name,
 }
 
 Widget
-XtAppInitialize(XtAppContext * app_context_return,
+XtAppInitialize(XtAppContext *app_context_return,
                 _Xconst char *application_class,
                 XrmOptionDescRec *options,
                 Cardinal num_options,
                 int *argc_in_out,
-                String * argv_in_out,
-                String * fallback_resources,
+                String *argv_in_out,
+                String *fallback_resources,
                 ArgList args_in, Cardinal num_args_in)
 {
     extern Widget _XtAppInitialize();
@@ -115,12 +115,12 @@ XtAppInitialize(XtAppContext * app_context_return,
 }
 
 Widget
-XtVaAppInitialize(XtAppContext * app_context_return,
+XtVaAppInitialize(XtAppContext *app_context_return,
                   _Xconst char *application_class,
                   XrmOptionDescList options,
                   Cardinal num_options,
                   int *argc_in_out,
-                  String * argv_in_out, String * fallback_resources, ...)
+                  String *argv_in_out, String *fallback_resources, ...)
 {
     va_list var;
     extern Widget _XtVaAppInitialize();
@@ -133,13 +133,13 @@ XtVaAppInitialize(XtAppContext * app_context_return,
 }
 
 Widget
-XtOpenApplication(XtAppContext * app_context_return,
+XtOpenApplication(XtAppContext *app_context_return,
                   _Xconst char *application_class,
                   XrmOptionDescRec *options,
                   Cardinal num_options,
                   int *argc_in_out,
-                  String * argv_in_out,
-                  String * fallback_resources,
+                  String *argv_in_out,
+                  String *fallback_resources,
                   WidgetClass widget_class,
                   ArgList args_in, Cardinal num_args_in)
 {
@@ -153,13 +153,13 @@ XtOpenApplication(XtAppContext * app_context_return,
 }
 
 Widget
-XtVaOpenApplication(XtAppContext * app_context_return,
+XtVaOpenApplication(XtAppContext *app_context_return,
                     _Xconst char *application_class,
                     XrmOptionDescList options,
                     Cardinal num_options,
                     int *argc_in_out,
-                    String * argv_in_out,
-                    String * fallback_resources, WidgetClass widget_class, ...)
+                    String *argv_in_out,
+                    String *fallback_resources, WidgetClass widget_class, ...)
 {
     va_list var;
     extern Widget _XtVaOpenApplication();
@@ -184,44 +184,44 @@ static int dummy;               /* avoid warning from ranlib */
 int _XtInheritTranslations = 0;
 
 extern CompositeClassRec compositeClassRec;
-WidgetClass compositeWidgetClass = (WidgetClass) & compositeClassRec;
+WidgetClass compositeWidgetClass = (WidgetClass) &compositeClassRec;
 
 extern ConstraintClassRec constraintClassRec;
-WidgetClass constraintWidgetClass = (WidgetClass) & constraintClassRec;
+WidgetClass constraintWidgetClass = (WidgetClass) &constraintClassRec;
 
 extern WidgetClassRec widgetClassRec;
 WidgetClass widgetClass = &widgetClassRec;
 WidgetClass coreWidgetClass = &widgetClassRec;
 
 extern ObjectClassRec objectClassRec;
-WidgetClass objectClass = (WidgetClass) & objectClassRec;
+WidgetClass objectClass = (WidgetClass) &objectClassRec;
 
 extern RectObjClassRec rectObjClassRec;
-WidgetClass rectObjClass = (WidgetClass) & rectObjClassRec;
+WidgetClass rectObjClass = (WidgetClass) &rectObjClassRec;
 
 extern ShellClassRec shellClassRec;
-WidgetClass shellWidgetClass = (WidgetClass) & shellClassRec;
+WidgetClass shellWidgetClass = (WidgetClass) &shellClassRec;
 
 extern OverrideShellClassRec overrideShellClassRec;
-WidgetClass overrideShellWidgetClass = (WidgetClass) & overrideShellClassRec;
+WidgetClass overrideShellWidgetClass = (WidgetClass) &overrideShellClassRec;
 
 extern WMShellClassRec wmShellClassRec;
-WidgetClass wmShellWidgetClass = (WidgetClass) & wmShellClassRec;
+WidgetClass wmShellWidgetClass = (WidgetClass) &wmShellClassRec;
 
 extern TransientShellClassRec transientShellClassRec;
-WidgetClass transientShellWidgetClass = (WidgetClass) & transientShellClassRec;
+WidgetClass transientShellWidgetClass = (WidgetClass) &transientShellClassRec;
 
 extern TopLevelShellClassRec topLevelShellClassRec;
-WidgetClass topLevelShellWidgetClass = (WidgetClass) & topLevelShellClassRec;
+WidgetClass topLevelShellWidgetClass = (WidgetClass) &topLevelShellClassRec;
 
 extern ApplicationShellClassRec applicationShellClassRec;
 WidgetClass applicationShellWidgetClass =
-    (WidgetClass) & applicationShellClassRec;
+    (WidgetClass) &applicationShellClassRec;
 
 extern SessionShellClassRec sessionShellClassRec;
-WidgetClass sessionShellWidgetClass = (WidgetClass) & sessionShellClassRec;
+WidgetClass sessionShellWidgetClass = (WidgetClass) &sessionShellClassRec;
 
 extern HookObjClassRec hookObjClassRec;
-WidgetClass hookObjectClass = (WidgetClass) & hookObjClassRec;
+WidgetClass hookObjectClass = (WidgetClass) &hookObjClassRec;
 
 #endif                          /* SUNSHLIB */

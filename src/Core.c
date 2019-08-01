@@ -103,32 +103,25 @@ parameter is not passed through to the XtRCallProc routines */
      XtRCallProc, (XtPointer) _XtCopyFromParent},
     {XtNcolormap, XtCColormap, XtRColormap, sizeof(Colormap),
      XtOffsetOf(CoreRec, core.colormap),
-     XtRCallProc, (XtPointer) _XtCopyFromParent}
-    ,
+     XtRCallProc, (XtPointer) _XtCopyFromParent},
     {XtNbackground, XtCBackground, XtRPixel, sizeof(Pixel),
      XtOffsetOf(CoreRec, core.background_pixel),
-     XtRString, (XtPointer) "XtDefaultBackground"}
-    ,
+     XtRString, (XtPointer) "XtDefaultBackground"},
     {XtNbackgroundPixmap, XtCPixmap, XtRPixmap, sizeof(Pixmap),
      XtOffsetOf(CoreRec, core.background_pixmap),
-     XtRImmediate, (XtPointer) XtUnspecifiedPixmap}
-    ,
+     XtRImmediate, (XtPointer) XtUnspecifiedPixmap},
     {XtNborderColor, XtCBorderColor, XtRPixel, sizeof(Pixel),
      XtOffsetOf(CoreRec, core.border_pixel),
-     XtRString, (XtPointer) "XtDefaultForeground"}
-    ,
+     XtRString, (XtPointer) "XtDefaultForeground"},
     {XtNborderPixmap, XtCPixmap, XtRPixmap, sizeof(Pixmap),
      XtOffsetOf(CoreRec, core.border_pixmap),
-     XtRImmediate, (XtPointer) XtUnspecifiedPixmap}
-    ,
+     XtRImmediate, (XtPointer) XtUnspecifiedPixmap},
     {XtNmappedWhenManaged, XtCMappedWhenManaged, XtRBoolean, sizeof(Boolean),
      XtOffsetOf(CoreRec, core.mapped_when_managed),
-     XtRImmediate, (XtPointer) True}
-    ,
+     XtRImmediate, (XtPointer) True},
     {XtNtranslations, XtCTranslations, XtRTranslationTable,
      sizeof(XtTranslations), XtOffsetOf(CoreRec, core.tm.translations),
-     XtRTranslationTable, (XtPointer) NULL}
-    ,
+     XtRTranslationTable, (XtPointer) NULL},
     {XtNaccelerators, XtCAccelerators, XtRAcceleratorTable,
      sizeof(XtTranslations), XtOffsetOf(CoreRec, core.accelerators),
      XtRTranslationTable, (XtPointer) NULL}
@@ -144,7 +137,7 @@ static void CoreSetValuesAlmost(Widget, Widget, XtWidgetGeometry *,
 
 static RectObjClassRec unNamedObjClassRec = {
     {
-     /* superclass         */ (WidgetClass) & rectObjClassRec,
+     /* superclass         */ (WidgetClass) &rectObjClassRec,
      /* class_name         */ "UnNamedObj",
      /* widget_size        */ 0,
      /* class_initialize   */ NULL,
@@ -182,7 +175,7 @@ static RectObjClassRec unNamedObjClassRec = {
 externaldef(widgetclassrec)
 WidgetClassRec widgetClassRec = {
     {
-     /* superclass         */ (WidgetClass) & unNamedObjClassRec,
+     /* superclass         */ (WidgetClass) &unNamedObjClassRec,
      /* class_name         */ "Core",
      /* widget_size        */ sizeof(WidgetRec),
      /* class_initialize   */ NULL,
@@ -285,7 +278,7 @@ static void
 CoreInitialize(Widget requested_widget _X_UNUSED,
                register Widget new_widget,
                ArgList args _X_UNUSED,
-               Cardinal * num_args _X_UNUSED)
+               Cardinal *num_args _X_UNUSED)
 {
     XtTranslations save1, save2;
 
@@ -308,7 +301,7 @@ CoreInitialize(Widget requested_widget _X_UNUSED,
 
 static void
 CoreRealize(Widget widget,
-            XtValueMask * value_mask,
+            XtValueMask *value_mask,
             XSetWindowAttributes *attributes)
 {
     XtCreateWindow(widget, (unsigned int) InputOutput,
@@ -332,7 +325,7 @@ CoreSetValues(Widget old,
               Widget reference _X_UNUSED,
               Widget new,
               ArgList args _X_UNUSED,
-              Cardinal * num_args _X_UNUSED)
+              Cardinal *num_args _X_UNUSED)
 {
     Boolean redisplay;
     Mask window_mask;
@@ -414,8 +407,8 @@ CoreSetValues(Widget old,
 static void
 CoreSetValuesAlmost(Widget old _X_UNUSED,
                     Widget new _X_UNUSED,
-                    XtWidgetGeometry * request,
-                    XtWidgetGeometry * reply)
+                    XtWidgetGeometry *request,
+                    XtWidgetGeometry *reply)
 {
     *request = *reply;
 }

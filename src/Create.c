@@ -297,9 +297,8 @@ xtWidgetAlloc(WidgetClass widget_class,
                                                sizeof(unsigned long) +
                                                sizeof(double))) {
                 if (csize && !(csize & (sizeof(double) - 1)))
-                    wsize =
-                        (Cardinal) ((wsize + sizeof(double) -
-                                     1) & ~(sizeof(double) - 1));
+                    wsize = (Cardinal) ((wsize + sizeof(double) - 1)
+                                        & ~(sizeof(double) - 1));
             }
         }
         widget = (Widget) __XtCalloc(1, (unsigned) (wsize + csize));
@@ -330,7 +329,7 @@ CompileCallbacks(Widget widget)
             ((char *) widget - (*offsets)->xrm_offset - 1);
 
         if (*cl)
-            *cl = _XtCompileCallbackList((XtCallbackList) * cl);
+            *cl = _XtCompileCallbackList((XtCallbackList) *cl);
     }
     UNLOCK_PROCESS;
 }
@@ -448,7 +447,7 @@ xtCreate(String name,
             call_data.num_args = num_args;
             XtCallCallbackList(hookobj,
                                ((HookObject) hookobj)->hooks.
-                               createhook_callbacks, (XtPointer) & call_data);
+                               createhook_callbacks, (XtPointer) &call_data);
         }
     }
     if (typed_args != NULL) {

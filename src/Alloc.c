@@ -119,7 +119,7 @@ _XtAllocError(String type)
 }
 
 void
-_XtHeapInit(Heap * heap)
+_XtHeapInit(Heap *heap)
 {
     heap->start = NULL;
     heap->bytes_remaining = 0;
@@ -130,7 +130,7 @@ _XtHeapInit(Heap * heap)
  * require varargs macros everywhere, which are only standard in C99 & later.
  */
 Cardinal
-XtAsprintf(_XtString * new_string, _Xconst char *_X_RESTRICT_KYWD format, ...)
+XtAsprintf(_XtString *new_string, _Xconst char *_X_RESTRICT_KYWD format, ...)
 {
     char buf[256];
     int len;
@@ -242,7 +242,7 @@ __XtCalloc(unsigned num, unsigned size)
 #endif
 
 char *
-_XtHeapAlloc(Heap * heap, Cardinal bytes)
+_XtHeapAlloc(Heap *heap, Cardinal bytes)
 {
     register char *heap_loc;
 
@@ -284,7 +284,7 @@ _XtHeapAlloc(Heap * heap, Cardinal bytes)
 }
 
 void
-_XtHeapFree(Heap * heap)
+_XtHeapFree(Heap *heap)
 {
     char *segment = heap->start;
 
@@ -473,7 +473,7 @@ XtFree(char *ptr)
 }
 
 char *
-_XtHeapMalloc(Heap * heap, Cardinal size, const char *file, int line)
+_XtHeapMalloc(Heap *heap, Cardinal size, const char *file, int line)
 {
     StatsPtr ptr;
     unsigned newsize;
@@ -491,7 +491,7 @@ _XtHeapMalloc(Heap * heap, Cardinal size, const char *file, int line)
 }
 
 void
-_XtHeapFree(Heap * heap)
+_XtHeapFree(Heap *heap)
 {
     register StatsPtr mem, next;
 

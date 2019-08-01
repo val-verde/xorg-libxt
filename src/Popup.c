@@ -65,7 +65,7 @@ _XtPopup(Widget widget, XtGrabKind grab_kind, _XtBoolean spring_loaded)
     if (!shell_widget->shell.popped_up) {
         XtGrabKind call_data = grab_kind;
 
-        XtCallCallbacks(widget, XtNpopupCallback, (XtPointer) & call_data);
+        XtCallCallbacks(widget, XtNpopupCallback, (XtPointer) &call_data);
         shell_widget->shell.popped_up = TRUE;
         shell_widget->shell.grab_kind = grab_kind;
         shell_widget->shell.spring_loaded = (Boolean) spring_loaded;
@@ -117,7 +117,7 @@ XtPopup(Widget widget, XtGrabKind grab_kind)
         call_data.event_data = (XtPointer) grab_kind;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 }                               /* XtPopup */
 
@@ -136,7 +136,7 @@ XtPopupSpringLoaded(Widget widget)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 }
 
@@ -166,7 +166,7 @@ XtPopdown(Widget widget)
     if (grab_kind != XtGrabNone)
         XtRemoveGrab(widget);
     shell_widget->shell.popped_up = FALSE;
-    XtCallCallbacks(widget, XtNpopdownCallback, (XtPointer) & grab_kind);
+    XtCallCallbacks(widget, XtNpopdownCallback, (XtPointer) &grab_kind);
 
     hookobj = XtHooksOfDisplay(XtDisplay(widget));
     if (XtHasCallbacks(hookobj, XtNchangeHook) == XtCallbackHasSome) {
@@ -176,7 +176,7 @@ XtPopdown(Widget widget)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 }                               /* XtPopdown */
 

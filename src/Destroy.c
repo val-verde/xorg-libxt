@@ -116,7 +116,7 @@ Phase1Destroy(Widget widget)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.destroyhook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 }                               /* Phase1Destroy */
 
@@ -172,11 +172,13 @@ Phase2Destroy(register Widget widget)
     }
 
     /* Call widget deallocate procedure */
-    ext = (ObjectClassExtension)
-        XtGetClassExtension(widget->core.widget_class,
-                            XtOffsetOf(CoreClassPart, extension),
-                            NULLQUARK, XtObjectExtensionVersion,
-                            sizeof(ObjectClassExtensionRec));
+    ext = (ObjectClassExtension) XtGetClassExtension(widget->core.widget_class,
+                                                     XtOffsetOf(CoreClassPart,
+                                                                extension),
+                                                     NULLQUARK,
+                                                     XtObjectExtensionVersion,
+                                                     sizeof
+                                                     (ObjectClassExtensionRec));
     if (ext && ext->deallocate) {
         XtDeallocateProc deallocate;
 

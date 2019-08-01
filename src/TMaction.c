@@ -242,10 +242,10 @@ SearchActionTable(XrmQuark signature,
 
 static int
 BindActions(TMSimpleStateTree stateTree,
-            XtActionProc * procs,
+            XtActionProc *procs,
             CompiledActionTable compiledActionTable,
             TMShortCard numActions,
-            Cardinal * ndxP)
+            Cardinal *ndxP)
 {
     register int unbound = (int) (stateTree->numQuarks - *ndxP);
     CompiledAction *action;
@@ -310,7 +310,7 @@ typedef struct _TMClassCacheRec {
 static int
 BindProcs(Widget widget,
           TMSimpleStateTree stateTree,
-          XtActionProc * procs,
+          XtActionProc *procs,
           TMBindCacheStatus bindStatus)
 {
     register WidgetClass class;
@@ -405,7 +405,7 @@ TryBindCache(Widget widget, TMStateTree stateTree)
  * after this call is made out of coreClassPartInit.
  */
 XtPointer
-_XtInitializeActionData(register struct _XtActionsRec * actions,
+_XtInitializeActionData(register struct _XtActionsRec *actions,
                         register Cardinal count,
                         _XtBoolean inPlace)
 {
@@ -423,7 +423,7 @@ _XtInitializeActionData(register struct _XtActionsRec * actions,
 static XtActionProc *
 EnterBindCache(Widget w,
                TMSimpleStateTree stateTree,
-               XtActionProc * procs,
+               XtActionProc *procs,
                TMBindCacheStatus bindStatus)
 {
     TMClassCache classCache;
@@ -471,7 +471,7 @@ EnterBindCache(Widget w,
         }
         _XtGlobalTM.bindCacheTbl[_XtGlobalTM.numBindCache++] = bindCache;
 #endif                          /* TRACE_TM */
-        XtMemmove((XtPointer) & bindCache->procs[0],
+        XtMemmove((XtPointer) &bindCache->procs[0],
                   (XtPointer) procs, procsSize);
     }
     UNLOCK_PROCESS;
@@ -479,7 +479,7 @@ EnterBindCache(Widget w,
 }
 
 static void
-RemoveFromBindCache(Widget w, XtActionProc * procs)
+RemoveFromBindCache(Widget w, XtActionProc *procs)
 {
     TMClassCache classCache;
     TMBindCache *bindCachePtr;
@@ -488,7 +488,7 @@ RemoveFromBindCache(Widget w, XtActionProc * procs)
 
     LOCK_PROCESS;
     classCache = GetClassCache(w);
-    bindCachePtr = (TMBindCache *) & classCache->bindCache;
+    bindCachePtr = (TMBindCache *) &classCache->bindCache;
 
     for (bindCache = *bindCachePtr;
          *bindCachePtr;
@@ -595,11 +595,11 @@ _XtBindActions(Widget widget, XtTM tm)
 
                 if (bindWidget->core.destroy_callbacks != NULL)
                     _XtAddCallbackOnce((InternalCallbackList *)
-                                       & bindWidget->core.destroy_callbacks,
+                                       &bindWidget->core.destroy_callbacks,
                                        RemoveAccelerators, (XtPointer) widget);
                 else
                     _XtAddCallback((InternalCallbackList *)
-                                   & bindWidget->core.destroy_callbacks,
+                                   &bindWidget->core.destroy_callbacks,
                                    RemoveAccelerators, (XtPointer) widget);
             }
             else
@@ -694,7 +694,7 @@ void
 _XtRemoveBindProcsByIndex(Widget w, TMBindData bindData, TMShortCard ndx)
 {
     TMShortCard i = ndx;
-    TMBindProcs bindProcs = (TMBindProcs) & bindData->bindTbl[0];
+    TMBindProcs bindProcs = (TMBindProcs) &bindData->bindTbl[0];
 
     RemoveFromBindCache(bindProcs->widget ? bindProcs->widget : w,
                         bindProcs[i].procs);
@@ -742,8 +742,8 @@ XtAppAddActions(XtAppContext app, XtActionList actions, Cardinal num_actions)
 
 void
 XtGetActionList(WidgetClass widget_class,
-                XtActionList * actions_return,
-                Cardinal * num_actions_return)
+                XtActionList *actions_return,
+                Cardinal *num_actions_return)
 {
     CompiledActionTable table;
 
@@ -763,7 +763,7 @@ XtGetActionList(WidgetClass widget_class,
     if (*num_actions_return) {
         XtActionList list = *actions_return = (XtActionList)
             __XtMalloc((Cardinal)
-                       ((size_t) * num_actions_return * sizeof(XtActionsRec)));
+                       ((size_t) *num_actions_return * sizeof(XtActionsRec)));
 
         table = GetClassActions(widget_class);
 
@@ -805,8 +805,8 @@ _XtFindPopup(Widget widget, String name)
 void
 XtMenuPopupAction(Widget widget,
                   XEvent *event,
-                  String * params,
-                  Cardinal * num_params)
+                  String *params,
+                  Cardinal *num_params)
 {
     Boolean spring_loaded;
     register Widget popup_shell;
@@ -856,8 +856,8 @@ XtMenuPopupAction(Widget widget,
 static void
 _XtMenuPopdownAction(Widget widget,
                      XEvent *event _X_UNUSED,
-                     String * params,
-                     Cardinal * num_params)
+                     String *params,
+                     Cardinal *num_params)
 {
     Widget popup_shell;
 
@@ -930,7 +930,7 @@ void
 XtCallActionProc(Widget widget,
                  _Xconst char *action,
                  XEvent *event,
-                 String * params,
+                 String *params,
                  Cardinal num_params)
 {
     CompiledAction *actionP;

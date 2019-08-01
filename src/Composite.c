@@ -76,14 +76,11 @@ in this Software without prior written authorization from The Open Group.
 
 static XtResource resources[] = {
     {XtNchildren, XtCReadOnly, XtRWidgetList, sizeof(WidgetList),
-     XtOffsetOf(CompositeRec, composite.children), XtRImmediate, NULL}
-    ,
+     XtOffsetOf(CompositeRec, composite.children), XtRImmediate, NULL},
     {XtNnumChildren, XtCReadOnly, XtRCardinal, sizeof(Cardinal),
-     XtOffsetOf(CompositeRec, composite.num_children), XtRImmediate, NULL}
-    ,
+     XtOffsetOf(CompositeRec, composite.num_children), XtRImmediate, NULL},
     {XtNinsertPosition, XtCInsertPosition, XtRFunction, sizeof(XtOrderProc),
-     XtOffsetOf(CompositeRec, composite.insert_position), XtRImmediate, NULL}
-    ,
+     XtOffsetOf(CompositeRec, composite.insert_position), XtRImmediate, NULL},
 };
 
 static void CompositeClassPartInitialize(WidgetClass);
@@ -141,7 +138,7 @@ CompositeClassRec compositeClassRec = {
 };
 
 externaldef(compositewidgetclass)
-WidgetClass compositeWidgetClass = (WidgetClass) & compositeClassRec;
+WidgetClass compositeWidgetClass = (WidgetClass) &compositeClassRec;
 
 static void
 InheritAllowsChangeManagedSet(WidgetClass widget_class)
@@ -192,7 +189,7 @@ CompositeClassPartInitialize(WidgetClass myWidgetClass)
     register CompositePartPtr superPtr = NULL;
 
     wcPtr = (CompositePartPtr)
-        & (((CompositeWidgetClass) myWidgetClass)->composite_class);
+        &(((CompositeWidgetClass) myWidgetClass)->composite_class);
 
     if (myWidgetClass != compositeWidgetClass) {
         /* don't compute possible bogus pointer */
@@ -291,7 +288,7 @@ static void
 CompositeInitialize(Widget requested_widget _X_UNUSED,
                     Widget new_widget,
                     ArgList args _X_UNUSED,
-                    Cardinal * num_args _X_UNUSED)
+                    Cardinal *num_args _X_UNUSED)
 {
     register CompositeWidget cw;
 

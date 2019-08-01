@@ -79,7 +79,7 @@ in this Software without prior written authorization from The Open Group.
 
 static void
 SetValues(char *base,                           /* Base address to write values to */
-          XrmResourceList * res,                /* The current resource values. */
+          XrmResourceList *res,                 /* The current resource values. */
           register Cardinal num_resources,      /* number of items in resources      */
           ArgList args,                         /* The resource values to set */
           Cardinal num_args)                    /* number of items in arg list       */
@@ -288,10 +288,10 @@ XtSetValues(register Widget w, ArgList args, Cardinal num_args)
         set_val.num_args = num_args;
         call_data.type = XtHsetValues;
         call_data.widget = w;
-        call_data.event_data = (XtPointer) & set_val;
+        call_data.event_data = (XtPointer) &set_val;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 
     if (XtIsRectObj(w)) {
@@ -371,7 +371,7 @@ XtSetValues(register Widget w, ArgList args, Cardinal num_args)
                     XtCallCallbackList(hookobj,
                                        ((HookObject) hookobj)->hooks.
                                        geometryhook_callbacks,
-                                       (XtPointer) & call_data);
+                                       (XtPointer) &call_data);
                     call_data.result = result =
                         _XtMakeGeometryRequest(w, &geoReq, &geoReply,
                                                &cleared_rect_obj);
@@ -380,7 +380,7 @@ XtSetValues(register Widget w, ArgList args, Cardinal num_args)
                     XtCallCallbackList(hookobj,
                                        ((HookObject) hookobj)->hooks.
                                        geometryhook_callbacks,
-                                       (XtPointer) & call_data);
+                                       (XtPointer) &call_data);
                 }
                 else {
                     result = _XtMakeGeometryRequest(w, &geoReq, &geoReply,

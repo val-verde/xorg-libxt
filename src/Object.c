@@ -126,7 +126,7 @@ externaldef(objectclassrec) ObjectClassRec objectClassRec = {
 /* *INDENT-ON* */
 
 externaldef(objectClass)
-WidgetClass objectClass = (WidgetClass) & objectClassRec;
+WidgetClass objectClass = (WidgetClass) &objectClassRec;
 
 /*
  * Start of object routines.
@@ -262,7 +262,7 @@ ObjectSetValues(Widget old,
                 Widget request _X_UNUSED,
                 Widget widget,
                 ArgList args _X_UNUSED,
-                Cardinal * num_args _X_UNUSED)
+                Cardinal *num_args _X_UNUSED)
 {
     CallbackTable offsets;
     int i;
@@ -282,7 +282,7 @@ ObjectSetValues(Widget old,
             if (*ol != NULL)
                 XtFree((char *) *ol);
             if (*nl != NULL)
-                *nl = _XtCompileCallbackList((XtCallbackList) * nl);
+                *nl = _XtCompileCallbackList((XtCallbackList) *nl);
         }
     }
     UNLOCK_PROCESS;

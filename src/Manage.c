@@ -82,7 +82,7 @@ static void
 UnmanageChildren(WidgetList children,
                  Cardinal num_children,
                  Widget parent,
-                 Cardinal * num_unique_children,
+                 Cardinal *num_unique_children,
                  Boolean call_change_managed,
                  _Xconst _XtString caller_func)
 {
@@ -198,7 +198,7 @@ XtUnmanageChildren(WidgetList children, Cardinal num_children)
         call_data.num_event_data = num_children;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_APP(app);
 }                               /* XtUnmanageChildren */
@@ -243,8 +243,7 @@ ManageChildren(WidgetList children,
         unique_children = cache;
     }
     else {
-        unique_children =
-            (WidgetList)
+        unique_children = (WidgetList)
             __XtMalloc((Cardinal) ((size_t) num_children * sizeof(Widget)));
     }
     num_unique_children = 0;
@@ -366,7 +365,7 @@ XtManageChildren(WidgetList children, Cardinal num_children)
         call_data.num_event_data = num_children;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_APP(app);
 }                               /* XtManageChildren */
@@ -400,7 +399,7 @@ XtSetMappedWhenManaged(Widget widget, _XtBoolean mapped_when_managed)
         call_data.event_data = (XtPointer) (unsigned long) mapped_when_managed;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 
     if (!XtIsManaged(widget)) {
@@ -496,7 +495,7 @@ XtChangeManagedSet(WidgetList unmanage_children,
         call_data.num_event_data = num_unmanage;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 
     if (do_change_proc)
@@ -513,7 +512,7 @@ XtChangeManagedSet(WidgetList unmanage_children,
         call_data.num_event_data = num_manage;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_APP(app);
 }                               /* XtChangeManagedSet */

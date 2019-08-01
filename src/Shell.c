@@ -167,8 +167,8 @@ static void ChangeManaged(Widget);
 static XtGeometryResult GeometryManager(Widget, XtWidgetGeometry *,
                                         XtWidgetGeometry *);
 static XtGeometryResult RootGeometryManager(Widget gw,
-                                            XtWidgetGeometry * request,
-                                            XtWidgetGeometry * reply);
+                                            XtWidgetGeometry *request,
+                                            XtWidgetGeometry *reply);
 static void Destroy(Widget);
 
 /* *INDENT-OFF* */
@@ -966,7 +966,7 @@ ClassPartInitialize(WidgetClass widget_class)
 }
 
 static void EventHandler(Widget wid, XtPointer closure, XEvent *event,
-                         Boolean * continue_to_dispatch);
+                         Boolean *continue_to_dispatch);
 static void _popup_set_prop(ShellWidget);
 
 static void
@@ -1027,7 +1027,7 @@ static void
 Initialize(Widget req _X_UNUSED,
            Widget new,
            ArgList args _X_UNUSED,
-           Cardinal * num_args _X_UNUSED)
+           Cardinal *num_args _X_UNUSED)
 {
     ShellWidget w = (ShellWidget) new;
 
@@ -1058,7 +1058,7 @@ static void
 WMInitialize(Widget req _X_UNUSED,
              Widget new,
              ArgList args _X_UNUSED,
-             Cardinal * num_args _X_UNUSED)
+             Cardinal *num_args _X_UNUSED)
 {
     WMShellWidget w = (WMShellWidget) new;
     TopLevelShellWidget tls = (TopLevelShellWidget) new;        /* maybe */
@@ -1086,7 +1086,7 @@ static void
 TopLevelInitialize(Widget req _X_UNUSED,
                    Widget new,
                    ArgList args _X_UNUSED,
-                   Cardinal * num_args _X_UNUSED)
+                   Cardinal *num_args _X_UNUSED)
 {
     TopLevelShellWidget w = (TopLevelShellWidget) new;
 
@@ -1109,7 +1109,7 @@ static void
 ApplicationInitialize(Widget req _X_UNUSED,
                       Widget new,
                       ArgList args _X_UNUSED,
-                      Cardinal * num_args _X_UNUSED)
+                      Cardinal *num_args _X_UNUSED)
 {
     ApplicationShellWidget w = (ApplicationShellWidget) new;
 
@@ -1157,7 +1157,7 @@ static void
 SessionInitialize(Widget req _X_UNUSED,
                   Widget new,
                   ArgList args _X_UNUSED,
-                  Cardinal * num_args _X_UNUSED)
+                  Cardinal *num_args _X_UNUSED)
 {
 #ifndef XT_NO_SM
     SessionShellWidget w = (SessionShellWidget) new;
@@ -1595,7 +1595,7 @@ static void
 EventHandler(Widget wid,
              XtPointer closure _X_UNUSED,
              XEvent *event,
-             Boolean * continue_to_dispatch _X_UNUSED)
+             Boolean *continue_to_dispatch _X_UNUSED)
 {
     register ShellWidget w = (ShellWidget) wid;
     WMShellWidget wmshell = (WMShellWidget) w;
@@ -1904,8 +1904,8 @@ ChangeManaged(Widget wid)
 
 static XtGeometryResult
 GeometryManager(Widget wid,
-                XtWidgetGeometry * request,
-                XtWidgetGeometry * reply _X_UNUSED)
+                XtWidgetGeometry *request,
+                XtWidgetGeometry *reply _X_UNUSED)
 {
     ShellWidget shell = (ShellWidget) (wid->core.parent);
     XtWidgetGeometry my_request;
@@ -2032,8 +2032,8 @@ _wait_for_response(ShellWidget w, XEvent *event, unsigned long request_num)
 
 static XtGeometryResult
 RootGeometryManager(Widget gw,
-                    XtWidgetGeometry * request,
-                    XtWidgetGeometry * reply _X_UNUSED)
+                    XtWidgetGeometry *request,
+                    XtWidgetGeometry *reply _X_UNUSED)
 {
     register ShellWidget w = (ShellWidget) gw;
     XWindowChanges values;
@@ -2308,7 +2308,7 @@ SetValues(Widget old,
           Widget ref _X_UNUSED,
           Widget new,
           ArgList args,
-          Cardinal * num_args)
+          Cardinal *num_args)
 {
     ShellWidget nw = (ShellWidget) new;
     ShellWidget ow = (ShellWidget) old;
@@ -2354,7 +2354,7 @@ WMSetValues(Widget old,
             Widget ref _X_UNUSED,
             Widget new,
             ArgList args _X_UNUSED,
-            Cardinal * num_args _X_UNUSED)
+            Cardinal *num_args _X_UNUSED)
 {
     WMShellWidget nwmshell = (WMShellWidget) new;
     WMShellWidget owmshell = (WMShellWidget) old;
@@ -2475,7 +2475,7 @@ TransientSetValues(Widget oldW,
                    Widget refW _X_UNUSED,
                    Widget newW,
                    ArgList args _X_UNUSED,
-                   Cardinal * num_args _X_UNUSED)
+                   Cardinal *num_args _X_UNUSED)
 {
     TransientShellWidget old = (TransientShellWidget) oldW;
     TransientShellWidget new = (TransientShellWidget) newW;
@@ -2497,7 +2497,7 @@ TopLevelSetValues(Widget oldW,
                   Widget refW _X_UNUSED,
                   Widget newW,
                   ArgList args _X_UNUSED,
-                  Cardinal * num_args _X_UNUSED)
+                  Cardinal *num_args _X_UNUSED)
 {
     TopLevelShellWidget old = (TopLevelShellWidget) oldW;
     TopLevelShellWidget new = (TopLevelShellWidget) newW;
@@ -2565,7 +2565,7 @@ TopLevelSetValues(Widget oldW,
 
 /* do not assume it's terminated by a NULL element */
 static _XtString *
-NewArgv(int count, _XtString * str)
+NewArgv(int count, _XtString *str)
 {                 
     Cardinal nbytes = 0;
     Cardinal num = 0;
@@ -2601,7 +2601,7 @@ ApplicationSetValues(Widget current,
                      Widget request _X_UNUSED,
                      Widget new,
                      ArgList args _X_UNUSED,
-                     Cardinal * num_args _X_UNUSED)
+                     Cardinal *num_args _X_UNUSED)
 {
     ApplicationShellWidget nw = (ApplicationShellWidget) new;
     ApplicationShellWidget cw = (ApplicationShellWidget) current;
@@ -2631,7 +2631,7 @@ SessionSetValues(Widget current,
                  Widget request _X_UNUSED,
                  Widget new,
                  ArgList args _X_UNUSED,
-                 Cardinal * num_args _X_UNUSED)
+                 Cardinal *num_args _X_UNUSED)
 {
 #ifndef XT_NO_SM
     SessionShellWidget nw = (SessionShellWidget) new;
@@ -2774,7 +2774,7 @@ SessionSetValues(Widget current,
 }
 
 void
-_XtShellGetCoordinates(Widget widget, Position * x, Position * y)
+_XtShellGetCoordinates(Widget widget, Position *x, Position *y)
 {
     ShellWidget w = (ShellWidget) widget;
 
@@ -2797,7 +2797,7 @@ _XtShellGetCoordinates(Widget widget, Position * x, Position * y)
 }
 
 static void
-GetValuesHook(Widget widget, ArgList args, Cardinal * num_args)
+GetValuesHook(Widget widget, ArgList args, Cardinal *num_args)
 {
     ShellWidget w = (ShellWidget) widget;
 
@@ -2953,7 +2953,7 @@ JoinSession(SessionShellWidget w)
 #endif                          /* !XT_NO_SM */
 
 static _XtString *
-NewStringArray(_XtString * str)
+NewStringArray(_XtString *str)
 {
     Cardinal nbytes = 0;
     Cardinal num = 0;
@@ -2985,7 +2985,7 @@ NewStringArray(_XtString * str)
 }
 
 static void
-FreeStringArray(_XtString * str)
+FreeStringArray(_XtString *str)
 {
     if (str)
         XtFree((_XtString) str);
@@ -3155,7 +3155,7 @@ SetSessionProperties(SessionShellWidget w,
 static void
 GetIceEvent(XtPointer client_data,
             int *source _X_UNUSED,
-            XtInputId * id _X_UNUSED)
+            XtInputId *id _X_UNUSED)
 {
     SessionShellWidget w = (SessionShellWidget) client_data;
     IceProcessMessagesStatus status;
@@ -3225,7 +3225,7 @@ XtCallSaveCallbacks(SmcConn connection _X_UNUSED,
     save->save_success = True;
     save->save_tokens = save->interact_tokens = 0;
 
-    prev = (XtSaveYourself) & w->session.save;
+    prev = (XtSaveYourself) &w->session.save;
     while (prev->next)
         prev = prev->next;
     prev->next = save;
@@ -3453,7 +3453,7 @@ XtSessionReturnToken(XtCheckpointToken token)
 }
 
 static Boolean
-IsInArray(String str, _XtString * sarray)
+IsInArray(String str, _XtString *sarray)
 {
     if (str == NULL || sarray == NULL)
         return False;
@@ -3466,8 +3466,8 @@ IsInArray(String str, _XtString * sarray)
 
 static _XtString *
 EditCommand(_XtString str,      /* if not NULL, the sm_client_id */
-            _XtString * src1,   /* first choice */
-            _XtString * src2)   /* alternate */
+            _XtString *src1,   /* first choice */
+            _XtString *src2)   /* alternate */
 {   
     Boolean have;
     Boolean want;

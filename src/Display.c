@@ -171,6 +171,7 @@ NewPerDisplay(Display *dpy)
     PerDisplayTablePtr pd;
 
     pd = XtNew(PerDisplayTable);
+
     LOCK_PROCESS;
     pd->dpy = dpy;
     pd->next = _XtperDisplayList;
@@ -256,7 +257,7 @@ XtOpenDisplay(XtAppContext app,
               XrmOptionDescRec *urlist,
               Cardinal num_urs,
               int *argc,
-              _XtString * argv)
+              _XtString *argv)
 {
     Display *d;
     XrmDatabase db = NULL;
@@ -266,7 +267,7 @@ XtOpenDisplay(XtAppContext app,
     LOCK_PROCESS;
     /* parse the command line for name, display, and/or language */
     db = _XtPreparseCommandLine(urlist, num_urs, *argc, argv,
-                                (String *) & applName,
+                                (String *) &applName,
                                 (String *) (displayName ? NULL : &displayName),
                                 (app->process->globalLangProcRec.proc ?
                                  &language : NULL));
@@ -314,22 +315,21 @@ XtOpenDisplay(XtAppContext app,
 }
 
 Display *
-_XtAppInit(XtAppContext * app_context_return,
+_XtAppInit(XtAppContext *app_context_return,
            String application_class,
            XrmOptionDescRec *options,
            Cardinal num_options,
            int *argc_in_out,
-           _XtString ** argv_in_out,
-           String * fallback_resources)
+           _XtString **argv_in_out,
+           String *fallback_resources)
 {
     _XtString *saved_argv;
     int i;
     Display *dpy;
 
-/*
- * Save away argv and argc so we can set the properties later
- */
-
+    /*
+     * Save away argv and argc so we can set the properties later
+     */
     saved_argv = (_XtString *)
         __XtMalloc((Cardinal)
                    ((size_t) (*argc_in_out + 1) * sizeof(_XtString)));
@@ -369,7 +369,7 @@ XtDisplayInitialize(XtAppContext app,
                     XrmOptionDescRec *urlist,
                     Cardinal num_urs,
                     int *argc,
-                    _XtString * argv)
+                    _XtString *argv)
 {
     XtPerDisplay pd;
     XrmDatabase db = NULL;
@@ -484,7 +484,7 @@ DestroyAppContext(XtAppContext app)
     if (app->list != NULL)
         XtFree((char *) app->list);
     _XtFreeConverterTable(app->converterTable);
-    _XtCacheFlushTag(app, (XtPointer) & app->heap);
+    _XtCacheFlushTag(app, (XtPointer) &app->heap);
     _XtFreeActions(app->action_table);
     if (app->destroy_callbacks != NULL) {
         XtCallCallbackList((Widget) NULL,
@@ -675,7 +675,7 @@ CloseDisplay(Display *dpy)
         xtpd->modKeysyms = NULL;
         xtpd->modsToKeysyms = NULL;
         XDestroyRegion(xtpd->region);
-        _XtCacheFlushTag(xtpd->appContext, (XtPointer) & xtpd->heap);
+        _XtCacheFlushTag(xtpd->appContext, (XtPointer) &xtpd->heap);
         _XtGClistFree(dpy, xtpd);
         XtFree((char *) xtpd->pdi.trace);
         _XtHeapFree(&xtpd->heap);
@@ -758,8 +758,8 @@ XtWidgetToApplicationContext(Widget w)
 
 void
 XtGetApplicationNameAndClass(Display *dpy,
-                             String * name_return,
-                             String * class_return)
+                             String *name_return,
+                             String *class_return)
 {
     XtPerDisplay pd;
 
@@ -797,14 +797,13 @@ _XtGetPerDisplayInput(Display *display)
 void
 XtGetDisplays(XtAppContext app_context,
               Display ***dpy_return,
-              Cardinal * num_dpy_return)
+              Cardinal *num_dpy_return)
 {
     int ii;
 
     LOCK_APP(app_context);
     *num_dpy_return = (Cardinal) app_context->count;
-    *dpy_return =
-        (Display **)
+    *dpy_return = (Display **)
         __XtMalloc((Cardinal)
                    ((size_t) app_context->count * sizeof(Display *)));
     for (ii = 0; ii < app_context->count; ii++)

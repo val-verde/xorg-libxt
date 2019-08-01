@@ -142,7 +142,7 @@ XtBuildEventMask(Widget widget)
 }
 
 static void
-CallExtensionSelector(Widget widget, ExtSelectRec * rec, Boolean forceCall)
+CallExtensionSelector(Widget widget, ExtSelectRec *rec, Boolean forceCall)
 {
     XtEventRec *p;
     XtPointer *data;
@@ -414,7 +414,7 @@ XtRemoveEventHandler(Widget widget,
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    RemoveEventHandler(widget, (XtPointer) & eventMask, 0, FALSE,
+    RemoveEventHandler(widget, (XtPointer) &eventMask, 0, FALSE,
                        (Boolean) other, proc, closure, FALSE);
     UNLOCK_APP(app);
 }
@@ -428,7 +428,7 @@ XtAddEventHandler(Widget widget,
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) & eventMask, 0, FALSE, (Boolean) other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
                     proc, closure, XtListTail, FALSE, FALSE);
     UNLOCK_APP(app);
 }
@@ -443,7 +443,7 @@ XtInsertEventHandler(Widget widget,
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) & eventMask, 0, FALSE, (Boolean) other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
                     proc, closure, position, TRUE, FALSE);
     UNLOCK_APP(app);
 }
@@ -457,7 +457,7 @@ XtRemoveRawEventHandler(Widget widget,
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    RemoveEventHandler(widget, (XtPointer) & eventMask, 0, FALSE,
+    RemoveEventHandler(widget, (XtPointer) &eventMask, 0, FALSE,
                        (Boolean) other, proc, closure, TRUE);
     UNLOCK_APP(app);
 }
@@ -472,7 +472,7 @@ XtInsertRawEventHandler(Widget widget,
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) & eventMask, 0, FALSE, (Boolean) other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
                     proc, closure, position, TRUE, TRUE);
     UNLOCK_APP(app);
 }
@@ -486,7 +486,7 @@ XtAddRawEventHandler(Widget widget,
 {
     WIDGET_TO_APPCON(widget);
     LOCK_APP(app);
-    AddEventHandler(widget, (XtPointer) & eventMask, 0, FALSE, (Boolean) other,
+    AddEventHandler(widget, (XtPointer) &eventMask, 0, FALSE, (Boolean) other,
                     proc, closure, XtListTail, FALSE, TRUE);
     UNLOCK_APP(app);
 }
@@ -634,7 +634,7 @@ XtUnregisterDrawable(Display *display, Drawable drawable)
                 }
             } while (entry != widget);
         }
-        tab->entries[idx] = (Widget) & WWfake;
+        tab->entries[idx] = (Widget) &WWfake;
         tab->fakes++;
     }
     UNLOCK_PROCESS;
@@ -1237,7 +1237,7 @@ _XtConvertTypeToMask(int eventType)
 }
 
 Boolean
-_XtOnGrabList(register Widget widget, XtGrabRec * grabList)
+_XtOnGrabList(register Widget widget, XtGrabRec *grabList)
 {
     register XtGrabRec *gl;
 
@@ -1626,7 +1626,7 @@ XtAppMainLoop(XtAppContext app)
 }
 
 void
-_XtFreeEventTable(XtEventTable * event_table)
+_XtFreeEventTable(XtEventTable *event_table)
 {
     register XtEventTable event;
 

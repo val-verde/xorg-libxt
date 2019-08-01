@@ -88,9 +88,8 @@ _XtProcessPointerEvent(XButtonEvent *event,
     case ButtonRelease:
     {
         if ((device->grabType == XtPassiveServerGrab) &&
-            !(event->
-              state & (unsigned) (~(Button1Mask << (event->button - 1))) &
-              AllButtonsMask))
+            !(event->state & (unsigned) (~(Button1Mask << (event->button - 1)))
+              & AllButtonsMask))
             deactivateGrab = TRUE;
     }
         break;

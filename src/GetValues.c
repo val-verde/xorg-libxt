@@ -76,7 +76,7 @@ in this Software without prior written authorization from The Open Group.
 
 static int
 GetValues(char *base,                   /* Base address to fetch values from */
-          XrmResourceList * res,        /* The current resource values.      */
+          XrmResourceList *res,        /* The current resource values.      */
           register Cardinal num_resources, /* number of items in resources   */
           ArgList args,                 /* The resource values requested     */
           Cardinal num_args)            /* number of items in arg list       */
@@ -108,11 +108,10 @@ GetValues(char *base,                   /* Base address to fetch values from */
                  * mode in _XtCopyToArg.  It helps performance, too...
                  */
                 if ((*xrmres)->xrm_type == QCallback) {
-                    XtCallbackList callback = _XtGetCallbackList((InternalCallbackList *)
-                                                                 (base -
-                                                                  (*xrmres)->
-                                                                  xrm_offset -
-                                                                  1));
+                    XtCallbackList callback =
+                        _XtGetCallbackList((InternalCallbackList *)
+                                           (base - (*xrmres)->xrm_offset - 1));
+
                     _XtCopyToArg((char *) &callback, &arg->value,
                                  (*xrmres)->xrm_size);
                 }

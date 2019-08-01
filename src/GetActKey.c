@@ -74,7 +74,7 @@ in this Software without prior written authorization from The Open Group.
 #include "IntrinsicI.h"
 
 KeySym
-XtGetActionKeysym(XEvent *event, Modifiers * modifiers_return)
+XtGetActionKeysym(XEvent *event, Modifiers *modifiers_return)
 {
     TMKeyContext tm_context;
     Modifiers modifiers;

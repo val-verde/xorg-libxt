@@ -59,9 +59,9 @@ static XtResource resources[] = {
 };
 /* *INDENT-ON* */
 
-static void GetValuesHook(Widget widget, ArgList args, Cardinal * num_args);
+static void GetValuesHook(Widget widget, ArgList args, Cardinal *num_args);
 static void Initialize(Widget req, Widget new, ArgList args,
-                       Cardinal * num_args);
+                       Cardinal *num_args);
 
 /* *INDENT-OFF* */
 externaldef(hookobjclassrec) HookObjClassRec hookObjClassRec = {
@@ -106,7 +106,7 @@ externaldef(hookobjclassrec) HookObjClassRec hookObjClassRec = {
 /* *INDENT-ON* */
 
 externaldef(hookObjectClass)
-WidgetClass hookObjectClass = (WidgetClass) & hookObjClassRec;
+WidgetClass hookObjectClass = (WidgetClass) &hookObjClassRec;
 
 static void
 FreeShellList(Widget w,
@@ -123,7 +123,7 @@ static void
 Initialize(Widget req _X_UNUSED,
            Widget new,
            ArgList args _X_UNUSED,
-           Cardinal * num_args _X_UNUSED)
+           Cardinal *num_args _X_UNUSED)
 {
     HookObject w = (HookObject) new;
 
@@ -134,7 +134,7 @@ Initialize(Widget req _X_UNUSED,
 static void
 GetValuesHook(Widget widget _X_UNUSED,
               ArgList args _X_UNUSED,
-              Cardinal * num_args _X_UNUSED)
+              Cardinal *num_args _X_UNUSED)
 {
     /* get the XtNshells and XtNnumShells pseudo-resources */
 }

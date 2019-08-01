@@ -171,7 +171,7 @@ XtGetClassExtension(WidgetClass object_class,
 
 static void
 ComputeWindowAttributes(Widget widget,
-                        XtValueMask * value_mask,
+                        XtValueMask *value_mask,
                         XSetWindowAttributes *values)
 {
     XtExposeProc expose;
@@ -218,10 +218,10 @@ CallChangeManaged(register Widget widget)
     register CompositePartPtr clPtr;
 
     if (XtIsComposite(widget)) {
-        cpPtr = (CompositePtr) & ((CompositeWidget) widget)->composite;
-        clPtr = (CompositePartPtr) & ((CompositeWidgetClass)
-                                      widget->core.widget_class)->
-            composite_class;
+        cpPtr = (CompositePtr) &((CompositeWidget) widget)->composite;
+        clPtr = (CompositePartPtr) &((CompositeWidgetClass)
+                                      widget->core.
+                                      widget_class)->composite_class;
     }
     else
         return;
@@ -247,7 +247,7 @@ CallChangeManaged(register Widget widget)
 }                               /* CallChangeManaged */
 
 static void
-MapChildren(CompositePart * cwp)
+MapChildren(CompositePart *cwp)
 {
     Cardinal i;
     WidgetList children;
@@ -265,7 +265,7 @@ MapChildren(CompositePart * cwp)
 }                               /* MapChildren */
 
 static Boolean
-ShouldMapAllChildren(CompositePart * cwp)
+ShouldMapAllChildren(CompositePart *cwp)
 {
     Cardinal i;
     WidgetList children;
@@ -327,7 +327,7 @@ RealizeWidget(Widget widget)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 #ifndef NO_IDENTIFY_WINDOWS
     if (_XtGetPerDisplay(display)->appContext->identify_windows) {
@@ -475,7 +475,7 @@ XtUnrealizeWidget(Widget widget)
         call_data.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_APP(app);
 }                               /* XtUnrealizeWidget */
@@ -1602,7 +1602,7 @@ IsTattled(Widget widget)
 {
     GeoDataRec geo_data;
 
-    XtGetSubresources(widget, (XtPointer) & geo_data,
+    XtGetSubresources(widget, (XtPointer) &geo_data,
                       (String) NULL, (String) NULL,
                       geo_resources, XtNumber(geo_resources), NULL, 0);
 

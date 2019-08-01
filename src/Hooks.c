@@ -57,7 +57,7 @@ XtAppAddBlockHook(XtAppContext app, XtBlockHookProc proc, XtPointer closure)
     hook->closure = closure;
     if (app->block_hook_list == NULL) {
         _XtAddCallback(&app->destroy_callbacks,
-                       FreeBlockHookList, (XtPointer) & app->block_hook_list);
+                       FreeBlockHookList, (XtPointer) &app->block_hook_list);
     }
     app->block_hook_list = hook;
     UNLOCK_APP(app);

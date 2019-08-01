@@ -76,7 +76,7 @@ in this Software without prior written authorization from The Open Group.
  */
 
 void
-XtSetWMColormapWindows(Widget widget, Widget * list, Cardinal count)
+XtSetWMColormapWindows(Widget widget, Widget *list, Cardinal count)
 {
     Window *data;
     Widget *checked, *top, *temp, hookobj;
@@ -158,7 +158,7 @@ XtSetWMColormapWindows(Widget widget, Widget * list, Cardinal count)
         call_data.num_event_data = count;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
 
     XtFree((char *) data);

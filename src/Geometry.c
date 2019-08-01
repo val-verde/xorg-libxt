@@ -105,9 +105,9 @@ ClearRectObjAreas(RectObj r, XWindowChanges *old)
 
 XtGeometryResult
 _XtMakeGeometryRequest(Widget widget,
-                       XtWidgetGeometry * request,
-                       XtWidgetGeometry * reply,
-                       Boolean * clear_rect_obj)
+                       XtWidgetGeometry *request,
+                       XtWidgetGeometry *reply,
+                       Boolean *clear_rect_obj)
 {
     XtWidgetGeometry junk;
     XtGeometryHandler manager = (XtGeometryHandler) NULL;
@@ -124,9 +124,8 @@ _XtMakeGeometryRequest(Widget widget,
     CALLGEOTAT(_XtGeoTrace(widget,
                            "\"%s\" is making a %sgeometry request to its parent \"%s\".\n",
                            XtName(widget),
-                           ((request->
-                             request_mode & XtCWQueryOnly)) ? "query only " :
-                           "",
+                           ((request->request_mode & XtCWQueryOnly)) ?
+                           "query only " : "",
                            (XtParent(widget)) ? XtName(XtParent(widget)) :
                            "Root"));
     CALLGEOTAT(_XtGeoTab(1));
@@ -446,10 +445,8 @@ _XtMakeGeometryRequest(Widget widget,
                     req.changes.sibling = XtWindow(request->sibling);
                 else
                     req.changeMask =
-                        (XtGeometryMask) (req.
-                                          changeMask & (unsigned
-                                                        long) (~(CWStackMode |
-                                                                 CWSibling)));
+                        (XtGeometryMask) (req.changeMask & (unsigned long)
+                                          (~(CWStackMode | CWSibling)));
             }
         }
 
@@ -482,7 +479,7 @@ _XtMakeGeometryRequest(Widget widget,
         req.widget = widget;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.confighook_callbacks,
-                           (XtPointer) & req);
+                           (XtPointer) &req);
     }
 
     return returnCode;
@@ -492,8 +489,8 @@ _XtMakeGeometryRequest(Widget widget,
 
 XtGeometryResult
 XtMakeGeometryRequest(Widget widget,
-                      XtWidgetGeometry * request,
-                      XtWidgetGeometry * reply)
+                      XtWidgetGeometry *request,
+                      XtWidgetGeometry *reply)
 {
     Boolean junk;
     XtGeometryResult r;
@@ -509,14 +506,14 @@ XtMakeGeometryRequest(Widget widget,
         call_data.request = request;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.geometryhook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
         call_data.result = r =
             _XtMakeGeometryRequest(widget, request, reply, &junk);
         call_data.type = XtHpostGeometry;
         call_data.reply = reply;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.geometryhook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     else {
         r = _XtMakeGeometryRequest(widget, request, reply, &junk);
@@ -530,8 +527,8 @@ XtGeometryResult
 XtMakeResizeRequest(Widget widget,
                     _XtDimension width,
                     _XtDimension height,
-                    Dimension * replyWidth,
-                    Dimension * replyHeight)
+                    Dimension *replyWidth,
+                    Dimension *replyHeight)
 {
     XtWidgetGeometry request, reply;
     XtGeometryResult r;
@@ -552,14 +549,14 @@ XtMakeResizeRequest(Widget widget,
         call_data.request = &request;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.geometryhook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
         call_data.result = r =
             _XtMakeGeometryRequest(widget, &request, &reply, &junk);
         call_data.type = XtHpostGeometry;
         call_data.reply = &reply;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.geometryhook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     else {
         r = _XtMakeGeometryRequest(widget, &request, &reply, &junk);
@@ -603,7 +600,7 @@ XtResizeWindow(Widget w)
             req.widget = w;
             XtCallCallbackList(hookobj,
                                ((HookObject) hookobj)->hooks.
-                               confighook_callbacks, (XtPointer) & req);
+                               confighook_callbacks, (XtPointer) &req);
         }
     }
     UNLOCK_APP(app);
@@ -699,7 +696,7 @@ XtConfigureWidget(Widget w,
             req.widget = w;
             XtCallCallbackList(hookobj,
                                ((HookObject) hookobj)->hooks.
-                               confighook_callbacks, (XtPointer) & req);
+                               confighook_callbacks, (XtPointer) &req);
         }
         {
             XtWidgetProc resize;
@@ -733,8 +730,8 @@ void
 XtTranslateCoords(register Widget w,
                   _XtPosition x,
                   _XtPosition y,
-                  register Position * rootx, /* return */
-                  register Position * rooty) /* return */
+                  register Position *rootx, /* return */
+                  register Position *rooty) /* return */
 {
     Position garbagex, garbagey;
     XtAppContext app = XtWidgetToApplicationContext(w);
@@ -767,8 +764,9 @@ XtTranslateCoords(register Widget w,
     UNLOCK_APP(app);
 }
 
-XtGeometryResult XtQueryGeometry(Widget widget, register XtWidgetGeometry * intended,   /* parent's changes; may be NULL */
-                                 XtWidgetGeometry * reply) {    /* child's preferred geometry; never NULL */
+XtGeometryResult XtQueryGeometry(Widget widget,
+                                 register XtWidgetGeometry *intended, /* parent's changes; may be NULL */
+                                 XtWidgetGeometry *reply) {    /* child's preferred geometry; never NULL */
     XtWidgetGeometry null_intended;
     XtGeometryHandler query;
     XtGeometryResult result;

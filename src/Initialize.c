@@ -652,7 +652,7 @@ _MergeOptionTables(const XrmOptionDescRec *src1,
                    const XrmOptionDescRec *src2,
                    Cardinal num_src2,
                    XrmOptionDescRec **dst,
-                   Cardinal * num_dst)
+                   Cardinal *num_dst)
 {
     XrmOptionDescRec *table, *endP;
     XrmOptionDescRec *opt1, *dstP;
@@ -765,10 +765,10 @@ XrmDatabase
 _XtPreparseCommandLine(XrmOptionDescRec *urlist,
                        Cardinal num_urs,
                        int argc,
-                       _XtString * argv, /* return */
-                       String * applName,
-                       String * displayName,
-                       String * language)
+                       _XtString *argv, /* return */
+                       String *applName,
+                       String *displayName,
+                       String *language)
 {
     XrmDatabase db = NULL;
     XrmOptionDescRec *options;
@@ -780,8 +780,7 @@ _XtPreparseCommandLine(XrmOptionDescRec *urlist,
     _XtString *targv;
     int targc = argc;
 
-    targv =
-        (_XtString *)
+    targv = (_XtString *)
         __XtMalloc((Cardinal) (sizeof(_XtString *) * (size_t) argc));
     (void) memmove(targv, argv, sizeof(char *) * (size_t) argc);
     _MergeOptionTables(opTable, XtNumber(opTable), urlist, num_urs,
@@ -854,7 +853,7 @@ GetLanguage(Display *dpy, XtPerDisplay pd)
 static void
 ProcessInternalConnection(XtPointer client_data,
                           int *fd,
-                          XtInputId * id _X_UNUSED)
+                          XtInputId *id _X_UNUSED)
 {
     XProcessInternalConnection((Display *) client_data, *fd);
 }
@@ -876,7 +875,7 @@ ConnectionWatch(Display *dpy,
         *watch_data = (XPointer) iptr;
     }
     else {
-        iptr = (XtInputId *) * watch_data;
+        iptr = (XtInputId *) *watch_data;
         XtRemoveInput(*iptr);
         (void) XtFree(*watch_data);
     }
@@ -931,7 +930,7 @@ _XtDisplayInitialize(Display *dpy,
     }
 
     value.size = sizeof(tmp_bool);
-    value.addr = (XtPointer) & tmp_bool;
+    value.addr = (XtPointer) &tmp_bool;
     if (_GetResource(dpy, search_list, "synchronous", "Synchronous",
                      XtRBoolean, &value)) {
         int i;
@@ -953,20 +952,20 @@ _XtDisplayInitialize(Display *dpy,
     }
 
     value.size = sizeof(pd->multi_click_time);
-    value.addr = (XtPointer) & pd->multi_click_time;
+    value.addr = (XtPointer) &pd->multi_click_time;
     if (!_GetResource(dpy, search_list,
                       "multiClickTime", "MultiClickTime", XtRInt, &value)) {
         pd->multi_click_time = 200;
     }
 
     value.size = sizeof(pd->appContext->selectionTimeout);
-    value.addr = (XtPointer) & pd->appContext->selectionTimeout;
+    value.addr = (XtPointer) &pd->appContext->selectionTimeout;
     (void) _GetResource(dpy, search_list,
                         "selectionTimeout", "SelectionTimeout", XtRInt, &value);
 
 #ifndef NO_IDENTIFY_WINDOWS
     value.size = sizeof(pd->appContext->identify_windows);
-    value.addr = (XtPointer) & pd->appContext->identify_windows;
+    value.addr = (XtPointer) &pd->appContext->identify_windows;
     (void) _GetResource(dpy, search_list,
                         "xtIdentifyWindows", "XtDebug", XtRBoolean, &value);
 #endif
@@ -986,7 +985,7 @@ _XtDisplayInitialize(Display *dpy,
  */
 
 void
-XtAppSetFallbackResources(XtAppContext app_context, String * specification_list)
+XtAppSetFallbackResources(XtAppContext app_context, String *specification_list)
 {
     LOCK_APP(app_context);
     app_context->fallback_resources = specification_list;
@@ -994,13 +993,13 @@ XtAppSetFallbackResources(XtAppContext app_context, String * specification_list)
 }
 
 Widget
-XtOpenApplication(XtAppContext * app_context_return,
+XtOpenApplication(XtAppContext *app_context_return,
                   _Xconst char *application_class,
                   XrmOptionDescRec *options,
                   Cardinal num_options,
                   int *argc_in_out,
-                  _XtString * argv_in_out,
-                  String * fallback_resources,
+                  _XtString *argv_in_out,
+                  String *fallback_resources,
                   WidgetClass widget_class,
                   ArgList args_in,
                   Cardinal num_args_in)
@@ -1041,13 +1040,13 @@ XtOpenApplication(XtAppContext * app_context_return,
 }
 
 Widget
-XtAppInitialize(XtAppContext * app_context_return,
+XtAppInitialize(XtAppContext *app_context_return,
                 _Xconst char *application_class,
                 XrmOptionDescRec *options,
                 Cardinal num_options,
                 int *argc_in_out,
-                _XtString * argv_in_out,
-                String * fallback_resources,
+                _XtString *argv_in_out,
+                String *fallback_resources,
                 ArgList args_in,
                 Cardinal num_args_in)
 {
@@ -1063,7 +1062,7 @@ XtInitialize(_Xconst _XtString name _X_UNUSED,
              XrmOptionDescRec *options,
              Cardinal num_options,
              int *argc,
-             _XtString * argv)
+             _XtString *argv)
 {
     Widget root;
     XtAppContext app_con;

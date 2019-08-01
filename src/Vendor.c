@@ -85,7 +85,7 @@ DllMain(unsigned long mod_handle, unsigned long flag, void *routine)
 externaldef(vendorshellclassrec)
 VendorShellClassRec vendorShellClassRec = {
     {
-     /* superclass            */ (WidgetClass) & wmShellClassRec,
+     /* superclass            */ (WidgetClass) &wmShellClassRec,
      /* class_name            */ "VendorShell",
      /* size                  */ sizeof(VendorShellRec),
      /* Class Initializer     */ NULL,

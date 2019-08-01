@@ -133,7 +133,7 @@ _XtGetPerWidgetInput(Widget widget, _XtBoolean create)
 }
 
 void
-_XtFillAncestorList(Widget ** listPtr,
+_XtFillAncestorList(Widget **listPtr,
                     int *maxElemsPtr,
                     int *numElemsPtr,
                     Widget start,
@@ -156,7 +156,7 @@ _XtFillAncestorList(Widget ** listPtr,
     for (i = 1, w = XtParent(start);
          w != NULL && !XtIsShell(trace[i - 1]) && trace[i - 1] != breakWidget;
          w = XtParent(w), i++) {
-        if (i == (Cardinal) * maxElemsPtr) {
+        if (i == (Cardinal) *maxElemsPtr) {
             /* This should rarely happen, but if it does it'll probably
                happen again, so grow the ancestor list */
             *maxElemsPtr += CACHESIZE;

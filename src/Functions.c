@@ -182,7 +182,7 @@ XtMapWidget(Widget w)
         call_data.widget = w;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_APP(app);
 }
@@ -205,7 +205,7 @@ XtUnmapWidget(Widget w)
         call_data.widget = w;
         XtCallCallbackList(hookobj,
                            ((HookObject) hookobj)->hooks.changehook_callbacks,
-                           (XtPointer) & call_data);
+                           (XtPointer) &call_data);
     }
     UNLOCK_APP(app);
 }
