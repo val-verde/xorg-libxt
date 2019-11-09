@@ -542,6 +542,12 @@ XtScreenDatabase(Screen *screen)
     Display *dpy = DisplayOfScreen(screen);
 
     DPY_TO_APPCON(dpy);
+    if (dpy == NULL) {
+        XtErrorMsg("nullDisplay",
+                   "XtScreenDatabase", XtCXtToolkitError,
+                   "XtScreenDatabase requires a non-NULL display",
+                   NULL, NULL);
+    }
 
     LOCK_APP(app);
     LOCK_PROCESS;
