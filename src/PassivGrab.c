@@ -194,10 +194,8 @@ static void FreeGrab(
 {
     if (pGrab->hasExt) {
 	XtServerGrabExtPtr ext = GRABEXT(pGrab);
-	if (ext->pModifiersMask)
-	    XtFree((char *)ext->pModifiersMask);
-	if (ext->pKeyButMask)
-	    XtFree((char *)ext->pKeyButMask);
+	XtFree((char *)ext->pModifiersMask);
+	XtFree((char *)ext->pKeyButMask);
     }
     XtFree((char *)pGrab);
 }
