@@ -274,18 +274,20 @@ XtOpenDisplay(XtAppContext app,
                                  &language : NULL));
     UNLOCK_PROCESS;
     d = XOpenDisplay(displayName);
-    if (ScreenCount(d) <= 0) {
-        XtErrorMsg("nullDisplay",
-                   THIS_FUNC, XtCXtToolkitError,
-                   THIS_FUNC " requires a non-NULL display",
-                   NULL, NULL);
-    }
-    if (DefaultScreen(d) < 0 || DefaultScreen(d) >= ScreenCount(d)) {
-        XtWarningMsg("nullDisplay",
-                     THIS_FUNC, XtCXtToolkitError,
-                     THIS_FUNC " default screen is invalid (ignoring)",
-                     NULL, NULL);
-        DefaultScreen(d) = 0;
+    if (d != NULL) {
+        if (ScreenCount(d) <= 0) {
+            XtErrorMsg("nullDisplay",
+                       THIS_FUNC, XtCXtToolkitError,
+                       THIS_FUNC " requires a non-NULL display",
+                       NULL, NULL);
+        }
+        if (DefaultScreen(d) < 0 || DefaultScreen(d) >= ScreenCount(d)) {
+            XtWarningMsg("nullDisplay",
+                         THIS_FUNC, XtCXtToolkitError,
+                         THIS_FUNC " default screen is invalid (ignoring)",
+                         NULL, NULL);
+            DefaultScreen(d) = 0;
+        }
     }
 
     if (!applName && !(applName = getenv("RESOURCE_NAME"))) {
