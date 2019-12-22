@@ -353,19 +353,20 @@ _XtVaToArgList(
     Cardinal		num_resources = 0;
     Boolean		fetched_resource_list = False;
 
-    if (max_count  == 0) {
-	*num_args_return = 0;
-	*args_return = (ArgList)NULL;
+    *num_args_return = 0;
+    *args_return = (ArgList)NULL;
+
+    if (max_count  == 0)
 	return;
-    }
 
     args = (ArgList)__XtMalloc((Cardinal)((size_t)(max_count * 2) * sizeof(Arg)));
-    if (args) {
-	for (count = max_count * 2; --count >= 0; )
-	    args[count].value = (XtArgVal) NULL;
-	count = 0;
+    if (!args)
+	return;
+    for (count = max_count * 2; --count >= 0; )
+	args[count].value = (XtArgVal) NULL;
+    count = 0;
 
-	for(attr = va_arg(var, String) ; attr != NULL;
+    for(attr = va_arg(var, String) ; attr != NULL;
 			    attr = va_arg(var, String)) {
 	    if (strcmp(attr, XtVaTypedArg) == 0) {
 		typed_arg.name = va_arg(var, String);
@@ -399,9 +400,6 @@ _XtVaToArgList(
 		args[count].value = va_arg(var, XtArgVal);
 		count ++;
 	    }
-	}
-    } else {
-	count = 0;
     }
 
     XtFree((XtPointer)resources);
