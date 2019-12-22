@@ -356,11 +356,10 @@ _XtVaToArgList(Widget widget,
     if (max_count  == 0)
 	return;
 
-    args = (ArgList)__XtMalloc((Cardinal)((size_t)(max_count * 2) * sizeof(Arg)));
+    args = (ArgList)__XtCalloc((size_t)(max_count * 2),  sizeof(Arg));
     if (!args)
 	return;
-    for (count = max_count * 2; --count >= 0; )
-	args[count].value = (XtArgVal) NULL;
+
     count = 0;
 
     for(attr = va_arg(var, String) ; attr != NULL;
@@ -482,14 +481,24 @@ _XtVaToTypedArgList(va_list var,
                     XtTypedArgList *args_return,
                     Cardinal *num_args_return)
 {
-    XtTypedArgList args = NULL;
+    XtTypedArgList args;
     String attr;
     int count;
 
-    args = (XtTypedArgList)
-        __XtMalloc((Cardinal) ((size_t) max_count * sizeof(XtTypedArg)));
+    *args_return = NULL;
+    *num_args_return = 0;
 
-    for (attr = va_arg(var, String), count = 0; attr != NULL;
+    if (max_count  == 0)
+	return;
+
+    args = (XtTypedArgList)
+        __XtCalloc((size_t) max_count , sizeof(XtTypedArg));
+    if (!args)
+    	return;	    
+
+    count=0;
+
+    for (attr = va_arg(var, String); attr != NULL;
          attr = va_arg(var, String)) {
         if (strcmp(attr, XtVaTypedArg) == 0) {
             args[count].name = va_arg(var, String);
