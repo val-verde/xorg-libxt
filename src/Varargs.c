@@ -356,7 +356,7 @@ _XtVaToArgList(Widget widget,
     if (max_count  == 0)
 	return;
 
-    args = (ArgList)__XtCalloc((size_t)(max_count * 2),  sizeof(Arg));
+    args = (ArgList)__XtCalloc((Cardinal)(max_count * 2),  sizeof(Arg));
     if (!args)
 	return;
 
@@ -492,7 +492,7 @@ _XtVaToTypedArgList(va_list var,
 	return;
 
     args = (XtTypedArgList)
-        __XtCalloc((size_t) max_count , sizeof(XtTypedArg));
+        __XtCalloc((Cardinal) max_count , sizeof(XtTypedArg));
     if (!args)
     	return;	    
 
