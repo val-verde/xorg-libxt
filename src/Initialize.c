@@ -197,7 +197,7 @@ _XtInherit(void)
 #define _XtInherit __XtInherit
 #endif
 
-#if defined (WIN32) || defined(__CYGWIN__)
+#if !defined(__MINGW32__) && (defined (WIN32) || defined(__CYGWIN__))
 /*
  * The Symbol _XtInherit is used in two different manners.
  * First it could be used as a generic function and second
