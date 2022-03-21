@@ -96,7 +96,7 @@ all-local: $(BUILT_FILES)
 
 $(BUILT_HEADER): $(BUILT_SOURCE)
 
-$(BUILT_SOURCE): $(top_builddir)/util/makestrs$(EXEEXT) 
+$(BUILT_SOURCE): $(top_builddir)/util/makestrs
 	$(AM_V_GEN)$(top_builddir)/util/makestrs -i $(top_srcdir) $(STRINGSABIOPTIONS) < $(STRING_LIST) > StringDefs.c
 	$(AM_V_at)$(MKDIR_P) $(top_builddir)/src
 	$(AM_V_at)$(MKDIR_P) $(top_builddir)/include/X11
@@ -104,5 +104,5 @@ $(BUILT_SOURCE): $(top_builddir)/util/makestrs$(EXEEXT)
 	$(AM_V_at)cp Shell.h $(top_builddir)/include/X11
 	$(AM_V_at)rm StringDefs.h Shell.h
 
-$(top_builddir)/util/makestrs$(EXEEXT) :
+$(top_builddir)/util/makestrs:
 	$(am__cd) $(@D) && $(MAKE) $(AM_MAKEFLAGS) $(@F)
