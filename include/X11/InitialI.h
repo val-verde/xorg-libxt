@@ -78,6 +78,9 @@ SOFTWARE.
 #endif
 #endif
 
+#ifdef _WIN32
+#include <X11/Xwindows.h>
+#endif
 #include <X11/Xos.h>
 #include <X11/Xpoll.h>
 
