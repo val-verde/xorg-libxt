@@ -83,6 +83,10 @@ in this Software without prior written authorization from The Open Group.
 #include <X11/XKBlib.h>
 #endif
 
+#ifndef ControlMask
+#define ControlMask (1 << 2)
+#endif
+
 #define FLUSHKEYCACHE(ctx) \
         memset((void *)&ctx->keycache, 0, sizeof(TMKeyCache))
 

@@ -99,6 +99,10 @@ in this Software without prior written authorization from The Open Group.
 #define MIN(a,b) (((a) < (b)) ? (a) : (b))
 #endif
 
+#ifndef ControlMask
+#define ControlMask (1 << 2)
+#endif
+
 static _Xconst char *XtNtranslationParseError = "translationParseError";
 
 typedef int EventType;

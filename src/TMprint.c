@@ -74,6 +74,10 @@ in this Software without prior written authorization from The Open Group.
 #include "IntrinsicI.h"
 #include <stdio.h>
 
+#ifndef ControlMask
+#define ControlMask (1 << 2)
+#endif
+
 typedef struct _TMStringBufRec {
     _XtString start;
     _XtString current;
